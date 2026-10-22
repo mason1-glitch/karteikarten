@@ -1,0 +1,12 @@
+"Wie sieht das Spannungs-Dehnungs-Diagramm eines **duktilen** Werkstoffs aus?","![Spannungs-Dehnungs-Diagramm](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/werkstoffkunde-labor/bilder/spannungs-dehnung.png)
+
+| Bereich | Bedeutung |
+|---|---|
+| linearer Anstieg | elastisch, Steigung = E |
+| Streckgrenze R_e | Beginn plastischer Verformung |
+| Maximum R_m | Zugfestigkeit |
+| Abfall | Einschnürung bis Bruch |"
+"Welche Kennwerte liest man im Zugversuch ab?","- Streckgrenze R_e
+- Zugfestigkeit R_m
+- Bruchdehnung A
+- Elastizitätsmodul E (Steigung im elastischen Bereich)"
