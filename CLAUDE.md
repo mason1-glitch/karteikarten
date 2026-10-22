@@ -21,10 +21,11 @@ Fächer: bwl, mathe1, ingenieurinformatik1, konstruktionsgrundlagen, cad, werkst
   `![Beschreibung](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/<fach>/bilder/<datei>.png)`
 - Dateiname der CSV: `<thema>.csv` bzw. `kap<nr>_<thema>.csv`, nur Kleinbuchstaben, Bindestriche, keine Umlaute.
 
-## Gute Karten
+## Gute Karten (Standard – ein Auftrag im Chat, z. B. ein Rieseberg-Prompt, geht vor)
 - Eine Karte = eine abfragbare Sache (Begriff, Formel mit Bedeutung der Größen und Einheiten, Zusammenhang, Diagramm deuten).
 - Frage so stellen, dass man aktiv erinnern muss; Antwort knapp, Details als Liste/Tabelle.
-- Inhalte nur aus Skript, Lernzettel oder Besprechung; nichts erfinden. Unklares nachfragen.
+- Inhalte aus Skript, Lernzettel oder Besprechung; nichts erfinden. Unklares nachfragen.
+- Ergänzungen über das Skript hinaus nur, wenn der Auftrag es verlangt – dann auf der Karte kennzeichnen (z. B. „Ergänzung:“), damit klar ist, was nicht aus dem Skript stammt.
 
 ## Bilder
 - Bevorzugt selbst zeichnen (Python/matplotlib) mit `werkzeuge/stil.py`: schwarzer Hintergrund, helle Schrift, deutsche Beschriftung – die App läuft im Dunkelmodus, schwarze Schrift auf transparentem Grund ist dort unsichtbar.
