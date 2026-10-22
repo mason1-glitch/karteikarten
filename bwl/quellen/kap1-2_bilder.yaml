@@ -1,0 +1,74 @@
+# Schaubilder für Kapitel 1–2 (Skript Frenzel/Haats/Poll, WiSe 2026/27).
+# Koordinaten in Pixeln bei 300 dpi. Erzeugen mit:
+#   python3 werkzeuge/folienbilder.py bwl/quellen/kap1-2_bilder.yaml --skript <Skript_BWL_Kapitel_12.pdf>
+fach: bwl
+dpi: 300
+max_breite: 1600
+bilder:
+  - name: kap1_bezugsrahmen
+    folie: 11
+    ausschnitt: [290, 515, 3190, 2260]
+    masken:
+      beschaffungsmarkt: [372, 1000, 502, 1680]
+      absatzmarkt: [2968, 1110, 3100, 1570]
+      kredit-kapitalmarkt: [1300, 2095, 2175, 2225]
+      personal-management-organisation: [[700, 840, 960, 940], [1105, 840, 1490, 940], [2395, 840, 2770, 940]]
+
+  - name: kap2_marktgleichgewicht
+    folie: 31
+    ausschnitt: [320, 790, 1530, 1905]
+    masken:
+      angebotsfunktion: [1095, 1240, 1495, 1305]
+      nachfragefunktion: [1100, 1466, 1512, 1530]
+      achsen: [[335, 806, 577, 878], [1232, 1820, 1508, 1892]]
+      gleichgewichtsmenge: [635, 1802, 1128, 1866]
+
+  - name: kap2_transformationsprozess
+    folie: 33
+    ausschnitt: [[650, 640, 2815, 1262], [640, 2055, 2815, 2200]]
+    masken:
+      produktionsfaktoren: [705, 1085, 1300, 1180]
+      wertschoepfung: [1525, 1085, 1975, 1180]
+      gueter: [2215, 1088, 2735, 1240]
+      leistung: [2285, 2085, 2550, 2175]
+
+  - name: kap2_umsatzprozess
+    folie: 34
+    ausschnitt: [330, 540, 3135, 2250]
+    masken:
+      schritte: [1795, 560, 2980, 950]
+      ausgaben: [540, 1430, 636, 1757]
+      einnahmen: [2848, 1415, 2944, 1775]
+      finanzielle-mittel: [1495, 1720, 1980, 1816]
+
+  - name: kap2_stakeholder
+    folie: 36
+    ausschnitt: [370, 560, 3080, 2140]
+    masken:
+      interne: [585, 612, 960, 1236]
+      externe: [580, 1365, 970, 2070]
+
+  - name: kap2_kmu-abgrenzung
+    folie: 41
+    ausschnitt: [330, 780, 2900, 1600]
+    masken:
+      beschaeftigte: [1060, 930, 1320, 1540]
+      umsatz: [1700, 930, 2060, 1540]
+      bilanzsumme: [2420, 930, 2785, 1540]
+
+  - name: kap2_zielpyramide
+    folie: 47
+    ausschnitt: [150, 590, 3345, 2140]
+    masken:
+      formalziele-merkmale: [930, 1020, 2430, 1495]
+      sachziele-merkmale: [640, 1730, 2850, 1937]
+
+  - name: kap2_zielhierarchie
+    folie: 50
+    ausschnitt: [290, 640, 3190, 2240]
+    masken:
+      formalziele: [[505, 895, 915, 980], [1465, 895, 2015, 980], [2395, 895, 3135, 980]]
+      marketing: [325, 1447, 955, 1752]
+      beschaffung: [1052, 1447, 1520, 1752]
+      produktion: [1785, 1447, 2185, 1752]
+      forschung-entwicklung: [2510, 1449, 3098, 1752]
