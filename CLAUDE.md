@@ -33,6 +33,6 @@ Fächer: bwl, mathe1, ingenieurinformatik1, konstruktionsgrundlagen, cad, werkst
 
 ## Nach jedem fertigen Kartensatz
 1. CSV und Bilder committen. Commit-Nachricht: `Karten <Fach>: <Thema>`.
-2. Branch pushen und Pull Request nach `main` erstellen, ohne Nachfrage. Beschreibung kurz: Anzahl Karten, Bilder, offene Fragen.
-3. Der Workflow `.github/workflows/auto-merge.yml` merged den PR automatisch per **Squash and merge** und löscht den Branch. Ist er nach etwa einer Minute nicht gemerged, selbst per Squash and merge mergen, ohne auf Bestätigung zu warten. Gilt nicht für Änderungen an dieser `CLAUDE.md`, `werkzeuge/` oder `.github/`.
+2. Branch pushen und Pull Request nach `main` erstellen, ohne Nachfrage. Beschreibung kurz: Anzahl Karten, Bilder, offene Fragen. In Cloud-Sitzungen funktioniert `gh pr create` nicht (kein GraphQL) – stattdessen die REST-API: `gh api repos/mason1-glitch/karteikarten/pulls -f title=… -f head=<branch> -f base=main -f body=…`.
+3. Der Workflow `.github/workflows/auto-merge.yml` merged jeden PR automatisch per **Squash and merge** und löscht den Branch (dauert ca. 10 Sekunden). Ist er nach etwa einer Minute nicht gemerged, selbst per Squash and merge mergen (`gh api -X PUT repos/mason1-glitch/karteikarten/pulls/<nr>/merge -f merge_method=squash`), ohne auf Bestätigung zu warten. Gilt für alle Änderungen im Repo.
 4. Dem Nutzer die Datei als Download schicken, damit er sie direkt importieren kann. Hinweis: Neue Bilder kann GitHub erst nach einigen Minuten ausliefern.
