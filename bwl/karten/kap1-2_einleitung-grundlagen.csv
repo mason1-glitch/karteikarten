@@ -675,6 +675,10 @@ Die Beschäftigtenzahl muss immer passen; von den beiden Geldgrenzen **genügt e
 "Größenklasse nach EU? **10 Beschäftigte**, Umsatz **1,2 Mio. €**, Bilanzsumme **0,9 Mio. €**.","**kleines Unternehmen**: Kleinst verlangt **< 10** Beschäftigte – 10 gehört schon zu 10–49 ✓; Umsatz ≤ 10 Mio. € ✓.
 
 *F. 41*"
+"Größenklasse nach EU? **8 Beschäftigte**, Umsatz **3 Mio. €**, Bilanzsumme **2,5 Mio. €**.","**kleines Unternehmen**: 8 < 10 ✓, aber Umsatz **und** Bilanzsumme > 2 Mio. € ✗ → kein Kleinstunternehmen.
+Wörtlich passt 8 in keine Folienzeile (klein = 10–49). *Lesart abgeleitet, nicht in Skript oder Lernzettel:* Beschäftigtenspannen als Obergrenzen lesen (klein = unter 50) → 8 < 50 ✓ und Umsatz 3 ≤ 10 Mio. € ✓ → klein.
+
+*F. 41*"
 "Größenklasse nach EU? **49 Beschäftigte**, Umsatz **11 Mio. €**, Bilanzsumme **9,5 Mio. €**.","**kleines Unternehmen**: 49 in 10–49 ✓; Umsatz > 10 Mio. € ✗, aber Bilanzsumme 9,5 ≤ 10 Mio. € ✓ – eine Geldgrenze genügt.
 
 *F. 41*"
@@ -686,14 +690,14 @@ Die Folienzeile „Großunternehmen > 249 und > 50 Mio. € oder > 43 Mio. €�
 
 *F. 41*"
 "Größenklasse nach EU? **140 Beschäftigte**, Umsatz **70 Mio. €**, Bilanzsumme **60 Mio. €**.","**Großunternehmen** (kein KMU): 140 in 50–249 ✓, aber Umsatz > 50 **und** Bilanzsumme > 43 Mio. € ✗ → die Zeile „mittel“ passt nicht.
-Die Folienzeile „Großunternehmen > 249 und …“ passt wörtlich auch nicht. Vorgehen (abgeleitet): von Kleinst aufwärts die KMU-Zeilen prüfen, Beschäftigtenspannen als Obergrenzen lesen (klein = unter 50, mittel = unter 250) – passt keine, ist es groß.
+Die Folienzeile „Großunternehmen > 249 und …“ passt wörtlich auch nicht. Vorgehen: erst die KMU-Zeilen prüfen – passt keine, ist es groß (Lernzettel). *Eigene Ergänzung, nicht in Skript oder Lernzettel:* von Kleinst aufwärts prüfen und die Beschäftigtenspannen als Obergrenzen lesen (klein = unter 50, mittel = unter 250).
 
 *F. 41*"
 "Was ist an der Zeile **„Großunternehmen: > 249 und > 50 Mio. € oder > 43 Mio. €“** logisch ungenau – und wie gehst du in der Klausur vor?","Die Zeile übernimmt einfach das Muster „und … oder“. Groß ist aber, wer die KMU-Bedingung **verletzt**:
 **> 249 Beschäftigte ODER (Umsatz > 50 Mio. € UND Bilanzsumme > 43 Mio. €).**
 Beispiel: 300 Beschäftigte, 20 Mio. € Umsatz, 15 Mio. € Bilanzsumme passen in keine Folienzeile, sind aber groß.
 
-**Klausur:** Tabelle wie auf der Folie wiedergeben. Beim Einordnen von Kleinst aufwärts die KMU-Zeilen prüfen, die Beschäftigtenspannen als Obergrenzen lesen (klein = unter 50, mittel = unter 250) – passt keine, ist es ein Großunternehmen. *(Vorgehen abgeleitet, Lernzettel)*
+**Klausur:** Tabelle wie auf der Folie wiedergeben. Beim Einordnen erst die KMU-Zeilen prüfen – passt keine, ist es ein Großunternehmen (Lernzettel). *Eigene Ergänzung:* von Kleinst aufwärts prüfen, Beschäftigtenspannen als Obergrenzen lesen (klein = unter 50, mittel = unter 250).
 
 *F. 41*"
 "Sind kleine und mittlere Unternehmen auch mittelständisch?","„Kleine und mittlere Unternehmen sind auch überwiegend mittelständisch!“ – überwiegend, nicht automatisch; die Begriffe meinen Verschiedenes (siehe F. 42).
@@ -976,7 +980,7 @@ Außerdem: Kapitalgesellschaften haben ein **Mindesteigenkapital** (GmbH 25.000 
 - eG: ggf. Nachschusspflicht
 
 *F. 45, 46*"
-"Ein Unternehmen will **viel Eigenkapital von vielen Anlegern über die Börse** einwerben; das Startkapital beträgt **80.000 €**. Welche Rechtsform bietet laut Tabelle die besten Finanzierungsmöglichkeiten?","**AG** – „hervorragend“: kleine EK-Anteile, Handel an Börse, Kapitalmarktzugang für FF; Mindesteigenkapital 50.000 € ✓.
+"Ein Unternehmen will **viel Eigenkapital von vielen Anlegern über die Börse** einwerben; das Startkapital beträgt **80.000 €**. Welche Rechtsform mit den besten Finanzierungsmöglichkeiten laut Tabelle kann es mit diesem Startkapital gründen?","**AG** – „hervorragend“: kleine EK-Anteile, Handel an Börse, Kapitalmarktzugang für FF; Mindesteigenkapital 50.000 € ✓.
 (SE: Finanzierung „wie AG“, aber Mindesteigenkapital 120.000 € > 80.000 €.)
 
 *F. 46*"

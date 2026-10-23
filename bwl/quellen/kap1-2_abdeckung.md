@@ -1,26 +1,26 @@
 # Abdeckungsmatrix – BWL Kapitel 1–2: Einleitung und Grundlagen
 
-Erzeugt mit `werkzeuge/karten.py` aus `bwl/quellen/kap1-2_karten.yaml`. 290 Karten, 113 prüfbare Inhalte, 13 Wiederholungsfragen.
+Erzeugt mit `werkzeuge/karten.py` aus `bwl/quellen/kap1-2_karten.yaml`. 291 Karten, 113 prüfbare Inhalte, 13 Wiederholungsfragen.
 
 ## Karten je Typ
 
 | Typ | Anzahl |
 |---|---:|
 | Definition (Begriff → Wortlaut) | 22 |
-| Definition rückwärts (Wortlaut → Begriff) | 15 |
+| Definition rückwärts (Wortlaut → Begriff) | 16 |
 | Formel/Kennzahl | 5 |
 | Aufzählung vollständig | 18 |
-| Aufzählung zerlegt (Lückenkarte) | 27 |
+| Aufzählung zerlegt (Lückenkarte) | 26 |
 | Einzelfakt | 77 |
 | Verwechslungskarte | 16 |
 | Klausurfalle | 6 |
-| Anwendung (Fall → Einordnung) | 44 |
+| Anwendung (Fall → Einordnung) | 45 |
 | Rechenkarte | 11 |
 | Skizze zeichnen | 5 |
 | Schaubild mit verdecktem Feld | 27 |
 | Unstimmigkeit im Skript | 4 |
 | Musterantwort Wiederholungsfrage | 13 |
-| **Summe** | **290** |
+| **Summe** | **291** |
 
 Karten mit Bild: 34.
 
@@ -37,10 +37,10 @@ Karten mit Bild: 34.
 | W07 | 51 | Skizzieren Sie schematisch den güter- und finanzwirtschaftlichen Umsatzprozess eines (produzierenden) Unternehmens. | K095 | 4 ✓ | K095, K096, K097, K098, K099, K100, K101, K102, K103, K104, K105, K106, K107, K108, K109 |
 | W08 | 51 | Was sind Stakeholder? Nennen Sie mindestens vier Beispiele bezogen auf ein Unternehmen. | K128 | 3 ✓ | K110, K111, K113, K114, K127, K128 |
 | W09 | 51 | Nennen Sie drei Kriterien zur Einteilung von Unternehmen mit jeweils zwei Beispielen. | K129 | 1 ✓ | K129, K130, K131 |
-| W10 | 51 | Was versteht man unter kleinen und mittleren Unternehmen? (Umsatz, Anzahl Mitarbeiter) | K140 | 5 ✓ | K140, K141, K142, K143, K145, K146, K147, K148, K149, K150, K151, K152, K153, K154 |
-| W11 | 51 | Wodurch sind mittelständische Unternehmen gekennzeichnet? | K158 | 2 ✓ | K158, K159, K160, K161, K162, K164, K165, K168 |
-| W12 | 51 | Wodurch unterscheiden sich Personengesellschaften und Kapitalgesellschaften hinsichtlich der Haftung? | K229 | 3 ✓ | K173, K174, K182, K183, K184, K185, K186, K198, K199, K200, K201, K202, K229, K230, K232, K233, K234, K235 |
-| W13 | 51 | Welche zwei Zielkategorien unterscheidet man in der BWL grundsätzlich? Beschreiben Sie diese kurz und nennen Sie Beispiele. | K290 | 3 ✓ | K236, K237, K238, K239, K240, K241, K242, K276, K279, K280, K281, K282, K283, K284, K285, K286, K287, K288, K290 |
+| W10 | 51 | Was versteht man unter kleinen und mittleren Unternehmen? (Umsatz, Anzahl Mitarbeiter) | K140 | 5 ✓ | K140, K141, K142, K143, K145, K146, K147, K148, K149, K150, K151, K152, K153, K154, K155 |
+| W11 | 51 | Wodurch sind mittelständische Unternehmen gekennzeichnet? | K159 | 2 ✓ | K159, K160, K161, K162, K163, K165, K166, K169 |
+| W12 | 51 | Wodurch unterscheiden sich Personengesellschaften und Kapitalgesellschaften hinsichtlich der Haftung? | K230 | 3 ✓ | K174, K175, K183, K184, K185, K186, K187, K199, K200, K201, K202, K203, K230, K231, K233, K234, K235, K236 |
+| W13 | 51 | Welche zwei Zielkategorien unterscheidet man in der BWL grundsätzlich? Beschreiben Sie diese kurz und nennen Sie Beispiele. | K291 | 3 ✓ | K237, K238, K239, K240, K241, K242, K243, K277, K280, K281, K282, K283, K284, K285, K286, K287, K288, K289, K291 |
 
 ## Inhalte je Folie
 
@@ -52,7 +52,7 @@ Karten mit Bild: 34.
 | 6 | Begriffsentwicklung: von Hauswirtschaft/Bewirtung zur Gesamtheit aller ökonomischen Aktivitäten | K004 |
 | 7 | BWL = Lehre vom Wirtschaften in Betrieben/Unternehmen | K005 |
 | 7 | Notwendigkeit des Wirtschaftens: Knappheit der Güter vs. unbegrenzte Bedürfnisse | K006 |
-| 7 | Effizienz = Erfolg / Aufwand | K007, K008, K009, K251, K257 |
+| 7 | Effizienz = Erfolg / Aufwand | K007, K008, K009, K252, K258 |
 | 7 | Wirtschaften als planvolles, zielgerichtetes Handeln zur Bedarfsdeckung | K010 |
 | 8 | Knappe Ressourcen (Zeit, Einkommen; Material, Kapazitäten, Personal, Finanzmittel) | K011 |
 | 9 | Betriebswirtschaftliche Kompetenz: Entscheidungsprozesse verstehen, unterstützen, beeinflussen, durchführen | K012 |
@@ -114,51 +114,51 @@ Karten mit Bild: 34.
 | 40 | Größenmaßstäbe: Bilanzsumme, Umsatzerlöse, Beschäftigtenzahl | K139 |
 | 41 | Quantitative EU-Abgrenzung für KMU (Förderprogramme) | K140, K147 |
 | 41 | Kleinstunternehmen: < 10, bis 2 Mio. € oder bis 2 Mio. € | K140, K141, K148, K149, K150 |
-| 41 | Kleine Unternehmen: 10–49, bis 10 Mio. € oder bis 10 Mio. € | K140, K142, K148, K149, K151, K152 |
-| 41 | Mittlere Unternehmen: 50–249, bis 50 Mio. € oder bis 43 Mio. € | K140, K143, K145, K148, K149, K153 |
-| 41 | Großunternehmen: > 249, > 50 Mio. € oder > 43 Mio. € | K140, K144, K148, K149, K154, K155 |
-| 41 | Verknüpfung: Beschäftigte UND (Umsatz ODER Bilanzsumme) | K140, K146, K150, K151, K152, K153, K154 |
-| 41 | KMU sind überwiegend mittelständisch | K157 |
-| 41 | Unstimmigkeit Zeile Großunternehmen | K155, K156 |
-| 42 | Qualitative Abgrenzung mittelständischer Unternehmen (3 Kriterien) | K158, K159, K160, K161, K162 |
-| 42 | Mittelständische können groß sein (> 500 MA, > 100 Mio. €), Beispiele Krone, Miele, TRUMPF | K158, K164, K165, K168 |
-| 42 | Unterschied KMU (quantitativ) – mittelständisch (qualitativ) | K163, K167, K168 |
-| 42 | Unstimmigkeit Grenzwerte F. 42 vs. F. 41 | K166 |
-| 43 | Rechtsformen privater Betriebe: 4 Gruppen mit Unterformen | K169, K170, K171 |
-| 43 | Einzelunternehmen: eine Person; Personengesellschaften: mindestens zwei Personen | K172, K232 |
-| 43 | Kapitalgesellschaften und Genossenschaften sind juristische Personen | K173, K174, K229 |
-| 44 | Gegenstand der Rechtsformwahl: Innen- und Außenverhältnis | K175 |
-| 44 | Rechtsformwahl orientiert sich an Zielen, strategisch relevante Entscheidung | K176, K177 |
-| 44 | Sechs Auswahlkriterien | K178, K179, K180, K181 |
-| 45 | Haftung EU, OHG, KG | K182, K183, K184, K185, K186, K229, K232, K233, K234 |
-| 45 | Leitungs- und Kontrollrechte EU, OHG, KG | K185, K187, K188, K234 |
-| 45 | Mindesteigenkapital Personengesellschaften: keine Vorschrift | K189 |
-| 45 | GuV-Verteilung EU, OHG, KG | K190 |
-| 45 | Finanzierungsmöglichkeiten EU, OHG, KG | K191, K192, K193, K233 |
-| 45 | Publizität/Prüfung und Mitbestimmung bei EU, OHG, KG | K194, K195 |
-| 45 | Rechtsgrundlage HGB | K196 |
-| 46 | Haftung AG, GmbH, eG, SE | K198, K199, K200, K201, K202, K229, K230, K235 |
-| 46 | Mindesteigenkapital AG 50.000 €, GmbH 25.000 €, eG keine, SE 120.000 € | K203, K204, K205, K206, K230 |
-| 46 | Leitungsrechte AG, GmbH, eG, SE | K207, K208, K209, K210 |
-| 46 | Kontrollrechte AG, GmbH, eG | K211, K212, K213, K214 |
-| 46 | GuV-Verteilung AG, GmbH, eG | K215, K216, K217 |
-| 46 | Finanzierungsmöglichkeiten AG, GmbH, eG | K218, K219, K220, K231, K235 |
-| 46 | Publizität und Prüfung zwingend (Erleichterungen) | K221 |
-| 46 | Mitbestimmung: Drittelparität, Unterparität, volle Parität; SE | K222, K223, K224, K225, K226, K227, K228 |
-| 46 | Rechtsgrundlagen AktG, GmbHG, GenG, SE-VO | K197 |
-| 47 | Formalziele (Erfolgsziele): Merkmale und klassische Formalziele | K236, K237, K239, K240, K242, K283, K286, K290 |
-| 47 | Sachziele: Merkmale | K236, K238, K241, K242, K290 |
-| 47 | Zielpyramide: 1. Formalziele, 2. Sachziele | K236 |
-| 48 | Produktivität = Output / Input, mengenmäßig | K243, K247, K250, K255, K258, K259, K261 |
-| 48 | Wirtschaftlichkeit = Ertrag / Aufwand, wertmäßig | K244, K248, K250, K251, K254, K262, K263 |
-| 48 | Gewinn = Erlöse − Kosten | K245, K253, K264, K265 |
-| 48 | Rentabilität = Gewinn / Ø Kapital | K246, K249, K253, K254, K256, K266, K267 |
-| 49 | Aussagekraft von Kennzahlen durch Vergleiche (6 Arten) | K260, K268, K269, K270, K271, K272, K273, K274 |
-| 49 | Absolute und relative Ziele | K275 |
-| 50 | Sachziele = konkrete Handlungsziele zur Steuerung; Formalziele → Sachziele → betriebliche Tätigkeiten | K242, K276, K277, K278 |
-| 50 | Sachziele je Funktion (Marketing, Beschaffung, Produktion, F&E) | K276, K279, K280, K281, K282, K284, K285, K287, K288, K290 |
-| 50 | Unstimmigkeit: Produktivität als Formal- und Sachziel | K281, K289 |
-| 48 | Abgrenzung Produktivität – Wirtschaftlichkeit – Effizienz – Rentabilität – Gewinn | K250, K251, K252, K253, K254 |
+| 41 | Kleine Unternehmen: 10–49, bis 10 Mio. € oder bis 10 Mio. € | K140, K142, K148, K149, K151, K152, K153 |
+| 41 | Mittlere Unternehmen: 50–249, bis 50 Mio. € oder bis 43 Mio. € | K140, K143, K145, K148, K149, K154 |
+| 41 | Großunternehmen: > 249, > 50 Mio. € oder > 43 Mio. € | K140, K144, K148, K149, K155, K156 |
+| 41 | Verknüpfung: Beschäftigte UND (Umsatz ODER Bilanzsumme) | K140, K146, K150, K151, K152, K153, K154, K155 |
+| 41 | KMU sind überwiegend mittelständisch | K158 |
+| 41 | Unstimmigkeit Zeile Großunternehmen | K156, K157 |
+| 42 | Qualitative Abgrenzung mittelständischer Unternehmen (3 Kriterien) | K159, K160, K161, K162, K163 |
+| 42 | Mittelständische können groß sein (> 500 MA, > 100 Mio. €), Beispiele Krone, Miele, TRUMPF | K159, K165, K166, K169 |
+| 42 | Unterschied KMU (quantitativ) – mittelständisch (qualitativ) | K164, K168, K169 |
+| 42 | Unstimmigkeit Grenzwerte F. 42 vs. F. 41 | K167 |
+| 43 | Rechtsformen privater Betriebe: 4 Gruppen mit Unterformen | K170, K171, K172 |
+| 43 | Einzelunternehmen: eine Person; Personengesellschaften: mindestens zwei Personen | K173, K233 |
+| 43 | Kapitalgesellschaften und Genossenschaften sind juristische Personen | K174, K175, K230 |
+| 44 | Gegenstand der Rechtsformwahl: Innen- und Außenverhältnis | K176 |
+| 44 | Rechtsformwahl orientiert sich an Zielen, strategisch relevante Entscheidung | K177, K178 |
+| 44 | Sechs Auswahlkriterien | K179, K180, K181, K182 |
+| 45 | Haftung EU, OHG, KG | K183, K184, K185, K186, K187, K230, K233, K234, K235 |
+| 45 | Leitungs- und Kontrollrechte EU, OHG, KG | K186, K188, K189, K235 |
+| 45 | Mindesteigenkapital Personengesellschaften: keine Vorschrift | K190 |
+| 45 | GuV-Verteilung EU, OHG, KG | K191 |
+| 45 | Finanzierungsmöglichkeiten EU, OHG, KG | K192, K193, K194, K234 |
+| 45 | Publizität/Prüfung und Mitbestimmung bei EU, OHG, KG | K195, K196 |
+| 45 | Rechtsgrundlage HGB | K197 |
+| 46 | Haftung AG, GmbH, eG, SE | K199, K200, K201, K202, K203, K230, K231, K236 |
+| 46 | Mindesteigenkapital AG 50.000 €, GmbH 25.000 €, eG keine, SE 120.000 € | K204, K205, K206, K207, K231 |
+| 46 | Leitungsrechte AG, GmbH, eG, SE | K208, K209, K210, K211 |
+| 46 | Kontrollrechte AG, GmbH, eG | K212, K213, K214, K215 |
+| 46 | GuV-Verteilung AG, GmbH, eG | K216, K217, K218 |
+| 46 | Finanzierungsmöglichkeiten AG, GmbH, eG | K219, K220, K221, K232, K236 |
+| 46 | Publizität und Prüfung zwingend (Erleichterungen) | K222 |
+| 46 | Mitbestimmung: Drittelparität, Unterparität, volle Parität; SE | K223, K224, K225, K226, K227, K228, K229 |
+| 46 | Rechtsgrundlagen AktG, GmbHG, GenG, SE-VO | K198 |
+| 47 | Formalziele (Erfolgsziele): Merkmale und klassische Formalziele | K237, K238, K240, K241, K243, K284, K287, K291 |
+| 47 | Sachziele: Merkmale | K237, K239, K242, K243, K291 |
+| 47 | Zielpyramide: 1. Formalziele, 2. Sachziele | K237 |
+| 48 | Produktivität = Output / Input, mengenmäßig | K244, K248, K251, K256, K259, K260, K262 |
+| 48 | Wirtschaftlichkeit = Ertrag / Aufwand, wertmäßig | K245, K249, K251, K252, K255, K263, K264 |
+| 48 | Gewinn = Erlöse − Kosten | K246, K254, K265, K266 |
+| 48 | Rentabilität = Gewinn / Ø Kapital | K247, K250, K254, K255, K257, K267, K268 |
+| 49 | Aussagekraft von Kennzahlen durch Vergleiche (6 Arten) | K261, K269, K270, K271, K272, K273, K274, K275 |
+| 49 | Absolute und relative Ziele | K276 |
+| 50 | Sachziele = konkrete Handlungsziele zur Steuerung; Formalziele → Sachziele → betriebliche Tätigkeiten | K243, K277, K278, K279 |
+| 50 | Sachziele je Funktion (Marketing, Beschaffung, Produktion, F&E) | K277, K280, K281, K282, K283, K285, K286, K288, K289, K291 |
+| 50 | Unstimmigkeit: Produktivität als Formal- und Sachziel | K282, K290 |
+| 48 | Abgrenzung Produktivität – Wirtschaftlichkeit – Effizienz – Rentabilität – Gewinn | K251, K252, K253, K254, K255 |
 
 ## Bewusst ausgelassene Folien
 
@@ -174,9 +174,9 @@ Karten mit Bild: 34.
 ## Unstimmigkeiten im Skript (je eine Karte)
 
 - K056 (F. 28, 48): Was ist am Wortlaut des **Optimumprinzips** widersprüchlich – und wie antwortest du in der Klausur?
-- K156 (F. 41): Was ist an der Zeile **„Großunternehmen: > 249 und > 50 Mio. € oder > 43 Mio. €“** logisch ungenau – und wie gehst du in der Klausur vor?
-- K166 (F. 41, 42): F. 42 nennt für „groß“ **> 500 MA und > 100 Mio. € Umsatz**, F. 41 aber **> 249 und > 50 Mio. €**. Welche Werte gelten in der Klausur?
-- K289 (F. 47, 48, 50): **Produktivität** steht auf F. 47/48 als **Formalziel**, auf F. 50 aber als **Ziel der Produktion** (Sachziel). Wie löst du das in der Klausur auf?
+- K157 (F. 41): Was ist an der Zeile **„Großunternehmen: > 249 und > 50 Mio. € oder > 43 Mio. €“** logisch ungenau – und wie gehst du in der Klausur vor?
+- K167 (F. 41, 42): F. 42 nennt für „groß“ **> 500 MA und > 100 Mio. € Umsatz**, F. 41 aber **> 249 und > 50 Mio. €**. Welche Werte gelten in der Klausur?
+- K290 (F. 47, 48, 50): **Produktivität** steht auf F. 47/48 als **Formalziel**, auf F. 50 aber als **Ziel der Produktion** (Sachziel). Wie löst du das in der Klausur auf?
 
 ## Annahmen
 
@@ -320,7 +320,7 @@ Karten mit Bild: 34.
 | K128 | klausurfrage | F. 35, 36 | **Wiederholungsfrage:** Was sind Stakeholder? Nennen Sie mindestens vier Beispiele bezogen auf ein Unternehmen |
 | K129 | klausurfrage | F. 38 | **Wiederholungsfrage:** Nennen Sie drei Kriterien zur Einteilung von Unternehmen mit jeweils zwei Beispielen ( |
 | K130 | luecke | F. 38 | Typologie-Kriterium **Branche / Wirtschaftszweig**: Welche vier Beispiele nennt das Skript? |
-| K131 | luecke | F. 38 | Typologie: „Industrie, Handel, Verkehr, Banken“ sind Beispiele für welches Einteilungskriterium? |
+| K131 | rueckwaerts | F. 38 | Typologie: „Industrie, Handel, Verkehr, Banken“ sind Beispiele für welches Einteilungskriterium? |
 | K132 | aufzaehlung | F. 39 | In welche **drei Bereiche** werden die Wirtschaftszweige eingeteilt (Statistisches Jahrbuch)? |
 | K133 | aufzaehlung | F. 39 | Was gehört zum **produzierenden Gewerbe**? (vier Zweige) |
 | K134 | anwendung | F. 39 | Zu welchem **Bereich** und welchem **Wirtschaftszweig** gehört: Ein **Werkzeugmaschinenhersteller**. |
@@ -341,142 +341,143 @@ Karten mit Bild: 34.
 | K149 | maske | F. 41 | KMU-Abgrenzung: Welche **Umsatz-** und **Bilanzsummen-Grenzen** sind verdeckt?  [Bild] |
 | K150 | anwendung | F. 41 | Größenklasse nach EU? **9 Beschäftigte**, Umsatz **2,5 Mio. €**, Bilanzsumme **1,8 Mio. €**. |
 | K151 | anwendung | F. 41 | Größenklasse nach EU? **10 Beschäftigte**, Umsatz **1,2 Mio. €**, Bilanzsumme **0,9 Mio. €**. |
-| K152 | anwendung | F. 41 | Größenklasse nach EU? **49 Beschäftigte**, Umsatz **11 Mio. €**, Bilanzsumme **9,5 Mio. €**. |
-| K153 | anwendung | F. 41 | Größenklasse nach EU? **230 Beschäftigte**, Umsatz **48 Mio. €**, Bilanzsumme **51 Mio. €**. |
-| K154 | anwendung | F. 41 | Größenklasse nach EU? **400 Beschäftigte**, Umsatz **30 Mio. €**, Bilanzsumme **25 Mio. €**. |
-| K155 | anwendung | F. 41 | Größenklasse nach EU? **140 Beschäftigte**, Umsatz **70 Mio. €**, Bilanzsumme **60 Mio. €**. |
-| K156 | unstimmigkeit | F. 41 | Was ist an der Zeile **„Großunternehmen: > 249 und > 50 Mio. € oder > 43 Mio. €“** logisch ungenau – und wie g |
-| K157 | fakt | F. 41 | Sind kleine und mittlere Unternehmen auch mittelständisch? |
-| K158 | klausurfrage | F. 42 | **Wiederholungsfrage:** Wodurch sind mittelständische Unternehmen gekennzeichnet? |
-| K159 | luecke | F. 42 | Mittelstand – qualitative Kriterien: **?** · Konzernunabhängigkeit des Unternehmens · weitgehende Verantwortli |
-| K160 | luecke | F. 42 | Mittelstand – qualitative Kriterien: Einheit von Eigentum, Haftung und Führung · **?** · weitgehende Verantwor |
-| K161 | luecke | F. 42 | Mittelstand – qualitative Kriterien: Einheit von Eigentum, Haftung und Führung · Konzernunabhängigkeit des Unt |
-| K162 | rueckwaerts | F. 42 | Welche Unternehmen sind durch **Einheit von Eigentum, Haftung und Führung** und **Konzernunabhängigkeit** geke |
-| K163 | verwechslung | F. 41, 42 | Was ist der Unterschied zwischen **kleinen/mittleren** und **mittelständischen** Unternehmen? |
-| K164 | fakt | F. 42 | Mit welchen Richtwerten zeigt das Skript, dass auch **mittelständische** Unternehmen groß sein können? |
-| K165 | aufzaehlung | F. 42 | Nenne die drei Beispiele des Skripts für **große mittelständische** Unternehmen. |
-| K166 | unstimmigkeit | F. 41, 42 | F. 42 nennt für „groß“ **> 500 MA und > 100 Mio. € Umsatz**, F. 41 aber **> 249 und > 50 Mio. €**. Welche Wert |
-| K167 | anwendung | F. 41, 42 | Ein Werk mit **120 Beschäftigten** und **20 Mio. € Umsatz** ist die Tochter eines Konzerns und wird von einem  |
-| K168 | anwendung | F. 41, 42 | **Miele & Cie. KG** (ca. 23.500 MA, ca. 5,0 Mrd. € Umsatz): KMU? Mittelständisch? |
-| K169 | aufzaehlung | F. 43 | In welche **vier Gruppen** teilt das Skript die Rechtsformen privater Betriebe ein? |
-| K170 | aufzaehlung | F. 43 | Welche **Personengesellschaften** nennt das Skript? |
-| K171 | aufzaehlung | F. 43 | Welche **Kapitalgesellschaften** nennt das Skript? |
-| K172 | fakt | F. 43 | Wie viele Personen braucht ein **Einzelunternehmen**, wie viele eine **Personengesellschaft** mindestens? |
-| K173 | definition | F. 43 | Welche Rechtsformen sind **juristische Personen** – und was bedeutet das? |
-| K174 | falle | F. 43 | Richtig oder falsch: „Die OHG ist eine juristische Person.“ |
-| K175 | definition | F. 44 | Was ist **Gegenstand der Wahl der Rechtsform**? (Innen- und Außenverhältnis) |
-| K176 | fakt | F. 44 | Woran orientiert sich die Wahl der Rechtsform? |
-| K177 | fakt | F. 44 | Welche Art von Entscheidung ist die Wahl der Rechtsform? |
-| K178 | aufzaehlung | F. 44 | Nenne die **sechs Auswahlkriterien** für die Rechtsformwahl. |
-| K179 | luecke | F. 44 | Auswahlkriterien Rechtsform: **?** · **?** · Gewinn-/Verlustbeteiligung · Finanzierungsmöglichkeiten · Publizi |
-| K180 | luecke | F. 44 | Auswahlkriterien Rechtsform: Leitungs- und Kontrollbefugnis · Haftungsumfang der Eigenkapitalgeber · **?** · * |
-| K181 | luecke | F. 44 | Auswahlkriterien Rechtsform: Leitungs- und Kontrollbefugnis · Haftungsumfang der Eigenkapitalgeber · Gewinn-/V |
-| K182 | fakt | F. 45 | Haftung im **Einzelunternehmen**? |
-| K183 | fakt | F. 45 | Haftung in der **OHG**? |
-| K184 | fakt | F. 45 | Haftung in der **KG**? |
-| K185 | verwechslung | F. 45 | KG: **Komplementär** vs. **Kommanditist** – Leitung, Kontrolle, Haftung? |
-| K186 | falle | F. 45 | Richtig oder falsch: „In der KG haften alle Gesellschafter uneingeschränkt.“ |
-| K187 | fakt | F. 45 | **OHG**: Wer hat die Leitungsrechte, wer die Kontrollrechte? |
-| K188 | fakt | F. 45 | **Einzelunternehmen**: Wer leitet, wer kontrolliert, wer bekommt Gewinn und Verlust? |
-| K189 | fakt | F. 45 | Wie hoch ist das **Mindesteigenkapital** bei Einzelunternehmen, OHG und KG? |
-| K190 | fakt | F. 45 | **GuV-Verteilung** in OHG und KG? |
-| K191 | fakt | F. 45 | **Finanzierungsmöglichkeiten** des Einzelunternehmens – wodurch sind sie beschränkt? |
-| K192 | fakt | F. 45 | Warum hat die **OHG** bessere Finanzierungsmöglichkeiten als das Einzelunternehmen? |
-| K193 | fakt | F. 45 | Warum hat die **KG** bessere Finanzierungsmöglichkeiten als Einzelunternehmen und OHG? |
-| K194 | fakt | F. 45 | Einzelunternehmen, OHG, KG: Wie steht es um **Publizität und Prüfung**? |
-| K195 | fakt | F. 45 | Einzelunternehmen, OHG, KG: Welche **unternehmerische Mitbestimmung** für Arbeitnehmer gibt es? |
-| K196 | fakt | F. 45 | Welche **Rechtsgrundlage** gilt für Einzelunternehmen, OHG und KG? |
-| K197 | verwechslung | F. 46 | Welche **Rechtsgrundlage** gilt für AG, GmbH, Genossenschaft und SE? |
-| K198 | fakt | F. 46 | Haftung in der **AG**? |
-| K199 | fakt | F. 46 | Haftung in der **GmbH**? |
-| K200 | fakt | F. 46 | Haftung in der **Genossenschaft**? |
-| K201 | fakt | F. 46 | Haftung in der **SE**? |
-| K202 | falle | F. 46 | Richtig oder falsch: „Bei der GmbH haftet niemand unbeschränkt.“ |
-| K203 | fakt | F. 46 | **Mindesteigenkapital** der **GmbH**? |
-| K204 | fakt | F. 46 | **Mindesteigenkapital** der **AG**? |
-| K205 | fakt | F. 46 | **Mindesteigenkapital** der **SE**? |
-| K206 | fakt | F. 46 | **Mindesteigenkapital** der **Genossenschaft**? |
-| K207 | fakt | F. 46 | Wer hat die **Leitungsrechte** in der **AG**? |
-| K208 | fakt | F. 46 | Wer hat die **Leitungsrechte** in der **GmbH**? |
-| K209 | fakt | F. 46 | Wer hat die **Leitungsrechte** in der **Genossenschaft**? |
-| K210 | fakt | F. 46 | Wer hat die **Leitungsrechte** in der **SE**? |
-| K211 | fakt | F. 46 | **Kontrollrechte** in der **AG**? |
-| K212 | fakt | F. 46 | **Kontrollrechte** in der **GmbH**? |
-| K213 | fakt | F. 46 | **Kontrollrechte** in der **Genossenschaft**? |
-| K214 | fakt | F. 46 | **Kontrollrechte** in der **SE**? |
-| K215 | fakt | F. 46 | **GuV-Verteilung** in der **AG**? |
-| K216 | fakt | F. 46 | **GuV-Verteilung** in der **GmbH**? |
-| K217 | fakt | F. 46 | **GuV-Verteilung** in der **Genossenschaft**? |
-| K218 | fakt | F. 46 | Warum sind die **Finanzierungsmöglichkeiten der AG** „hervorragend“? (drei Gründe) |
-| K219 | fakt | F. 46 | **GmbH**: Welcher Vorteil bei der Eigenfinanzierung, welcher Nachteil bei der Fremdfinanzierung? |
-| K220 | fakt | F. 46 | **Genossenschaft**: Vor- und Nachteil bei der Eigenfinanzierung – und was stärkt die Fremdfinanzierung? |
-| K221 | fakt | F. 46 | **Publizität und Prüfung** bei AG, GmbH, Genossenschaft und SE? |
-| K222 | fakt | F. 46 | Wann gilt bei **AG, GmbH und Genossenschaft** die **Drittelparität** (unternehmerische Mitbestimmung)? |
-| K223 | fakt | F. 46 | Wann gilt bei **AG, GmbH und Genossenschaft** die **Unterparität** (unternehmerische Mitbestimmung)? |
-| K224 | fakt | F. 46 | Wann gilt bei **AG und GmbH** die **volle Parität** (unternehmerische Mitbestimmung)? |
-| K225 | fakt | F. 46 | Wie ist die unternehmerische Mitbestimmung in der **SE** geregelt? |
-| K226 | anwendung | F. 46 | Eine **GmbH mit 1.200 Beschäftigten** (kein Montanbetrieb): Welche unternehmerische Mitbestimmung? |
-| K227 | anwendung | F. 46 | Eine **AG mit 5.000 Beschäftigten** (kein Montanbetrieb): Welche unternehmerische Mitbestimmung? |
-| K228 | anwendung | F. 46 | Eine **Stahl-AG** (Montanbetrieb) mit **1.500 Beschäftigten**: Welche unternehmerische Mitbestimmung? |
-| K229 | klausurfrage | F. 43, 45, 46 | **Wiederholungsfrage:** Wodurch unterscheiden sich Personengesellschaften und Kapitalgesellschaften hinsichtli |
-| K230 | anwendung | F. 45, 46 | Drei Ingenieure gründen ein Unternehmen. Sie wollen **nicht mit dem Privatvermögen haften**, eine **Nachschuss |
-| K231 | anwendung | F. 46 | Ein Unternehmen will **viel Eigenkapital von vielen Anlegern über die Börse** einwerben; das Startkapital betr |
-| K232 | anwendung | F. 43, 45 | Eine Gründerin will **allein** gründen und allein entscheiden, hat **kein Startkapital** und nimmt in Kauf, no |
-| K233 | anwendung | F. 45 | Ein Investor will einer Personengesellschaft **Kapital geben**, aber **nur eingeschränkt haften** und **nicht  |
-| K234 | anwendung | F. 45 | Zwei Partner wollen **gemeinsam führen**, haften beide **voll**, haben **kein Mindestkapital** und wollen **ke |
-| K235 | anwendung | F. 46 | Viele Landwirte wollen sich mit **kleinen Anteilen** zusammenschließen; Mitglieder sollen **ein- und austreten |
-| K236 | skizze | F. 47 | Skizziere die **Pyramide der Unternehmensziele** (Ebenen, Rangfolge, Merkmale je Ebene). |
-| K237 | maske | F. 47 | Was kennzeichnet **Formalziele (Erfolgsziele)**? (vier Punkte – verdeckt)  [Bild] |
-| K238 | maske | F. 47 | Was kennzeichnet **Sachziele**? (drei Punkte – verdeckt)  [Bild] |
-| K239 | aufzaehlung | F. 47 | Nenne die vier **klassischen Formalziele**. |
-| K240 | rueckwaerts | F. 47 | Welche Zielkategorie „richtet sich am unmittelbaren Erfolg der betrieblichen Tätigkeit aus“ und hat stets das  |
-| K241 | rueckwaerts | F. 47 | Welche Zielkategorie „bezieht sich auf das konkrete Handeln in den verschiedenen Funktionen“ und trägt zur Ste |
-| K242 | verwechslung | F. 47, 50 | **Formalziele** vs. **Sachziele** – Unterschied in zwei Zeilen? |
-| K243 | formel | F. 48 | **Produktivität**: Formel und Beschreibung? |
-| K244 | formel | F. 48 | **Wirtschaftlichkeit**: Formel und Beschreibung? |
-| K245 | formel | F. 48 | Wie errechnet sich der **Gewinn**? |
-| K246 | formel | F. 48 | **Rentabilität**: Formel und Beschreibung? |
-| K247 | rueckwaerts | F. 48 | Welche Kennzahl „weist auf das Fehlen von Wertrelationen hin“? |
-| K248 | rueckwaerts | F. 48 | Welche Kennzahl „bezeichnet einen wertmäßigen Begriff“ und setzt den in Geld bewerteten Ertrag ins Verhältnis  |
-| K249 | rueckwaerts | F. 48 | Welche Kennzahl setzt den **Periodenerfolg** ins Verhältnis zum **Kapital** des Unternehmens? |
-| K250 | verwechslung | F. 48 | **Produktivität** vs. **Wirtschaftlichkeit** – woran erkennst du, welche gemeint ist? |
-| K251 | verwechslung | F. 7, 48 | **Effizienz** (F. 7) vs. **Wirtschaftlichkeit** (F. 48) – Formeln? |
-| K252 | verwechslung | F. 7, 48 | Produktivität · Wirtschaftlichkeit · Effizienz: Zähler, Nenner, Einheit? |
-| K253 | verwechslung | F. 48 | **Gewinn** vs. **Rentabilität** – was unterscheidet die beiden Kennzahlen? |
-| K254 | verwechslung | F. 48 | **Wirtschaftlichkeit** vs. **Rentabilität** – was steht jeweils im Zähler und Nenner? |
-| K255 | anwendung | F. 48 | Die Werksleitung will wissen, **wie viele Gehäuse je Arbeitsstunde** gefertigt werden. Welche Kennzahl? |
-| K256 | anwendung | F. 48 | Eine Eigentümerin will wissen, wie viel **Gewinn ihr eingesetztes Kapital** abwirft. Welche Kennzahl? |
-| K257 | rechnen | F. 7 | Effizienz zweier Vorrichtungen: **A** – Aufwand 50.000 €, Erfolg 65.000 €; **B** – Aufwand 80.000 €, Erfolg 96 |
-| K258 | rechnen | F. 48 | Eine Fräserei fertigt **2.400 Gehäuse in 600 Maschinenstunden**. Produktivität? |
-| K259 | rechnen | F. 48 | Im Vorjahr lag die Produktivität der Fräserei bei **3,2 Gehäusen/h**, jetzt bei **4 Gehäusen/h**. Um wie viel  |
-| K260 | anwendung | F. 49 | Die Produktivität wird mit dem **Vorjahr** verglichen. Welche Vergleichsart ist das? |
-| K261 | rechnen | F. 48 | Eine Montagelinie baut **1.800 Teile mit 240 Arbeitsstunden**. Produktivität? |
-| K262 | rechnen | F. 48 | Ertrag **4,2 Mio. €**, Aufwand **3,5 Mio. €**. Wirtschaftlichkeit? |
-| K263 | rechnen | F. 48 | Ertrag **1,8 Mio. €**, Aufwand **2,0 Mio. €**. Wirtschaftlichkeit – und was bedeutet das Ergebnis? |
-| K264 | rechnen | F. 48 | Erlöse **4,2 Mio. €**, Kosten **3,5 Mio. €**. Gewinn? |
-| K265 | rechnen | F. 48 | Erlöse **2,1 Mio. €**, Kosten **2,4 Mio. €**. Gewinn? |
-| K266 | rechnen | F. 48 | Gewinn **0,7 Mio. €**, durchschnittliches Kapital **5,0 Mio. €**. Rentabilität? |
-| K267 | rechnen | F. 48 | Gewinn **0,45 Mio. €**; Kapital zu Jahresbeginn **2,8 Mio. €**, am Jahresende **3,2 Mio. €**. Rentabilität? |
-| K268 | rechnen | F. 49 | Die Rentabilität steigt von **10 %** auf **12 %**. Um wie viele **Prozentpunkte** und um wie viel **Prozent**? |
-| K269 | aufzaehlung | F. 49 | Wodurch lässt sich die **Aussagekraft von Kennzahlen** steigern? Nenne die sechs Möglichkeiten. |
-| K270 | luecke | F. 49 | Aussagekraft von Kennzahlen durch Vergleiche: **?** · **?** · Branchenvergleiche · Periodenvergleiche · Opport |
-| K271 | luecke | F. 49 | Aussagekraft von Kennzahlen durch Vergleiche: Soll-Ist-Vergleiche · Betriebsvergleiche · **?** · **?** · Oppor |
-| K272 | luecke | F. 49 | Aussagekraft von Kennzahlen durch Vergleiche: Soll-Ist-Vergleiche · Betriebsvergleiche · Branchenvergleiche ·  |
-| K273 | anwendung | F. 49 | Geplant war eine Rentabilität von **14 %**, erreicht wurden **11 %**. Welche Vergleichsart ist das? |
-| K274 | anwendung | F. 49 | Die Rentabilität eines Maschinenbauers wird mit dem **Durchschnitt aller Maschinenbauer** verglichen. Welche V |
-| K275 | fakt | F. 48, 49 | F. 49 spricht von **absoluten und relativen Zielen**. Welches Formalziel ist absolut, welche sind relativ? |
-| K276 | skizze | F. 50 | Skizziere, wie **Formalziele, Sachziele und betriebliche Tätigkeiten** zusammenhängen – mit je einem Sachziel  |
-| K277 | definition | F. 50 | Wie beschreibt das Skript Sachziele in der Überschrift des Schaubilds „Formalziele → Sachziele → betriebliche  |
-| K278 | maske | F. 50 | Welche Formalziele stehen in den **drei verdeckten Kästen** über den Sachzielen?  [Bild] |
-| K279 | maske | F. 50 | Welche **Marketingziele** nennt das Skript (verdeckt)?  [Bild] |
-| K280 | maske | F. 50 | Welche **Ziele der Beschaffung** nennt das Skript (verdeckt)?  [Bild] |
-| K281 | maske | F. 50 | Welche **Ziele der Produktion** nennt das Skript (verdeckt)?  [Bild] |
-| K282 | maske | F. 50 | Welche **Ziele der Forschung & Entwicklung** nennt das Skript (verdeckt)?  [Bild] |
-| K283 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Eine Rentabilität von 15 % erreichen.“** |
-| K284 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Die Bekanntheit der Marke in Norddeutschland steigern.“** |
-| K285 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Den Bestellprozess für Normteile vereinfachen.“** |
-| K286 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Einen Gewinn von 3 Mio. € erzielen.“** |
-| K287 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Bis 2028 zwei neue Produkte zur Serienreife bringen.“** |
-| K288 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Die Kundenzufriedenheit im Service steigern.“** |
-| K289 | unstimmigkeit | F. 47, 48, 50 | **Produktivität** steht auf F. 47/48 als **Formalziel**, auf F. 50 aber als **Ziel der Produktion** (Sachziel) |
-| K290 | klausurfrage | F. 47, 50 | **Wiederholungsfrage:** Welche zwei Zielkategorien unterscheidet man in der BWL grundsätzlich? Beschreiben Sie |
+| K152 | anwendung | F. 41 | Größenklasse nach EU? **8 Beschäftigte**, Umsatz **3 Mio. €**, Bilanzsumme **2,5 Mio. €**. |
+| K153 | anwendung | F. 41 | Größenklasse nach EU? **49 Beschäftigte**, Umsatz **11 Mio. €**, Bilanzsumme **9,5 Mio. €**. |
+| K154 | anwendung | F. 41 | Größenklasse nach EU? **230 Beschäftigte**, Umsatz **48 Mio. €**, Bilanzsumme **51 Mio. €**. |
+| K155 | anwendung | F. 41 | Größenklasse nach EU? **400 Beschäftigte**, Umsatz **30 Mio. €**, Bilanzsumme **25 Mio. €**. |
+| K156 | anwendung | F. 41 | Größenklasse nach EU? **140 Beschäftigte**, Umsatz **70 Mio. €**, Bilanzsumme **60 Mio. €**. |
+| K157 | unstimmigkeit | F. 41 | Was ist an der Zeile **„Großunternehmen: > 249 und > 50 Mio. € oder > 43 Mio. €“** logisch ungenau – und wie g |
+| K158 | fakt | F. 41 | Sind kleine und mittlere Unternehmen auch mittelständisch? |
+| K159 | klausurfrage | F. 42 | **Wiederholungsfrage:** Wodurch sind mittelständische Unternehmen gekennzeichnet? |
+| K160 | luecke | F. 42 | Mittelstand – qualitative Kriterien: **?** · Konzernunabhängigkeit des Unternehmens · weitgehende Verantwortli |
+| K161 | luecke | F. 42 | Mittelstand – qualitative Kriterien: Einheit von Eigentum, Haftung und Führung · **?** · weitgehende Verantwor |
+| K162 | luecke | F. 42 | Mittelstand – qualitative Kriterien: Einheit von Eigentum, Haftung und Führung · Konzernunabhängigkeit des Unt |
+| K163 | rueckwaerts | F. 42 | Welche Unternehmen sind durch **Einheit von Eigentum, Haftung und Führung** und **Konzernunabhängigkeit** geke |
+| K164 | verwechslung | F. 41, 42 | Was ist der Unterschied zwischen **kleinen/mittleren** und **mittelständischen** Unternehmen? |
+| K165 | fakt | F. 42 | Mit welchen Richtwerten zeigt das Skript, dass auch **mittelständische** Unternehmen groß sein können? |
+| K166 | aufzaehlung | F. 42 | Nenne die drei Beispiele des Skripts für **große mittelständische** Unternehmen. |
+| K167 | unstimmigkeit | F. 41, 42 | F. 42 nennt für „groß“ **> 500 MA und > 100 Mio. € Umsatz**, F. 41 aber **> 249 und > 50 Mio. €**. Welche Wert |
+| K168 | anwendung | F. 41, 42 | Ein Werk mit **120 Beschäftigten** und **20 Mio. € Umsatz** ist die Tochter eines Konzerns und wird von einem  |
+| K169 | anwendung | F. 41, 42 | **Miele & Cie. KG** (ca. 23.500 MA, ca. 5,0 Mrd. € Umsatz): KMU? Mittelständisch? |
+| K170 | aufzaehlung | F. 43 | In welche **vier Gruppen** teilt das Skript die Rechtsformen privater Betriebe ein? |
+| K171 | aufzaehlung | F. 43 | Welche **Personengesellschaften** nennt das Skript? |
+| K172 | aufzaehlung | F. 43 | Welche **Kapitalgesellschaften** nennt das Skript? |
+| K173 | fakt | F. 43 | Wie viele Personen braucht ein **Einzelunternehmen**, wie viele eine **Personengesellschaft** mindestens? |
+| K174 | definition | F. 43 | Welche Rechtsformen sind **juristische Personen** – und was bedeutet das? |
+| K175 | falle | F. 43 | Richtig oder falsch: „Die OHG ist eine juristische Person.“ |
+| K176 | definition | F. 44 | Was ist **Gegenstand der Wahl der Rechtsform**? (Innen- und Außenverhältnis) |
+| K177 | fakt | F. 44 | Woran orientiert sich die Wahl der Rechtsform? |
+| K178 | fakt | F. 44 | Welche Art von Entscheidung ist die Wahl der Rechtsform? |
+| K179 | aufzaehlung | F. 44 | Nenne die **sechs Auswahlkriterien** für die Rechtsformwahl. |
+| K180 | luecke | F. 44 | Auswahlkriterien Rechtsform: **?** · **?** · Gewinn-/Verlustbeteiligung · Finanzierungsmöglichkeiten · Publizi |
+| K181 | luecke | F. 44 | Auswahlkriterien Rechtsform: Leitungs- und Kontrollbefugnis · Haftungsumfang der Eigenkapitalgeber · **?** · * |
+| K182 | luecke | F. 44 | Auswahlkriterien Rechtsform: Leitungs- und Kontrollbefugnis · Haftungsumfang der Eigenkapitalgeber · Gewinn-/V |
+| K183 | fakt | F. 45 | Haftung im **Einzelunternehmen**? |
+| K184 | fakt | F. 45 | Haftung in der **OHG**? |
+| K185 | fakt | F. 45 | Haftung in der **KG**? |
+| K186 | verwechslung | F. 45 | KG: **Komplementär** vs. **Kommanditist** – Leitung, Kontrolle, Haftung? |
+| K187 | falle | F. 45 | Richtig oder falsch: „In der KG haften alle Gesellschafter uneingeschränkt.“ |
+| K188 | fakt | F. 45 | **OHG**: Wer hat die Leitungsrechte, wer die Kontrollrechte? |
+| K189 | fakt | F. 45 | **Einzelunternehmen**: Wer leitet, wer kontrolliert, wer bekommt Gewinn und Verlust? |
+| K190 | fakt | F. 45 | Wie hoch ist das **Mindesteigenkapital** bei Einzelunternehmen, OHG und KG? |
+| K191 | fakt | F. 45 | **GuV-Verteilung** in OHG und KG? |
+| K192 | fakt | F. 45 | **Finanzierungsmöglichkeiten** des Einzelunternehmens – wodurch sind sie beschränkt? |
+| K193 | fakt | F. 45 | Warum hat die **OHG** bessere Finanzierungsmöglichkeiten als das Einzelunternehmen? |
+| K194 | fakt | F. 45 | Warum hat die **KG** bessere Finanzierungsmöglichkeiten als Einzelunternehmen und OHG? |
+| K195 | fakt | F. 45 | Einzelunternehmen, OHG, KG: Wie steht es um **Publizität und Prüfung**? |
+| K196 | fakt | F. 45 | Einzelunternehmen, OHG, KG: Welche **unternehmerische Mitbestimmung** für Arbeitnehmer gibt es? |
+| K197 | fakt | F. 45 | Welche **Rechtsgrundlage** gilt für Einzelunternehmen, OHG und KG? |
+| K198 | verwechslung | F. 46 | Welche **Rechtsgrundlage** gilt für AG, GmbH, Genossenschaft und SE? |
+| K199 | fakt | F. 46 | Haftung in der **AG**? |
+| K200 | fakt | F. 46 | Haftung in der **GmbH**? |
+| K201 | fakt | F. 46 | Haftung in der **Genossenschaft**? |
+| K202 | fakt | F. 46 | Haftung in der **SE**? |
+| K203 | falle | F. 46 | Richtig oder falsch: „Bei der GmbH haftet niemand unbeschränkt.“ |
+| K204 | fakt | F. 46 | **Mindesteigenkapital** der **GmbH**? |
+| K205 | fakt | F. 46 | **Mindesteigenkapital** der **AG**? |
+| K206 | fakt | F. 46 | **Mindesteigenkapital** der **SE**? |
+| K207 | fakt | F. 46 | **Mindesteigenkapital** der **Genossenschaft**? |
+| K208 | fakt | F. 46 | Wer hat die **Leitungsrechte** in der **AG**? |
+| K209 | fakt | F. 46 | Wer hat die **Leitungsrechte** in der **GmbH**? |
+| K210 | fakt | F. 46 | Wer hat die **Leitungsrechte** in der **Genossenschaft**? |
+| K211 | fakt | F. 46 | Wer hat die **Leitungsrechte** in der **SE**? |
+| K212 | fakt | F. 46 | **Kontrollrechte** in der **AG**? |
+| K213 | fakt | F. 46 | **Kontrollrechte** in der **GmbH**? |
+| K214 | fakt | F. 46 | **Kontrollrechte** in der **Genossenschaft**? |
+| K215 | fakt | F. 46 | **Kontrollrechte** in der **SE**? |
+| K216 | fakt | F. 46 | **GuV-Verteilung** in der **AG**? |
+| K217 | fakt | F. 46 | **GuV-Verteilung** in der **GmbH**? |
+| K218 | fakt | F. 46 | **GuV-Verteilung** in der **Genossenschaft**? |
+| K219 | fakt | F. 46 | Warum sind die **Finanzierungsmöglichkeiten der AG** „hervorragend“? (drei Gründe) |
+| K220 | fakt | F. 46 | **GmbH**: Welcher Vorteil bei der Eigenfinanzierung, welcher Nachteil bei der Fremdfinanzierung? |
+| K221 | fakt | F. 46 | **Genossenschaft**: Vor- und Nachteil bei der Eigenfinanzierung – und was stärkt die Fremdfinanzierung? |
+| K222 | fakt | F. 46 | **Publizität und Prüfung** bei AG, GmbH, Genossenschaft und SE? |
+| K223 | fakt | F. 46 | Wann gilt bei **AG, GmbH und Genossenschaft** die **Drittelparität** (unternehmerische Mitbestimmung)? |
+| K224 | fakt | F. 46 | Wann gilt bei **AG, GmbH und Genossenschaft** die **Unterparität** (unternehmerische Mitbestimmung)? |
+| K225 | fakt | F. 46 | Wann gilt bei **AG und GmbH** die **volle Parität** (unternehmerische Mitbestimmung)? |
+| K226 | fakt | F. 46 | Wie ist die unternehmerische Mitbestimmung in der **SE** geregelt? |
+| K227 | anwendung | F. 46 | Eine **GmbH mit 1.200 Beschäftigten** (kein Montanbetrieb): Welche unternehmerische Mitbestimmung? |
+| K228 | anwendung | F. 46 | Eine **AG mit 5.000 Beschäftigten** (kein Montanbetrieb): Welche unternehmerische Mitbestimmung? |
+| K229 | anwendung | F. 46 | Eine **Stahl-AG** (Montanbetrieb) mit **1.500 Beschäftigten**: Welche unternehmerische Mitbestimmung? |
+| K230 | klausurfrage | F. 43, 45, 46 | **Wiederholungsfrage:** Wodurch unterscheiden sich Personengesellschaften und Kapitalgesellschaften hinsichtli |
+| K231 | anwendung | F. 45, 46 | Drei Ingenieure gründen ein Unternehmen. Sie wollen **nicht mit dem Privatvermögen haften**, eine **Nachschuss |
+| K232 | anwendung | F. 46 | Ein Unternehmen will **viel Eigenkapital von vielen Anlegern über die Börse** einwerben; das Startkapital betr |
+| K233 | anwendung | F. 43, 45 | Eine Gründerin will **allein** gründen und allein entscheiden, hat **kein Startkapital** und nimmt in Kauf, no |
+| K234 | anwendung | F. 45 | Ein Investor will einer Personengesellschaft **Kapital geben**, aber **nur eingeschränkt haften** und **nicht  |
+| K235 | anwendung | F. 45 | Zwei Partner wollen **gemeinsam führen**, haften beide **voll**, haben **kein Mindestkapital** und wollen **ke |
+| K236 | anwendung | F. 46 | Viele Landwirte wollen sich mit **kleinen Anteilen** zusammenschließen; Mitglieder sollen **ein- und austreten |
+| K237 | skizze | F. 47 | Skizziere die **Pyramide der Unternehmensziele** (Ebenen, Rangfolge, Merkmale je Ebene). |
+| K238 | maske | F. 47 | Was kennzeichnet **Formalziele (Erfolgsziele)**? (vier Punkte – verdeckt)  [Bild] |
+| K239 | maske | F. 47 | Was kennzeichnet **Sachziele**? (drei Punkte – verdeckt)  [Bild] |
+| K240 | aufzaehlung | F. 47 | Nenne die vier **klassischen Formalziele**. |
+| K241 | rueckwaerts | F. 47 | Welche Zielkategorie „richtet sich am unmittelbaren Erfolg der betrieblichen Tätigkeit aus“ und hat stets das  |
+| K242 | rueckwaerts | F. 47 | Welche Zielkategorie „bezieht sich auf das konkrete Handeln in den verschiedenen Funktionen“ und trägt zur Ste |
+| K243 | verwechslung | F. 47, 50 | **Formalziele** vs. **Sachziele** – Unterschied in zwei Zeilen? |
+| K244 | formel | F. 48 | **Produktivität**: Formel und Beschreibung? |
+| K245 | formel | F. 48 | **Wirtschaftlichkeit**: Formel und Beschreibung? |
+| K246 | formel | F. 48 | Wie errechnet sich der **Gewinn**? |
+| K247 | formel | F. 48 | **Rentabilität**: Formel und Beschreibung? |
+| K248 | rueckwaerts | F. 48 | Welche Kennzahl „weist auf das Fehlen von Wertrelationen hin“? |
+| K249 | rueckwaerts | F. 48 | Welche Kennzahl „bezeichnet einen wertmäßigen Begriff“ und setzt den in Geld bewerteten Ertrag ins Verhältnis  |
+| K250 | rueckwaerts | F. 48 | Welche Kennzahl setzt den **Periodenerfolg** ins Verhältnis zum **Kapital** des Unternehmens? |
+| K251 | verwechslung | F. 48 | **Produktivität** vs. **Wirtschaftlichkeit** – woran erkennst du, welche gemeint ist? |
+| K252 | verwechslung | F. 7, 48 | **Effizienz** (F. 7) vs. **Wirtschaftlichkeit** (F. 48) – Formeln? |
+| K253 | verwechslung | F. 7, 48 | Produktivität · Wirtschaftlichkeit · Effizienz: Zähler, Nenner, Einheit? |
+| K254 | verwechslung | F. 48 | **Gewinn** vs. **Rentabilität** – was unterscheidet die beiden Kennzahlen? |
+| K255 | verwechslung | F. 48 | **Wirtschaftlichkeit** vs. **Rentabilität** – was steht jeweils im Zähler und Nenner? |
+| K256 | anwendung | F. 48 | Die Werksleitung will wissen, **wie viele Gehäuse je Arbeitsstunde** gefertigt werden. Welche Kennzahl? |
+| K257 | anwendung | F. 48 | Eine Eigentümerin will wissen, wie viel **Gewinn ihr eingesetztes Kapital** abwirft. Welche Kennzahl? |
+| K258 | rechnen | F. 7 | Effizienz zweier Vorrichtungen: **A** – Aufwand 50.000 €, Erfolg 65.000 €; **B** – Aufwand 80.000 €, Erfolg 96 |
+| K259 | rechnen | F. 48 | Eine Fräserei fertigt **2.400 Gehäuse in 600 Maschinenstunden**. Produktivität? |
+| K260 | rechnen | F. 48 | Im Vorjahr lag die Produktivität der Fräserei bei **3,2 Gehäusen/h**, jetzt bei **4 Gehäusen/h**. Um wie viel  |
+| K261 | anwendung | F. 49 | Die Produktivität wird mit dem **Vorjahr** verglichen. Welche Vergleichsart ist das? |
+| K262 | rechnen | F. 48 | Eine Montagelinie baut **1.800 Teile mit 240 Arbeitsstunden**. Produktivität? |
+| K263 | rechnen | F. 48 | Ertrag **4,2 Mio. €**, Aufwand **3,5 Mio. €**. Wirtschaftlichkeit? |
+| K264 | rechnen | F. 48 | Ertrag **1,8 Mio. €**, Aufwand **2,0 Mio. €**. Wirtschaftlichkeit – und was bedeutet das Ergebnis? |
+| K265 | rechnen | F. 48 | Erlöse **4,2 Mio. €**, Kosten **3,5 Mio. €**. Gewinn? |
+| K266 | rechnen | F. 48 | Erlöse **2,1 Mio. €**, Kosten **2,4 Mio. €**. Gewinn? |
+| K267 | rechnen | F. 48 | Gewinn **0,7 Mio. €**, durchschnittliches Kapital **5,0 Mio. €**. Rentabilität? |
+| K268 | rechnen | F. 48 | Gewinn **0,45 Mio. €**; Kapital zu Jahresbeginn **2,8 Mio. €**, am Jahresende **3,2 Mio. €**. Rentabilität? |
+| K269 | rechnen | F. 49 | Die Rentabilität steigt von **10 %** auf **12 %**. Um wie viele **Prozentpunkte** und um wie viel **Prozent**? |
+| K270 | aufzaehlung | F. 49 | Wodurch lässt sich die **Aussagekraft von Kennzahlen** steigern? Nenne die sechs Möglichkeiten. |
+| K271 | luecke | F. 49 | Aussagekraft von Kennzahlen durch Vergleiche: **?** · **?** · Branchenvergleiche · Periodenvergleiche · Opport |
+| K272 | luecke | F. 49 | Aussagekraft von Kennzahlen durch Vergleiche: Soll-Ist-Vergleiche · Betriebsvergleiche · **?** · **?** · Oppor |
+| K273 | luecke | F. 49 | Aussagekraft von Kennzahlen durch Vergleiche: Soll-Ist-Vergleiche · Betriebsvergleiche · Branchenvergleiche ·  |
+| K274 | anwendung | F. 49 | Geplant war eine Rentabilität von **14 %**, erreicht wurden **11 %**. Welche Vergleichsart ist das? |
+| K275 | anwendung | F. 49 | Die Rentabilität eines Maschinenbauers wird mit dem **Durchschnitt aller Maschinenbauer** verglichen. Welche V |
+| K276 | fakt | F. 48, 49 | F. 49 spricht von **absoluten und relativen Zielen**. Welches Formalziel ist absolut, welche sind relativ? |
+| K277 | skizze | F. 50 | Skizziere, wie **Formalziele, Sachziele und betriebliche Tätigkeiten** zusammenhängen – mit je einem Sachziel  |
+| K278 | definition | F. 50 | Wie beschreibt das Skript Sachziele in der Überschrift des Schaubilds „Formalziele → Sachziele → betriebliche  |
+| K279 | maske | F. 50 | Welche Formalziele stehen in den **drei verdeckten Kästen** über den Sachzielen?  [Bild] |
+| K280 | maske | F. 50 | Welche **Marketingziele** nennt das Skript (verdeckt)?  [Bild] |
+| K281 | maske | F. 50 | Welche **Ziele der Beschaffung** nennt das Skript (verdeckt)?  [Bild] |
+| K282 | maske | F. 50 | Welche **Ziele der Produktion** nennt das Skript (verdeckt)?  [Bild] |
+| K283 | maske | F. 50 | Welche **Ziele der Forschung & Entwicklung** nennt das Skript (verdeckt)?  [Bild] |
+| K284 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Eine Rentabilität von 15 % erreichen.“** |
+| K285 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Die Bekanntheit der Marke in Norddeutschland steigern.“** |
+| K286 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Den Bestellprozess für Normteile vereinfachen.“** |
+| K287 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Einen Gewinn von 3 Mio. € erzielen.“** |
+| K288 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Bis 2028 zwei neue Produkte zur Serienreife bringen.“** |
+| K289 | anwendung | F. 47, 50 | Formalziel oder Sachziel? **„Die Kundenzufriedenheit im Service steigern.“** |
+| K290 | unstimmigkeit | F. 47, 48, 50 | **Produktivität** steht auf F. 47/48 als **Formalziel**, auf F. 50 aber als **Ziel der Produktion** (Sachziel) |
+| K291 | klausurfrage | F. 47, 50 | **Wiederholungsfrage:** Welche zwei Zielkategorien unterscheidet man in der BWL grundsätzlich? Beschreiben Sie |
