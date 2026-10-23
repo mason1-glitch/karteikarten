@@ -18,8 +18,7 @@ bilder:
     folie: 31
     ausschnitt: [320, 790, 1530, 1905]
     masken:
-      angebotsfunktion: [1095, 1240, 1495, 1305]
-      nachfragefunktion: [1100, 1466, 1512, 1530]
+      funktionen: [[1095, 1240, 1495, 1305], [1100, 1466, 1512, 1530]]
       achsen: [[335, 806, 577, 878], [1232, 1820, 1508, 1892]]
       gleichgewichtsmenge: [635, 1802, 1128, 1866]
 
@@ -53,8 +52,7 @@ bilder:
     ausschnitt: [330, 780, 2900, 1600]
     masken:
       beschaeftigte: [1060, 930, 1320, 1540]
-      umsatz: [1700, 930, 2060, 1540]
-      bilanzsumme: [2420, 930, 2785, 1540]
+      geldgrenzen: [[1700, 930, 2060, 1540], [2420, 930, 2785, 1540]]
 
   - name: kap2_zielpyramide
     folie: 47
