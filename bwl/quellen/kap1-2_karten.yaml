@@ -1,0 +1,2930 @@
+# Karteikarten BWL Kapitel 1 (Einleitung) und 2 (Grundlagen)
+# Quelle: Vorlesungsskript „Grundlagen der Betriebswirtschaft für Ingenieure“ (Frenzel/Haats/Poll), WiSe 2026/27,
+# Folien 6–51; Klausurfallen und Unstimmigkeiten zusätzlich aus Lernzettel_BWL_Kap1-2.
+# Bauen:   python3 werkzeuge/karten.py bauen bwl/quellen/kap1-2_karten.yaml
+# Prüfen:  python3 werkzeuge/karten.py pruefen bwl/quellen/kap1-2_karten.yaml --skript <pdf> --urls
+fach: bwl
+csv: bwl/karten/kap1-2_einleitung-grundlagen.csv
+matrix: bwl/quellen/kap1-2_abdeckung.md
+titel: "BWL Kapitel 1–2: Einleitung und Grundlagen"
+ocr_folien: [36, 41, 44, 45, 46, 48, 49]
+
+annahmen:
+  - "Klausur laut F. 2: 90 Minuten, ohne Hilfsmittel, nur Taschenrechner – deshalb Wortlaut-, Skizzen- und Rechenkarten."
+  - "Planspiel-Folien (F. 12–13) gelten als Kontext für das Planspiel, nicht als Klausurstoff."
+  - "Rechenkarten setzen wie der Lernzettel Erlöse = Ertrag und Kosten = Aufwand; die genaue Abgrenzung folgt in Kap. 6."
+  - "Ø Kapital = (Anfangs- + Endbestand) / 2 steht nicht im Skript; die einzige Karte, die es nutzt, ist als Ergänzung markiert."
+  - "Lange Aufzählungen (6 Punkte) werden in Lückenkarten mit je zwei fehlenden Punkten zerlegt, kurze (bis 4) mit je einem."
+
+ausgelassen:
+  - {folien: "1–5", grund: "Titel, Organisatorisches, Terminplan, Fahrplan, Literatur"}
+  - {folien: "10", grund: "Lernziele der Lehrveranstaltung (kein prüfbarer Fachinhalt)"}
+  - {folien: "12–13", grund: "Planspiel Factory: Ausgangslage und Spielbrett (Annahme: nicht klausurrelevant)"}
+  - {folien: "14–16, 23–24, 26, 32, 37", grund: "Ablaufplan, Kapiteltitel und Gliederung"}
+  - {folien: "17, 25", grund: "identisch mit F. 11 (Bezugsrahmen) – dort abgedeckt"}
+  - {folien: "22, 51", grund: "Wiederholungsfragen – als eigene Musterantwort-Karten abgedeckt"}
+
+inhalte:
+  # Kapitel 1
+  - {id: f06.wirt, folie: 6, text: "Herkunft „Wirtschaft“: althochdeutsch „wirt“ = Gastgeber/Hausherr"}
+  - {id: f06.oekonomie, folie: 6, text: "Herkunft „Ökonomie“: oikos (Haus, Haushalt) + nemein (teilen, einteilen)"}
+  - {id: f06.heute, folie: 6, text: "Wirtschaft heute: Gesamtheit aller Einrichtungen, Personen und Abläufe (Produktion, Verteilung, Konsum)"}
+  - {id: f06.entwicklung, folie: 6, text: "Begriffsentwicklung: von Hauswirtschaft/Bewirtung zur Gesamtheit aller ökonomischen Aktivitäten"}
+  - {id: f07.bwl, folie: 7, text: "BWL = Lehre vom Wirtschaften in Betrieben/Unternehmen"}
+  - {id: f07.notwendigkeit, folie: 7, text: "Notwendigkeit des Wirtschaftens: Knappheit der Güter vs. unbegrenzte Bedürfnisse"}
+  - {id: f07.effizienz, folie: 7, text: "Effizienz = Erfolg / Aufwand"}
+  - {id: f07.handeln, folie: 7, text: "Wirtschaften als planvolles, zielgerichtetes Handeln zur Bedarfsdeckung"}
+  - {id: f08.ressourcen, folie: 8, text: "Knappe Ressourcen (Zeit, Einkommen; Material, Kapazitäten, Personal, Finanzmittel)"}
+  - {id: f09.kompetenz, folie: 9, text: "Betriebswirtschaftliche Kompetenz: Entscheidungsprozesse verstehen, unterstützen, beeinflussen, durchführen"}
+  - {id: f11.maerkte, folie: 11, text: "Bezugsrahmen: Beschaffungs-, Absatz-, Kredit- und Kapitalmarkt um das Unternehmen"}
+  - {id: f11.real, folie: 11, text: "Realgüterwirtschaftlicher Prozess: Materialwirtschaft → Produktion → Marketing"}
+  - {id: f11.finanz, folie: 11, text: "Finanzwirtschaftlicher Prozess: Rechnungswesen, Investition, Finanzierung"}
+  - {id: f11.quer, folie: 11, text: "Personal, Management, Organisation"}
+  - {id: f11.skizze, folie: 11, text: "Bezugsrahmen als Skizze"}
+  - {id: f18.def, folie: 18, text: "Definition BWL (beschreibend, entscheidungsorientiert, Teildisziplin)"}
+  - {id: f18.vwl, folie: 18, text: "„in Umkehrung zur VWL“: einzelne Betriebe"}
+  - {id: f18.schritte, folie: 18, text: "Untersuchen → Regeln erkennen → Empfehlungen ableiten"}
+  - {id: f19.def, folie: 19, text: "Definition Betriebe (fremde Bedarfe, produziert und abgesetzt)"}
+  - {id: f19.kombination, folie: 19, text: "Kennzeichen: Kombination von Produktionsfaktoren"}
+  - {id: f19.wirtschaftlichkeit, folie: 19, text: "Kennzeichen: Wirtschaftlichkeitsprinzip"}
+  - {id: f19.liquiditaet, folie: 19, text: "Kennzeichen: finanzielles Gleichgewicht/Liquidität"}
+  - {id: f20.erfolg, folie: 20, text: "Erfolgreiche Unternehmen befriedigen Kundenwünsche und verdienen damit Geld"}
+  - {id: f21.misserfolg, folie: 21, text: "Kundenwünsche ignorieren → Pleite (außer Monopolist)"}
+  # Kapitel 2.1
+  - {id: f27.grundproblem, folie: 27, text: "Grundproblem Bedarfsdeckung: Güter reichen nie → knappe Güter → wirtschaften"}
+  - {id: f27.def, folie: 27, text: "Definition Wirtschaften (vier Elemente)"}
+  - {id: f27.kurz, folie: 27, text: "Wirtschaften kurz: anhand von Zielen Entscheidungen über knappe Ressourcen treffen"}
+  - {id: f27.wirtschaft, folie: 27, text: "Wirtschaft: alle Institutionen und Prozesse zur Befriedigung von Bedürfnissen nach knappen Gütern"}
+  - {id: f28.vernunft, folie: 28, text: "Ökonomisches Prinzip als allgemeines Vernunftprinzip"}
+  - {id: f28.def, folie: 28, text: "Ökonomisches Prinzip (= Wirtschaftlichkeitsprinzip): Verhältnis Output/Input optimieren"}
+  - {id: f28.max, folie: 28, text: "Maximumprinzip"}
+  - {id: f28.min, folie: 28, text: "Minimumprinzip"}
+  - {id: f28.opt, folie: 28, text: "Optimumprinzip (Optimierungsproblem mit lauter Unbekannten, Gewinnmaximierung)"}
+  - {id: f28.falle, folie: 28, text: "Falle: „minimaler Aufwand + maximaler Ertrag“ ist keine Ausprägung"}
+  - {id: f28.unst, folie: 28, text: "Unstimmigkeit Optimumprinzip: Verhältnis vs. Differenz"}
+  - {id: f29.bildung, folie: 29, text: "Märkte bilden sich durch Zusammentreffen von Angebot und Nachfrage"}
+  - {id: f29.vwl, folie: 29, text: "Markt im VWL-Sinn: Gruppen potenzieller Käufer und Verkäufer"}
+  - {id: f29.ort, folie: 29, text: "Markt = abstrakter Ort des Tausches"}
+  - {id: f30.akteure, folie: 30, text: "Nachfrager (Konsumenten, andere Unternehmen) und Anbieter (Unternehmen)"}
+  - {id: f30.preis, folie: 30, text: "Koordination über den Markt, Markt funktioniert über den Preis"}
+  - {id: f31.elastizitaet, folie: 31, text: "Preiselastizität misst Reaktion der Nachfrage auf Preisänderungen"}
+  - {id: f31.preis, folie: 31, text: "Verhältnis von Angebot und Nachfrage bestimmt den Preis"}
+  - {id: f31.nachfrage, folie: 31, text: "Geringerer Preis → mehr verkauft (Nachfragefunktion fällt)"}
+  - {id: f31.angebot, folie: 31, text: "Höherer Preis → mehr angeboten (Angebotsfunktion steigt)"}
+  - {id: f31.gleichgewicht, folie: 31, text: "Schnittpunkt = Marktgleichgewicht"}
+  - {id: f31.skizze, folie: 31, text: "Skizze Marktgleichgewicht (Achsen P und x, Gleichgewichtsmenge)"}
+  # Kapitel 2.2
+  - {id: f33.def, folie: 33, text: "Transformationsprozess/Wertschöpfung: Input → Output"}
+  - {id: f33.input, folie: 33, text: "Input: Arbeitsleistungen, Potenzialfaktoren, Repetierfaktoren, Informationen = Produktionsfaktoren"}
+  - {id: f33.output, folie: 33, text: "Output: Halb- und Fertigfabrikate = Güter (Sach-/Dienstleistung)"}
+  - {id: f33.geld, folie: 33, text: "Kosten → Leistung"}
+  - {id: f33.skizze, folie: 33, text: "Skizze Input-Output-Prozess"}
+  - {id: f34.schritte, folie: 34, text: "Umsatzprozess: Schritte 1–5"}
+  - {id: f34.zahlungen, folie: 34, text: "Ausgaben (Beschaffungsmarkt) und Einnahmen (Absatzmarkt), Güter- und Geldstrom gegenläufig"}
+  - {id: f34.finanz, folie: 34, text: "Finanzwirtschaftlicher Prozess: Aufwand/Kosten → Ertrag/Leistung, finanzielle Mittel"}
+  - {id: f34.skizze, folie: 34, text: "Skizze güter- und finanzwirtschaftlicher Umsatzprozess"}
+  - {id: f35.def, folie: 35, text: "Stakeholder = Anspruchsgruppen mit (mehr oder weniger berechtigten) Ansprüchen/Interessen"}
+  - {id: f35.interaktion, folie: 35, text: "Interaktion vieler Anspruchsgruppen bei der Lösung betrieblicher Probleme"}
+  - {id: f36.intern, folie: 36, text: "Interne Stakeholder (5)"}
+  - {id: f36.extern, folie: 36, text: "Externe Stakeholder (Auswahl, 5)"}
+  - {id: f36.interessen, folie: 36, text: "Interessen der zehn Anspruchsgruppen"}
+  - {id: f36.shareholder, folie: 36, text: "Aktionäre = Shareholder (Eigentümer)"}
+  # Kapitel 2.3
+  - {id: f38.kriterien, folie: 38, text: "Typologie: Branche/Wirtschaftszweig, Größe, Rechtsform – mit Beispielen"}
+  - {id: f39.bereiche, folie: 39, text: "Wirtschaftszweige: Land-/Forstwirtschaft, Fischerei · Produzierendes Gewerbe · Dienstleistungsbereiche"}
+  - {id: f39.zuordnung, folie: 39, text: "Zuordnung einzelner Zweige (z. B. Handel, Banken = Dienstleistung)"}
+  - {id: f40.arten, folie: 40, text: "Größenklassen: Kleinst-, kleine, mittlere, große Unternehmen"}
+  - {id: f40.massstaebe, folie: 40, text: "Größenmaßstäbe: Bilanzsumme, Umsatzerlöse, Beschäftigtenzahl"}
+  - {id: f41.zweck, folie: 41, text: "Quantitative EU-Abgrenzung für KMU (Förderprogramme)"}
+  - {id: f41.kleinst, folie: 41, text: "Kleinstunternehmen: < 10, bis 2 Mio. € oder bis 2 Mio. €"}
+  - {id: f41.klein, folie: 41, text: "Kleine Unternehmen: 10–49, bis 10 Mio. € oder bis 10 Mio. €"}
+  - {id: f41.mittel, folie: 41, text: "Mittlere Unternehmen: 50–249, bis 50 Mio. € oder bis 43 Mio. €"}
+  - {id: f41.gross, folie: 41, text: "Großunternehmen: > 249, > 50 Mio. € oder > 43 Mio. €"}
+  - {id: f41.logik, folie: 41, text: "Verknüpfung: Beschäftigte UND (Umsatz ODER Bilanzsumme)"}
+  - {id: f41.mittelstand, folie: 41, text: "KMU sind überwiegend mittelständisch"}
+  - {id: f41.unst, folie: 41, text: "Unstimmigkeit Zeile Großunternehmen"}
+  - {id: f42.kriterien, folie: 42, text: "Qualitative Abgrenzung mittelständischer Unternehmen (3 Kriterien)"}
+  - {id: f42.gross, folie: 42, text: "Mittelständische können groß sein (> 500 MA, > 100 Mio. €), Beispiele Krone, Miele, TRUMPF"}
+  - {id: f42.unterschied, folie: 42, text: "Unterschied KMU (quantitativ) – mittelständisch (qualitativ)"}
+  - {id: f42.unst, folie: 42, text: "Unstimmigkeit Grenzwerte F. 42 vs. F. 41"}
+  - {id: f43.gruppen, folie: 43, text: "Rechtsformen privater Betriebe: 4 Gruppen mit Unterformen"}
+  - {id: f43.personen, folie: 43, text: "Einzelunternehmen: eine Person; Personengesellschaften: mindestens zwei Personen"}
+  - {id: f43.juristisch, folie: 43, text: "Kapitalgesellschaften und Genossenschaften sind juristische Personen"}
+  - {id: f44.gegenstand, folie: 44, text: "Gegenstand der Rechtsformwahl: Innen- und Außenverhältnis"}
+  - {id: f44.strategisch, folie: 44, text: "Rechtsformwahl orientiert sich an Zielen, strategisch relevante Entscheidung"}
+  - {id: f44.kriterien, folie: 44, text: "Sechs Auswahlkriterien"}
+  - {id: f45.haftung, folie: 45, text: "Haftung EU, OHG, KG"}
+  - {id: f45.leitung, folie: 45, text: "Leitungs- und Kontrollrechte EU, OHG, KG"}
+  - {id: f45.kapital, folie: 45, text: "Mindesteigenkapital Personengesellschaften: keine Vorschrift"}
+  - {id: f45.guv, folie: 45, text: "GuV-Verteilung EU, OHG, KG"}
+  - {id: f45.finanzierung, folie: 45, text: "Finanzierungsmöglichkeiten EU, OHG, KG"}
+  - {id: f45.publizitaet, folie: 45, text: "Publizität/Prüfung und Mitbestimmung bei EU, OHG, KG"}
+  - {id: f45.recht, folie: 45, text: "Rechtsgrundlage HGB"}
+  - {id: f46.haftung, folie: 46, text: "Haftung AG, GmbH, eG, SE"}
+  - {id: f46.kapital, folie: 46, text: "Mindesteigenkapital AG 50.000 €, GmbH 25.000 €, eG keine, SE 120.000 €"}
+  - {id: f46.leitung, folie: 46, text: "Leitungsrechte AG, GmbH, eG, SE"}
+  - {id: f46.kontrolle, folie: 46, text: "Kontrollrechte AG, GmbH, eG"}
+  - {id: f46.guv, folie: 46, text: "GuV-Verteilung AG, GmbH, eG"}
+  - {id: f46.finanzierung, folie: 46, text: "Finanzierungsmöglichkeiten AG, GmbH, eG"}
+  - {id: f46.publizitaet, folie: 46, text: "Publizität und Prüfung zwingend (Erleichterungen)"}
+  - {id: f46.mitbestimmung, folie: 46, text: "Mitbestimmung: Drittelparität, Unterparität, volle Parität; SE"}
+  - {id: f46.recht, folie: 46, text: "Rechtsgrundlagen AktG, GmbHG, GenG, SE-VO"}
+  - {id: f47.formal, folie: 47, text: "Formalziele (Erfolgsziele): Merkmale und klassische Formalziele"}
+  - {id: f47.sach, folie: 47, text: "Sachziele: Merkmale"}
+  - {id: f47.skizze, folie: 47, text: "Zielpyramide: 1. Formalziele, 2. Sachziele"}
+  - {id: f48.produktivitaet, folie: 48, text: "Produktivität = Output / Input, mengenmäßig"}
+  - {id: f48.wirtschaftlichkeit, folie: 48, text: "Wirtschaftlichkeit = Ertrag / Aufwand, wertmäßig"}
+  - {id: f48.gewinn, folie: 48, text: "Gewinn = Erlöse − Kosten"}
+  - {id: f48.rentabilitaet, folie: 48, text: "Rentabilität = Gewinn / Ø Kapital"}
+  - {id: f49.vergleiche, folie: 49, text: "Aussagekraft von Kennzahlen durch Vergleiche (6 Arten)"}
+  - {id: f49.absolut, folie: 49, text: "Absolute und relative Ziele"}
+  - {id: f50.steuerung, folie: 50, text: "Sachziele = konkrete Handlungsziele zur Steuerung; Formalziele → Sachziele → betriebliche Tätigkeiten"}
+  - {id: f50.beispiele, folie: 50, text: "Sachziele je Funktion (Marketing, Beschaffung, Produktion, F&E)"}
+  - {id: f50.unst, folie: 50, text: "Unstimmigkeit: Produktivität als Formal- und Sachziel"}
+  - {id: f07-48.verwechslung, folie: 48, text: "Abgrenzung Produktivität – Wirtschaftlichkeit – Effizienz – Rentabilität – Gewinn"}
+
+wiederholungsfragen:
+  - {id: W01, folie: 22, frage: "Was ist wirtschaften?", braucht: [f27.def, f27.kurz, f27.grundproblem]}
+  - {id: W02, folie: 22, frage: "Nennen Sie drei Kennzeichen von Betrieben.", braucht: [f19.kombination, f19.wirtschaftlichkeit, f19.liquiditaet]}
+  - {id: W03, folie: 51, frage: "Was versteht man unter dem ökonomischen Prinzip? Erläutern Sie die drei Ausprägungen.", braucht: [f28.def, f28.max, f28.min, f28.opt]}
+  - {id: W04, folie: 51, frage: "Was ist ein Markt?", braucht: [f29.bildung, f29.vwl, f29.ort]}
+  - {id: W05, folie: 51, frage: "Wodurch wird der Marktpreis eines Produktes bestimmt?", braucht: [f31.preis, f31.nachfrage, f31.angebot, f31.gleichgewicht]}
+  - {id: W06, folie: 51, frage: "Was versteht man unter dem betrieblichen Transformationsprozess?", braucht: [f33.def, f33.input, f33.output, f33.geld]}
+  - {id: W07, folie: 51, frage: "Skizzieren Sie schematisch den güter- und finanzwirtschaftlichen Umsatzprozess eines (produzierenden) Unternehmens.", braucht: [f34.skizze, f34.schritte, f34.zahlungen, f34.finanz]}
+  - {id: W08, folie: 51, frage: "Was sind Stakeholder? Nennen Sie mindestens vier Beispiele bezogen auf ein Unternehmen.", braucht: [f35.def, f36.intern, f36.extern]}
+  - {id: W09, folie: 51, frage: "Nennen Sie drei Kriterien zur Einteilung von Unternehmen mit jeweils zwei Beispielen.", braucht: [f38.kriterien]}
+  - {id: W10, folie: 51, frage: "Was versteht man unter kleinen und mittleren Unternehmen? (Umsatz, Anzahl Mitarbeiter)", braucht: [f41.zweck, f41.kleinst, f41.klein, f41.mittel, f41.logik]}
+  - {id: W11, folie: 51, frage: "Wodurch sind mittelständische Unternehmen gekennzeichnet?", braucht: [f42.kriterien, f42.gross]}
+  - {id: W12, folie: 51, frage: "Wodurch unterscheiden sich Personengesellschaften und Kapitalgesellschaften hinsichtlich der Haftung?", braucht: [f45.haftung, f46.haftung, f43.juristisch]}
+  - {id: W13, folie: 51, frage: "Welche zwei Zielkategorien unterscheidet man in der BWL grundsätzlich? Beschreiben Sie diese kurz und nennen Sie Beispiele.", braucht: [f47.formal, f47.sach, f50.beispiele]}
+
+karten:
+  # =====================================================================  Kapitel 1: Einleitung
+  - typ: fakt
+    folien: [6]
+    deckt: [f06.wirt]
+    frage: |-
+      Von welchem althochdeutschen Wort leitet sich **„Wirtschaft“** ab, und was bedeutete **dieses Wort** ursprünglich?
+    antwort: |-
+      Vom althochdeutschen **„wirt“** – ursprünglich „Gastgeber“ oder „Hausherr“.
+      Später auch für die Bewirtung und den Haushalt verwendet.
+
+  - typ: fakt
+    folien: [6]
+    deckt: [f06.oekonomie]
+    frage: |-
+      Aus welchen zwei altgriechischen Wörtern setzt sich **„Ökonomie“** zusammen?
+    antwort: |-
+      - **oikos** = Haus, Haushalt
+      - **nemein** = teilen, einteilen
+
+      „Ökonomie“ wird synonym für „Wirtschaft“ verwendet.
+
+  - typ: definition
+    folien: [6]
+    deckt: [f06.heute]
+    frage: |-
+      Was bezeichnet **„Wirtschaft“** heutzutage? (Definition von der Folie „Was ist Wirtschaft?“)
+    antwort: |-
+      „die Gesamtheit aller Einrichtungen, Personen und Abläufe, die mit der Produktion, Verteilung und dem Konsum von Gütern und Dienstleistungen verbunden sind“
+
+  - typ: fakt
+    folien: [6]
+    deckt: [f06.entwicklung]
+    frage: |-
+      Welche Entwicklung hat der Begriff „Wirtschaft“ durchlaufen?
+    antwort: |-
+      Von der **Hauswirtschaft und Bewirtung** hin zur **Gesamtheit aller ökonomischen Aktivitäten**.
+
+  - typ: definition
+    folien: [7]
+    deckt: [f07.bwl]
+    frage: |-
+      Was ist Betriebswirtschaftslehre – in einer Zeile (Untertitel der Folie „Was ist Betriebswirtschaftslehre?“)?
+    antwort: |-
+      „Lehre vom Wirtschaften in Betrieben / Unternehmen“
+
+  - typ: definition
+    folien: [7]
+    deckt: [f07.notwendigkeit]
+    frage: |-
+      Worin besteht die **Notwendigkeit des Wirtschaftens**?
+    antwort: |-
+      „im Konflikt zwischen der Knappheit der Güter und den in der Tendenz unbegrenzten Bedürfnissen“
+
+  - typ: formel
+    folien: [7]
+    deckt: [f07.effizienz]
+    frage: |-
+      Wie ist **Effizienz** definiert (Formel)?
+    antwort: |-
+      **Effizienz = Erfolg / Aufwand**
+
+  - typ: fakt
+    folien: [7]
+    deckt: [f07.effizienz]
+    frage: |-
+      Wozu wird **Effizienz** im Umgang mit Gütern und Ressourcen gefordert?
+    antwort: |-
+      Um „größtmöglichen Erfolg mit begrenzt leistbarem Aufwand zu erreichen“.
+
+  - typ: rueckwaerts
+    folien: [7]
+    deckt: [f07.effizienz]
+    frage: |-
+      Welche Größe ist definiert als **Erfolg / Aufwand**?
+    antwort: |-
+      **Effizienz**
+
+      Nicht verwechseln mit Wirtschaftlichkeit = Ertrag / Aufwand (F. 48).
+
+  - typ: fakt
+    folien: [7]
+    deckt: [f07.handeln]
+    frage: |-
+      Wodurch soll Wirtschaften die geforderte Effizienz sicherstellen?
+    antwort: |-
+      „durch planvolles, zielgerichtetes Handeln zur Bedarfsdeckung“
+
+  - typ: aufzaehlung
+    folien: [8]
+    deckt: [f08.ressourcen]
+    frage: |-
+      Die Folie „Wirtschaften – Entscheidungen über knappe Ressourcen“ nennt zwei Gruppen. Welche **vier begrenzten Ressourcen** stehen in der zweiten Gruppe?
+    antwort: |-
+      - Materialressourcen
+      - Kapazitäten
+      - Personalressourcen
+      - Finanzmittel
+
+      Erste Gruppe: begrenzte Zeit, begrenztes Einkommen. Beide Listen enden mit „…“.
+      *Deutung (Lernzettel): zweite Gruppe = betriebliche, erste = private Ressourcen.*
+
+  - typ: aufzaehlung
+    folien: [9]
+    deckt: [f09.kompetenz]
+    frage: |-
+      Was umfasst **betriebswirtschaftliche Kompetenz**? (vier Verben)
+    antwort: |-
+      **Entscheidungsprozesse** verstehen, unterstützen, beeinflussen, durchführen.
+
+  - typ: skizze
+    folien: [11]
+    deckt: [f11.skizze, f11.maerkte, f11.real, f11.finanz, f11.quer]
+    frage: |-
+      Skizziere den **Bezugsrahmen** der BWL: Unternehmen, Märkte und die beiden Prozesse.
+    antwort: |-
+      {{bild:kap1_bezugsrahmen|Bezugsrahmen}}
+
+      - Unternehmen in der **Unternehmensumwelt**
+      - links **Beschaffungsmarkt**, rechts **Absatzmarkt**, unten **Kredit- und Kapitalmarkt**
+      - oben Personal · Management · Organisation
+      - **realgüterwirtschaftlicher Prozess**: Materialwirtschaft → Produktion → Marketing
+      - **finanzwirtschaftlicher Prozess**: Rechnungswesen, Investition, Finanzierung
+
+  - typ: maske
+    folien: [11]
+    deckt: [f11.maerkte]
+    frage: |-
+      Bezugsrahmen: Welcher Markt ist verdeckt?
+
+      {{bild:kap1_bezugsrahmen-ohne-beschaffungsmarkt|Bezugsrahmen, linker Markt verdeckt}}
+    antwort: |-
+      **Beschaffungsmarkt** (links, vor der Materialwirtschaft).
+
+      {{bild:kap1_bezugsrahmen|Bezugsrahmen}}
+
+  - typ: maske
+    folien: [11]
+    deckt: [f11.maerkte]
+    frage: |-
+      Bezugsrahmen: Welcher Markt ist verdeckt?
+
+      {{bild:kap1_bezugsrahmen-ohne-absatzmarkt|Bezugsrahmen, rechter Markt verdeckt}}
+    antwort: |-
+      **Absatzmarkt** (rechts, nach dem Marketing).
+
+      {{bild:kap1_bezugsrahmen|Bezugsrahmen}}
+
+  - typ: maske
+    folien: [11]
+    deckt: [f11.maerkte]
+    frage: |-
+      Bezugsrahmen: Welcher Markt ist unten verdeckt?
+
+      {{bild:kap1_bezugsrahmen-ohne-kredit-kapitalmarkt|Bezugsrahmen, unterer Markt verdeckt}}
+    antwort: |-
+      **Kredit- und Kapitalmarkt** – mit ihm ist der finanzwirtschaftliche Prozess verbunden.
+
+      {{bild:kap1_bezugsrahmen|Bezugsrahmen}}
+
+  - typ: maske
+    folien: [11]
+    deckt: [f11.quer]
+    frage: |-
+      Bezugsrahmen: Welche drei Bereiche stehen in den verdeckten Feldern über den beiden Prozessen?
+
+      {{bild:kap1_bezugsrahmen-ohne-personal-management-organisation|Bezugsrahmen, obere Reihe verdeckt}}
+    antwort: |-
+      **Personal · Management · Organisation**
+
+      {{bild:kap1_bezugsrahmen|Bezugsrahmen}}
+
+  - typ: aufzaehlung
+    folien: [11]
+    deckt: [f11.real]
+    frage: |-
+      Welche drei Bereiche bilden den **realgüterwirtschaftlichen Prozess** – in der richtigen Reihenfolge?
+    antwort: |-
+      **Materialwirtschaft** (Beschaffung) → **Produktion** (Fertigung) → **Marketing** (Absatz)
+
+  - typ: aufzaehlung
+    folien: [11]
+    deckt: [f11.finanz]
+    frage: |-
+      Welche drei Bereiche gehören im Bezugsrahmen zum **finanzwirtschaftlichen Prozess**?
+    antwort: |-
+      - **Rechnungswesen** (Jahresabschluss und Kosten-/Leistungsrechnung)
+      - **Investition**
+      - **Finanzierung**
+
+  - typ: definition
+    folien: [18]
+    deckt: [f18.def, f18.vwl, f18.schritte]
+    frage: |-
+      Definiere **Betriebswirtschaftslehre** (Wortlaut der Folie).
+    antwort: |-
+      „Betriebswirtschaftslehre ist eine beschreibende und entscheidungsorientierte Teildisziplin der Wirtschaftswissenschaften, die – in Umkehrung zur Volkswirtschaftslehre“
+      - „die Strukturen und Prozesse einzelner Betriebe … untersucht“
+      - „und aufgrund der dabei erkannten Regel- und Gesetzmäßigkeiten“
+      - „Empfehlungen für zielorientierte, wirtschaftliche Verhaltensweisen ableitet.“
+
+  - typ: rueckwaerts
+    folien: [18]
+    deckt: [f18.def]
+    frage: |-
+      Welche Disziplin ist gemeint? „… eine beschreibende und entscheidungsorientierte Teildisziplin der Wirtschaftswissenschaften, die – in Umkehrung zur [ ? ] – die Strukturen und Prozesse einzelner [ ? ] … untersucht …“
+    antwort: |-
+      **Betriebswirtschaftslehre** (BWL) – in Umkehrung zur **Volkswirtschaftslehre**; untersucht einzelne **Betriebe**.
+
+  - typ: fakt
+    folien: [18]
+    deckt: [f18.def]
+    frage: |-
+      Welche **zwei Eigenschaften** schreibt die Definition der BWL als Teildisziplin der Wirtschaftswissenschaften zu?
+    antwort: |-
+      **beschreibend** und **entscheidungsorientiert**
+
+  - typ: aufzaehlung
+    folien: [18]
+    deckt: [f18.schritte]
+    frage: |-
+      Was tut die BWL laut ihrer Definition? Nenne die drei Aufzählungspunkte sinngemäß.
+    antwort: |-
+      1. Strukturen und Prozesse einzelner Betriebe **untersuchen**
+      2. dabei **Regel- und Gesetzmäßigkeiten** erkennen
+      3. **Empfehlungen** für zielorientierte, wirtschaftliche Verhaltensweisen ableiten
+
+      *Deutung (Lernzettel): untersuchen = beschreibend, Empfehlungen ableiten = entscheidungsorientiert.*
+
+  - typ: verwechslung
+    folien: [18]
+    deckt: [f18.vwl]
+    frage: |-
+      Die BWL-Definition sagt „in Umkehrung zur Volkswirtschaftslehre“. Was betrachtet die BWL demnach?
+    antwort: |-
+      **Einzelne Betriebe** – ihre Strukturen und Prozesse.
+
+      Ergänzung (nicht im Skript ausgeführt): Die VWL betrachtet die Gesamtwirtschaft.
+
+  - typ: definition
+    folien: [19]
+    deckt: [f19.def]
+    frage: |-
+      Definiere **Betriebe**.
+    antwort: |-
+      „Betriebe sind Wirtschaftseinheiten, in denen zur Deckung fremder Bedarfe Güter produziert und abgesetzt werden“
+
+  - typ: rueckwaerts
+    folien: [19]
+    deckt: [f19.def]
+    frage: |-
+      Wie heißen „Wirtschaftseinheiten, in denen zur Deckung fremder Bedarfe Güter produziert und abgesetzt werden“?
+    antwort: |-
+      **Betriebe**
+
+  - typ: falle
+    folien: [19]
+    deckt: [f19.def]
+    frage: |-
+      Richtig oder falsch: „Betriebe produzieren Güter zur Deckung des eigenen Bedarfs.“
+    antwort: |-
+      **Falsch.** Betriebe produzieren zur Deckung **fremder** Bedarfe – und setzen die Güter ab.
+
+  - typ: luecke
+    folien: [19]
+    deckt: [f19.kombination]
+    frage: |-
+      Kennzeichen von Betrieben: **?** · Wirtschaftlichkeitsprinzip · finanzielles Gleichgewicht/Liquidität
+    antwort: |-
+      **Kombination von Produktionsfaktoren**
+
+  - typ: luecke
+    folien: [19]
+    deckt: [f19.wirtschaftlichkeit]
+    frage: |-
+      Kennzeichen von Betrieben: Kombination von Produktionsfaktoren · **?** · finanzielles Gleichgewicht/Liquidität
+    antwort: |-
+      **Wirtschaftlichkeitsprinzip** (= ökonomisches Prinzip, F. 28)
+
+  - typ: luecke
+    folien: [19]
+    deckt: [f19.liquiditaet]
+    frage: |-
+      Kennzeichen von Betrieben: Kombination von Produktionsfaktoren · Wirtschaftlichkeitsprinzip · **?**
+    antwort: |-
+      **Finanzielles Gleichgewicht / Liquidität**
+
+  - typ: fakt
+    folien: [20]
+    deckt: [f20.erfolg]
+    frage: |-
+      Was machen erfolgreiche Unternehmen laut Skript aus – in einem Satz?
+    antwort: |-
+      „Erfolgreiche Unternehmen befriedigen Kundenwünsche und verdienen damit Geld!“
+
+  - typ: fakt
+    folien: [21]
+    deckt: [f21.misserfolg]
+    frage: |-
+      Wohin führt es, Kundenwünsche zu ignorieren – und wer ist die Ausnahme?
+    antwort: |-
+      „Kundenwünsche zu ignorieren führt garantiert in die Pleite – es sei denn, man ist Monopolist“
+
+  - typ: klausurfrage
+    w: W01
+    folien: [7, 27]
+    deckt: [f27.def, f27.kurz, f27.grundproblem]
+    frage: |-
+      **Wiederholungsfrage:** Was ist wirtschaften?
+    antwort: |-
+      **Definition:** „Wirtschaften ist der von Wirtschaftseinheiten gezielt und wirtschaftlich durchgeführte Einsatz knapper Mittel zum Zwecke der Bedürfnisbefriedigung“
+
+      **Kurz:** Wirtschaften bedeutet, anhand von Zielen Entscheidungen über knappe Ressourcen zu treffen.
+
+      **Warum nötig:** Die vorhandenen Güter reichen nie zur Deckung aller Bedarfe aus (knappe Güter) – Konflikt zwischen Knappheit und tendenziell unbegrenzten Bedürfnissen.
+
+  - typ: klausurfrage
+    w: W02
+    folien: [19]
+    deckt: [f19.kombination, f19.wirtschaftlichkeit, f19.liquiditaet]
+    frage: |-
+      **Wiederholungsfrage:** Nennen Sie drei Kennzeichen von Betrieben.
+    antwort: |-
+      1. **Kombination von Produktionsfaktoren**
+      2. **Wirtschaftlichkeitsprinzip**
+      3. **Finanzielles Gleichgewicht / Liquidität**
+
+  # =====================================================================  2.1 Prinzipien und Märkte
+  - typ: fakt
+    folien: [27]
+    deckt: [f27.grundproblem]
+    frage: |-
+      Was ist das **Grundproblem der Wirtschaft**, und warum muss man deshalb wirtschaften?
+    antwort: |-
+      **Bedarfsdeckung:** Die vorhandenen Güter reichen **nie** zur Deckung aller Bedarfe aus – es sind knappe Güter. Daher muss man wirtschaften.
+
+  - typ: definition
+    folien: [27]
+    deckt: [f27.def]
+    frage: |-
+      Definiere **Wirtschaften** (ausführliche Definition).
+    antwort: |-
+      „Wirtschaften ist der von Wirtschaftseinheiten gezielt und wirtschaftlich durchgeführte Einsatz knapper Mittel zum Zwecke der Bedürfnisbefriedigung“
+
+  - typ: rueckwaerts
+    folien: [27]
+    deckt: [f27.def]
+    frage: |-
+      Welcher Begriff: der von Wirtschaftseinheiten gezielt und wirtschaftlich durchgeführte Einsatz knapper Mittel zum Zwecke der Bedürfnisbefriedigung?
+    antwort: |-
+      **Wirtschaften**
+
+  - typ: luecke
+    folien: [27]
+    deckt: [f27.def]
+    frage: |-
+      Wirtschaften ist der **? (wer)** gezielt und wirtschaftlich durchgeführte Einsatz knapper Mittel zum Zwecke der Bedürfnisbefriedigung.
+    antwort: |-
+      **von Wirtschaftseinheiten**
+
+  - typ: luecke
+    folien: [27]
+    deckt: [f27.def]
+    frage: |-
+      Wirtschaften ist der von Wirtschaftseinheiten **? (wie)** durchgeführte Einsatz knapper Mittel zum Zwecke der Bedürfnisbefriedigung.
+    antwort: |-
+      **gezielt und wirtschaftlich**
+
+  - typ: luecke
+    folien: [27]
+    deckt: [f27.def]
+    frage: |-
+      Wirtschaften ist der von Wirtschaftseinheiten gezielt und wirtschaftlich durchgeführte **? (was)** zum Zwecke der Bedürfnisbefriedigung.
+    antwort: |-
+      **Einsatz knapper Mittel**
+
+  - typ: luecke
+    folien: [27]
+    deckt: [f27.def]
+    frage: |-
+      Wirtschaften ist der von Wirtschaftseinheiten gezielt und wirtschaftlich durchgeführte Einsatz knapper Mittel **? (wozu)**.
+    antwort: |-
+      **zum Zwecke der Bedürfnisbefriedigung**
+
+  - typ: definition
+    folien: [27]
+    deckt: [f27.kurz]
+    frage: |-
+      Wirtschaften „kurz und knapp“ – in einem Satz?
+    antwort: |-
+      „Wirtschaften bedeutet, anhand von Zielen Entscheidungen über knappe Ressourcen zu treffen“
+
+  - typ: definition
+    folien: [27]
+    deckt: [f27.wirtschaft]
+    frage: |-
+      Was umfasst **Wirtschaft** (Definition auf der Folie „Grundproblem der Wirtschaft“)?
+    antwort: |-
+      „Wirtschaft umfasst alle Institutionen und Prozesse, die direkt oder indirekt der Befriedigung menschlicher Bedürfnisse nach knappen Gütern dienen“
+
+  - typ: verwechslung
+    folien: [27]
+    deckt: [f27.def, f27.wirtschaft]
+    frage: |-
+      **Wirtschaften** vs. **Wirtschaft** – was ist was?
+    antwort: |-
+      | Begriff | bezeichnet |
+      |---|---|
+      | **Wirtschaften** | die Tätigkeit: Einsatz knapper Mittel zur Bedürfnisbefriedigung (Entscheidungen über knappe Ressourcen) |
+      | **Wirtschaft** | alle Institutionen und Prozesse, die der Befriedigung menschlicher Bedürfnisse nach knappen Gütern dienen |
+
+  - typ: fakt
+    folien: [28]
+    deckt: [f28.vernunft]
+    frage: |-
+      Welchem allgemeinen **Vernunftprinzip** unterliegen wirtschaftliche Entscheidungen?
+    antwort: |-
+      Dem **ökonomischen Prinzip** (Wirtschaftlichkeitsprinzip).
+
+  - typ: definition
+    folien: [28]
+    deckt: [f28.def]
+    frage: |-
+      Was verlangt das **ökonomische Prinzip**?
+    antwort: |-
+      „Das ökonomische Prinzip (Wirtschaftlichkeitsprinzip) verlangt, das Verhältnis aus Produktionsergebnis (Output, Ertrag) und Produktionseinsatz (Input, Aufwand) zu optimieren.“
+
+  - typ: verwechslung
+    folien: [19, 28]
+    deckt: [f28.def]
+    frage: |-
+      Sind ökonomisches Prinzip und Wirtschaftlichkeitsprinzip zwei verschiedene Prinzipien?
+    antwort: |-
+      **Nein – dasselbe.** F. 28 setzt beide gleich: „ökonomische Prinzip (Wirtschaftlichkeitsprinzip)“.
+      F. 19 nennt das Wirtschaftlichkeitsprinzip als Kennzeichen von Betrieben.
+
+  - typ: definition
+    folien: [28]
+    deckt: [f28.max]
+    frage: |-
+      Formuliere das **Maximumprinzip** (Wortlaut).
+    antwort: |-
+      „Bei einem gegebenen Faktoreinsatz (Input; Aufwand) ist eine größtmögliche Gütermenge (Output; Ertrag) zu erwirtschaften, d.h. der Ertrag soll maximiert werden.“
+
+  - typ: definition
+    folien: [28]
+    deckt: [f28.min]
+    frage: |-
+      Formuliere das **Minimumprinzip** (Wortlaut).
+    antwort: |-
+      „Eine gegebene Gütermenge (Output; Ertrag) ist mit einem geringstmöglichen Faktoreinsatz (Input; Aufwand) zu erwirtschaften, d.h. der Aufwand soll minimiert werden.“
+
+  - typ: definition
+    folien: [28]
+    deckt: [f28.opt]
+    frage: |-
+      Formuliere das **Optimumprinzip** (Wortlaut) mit dem Zusatz, den die Folie darunter nennt.
+    antwort: |-
+      „Es ist ein möglichst günstiges Verhältnis zwischen Gütermenge (Output; Ertrag) und Faktoreinsatz (Input; Aufwand) zu erwirtschaften, d.h. die Differenz zw. Aufwand und Ertrag ist zu maximieren“
+
+      Zusatz: „Optimumprinzip: Optimierungsproblem mit lauter Unbekannten, Gewinnmaximierung“
+
+  - typ: rueckwaerts
+    folien: [28]
+    deckt: [f28.max]
+    frage: |-
+      Welche Ausprägung des ökonomischen Prinzips: Bei **gegebenem Faktoreinsatz** soll eine **größtmögliche Gütermenge** erwirtschaftet werden?
+    antwort: |-
+      **Maximumprinzip** – der Ertrag soll maximiert werden.
+
+  - typ: rueckwaerts
+    folien: [28]
+    deckt: [f28.min]
+    frage: |-
+      Welche Ausprägung des ökonomischen Prinzips: Eine **gegebene Gütermenge** soll mit **geringstmöglichem Faktoreinsatz** erwirtschaftet werden?
+    antwort: |-
+      **Minimumprinzip** – der Aufwand soll minimiert werden.
+
+  - typ: rueckwaerts
+    folien: [28]
+    deckt: [f28.opt]
+    frage: |-
+      Welche Ausprägung des ökonomischen Prinzips nennt das Skript ein „Optimierungsproblem mit lauter Unbekannten“?
+    antwort: |-
+      **Optimumprinzip** (Gewinnmaximierung) – weder Input noch Output ist vorgegeben.
+
+  - typ: verwechslung
+    folien: [28]
+    deckt: [f28.max, f28.min, f28.opt]
+    frage: |-
+      Maximum-, Minimum-, Optimumprinzip: Was ist jeweils **gegeben**, was wird **optimiert**?
+    antwort: |-
+      | Prinzip | gegeben | Ziel |
+      |---|---|---|
+      | Maximum | Input (Faktoreinsatz, Aufwand) | Output/Ertrag maximieren |
+      | Minimum | Output (Gütermenge, Ertrag) | Input/Aufwand minimieren |
+      | Optimum | nichts | günstigstes Verhältnis; Gewinnmaximierung |
+
+  - typ: falle
+    folien: [28]
+    deckt: [f28.falle]
+    frage: |-
+      Warum ist „mit minimalem Aufwand einen maximalen Ertrag erzielen“ **keine** Ausprägung des ökonomischen Prinzips?
+    antwort: |-
+      Beides zugleich ist keine Ausprägung: Entweder ist **eine Größe gegeben** (Maximum- bzw. Minimumprinzip) **oder** das Verhältnis wird optimiert (Optimumprinzip).
+
+      *Klausurfalle laut Lernzettel.* Ergänzung (eigene Begründung): Minimaler Aufwand wäre null – dann entstünde kein Ertrag.
+
+  - typ: unstimmigkeit
+    folien: [28, 48]
+    deckt: [f28.unst]
+    frage: |-
+      Was ist am Wortlaut des **Optimumprinzips** widersprüchlich – und wie antwortest du in der Klausur?
+    antwort: |-
+      - Die Folie spricht erst vom **Verhältnis** (Ertrag ÷ Aufwand), dann von der **Differenz** (Ertrag − Aufwand) – das sind verschiedene Größen.
+      - „die Differenz zw. Aufwand und Ertrag ist zu maximieren“ – wörtlich genommen hieße das Aufwand − Ertrag, also den Verlust maximieren.
+      - Gemeint ist **Ertrag − Aufwand = Gewinn** (passt zu „Gewinnmaximierung“).
+
+      **Klausur:** Wortlaut nennen und „Gewinnmaximierung“ dazusagen.
+
+  - typ: anwendung
+    folien: [28]
+    deckt: [f28.max]
+    frage: |-
+      Welche Ausprägung des ökonomischen Prinzips? Eine Spedition will mit ihren **12 vorhandenen Lkw** im Monat **so viele Tonnen wie möglich** transportieren.
+    antwort: |-
+      **Maximumprinzip** – Input (12 Lkw) ist gegeben, Output (Transportmenge) wird maximiert.
+
+  - typ: anwendung
+    folien: [28]
+    deckt: [f28.min]
+    frage: |-
+      Welche Ausprägung des ökonomischen Prinzips? Ein Auftrag über **500 Wellen** soll mit **möglichst wenig Maschinenstunden** gefertigt werden.
+    antwort: |-
+      **Minimumprinzip** – Output (500 Wellen) ist gegeben, Input (Maschinenstunden) wird minimiert.
+
+  - typ: anwendung
+    folien: [28]
+    deckt: [f28.opt]
+    frage: |-
+      Welche Ausprägung des ökonomischen Prinzips? Eine Bäckerei legt **Backmenge und Personaleinsatz** so fest, dass **Ertrag − Aufwand am größten** wird.
+    antwort: |-
+      **Optimumprinzip** – weder Input noch Output ist vorgegeben; Ziel ist die Gewinnmaximierung.
+
+  - typ: anwendung
+    folien: [28]
+    deckt: [f28.min]
+    frage: |-
+      Welche Ausprägung des ökonomischen Prinzips? Für die geplante Jahresproduktion von **10.000 Gehäusen** soll der **Stromverbrauch so gering wie möglich** sein.
+    antwort: |-
+      **Minimumprinzip** – Output (10.000 Gehäuse) ist gegeben, Input (Strom) wird minimiert.
+
+  - typ: anwendung
+    folien: [28]
+    deckt: [f28.max]
+    frage: |-
+      Welche Ausprägung des ökonomischen Prinzips? Du willst mit deinen **20 Lernstunden pro Woche möglichst viel Stoff** schaffen.
+    antwort: |-
+      **Maximumprinzip** – Input (20 Stunden) ist gegeben, Output (Stoff) wird maximiert.
+
+  - typ: klausurfrage
+    w: W03
+    folien: [28]
+    deckt: [f28.def, f28.max, f28.min, f28.opt]
+    frage: |-
+      **Wiederholungsfrage:** Was versteht man unter dem ökonomischen Prinzip? Erläutern Sie die drei Ausprägungen.
+    antwort: |-
+      Allgemeines Vernunftprinzip: „Das ökonomische Prinzip (Wirtschaftlichkeitsprinzip) verlangt, das Verhältnis aus Produktionsergebnis (Output, Ertrag) und Produktionseinsatz (Input, Aufwand) zu optimieren.“
+
+      - **Maximumprinzip:** gegebener Faktoreinsatz (Input) → größtmögliche Gütermenge (Output); der Ertrag soll maximiert werden.
+      - **Minimumprinzip:** gegebene Gütermenge (Output) → geringstmöglicher Faktoreinsatz (Input); der Aufwand soll minimiert werden.
+      - **Optimumprinzip:** möglichst günstiges Verhältnis von Output und Input, nichts ist vorgegeben („Optimierungsproblem mit lauter Unbekannten“); Differenz Ertrag − Aufwand maximieren = **Gewinnmaximierung**.
+
+  - typ: definition
+    folien: [29]
+    deckt: [f29.bildung]
+    frage: |-
+      Wodurch bilden sich **Märkte**?
+    antwort: |-
+      „Märkte bilden sich durch das Zusammentreffen von Angebot und Nachfrage.“
+
+  - typ: definition
+    folien: [29]
+    deckt: [f29.vwl]
+    frage: |-
+      Woraus besteht ein Markt **im volkswirtschaftswissenschaftlichen Sinn**?
+    antwort: |-
+      „aus Gruppen potenzieller Käufer und Verkäufer einer bestimmten Ware oder Dienstleistung“
+
+  - typ: definition
+    folien: [29]
+    deckt: [f29.ort]
+    frage: |-
+      Ergänze: „Der Markt ist der **?** Ort des Tausches.“
+    antwort: |-
+      **abstrakte**
+
+      *Deutung (Lernzettel): Ein Markt muss kein Platz sein – die Bilder der Folie zeigen Wochenmarkt, Börse und eBay.*
+
+  - typ: aufzaehlung
+    folien: [30]
+    deckt: [f30.akteure]
+    frage: |-
+      Wer tritt am Markt als **Nachfrager**, wer als **Anbieter** auf?
+    antwort: |-
+      - **Nachfrage:** Konsumenten **und andere Unternehmen**
+      - **Angebot:** Unternehmen
+
+      *Falle: nicht nur Konsumenten als Nachfrager nennen.*
+
+  - typ: fakt
+    folien: [30]
+    deckt: [f30.preis]
+    frage: |-
+      Worüber erfolgt die Koordination zwischen Angebot und Nachfrage – und worüber funktioniert dieses wiederum?
+    antwort: |-
+      Über den **Markt** – und der Markt funktioniert über den **Preis**.
+
+  - typ: klausurfrage
+    w: W04
+    folien: [29, 30]
+    deckt: [f29.bildung, f29.vwl, f29.ort, f30.preis]
+    frage: |-
+      **Wiederholungsfrage:** Was ist ein Markt?
+    antwort: |-
+      - „Märkte bilden sich durch das Zusammentreffen von Angebot und Nachfrage.“
+      - Im volkswirtschaftswissenschaftlichen Sinn besteht ein Markt „aus Gruppen potenzieller Käufer und Verkäufer einer bestimmten Ware oder Dienstleistung“.
+      - „Der Markt ist der abstrakte Ort des Tausches.“
+      - Die Koordination von Angebot und Nachfrage erfolgt über den Markt, der Markt funktioniert über den **Preis**.
+
+  - typ: definition
+    folien: [31]
+    deckt: [f31.elastizitaet]
+    frage: |-
+      Was misst die **Preiselastizität**?
+    antwort: |-
+      „die Reaktion der Nachfrage auf Preisänderungen“
+
+  - typ: fakt
+    folien: [31]
+    deckt: [f31.preis]
+    frage: |-
+      Was bestimmt laut Grundprinzip (vereinfacht im vollkommenen Markt) den **Preis**?
+    antwort: |-
+      „Das Verhältnis von Angebot und Nachfrage bestimmt den Preis.“
+
+  - typ: anwendung
+    folien: [31]
+    deckt: [f31.nachfrage]
+    frage: |-
+      Der Preis eines Produkts **sinkt**. Was passiert laut Skript mit der **verkauften (nachgefragten) Menge** – und wie verläuft daher die Nachfragefunktion?
+    antwort: |-
+      „Es würde mehr verkauft, wenn der Preis geringer wäre.“ → Die **Nachfragefunktion fällt** (Preis runter, Menge rauf).
+
+  - typ: anwendung
+    folien: [31]
+    deckt: [f31.angebot]
+    frage: |-
+      Der Preis eines Produkts **steigt**. Was passiert laut Skript mit der **angebotenen Menge** – und wie verläuft daher die Angebotsfunktion?
+    antwort: |-
+      „Es würde mehr angeboten, wenn der Preis höher wäre.“ → Die **Angebotsfunktion steigt**.
+
+  - typ: definition
+    folien: [31]
+    deckt: [f31.gleichgewicht]
+    frage: |-
+      Was ist das **Marktgleichgewicht**?
+    antwort: |-
+      „Schnittpunkt der Angebots- und Nachfragefunktion ist das Marktgleichgewicht.“
+
+  - typ: skizze
+    folien: [31]
+    deckt: [f31.skizze, f31.gleichgewicht]
+    frage: |-
+      Skizziere die **Bildung des Marktgleichgewichts** aus Angebots- und Nachfragefunktion (mit Achsen).
+    antwort: |-
+      {{bild:kap2_marktgleichgewicht|Marktgleichgewicht}}
+
+      - senkrecht **Preis (P)**, waagerecht **Menge (x)**
+      - **Angebotsfunktion steigend**, **Nachfragefunktion fallend**
+      - Schnittpunkt = **Marktgleichgewicht**, darunter auf der x-Achse die **Gleichgewichtsmenge**
+
+  - typ: maske
+    folien: [31]
+    deckt: [f31.skizze, f31.angebot]
+    frage: |-
+      Marktdiagramm: Wie heißt die **steigende** Gerade?
+
+      {{bild:kap2_marktgleichgewicht-ohne-funktionen|Marktdiagramm, Funktionsnamen verdeckt}}
+    antwort: |-
+      **Angebotsfunktion** – höherer Preis → mehr angeboten.
+
+      {{bild:kap2_marktgleichgewicht|Marktgleichgewicht}}
+
+  - typ: maske
+    folien: [31]
+    deckt: [f31.skizze, f31.nachfrage]
+    frage: |-
+      Marktdiagramm: Wie heißt die **fallende** Gerade?
+
+      {{bild:kap2_marktgleichgewicht-ohne-funktionen|Marktdiagramm, Funktionsnamen verdeckt}}
+    antwort: |-
+      **Nachfragefunktion** – geringerer Preis → mehr verkauft.
+
+      {{bild:kap2_marktgleichgewicht|Marktgleichgewicht}}
+
+  - typ: maske
+    folien: [31]
+    deckt: [f31.skizze]
+    frage: |-
+      Wie sind die beiden Achsen beschriftet?
+
+      {{bild:kap2_marktgleichgewicht-ohne-achsen|Marktdiagramm, Achsen verdeckt}}
+    antwort: |-
+      - senkrecht: **Preis (P)**
+      - waagerecht: **Menge (x)**
+
+      *Falle: Achsen vertauschen.*
+
+  - typ: maske
+    folien: [31]
+    deckt: [f31.skizze, f31.gleichgewicht]
+    frage: |-
+      Was markiert der Punkt unter dem Schnittpunkt auf der Mengenachse?
+
+      {{bild:kap2_marktgleichgewicht-ohne-gleichgewichtsmenge|Marktdiagramm, Beschriftung der x-Achse verdeckt}}
+    antwort: |-
+      Die **Gleichgewichtsmenge** – die Menge im Marktgleichgewicht (Schnittpunkt von Angebots- und Nachfragefunktion).
+
+      {{bild:kap2_marktgleichgewicht|Marktgleichgewicht}}
+
+  - typ: klausurfrage
+    w: W05
+    folien: [31]
+    deckt: [f31.preis, f31.nachfrage, f31.angebot, f31.gleichgewicht]
+    frage: |-
+      **Wiederholungsfrage:** Wodurch wird der Marktpreis eines Produktes bestimmt?
+    antwort: |-
+      Grundprinzip (vereinfacht im vollkommenen Markt): „Das Verhältnis von Angebot und Nachfrage bestimmt den Preis.“
+      - „Es würde mehr verkauft, wenn der Preis geringer wäre.“ → Nachfragefunktion fällt.
+      - „Es würde mehr angeboten, wenn der Preis höher wäre.“ → Angebotsfunktion steigt.
+      - Der Preis stellt sich im **Schnittpunkt** beider Funktionen ein – dem **Marktgleichgewicht**.
+
+      Am besten mit Skizze: P senkrecht, x waagerecht, Gleichgewichtsmenge markieren.
+
+  # =====================================================================  2.2 Prozesse und Stakeholder
+  - typ: definition
+    folien: [33]
+    deckt: [f33.def]
+    frage: |-
+      Was geschieht im **Transformationsprozess** (bzw. bei der Wertschöpfung)?
+    antwort: |-
+      „Der Betrieb wandelt einen Input in einen Output um.“
+
+  - typ: rueckwaerts
+    folien: [33]
+    deckt: [f33.def]
+    frage: |-
+      Wie heißt laut Folienüberschrift der Prozess, in dem der Betrieb einen **Input in einen Output** umwandelt? (zwei Bezeichnungen)
+    antwort: |-
+      **Transformationsprozess** bzw. **Wertschöpfung**
+
+      Im Schaubild auch: „Transformationsprozess / Produktion“.
+
+  - typ: aufzaehlung
+    folien: [33]
+    deckt: [f33.input]
+    frage: |-
+      Welche vier **Inputs** (Produktionsfaktoren) nennt das Skript für den Transformationsprozess?
+    antwort: |-
+      - Arbeitsleistungen
+      - Potenzialfaktoren
+      - Repetierfaktoren
+      - Informationen
+
+  - typ: luecke
+    folien: [33]
+    deckt: [f33.input]
+    frage: |-
+      Input des Transformationsprozesses: **?** · Potenzialfaktoren · Repetierfaktoren · Informationen
+    antwort: |-
+      **Arbeitsleistungen**
+
+  - typ: luecke
+    folien: [33]
+    deckt: [f33.input]
+    frage: |-
+      Input des Transformationsprozesses: Arbeitsleistungen · **?** · Repetierfaktoren · Informationen
+    antwort: |-
+      **Potenzialfaktoren**
+
+  - typ: luecke
+    folien: [33]
+    deckt: [f33.input]
+    frage: |-
+      Input des Transformationsprozesses: Arbeitsleistungen · Potenzialfaktoren · **?** · Informationen
+    antwort: |-
+      **Repetierfaktoren**
+
+  - typ: luecke
+    folien: [33]
+    deckt: [f33.input]
+    frage: |-
+      Input des Transformationsprozesses: Arbeitsleistungen · Potenzialfaktoren · Repetierfaktoren · **?**
+    antwort: |-
+      **Informationen**
+
+  - typ: fakt
+    folien: [33]
+    deckt: [f33.output]
+    frage: |-
+      Was entsteht als **Output** des Transformationsprozesses?
+    antwort: |-
+      **Halb- und Fertigfabrikate** – also **Güter** (Sach-/Dienstleistung).
+
+  - typ: fakt
+    folien: [33]
+    deckt: [f33.geld]
+    frage: |-
+      Was steht in der **untersten Zeile** des Input-Output-Schaubilds, unter Input bzw. Output?
+    antwort: |-
+      **Kosten → Leistung**
+
+      *Deutung (Lernzettel, vgl. F. 34): dieselbe Umwandlung in Geldgrößen.*
+
+  - typ: skizze
+    folien: [33]
+    deckt: [f33.skizze, f33.input, f33.output, f33.geld]
+    frage: |-
+      Skizziere den **Input-Output-Prozess** mit den drei Oberbegriffen und der untersten Zeile.
+    antwort: |-
+      {{bild:kap2_transformationsprozess|Transformationsprozess}}
+
+      Input → Transformationsprozess/Produktion → Output
+      **Produktionsfaktoren → Wertschöpfung → Güter**
+      **Kosten → Leistung**
+
+  - typ: maske
+    folien: [33]
+    deckt: [f33.input, f33.skizze]
+    frage: |-
+      Oberbegriff für den Input – was steht im verdeckten Feld?
+
+      {{bild:kap2_transformationsprozess-ohne-produktionsfaktoren|Input-Output-Prozess, Feld verdeckt}}
+    antwort: |-
+      **Produktionsfaktoren**
+
+      {{bild:kap2_transformationsprozess|Transformationsprozess}}
+
+  - typ: maske
+    folien: [33]
+    deckt: [f33.def, f33.skizze]
+    frage: |-
+      Oberbegriff unter dem Transformationsprozess (mittlere Spalte) – was steht im verdeckten Feld?
+
+      {{bild:kap2_transformationsprozess-ohne-wertschoepfung|Input-Output-Prozess, Feld verdeckt}}
+    antwort: |-
+      **Wertschöpfung**
+
+      {{bild:kap2_transformationsprozess|Transformationsprozess}}
+
+  - typ: maske
+    folien: [33]
+    deckt: [f33.output, f33.skizze]
+    frage: |-
+      Oberbegriff für den Output – was steht im verdeckten Feld?
+
+      {{bild:kap2_transformationsprozess-ohne-gueter|Input-Output-Prozess, Feld verdeckt}}
+    antwort: |-
+      **Güter** – Sach-/Dienstleistung
+
+      {{bild:kap2_transformationsprozess|Transformationsprozess}}
+
+  - typ: maske
+    folien: [33]
+    deckt: [f33.geld, f33.skizze]
+    frage: |-
+      Kosten → **?** – was steht im verdeckten Feld?
+
+      {{bild:kap2_transformationsprozess-ohne-leistung|Input-Output-Prozess, Feld verdeckt}}
+    antwort: |-
+      **Leistung**
+
+      {{bild:kap2_transformationsprozess|Transformationsprozess}}
+
+  - typ: klausurfrage
+    w: W06
+    folien: [33]
+    deckt: [f33.def, f33.input, f33.output, f33.geld]
+    frage: |-
+      **Wiederholungsfrage:** Was versteht man unter dem betrieblichen Transformationsprozess?
+    antwort: |-
+      Transformationsprozess bzw. Wertschöpfung: „Der Betrieb wandelt einen Input in einen Output um.“
+      - **Input = Produktionsfaktoren:** Arbeitsleistungen, Potenzialfaktoren, Repetierfaktoren, Informationen
+      - **Transformationsprozess / Produktion = Wertschöpfung**
+      - **Output = Güter:** Halb- und Fertigfabrikate (Sach-/Dienstleistung)
+      - Unterste Zeile: aus **Kosten** wird **Leistung** (*Deutung laut Lernzettel:* in Geldgrößen)
+
+  - typ: klausurfrage
+    w: W07
+    folien: [34]
+    deckt: [f34.skizze, f34.schritte, f34.zahlungen, f34.finanz]
+    frage: |-
+      **Wiederholungsfrage:** Skizzieren Sie schematisch den güter- und finanzwirtschaftlichen Umsatzprozess eines (produzierenden) Unternehmens.
+    antwort: |-
+      {{bild:kap2_umsatzprozess|Umsatzprozess}}
+
+      Muss rein:
+      - links **Beschaffungsmarkt**, rechts **Absatzmarkt**, unten **Kredit- und Kapitalmarkt**
+      - oben **realgüterwirtschaftlicher Prozess:** Arbeitsleistungen, Potenzial-, Repetierfaktoren, Informationen → Transformationsprozess der Produktion → Halb- und Fertigfabrikate
+      - unten **finanzwirtschaftlicher Prozess:** Aufwand/Kosten → Ertrag/Leistung; finanzielle Mittel
+      - **Ausgaben** zum Beschaffungsmarkt, **Einnahmen** vom Absatzmarkt (Geld läuft gegen den Güterstrom)
+      - Schritte **1** Beschaffung finanzieller Mittel · **2** Beschaffung von Produktionsfaktoren · **3** Kombination der Produktionsfaktoren · **4** Absatz der erstellten Güter · **5** Rückzahlung der finanziellen Mittel
+      - Nummern im Schema: **1** Pfeil vom Kredit- und Kapitalmarkt ins Unternehmen · **2** Pfeil vom Beschaffungsmarkt · **3** Pfeil in den Transformationsprozess · **4** Pfeil zum Absatzmarkt · **5** Pfeil zum Kredit- und Kapitalmarkt
+
+  - typ: maske
+    folien: [34]
+    deckt: [f34.schritte]
+    frage: |-
+      Umsatzprozess: Was bedeuten die Nummern **1 bis 5** (Legende verdeckt)?
+
+      {{bild:kap2_umsatzprozess-ohne-schritte|Umsatzprozess, Legende verdeckt}}
+    antwort: |-
+      1. Beschaffung finanzieller Mittel
+      2. Beschaffung von Produktionsfaktoren
+      3. Kombination der Produktionsfaktoren
+      4. Absatz der erstellten Güter
+      5. Rückzahlung der finanziellen Mittel
+
+  - typ: luecke
+    folien: [34]
+    deckt: [f34.schritte]
+    frage: |-
+      Umsatzprozess, **Schritt 1**: Was passiert – und an welchem Markt?
+    antwort: |-
+      **Beschaffung finanzieller Mittel** – am **Kredit- und Kapitalmarkt**.
+
+  - typ: luecke
+    folien: [34]
+    deckt: [f34.schritte]
+    frage: |-
+      Umsatzprozess, **Schritt 2**: Was passiert – und an welchem Markt?
+    antwort: |-
+      **Beschaffung von Produktionsfaktoren** – am **Beschaffungsmarkt** (dafür fließen Ausgaben).
+
+  - typ: luecke
+    folien: [34]
+    deckt: [f34.schritte]
+    frage: |-
+      Umsatzprozess, **Schritt 3**: Was passiert – und wo?
+    antwort: |-
+      **Kombination der Produktionsfaktoren** – im Unternehmen, im Transformationsprozess der Produktion.
+
+  - typ: luecke
+    folien: [34]
+    deckt: [f34.schritte]
+    frage: |-
+      Umsatzprozess, **Schritt 4**: Was passiert – und an welchem Markt?
+    antwort: |-
+      **Absatz der erstellten Güter** – am **Absatzmarkt** (dafür fließen Einnahmen).
+
+  - typ: luecke
+    folien: [34]
+    deckt: [f34.schritte]
+    frage: |-
+      Umsatzprozess, **Schritt 5**: Was passiert – und an welchem Markt?
+    antwort: |-
+      **Rückzahlung der finanziellen Mittel** – an den **Kredit- und Kapitalmarkt**.
+
+  - typ: maske
+    folien: [34]
+    deckt: [f34.zahlungen]
+    frage: |-
+      Umsatzprozess: Welcher Zahlungsstrom fließt hier zum Beschaffungsmarkt (verdecktes Feld)?
+
+      {{bild:kap2_umsatzprozess-ohne-ausgaben|Umsatzprozess, Feld links verdeckt}}
+    antwort: |-
+      **Ausgaben** – für die beschafften Produktionsfaktoren; Geld fließt gegen den Güterstrom.
+
+      {{bild:kap2_umsatzprozess|Umsatzprozess}}
+
+  - typ: maske
+    folien: [34]
+    deckt: [f34.zahlungen]
+    frage: |-
+      Umsatzprozess: Welcher Zahlungsstrom kommt hier vom Absatzmarkt (verdecktes Feld)?
+
+      {{bild:kap2_umsatzprozess-ohne-einnahmen|Umsatzprozess, Feld rechts verdeckt}}
+    antwort: |-
+      **Einnahmen** – für die abgesetzten Güter.
+
+      {{bild:kap2_umsatzprozess|Umsatzprozess}}
+
+  - typ: maske
+    folien: [34]
+    deckt: [f34.finanz]
+    frage: |-
+      Umsatzprozess: Was steht im unteren Balken des finanzwirtschaftlichen Prozesses (verdeckt)?
+
+      {{bild:kap2_umsatzprozess-ohne-finanzielle-mittel|Umsatzprozess, Balken verdeckt}}
+    antwort: |-
+      **Finanzielle Mittel** – sie kommen über Einnahmen herein und gehen über Ausgaben hinaus.
+
+      {{bild:kap2_umsatzprozess|Umsatzprozess}}
+
+  - typ: fakt
+    folien: [34]
+    deckt: [f34.finanz]
+    frage: |-
+      Umsatzprozess, finanzwirtschaftlicher Prozess, **oberer Balken**: Welche Begriffspaare stehen am Anfang und am Ende des Pfeils?
+    antwort: |-
+      **Aufwand/Kosten → Ertrag/Leistung**
+
+  - typ: verwechslung
+    folien: [34]
+    deckt: [f34.zahlungen, f34.finanz]
+    frage: |-
+      Umsatzprozess: Wo stehen **Ausgaben/Einnahmen**, wo **Aufwand/Kosten → Ertrag/Leistung**?
+    antwort: |-
+      - **Ausgaben/Einnahmen** an der Grenze zu den Märkten (Ausgaben → Beschaffungsmarkt, Einnahmen ← Absatzmarkt)
+      - **Aufwand/Kosten → Ertrag/Leistung** im Inneren, im finanzwirtschaftlichen Prozess
+
+      *Hinweis (nicht auf F. 34): Die Begriffe nicht gleichsetzen – die Abgrenzung kommt in Kap. 6 (Rechnungswesen).*
+
+  - typ: anwendung
+    folien: [34]
+    deckt: [f34.schritte]
+    frage: |-
+      Ein Fahrradhersteller nimmt bei seiner Bank einen **Kredit** auf. Welcher Schritt des Umsatzprozesses ist das?
+    antwort: |-
+      **Schritt 1:** Beschaffung finanzieller Mittel am Kredit- und Kapitalmarkt. (Die Tilgung später ist Schritt 5.)
+
+  - typ: anwendung
+    folien: [34]
+    deckt: [f34.schritte, f34.zahlungen]
+    frage: |-
+      Der Fahrradhersteller kauft **Aluminiumrohre** ein. Welcher Schritt des Umsatzprozesses – und welcher Zahlungsstrom?
+    antwort: |-
+      **Schritt 2:** Beschaffung von Produktionsfaktoren am Beschaffungsmarkt → **Ausgaben**.
+
+  - typ: anwendung
+    folien: [34]
+    deckt: [f34.schritte, f34.zahlungen]
+    frage: |-
+      Der Fahrradhersteller **verkauft** seine Räder an Händler. Welcher Schritt des Umsatzprozesses – und welcher Zahlungsstrom?
+    antwort: |-
+      **Schritt 4:** Absatz der erstellten Güter am Absatzmarkt → **Einnahmen**.
+
+  - typ: definition
+    folien: [35]
+    deckt: [f35.def]
+    frage: |-
+      Was sind **Stakeholder**?
+    antwort: |-
+      **Anspruchsgruppen** eines Unternehmens: „Stakeholder tragen mehr oder weniger berechtigte Ansprüche an Unternehmen heran bzw. haben ein Interesse am Unternehmen“
+
+  - typ: rueckwaerts
+    folien: [35]
+    deckt: [f35.def]
+    frage: |-
+      Wie nennt man Anspruchsgruppen, die mehr oder weniger berechtigte Ansprüche an ein Unternehmen herantragen?
+    antwort: |-
+      **Stakeholder**
+
+  - typ: fakt
+    folien: [35]
+    deckt: [f35.interaktion]
+    frage: |-
+      Wann kommt es laut Skript zur Interaktion einer Vielzahl von Anspruchsgruppen?
+    antwort: |-
+      „Bei der Lösung betrieblicher Probleme“
+
+  - typ: maske
+    folien: [36]
+    deckt: [f36.intern]
+    frage: |-
+      Nenne die fünf **internen** Stakeholder (verdeckt; die Interessen stehen als Hinweis daneben).
+
+      {{bild:kap2_stakeholder-ohne-interne|Stakeholder-Tabelle, interne Gruppen verdeckt}}
+    antwort: |-
+      Eigentümer · Management · Mitarbeiter · Aufsichtsrat · Betriebsrat
+
+      {{bild:kap2_stakeholder|Stakeholder}}
+
+  - typ: maske
+    folien: [36]
+    deckt: [f36.extern]
+    frage: |-
+      Nenne die fünf **externen** Stakeholder der Auswahl (verdeckt; die Interessen stehen als Hinweis daneben).
+
+      {{bild:kap2_stakeholder-ohne-externe|Stakeholder-Tabelle, externe Gruppen verdeckt}}
+    antwort: |-
+      FK-Geber · Lieferanten · Kunden · Konkurrenten · Staat und Gesellschaft
+
+      {{bild:kap2_stakeholder|Stakeholder}}
+
+  - typ: fakt
+    folien: [36]
+    deckt: [f36.interessen, f36.shareholder]
+    frage: |-
+      Stakeholder **Eigentümer**: Welche **drei** Interessen nennt die Stakeholder-Tabelle? (Wortlaut)
+    antwort: |-
+      „Einkommen, Gewinn, Wertsteigerung des Kapitals [Aktionäre = Shareholder]“ (intern)
+
+  - typ: fakt
+    folien: [36]
+    deckt: [f36.interessen]
+    frage: |-
+      Stakeholder **Management**: Welche **fünf** Interessen nennt die Stakeholder-Tabelle? (Wortlaut)
+    antwort: |-
+      „Einkommen, Arbeitsplatz, Sicherheit, Macht, Prestige“ (intern)
+
+  - typ: fakt
+    folien: [36]
+    deckt: [f36.interessen]
+    frage: |-
+      Stakeholder **Mitarbeiter**: Welche **vier** Interessen nennt die Stakeholder-Tabelle? (Wortlaut)
+    antwort: |-
+      „Einkommen, Arbeitsplatz, Sicherheit, zwischenmenschliche Kontakte“ (intern)
+
+  - typ: fakt
+    folien: [36]
+    deckt: [f36.interessen]
+    frage: |-
+      Stakeholder **Aufsichtsrat**: Welche **drei** Interessen nennt die Stakeholder-Tabelle? (Wortlaut)
+    antwort: |-
+      „Kontrolle, Information, strategische Ausrichtung des Unternehmens“ (intern)
+
+  - typ: fakt
+    folien: [36]
+    deckt: [f36.interessen]
+    frage: |-
+      Stakeholder **Betriebsrat**: Welche **vier** Interessen nennt die Stakeholder-Tabelle? (Wortlaut)
+    antwort: |-
+      „Kontrolle, Mitbestimmung, Interessenvertretung, Wiederwahl“ (intern)
+
+  - typ: fakt
+    folien: [36]
+    deckt: [f36.interessen]
+    frage: |-
+      Stakeholder **FK-Geber** (Fremdkapitalgeber): Welche **drei** Interessen nennt die Stakeholder-Tabelle? (Wortlaut)
+    antwort: |-
+      „Sicherheit für Kapitaleinlagen, gute Verzinsung, Vermögenszuwachs“ (extern)
+
+  - typ: fakt
+    folien: [36]
+    deckt: [f36.interessen]
+    frage: |-
+      Stakeholder **Lieferanten**: Welche **drei** Interessen nennt die Stakeholder-Tabelle? (Wortlaut)
+    antwort: |-
+      „Stabile Liefermöglichkeiten, günstige Konditionen, Zahlungsfähigkeit“ (extern)
+
+  - typ: fakt
+    folien: [36]
+    deckt: [f36.interessen]
+    frage: |-
+      Stakeholder **Kunden**: Welche **drei** Interessen nennt die Stakeholder-Tabelle? (Wortlaut)
+    antwort: |-
+      „Gute Qualität u. Quantität, Service, günstige Konditionen etc.“ (extern)
+
+  - typ: fakt
+    folien: [36]
+    deckt: [f36.interessen]
+    frage: |-
+      Stakeholder **Konkurrenten**: Welche **zwei** Interessen nennt die Stakeholder-Tabelle? (Wortlaut)
+    antwort: |-
+      „Einhaltung fairer Grundsätze und Spielregeln, Kooperation“ (extern)
+
+  - typ: fakt
+    folien: [36]
+    deckt: [f36.interessen]
+    frage: |-
+      Stakeholder **Staat und Gesellschaft**: Nenne mindestens **vier** der sieben Interessen aus der Stakeholder-Tabelle.
+    antwort: |-
+      „Steuern, Sicherung der Arbeitsplätze, Sozialleistungen, positive Beiträge an die Infrastruktur, Einhaltung von Recht und Normen, Teilnahme an der politischen Willensbildung, Kultursponsoring etc.“ (extern)
+
+  - typ: verwechslung
+    folien: [36]
+    deckt: [f36.shareholder]
+    frage: |-
+      **Stakeholder** vs. **Shareholder** – was ist der Unterschied?
+    antwort: |-
+      - **Stakeholder:** alle Anspruchsgruppen (intern und extern)
+      - **Shareholder:** die Aktionäre = Eigentümer – nur **eine** Stakeholder-Gruppe (intern)
+
+  - typ: anwendung
+    folien: [36]
+    deckt: [f36.interessen]
+    frage: |-
+      Ein Unternehmen erhöht die Löhne deutlich. Welche zwei Stakeholder-Gruppen haben hier laut ihren Interessen **gegensätzliche** Ziele?
+    antwort: |-
+      **Mitarbeiter** (Interesse: Einkommen) ↔ **Eigentümer** (Interesse: Gewinn, Wertsteigerung des Kapitals).
+
+      *Vertretbar auch: Betriebsrat (Interessenvertretung) statt Mitarbeiter. Den Zielkonflikt nennt das Skript nicht ausdrücklich – abgeleitet aus den Interessen der Tabelle.*
+
+  - typ: anwendung
+    folien: [36]
+    deckt: [f36.interessen, f36.extern]
+    frage: |-
+      Eine Bank prüft einen Kreditantrag des Unternehmens. Als welche Stakeholder-Gruppe tritt sie auf?
+    antwort: |-
+      **FK-Geber** (Fremdkapitalgeber) – externe Anspruchsgruppe.
+
+  - typ: klausurfrage
+    w: W08
+    folien: [35, 36]
+    deckt: [f35.def, f36.intern, f36.extern]
+    frage: |-
+      **Wiederholungsfrage:** Was sind Stakeholder? Nennen Sie mindestens vier Beispiele bezogen auf ein Unternehmen.
+    antwort: |-
+      Stakeholder sind **Anspruchsgruppen**: „Stakeholder tragen mehr oder weniger berechtigte Ansprüche an Unternehmen heran bzw. haben ein Interesse am Unternehmen“
+
+      | intern | Interesse | extern | Interesse |
+      |---|---|---|---|
+      | Eigentümer | Gewinn, Wertsteigerung | FK-Geber | Sicherheit, Verzinsung |
+      | Management | Einkommen, Macht, Prestige | Lieferanten | stabile Liefermöglichkeiten, Zahlungsfähigkeit |
+      | Mitarbeiter | Einkommen, Arbeitsplatz | Kunden | Qualität, Service, Konditionen |
+      | Aufsichtsrat | Kontrolle, Information | Konkurrenten | faire Spielregeln |
+      | Betriebsrat | Mitbestimmung, Interessenvertretung | Staat und Gesellschaft | Steuern, Arbeitsplätze |
+
+  # =====================================================================  2.3 Typologie
+  - typ: klausurfrage
+    w: W09
+    folien: [38]
+    deckt: [f38.kriterien]
+    frage: |-
+      **Wiederholungsfrage:** Nennen Sie drei Kriterien zur Einteilung von Unternehmen mit jeweils zwei Beispielen (Unternehmenstypologie).
+    antwort: |-
+      | Kriterium | Beispiele |
+      |---|---|
+      | **Branche / Wirtschaftszweig** | Industrie, Handel, Verkehr, Banken |
+      | **Größe** | kleine, mittlere, große Unternehmen |
+      | **Rechtsform** | GbR, OHG, KG, GmbH, AG, SE, Ltd, eG |
+
+  - typ: luecke
+    folien: [38]
+    deckt: [f38.kriterien]
+    frage: |-
+      Typologie-Kriterium **Branche / Wirtschaftszweig**: Welche vier Beispiele nennt das Skript?
+    antwort: |-
+      Industrie, Handel, Verkehr, Banken
+
+  - typ: rueckwaerts
+    folien: [38]
+    deckt: [f38.kriterien]
+    frage: |-
+      Typologie: „Industrie, Handel, Verkehr, Banken“ sind Beispiele für welches Einteilungskriterium?
+    antwort: |-
+      **Branche / Wirtschaftszweig**
+
+  - typ: aufzaehlung
+    folien: [39]
+    deckt: [f39.bereiche]
+    frage: |-
+      In welche **drei Bereiche** werden die Wirtschaftszweige eingeteilt (Statistisches Jahrbuch)?
+    antwort: |-
+      1. Land- und Forstwirtschaft, Fischerei
+      2. **Produzierendes Gewerbe**
+      3. **Dienstleistungsbereiche**
+
+  - typ: aufzaehlung
+    folien: [39]
+    deckt: [f39.zuordnung]
+    frage: |-
+      Was gehört zum **produzierenden Gewerbe**? (vier Zweige)
+    antwort: |-
+      - Bergbau und Gewinnung von Steinen und Erden
+      - **Verarbeitendes Gewerbe**
+      - Energie- und Wasserversorgung
+      - Baugewerbe
+
+  - typ: anwendung
+    folien: [39]
+    deckt: [f39.zuordnung]
+    frage: |-
+      Zu welchem **Bereich** und welchem **Wirtschaftszweig** gehört: Ein **Werkzeugmaschinenhersteller**.
+    antwort: |-
+      **Produzierendes Gewerbe** – verarbeitendes Gewerbe.
+
+  - typ: anwendung
+    folien: [39]
+    deckt: [f39.zuordnung]
+    frage: |-
+      Zu welchem **Bereich** und welchem **Wirtschaftszweig** gehört: Eine **Sparkasse**.
+    antwort: |-
+      **Dienstleistungsbereich** – Kredit- und Versicherungsgewerbe.
+
+      *Falle: Banken (und Handel) nicht zum produzierenden Gewerbe zählen.*
+
+  - typ: anwendung
+    folien: [39]
+    deckt: [f39.zuordnung]
+    frage: |-
+      Zu welchem **Bereich** und welchem **Wirtschaftszweig** gehört: Ein **Autohaus mit Werkstatt**.
+    antwort: |-
+      **Dienstleistungsbereich** – Handel; Instandhaltung und Reparatur von Kraftfahrzeugen und Gebrauchsgütern.
+
+  - typ: anwendung
+    folien: [39]
+    deckt: [f39.zuordnung]
+    frage: |-
+      Zu welchem **Bereich** und welchem **Wirtschaftszweig** gehört: **Stadtwerke**, die Strom und Wasser liefern.
+    antwort: |-
+      **Produzierendes Gewerbe** – Energie- und Wasserversorgung.
+
+  - typ: aufzaehlung
+    folien: [40]
+    deckt: [f40.arten]
+    frage: |-
+      Welche vier **Größenklassen** von Unternehmen unterscheidet das Skript?
+    antwort: |-
+      Kleinstunternehmen · kleine · mittlere · große Unternehmen
+
+  - typ: aufzaehlung
+    folien: [40]
+    deckt: [f40.massstaebe]
+    frage: |-
+      Nenne die drei **Größenmaßstäbe** für die Einteilung nach Größe.
+    antwort: |-
+      **Bilanzsumme** · **Umsatzerlöse** · **Beschäftigtenzahl**
+
+  - typ: klausurfrage
+    w: W10
+    folien: [41]
+    deckt: [f41.zweck, f41.kleinst, f41.klein, f41.mittel, f41.gross, f41.logik]
+    frage: |-
+      **Wiederholungsfrage:** Was versteht man unter kleinen und mittleren Unternehmen? (Umsatz, Anzahl Mitarbeiter)
+    antwort: |-
+      Quantitative Abgrenzung der **Europäischen Union** (für Förderprogramme):
+
+      | | Beschäftigte | | Umsatz | | Bilanzsumme |
+      |---|---|---|---|---|---|
+      | Kleinst | < 10 | und | bis 2 Mio. € | oder | bis 2 Mio. € |
+      | Klein | 10–49 | und | bis 10 Mio. € | oder | bis 10 Mio. € |
+      | Mittel | 50–249 | und | bis 50 Mio. € | oder | bis **43** Mio. € |
+      | Groß | > 249 | und | > 50 Mio. € | oder | > 43 Mio. € |
+
+      Lesart: Beschäftigte **und** (Umsatz **oder** Bilanzsumme) – *abgeleitet (Lernzettel), die Folie schreibt nur „und … oder“ ohne Klammern.*
+
+      {{bild:kap2_kmu-abgrenzung|KMU-Abgrenzung der EU}}
+
+  - typ: fakt
+    folien: [41]
+    deckt: [f41.kleinst]
+    frage: |-
+      EU-Grenzwerte für **Kleinstunternehmen**?
+    antwort: |-
+      **< 10** Beschäftigte **und** Umsatz **bis 2 Mio. €** **oder** Bilanzsumme **bis 2 Mio. €**
+
+  - typ: fakt
+    folien: [41]
+    deckt: [f41.klein]
+    frage: |-
+      EU-Grenzwerte für **kleine Unternehmen**?
+    antwort: |-
+      **10–49** Beschäftigte **und** Umsatz **bis 10 Mio. €** **oder** Bilanzsumme **bis 10 Mio. €**
+
+  - typ: fakt
+    folien: [41]
+    deckt: [f41.mittel]
+    frage: |-
+      EU-Grenzwerte für **mittlere Unternehmen**?
+    antwort: |-
+      **50–249** Beschäftigte **und** Umsatz **bis 50 Mio. €** **oder** Bilanzsumme **bis 43 Mio. €**
+
+  - typ: fakt
+    folien: [41]
+    deckt: [f41.gross]
+    frage: |-
+      Welche Werte stehen auf der Folie für **Großunternehmen**?
+    antwort: |-
+      **> 249** Beschäftigte **und** Umsatz **> 50 Mio. €** **oder** Bilanzsumme **> 43 Mio. €**
+
+      (Logisch ungenau – siehe Unstimmigkeits-Karte zu F. 41.)
+
+  - typ: verwechslung
+    folien: [41]
+    deckt: [f41.mittel]
+    frage: |-
+      Mittlere Unternehmen: Ist die Bilanzsummen-Grenze **50** oder **43** Mio. €?
+    antwort: |-
+      **43 Mio. €** (Bilanzsumme). 50 Mio. € ist die **Umsatz**grenze.
+
+  - typ: falle
+    folien: [41]
+    deckt: [f41.logik]
+    frage: |-
+      Wie sind Beschäftigte, Umsatz und Bilanzsumme in der KMU-Abgrenzung verknüpft?
+    antwort: |-
+      **Beschäftigte UND (Umsatz ODER Bilanzsumme).**
+      Die Beschäftigtenzahl muss immer passen; von den beiden Geldgrenzen **genügt eine**.
+
+      *Lesart laut Lernzettel – die Folie schreibt nur „und … oder“ ohne Klammern. Falle: verlangen, dass Umsatz und Bilanzsumme beide unter der Grenze liegen.*
+
+  - typ: fakt
+    folien: [41]
+    deckt: [f41.zweck]
+    frage: |-
+      Wer grenzt kleine und mittlere Unternehmen **quantitativ** ab – und wofür wird die Abgrenzung genutzt?
+    antwort: |-
+      Die **Europäische Union** – für **Förderprogramme**.
+
+  - typ: maske
+    folien: [41]
+    deckt: [f41.kleinst, f41.klein, f41.mittel, f41.gross]
+    frage: |-
+      KMU-Abgrenzung: Welche **Beschäftigtenzahlen** sind verdeckt?
+
+      {{bild:kap2_kmu-abgrenzung-ohne-beschaeftigte|KMU-Tabelle, Beschäftigte verdeckt}}
+    antwort: |-
+      Kleinst **< 10** · Klein **10–49** · Mittel **50–249** · Groß **> 249**
+
+      {{bild:kap2_kmu-abgrenzung|KMU-Abgrenzung}}
+
+  - typ: maske
+    folien: [41]
+    deckt: [f41.kleinst, f41.klein, f41.mittel, f41.gross]
+    frage: |-
+      KMU-Abgrenzung: Welche **Umsatz-** und **Bilanzsummen-Grenzen** sind verdeckt?
+
+      {{bild:kap2_kmu-abgrenzung-ohne-geldgrenzen|KMU-Tabelle, Umsatz und Bilanzsumme verdeckt}}
+    antwort: |-
+      | | Umsatz | Bilanzsumme |
+      |---|---|---|
+      | Kleinst | bis 2 Mio. € | bis 2 Mio. € |
+      | Klein | bis 10 Mio. € | bis 10 Mio. € |
+      | Mittel | bis 50 Mio. € | bis **43** Mio. € |
+      | Groß | > 50 Mio. € | > 43 Mio. € |
+
+      {{bild:kap2_kmu-abgrenzung|KMU-Abgrenzung}}
+
+  - typ: anwendung
+    folien: [41]
+    deckt: [f41.kleinst, f41.logik]
+    rechnung: {art: kmu, beschaeftigte: 9, umsatz: 2.5, bilanzsumme: 1.8, ergebnis: "Kleinstunternehmen"}
+    frage: |-
+      Größenklasse nach EU? **9 Beschäftigte**, Umsatz **2,5 Mio. €**, Bilanzsumme **1,8 Mio. €**.
+    antwort: |-
+      **Kleinstunternehmen**: 9 < 10 ✓ und Bilanzsumme 1,8 ≤ 2 Mio. € ✓ – dass der Umsatz über 2 Mio. € liegt, schadet nicht (eine Geldgrenze genügt).
+
+  - typ: anwendung
+    folien: [41]
+    deckt: [f41.klein, f41.logik]
+    rechnung: {art: kmu, beschaeftigte: 10, umsatz: 1.2, bilanzsumme: 0.9, ergebnis: "kleines Unternehmen"}
+    frage: |-
+      Größenklasse nach EU? **10 Beschäftigte**, Umsatz **1,2 Mio. €**, Bilanzsumme **0,9 Mio. €**.
+    antwort: |-
+      **kleines Unternehmen**: Kleinst verlangt **< 10** Beschäftigte – 10 gehört schon zu 10–49 ✓; Umsatz ≤ 10 Mio. € ✓.
+
+  - typ: anwendung
+    folien: [41]
+    deckt: [f41.klein, f41.logik]
+    rechnung: {art: kmu, beschaeftigte: 8, umsatz: 3, bilanzsumme: 2.5, ergebnis: "kleines Unternehmen"}
+    frage: |-
+      Größenklasse nach EU? **8 Beschäftigte**, Umsatz **3 Mio. €**, Bilanzsumme **2,5 Mio. €**.
+    antwort: |-
+      **kleines Unternehmen**: 8 < 10 ✓, aber Umsatz **und** Bilanzsumme > 2 Mio. € ✗ → kein Kleinstunternehmen.
+      Wörtlich passt 8 in keine Folienzeile (klein = 10–49). *Lesart abgeleitet, nicht in Skript oder Lernzettel:* Beschäftigtenspannen als Obergrenzen lesen (klein = unter 50) → 8 < 50 ✓ und Umsatz 3 ≤ 10 Mio. € ✓ → klein.
+
+  - typ: anwendung
+    folien: [41]
+    deckt: [f41.klein, f41.logik]
+    rechnung: {art: kmu, beschaeftigte: 49, umsatz: 11, bilanzsumme: 9.5, ergebnis: "kleines Unternehmen"}
+    frage: |-
+      Größenklasse nach EU? **49 Beschäftigte**, Umsatz **11 Mio. €**, Bilanzsumme **9,5 Mio. €**.
+    antwort: |-
+      **kleines Unternehmen**: 49 in 10–49 ✓; Umsatz > 10 Mio. € ✗, aber Bilanzsumme 9,5 ≤ 10 Mio. € ✓ – eine Geldgrenze genügt.
+
+  - typ: anwendung
+    folien: [41]
+    deckt: [f41.mittel, f41.logik]
+    rechnung: {art: kmu, beschaeftigte: 230, umsatz: 48, bilanzsumme: 51, ergebnis: "mittleres Unternehmen"}
+    frage: |-
+      Größenklasse nach EU? **230 Beschäftigte**, Umsatz **48 Mio. €**, Bilanzsumme **51 Mio. €**.
+    antwort: |-
+      **mittleres Unternehmen**: 230 in 50–249 ✓ und Umsatz 48 ≤ 50 Mio. € ✓ (Bilanzsumme > 43 Mio. € ist egal).
+
+  - typ: anwendung
+    folien: [41]
+    deckt: [f41.gross, f41.logik]
+    rechnung: {art: kmu, beschaeftigte: 400, umsatz: 30, bilanzsumme: 25, ergebnis: "Großunternehmen"}
+    frage: |-
+      Größenklasse nach EU? **400 Beschäftigte**, Umsatz **30 Mio. €**, Bilanzsumme **25 Mio. €**.
+    antwort: |-
+      **Großunternehmen**: 400 > 249 – die Beschäftigtenzahl passt in keine KMU-Zeile, egal wie klein Umsatz und Bilanzsumme sind.
+      Die Folienzeile „Großunternehmen > 249 und > 50 Mio. € oder > 43 Mio. €“ passt wörtlich nicht (30 und 25 Mio. € liegen darunter) – maßgeblich ist, dass keine KMU-Zeile passt (siehe Unstimmigkeit F. 41).
+
+  - typ: anwendung
+    folien: [41]
+    deckt: [f41.gross, f41.unst]
+    rechnung: {art: kmu, beschaeftigte: 140, umsatz: 70, bilanzsumme: 60, ergebnis: "Großunternehmen"}
+    frage: |-
+      Größenklasse nach EU? **140 Beschäftigte**, Umsatz **70 Mio. €**, Bilanzsumme **60 Mio. €**.
+    antwort: |-
+      **Großunternehmen** (kein KMU): 140 in 50–249 ✓, aber Umsatz > 50 **und** Bilanzsumme > 43 Mio. € ✗ → die Zeile „mittel“ passt nicht.
+      Die Folienzeile „Großunternehmen > 249 und …“ passt wörtlich auch nicht. Vorgehen: erst die KMU-Zeilen prüfen – passt keine, ist es groß (Lernzettel). *Eigene Ergänzung, nicht in Skript oder Lernzettel:* von Kleinst aufwärts prüfen und die Beschäftigtenspannen als Obergrenzen lesen (klein = unter 50, mittel = unter 250).
+
+  - typ: unstimmigkeit
+    folien: [41]
+    deckt: [f41.unst]
+    frage: |-
+      Was ist an der Zeile **„Großunternehmen: > 249 und > 50 Mio. € oder > 43 Mio. €“** logisch ungenau – und wie gehst du in der Klausur vor?
+    antwort: |-
+      Die Zeile übernimmt einfach das Muster „und … oder“. Groß ist aber, wer die KMU-Bedingung **verletzt**:
+      **> 249 Beschäftigte ODER (Umsatz > 50 Mio. € UND Bilanzsumme > 43 Mio. €).**
+      Beispiel: 300 Beschäftigte, 20 Mio. € Umsatz, 15 Mio. € Bilanzsumme passen in keine Folienzeile, sind aber groß.
+
+      **Klausur:** Tabelle wie auf der Folie wiedergeben. Beim Einordnen erst die KMU-Zeilen prüfen – passt keine, ist es ein Großunternehmen (Lernzettel). *Eigene Ergänzung:* von Kleinst aufwärts prüfen, Beschäftigtenspannen als Obergrenzen lesen (klein = unter 50, mittel = unter 250).
+
+  - typ: fakt
+    folien: [41]
+    deckt: [f41.mittelstand]
+    frage: |-
+      Sind kleine und mittlere Unternehmen auch mittelständisch?
+    antwort: |-
+      „Kleine und mittlere Unternehmen sind auch überwiegend mittelständisch!“ – überwiegend, nicht automatisch; die Begriffe meinen Verschiedenes (siehe F. 42).
+
+  - typ: klausurfrage
+    w: W11
+    folien: [42]
+    deckt: [f42.kriterien, f42.gross]
+    frage: |-
+      **Wiederholungsfrage:** Wodurch sind mittelständische Unternehmen gekennzeichnet?
+    antwort: |-
+      Qualitative Abgrenzung – Kriterien:
+      - „Einheit von Eigentum, Haftung und Führung“
+      - „Konzernunabhängigkeit des Unternehmens“
+      - „weitgehende Verantwortlichkeit des Unternehmers für unternehmensrelevante Entscheidungen“
+
+      Mittelständische Unternehmen können auch **groß** sein (> 500 MA, > 100 Mio. € Umsatz), z. B. Krone Group, Miele & Cie. KG, TRUMPF GmbH + Co. KG.
+
+  - typ: luecke
+    folien: [42]
+    deckt: [f42.kriterien]
+    frage: |-
+      Mittelstand – qualitative Kriterien: **?** · Konzernunabhängigkeit des Unternehmens · weitgehende Verantwortlichkeit des Unternehmers für unternehmensrelevante Entscheidungen
+    antwort: |-
+      **Einheit von Eigentum, Haftung und Führung**
+
+  - typ: luecke
+    folien: [42]
+    deckt: [f42.kriterien]
+    frage: |-
+      Mittelstand – qualitative Kriterien: Einheit von Eigentum, Haftung und Führung · **?** · weitgehende Verantwortlichkeit des Unternehmers für unternehmensrelevante Entscheidungen
+    antwort: |-
+      **Konzernunabhängigkeit des Unternehmens**
+
+  - typ: luecke
+    folien: [42]
+    deckt: [f42.kriterien]
+    frage: |-
+      Mittelstand – qualitative Kriterien: Einheit von Eigentum, Haftung und Führung · Konzernunabhängigkeit des Unternehmens · **?**
+    antwort: |-
+      **Weitgehende Verantwortlichkeit des Unternehmers für unternehmensrelevante Entscheidungen**
+
+  - typ: rueckwaerts
+    folien: [42]
+    deckt: [f42.kriterien]
+    frage: |-
+      Welche Unternehmen sind durch **Einheit von Eigentum, Haftung und Führung** und **Konzernunabhängigkeit** gekennzeichnet?
+    antwort: |-
+      **Mittelständische Unternehmen** (qualitative Abgrenzung).
+
+  - typ: verwechslung
+    folien: [41, 42]
+    deckt: [f42.unterschied]
+    frage: |-
+      Was ist der Unterschied zwischen **kleinen/mittleren** und **mittelständischen** Unternehmen?
+    antwort: |-
+      | KMU | mittelständisch |
+      |---|---|
+      | **quantitativ** (Beschäftigte, Umsatz, Bilanzsumme) | **qualitativ** (Eigentum, Haftung, Führung in einer Hand; konzernunabhängig) |
+      | EU-Abgrenzung, Förderprogramme | Kriterien F. 42 |
+      | höchstens 249 Beschäftigte | kann auch **groß** sein |
+
+  - typ: fakt
+    folien: [42]
+    deckt: [f42.gross]
+    frage: |-
+      Mit welchen Richtwerten zeigt das Skript, dass auch **mittelständische** Unternehmen groß sein können?
+    antwort: |-
+      **> 500 MA, > 100 Mio. € Umsatz** („Aber: mittelständische Unternehmen können auch groß sein!“)
+
+  - typ: aufzaehlung
+    folien: [42]
+    deckt: [f42.gross]
+    frage: |-
+      Nenne die drei Beispiele des Skripts für **große mittelständische** Unternehmen.
+    antwort: |-
+      - Krone Group (ca. 6.500 MA, ca. 2,4 Mrd. € Umsatz)
+      - Miele & Cie. KG (ca. 23.500 MA, ca. 5,0 Mrd. €)
+      - TRUMPF GmbH + Co. KG (ca. 19.000 MA, ca. 5,2 Mrd. €)
+
+  - typ: unstimmigkeit
+    folien: [41, 42]
+    deckt: [f42.unst]
+    frage: |-
+      F. 42 nennt für „groß“ **> 500 MA und > 100 Mio. € Umsatz**, F. 41 aber **> 249 und > 50 Mio. €**. Welche Werte gelten in der Klausur?
+    antwort: |-
+      Für **KMU/Größenklassen** immer die **EU-Werte von F. 41**.
+      F. 42 will nur zeigen, dass Mittelständler weit über den EU-Grenzen liegen können – die Zahlen dort sind keine zweite Größendefinition.
+
+  - typ: anwendung
+    folien: [41, 42]
+    deckt: [f42.unterschied]
+    frage: |-
+      Ein Werk mit **120 Beschäftigten** und **20 Mio. € Umsatz** ist die Tochter eines Konzerns und wird von einem angestellten Manager geführt. KMU? Mittelständisch?
+    antwort: |-
+      - **KMU: ja** – mittleres Unternehmen (50–249 Beschäftigte, Umsatz ≤ 50 Mio. €).
+      - **Mittelständisch: nein** – nicht konzernunabhängig, keine Einheit von Eigentum, Haftung und Führung.
+
+  - typ: anwendung
+    folien: [41, 42]
+    deckt: [f42.unterschied, f42.gross]
+    frage: |-
+      **Miele & Cie. KG** (ca. 23.500 MA, ca. 5,0 Mrd. € Umsatz): KMU? Mittelständisch?
+    antwort: |-
+      - **KMU: nein** – weit über 249 Beschäftigten → Großunternehmen.
+      - **Mittelständisch: ja** – Beispiel des Skripts für ein großes mittelständisches Unternehmen.
+
+  - typ: aufzaehlung
+    folien: [43]
+    deckt: [f43.gruppen]
+    frage: |-
+      In welche **vier Gruppen** teilt das Skript die Rechtsformen privater Betriebe ein?
+    antwort: |-
+      1. Einzelunternehmen
+      2. Personengesellschaften
+      3. Kapitalgesellschaften
+      4. Genossenschaften (eG)
+
+  - typ: aufzaehlung
+    folien: [43]
+    deckt: [f43.gruppen]
+    frage: |-
+      Welche **Personengesellschaften** nennt das Skript?
+    antwort: |-
+      - Gesellschaft bürgerlichen Rechts (**GbR**)
+      - Offene Handelsgesellschaft (**OHG**)
+      - Kommanditgesellschaft (**KG**)
+      - Stille Gesellschaft
+
+  - typ: aufzaehlung
+    folien: [43]
+    deckt: [f43.gruppen]
+    frage: |-
+      Welche **Kapitalgesellschaften** nennt das Skript?
+    antwort: |-
+      - Aktiengesellschaft (**AG**)
+      - Europäische Gesellschaft (**SE**)
+      - Kommanditgesellschaft auf Aktien (**KGaA**)
+      - Gesellschaft mit beschränkter Haftung (**GmbH**)
+
+  - typ: fakt
+    folien: [43]
+    deckt: [f43.personen]
+    frage: |-
+      Wie viele Personen braucht ein **Einzelunternehmen**, wie viele eine **Personengesellschaft** mindestens?
+    antwort: |-
+      - Einzelunternehmen: **eine Person** als Einzelunternehmer
+      - Personengesellschaft: **min. zwei Personen** (natürliche und/oder juristische Person)
+
+  - typ: definition
+    folien: [43]
+    deckt: [f43.juristisch]
+    frage: |-
+      Welche Rechtsformen sind **juristische Personen** – und was bedeutet das?
+    antwort: |-
+      **Kapitalgesellschaften und Genossenschaften**: „Sind juristische Personen, d.h. sie sind selbst Träger von Rechten und Pflichten“
+
+  - typ: falle
+    folien: [43]
+    deckt: [f43.juristisch]
+    frage: |-
+      Richtig oder falsch: „Die OHG ist eine juristische Person.“
+    antwort: |-
+      **Falsch.** Nur **Kapitalgesellschaften und Genossenschaften** sind juristische Personen (selbst Träger von Rechten und Pflichten). Die OHG ist eine Personengesellschaft.
+
+  - typ: definition
+    folien: [44]
+    deckt: [f44.gegenstand]
+    frage: |-
+      Was ist **Gegenstand der Wahl der Rechtsform**? (Innen- und Außenverhältnis)
+    antwort: |-
+      „die Regelung der Rechtsbeziehungen zwischen den Gesellschaftern eines Unternehmens (Innenverhältnis) und den Rechtsbeziehungen zwischen dem Unternehmen und seinen externen Stakeholdern (Außenverhältnis)“
+
+  - typ: fakt
+    folien: [44]
+    deckt: [f44.strategisch]
+    frage: |-
+      Woran orientiert sich die Wahl der Rechtsform?
+    antwort: |-
+      An den **Zielen eines Unternehmens**.
+
+  - typ: fakt
+    folien: [44]
+    deckt: [f44.strategisch]
+    frage: |-
+      Welche Art von Entscheidung ist die Wahl der Rechtsform?
+    antwort: |-
+      Eine **strategisch relevante Entscheidung**.
+
+  - typ: aufzaehlung
+    folien: [44]
+    deckt: [f44.kriterien]
+    frage: |-
+      Nenne die **sechs Auswahlkriterien** für die Rechtsformwahl.
+    antwort: |-
+      1. Leitungs- und Kontrollbefugnis
+      2. Haftungsumfang der Eigenkapitalgeber
+      3. Gewinn-/Verlustbeteiligung
+      4. Finanzierungsmöglichkeiten
+      5. Publizität und Prüfung
+      6. Mitbestimmung der Arbeitnehmer
+
+  - typ: luecke
+    folien: [44]
+    deckt: [f44.kriterien]
+    frage: |-
+      Auswahlkriterien Rechtsform: **?** · **?** · Gewinn-/Verlustbeteiligung · Finanzierungsmöglichkeiten · Publizität und Prüfung · Mitbestimmung der Arbeitnehmer
+    antwort: |-
+      **Leitungs- und Kontrollbefugnis** · **Haftungsumfang der Eigenkapitalgeber**
+
+  - typ: luecke
+    folien: [44]
+    deckt: [f44.kriterien]
+    frage: |-
+      Auswahlkriterien Rechtsform: Leitungs- und Kontrollbefugnis · Haftungsumfang der Eigenkapitalgeber · **?** · **?** · Publizität und Prüfung · Mitbestimmung der Arbeitnehmer
+    antwort: |-
+      **Gewinn-/Verlustbeteiligung** · **Finanzierungsmöglichkeiten**
+
+  - typ: luecke
+    folien: [44]
+    deckt: [f44.kriterien]
+    frage: |-
+      Auswahlkriterien Rechtsform: Leitungs- und Kontrollbefugnis · Haftungsumfang der Eigenkapitalgeber · Gewinn-/Verlustbeteiligung · Finanzierungsmöglichkeiten · **?** · **?**
+    antwort: |-
+      **Publizität und Prüfung** · **Mitbestimmung der Arbeitnehmer**
+
+  # ---------------------------------------------------------------- Rechtsformen-Tabellen F. 45/46
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.haftung]
+    frage: |-
+      Haftung im **Einzelunternehmen**?
+    antwort: |-
+      **Uneingeschränkt** (mit Betriebs- **und Privatvermögen**).
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.haftung]
+    frage: |-
+      Haftung in der **OHG**?
+    antwort: |-
+      **Uneingeschränkt für alle Gesellschafter als Gesamtschuldner** (§ 128 HGB).
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.haftung]
+    frage: |-
+      Haftung in der **KG**?
+    antwort: |-
+      **Uneingeschränkt für Komplementäre; eingeschränkt für Kommanditisten.**
+
+  - typ: verwechslung
+    folien: [45]
+    deckt: [f45.haftung, f45.leitung]
+    frage: |-
+      KG: **Komplementär** vs. **Kommanditist** – Leitung, Kontrolle, Haftung?
+    antwort: |-
+      | | Komplementär | Kommanditist |
+      |---|---|---|
+      | Leitung | ja (§ 164) | nein |
+      | Kontrolle | volle Kontrollrechte | beschränkte (§ 166) |
+      | Haftung | uneingeschränkt (Vollhafter) | eingeschränkt (Teilhafter) |
+
+  - typ: falle
+    folien: [45]
+    deckt: [f45.haftung]
+    frage: |-
+      Richtig oder falsch: „In der KG haften alle Gesellschafter uneingeschränkt.“
+    antwort: |-
+      **Falsch.** Nur die **Komplementäre** haften uneingeschränkt; **Kommanditisten** haften eingeschränkt. (Alle uneingeschränkt: OHG.)
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.leitung]
+    frage: |-
+      **OHG**: Wer hat die Leitungsrechte, wer die Kontrollrechte?
+    antwort: |-
+      - Leitung: **alle oder ein(-zelne) Gesellschafter** (§ 114)
+      - Kontrolle: **alle Gesellschafter** (§ 118)
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.leitung]
+    frage: |-
+      **Einzelunternehmen**: Wer leitet, wer kontrolliert, wer bekommt Gewinn und Verlust?
+    antwort: |-
+      In allen drei Fällen der **Eigentümer**.
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.kapital]
+    frage: |-
+      Wie hoch ist das **Mindesteigenkapital** bei Einzelunternehmen, OHG und KG?
+    antwort: |-
+      **Keine Vorschrift** – bei allen drei.
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.guv]
+    frage: |-
+      **GuV-Verteilung** in OHG und KG?
+    antwort: |-
+      **Nach Gesellschaftsvertrag**; sonst nach Gesetz (OHG § 121, KG § 168 HGB).
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.finanzierung]
+    frage: |-
+      **Finanzierungsmöglichkeiten** des Einzelunternehmens – wodurch sind sie beschränkt?
+    antwort: |-
+      - **EF** (Eigenfinanzierung) beschränkt durch das **Vermögen** des Inhabers
+      - **FF** (Fremdfinanzierung) beschränkt durch die **Kreditwürdigkeit** des Inhabers
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.finanzierung]
+    frage: |-
+      Warum hat die **OHG** bessere Finanzierungsmöglichkeiten als das Einzelunternehmen?
+    antwort: |-
+      Weil es **mehrere Vollhafter** gibt.
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.finanzierung]
+    frage: |-
+      Warum hat die **KG** bessere Finanzierungsmöglichkeiten als Einzelunternehmen und OHG?
+    antwort: |-
+      Weil **Teilhafter** (Kommanditisten) **zusätzliches Kapital einbringen**.
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.publizitaet]
+    frage: |-
+      Einzelunternehmen, OHG, KG: Wie steht es um **Publizität und Prüfung**?
+    antwort: |-
+      **Nicht erforderlich**; Ausnahme **Großunternehmen** (OHG, KG: wie EU).
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.publizitaet]
+    frage: |-
+      Einzelunternehmen, OHG, KG: Welche **unternehmerische Mitbestimmung** für Arbeitnehmer gibt es?
+    antwort: |-
+      **Keine** – bei allen drei.
+
+  - typ: fakt
+    folien: [45]
+    deckt: [f45.recht]
+    frage: |-
+      Welche **Rechtsgrundlage** gilt für Einzelunternehmen, OHG und KG?
+    antwort: |-
+      Das **HGB** (EU §§ 1–104, OHG §§ 105–160, KG §§ 161–177a).
+
+  - typ: verwechslung
+    folien: [46]
+    deckt: [f46.recht]
+    frage: |-
+      Welche **Rechtsgrundlage** gilt für AG, GmbH, Genossenschaft und SE?
+    antwort: |-
+      | Rechtsform | Rechtsgrundlage |
+      |---|---|
+      | AG | **AktG** |
+      | GmbH | **GmbHG** |
+      | Genossenschaft | **GenG** |
+      | SE | **SE-VO** |
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.haftung]
+    frage: |-
+      Haftung in der **AG**?
+    antwort: |-
+      **Uneingeschränkt für die Gesellschaft; eingeschränkt für die Aktionäre** (§ 1 AktG).
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.haftung]
+    frage: |-
+      Haftung in der **GmbH**?
+    antwort: |-
+      **Uneingeschränkt für die Gesellschaft; eingeschränkt für die Gesellschafter.**
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.haftung]
+    frage: |-
+      Haftung in der **Genossenschaft**?
+    antwort: |-
+      **Uneingeschränkt für die Genossenschaft; eingeschränkt für die Mitglieder; ggf. Nachschusspflicht.**
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.haftung]
+    frage: |-
+      Haftung in der **SE**?
+    antwort: |-
+      **Uneingeschränkt für die Gesellschaft.**
+
+  - typ: falle
+    folien: [46]
+    deckt: [f46.haftung]
+    frage: |-
+      Richtig oder falsch: „Bei der GmbH haftet niemand unbeschränkt.“
+    antwort: |-
+      **Falsch.** Die **Gesellschaft selbst** haftet uneingeschränkt; nur die **Gesellschafter** haften eingeschränkt.
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.kapital]
+    frage: |-
+      **Mindesteigenkapital** der **GmbH**?
+    antwort: |-
+      **25.000 €** (§ 5 GmbHG)
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.kapital]
+    frage: |-
+      **Mindesteigenkapital** der **AG**?
+    antwort: |-
+      **50.000 €** (§ 7 AktG) – das Doppelte der GmbH.
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.kapital]
+    frage: |-
+      **Mindesteigenkapital** der **SE**?
+    antwort: |-
+      **120.000 €** (Art. 4 SE-VO)
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.kapital]
+    frage: |-
+      **Mindesteigenkapital** der **Genossenschaft**?
+    antwort: |-
+      **Keine Vorschrift.**
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.leitung]
+    frage: |-
+      Wer hat die **Leitungsrechte** in der **AG**?
+    antwort: |-
+      Der **Vorstand** (§ 76 Abs. 1 AktG).
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.leitung]
+    frage: |-
+      Wer hat die **Leitungsrechte** in der **GmbH**?
+    antwort: |-
+      Der **Geschäftsführer**; **Weisungsrecht der Gesellschafterversammlung** (§ 45 GmbHG).
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.leitung]
+    frage: |-
+      Wer hat die **Leitungsrechte** in der **Genossenschaft**?
+    antwort: |-
+      Der **Vorstand**; satzungsmäßige Beschränkung möglich (§ 27 GenG).
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.leitung]
+    frage: |-
+      Wer hat die **Leitungsrechte** in der **SE**?
+    antwort: |-
+      **Vorstand oder Board of Directors** (Art. 39–45 SE-VO).
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.kontrolle]
+    frage: |-
+      **Kontrollrechte** in der **AG**?
+    antwort: |-
+      **Volle Kontrollrechte für AR** (§ 111); **beschränkte Informationsrechte für HV**.
+
+      Ergänzung (im Skript nicht ausgeschrieben): AR = Aufsichtsrat, HV = Hauptversammlung.
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.kontrolle]
+    frage: |-
+      **Kontrollrechte** in der **GmbH**?
+    antwort: |-
+      **Volle Kontrollrechte für die Gesellschafterversammlung.**
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.kontrolle]
+    frage: |-
+      **Kontrollrechte** in der **Genossenschaft**?
+    antwort: |-
+      **Volle Kontrollrechte für den Aufsichtsrat; beschränkte für die Generalversammlung.**
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.kontrolle]
+    frage: |-
+      **Kontrollrechte** in der **SE**?
+    antwort: |-
+      **Volle Kontrollrechte für Aufsichtsrat oder Board of Directors.**
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.guv]
+    frage: |-
+      **GuV-Verteilung** in der **AG**?
+    antwort: |-
+      **Gleichmäßig auf Stammaktien**; Sonderregelung für Vorzugsaktien (§ 60). (SE: wie AG)
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.guv]
+    frage: |-
+      **GuV-Verteilung** in der **GmbH**?
+    antwort: |-
+      **Nach Gesellschaftsvertrag**; sonst nach Stammkapitalanteilen (§ 29).
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.guv]
+    frage: |-
+      **GuV-Verteilung** in der **Genossenschaft**?
+    antwort: |-
+      **Nach Satzung**; sonst nach Geschäftsguthaben (§ 19).
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.finanzierung]
+    frage: |-
+      Warum sind die **Finanzierungsmöglichkeiten der AG** „hervorragend“? (drei Gründe)
+    antwort: |-
+      - **kleine EK-Anteile**
+      - **Handel an Börse**
+      - **Kapitalmarktzugang für FF** (Fremdfinanzierung)
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.finanzierung]
+    frage: |-
+      **GmbH**: Welcher Vorteil bei der Eigenfinanzierung, welcher Nachteil bei der Fremdfinanzierung?
+    antwort: |-
+      - EF-Vorteil: **Haftungsbeschränkung** für Gesellschafter
+      - FF-Nachteil: **Gläubiger verlangen zusätzliche Sicherheit**
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.finanzierung]
+    frage: |-
+      **Genossenschaft**: Vor- und Nachteil bei der Eigenfinanzierung – und was stärkt die Fremdfinanzierung?
+    antwort: |-
+      - EF-Vorteil: **kleine Stückelung**
+      - EF-Nachteil: **schwankende EK-Basis durch Austrittsrecht**
+      - FF kann durch **Nachschusspflicht** gestärkt werden
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.publizitaet]
+    frage: |-
+      **Publizität und Prüfung** bei AG, GmbH, Genossenschaft und SE?
+    antwort: |-
+      - AG, GmbH, Genossenschaft: **zwingend** – **Erleichterung für kleine und mittelgroße Gesellschaften**
+      - SE: **zwingend** (die SE-Spalte nennt keine Erleichterung)
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.mitbestimmung]
+    frage: |-
+      Wann gilt bei **AG, GmbH und Genossenschaft** die **Drittelparität** (unternehmerische Mitbestimmung)?
+    antwort: |-
+      Wenn **mehr als 500, aber weniger als 2.000 Beschäftigte**.
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.mitbestimmung]
+    frage: |-
+      Wann gilt bei **AG, GmbH und Genossenschaft** die **Unterparität** (unternehmerische Mitbestimmung)?
+    antwort: |-
+      Wenn **mehr als 2.000 Beschäftigte**.
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.mitbestimmung]
+    frage: |-
+      Wann gilt bei **AG und GmbH** die **volle Parität** (unternehmerische Mitbestimmung)?
+    antwort: |-
+      Für **Montanbetriebe ab 1.000 Beschäftigte** (Montanmitbestimmung gilt nicht für Genossenschaften).
+
+  - typ: fakt
+    folien: [46]
+    deckt: [f46.mitbestimmung]
+    frage: |-
+      Wie ist die unternehmerische Mitbestimmung in der **SE** geregelt?
+    antwort: |-
+      **Grundsätzlich beliebig**, jedoch bleibt bei Umwandlung in eine SE die **bisherige Regelung erhalten**.
+
+  - typ: anwendung
+    folien: [46]
+    deckt: [f46.mitbestimmung]
+    rechnung: {art: mitbestimmung, beschaeftigte: 1200, montan: false, rechtsform: GmbH, ergebnis: "Drittelparität"}
+    frage: |-
+      Eine **GmbH mit 1.200 Beschäftigten** (kein Montanbetrieb): Welche unternehmerische Mitbestimmung?
+    antwort: |-
+      **Drittelparität** – mehr als 500, aber weniger als 2.000 Beschäftigte.
+
+  - typ: anwendung
+    folien: [46]
+    deckt: [f46.mitbestimmung]
+    rechnung: {art: mitbestimmung, beschaeftigte: 5000, montan: false, rechtsform: AG, ergebnis: "Unterparität"}
+    frage: |-
+      Eine **AG mit 5.000 Beschäftigten** (kein Montanbetrieb): Welche unternehmerische Mitbestimmung?
+    antwort: |-
+      **Unterparität** – mehr als 2.000 Beschäftigte.
+
+  - typ: anwendung
+    folien: [46]
+    deckt: [f46.mitbestimmung]
+    rechnung: {art: mitbestimmung, beschaeftigte: 1500, montan: true, rechtsform: AG, ergebnis: "volle Parität"}
+    frage: |-
+      Eine **Stahl-AG** (Montanbetrieb) mit **1.500 Beschäftigten**: Welche unternehmerische Mitbestimmung?
+    antwort: |-
+      **volle Parität** – Montanbetrieb ab 1.000 Beschäftigten.
+
+  - typ: klausurfrage
+    w: W12
+    folien: [43, 45, 46]
+    deckt: [f45.haftung, f46.haftung, f43.juristisch]
+    frage: |-
+      **Wiederholungsfrage:** Wodurch unterscheiden sich Personengesellschaften und Kapitalgesellschaften hinsichtlich der Haftung?
+    antwort: |-
+      **Personengesellschaften** (und Einzelunternehmen): Die Haftung trifft die **Gesellschafter selbst**
+      - Einzelunternehmen: uneingeschränkt mit Betriebs- und Privatvermögen
+      - OHG: alle Gesellschafter uneingeschränkt als Gesamtschuldner (§ 128)
+      - KG: Komplementäre uneingeschränkt, Kommanditisten eingeschränkt
+
+      **Kapitalgesellschaften** sind juristische Personen: Die **Gesellschaft haftet uneingeschränkt**, die **Gesellschafter/Aktionäre nur eingeschränkt** (AG, GmbH; SE: uneingeschränkt für Gesellschaft).
+
+      Außerdem: Kapitalgesellschaften haben ein **Mindesteigenkapital** (GmbH 25.000 €, AG 50.000 €, SE 120.000 €), Personengesellschaften keine Vorschrift.
+
+  - typ: anwendung
+    folien: [45, 46]
+    deckt: [f46.haftung, f46.kapital]
+    frage: |-
+      Drei Ingenieure gründen ein Unternehmen. Sie wollen **nicht mit dem Privatvermögen haften**, eine **Nachschusspflicht ausschließen** und haben zusammen **40.000 € Eigenkapital**. Welche Rechtsform passt laut den Tabellen?
+    antwort: |-
+      **GmbH**: Gesellschafter haften eingeschränkt, Mindesteigenkapital 25.000 € ≤ 40.000 € ✓.
+      - AG (50.000 €), SE (120.000 €): zu wenig Kapital
+      - OHG, KG (Komplementär), Einzelunternehmen: unbeschränkte Haftung
+      - eG: ggf. Nachschusspflicht
+
+  - typ: anwendung
+    folien: [46]
+    deckt: [f46.finanzierung]
+    frage: |-
+      Ein Unternehmen will **viel Eigenkapital von vielen Anlegern über die Börse** einwerben; das Startkapital beträgt **80.000 €**. Welche Rechtsform mit den besten Finanzierungsmöglichkeiten laut Tabelle kann es mit diesem Startkapital gründen?
+    antwort: |-
+      **AG** – „hervorragend“: kleine EK-Anteile, Handel an Börse, Kapitalmarktzugang für FF; Mindesteigenkapital 50.000 € ✓.
+      (SE: Finanzierung „wie AG“, aber Mindesteigenkapital 120.000 € > 80.000 €.)
+
+  - typ: anwendung
+    folien: [43, 45]
+    deckt: [f45.haftung, f43.personen]
+    frage: |-
+      Eine Gründerin will **allein** gründen und allein entscheiden, hat **kein Startkapital** und nimmt in Kauf, notfalls auch **privat zu haften**. Welche Rechtsform?
+    antwort: |-
+      **Einzelunternehmen** – eine Person, Leitung beim Eigentümer, kein Mindesteigenkapital, Haftung uneingeschränkt mit Betriebs- und Privatvermögen.
+
+  - typ: anwendung
+    folien: [45]
+    deckt: [f45.haftung, f45.finanzierung]
+    frage: |-
+      Ein Investor will einer Personengesellschaft **Kapital geben**, aber **nur eingeschränkt haften** und **nicht mitleiten**. Welche Rechtsform laut Tabelle der Personengesellschaften – und welche Rolle?
+    antwort: |-
+      **KG** als **Kommanditist** (Teilhafter): eingeschränkte Haftung, keine Leitung, beschränkte Kontrollrechte. Genau deshalb finanziert sich die KG besser als EU und OHG.
+
+  - typ: anwendung
+    folien: [45]
+    deckt: [f45.haftung, f45.leitung]
+    frage: |-
+      Zwei Partner wollen **gemeinsam führen**, haften beide **voll**, haben **kein Mindestkapital** und wollen **keine Publizitätspflicht**. Welche Rechtsform laut Tabelle der Personengesellschaften?
+    antwort: |-
+      **OHG** – Leitung durch alle oder einzelne Gesellschafter (§ 114), uneingeschränkte Haftung aller Gesellschafter als Gesamtschuldner (§ 128), kein Mindesteigenkapital, Publizität nicht erforderlich (außer Großunternehmen).
+
+  - typ: anwendung
+    folien: [46]
+    deckt: [f46.finanzierung, f46.haftung]
+    frage: |-
+      Viele Landwirte wollen sich mit **kleinen Anteilen** zusammenschließen; Mitglieder sollen **ein- und austreten** können, und es gibt **kein Mindestkapital**. Welche Rechtsform?
+    antwort: |-
+      **Genossenschaft (eG)** – kleine Stückelung, Austrittsrecht (Nachteil: schwankende EK-Basis), keine Vorschrift zum Mindesteigenkapital; Mitglieder haften eingeschränkt, ggf. Nachschusspflicht.
+
+  # ---------------------------------------------------------------- Ziele F. 47–50
+  - typ: skizze
+    folien: [47]
+    deckt: [f47.skizze, f47.formal, f47.sach]
+    frage: |-
+      Skizziere die **Pyramide der Unternehmensziele** (Ebenen, Rangfolge, Merkmale je Ebene).
+    antwort: |-
+      {{bild:kap2_zielpyramide|Zielpyramide}}
+
+      - Spitze: **1. Formalziele (Erfolgsziele)** – übergeordnet; richten sich am unmittelbaren Erfolg aus; Ausgangspunkt ökonomisches Prinzip; Gewinn, Produktivität, Wirtschaftlichkeit, Rentabilität
+      - Basis: **2. Sachziele** – richten sich an den Formalzielen aus; konkretes Handeln in den Funktionen; tragen zur Steuerung des Unternehmens bei
+
+  - typ: maske
+    folien: [47]
+    deckt: [f47.formal]
+    frage: |-
+      Was kennzeichnet **Formalziele (Erfolgsziele)**? (vier Punkte – verdeckt)
+
+      {{bild:kap2_zielpyramide-ohne-formalziele-merkmale|Zielpyramide, Merkmale der Formalziele verdeckt}}
+    antwort: |-
+      - „Stellen übergeordnete Ziele dar, an denen sich Unternehmen ausrichten“
+      - „Richten sich am unmittelbaren Erfolg der betrieblichen Tätigkeit aus“
+      - „Ausgangspunkt ist stets das ökonomische Prinzip“
+      - „Klassische Formalziele: Gewinn, Produktivität, Wirtschaftlichkeit, Rentabilität“
+
+  - typ: maske
+    folien: [47]
+    deckt: [f47.sach]
+    frage: |-
+      Was kennzeichnet **Sachziele**? (drei Punkte – verdeckt)
+
+      {{bild:kap2_zielpyramide-ohne-sachziele-merkmale|Zielpyramide, Merkmale der Sachziele verdeckt}}
+    antwort: |-
+      - „Richten sich an den Formalzielen aus“
+      - „Beziehen sich auf das konkrete Handeln in den verschiedenen Funktionen in Unternehmen“
+      - „Tragen zur Steuerung des Unternehmens bei“
+
+  - typ: aufzaehlung
+    folien: [47]
+    deckt: [f47.formal]
+    frage: |-
+      Nenne die vier **klassischen Formalziele**.
+    antwort: |-
+      **Gewinn · Produktivität · Wirtschaftlichkeit · Rentabilität**
+
+  - typ: rueckwaerts
+    folien: [47]
+    deckt: [f47.formal]
+    frage: |-
+      Welche Zielkategorie „richtet sich am unmittelbaren Erfolg der betrieblichen Tätigkeit aus“ und hat stets das ökonomische Prinzip als Ausgangspunkt?
+    antwort: |-
+      **Formalziele (Erfolgsziele)**
+
+  - typ: rueckwaerts
+    folien: [47]
+    deckt: [f47.sach]
+    frage: |-
+      Welche Zielkategorie „bezieht sich auf das konkrete Handeln in den verschiedenen Funktionen“ und trägt zur Steuerung des Unternehmens bei?
+    antwort: |-
+      **Sachziele**
+
+  - typ: verwechslung
+    folien: [47, 50]
+    deckt: [f47.formal, f47.sach, f50.steuerung]
+    frage: |-
+      **Formalziele** vs. **Sachziele** – Unterschied in zwei Zeilen?
+    antwort: |-
+      - **Formalziele (Erfolgsziele):** übergeordnet, richten sich am unmittelbaren Erfolg der betrieblichen Tätigkeit aus (Gewinn, Produktivität, Wirtschaftlichkeit, Rentabilität)
+      - **Sachziele:** konkrete Handlungsziele in den Funktionen, richten sich an den Formalzielen aus und dienen der Steuerung des Unternehmens
+
+  - typ: formel
+    folien: [48]
+    deckt: [f48.produktivitaet]
+    frage: |-
+      **Produktivität**: Formel und Beschreibung?
+    antwort: |-
+      **Produktivität = Output / Input**
+      - „weist auf das Fehlen von Wertrelationen hin“
+      - „beschreibt mengenmäßiges Verhältnis von Output und Input der Produktionsfaktoren“
+
+  - typ: formel
+    folien: [48]
+    deckt: [f48.wirtschaftlichkeit]
+    frage: |-
+      **Wirtschaftlichkeit**: Formel und Beschreibung?
+    antwort: |-
+      **Wirtschaftlichkeit = Ertrag / Aufwand**
+      - „bezeichnet einen wertmäßigen Begriff“
+      - „beschreibt Verhältnis zwischen dem in Geld bewerteten Ertrag und dem in Geld bewerteten Einsatz an Produktionsfaktoren“
+
+  - typ: formel
+    folien: [48]
+    deckt: [f48.gewinn]
+    frage: |-
+      Wie errechnet sich der **Gewinn**?
+    antwort: |-
+      **Gewinn = Erlöse − Kosten**
+      „Gewinn errechnet sich aus der Differenz von Erlösen und Kosten des Unternehmens“
+
+  - typ: formel
+    folien: [48]
+    deckt: [f48.rentabilitaet]
+    frage: |-
+      **Rentabilität**: Formel und Beschreibung?
+    antwort: |-
+      **Rentabilität = Gewinn / Ø Kapital**
+      „Rentabilität bezeichnet Verhältnis von Periodenerfolg und Kapital des Unternehmens“
+
+  - typ: rueckwaerts
+    folien: [48]
+    deckt: [f48.produktivitaet]
+    frage: |-
+      Welche Kennzahl „weist auf das Fehlen von Wertrelationen hin“?
+    antwort: |-
+      **Produktivität** (mengenmäßig: Output / Input).
+
+  - typ: rueckwaerts
+    folien: [48]
+    deckt: [f48.wirtschaftlichkeit]
+    frage: |-
+      Welche Kennzahl „bezeichnet einen wertmäßigen Begriff“ und setzt den in Geld bewerteten Ertrag ins Verhältnis zum in Geld bewerteten Einsatz an Produktionsfaktoren?
+    antwort: |-
+      **Wirtschaftlichkeit** (Ertrag / Aufwand).
+
+  - typ: rueckwaerts
+    folien: [48]
+    deckt: [f48.rentabilitaet]
+    frage: |-
+      Welche Kennzahl setzt den **Periodenerfolg** ins Verhältnis zum **Kapital** des Unternehmens?
+    antwort: |-
+      **Rentabilität** (Gewinn / Ø Kapital).
+
+  - typ: verwechslung
+    folien: [48]
+    deckt: [f48.produktivitaet, f48.wirtschaftlichkeit, f07-48.verwechslung]
+    frage: |-
+      **Produktivität** vs. **Wirtschaftlichkeit** – woran erkennst du, welche gemeint ist?
+    antwort: |-
+      - **Produktivität:** **mengenmäßig**, ohne Wertrelationen – z. B. Stück je Stunde
+      - **Wirtschaftlichkeit:** **wertmäßig**, in Geld bewertet – Ertrag (€) / Aufwand (€)
+
+      *Falle: Produktivität in € ausrechnen.*
+
+  - typ: verwechslung
+    folien: [7, 48]
+    deckt: [f07.effizienz, f48.wirtschaftlichkeit, f07-48.verwechslung]
+    frage: |-
+      **Effizienz** (F. 7) vs. **Wirtschaftlichkeit** (F. 48) – Formeln?
+    antwort: |-
+      - Effizienz = **Erfolg** / Aufwand
+      - Wirtschaftlichkeit = **Ertrag** / Aufwand (ausdrücklich in Geld bewertet)
+
+      Gleiche Bauart (Ergebnis im Verhältnis zum Aufwand) – nicht für völlig verschiedene Dinge halten, aber die Formeln exakt wiedergeben.
+
+  - typ: verwechslung
+    folien: [7, 48]
+    deckt: [f07-48.verwechslung]
+    frage: |-
+      Produktivität · Wirtschaftlichkeit · Effizienz: Zähler, Nenner, Einheit?
+    antwort: |-
+      | Kennzahl | Formel | rechnet in |
+      |---|---|---|
+      | Produktivität | Output / Input | Mengen (z. B. Stück/h) |
+      | Wirtschaftlichkeit | Ertrag / Aufwand | Geld (€/€, ohne Einheit) |
+      | Effizienz | Erfolg / Aufwand | Skript nennt keine Einheit (F. 7); Erfolg und Aufwand in € → ohne Einheit |
+
+      *Einheiten abgeleitet aus „mengenmäßig“/„wertmäßig“ (F. 48).*
+
+  - typ: verwechslung
+    folien: [48]
+    deckt: [f48.gewinn, f48.rentabilitaet, f07-48.verwechslung]
+    frage: |-
+      **Gewinn** vs. **Rentabilität** – was unterscheidet die beiden Kennzahlen?
+    antwort: |-
+      - **Gewinn** = Erlöse − Kosten → **Differenz** in €
+      - **Rentabilität** = Gewinn / Ø Kapital → **Verhältnis** (in %)
+
+  - typ: verwechslung
+    folien: [48]
+    deckt: [f48.wirtschaftlichkeit, f48.rentabilitaet, f07-48.verwechslung]
+    frage: |-
+      **Wirtschaftlichkeit** vs. **Rentabilität** – was steht jeweils im Zähler und Nenner?
+    antwort: |-
+      - Wirtschaftlichkeit = **Ertrag / Aufwand**
+      - Rentabilität = **Gewinn / Ø Kapital**
+
+  - typ: anwendung
+    folien: [48]
+    deckt: [f48.produktivitaet]
+    frage: |-
+      Die Werksleitung will wissen, **wie viele Gehäuse je Arbeitsstunde** gefertigt werden. Welche Kennzahl?
+    antwort: |-
+      **Produktivität** = Output / Input (mengenmäßig).
+
+  - typ: anwendung
+    folien: [48]
+    deckt: [f48.rentabilitaet]
+    frage: |-
+      Eine Eigentümerin will wissen, wie viel **Gewinn ihr eingesetztes Kapital** abwirft. Welche Kennzahl?
+    antwort: |-
+      **Rentabilität** = Gewinn / Ø Kapital.
+
+  # ---------------------------------------------------------------- Rechenkarten (neue Zahlen)
+  - typ: rechnen
+    folien: [7]
+    deckt: [f07.effizienz]
+    rechnung:
+      - {art: effizienz, erfolg: 65000, aufwand: 50000, ergebnis: "1,3"}
+      - {art: effizienz, erfolg: 96000, aufwand: 80000, ergebnis: "1,2"}
+    frage: |-
+      Effizienz zweier Vorrichtungen: **A** – Aufwand 50.000 €, Erfolg 65.000 €; **B** – Aufwand 80.000 €, Erfolg 96.000 €. Welche ist effizienter, welche bringt mehr absoluten Erfolg?
+    antwort: |-
+      Effizienz = Erfolg / Aufwand
+      - A: 65.000 € / 50.000 € = **1,3**
+      - B: 96.000 € / 80.000 € = **1,2**
+
+      **A ist effizienter**; **B** bringt den größeren absoluten Erfolg (96.000 € > 65.000 €).
+
+  - typ: rechnen
+    folien: [48]
+    deckt: [f48.produktivitaet]
+    rechnung: {art: produktivitaet, output: 2400, input: 600, ergebnis: "4 Gehäuse je Maschinenstunde"}
+    frage: |-
+      Eine Fräserei fertigt **2.400 Gehäuse in 600 Maschinenstunden**. Produktivität?
+    antwort: |-
+      Produktivität = Output / Input = 2.400 Gehäuse / 600 h = **4 Gehäuse je Maschinenstunde**
+
+  - typ: rechnen
+    folien: [48]
+    deckt: [f48.produktivitaet]
+    rechnung: {art: aenderung_prozent, alt: 3.2, neu: 4, ergebnis: "25 %"}
+    frage: |-
+      Im Vorjahr lag die Produktivität der Fräserei bei **3,2 Gehäusen/h**, jetzt bei **4 Gehäusen/h**. Um wie viel Prozent ist sie gestiegen?
+    antwort: |-
+      (4 − 3,2) / 3,2 = 0,8 / 3,2 = 0,25 → **25 %** mehr.
+
+      *Rechenhilfe (nicht im Skript): relative Änderung = (neu − alt) / alt.*
+
+  - typ: anwendung
+    folien: [49]
+    deckt: [f49.vergleiche]
+    frage: |-
+      Die Produktivität wird mit dem **Vorjahr** verglichen. Welche Vergleichsart ist das?
+    antwort: |-
+      **Periodenvergleich**.
+
+      Zuordnung aus dem Namen abgeleitet – das Skript erläutert die Vergleichsarten nicht einzeln.
+
+  - typ: rechnen
+    folien: [48]
+    deckt: [f48.produktivitaet]
+    rechnung: {art: produktivitaet, output: 1800, input: 240, ergebnis: "7,5 Teile je Arbeitsstunde"}
+    frage: |-
+      Eine Montagelinie baut **1.800 Teile mit 240 Arbeitsstunden**. Produktivität?
+    antwort: |-
+      1.800 Teile / 240 h = **7,5 Teile je Arbeitsstunde**
+
+  - typ: rechnen
+    folien: [48]
+    deckt: [f48.wirtschaftlichkeit]
+    rechnung: {art: wirtschaftlichkeit, ertrag: 4.2, aufwand: 3.5, ergebnis: "1,2"}
+    frage: |-
+      Ertrag **4,2 Mio. €**, Aufwand **3,5 Mio. €**. Wirtschaftlichkeit?
+    antwort: |-
+      Wirtschaftlichkeit = Ertrag / Aufwand = 4,2 Mio. € / 3,5 Mio. € = **1,2** (ohne Einheit)
+      → Je 1 € Aufwand entstehen 1,20 € Ertrag.
+
+  - typ: rechnen
+    folien: [48]
+    deckt: [f48.wirtschaftlichkeit]
+    rechnung: {art: wirtschaftlichkeit, ertrag: 1.8, aufwand: 2.0, ergebnis: "0,9"}
+    frage: |-
+      Ertrag **1,8 Mio. €**, Aufwand **2,0 Mio. €**. Wirtschaftlichkeit – und was bedeutet das Ergebnis?
+    antwort: |-
+      1,8 / 2,0 = **0,9** → Der Aufwand ist größer als der Ertrag.
+
+      *Ergänzung (abgeleitet, nicht im Skript): Ein Wert unter 1 heißt, der Betrieb arbeitet unwirtschaftlich.*
+
+  - typ: rechnen
+    folien: [48]
+    deckt: [f48.gewinn]
+    rechnung: {art: gewinn, erloese: 4.2, kosten: 3.5, ergebnis: "0,7 Mio. €"}
+    frage: |-
+      Erlöse **4,2 Mio. €**, Kosten **3,5 Mio. €**. Gewinn?
+    antwort: |-
+      Gewinn = Erlöse − Kosten = 4,2 Mio. € − 3,5 Mio. € = **0,7 Mio. €**
+
+  - typ: rechnen
+    folien: [48]
+    deckt: [f48.gewinn]
+    rechnung: {art: gewinn, erloese: 2.1, kosten: 2.4, ergebnis: "−0,3 Mio. €"}
+    frage: |-
+      Erlöse **2,1 Mio. €**, Kosten **2,4 Mio. €**. Gewinn?
+    antwort: |-
+      2,1 Mio. € − 2,4 Mio. € = **−0,3 Mio. €** → ein **Verlust** von 0,3 Mio. €.
+
+  - typ: rechnen
+    folien: [48]
+    deckt: [f48.rentabilitaet]
+    rechnung: {art: rentabilitaet, gewinn: 0.7, kapital: 5.0, ergebnis: "14 %"}
+    frage: |-
+      Gewinn **0,7 Mio. €**, durchschnittliches Kapital **5,0 Mio. €**. Rentabilität?
+    antwort: |-
+      Rentabilität = Gewinn / Ø Kapital = 0,7 / 5,0 = 0,14 = **14 %**
+
+  - typ: rechnen
+    folien: [48]
+    deckt: [f48.rentabilitaet]
+    rechnung:
+      - {art: rentabilitaet, gewinn: 0.45, kapital_anfang: 2.8, kapital_ende: 3.2, ergebnis: "15 %"}
+      - {art: rentabilitaet, gewinn: 0.45, kapital: 3.2, ergebnis: "14,1 %"}
+    frage: |-
+      Gewinn **0,45 Mio. €**; Kapital zu Jahresbeginn **2,8 Mio. €**, am Jahresende **3,2 Mio. €**. Rentabilität?
+    antwort: |-
+      Ø Kapital = (2,8 + 3,2) / 2 = 3,0 Mio. €
+      Rentabilität = 0,45 / 3,0 = **15 %**
+
+      *Falle:* mit dem Endkapital gerechnet wären es nur 14,1 % – laut Formel durch das **Ø Kapital** teilen.
+      Ergänzung: Die Mittelwert-Formel für Ø Kapital steht nicht im Skript (Lernzettel).
+
+  - typ: rechnen
+    folien: [49]
+    deckt: [f49.vergleiche]
+    rechnung:
+      - {art: prozentpunkte, alt: 10, neu: 12, ergebnis: "2 Prozentpunkte"}
+      - {art: aenderung_prozent, alt: 10, neu: 12, ergebnis: "20 %"}
+    frage: |-
+      Die Rentabilität steigt von **10 %** auf **12 %**. Um wie viele **Prozentpunkte** und um wie viel **Prozent**?
+    antwort: |-
+      - 12 % − 10 % = **2 Prozentpunkte**
+      - 2 / 10 = **20 %** mehr (relativ)
+
+      *Falle:* „+2 %“ schreiben.
+      *Ergänzung: Die Unterscheidung Prozentpunkte/Prozent steht nicht im Skript (Rechenhilfe für die Vergleiche auf F. 49).*
+
+  # ---------------------------------------------------------------- Vergleiche F. 49
+  - typ: aufzaehlung
+    folien: [49]
+    deckt: [f49.vergleiche]
+    frage: |-
+      Wodurch lässt sich die **Aussagekraft von Kennzahlen** steigern? Nenne die sechs Möglichkeiten.
+    antwort: |-
+      Durch **Vergleiche**:
+      1. Soll-Ist-Vergleiche
+      2. Betriebsvergleiche
+      3. Branchenvergleiche
+      4. Periodenvergleiche
+      5. Opportunitätskostenanalyse
+      6. Berücksichtigung des Risikos
+
+  - typ: luecke
+    folien: [49]
+    deckt: [f49.vergleiche]
+    frage: |-
+      Aussagekraft von Kennzahlen durch Vergleiche: **?** · **?** · Branchenvergleiche · Periodenvergleiche · Opportunitätskostenanalyse · Berücksichtigung des Risikos
+    antwort: |-
+      **Soll-Ist-Vergleiche** · **Betriebsvergleiche**
+
+  - typ: luecke
+    folien: [49]
+    deckt: [f49.vergleiche]
+    frage: |-
+      Aussagekraft von Kennzahlen durch Vergleiche: Soll-Ist-Vergleiche · Betriebsvergleiche · **?** · **?** · Opportunitätskostenanalyse · Berücksichtigung des Risikos
+    antwort: |-
+      **Branchenvergleiche** · **Periodenvergleiche**
+
+  - typ: luecke
+    folien: [49]
+    deckt: [f49.vergleiche]
+    frage: |-
+      Aussagekraft von Kennzahlen durch Vergleiche: Soll-Ist-Vergleiche · Betriebsvergleiche · Branchenvergleiche · Periodenvergleiche · **?** · **?**
+    antwort: |-
+      **Opportunitätskostenanalyse** · **Berücksichtigung des Risikos**
+
+  - typ: anwendung
+    folien: [49]
+    deckt: [f49.vergleiche]
+    frage: |-
+      Geplant war eine Rentabilität von **14 %**, erreicht wurden **11 %**. Welche Vergleichsart ist das?
+    antwort: |-
+      **Soll-Ist-Vergleich** (Plan gegen Ergebnis).
+
+      Zuordnung aus dem Namen abgeleitet – das Skript erläutert die Vergleichsarten nicht einzeln.
+
+  - typ: anwendung
+    folien: [49]
+    deckt: [f49.vergleiche]
+    frage: |-
+      Die Rentabilität eines Maschinenbauers wird mit dem **Durchschnitt aller Maschinenbauer** verglichen. Welche Vergleichsart?
+    antwort: |-
+      **Branchenvergleich**. (Vergleich mit einem bestimmten anderen Unternehmen: Betriebsvergleich; mit dem Vorjahr: Periodenvergleich.)
+
+      Zuordnung aus dem Namen abgeleitet.
+
+  - typ: fakt
+    folien: [48, 49]
+    deckt: [f49.absolut]
+    frage: |-
+      F. 49 spricht von **absoluten und relativen Zielen**. Welches Formalziel ist absolut, welche sind relativ?
+    antwort: |-
+      - **absolut:** Gewinn (Differenz in €)
+      - **relativ:** Produktivität, Wirtschaftlichkeit, Rentabilität (Verhältnisse)
+
+      Ergänzung: aus den Formeln auf F. 48 abgeleitet; F. 49 nennt nur die Überschrift.
+
+  # ---------------------------------------------------------------- Sachziele F. 50
+  - typ: skizze
+    folien: [50]
+    deckt: [f50.steuerung, f50.beispiele]
+    frage: |-
+      Skizziere, wie **Formalziele, Sachziele und betriebliche Tätigkeiten** zusammenhängen – mit je einem Sachziel pro Funktion.
+    antwort: |-
+      {{bild:kap2_zielhierarchie|Formalziele, Sachziele, betriebliche Tätigkeiten}}
+
+      Formalziele (Erfolgsziele): Produktivität · Wirtschaftlichkeit · Rentabilität und Gewinn
+      → **Sachziele**: Marketingziele (z. B. Umsatz) · Ziele der Beschaffung (z. B. Kosten senken) · Ziele der Produktion (z. B. Effizienz) · Ziele der Forschung & Entwicklung (z. B. neue Produkte)
+      → **betriebliche Tätigkeiten**
+
+  - typ: definition
+    folien: [50]
+    deckt: [f50.steuerung]
+    frage: |-
+      Wie beschreibt das Skript Sachziele in der Überschrift des Schaubilds „Formalziele → Sachziele → betriebliche Tätigkeiten“? (Wortlaut)
+    antwort: |-
+      „Sachziele sind konkrete Handlungsziele und dienen der Steuerung des Unternehmens“
+
+  - typ: maske
+    folien: [50]
+    deckt: [f50.steuerung]
+    frage: |-
+      Welche Formalziele stehen in den **drei verdeckten Kästen** über den Sachzielen?
+
+      {{bild:kap2_zielhierarchie-ohne-formalziele|Zielhierarchie, Formalziele verdeckt}}
+    antwort: |-
+      **Produktivität · Wirtschaftlichkeit · Rentabilität und Gewinn**
+
+      {{bild:kap2_zielhierarchie|Zielhierarchie}}
+
+  - typ: maske
+    folien: [50]
+    deckt: [f50.beispiele]
+    frage: |-
+      Welche **Marketingziele** nennt das Skript (verdeckt)?
+
+      {{bild:kap2_zielhierarchie-ohne-marketing|Zielhierarchie, Marketingziele verdeckt}}
+    antwort: |-
+      Umsatz · Bekanntheit · Kundenzufriedenheit · …
+
+      {{bild:kap2_zielhierarchie|Zielhierarchie}}
+
+  - typ: maske
+    folien: [50]
+    deckt: [f50.beispiele]
+    frage: |-
+      Welche **Ziele der Beschaffung** nennt das Skript (verdeckt)?
+
+      {{bild:kap2_zielhierarchie-ohne-beschaffung|Zielhierarchie, Ziele der Beschaffung verdeckt}}
+    antwort: |-
+      Prozesse vereinfachen · Kosten senken · …
+
+      {{bild:kap2_zielhierarchie|Zielhierarchie}}
+
+  - typ: maske
+    folien: [50]
+    deckt: [f50.beispiele, f50.unst]
+    frage: |-
+      Welche **Ziele der Produktion** nennt das Skript (verdeckt)?
+
+      {{bild:kap2_zielhierarchie-ohne-produktion|Zielhierarchie, Ziele der Produktion verdeckt}}
+    antwort: |-
+      Effizienz · Produktivität · …
+
+      {{bild:kap2_zielhierarchie|Zielhierarchie}}
+
+  - typ: maske
+    folien: [50]
+    deckt: [f50.beispiele]
+    frage: |-
+      Welche **Ziele der Forschung & Entwicklung** nennt das Skript (verdeckt)?
+
+      {{bild:kap2_zielhierarchie-ohne-forschung-entwicklung|Zielhierarchie, F&E-Ziele verdeckt}}
+    antwort: |-
+      Neue Technologien · Neue Produkte · …
+
+      {{bild:kap2_zielhierarchie|Zielhierarchie}}
+
+  - typ: anwendung
+    folien: [47, 50]
+    deckt: [f47.formal]
+    frage: |-
+      Formalziel oder Sachziel? **„Eine Rentabilität von 15 % erreichen.“**
+    antwort: |-
+      **Formalziel** (Erfolgsziel) – Rentabilität ist ein klassisches Formalziel.
+
+  - typ: anwendung
+    folien: [47, 50]
+    deckt: [f50.beispiele]
+    frage: |-
+      Formalziel oder Sachziel? **„Die Bekanntheit der Marke in Norddeutschland steigern.“**
+    antwort: |-
+      **Sachziel** – Marketingziel (Bekanntheit).
+
+  - typ: anwendung
+    folien: [47, 50]
+    deckt: [f50.beispiele]
+    frage: |-
+      Formalziel oder Sachziel? **„Den Bestellprozess für Normteile vereinfachen.“**
+    antwort: |-
+      **Sachziel** – Ziel der Beschaffung (Prozesse vereinfachen).
+
+  - typ: anwendung
+    folien: [47, 50]
+    deckt: [f47.formal]
+    frage: |-
+      Formalziel oder Sachziel? **„Einen Gewinn von 3 Mio. € erzielen.“**
+    antwort: |-
+      **Formalziel** – Gewinn ist ein klassisches Formalziel.
+
+  - typ: anwendung
+    folien: [47, 50]
+    deckt: [f50.beispiele]
+    frage: |-
+      Formalziel oder Sachziel? **„Bis 2028 zwei neue Produkte zur Serienreife bringen.“**
+    antwort: |-
+      **Sachziel** – Ziel der Forschung & Entwicklung (neue Produkte).
+
+  - typ: anwendung
+    folien: [47, 50]
+    deckt: [f50.beispiele]
+    frage: |-
+      Formalziel oder Sachziel? **„Die Kundenzufriedenheit im Service steigern.“**
+    antwort: |-
+      **Sachziel** – Marketingziel (Kundenzufriedenheit).
+
+  - typ: unstimmigkeit
+    folien: [47, 48, 50]
+    deckt: [f50.unst]
+    frage: |-
+      **Produktivität** steht auf F. 47/48 als **Formalziel**, auf F. 50 aber als **Ziel der Produktion** (Sachziel). Wie löst du das in der Klausur auf?
+    antwort: |-
+      Beide Rollen nennen (Auflösung abgeleitet, Lernzettel – nicht im Skript):
+      - als **Erfolgsgröße des ganzen Unternehmens** → Formalziel (F. 47/48)
+      - als **konkrete Vorgabe für die Produktion** (z. B. Stück je Stunde in der Montage) → Sachziel (F. 50)
+
+      Hinweis: „Effizienz“ (F. 7: Erfolg / Aufwand) steht auf F. 50 ebenfalls unter den Zielen der Produktion, ist auf F. 47/48 aber kein Formalziel.
+
+  - typ: klausurfrage
+    w: W13
+    folien: [47, 50]
+    deckt: [f47.formal, f47.sach, f50.beispiele]
+    frage: |-
+      **Wiederholungsfrage:** Welche zwei Zielkategorien unterscheidet man in der BWL grundsätzlich? Beschreiben Sie diese kurz und nennen Sie Beispiele.
+    antwort: |-
+      **1. Formalziele (Erfolgsziele)**
+      - übergeordnete Ziele, an denen sich Unternehmen ausrichten
+      - richten sich am unmittelbaren Erfolg der betrieblichen Tätigkeit aus
+      - Ausgangspunkt ist stets das ökonomische Prinzip
+      - Beispiele: **Gewinn, Produktivität, Wirtschaftlichkeit, Rentabilität**
+
+      **2. Sachziele**
+      - richten sich an den Formalzielen aus
+      - beziehen sich auf das konkrete Handeln in den Funktionen
+      - tragen zur Steuerung des Unternehmens bei
+      - Beispiele: Umsatz, Bekanntheit (Marketing) · Prozesse vereinfachen, Kosten senken (Beschaffung) · Effizienz (Produktion) · neue Produkte (F&E)

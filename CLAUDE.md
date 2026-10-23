@@ -5,8 +5,12 @@ Maschinenbau, Ostfalia (BM1b, PO2025). Karteikarten zum Import in die App StudyC
 ```
 <fach>/karten/   CSV-Dateien zum Import, eine pro Kapitel oder Thema
 <fach>/bilder/   PNG-Bilder, die in den Karten verlinkt sind
+<fach>/quellen/  optional: Kartenquelle (YAML), Bildausschnitte (YAML), Abdeckungsmatrix (MD)
 werkzeuge/       stil.py – einheitlicher Diagrammstil
+                 karten.py – CSV aus YAML bauen und prüfen (Abdeckung, LaTeX, Rechnungen, Wortlaut, Links)
+                 folienbilder.py – Schaubilder aus dem Skript-PDF ausschneiden und Felder verdecken
 ```
+Für größere Kartensätze die Karten in `<fach>/quellen/<kapitel>_karten.yaml` pflegen und die CSV mit `werkzeuge/karten.py` erzeugen (Aufruf und Format stehen oben in den Werkzeugen); Vorlage: `bwl/quellen/`. Das Skript-PDF wird nur als Pfad übergeben, nie eingecheckt.
 Fächer: bwl, mathe1, ingenieurinformatik1, konstruktionsgrundlagen, cad, werkstoffkunde-labor. Für ein neues Fach denselben Aufbau anlegen.
 
 **Dieses Repo ist öffentlich.** Die App lädt die Bilder über öffentliche Links. Skripte (PDF) gehören NICHT hierher, sie liegen im privaten Repo `mason1-glitch/studium` (`<fach>/skripte/`, fertige Lernzettel in `<fach>/lernzettel/`). Dieses Repo bei Bedarf als Quelle hinzuziehen.
