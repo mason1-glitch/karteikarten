@@ -1,0 +1,108 @@
+"Wie rechnest du einen Winkel von **Grad** in **Bogenmaß** um?","**α (Bogenmaß) = α (Grad) · π / 180°**
+
+![Einheitskreis mit allen wichtigen Winkeln](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_einheitskreis-uebersicht.png)
+
+- Merkhilfe: 180° = π, 360° = 2π
+- Beispiel aus der Vorlesung: 2° · π / 180° = 0,0349 rad"
+"Gib den Winkel im **Bogenmaß** an: **0°**","**0° = 0**
+
+![Einheitskreis: 0° = 0](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-0-grad.png)
+
+- Rechnung: 0° · π / 180° = 0
+- Lage: auf der positiven x-Achse"
+"Gib den Winkel im **Bogenmaß** an: **30°**","**30° = π/6**
+
+![Einheitskreis: 30° = π/6](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-30-grad.png)
+
+- Rechnung: 30° · π / 180° = 30/180 · π = π/6
+- Lage: I. Quadrant"
+"Gib den Winkel im **Bogenmaß** an: **45°**","**45° = π/4**
+
+![Einheitskreis: 45° = π/4](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-45-grad.png)
+
+- Rechnung: 45° · π / 180° = 45/180 · π = π/4
+- Lage: I. Quadrant"
+"Gib den Winkel im **Bogenmaß** an: **60°**","**60° = π/3**
+
+![Einheitskreis: 60° = π/3](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-60-grad.png)
+
+- Rechnung: 60° · π / 180° = 60/180 · π = π/3
+- Lage: I. Quadrant"
+"Gib den Winkel im **Bogenmaß** an: **90°**","**90° = π/2**
+
+![Einheitskreis: 90° = π/2](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-90-grad.png)
+
+- Rechnung: 90° · π / 180° = 90/180 · π = π/2
+- Lage: auf der positiven y-Achse"
+"Gib den Winkel im **Bogenmaß** an: **120°**","**120° = 2π/3**
+
+![Einheitskreis: 120° = 2π/3](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-120-grad.png)
+
+- Rechnung: 120° · π / 180° = 120/180 · π = 2π/3
+- Lage: II. Quadrant · Bezugswinkel 60° = π/3"
+"Gib den Winkel im **Bogenmaß** an: **135°**","**135° = 3π/4**
+
+![Einheitskreis: 135° = 3π/4](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-135-grad.png)
+
+- Rechnung: 135° · π / 180° = 135/180 · π = 3π/4
+- Lage: II. Quadrant · Bezugswinkel 45° = π/4"
+"Gib den Winkel im **Bogenmaß** an: **150°**","**150° = 5π/6**
+
+![Einheitskreis: 150° = 5π/6](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-150-grad.png)
+
+- Rechnung: 150° · π / 180° = 150/180 · π = 5π/6
+- Lage: II. Quadrant · Bezugswinkel 30° = π/6"
+"Gib den Winkel im **Bogenmaß** an: **180°**","**180° = π**
+
+![Einheitskreis: 180° = π](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-180-grad.png)
+
+- Rechnung: 180° · π / 180° = 180/180 · π = π
+- Lage: auf der negativen x-Achse"
+"Gib den Winkel im **Bogenmaß** an: **210°**","**210° = 7π/6**
+
+![Einheitskreis: 210° = 7π/6](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-210-grad.png)
+
+- Rechnung: 210° · π / 180° = 210/180 · π = 7π/6
+- Lage: III. Quadrant · Bezugswinkel 30° = π/6"
+"Gib den Winkel im **Bogenmaß** an: **225°**","**225° = 5π/4**
+
+![Einheitskreis: 225° = 5π/4](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-225-grad.png)
+
+- Rechnung: 225° · π / 180° = 225/180 · π = 5π/4
+- Lage: III. Quadrant · Bezugswinkel 45° = π/4"
+"Gib den Winkel im **Bogenmaß** an: **240°**","**240° = 4π/3**
+
+![Einheitskreis: 240° = 4π/3](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-240-grad.png)
+
+- Rechnung: 240° · π / 180° = 240/180 · π = 4π/3
+- Lage: III. Quadrant · Bezugswinkel 60° = π/3"
+"Gib den Winkel im **Bogenmaß** an: **270°**","**270° = 3π/2**
+
+![Einheitskreis: 270° = 3π/2](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-270-grad.png)
+
+- Rechnung: 270° · π / 180° = 270/180 · π = 3π/2
+- Lage: auf der negativen y-Achse"
+"Gib den Winkel im **Bogenmaß** an: **300°**","**300° = 5π/3**
+
+![Einheitskreis: 300° = 5π/3](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-300-grad.png)
+
+- Rechnung: 300° · π / 180° = 300/180 · π = 5π/3
+- Lage: IV. Quadrant · Bezugswinkel 60° = π/3"
+"Gib den Winkel im **Bogenmaß** an: **315°**","**315° = 7π/4**
+
+![Einheitskreis: 315° = 7π/4](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-315-grad.png)
+
+- Rechnung: 315° · π / 180° = 315/180 · π = 7π/4
+- Lage: IV. Quadrant · Bezugswinkel 45° = π/4"
+"Gib den Winkel im **Bogenmaß** an: **330°**","**330° = 11π/6**
+
+![Einheitskreis: 330° = 11π/6](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-330-grad.png)
+
+- Rechnung: 330° · π / 180° = 330/180 · π = 11π/6
+- Lage: IV. Quadrant · Bezugswinkel 30° = π/6"
+"Gib den Winkel im **Bogenmaß** an: **360°**","**360° = 2π**
+
+![Einheitskreis: 360° = 2π](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/mathe1/bilder/kap4_winkel-360-grad.png)
+
+- Rechnung: 360° · π / 180° = 360/180 · π = 2π
+- Lage: auf der positiven x-Achse"
