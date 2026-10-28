@@ -63,7 +63,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K13.018 | code_schreiben | Aufg. 6.5 | Zeige ein Liniendiagramm und ein Balkendiagramm **nebeneinander** in einer Abbildung, jeweils mit eigenem Tite |
 | K13.019 | unterschied | Aufg. 6.5 | Was ist der Unterschied zwischen `plt.title("…")` und `ax1.set_title("…")`? |
 | K13.020 | code_fehler | F. 208 · Aufg. 6.5 | Die gespeicherte Datei `stueckzahl.png` ist leer. Warum? ```python import matplotlib.pyplot as plt plt.bar(["L |
-| K13.021 | code_luecke | F. 208 · Aufg. 6.5 | Das Diagramm soll mit **300 dpi** als PNG gespeichert werden. Ergänze den Parameter. ```python import matplotl |
+| K13.021 | code_luecke | F. 208 · Aufg. 6.5 | Die Federkennlinie soll mit **300 dpi** als PNG gespeichert werden. Ergänze den Parameter. ```python import ma |
 | K13.022 | code_fehler | F. 205 | Welche Fehlermeldung erscheint? ```python import matplotlib.pyplot as plt zeit = [0, 1, 2] temp = [20, 25] plt |
 | K13.023 | begriff | F. 205 | Welche Bedingung müssen die Listen `x` und `y` bei `plt.plot(x, y)` erfüllen? |
 | K13.024 | code_luecke | Aufg. 6.4 | Ergänze die plotly-Funktion, die den Drehzahlverlauf als **Liniendiagramm** aus dem DataFrame zeichnet. ```pyt |

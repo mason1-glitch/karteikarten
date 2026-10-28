@@ -389,19 +389,19 @@ karten:
     aufgaben: ["6.5"]
     deckt: [c13.savefig]
     frage: |-
-      Das Diagramm soll mit **300 dpi** als PNG gespeichert werden. Ergänze den Parameter.
+      Die Federkennlinie soll mit **300 dpi** als PNG gespeichert werden. Ergänze den Parameter.
       ```python
       import matplotlib.pyplot as plt
-      plt.hist([1, 2, 2, 3, 3, 3], bins=3)
-      plt.savefig("verteilung.png", ___=300)
+      plt.plot([0, 10, 20], [0, 50, 100])
+      plt.savefig("kennlinie.png", ___=300)
       plt.show()
       ```
     antwort: |-
       `dpi`
       ```python
       import matplotlib.pyplot as plt
-      plt.hist([1, 2, 2, 3, 3, 3], bins=3)
-      plt.savefig("verteilung.png", dpi=300)
+      plt.plot([0, 10, 20], [0, 50, 100])
+      plt.savefig("kennlinie.png", dpi=300)
       plt.show()
       ```
       Die Datei landet im **aktuellen Arbeitsordner** (in Jupyter meist der Ordner des Notebooks). Das Skript (F. 208) sagt „im Speicherort des Programmskripts“ – das stimmt nur, wenn das Programm aus seinem eigenen Ordner gestartet wird.

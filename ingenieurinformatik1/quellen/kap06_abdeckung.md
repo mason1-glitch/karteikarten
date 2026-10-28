@@ -53,7 +53,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K06.014 | code_schreiben | F. 137 | Gib aus `datei = "messung_07.csv"` die Dateiendung (`csv`) aus – über die **letzten drei** Zeichen. |
 | K06.015 | code_ausgabe | F. 137 | Was gibt der Code aus? ```python code = "A1B2C3" print(code[0:6:2]) ``` |
 | K06.016 | code_luecke | F. 137 | Ergänze die Schrittweite, sodass nur die Ziffern `123` ausgegeben werden. ```python code = "A1B2C3" print(code |
-| K06.017 | code_ausgabe | F. 138 · Aufg. 4.1 | Was gibt der Code aus? ```python text = "Messstelle Kühlkreis Pumpe-2" print(text.find("Pumpe")) print(text.fi |
+| K06.017 | code_ausgabe | F. 138 · Aufg. 4.1 | Was gibt der Code aus? ```python text = "Messstelle Kühlkreis Pumpe-2" print(text.find("Pumpe")) ``` |
 | K06.018 | begriff | F. 138 | Was liefert `text.find("x")`, wenn `"x"` im Text **nicht** vorkommt? |
 | K06.019 | code_ausgabe | F. 138 · Aufg. 4.1 | Was gibt der Code aus? ```python eintrag = "A;B;C" erstes = eintrag.find(";") zweites = eintrag.find(";", erst |
 | K06.020 | code_schreiben | F. 137, 138 | Gib aus `zeile = "Temperatur=21.5"` nur den Teil **nach** dem `=` aus – mit find() und Slicing. |

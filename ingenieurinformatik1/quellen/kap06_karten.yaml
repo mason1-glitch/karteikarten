@@ -231,7 +231,7 @@ karten:
     frage: |-
       Welche Zeichen enthält der Ausschnitt `s[von:bis]`?
     antwort: |-
-      Alle Zeichen ab Index `von` (**eingeschlossen**) bis vor Index `bis` (**ausgeschlossen**) – also `bis - von` Zeichen, solange beide Grenzen im String liegen. Ragt `bis` über das Ende hinaus, endet der Ausschnitt einfach am Stringende (`"Welle"[2:10]` → `"lle"`).
+      Alle Zeichen ab Index `von` (**eingeschlossen**) bis vor Index `bis` (**ausgeschlossen**) – bei nicht-negativen Indizes innerhalb des Strings also `bis - von` Zeichen. Ergänzung: Ragt `bis` über das Ende hinaus, endet der Ausschnitt einfach am Stringende (`"Welle"[2:10]` → `"lle"`).
 
   - typ: code_schreiben
     folien: [137]
@@ -296,14 +296,12 @@ karten:
       ```python
       text = "Messstelle Kühlkreis Pumpe-2"
       print(text.find("Pumpe"))
-      print(text.find("Ventil"))
       ```
     antwort: |-
       ```text
       21
-      -1
       ```
-      find() liefert die Position, an der der Suchtext **beginnt** (F. 138). Ergänzung: Kommt er nicht vor, liefert find() `-1`.
+      find() liefert die Position, an der der Suchtext **beginnt** (F. 138); gezählt wird ab 0, Leerzeichen zählen mit.
     tests: [{p: 1, t: 1}]
 
   - typ: begriff

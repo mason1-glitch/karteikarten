@@ -54,10 +54,10 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K05.007 | code_fehler | F. 126 | Warum endet diese Schleife nie, und wie machst du sie sicher? ```python hub = 1 while hub != 10:     hub += 2  |
 | K05.008 | code_ausgabe | Aufg. 3.7 | Was gibt der Code aus? ```python messungen = 0 stabil = False while not stabil and messungen < 3:     messunge |
 | K05.009 | code_luecke | Aufg. 3.7 | Die Schleife soll weiterlaufen, solange die PIN **nicht** `4711` ist **und** weniger als 3 Versuche gemacht wu |
-| K05.010 | begriff | Aufg. 3.7 | Eine while-Schleife endet entweder bei richtigem Passwort **oder** nach 5 Fehlversuchen. Warum braucht man nac |
+| K05.010 | begriff | Aufg. 3.7 | Eine Tankfüllung läuft mit `while fuellstand < soll and messungen < 10:` – sie endet also beim Sollfüllstand * |
 | K05.011 | code_ausgabe | F. 125 · Aufg. 3.7 | Der Nutzer tippt nacheinander `WARN`, `FEHLER`, `OK`. Was gibt der Code aus? ```python status = "" while statu |
 | K05.012 | code_schreiben | F. 125 | Schreib Code, der so lange eine Drehzahl (Ganzzahl) einliest, bis sie **größer als 0** ist, und sie dann ausgi |
-| K05.013 | begriff | F. 125 · Aufg. 3.7 | Warum steht vor `while eingabe != passwort:` die Zeile `eingabe = ""`? |
+| K05.013 | begriff | F. 125 · Aufg. 3.7 | Warum steht vor `while status != "OK":` die Zeile `status = ""`? |
 | K05.014 | code_ausgabe | F. 143 | Was gibt der Code aus? ```python werte = [12.5, 13.0, 12.8] for w in werte:     print(w * 2) ``` |
 | K05.015 | code_ausgabe | F. 143 | Was gibt der Code aus? ```python for zeichen in "AB3":     print(zeichen) ``` |
 | K05.016 | code_schreiben | F. 143 · Aufg. 4.2 | Gegeben ist `durchmesser = [3.1, 2.9, 3.4]`. Gib jeden Wert mit der Einheit `mm` in einer eigenen Zeile aus (` |
@@ -86,5 +86,5 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K05.039 | code_fehler | Aufg. 4.4 | `Ventil` ist in der Liste, trotzdem erscheint `False`. Warum? ```python teile = ["Ventil", "Lager"] gefunden = |
 | K05.040 | code_schreiben | Aufg. 4.5 | Prüfe mit einer Merker-Variablen, ob in `messwerte = [2.1, 2.3, -0.4, 2.2]` ein negativer Wert vorkommt, und g |
 | K05.041 | code_ausgabe | Aufg. 3.10 | Was gibt der Code aus? Notiere `n` nach jedem Durchlauf. ```python n = 100 schritte = 0 while n > 1:     n = n |
-| K05.042 | code_ausgabe | F. 182 | Was gibt der Code aus? ```python for i in range(0, 10, 3):     letzter = i print(i, letzter) ``` |
+| K05.042 | code_ausgabe | F. 182 | Was gibt der Code aus? ```python for t in range(0, 10, 3):  # Messzeit in s     letzte_zeit = t print(t, letzt |
 | K05.043 | begriff | Aufg. 3.8, 5.2 | Wie findest du heraus, was eine Schleife Schritt für Schritt tut, **ohne** sie auszuführen? |

@@ -304,20 +304,20 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      def teile(a, b):
-          if b == 0:
+      def druck(kraft, flaeche):
+          if flaeche == 0:
               return None
-          return a / b
+          return kraft / flaeche
 
-      print(teile(6, 0))
-      print(teile(6, 4))
+      print(druck(600, 0))
+      print(druck(600, 400))
       ```
     antwort: |-
       ```text
       None
       1.5
       ```
-      `None` steht für *kein Ergebnis*. Der Aufrufer prüft das mit `if ergebnis is not None:`.
+      `None` steht für *kein Ergebnis*. Bei Fläche 0 gibt es keinen sinnvollen Druck; der Aufrufer prüft das mit `if p is not None:`.
     tests: [{p: 1, t: 1}]
 
   # ---------------------------------------------------------------- Parameter
@@ -453,15 +453,15 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      def zerlege(minuten):
-          return minuten // 60, minuten % 60
+      def zerlege(sekunden):
+          return sekunden // 60, sekunden % 60
 
-      h, m = zerlege(135)
-      print(h, "h", m, "min")
+      m, s = zerlege(200)
+      print(m, "min", s, "s")
       ```
     antwort: |-
       ```text
-      2 h 15 min
+      3 min 20 s
       ```
       `return a, b` gibt zwei Werte zurück (als Tupel); links vom `=` werden sie auf zwei Variablen verteilt.
     tests: [{p: 1, t: 1}]
@@ -751,21 +751,22 @@ karten:
     aufgaben: ["5.2"]
     deckt: [c09.trace]
     frage: |-
-      Was gibt der Code mit den Trace-Ausgaben aus?
+      Was gibt der Code mit der Trace-Ausgabe aus?
       ```python
-      def messen():
-          print(">>> messen gestartet")
-          return 21.5
+      def messen(nr):
+          print(">>> messen Sensor", nr)
+          return 20.0
 
-      print("Start")
-      wert = messen()
-      print("Wert:", wert)
+      summe = 0
+      for nr in [1, 2]:
+          summe += messen(nr)
+      print("Summe:", summe)
       ```
     antwort: |-
       ```text
-      Start
-      >>> messen gestartet
-      Wert: 21.5
+      >>> messen Sensor 1
+      >>> messen Sensor 2
+      Summe: 40.0
       ```
-      Die Trace-Ausgabe zeigt, wann die Funktion läuft: erst beim Aufruf in Zeile 6. Danach geht es mit dem Rückgabewert hinter der Aufrufstelle weiter.
+      Die Trace-Zeile erscheint bei **jedem** Aufruf – so sieht man, wie oft und mit welchem Wert die Funktion läuft.
     tests: [{p: 1, t: 1}]

@@ -33,7 +33,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | count(), sort(), reverse(), clear() | 1 | F. 145–146 | K07.023, K07.024 | 2 |
 | sort(key=funktion, reverse=…): nach eigenem Kriterium sortieren | 1 | F. 147 | K07.025, K07.026 | 2 |
 | Liste durchlaufen: for x in liste / for i in range(len(liste)) | 3 | F. 143, 148, 152 · Aufg. 3.8, 4.4 | K07.027, K07.028, K07.029, K07.030 | 4 |
-| in: prüfen, ob ein Wert in der Liste ist | 1 | Aufg. 3.8 | K07.031, K07.032 | 2 |
+| in: prüfen, ob ein Wert in der Liste ist | 1 | F. 119 · Aufg. 3.8 | K07.031, K07.032 | 2 |
 | enumerate(): Index und Element zugleich | 1 | Aufg. 4.4 | K07.033, K07.034 | 2 |
 | 2D-Liste: matrix[zeile][spalte] | 2 | F. 150–151 · Aufg. 4.3–4.5 | K07.035, K07.036, K07.037, K07.038 | 3 |
 | Verschachtelte Schleifen über eine 2D-Liste | 2 | F. 151–152 · Aufg. 4.3–4.5 | K07.039, K07.040, K07.041 | 3 |
@@ -80,8 +80,8 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K07.028 | unterschied | F. 143, 152 | Was ist der Unterschied zwischen `for x in liste:` und `for i in range(len(liste)):`? |
 | K07.029 | code_fehler | F. 143 | Alle Werte sollen verzehnfacht werden. Was gibt der Code aus, und wie korrigierst du ihn? ```python werte = [1 |
 | K07.030 | code_schreiben | F. 148 | Schreib eine Funktion `m_pro_s(kmh)`, die km/h in m/s umrechnet (÷ 3.6), und gib damit für jede Geschwindigkei |
-| K07.031 | code_ausgabe | Aufg. 3.8 | Was gibt der Code aus? ```python gesperrt = [7, 9] print(8 in gesperrt) print(9 in gesperrt) ``` |
-| K07.032 | code_luecke | Aufg. 3.8 | Nur Stationen, die **nicht** gesperrt sind, werden freigegeben. Ergänze die Lücke. ```python gesperrt = [7, 9] |
+| K07.031 | code_ausgabe | F. 119 · Aufg. 3.8 | Was gibt der Code aus? ```python gesperrt = [7, 9] print(8 in gesperrt) print(9 in gesperrt) ``` |
+| K07.032 | code_luecke | F. 119 · Aufg. 3.8 | Nur Stationen, die **nicht** gesperrt sind, werden freigegeben. Ergänze die Lücke. ```python gesperrt = [7, 9] |
 | K07.033 | code_ausgabe | Aufg. 4.4 | Was gibt der Code aus? ```python for nr, teil in enumerate(["Kolben", "Ventil"]):     print(nr, teil) ``` |
 | K07.034 | unterschied | Aufg. 4.4 | Was ist der Unterschied zwischen `for i in range(len(teile)):` und `for i, teil in enumerate(teile):`? |
 | K07.035 | code_ausgabe | F. 151 | Was gibt der Code aus? ```python raster = [[11, 12, 13], [21, 22, 23]] print(raster[1][0]) print(raster[0][2]) |

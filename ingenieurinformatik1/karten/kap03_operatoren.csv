@@ -1,10 +1,10 @@
-"Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f28a60cde8.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8135bccbbd.png)
-`/` Division (float), `//` ganzzahliger Anteil, `%` Rest.
+"23 Bolzen werden in Kisten zu je 4 Stück verpackt. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a22c28c2cf.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8135bccbbd.png)
+23 Bolzen in Kisten zu je 4: `/` Division (float), `//` volle Kisten, `%` übrige Bolzen.
 
 *F. 104 · Aufg. 3.1*"
-"Was ist der Unterschied zwischen `/` und `//`?","- `/`: normale Division, Ergebnis immer float (`7 / 2` → `3.5`).
-- `//`: Ganzzahldivision, das Ergebnis wird **abgerundet**: `7 // 2` → `3`, aber `-7 // 2` → `-4`. Bei zwei int ist das Ergebnis int.
+"Was ist der Unterschied zwischen `/` und `//`?","- `/`: normale Division, Ergebnis immer float (`7 / 2` → `3.5`, auch `8 / 2` → `4.0`; die Tabelle auf F. 104 schreibt hier vereinfacht „Wert 2“).
+- `//`: Ganzzahldivision, liefert den ganzzahligen Anteil: `7 // 2` → `3`. Bei zwei int ist das Ergebnis int.
 
 *F. 104 · Aufg. 2.2, 3.1*"
 "47 Lagerbolzen sollen in Kisten zu je 12 Stück. Schreib Code, der ausgibt, wie viele **volle Kisten** es gibt und wie viele **Bolzen übrig** bleiben.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_18736a2f65.png)
@@ -53,7 +53,7 @@ Ist ein Operand ein float, liefert auch `//` einen float – nur ohne Nachkommaa
 Hunderter, Zehner, Einer: `// 10` streicht die letzte Ziffer, `% 10` liefert die letzte Ziffer.
 
 *Aufg. 3.1*"
-"Schreib Code, der die Ziffern der dreistelligen Zahl `n = 805` mit `//` und `%` zerlegt und **rückwärts** als Zahl ausgibt (`508`).","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_34e48c57cb.png)
+"Die dreistellige Bauteilnummer `n = 805` wurde verdreht erfasst. Schreib Code, der ihre Ziffern mit `//` und `%` zerlegt und **rückwärts** als Zahl ausgibt (`508`).","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_34e48c57cb.png)
 ![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_887b933e12.png)
 
 *Aufg. 3.1*"
@@ -64,8 +64,8 @@ Hunderter, Zehner, Einer: `// 10` streicht die letzte Ziffer, `% 10` liefert die
 
 *Aufg. 5.4*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_21c50e8247.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cfdb609d1e.png)
-`**` bindet stärker als `*`: erst 3² = 9, dann 4 · 9.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9ce585a212.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cfdb609d1e.png)
+`**` bindet stärker als `*`: erst r² = 9, dann 4 · 9.
 
 *F. 104, 119 · Aufg. 3.2*"
 "Berechne mit dem Potenzoperator die Fläche eines Kreises mit `r = 2` (A = 3.14 · r²) und gib sie aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4ca727818e.png)

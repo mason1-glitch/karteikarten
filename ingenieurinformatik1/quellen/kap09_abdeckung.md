@@ -61,7 +61,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K09.013 | code_ausgabe | Aufg. 5.3 | Was gibt der Code aus? ```python def flaeche(breite, hoehe):     print(breite * hoehe)  a = flaeche(4, 5) prin |
 | K09.014 | code_fehler | Aufg. 5.3 | Was erscheint auf dem Bildschirm, und wie korrigierst du die Funktion? ```python def flaeche(b, h):     print( |
 | K09.015 | unterschied | Aufg. 5.3 | Was ist der Unterschied zwischen `print(ergebnis)` und `return ergebnis` in einer Funktion? |
-| K09.016 | code_ausgabe | Aufg. 5.3 | Was gibt der Code aus? ```python def teile(a, b):     if b == 0:         return None     return a / b  print(t |
+| K09.016 | code_ausgabe | Aufg. 5.3 | Was gibt der Code aus? ```python def druck(kraft, flaeche):     if flaeche == 0:         return None     retur |
 | K09.017 | code_ausgabe | F. 176 · Aufg. 5.1 | Was gibt der Code aus? ```python def bewegen(richtung, tempo):     print(richtung, "mit", tempo)  bewegen(50,  |
 | K09.018 | begriff | F. 176 | Was legt die Parameterliste in der def-Zeile fest, und was muss beim Aufruf übereinstimmen? |
 | K09.019 | code_schreiben | F. 176 | Schreib eine Funktion `spannung(kraft, flaeche)`, die σ = F / A zurückgibt, und gib das Ergebnis für F = 500 N |
@@ -70,7 +70,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K09.022 | code_fehler | F. 175 · Aufg. 5.1 | Welche Fehlermeldung erscheint, und wie behebst du sie? ```python starten()  def starten():     print("Start") |
 | K09.023 | code_ausgabe | F. 175 | Was gibt der Code aus? ```python def pruefen():     messen()  def messen():     print("Messung läuft")  pruefe |
 | K09.024 | begriff | F. 175 | Welche Reihenfolge von Definition und Aufruf schreibt Python bei Funktionen vor, und welcher Fehler entsteht s |
-| K09.025 | code_ausgabe | Aufg. 5.2, 5.6 | Was gibt der Code aus? ```python def zerlege(minuten):     return minuten // 60, minuten % 60  h, m = zerlege( |
+| K09.025 | code_ausgabe | Aufg. 5.2, 5.6 | Was gibt der Code aus? ```python def zerlege(sekunden):     return sekunden // 60, sekunden % 60  m, s = zerle |
 | K09.026 | code_luecke | Aufg. 5.2 | Die Funktion liefert untere und obere Grenze eines Messbereichs. Ergänze die linke Seite, sodass beide Werte i |
 | K09.027 | code_schreiben | Aufg. 5.6 | Schreib eine Funktion `tausche(x, y)`, die beide Werte vertauscht **zurückgibt**, und vertausche damit `links  |
 | K09.028 | code_ausgabe | F. 182 · Aufg. 5.6 | Was gibt der Code aus? ```python def kalibrieren():     offset = 5     print("innen:", offset)  offset = 0 kal |
@@ -87,4 +87,4 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K09.039 | begriff | F. 170 | Welche Vorteile nennt das Skript für Funktionen? |
 | K09.040 | code_schreiben | F. 170 · Aufg. 5.3 | Fasse die doppelte Berechnung des Übersetzungsverhältnisses i = z₂ / z₁ (Zähnezahlen) in eine Funktion `uebers |
 | K09.041 | begriff | F. 177, 178 · Aufg. 5.2 | Wie machst du sichtbar, in welcher Reihenfolge ein Programm mit Funktionen tatsächlich abläuft? |
-| K09.042 | code_ausgabe | Aufg. 5.2 | Was gibt der Code mit den Trace-Ausgaben aus? ```python def messen():     print(">>> messen gestartet")     re |
+| K09.042 | code_ausgabe | Aufg. 5.2 | Was gibt der Code mit der Trace-Ausgabe aus? ```python def messen(nr):     print(">>> messen Sensor", nr)      |

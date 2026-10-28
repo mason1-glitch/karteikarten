@@ -222,9 +222,9 @@ karten:
     aufgaben: ["3.7"]
     deckt: [c05.while_and]
     frage: |-
-      Eine while-Schleife endet entweder bei richtigem Passwort **oder** nach 5 Fehlversuchen. Warum braucht man nach der Schleife noch ein `if`?
+      Eine Tankfüllung läuft mit `while fuellstand < soll and messungen < 10:` – sie endet also beim Sollfüllstand **oder** nach 10 Messungen. Warum braucht man nach der Schleife noch ein `if`?
     antwort: |-
-      Die Schleife verrät nicht, **welche** Bedingung sie beendet hat. Erst `if eingabe == passwort:` entscheidet danach, ob `Zugang gewährt` oder `gesperrt` ausgegeben wird.
+      Die Schleife verrät nicht, **welche** Bedingung sie beendet hat. Erst ein `if` danach (z. B. `if fuellstand >= soll:`) entscheidet, ob `Tank voll` oder `Abbruch nach 10 Messungen` gemeldet wird.
 
   # ---------------------------------------------------------------- Eingabe wiederholen
   - typ: code_ausgabe
@@ -270,9 +270,9 @@ karten:
     aufgaben: ["3.7"]
     deckt: [c05.while_eingabe]
     frage: |-
-      Warum steht vor `while eingabe != passwort:` die Zeile `eingabe = ""`?
+      Warum steht vor `while status != "OK":` die Zeile `status = ""`?
     antwort: |-
-      Die Variable muss beim ersten Prüfen der Bedingung schon existieren (sonst NameError). Der leere String ist sicher **ungleich** dem Passwort – die Bedingung ist also wahr, und die Schleife läuft mindestens einmal und fragt ab.
+      Die Variable muss beim ersten Prüfen der Bedingung schon existieren (sonst NameError). Der leere String ist sicher **ungleich** `"OK"` – die Bedingung ist also wahr, und die Schleife läuft mindestens einmal und fragt ab.
 
   # ---------------------------------------------------------------- for
   - typ: code_ausgabe
@@ -789,9 +789,9 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      for i in range(0, 10, 3):
-          letzter = i
-      print(i, letzter)
+      for t in range(0, 10, 3):  # Messzeit in s
+          letzte_zeit = t
+      print(t, letzte_zeit)
       ```
     antwort: |-
       ```text

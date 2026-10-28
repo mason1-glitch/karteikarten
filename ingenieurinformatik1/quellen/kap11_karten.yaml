@@ -31,13 +31,30 @@ karten:
     folien: [189, 193]
     deckt: [c11.open]
     frage: |-
-      Welche drei Dateimodi für `open()` nennt das Skript auf F. 189 und 193, und welcher gilt, wenn man keinen angibt?
+      Welche drei Dateimodi für `open()` nennt das Skript auf F. 189 und 193?
     antwort: |-
-      - `"r"` (read): nur lesen – **Standard**, wenn kein Modus angegeben ist
+      - `"r"` (read): nur lesen
       - `"w"` (write): schreiben, vorhandener Inhalt wird **überschrieben**
       - `"a"` (append): neuen Inhalt **ans Ende** anhängen
 
       (F. 195 zeigt zusätzlich `"r+"` zum Lesen und Schreiben.)
+
+  - typ: code_fehler
+    folien: [189]
+    deckt: [c11.open]
+    frage: |-
+      Die Datei `log.txt` existiert. Welche Fehlermeldung erscheint, und warum?
+      ```python
+      datei = open("log.txt")
+      datei.write("Start\n")
+      datei.close()
+      ```
+    antwort: |-
+      ```text
+      io.UnsupportedOperation: not writable
+      ```
+      Ohne Modus öffnet `open()` die Datei automatisch im Modus `"r"` – nur **lesen** (F. 189). Zum Schreiben `"w"` oder `"a"` angeben.
+    tests: [{p: 1, t: 1, dateien: {"log.txt": "alt\n"}}]
 
   - typ: code_luecke
     folien: [189, 194]

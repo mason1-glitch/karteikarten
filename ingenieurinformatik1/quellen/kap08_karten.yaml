@@ -30,12 +30,12 @@ karten:
       Was gibt der Code aus?
       ```python
       import numpy as np
-      a = np.array([1, 2, 3])
-      print(a)
+      spannungen = np.array([230, 400, 690])
+      print(spannungen)
       ```
     antwort: |-
       ```text
-      [1 2 3]
+      [230 400 690]
       ```
       Mit `print()` wird ein NumPy-Array **ohne Kommas** ausgegeben – so unterscheidet man es auf einen Blick von einer Liste.
     tests: [{p: 1, t: 1}]
@@ -63,9 +63,9 @@ karten:
     aufgaben: ["4.6"]
     deckt: [c08.array]
     frage: |-
-      Wie importiert man NumPy üblicherweise, und wie wird aus der Liste `[1.2, 1.4]` ein Array?
+      NumPy ist als `np` importiert. Wie wird aus der Liste `[1.2, 1.4]` ein NumPy-Array?
     antwort: |-
-      `import numpy as np`, dann `np.array([1.2, 1.4])`.
+      `np.array([1.2, 1.4])` – die Liste wird `np.array()` übergeben.
 
   - typ: code_fehler
     folien: [162]
@@ -268,9 +268,9 @@ karten:
       Welche Fehlermeldung erscheint?
       ```python
       import numpy as np
-      a = np.array([1, 2])
-      b = np.array([1, 2, 3])
-      print(a + b)
+      kraft = np.array([100, 200])
+      weg = np.array([0.1, 0.2, 0.3])
+      print(kraft * weg)
       ```
     antwort: |-
       ```text

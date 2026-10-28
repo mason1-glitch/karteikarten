@@ -141,13 +141,13 @@ Sortiert wird nach dem Rückgabewert der Funktion, also nach der Länge (3, 5, 6
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_94b25ba868.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8366c3335b.png)
 `in` prüft, ob der Wert in der Liste vorkommt, und liefert einen Wahrheitswert.
 
-*Aufg. 3.8*"
+*F. 119 · Aufg. 3.8*"
 "Nur Stationen, die **nicht** gesperrt sind, werden freigegeben. Ergänze die Lücke.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_69cd4475e4.png)","`not in` (Ergänzung: die Verneinung von `in`, die im Material nicht vorkommt)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_69cd4475e4.png)","`not in` (im Skript nur in der Rangfolgetabelle F. 119 als Mitgliedschaftsoperator genannt)
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_71b6528278.png)
 ![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4509392e86.png)
 
-*Aufg. 3.8*"
+*F. 119 · Aufg. 3.8*"
 "Was gibt der Code aus?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6f6ca2596b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ca86164716.png)
 enumerate() liefert in jedem Durchlauf ein Paar aus Index (ab 0) und Element.

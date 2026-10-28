@@ -1,5 +1,5 @@
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_da2d300866.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9b376c8db5.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b932bc37f0.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cd23f7e8d1.png)
 Mit `print()` wird ein NumPy-Array **ohne Kommas** ausgegeben – so unterscheidet man es auf einen Blick von einer Liste.
 
 *F. 162*"
@@ -8,7 +8,7 @@ Mit `print()` wird ein NumPy-Array **ohne Kommas** ausgegeben – so unterscheid
 Eine verschachtelte Liste wird zum 2D-Array (Matrix), jede Zeile in einer eigenen Ausgabezeile.
 
 *F. 162*"
-"Wie importiert man NumPy üblicherweise, und wie wird aus der Liste `[1.2, 1.4]` ein Array?","`import numpy as np`, dann `np.array([1.2, 1.4])`.
+"NumPy ist als `np` importiert. Wie wird aus der Liste `[1.2, 1.4]` ein NumPy-Array?","`np.array([1.2, 1.4])` – die Liste wird `np.array()` übergeben.
 
 *F. 158, 162 · Aufg. 4.6*"
 "Welche Fehlermeldung erscheint, und was fehlt?
@@ -64,7 +64,7 @@ Elementweise Differenz; NumPy richtet die Zahlen mit Leerzeichen aus.
 
 *F. 166 · Aufg. 4.6*"
 "Welche Fehlermeldung erscheint?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8e69ba051f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cadfaa8cba.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_221992539e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cadfaa8cba.png)
 Die Formen (2,) und (3,) passen nicht zusammen: Elementweise Rechnung braucht hier gleich lange Arrays (oder einen einzelnen Wert).
 Ergänzung: NumPy kann nach bestimmten Regeln auch verschiedene Formen kombinieren (Broadcasting), z. B. Matrix + Zeile.
 

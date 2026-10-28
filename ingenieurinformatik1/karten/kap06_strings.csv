@@ -53,7 +53,7 @@ Ohne Startwert beginnt der Ausschnitt bei 0. Beide Teile zusammen ergeben wieder
 ![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_77f327dbc5.png)
 
 *F. 137*"
-"Welche Zeichen enthält der Ausschnitt `s[von:bis]`?","Alle Zeichen ab Index `von` (**eingeschlossen**) bis vor Index `bis` (**ausgeschlossen**) – also `bis - von` Zeichen, solange beide Grenzen im String liegen. Ragt `bis` über das Ende hinaus, endet der Ausschnitt einfach am Stringende (`""Welle""[2:10]` → `""lle""`).
+"Welche Zeichen enthält der Ausschnitt `s[von:bis]`?","Alle Zeichen ab Index `von` (**eingeschlossen**) bis vor Index `bis` (**ausgeschlossen**) – bei nicht-negativen Indizes innerhalb des Strings also `bis - von` Zeichen. Ergänzung: Ragt `bis` über das Ende hinaus, endet der Ausschnitt einfach am Stringende (`""Welle""[2:10]` → `""lle""`).
 
 *F. 137*"
 "Gib aus `datei = ""messung_07.csv""` die Dateiendung (`csv`) aus – über die **letzten drei** Zeichen.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_26fe266d12.png)
@@ -73,8 +73,8 @@ Schrittweite 2: Indizes 0, 2, 4.
 
 *F. 137*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_012977d563.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0163f304e0.png)
-find() liefert die Position, an der der Suchtext **beginnt** (F. 138). Ergänzung: Kommt er nicht vor, liefert find() `-1`.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_55e2db97ec.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1a88c56616.png)
+find() liefert die Position, an der der Suchtext **beginnt** (F. 138); gezählt wird ab 0, Leerzeichen zählen mit.
 
 *F. 138 · Aufg. 4.1*"
 "Was liefert `text.find(""x"")`, wenn `""x""` im Text **nicht** vorkommt?","Ergänzung (im Skript nicht erwähnt): den Wert `-1` – es gibt keinen Fehler. Deshalb vor dem Weiterrechnen prüfen: `if pos != -1:`.

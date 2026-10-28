@@ -1,10 +1,15 @@
-"Welche drei Dateimodi für `open()` nennt das Skript auf F. 189 und 193, und welcher gilt, wenn man keinen angibt?","- `""r""` (read): nur lesen – **Standard**, wenn kein Modus angegeben ist
+"Welche drei Dateimodi für `open()` nennt das Skript auf F. 189 und 193?","- `""r""` (read): nur lesen
 - `""w""` (write): schreiben, vorhandener Inhalt wird **überschrieben**
 - `""a""` (append): neuen Inhalt **ans Ende** anhängen
 
 (F. 195 zeigt zusätzlich `""r+""` zum Lesen und Schreiben.)
 
 *F. 189, 193*"
+"Die Datei `log.txt` existiert. Welche Fehlermeldung erscheint, und warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e592898745.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c1a0ea0c3d.png)
+Ohne Modus öffnet `open()` die Datei automatisch im Modus `""r""` – nur **lesen** (F. 189). Zum Schreiben `""w""` oder `""a""` angeben.
+
+*F. 189*"
 "Neue Einträge sollen **ans Ende** der vorhandenen Logdatei angehängt werden. Ergänze den Modus.
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_06896a33f8.png)","`""a""`
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4a9f1d36b8.png)

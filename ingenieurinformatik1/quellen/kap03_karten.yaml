@@ -38,11 +38,12 @@ karten:
     aufgaben: ["3.1"]
     deckt: [c03.arith]
     frage: |-
-      Was gibt der Code aus?
+      23 Bolzen werden in Kisten zu je 4 Stück verpackt. Was gibt der Code aus?
       ```python
-      print(23 / 4)
-      print(23 // 4)
-      print(23 % 4)
+      bolzen = 23
+      print(bolzen / 4)
+      print(bolzen // 4)
+      print(bolzen % 4)
       ```
     antwort: |-
       ```text
@@ -50,7 +51,7 @@ karten:
       5
       3
       ```
-      `/` Division (float), `//` ganzzahliger Anteil, `%` Rest.
+      23 Bolzen in Kisten zu je 4: `/` Division (float), `//` volle Kisten, `%` übrige Bolzen.
     tests: [{p: 1, t: 1}]
 
   - typ: unterschied
@@ -60,8 +61,8 @@ karten:
     frage: |-
       Was ist der Unterschied zwischen `/` und `//`?
     antwort: |-
-      - `/`: normale Division, Ergebnis immer float (`7 / 2` → `3.5`).
-      - `//`: Ganzzahldivision, das Ergebnis wird **abgerundet**: `7 // 2` → `3`, aber `-7 // 2` → `-4`. Bei zwei int ist das Ergebnis int.
+      - `/`: normale Division, Ergebnis immer float (`7 / 2` → `3.5`, auch `8 / 2` → `4.0`; die Tabelle auf F. 104 schreibt hier vereinfacht „Wert 2“).
+      - `//`: Ganzzahldivision, liefert den ganzzahligen Anteil: `7 // 2` → `3`. Bei zwei int ist das Ergebnis int.
 
   - typ: code_schreiben
     folien: [104]
@@ -239,7 +240,7 @@ karten:
     aufgaben: ["3.1"]
     deckt: [c03.ziffern]
     frage: |-
-      Schreib Code, der die Ziffern der dreistelligen Zahl `n = 805` mit `//` und `%` zerlegt und **rückwärts** als Zahl ausgibt (`508`).
+      Die dreistellige Bauteilnummer `n = 805` wurde verdreht erfasst. Schreib Code, der ihre Ziffern mit `//` und `%` zerlegt und **rückwärts** als Zahl ausgibt (`508`).
     antwort: |-
       ```python
       n = 805
@@ -283,15 +284,16 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      print(3 ** 2)
-      print(4 * 3 ** 2)
+      r = 3  # Radius in cm
+      print(r ** 2)
+      print(4 * r ** 2)
       ```
     antwort: |-
       ```text
       9
       36
       ```
-      `**` bindet stärker als `*`: erst 3² = 9, dann 4 · 9.
+      `**` bindet stärker als `*`: erst r² = 9, dann 4 · 9.
     tests: [{p: 1, t: 1}]
 
   - typ: code_schreiben

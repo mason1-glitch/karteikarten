@@ -45,7 +45,7 @@ Tippt der Nutzer `1111` und dann `4711`, erscheint:
 ![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
 
 *Aufg. 3.7*"
-"Eine while-Schleife endet entweder bei richtigem Passwort **oder** nach 5 Fehlversuchen. Warum braucht man nach der Schleife noch ein `if`?","Die Schleife verrät nicht, **welche** Bedingung sie beendet hat. Erst `if eingabe == passwort:` entscheidet danach, ob `Zugang gewährt` oder `gesperrt` ausgegeben wird.
+"Eine Tankfüllung läuft mit `while fuellstand < soll and messungen < 10:` – sie endet also beim Sollfüllstand **oder** nach 10 Messungen. Warum braucht man nach der Schleife noch ein `if`?","Die Schleife verrät nicht, **welche** Bedingung sie beendet hat. Erst ein `if` danach (z. B. `if fuellstand >= soll:`) entscheidet, ob `Tank voll` oder `Abbruch nach 10 Messungen` gemeldet wird.
 
 *Aufg. 3.7*"
 "Der Nutzer tippt nacheinander `WARN`, `FEHLER`, `OK`. Was gibt der Code aus?
@@ -57,7 +57,7 @@ Die Bedingung wird erst am Anfang des nächsten Durchlaufs geprüft – deshalb 
 Der Startwert `0` sorgt dafür, dass die Schleife mindestens einmal läuft.
 
 *F. 125*"
-"Warum steht vor `while eingabe != passwort:` die Zeile `eingabe = """"`?","Die Variable muss beim ersten Prüfen der Bedingung schon existieren (sonst NameError). Der leere String ist sicher **ungleich** dem Passwort – die Bedingung ist also wahr, und die Schleife läuft mindestens einmal und fragt ab.
+"Warum steht vor `while status != ""OK"":` die Zeile `status = """"`?","Die Variable muss beim ersten Prüfen der Bedingung schon existieren (sonst NameError). Der leere String ist sicher **ungleich** `""OK""` – die Bedingung ist also wahr, und die Schleife läuft mindestens einmal und fragt ab.
 
 *F. 125 · Aufg. 3.7*"
 "Was gibt der Code aus?
@@ -194,7 +194,7 @@ Der else-Zweig überschreibt den Treffer beim nächsten Element (`Lager`) wieder
 
 *Aufg. 3.10*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6eb9da36d7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_07085641f3.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_da3b35f77e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_07085641f3.png)
 Variablen aus einer Schleife bestehen danach weiter und behalten ihren letzten Wert. (Das Skript, F. 182, nennt Schleifen zusammen mit Funktionen als „lokal“ – das gilt für Funktionen, nicht für for- und while-Schleifen.)
 
 *F. 182*"

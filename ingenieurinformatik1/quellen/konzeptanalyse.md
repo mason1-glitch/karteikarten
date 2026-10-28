@@ -6,7 +6,7 @@ Stand: 28.10.2026. Grundlage: alle Aufgaben, Lösungen und Daten aus `Informatik
 
 1. Jedes Lösungs-Notebook wurde gelesen; ein Skript zählte zusätzlich, in wie vielen Lösungen eine Syntaxform vorkommt (z. B. f-Strings in 21, `input()` in 18, `for` in 11, `def` in 6, `groupby` in 1 Lösung). Die Zählung wurde von Hand bereinigt (z. B. `%` in Zeitformaten ist kein Modulo).
 2. Gewicht **3**: in vielen Aufgaben nötig (≥ 8 Lösungen) oder Grundlage fast jeder Aufgabe (Ein-/Ausgabe, Typumwandlung, Verzweigungen, Schleifen, Funktionen). Gewicht **2**: in 3–7 Lösungen oder eigener Skriptabschnitt. Gewicht **1**: in 1–2 Lösungen oder nur im Skript.
-3. Umfang folgt dem Gewicht: Gewicht 3 → 3–7 Karten (Ø 4,7), Gewicht 2 → 2–5 Karten (Ø 3,3), Gewicht 1 → 2–4 Karten (Ø 2,2). Jedes Konzept hat mindestens zwei Karten **unterschiedlichen Typs**.
+3. Umfang folgt dem Gewicht: Gewicht 3 → 3–7 Karten (Ø 4,6), Gewicht 2 → 2–5 Karten (Ø 3,3), Gewicht 1 → 2–4 Karten (Ø 2,2). Jedes Konzept hat mindestens zwei Karten **unterschiedlichen Typs**.
 
 ## Kartentypen und Umfang – Begründung
 
@@ -48,7 +48,7 @@ Nach dem Minimum-Information-Prinzip (Wozniak, *20 rules of formulating knowledg
 
 ## Externe Prüfung
 
-Vier unabhängige Prüfdurchgänge (ohne Kenntnis der Entstehung): (A) mechanisch – alle Code-Karten unter Python 3.9 und 3.13 mit zwei Hash-Seeds ausgeführt, Abdeckung nachgezählt, CSV-Format und alle Code-Bilder geprüft; (B–D) fachlich und didaktisch je ein Kapitelblock. Alle Befunde der Schwere „hoch“ und „mittel“ sind korrigiert (u. a. 1:1 übernommene Aufgabenbeispiele durch neue Szenarien ersetzt, Dubletten umgebaut, zusammengesetzte Karten geteilt, Ergänzungen gekennzeichnet); danach liefen alle Tests erneut fehlerfrei.
+Vier unabhängige Prüfdurchgänge (ohne Kenntnis der Entstehung): (A) mechanisch – alle Code-Karten unter Python 3.9 und 3.13 mit zwei Hash-Seeds ausgeführt, Abdeckung nachgezählt, CSV-Format und alle Code-Bilder geprüft; (B–D) fachlich und didaktisch je ein Kapitelblock. Alle Befunde der Schwere „hoch“ und „mittel“ sind korrigiert (u. a. 1:1 übernommene Aufgabenbeispiele durch neue Szenarien ersetzt, Dubletten umgebaut, zusammengesetzte Karten geteilt, Ergänzungen gekennzeichnet); danach liefen alle Tests erneut fehlerfrei. Ein fünfter Durchgang (E) prüfte anschließend alle 157 geänderten oder neuen Karten: keine fachlich falsche Karte, 5 mittlere und 15 geringe Befunde (u. a. eine Dublette, zwei Kopien aus Aufg. 3.7, eine falsch gesetzte Ergänzung bei `not in`) – alle umgesetzt und erneut getestet.
 
 ## Konzepte nach Kapitel
 
@@ -88,7 +88,7 @@ Typische Fehlerquellen:
 | Datentyp ändert sich mit dem zugewiesenen Wert (keine Deklaration wie in C++) | 1 | F. 70–71 | – | 2 |
 | / liefert immer float (auch 1500 / 2) | 3 | F. 104 | 2.2 | 3 |
 | Implizite Typumwandlung: int mit float → float, int * int bleibt int | 2 | F. 74 | 2.2 | 3 |
-| int(): String → Ganzzahl, float → Ganzzahl (schneidet ab, rundet nicht) | 3 | F. 75 | 1.2, 2.4 | 5 |
+| int(): String → Ganzzahl, float → Ganzzahl (schneidet ab, rundet nicht) | 3 | F. 75 | 1.2, 2.4 | 4 |
 | float(): String → Kommazahl, Punkt statt Komma | 3 | F. 67, 75 | 2.4, 3.5 | 4 |
 | str(): Zahl → Text (z. B. für Verkettung) | 2 | F. 75, 135 | 1.3 | 3 |
 | ValueError bei ungültiger Umwandlung (int("72.4"), float("72,4")) | 2 | F. 75 | 2.4 | 3 |
@@ -212,7 +212,7 @@ Typische Fehlerquellen:
 | count(), sort(), reverse(), clear() | 1 | F. 145–146 | – | 2 |
 | sort(key=funktion, reverse=…): nach eigenem Kriterium sortieren | 1 | F. 147 | – | 2 |
 | Liste durchlaufen: for x in liste / for i in range(len(liste)) | 3 | F. 143, 148, 152 | 3.8, 4.4 | 4 |
-| in: prüfen, ob ein Wert in der Liste ist | 1 | – | 3.8 | 2 |
+| in: prüfen, ob ein Wert in der Liste ist | 1 | F. 119 | 3.8 | 2 |
 | enumerate(): Index und Element zugleich | 1 | – | 4.4 | 2 |
 | 2D-Liste: matrix[zeile][spalte] | 2 | F. 150–151 | 4.3–4.5 | 4 |
 | Verschachtelte Schleifen über eine 2D-Liste | 2 | F. 151–152 | 4.3–4.5 | 3 |
@@ -301,7 +301,7 @@ Typische Fehlerquellen:
 
 | Konzept / Syntax | Gewicht | Skript | Aufgaben | Karten |
 |---|---:|---|---|---:|
-| open(pfad, modus): "r", "w", "a"; ohne Modus "r" | 2 | F. 189, 193 | 6.1, 6.2 | 3 |
+| open(pfad, modus): "r", "w", "a"; ohne Modus "r" | 2 | F. 189, 193 | 6.1, 6.2 | 4 |
 | read() ganze Datei, read(n) n Zeichen | 2 | F. 190 | 6.1 | 3 |
 | Zeilenweise lesen mit for zeile in datei; jede Zeile endet mit \n | 2 | F. 191 | 6.1, 6.2 | 3 |
 | readlines() (Liste der Zeilen) und readline() | 1 | F. 191 | 6.1 | 2 |

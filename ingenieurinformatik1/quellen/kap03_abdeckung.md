@@ -48,7 +48,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 
 | ID | Typ | Folien | Frage |
 |---|---|---|---|
-| K03.001 | code_ausgabe | F. 104 · Aufg. 3.1 | Was gibt der Code aus? ```python print(23 / 4) print(23 // 4) print(23 % 4) ``` |
+| K03.001 | code_ausgabe | F. 104 · Aufg. 3.1 | 23 Bolzen werden in Kisten zu je 4 Stück verpackt. Was gibt der Code aus? ```python bolzen = 23 print(bolzen / |
 | K03.002 | unterschied | F. 104 · Aufg. 2.2, 3.1 | Was ist der Unterschied zwischen `/` und `//`? |
 | K03.003 | code_schreiben | F. 104 · Aufg. 3.9 | 47 Lagerbolzen sollen in Kisten zu je 12 Stück. Schreib Code, der ausgibt, wie viele **volle Kisten** es gibt  |
 | K03.004 | code_ausgabe | F. 104 | Was gibt der Code aus? ```python print(-7 // 2) ``` |
@@ -60,9 +60,9 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K03.010 | code_schreiben | F. 104 · Aufg. 3.10 | Schreib Code, der für eine Ganzzahl `n` ausgibt, ob sie `gerade` oder `ungerade` ist (Beispiel `n = 7`). |
 | K03.011 | begriff | F. 104 · Aufg. 3.9 | Wie prüfst du mit `%`, ob `a` durch `b` **teilbar** ist? |
 | K03.012 | code_ausgabe | Aufg. 3.1 | Was gibt der Code aus? ```python zahl = 472 print(zahl // 100) print(zahl // 10 % 10) print(zahl % 10) ``` |
-| K03.013 | code_schreiben | Aufg. 3.1 | Schreib Code, der die Ziffern der dreistelligen Zahl `n = 805` mit `//` und `%` zerlegt und **rückwärts** als  |
+| K03.013 | code_schreiben | Aufg. 3.1 | Die dreistellige Bauteilnummer `n = 805` wurde verdreht erfasst. Schreib Code, der ihre Ziffern mit `//` und ` |
 | K03.014 | code_luecke | Aufg. 5.4 | Ergänze, sodass `einer` die **letzte Ziffer** von `zahl` enthält. ```python zahl = 2026 einer = zahl ___ print |
-| K03.015 | code_ausgabe | F. 104, 119 · Aufg. 3.2 | Was gibt der Code aus? ```python print(3 ** 2) print(4 * 3 ** 2) ``` |
+| K03.015 | code_ausgabe | F. 104, 119 · Aufg. 3.2 | Was gibt der Code aus? ```python r = 3  # Radius in cm print(r ** 2) print(4 * r ** 2) ``` |
 | K03.016 | code_schreiben | F. 104 | Berechne mit dem Potenzoperator die Fläche eines Kreises mit `r = 2` (A = 3.14 · r²) und gib sie aus. |
 | K03.017 | code_ausgabe | F. 105 | Was gibt der Code aus? ```python druck = 6 print(druck >= 6) print(druck != 6) ``` |
 | K03.018 | code_ausgabe | F. 105 · Aufg. 3.2 | Was gibt der Code aus? ```python hub = 120 print(hub == 240 / 2) ``` |

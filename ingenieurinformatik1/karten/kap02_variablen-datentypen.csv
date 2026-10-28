@@ -93,7 +93,7 @@ Achtung: Die Operatortabelle im Skript (F. 104) schreibt vereinfacht „c erhäl
 ![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2926812a6d.png)
 
 *Aufg. 2.2*"
-"Warum liefert `12 * 3` einen int, `12 / 3` aber einen float – obwohl beide Ergebnisse ganzzahlig sind?","Python legt den Ergebnistyp nach dem **Operator** fest, nicht nach dem konkreten Ergebnis: Ein Produkt zweier int ist immer ganzzahlig → int. Eine Division kann einen Rest haben (`7 / 2 = 3.5`), deshalb liefert `/` grundsätzlich float (`12 / 3` → `4.0`).
+"Warum liefert `12 * 3` einen int, `12 / 3` aber einen float – obwohl beide Ergebnisse ganzzahlig sind?","Python legt den Ergebnistyp nach **Operator und Operandentypen** fest, nicht nach dem konkreten Ergebnis: Ein Produkt zweier int ist immer ganzzahlig → int. Eine Division kann einen Rest haben (`7 / 2 = 3.5`), deshalb liefert `/` grundsätzlich float (`12 / 3` → `4.0`).
 
 *Aufg. 2.2*"
 "Was gibt der Code aus?
@@ -104,11 +104,6 @@ Ist ein Operand ein float, ist auch das Ergebnis ein float.
 "Was versteht man unter **impliziter** Typumwandlung?","Python ändert den Datentyp **automatisch**, ohne dass man eine Umwandlungsfunktion aufruft – z. B. wird bei `2 + 0.5` die 2 als float verrechnet, das Ergebnis ist ein float. (Das Skript, F. 74, zählt auch die Neuzuweisung eines Werts anderen Typs dazu; genau genommen bekommt die Variable dann nur einen neuen Wert.)
 
 *F. 74*"
-"Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ea4a53d0d1.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c011030483.png)
-`int()` **schneidet** die Nachkommastellen ab, es rundet nicht.
-
-*F. 75 · Aufg. 2.4*"
 "Was gibt der Code aus?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1da874c6fe.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5fb2f7a788.png)
 Erst umwandeln, dann addieren. Ohne `int()` käme `1250380` heraus.

@@ -4,9 +4,9 @@
 
 | Kartentyp | Anzahl |
 |---|---:|
-| Was gibt der Code aus? | 154 |
+| Was gibt der Code aus? | 153 |
 | Begriff ↔ Erklärung | 86 |
-| Finde den Fehler | 58 |
+| Finde den Fehler | 59 |
 | Lückentext im Code | 52 |
 | Schreib Code, der … | 49 |
 | Was ist der Unterschied …? | 35 |
@@ -28,7 +28,7 @@
 | Formatangabe {wert:.2f} (Nachkommastellen, rundet) | 2 | K01.036, K01.037, K01.038, K01.039 | Was gibt der Code aus?, Lückentext im Code, Was ist der Unterschied …? |
 | Kommentare: # einzeilig, """ mehrzeilig, auskommentieren | 2 | K01.040, K01.041, K01.042 | Begriff ↔ Erklärung, Was gibt der Code aus? |
 
-## Kapitel 2: Variablen und Datentypen – `kap02_variablen-datentypen.csv` (44 Karten)
+## Kapitel 2: Variablen und Datentypen – `kap02_variablen-datentypen.csv` (43 Karten)
 
 | Konzept | Gewicht | Karten | Typen |
 |---|---:|---|---|
@@ -39,13 +39,13 @@
 | Datentyp ändert sich mit dem zugewiesenen Wert (keine Deklaration wie in C++) | 1 | K02.017, K02.018 | Was gibt der Code aus?, Was ist der Unterschied …? |
 | / liefert immer float (auch 1500 / 2) | 3 | K02.019, K02.020, K02.021 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler |
 | Implizite Typumwandlung: int mit float → float, int * int bleibt int | 2 | K02.021, K02.022, K02.023 | Begriff ↔ Erklärung, Was gibt der Code aus? |
-| int(): String → Ganzzahl, float → Ganzzahl (schneidet ab, rundet nicht) | 3 | K02.024, K02.025, K02.026, K02.027, K02.035 | Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
-| float(): String → Kommazahl, Punkt statt Komma | 3 | K02.028, K02.029, K02.030, K02.031 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
-| str(): Zahl → Text (z. B. für Verkettung) | 2 | K02.032, K02.033, K02.034 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
-| ValueError bei ungültiger Umwandlung (int("72.4"), float("72,4")) | 2 | K02.029, K02.035, K02.036 | Begriff ↔ Erklärung, Finde den Fehler |
-| Rundungsfehler bei Gleitkommazahlen (0.1 + 0.2, 85.0 - 72.4) | 2 | K02.037, K02.038, K02.039 | Begriff ↔ Erklärung, Was gibt der Code aus? |
-| bool: True/False, Vergleiche liefern bool | 2 | K02.014, K02.040, K02.041, K02.042 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
-| Syntax und Semantik | 1 | K02.043, K02.044 | Begriff ↔ Erklärung, Was ist der Unterschied …? |
+| int(): String → Ganzzahl, float → Ganzzahl (schneidet ab, rundet nicht) | 3 | K02.024, K02.025, K02.026, K02.034 | Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
+| float(): String → Kommazahl, Punkt statt Komma | 3 | K02.027, K02.028, K02.029, K02.030 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
+| str(): Zahl → Text (z. B. für Verkettung) | 2 | K02.031, K02.032, K02.033 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
+| ValueError bei ungültiger Umwandlung (int("72.4"), float("72,4")) | 2 | K02.028, K02.034, K02.035 | Begriff ↔ Erklärung, Finde den Fehler |
+| Rundungsfehler bei Gleitkommazahlen (0.1 + 0.2, 85.0 - 72.4) | 2 | K02.036, K02.037, K02.038 | Begriff ↔ Erklärung, Was gibt der Code aus? |
+| bool: True/False, Vergleiche liefern bool | 2 | K02.014, K02.039, K02.040, K02.041 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
+| Syntax und Semantik | 1 | K02.042, K02.043 | Begriff ↔ Erklärung, Was ist der Unterschied …? |
 
 ## Kapitel 3: Operatoren und Zahlensysteme – `kap03_operatoren.csv` (46 Karten)
 
@@ -176,19 +176,19 @@
 | Bibliotheken installieren (pip install) vs. importieren | 1 | K10.024, K10.025 | Begriff ↔ Erklärung, Was ist der Unterschied …? |
 | qrcode.make(text) und display() im Notebook | 1 | K10.026, K10.027, K10.028 | Begriff ↔ Erklärung, Lückentext im Code, Schreib Code, der … |
 
-## Kapitel 11: Dateien öffnen, lesen, schreiben – `kap11_dateien.csv` (24 Karten)
+## Kapitel 11: Dateien öffnen, lesen, schreiben – `kap11_dateien.csv` (25 Karten)
 
 | Konzept | Gewicht | Karten | Typen |
 |---|---:|---|---|
-| open(pfad, modus): "r", "w", "a"; ohne Modus "r" | 2 | K11.001, K11.002, K11.003 | Begriff ↔ Erklärung, Finde den Fehler, Lückentext im Code |
-| read() ganze Datei, read(n) n Zeichen | 2 | K11.004, K11.005, K11.006 | Was gibt der Code aus?, Was ist der Unterschied …? |
-| Zeilenweise lesen mit for zeile in datei; jede Zeile endet mit \n | 2 | K11.007, K11.008, K11.009 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler |
-| readlines() (Liste der Zeilen) und readline() | 1 | K11.010, K11.011 | Was gibt der Code aus?, Was ist der Unterschied …? |
-| write(): nur Strings, kein automatischer Zeilenumbruch | 2 | K11.012, K11.013, K11.014 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
-| "w" überschreibt, "a" hängt an | 2 | K11.002, K11.015, K11.016, K11.017 | Was gibt der Code aus?, Lückentext im Code, Was ist der Unterschied …? |
-| close(): Datei schließen; danach kein Zugriff mehr | 2 | K11.018, K11.019 | Begriff ↔ Erklärung, Finde den Fehler |
-| Relativer Pfad (../Daten/…) und FileNotFoundError | 1 | K11.020, K11.021 | Begriff ↔ Erklärung, Finde den Fehler |
-| Dateiinhalt zeilenweise auswerten (float(zeile), zählen, ersetzen) | 2 | K11.022, K11.023, K11.024 | Was gibt der Code aus?, Schreib Code, der … |
+| open(pfad, modus): "r", "w", "a"; ohne Modus "r" | 2 | K11.001, K11.002, K11.003, K11.004 | Begriff ↔ Erklärung, Finde den Fehler, Lückentext im Code |
+| read() ganze Datei, read(n) n Zeichen | 2 | K11.005, K11.006, K11.007 | Was gibt der Code aus?, Was ist der Unterschied …? |
+| Zeilenweise lesen mit for zeile in datei; jede Zeile endet mit \n | 2 | K11.008, K11.009, K11.010 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler |
+| readlines() (Liste der Zeilen) und readline() | 1 | K11.011, K11.012 | Was gibt der Code aus?, Was ist der Unterschied …? |
+| write(): nur Strings, kein automatischer Zeilenumbruch | 2 | K11.013, K11.014, K11.015 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
+| "w" überschreibt, "a" hängt an | 2 | K11.003, K11.016, K11.017, K11.018 | Was gibt der Code aus?, Lückentext im Code, Was ist der Unterschied …? |
+| close(): Datei schließen; danach kein Zugriff mehr | 2 | K11.019, K11.020 | Begriff ↔ Erklärung, Finde den Fehler |
+| Relativer Pfad (../Daten/…) und FileNotFoundError | 1 | K11.021, K11.022 | Begriff ↔ Erklärung, Finde den Fehler |
+| Dateiinhalt zeilenweise auswerten (float(zeile), zählen, ersetzen) | 2 | K11.023, K11.024, K11.025 | Was gibt der Code aus?, Schreib Code, der … |
 
 ## Kapitel 12: CSV-Dateien und pandas – `kap12_pandas.csv` (18 Karten)
 

@@ -24,7 +24,7 @@ inhalte:
   - {id: c07.methoden, gewicht: 1, folie: "145–146", aufgaben: "", text: "count(), sort(), reverse(), clear()"}
   - {id: c07.sort_key, gewicht: 1, folie: "147", aufgaben: "", text: "sort(key=funktion, reverse=…): nach eigenem Kriterium sortieren"}
   - {id: c07.durchlaufen, gewicht: 3, folie: "143, 148, 152", aufgaben: "3.8, 4.4", text: "Liste durchlaufen: for x in liste / for i in range(len(liste))"}
-  - {id: c07.in, gewicht: 1, folie: "", aufgaben: "3.8", text: "in: prüfen, ob ein Wert in der Liste ist"}
+  - {id: c07.in, gewicht: 1, folie: "119", aufgaben: "3.8", text: "in: prüfen, ob ein Wert in der Liste ist"}
   - {id: c07.enumerate, gewicht: 1, folie: "", aufgaben: "4.4", text: "enumerate(): Index und Element zugleich"}
   - {id: c07.liste2d, gewicht: 2, folie: "150–151", aufgaben: "4.3–4.5", text: "2D-Liste: matrix[zeile][spalte]"}
   - {id: c07.verschachtelt, gewicht: 2, folie: "151–152", aufgaben: "4.3–4.5", text: "Verschachtelte Schleifen über eine 2D-Liste"}
@@ -544,6 +544,7 @@ karten:
 
   # ---------------------------------------------------------------- in
   - typ: code_ausgabe
+    folien: [119]
     aufgaben: ["3.8"]
     deckt: [c07.in]
     frage: |-
@@ -562,6 +563,7 @@ karten:
     tests: [{p: 1, t: 1}]
 
   - typ: code_luecke
+    folien: [119]
     aufgaben: ["3.8"]
     deckt: [c07.in]
     frage: |-
@@ -573,7 +575,7 @@ karten:
               print(nr, "frei")
       ```
     antwort: |-
-      `not in` (Ergänzung: die Verneinung von `in`, die im Material nicht vorkommt)
+      `not in` (im Skript nur in der Rangfolgetabelle F. 119 als Mitgliedschaftsoperator genannt)
       ```python
       gesperrt = [7, 9]
       for nr in [6, 7, 8]:

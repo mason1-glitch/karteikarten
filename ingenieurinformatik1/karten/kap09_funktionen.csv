@@ -68,8 +68,8 @@ Ergänzung: In Jupyter zeigt eine Zelle, deren **letzte Zeile** ein Funktionsauf
 
 *Aufg. 5.3*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b02496607d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cc8fc55966.png)
-`None` steht für *kein Ergebnis*. Der Aufrufer prüft das mit `if ergebnis is not None:`.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_63f2d2b5f1.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cc8fc55966.png)
+`None` steht für *kein Ergebnis*. Bei Fläche 0 gibt es keinen sinnvollen Druck; der Aufrufer prüft das mit `if p is not None:`.
 
 *Aufg. 5.3*"
 "Was gibt der Code aus?
@@ -107,7 +107,7 @@ Kein Fehler: Entscheidend ist, dass `messen` **beim Aufruf** von `pruefen()` sch
 
 *F. 175*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_14cdee93d0.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7cb7fbf908.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c09256ef6e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ab52f7ac4e.png)
 `return a, b` gibt zwei Werte zurück (als Tupel); links vom `=` werden sie auf zwei Variablen verteilt.
 
 *Aufg. 5.2, 5.6*"
@@ -184,8 +184,8 @@ Ergänzung: Hier wird der Parameter nicht neu zugewiesen, sondern die **übergeb
 "Wie machst du sichtbar, in welcher Reihenfolge ein Programm mit Funktionen tatsächlich abläuft?","Mit **Trace-Ausgaben**: `print()` am Anfang und Ende jeder Funktion (z. B. `"">>> berechne gestartet""`). Alternativ im **Debugger** Zeile für Zeile durchgehen.
 
 *F. 177, 178 · Aufg. 5.2*"
-"Was gibt der Code mit den Trace-Ausgaben aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0a51448322.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2206e9da26.png)
-Die Trace-Ausgabe zeigt, wann die Funktion läuft: erst beim Aufruf in Zeile 6. Danach geht es mit dem Rückgabewert hinter der Aufrufstelle weiter.
+"Was gibt der Code mit der Trace-Ausgabe aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ee4c8a822b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_65c0e27703.png)
+Die Trace-Zeile erscheint bei **jedem** Aufruf – so sieht man, wie oft und mit welchem Wert die Funktion läuft.
 
 *Aufg. 5.2*"

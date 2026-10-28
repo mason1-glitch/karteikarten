@@ -330,7 +330,7 @@ karten:
     frage: |-
       Warum liefert `12 * 3` einen int, `12 / 3` aber einen float – obwohl beide Ergebnisse ganzzahlig sind?
     antwort: |-
-      Python legt den Ergebnistyp nach dem **Operator** fest, nicht nach dem konkreten Ergebnis: Ein Produkt zweier int ist immer ganzzahlig → int. Eine Division kann einen Rest haben (`7 / 2 = 3.5`), deshalb liefert `/` grundsätzlich float (`12 / 3` → `4.0`).
+      Python legt den Ergebnistyp nach **Operator und Operandentypen** fest, nicht nach dem konkreten Ergebnis: Ein Produkt zweier int ist immer ganzzahlig → int. Eine Division kann einen Rest haben (`7 / 2 = 3.5`), deshalb liefert `/` grundsätzlich float (`12 / 3` → `4.0`).
 
   # ---------------------------------------------------------------- Mischtypen
   - typ: code_ausgabe
@@ -358,23 +358,6 @@ karten:
       Was versteht man unter **impliziter** Typumwandlung?
     antwort: |-
       Python ändert den Datentyp **automatisch**, ohne dass man eine Umwandlungsfunktion aufruft – z. B. wird bei `2 + 0.5` die 2 als float verrechnet, das Ergebnis ist ein float. (Das Skript, F. 74, zählt auch die Neuzuweisung eines Werts anderen Typs dazu; genau genommen bekommt die Variable dann nur einen neuen Wert.)
-
-  - typ: code_ausgabe
-    folien: [75]
-    aufgaben: ["2.4"]
-    deckt: [c02.int_conv]
-    frage: |-
-      Was gibt der Code aus?
-      ```python
-      kraft = 9.8
-      print(int(kraft))
-      ```
-    antwort: |-
-      ```text
-      9
-      ```
-      `int()` **schneidet** die Nachkommastellen ab, es rundet nicht.
-    tests: [{p: 1, t: 1}]
 
   - typ: code_ausgabe
     folien: [75]

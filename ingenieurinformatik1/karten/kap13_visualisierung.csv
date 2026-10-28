@@ -80,9 +80,9 @@ Zeile 3–4 erzeugen nur Beispieldaten. `value_counts()` zählt je Status; `inde
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bc22a106fc.png)","Nach `plt.show()` ist die Grafik geschlossen (F. 208); `savefig` speichert dann ein leeres Bild. Richtig: erst `plt.savefig(...)`, dann `plt.show()`.
 
 *F. 208 · Aufg. 6.5*"
-"Das Diagramm soll mit **300 dpi** als PNG gespeichert werden. Ergänze den Parameter.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_92341218da.png)","`dpi`
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d163e6df17.png)
+"Die Federkennlinie soll mit **300 dpi** als PNG gespeichert werden. Ergänze den Parameter.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_857f2b3482.png)","`dpi`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_37ec3b0e2b.png)
 Die Datei landet im **aktuellen Arbeitsordner** (in Jupyter meist der Ordner des Notebooks). Das Skript (F. 208) sagt „im Speicherort des Programmskripts“ – das stimmt nur, wenn das Programm aus seinem eigenen Ordner gestartet wird.
 
 *F. 208 · Aufg. 6.5*"
