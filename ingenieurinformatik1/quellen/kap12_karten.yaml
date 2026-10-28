@@ -1,0 +1,370 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 12: CSV-Daten mit pandas
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF), Aufgaben 6.3–6.5.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap12_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap12_pandas.csv
+matrix: ingenieurinformatik1/quellen/kap12_abdeckung.md
+titel: "Kapitel 12: CSV-Dateien und pandas"
+id_praefix: "K12."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Die Ausgaben wurden mit pandas 2.3 und 3.1 geprüft. Ältere pandas-Versionen (vor 2.0) benennen das Ergebnis von value_counts() anders; deshalb fragt keine Karte nach dessen vollständiger Ausgabe."
+
+inhalte:
+  - {id: c12.csv, gewicht: 1, folie: "198", aufgaben: "6.3", text: "CSV-Format: ein Datensatz pro Zeile, Trennzeichen, Kopfzeile"}
+  - {id: c12.read_csv, gewicht: 2, folie: "199–201", aufgaben: "6.3–6.5", text: "pd.read_csv() → DataFrame; Spaltennamen exakt (KeyError)"}
+  - {id: c12.dataframe, gewicht: 2, folie: "200", aufgaben: "6.3, 6.4", text: "DataFrame aus Dictionary, Spalte df[\"Name\"], len(df), head()"}
+  - {id: c12.filter, gewicht: 2, folie: "200", aufgaben: "6.3–6.5", text: "Zeilen filtern: df[df[\"Spalte\"] > wert]"}
+  - {id: c12.sort, gewicht: 2, folie: "", aufgaben: "6.3, 6.4", text: "sort_values(by=…, ascending=…)"}
+  - {id: c12.groupby, gewicht: 1, folie: "200", aufgaben: "6.3", text: "groupby(\"A\")[\"B\"].mean() – Mittelwert je Gruppe"}
+  - {id: c12.value_counts, gewicht: 1, folie: "", aufgaben: "6.5", text: "value_counts() – Häufigkeit jedes Werts"}
+
+karten:
+  # ---------------------------------------------------------------- CSV
+  - typ: begriff
+    folien: [198]
+    deckt: [c12.csv]
+    frage: |-
+      Was ist eine **CSV-Datei**?
+    antwort: |-
+      Comma Separated Values: eine Textdatei mit einem Datensatz pro Zeile; die Werte sind durch Komma oder Semikolon getrennt. Meist enthält die erste Zeile die Spaltenüberschriften (Kopfzeile).
+
+  - typ: code_ausgabe
+    folien: [198, 201]
+    aufgaben: ["6.3"]
+    deckt: [c12.csv, c12.read_csv]
+    frage: |-
+      Die Datei `messung.csv` enthält:
+      ```text
+      Zeit,Temperatur,Druck
+      0,20.1,1.01
+      10,22.4,1.03
+      20,24.9,1.06
+      ```
+      Was gibt der Code aus?
+      ```python
+      import pandas as pd
+      df = pd.read_csv("messung.csv")
+      print(len(df))
+      ```
+    antwort: |-
+      ```text
+      3
+      ```
+      Die Kopfzeile wird zu den Spaltennamen und zählt nicht als Datenzeile.
+    tests: [{p: 1, t: 2, dateien: {"messung.csv": "t1"}}]
+
+  # ---------------------------------------------------------------- read_csv
+  - typ: code_luecke
+    folien: [201]
+    aufgaben: ["6.3"]
+    deckt: [c12.read_csv]
+    frage: |-
+      Ergänze die Funktion, die eine CSV-Datei in einen DataFrame einliest.
+      ```python
+      import pandas as pd
+      df = pd.___("zugversuch.csv")
+      ```
+    antwort: |-
+      `read_csv`
+      ```python
+      import pandas as pd
+      df = pd.read_csv("zugversuch.csv")
+      ```
+    tests: [{p: 2, dateien: {"zugversuch.csv": "Zeit,Kraft\n0,0.0\n10,2.5\n"}}]
+
+  - typ: code_fehler
+    aufgaben: ["6.3"]
+    deckt: [c12.read_csv]
+    frage: |-
+      Die Kopfzeile von `autos.csv` lautet `Marke,Baujahr,Kraftstoffverbrauch (l/100km)`. Welche Fehlermeldung erscheint?
+      ```python
+      import pandas as pd
+      df = pd.read_csv("autos.csv")
+      print(df["Kraftstoffverbrauch"])
+      ```
+    antwort: |-
+      Letzte Zeile der Fehlermeldung:
+      ```text
+      KeyError: 'Kraftstoffverbrauch'
+      ```
+      Der Spaltenname muss **exakt** stimmen – inklusive Einheit in Klammern: `df["Kraftstoffverbrauch (l/100km)"]`.
+    tests: [{p: 1, t: 1, dateien: {"autos.csv": "Marke,Baujahr,Kraftstoffverbrauch (l/100km)\nBMW,2015,9.2\n"}}]
+
+  - typ: begriff
+    folien: [199, 200]
+    deckt: [c12.read_csv]
+    frage: |-
+      Wofür setzt man die Bibliothek **pandas** im Ingenieurbereich ein?
+    antwort: |-
+      Zum Einlesen, Bearbeiten und Analysieren großer Tabellen (z. B. Messdaten aus CSV-Dateien): Filtern, Sortieren, Gruppieren – oft zusammen mit NumPy und matplotlib.
+
+  # ---------------------------------------------------------------- DataFrame
+  - typ: code_ausgabe
+    aufgaben: ["6.3"]
+    deckt: [c12.dataframe]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      import pandas as pd
+      daten = {"Sensor": ["T1", "T2"],
+               "Wert": [21.5, 23.0]}
+      df = pd.DataFrame(daten)
+      print(df)
+      ```
+    antwort: |-
+      ```text
+        Sensor  Wert
+      0     T1  21.5
+      1     T2  23.0
+      ```
+      Jeder Schlüssel des Dictionarys wird eine Spalte; links steht der Zeilenindex ab 0.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["6.3"]
+    deckt: [c12.dataframe]
+    frage: |-
+      Ergänze, sodass nur die Spalte **Druck** ausgegeben wird.
+      ```python
+      import pandas as pd
+      df = pd.DataFrame({"Pumpe": ["P1", "P2"],
+                         "Druck": [4.5, 6.0]})
+      print(df[___])
+      ```
+    antwort: |-
+      `"Druck"` – der Spaltenname als String in eckigen Klammern.
+      ```python
+      import pandas as pd
+      df = pd.DataFrame({"Pumpe": ["P1", "P2"],
+                         "Druck": [4.5, 6.0]})
+      print(df["Druck"])
+      ```
+      ```text
+      0    4.5
+      1    6.0
+      Name: Druck, dtype: float64
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: begriff
+    aufgaben: ["6.3"]
+    deckt: [c12.dataframe]
+    frage: |-
+      Was ist ein **DataFrame** in pandas?
+    antwort: |-
+      Eine Tabelle mit benannten Spalten und einem Zeilenindex (ab 0). So liegt z. B. eine mit `pd.read_csv()` eingelesene CSV-Datei im Programm vor.
+  - typ: code_luecke
+    aufgaben: ["6.3", "6.4"]
+    deckt: [c12.dataframe]
+    frage: |-
+      Nach dem Einlesen sollen nur die **ersten fünf Zeilen** zur Kontrolle angezeigt werden. Ergänze die Methode.
+      ```python
+      import pandas as pd
+      kraft = [0, 5, 9, 14, 18, 23, 27]
+      df = pd.DataFrame({"Kraft": kraft})
+      print(df.___())
+      ```
+    antwort: |-
+      `head`
+      ```python
+      import pandas as pd
+      kraft = [0, 5, 9, 14, 18, 23, 27]
+      df = pd.DataFrame({"Kraft": kraft})
+      print(df.head())
+      ```
+      ```text
+         Kraft
+      0      0
+      1      5
+      2      9
+      3     14
+      4     18
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [200]
+    aufgaben: ["6.3"]
+    deckt: [c12.filter]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      import pandas as pd
+      daten = {"Bauteil": ["Welle", "Lager", "Gehäuse"],
+               "Masse": [2.4, 0.8, 5.1]}
+      df = pd.DataFrame(daten)
+      schwer = df[df["Masse"] > 2.0]
+      print(len(schwer))
+      ```
+    antwort: |-
+      ```text
+      2
+      ```
+      Die Bedingung in den eckigen Klammern wählt nur die Zeilen aus, für die sie `True` ist (Welle und Gehäuse).
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["6.4"]
+    deckt: [c12.filter]
+    frage: |-
+      Es sollen nur die Zeilen der Fertigungslinie `"B"` übrig bleiben. Ergänze den Operator.
+      ```python
+      import pandas as pd
+      daten = {"Linie": ["A", "B", "B"],
+               "Stueck": [120, 95, 110]}
+      df = pd.DataFrame(daten)
+      df_b = df[df["Linie"] ___ "B"]
+      print(len(df_b))
+      ```
+    antwort: |-
+      `==`
+      ```python
+      import pandas as pd
+      daten = {"Linie": ["A", "B", "B"],
+               "Stueck": [120, 95, 110]}
+      df = pd.DataFrame(daten)
+      df_b = df[df["Linie"] == "B"]
+      print(len(df_b))
+      ```
+      ```text
+      2
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_fehler
+    aufgaben: ["6.3"]
+    deckt: [c12.filter]
+    frage: |-
+      Gewünscht sind die **Zeilen** mit einer Temperatur über 80 °C. Was erscheint stattdessen, und wie lautet der richtige Filter?
+      ```python
+      import pandas as pd
+      df = pd.DataFrame({"Sensor": ["S1", "S2", "S3"],
+                         "Temp": [68.0, 92.5, 75.0]})
+      print(df["Temp"] > 80)
+      ```
+    antwort: |-
+      ```text
+      0    False
+      1     True
+      2    False
+      Name: Temp, dtype: bool
+      ```
+      Der Vergleich allein liefert nur Wahrheitswerte je Zeile. Erst `df[df["Temp"] > 80]` wählt damit die Zeilen aus.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- sort_values
+  - typ: code_ausgabe
+    aufgaben: ["6.3"]
+    deckt: [c12.sort]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      import pandas as pd
+      df = pd.DataFrame({"Lager": ["L1", "L2", "L3"],
+                         "Laufzeit": [1200, 3400, 800]})
+      s = df.sort_values(by="Laufzeit", ascending=False)
+      print(s)
+      ```
+    antwort: |-
+      ```text
+        Lager  Laufzeit
+      1    L2      3400
+      0    L1      1200
+      2    L3       800
+      ```
+      Absteigend sortiert; der ursprüngliche Zeilenindex wandert mit.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["6.3", "6.4"]
+    deckt: [c12.sort]
+    frage: |-
+      Die Bohrungen sollen **aufsteigend** nach Durchmesser `d` sortiert werden. Ergänze das Argument.
+      ```python
+      import pandas as pd
+      df = pd.DataFrame({"Bohrung": ["B1", "B2", "B3"],
+                         "d": [12, 6, 8]})
+      s = df.sort_values(___)
+      print(s)
+      ```
+    antwort: |-
+      `by="d"` (auch `"d"` allein ist richtig; aufsteigend ist Standard, `ascending=True` darf man zusätzlich angeben)
+      ```python
+      import pandas as pd
+      df = pd.DataFrame({"Bohrung": ["B1", "B2", "B3"],
+                         "d": [12, 6, 8]})
+      s = df.sort_values(by="d")
+      print(s)
+      ```
+      ```text
+        Bohrung   d
+      1      B2   6
+      2      B3   8
+      0      B1  12
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [200]
+    aufgaben: ["6.3"]
+    deckt: [c12.groupby]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      import pandas as pd
+      daten = {"Anlage": ["Ofen", "Kessel", "Ofen"],
+               "Temp": [800, 400, 900]}
+      df = pd.DataFrame(daten)
+      mittel = df.groupby("Anlage")["Temp"].mean()
+      print(mittel)
+      ```
+    antwort: |-
+      ```text
+      Anlage
+      Kessel    400.0
+      Ofen      850.0
+      Name: Temp, dtype: float64
+      ```
+      Je Anlage wird der Mittelwert der Temperatur berechnet; die Gruppen erscheinen sortiert nach Gruppenname.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [200]
+    aufgaben: ["6.3"]
+    deckt: [c12.groupby]
+    frage: |-
+      Was berechnet `df.groupby("Schicht")["Ausschuss"].mean()`?
+    antwort: |-
+      Die Zeilen werden nach dem Wert in der Spalte `Schicht` in Gruppen eingeteilt; für jede Schicht wird der **Mittelwert** der Spalte `Ausschuss` berechnet.
+
+  # ---------------------------------------------------------------- value_counts
+  - typ: code_ausgabe
+    aufgaben: ["6.5"]
+    deckt: [c12.value_counts]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      import pandas as pd
+      codes = ["E1", "E3", "E1", "E1"]
+      df = pd.DataFrame({"Fehler": codes})
+      anzahl = df["Fehler"].value_counts()
+      print(anzahl["E1"])
+      ```
+    antwort: |-
+      ```text
+      3
+      ```
+      `value_counts()` zählt, wie oft jeder Fehlercode vorkommt; mit `["E1"]` liest man die Anzahl für E1 ab.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    aufgaben: ["6.5"]
+    deckt: [c12.value_counts]
+    frage: |-
+      Was liefert `df["Fehler"].value_counts()`?
+    antwort: |-
+      Für jeden Wert, der in der Spalte vorkommt, die **Anzahl** seiner Vorkommen – absteigend sortiert. Die Werte stehen im Index (`anzahl.index`), die Anzahlen in `anzahl.values`.

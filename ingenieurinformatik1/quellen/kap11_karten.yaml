@@ -1,0 +1,492 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 11: Dateien lesen und schreiben
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF), Aufgaben 6.1, 6.2.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap11_karten.yaml
+# Hinweis: Die Tests legen die auf der Karte gezeigten Dateien (Text-Blöcke) vorher an.
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap11_dateien.csv
+matrix: ingenieurinformatik1/quellen/kap11_abdeckung.md
+titel: "Kapitel 11: Dateien öffnen, lesen, schreiben"
+id_praefix: "K11."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+ausgelassen:
+  - {folien: "195", grund: "Modus \"r+\" (Lesen und Schreiben): nur ein Beispiel, in keiner Aufgabe genutzt. Der Kommentar „Überschreiben des bisherigen Inhalts“ ist ungenau: r+ überschreibt ab Dateianfang nur so viele Zeichen, wie geschrieben werden (geprüft)."}
+
+inhalte:
+  - {id: c11.open, gewicht: 2, folie: "189, 193", aufgaben: "6.1, 6.2", text: "open(pfad, modus): \"r\", \"w\", \"a\"; ohne Modus \"r\""}
+  - {id: c11.read, gewicht: 2, folie: "190", aufgaben: "6.1", text: "read() ganze Datei, read(n) n Zeichen"}
+  - {id: c11.zeilen, gewicht: 2, folie: "191", aufgaben: "6.1, 6.2", text: "Zeilenweise lesen mit for zeile in datei; jede Zeile endet mit \\n"}
+  - {id: c11.readlines, gewicht: 1, folie: "191", aufgaben: "6.1", text: "readlines() (Liste der Zeilen) und readline()"}
+  - {id: c11.write, gewicht: 2, folie: "194", aufgaben: "6.2", text: "write(): nur Strings, kein automatischer Zeilenumbruch"}
+  - {id: c11.w_a, gewicht: 2, folie: "193–194", aufgaben: "6.2", text: "\"w\" überschreibt, \"a\" hängt an"}
+  - {id: c11.close, gewicht: 2, folie: "190, 194", aufgaben: "6.1, 6.2", text: "close(): Datei schließen; danach kein Zugriff mehr"}
+  - {id: c11.pfad, gewicht: 1, folie: "189", aufgaben: "6.1", text: "Relativer Pfad (../Daten/…) und FileNotFoundError"}
+  - {id: c11.auswerten, gewicht: 2, folie: "187", aufgaben: "6.1, 6.2", text: "Dateiinhalt zeilenweise auswerten (float(zeile), zählen, ersetzen)"}
+
+karten:
+  # ---------------------------------------------------------------- open / Modi
+  - typ: begriff
+    folien: [189, 193]
+    deckt: [c11.open]
+    frage: |-
+      Welche drei Dateimodi für `open()` nennt das Skript auf F. 189 und 193?
+    antwort: |-
+      - `"r"` (read): nur lesen
+      - `"w"` (write): schreiben, vorhandener Inhalt wird **überschrieben**
+      - `"a"` (append): neuen Inhalt **ans Ende** anhängen
+
+      (F. 195 zeigt zusätzlich `"r+"` zum Lesen und Schreiben.)
+
+  - typ: code_fehler
+    folien: [189]
+    deckt: [c11.open]
+    frage: |-
+      Die Datei `log.txt` existiert. Welche Fehlermeldung erscheint, und warum?
+      ```python
+      datei = open("log.txt")
+      datei.write("Start\n")
+      datei.close()
+      ```
+    antwort: |-
+      ```text
+      io.UnsupportedOperation: not writable
+      ```
+      Ohne Modus öffnet `open()` die Datei automatisch im Modus `"r"` – nur **lesen** (F. 189). Zum Schreiben `"w"` oder `"a"` angeben.
+    tests: [{p: 1, t: 1, dateien: {"log.txt": "alt\n"}}]
+
+  - typ: code_luecke
+    folien: [189, 194]
+    aufgaben: ["6.2"]
+    deckt: [c11.open, c11.w_a]
+    frage: |-
+      Neue Einträge sollen **ans Ende** der vorhandenen Logdatei angehängt werden. Ergänze den Modus.
+      ```python
+      datei = open("log.txt", ___)
+      datei.write("Maschine 3 gestartet\n")
+      datei.close()
+      ```
+    antwort: |-
+      `"a"`
+      ```python
+      datei = open("log.txt", "a")
+      datei.write("Maschine 3 gestartet\n")
+      datei.close()
+      ```
+    tests: [{p: 2}]
+
+  - typ: code_fehler
+    folien: [189]
+    deckt: [c11.open]
+    frage: |-
+      Welche Fehlermeldung erscheint, und was ist falsch?
+      ```python
+      datei = open("werte.txt", "w")
+      inhalt = datei.read()
+      ```
+    antwort: |-
+      ```text
+      io.UnsupportedOperation: not readable
+      ```
+      Im Modus `"w"` darf nur geschrieben werden. Zum Lesen mit `"r"` öffnen – Vorsicht: `"w"` hat den Inhalt außerdem schon gelöscht.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- read
+  - typ: code_ausgabe
+    folien: [190]
+    deckt: [c11.read]
+    frage: |-
+      Die Datei `temp.txt` enthält:
+      ```text
+      -0.2
+      -1.1
+      -1.4
+      ```
+      Was gibt der Code aus?
+      ```python
+      datei = open("temp.txt", "r")
+      print(datei.read(4))
+      datei.close()
+      ```
+    antwort: |-
+      ```text
+      -0.2
+      ```
+      `read(4)` liest genau 4 Zeichen: `-`, `0`, `.`, `2`.
+    tests: [{p: 1, t: 2, dateien: {"temp.txt": "t1"}}]
+
+  - typ: code_ausgabe
+    folien: [190]
+    aufgaben: ["6.1"]
+    deckt: [c11.read]
+    frage: |-
+      Die Datei `status.txt` enthält:
+      ```text
+      Presse: OK
+      Fräse: FEHLER
+      ```
+      Was gibt der Code aus?
+      ```python
+      datei = open("status.txt", "r")
+      inhalt = datei.read()
+      datei.close()
+      print(inhalt)
+      ```
+    antwort: |-
+      ```text
+      Presse: OK
+      Fräse: FEHLER
+      ```
+      `read()` ohne Argument liest die **ganze** Datei als einen String (inklusive der Zeilenumbrüche).
+    tests: [{p: 1, t: 2, dateien: {"status.txt": "t1"}}]
+
+  - typ: unterschied
+    folien: [190]
+    deckt: [c11.read]
+    frage: |-
+      Was ist der Unterschied zwischen `datei.read()` und `datei.read(10)`?
+    antwort: |-
+      - `read()`: liest die **gesamte** Datei als einen String.
+      - `read(10)`: liest nur die **nächsten 10 Zeichen**.
+
+  # ---------------------------------------------------------------- zeilenweise
+  - typ: code_fehler
+    folien: [191]
+    aufgaben: ["6.1"]
+    deckt: [c11.zeilen]
+    frage: |-
+      Die Datei `teile.txt` enthält:
+      ```text
+      Kolben
+      Ventil
+      ```
+      Warum erscheint zwischen den Teilen eine Leerzeile, und wie verhinderst du sie?
+      ```python
+      datei = open("teile.txt", "r")
+      for zeile in datei:
+          print(zeile)
+      datei.close()
+      ```
+    antwort: |-
+      ```text
+      Kolben
+
+      Ventil
+      ```
+      Jede gelesene Zeile endet schon mit `\n`, und print() hängt noch einen Zeilenumbruch an. Lösung: `print(zeile, end="")`.
+    tests: [{p: 1, t: 2, dateien: {"teile.txt": "t1"}}]
+
+  - typ: code_ausgabe
+    folien: [191]
+    aufgaben: ["6.1"]
+    deckt: [c11.zeilen]
+    frage: |-
+      Die Datei `teile.txt` enthält:
+      ```text
+      Kolben
+      Ventil
+      Lager
+      ```
+      Was gibt der Code aus?
+      ```python
+      datei = open("teile.txt", "r")
+      anzahl = 0
+      for zeile in datei:
+          anzahl += 1
+      datei.close()
+      print(anzahl)
+      ```
+    antwort: |-
+      ```text
+      3
+      ```
+      Die for-Schleife liest die Datei Zeile für Zeile.
+    tests: [{p: 1, t: 2, dateien: {"teile.txt": "t1"}}]
+
+  - typ: begriff
+    folien: [191]
+    aufgaben: ["6.2"]
+    deckt: [c11.zeilen]
+    frage: |-
+      Welches Zeichen steht am Ende jeder Zeile, die man mit `for zeile in datei:` liest?
+    antwort: |-
+      Der Zeilenumbruch `\n` (bei der letzten Zeile nur, wenn die Datei damit endet). Deshalb beim Ausgeben `end=""` verwenden; `float(zeile)` stört er dagegen nicht.
+
+  # ---------------------------------------------------------------- readlines / readline
+  - typ: code_ausgabe
+    folien: [191]
+    aufgaben: ["6.1"]
+    deckt: [c11.readlines]
+    frage: |-
+      Die Datei `teile.txt` enthält (mit Zeilenumbruch am Ende):
+      ```text
+      Kolben
+      Ventil
+      ```
+      Was gibt der Code aus?
+      ```python
+      datei = open("teile.txt", "r")
+      zeilen = datei.readlines()
+      datei.close()
+      print(zeilen)
+      ```
+    antwort: |-
+      ```text
+      ['Kolben\n', 'Ventil\n']
+      ```
+      readlines() liefert eine **Liste** mit allen Zeilen – jeweils mit `\n` am Ende.
+    tests: [{p: 1, t: 2, dateien: {"teile.txt": "t1"}}]
+
+  - typ: unterschied
+    folien: [191]
+    deckt: [c11.readlines]
+    frage: |-
+      Was ist der Unterschied zwischen `datei.readlines()` und `datei.readline()`?
+    antwort: |-
+      - `readlines()`: liest **alle** Zeilen auf einmal und gibt eine **Liste** zurück.
+      - `readline()`: liest nur die **nächste** Zeile und gibt sie als **String** zurück.
+
+  # ---------------------------------------------------------------- write
+  - typ: code_ausgabe
+    folien: [194]
+    aufgaben: ["6.2"]
+    deckt: [c11.write]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      datei = open("log.txt", "w")
+      datei.write("Start")
+      datei.write("Stopp")
+      datei.close()
+      datei = open("log.txt", "r")
+      print(datei.read())
+      datei.close()
+      ```
+    antwort: |-
+      ```text
+      StartStopp
+      ```
+      write() fügt – anders als print() – **keinen** Zeilenumbruch ein. Dafür `"\n"` selbst anhängen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [194]
+    aufgaben: ["6.2"]
+    deckt: [c11.write]
+    frage: |-
+      Welche Fehlermeldung erscheint, und wie behebst du sie?
+      ```python
+      drehzahl = 1500
+      datei = open("log.txt", "w")
+      datei.write(drehzahl)
+      datei.close()
+      ```
+    antwort: |-
+      ```text
+      TypeError: write() argument must be str, not int
+      ```
+      write() schreibt nur Strings: `datei.write(str(drehzahl) + "\n")`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [194]
+    aufgaben: ["6.2"]
+    deckt: [c11.write]
+    frage: |-
+      Schreib die Werte `[20.5, 21.0]` **zeilenweise** in die Datei `messung.txt` (vorhandenen Inhalt überschreiben).
+    antwort: |-
+      ```python
+      werte = [20.5, 21.0]
+      datei = open("messung.txt", "w")
+      for w in werte:
+          datei.write(str(w) + "\n")
+      datei.close()
+      ```
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- w vs a
+  - typ: code_ausgabe
+    folien: [194]
+    aufgaben: ["6.2"]
+    deckt: [c11.w_a]
+    frage: |-
+      Die Datei `log.txt` enthält vorher (mit Zeilenumbruch am Ende):
+      ```text
+      A
+      ```
+      Was gibt der Code aus?
+      ```python
+      d = open("log.txt", "a")
+      d.write("B\n")
+      d.close()
+      d = open("log.txt", "r")
+      print(d.read())
+      d.close()
+      ```
+    antwort: |-
+      ```text
+      A
+      B
+      ```
+      `"a"` hängt an – der alte Inhalt bleibt erhalten.
+    tests: [{p: 1, t: 2, dateien: {"log.txt": "t1"}}]
+
+  - typ: code_ausgabe
+    folien: [193, 194]
+    aufgaben: ["6.2"]
+    deckt: [c11.w_a]
+    frage: |-
+      Die Datei `log.txt` enthält vorher:
+      ```text
+      A
+      ```
+      Was gibt der Code aus? Achte auf den Modus.
+      ```python
+      d = open("log.txt", "w")
+      d.write("B\n")
+      d.close()
+      d = open("log.txt", "r")
+      print(d.read())
+      d.close()
+      ```
+    antwort: |-
+      ```text
+      B
+      ```
+      `"w"` löscht den alten Inhalt beim Öffnen.
+    tests: [{p: 1, t: 2, dateien: {"log.txt": "t1"}}]
+
+  - typ: unterschied
+    folien: [193, 194]
+    deckt: [c11.w_a]
+    frage: |-
+      Was ist der Unterschied zwischen `open("log.txt", "w")` und `open("log.txt", "a")`?
+    antwort: |-
+      - `"w"`: Datei wird neu angelegt bzw. ihr Inhalt **überschrieben**.
+      - `"a"`: neuer Inhalt wird **ans Ende angehängt**, der alte bleibt.
+
+  # ---------------------------------------------------------------- close
+  - typ: begriff
+    folien: [190, 194]
+    aufgaben: ["6.1"]
+    deckt: [c11.close]
+    frage: |-
+      Warum muss eine Datei nach der Arbeit mit `close()` geschlossen werden?
+    antwort: |-
+      close() beendet den Zugriff auf die Datei. Ergänzung (das Material sagt nur, dass man schließen muss): Beim Schreiben ist erst danach sicher alles in der Datei gespeichert – vorher kann Geschriebenes noch fehlen.
+
+  - typ: code_fehler
+    folien: [194]
+    deckt: [c11.close]
+    frage: |-
+      Welche Fehlermeldung erscheint?
+      ```python
+      datei = open("log.txt", "w")
+      datei.close()
+      datei.write("Ende\n")
+      ```
+    antwort: |-
+      ```text
+      ValueError: I/O operation on closed file.
+      ```
+      Nach close() ist kein Zugriff mehr möglich – close() gehört ans Ende.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Pfad
+  - typ: code_fehler
+    folien: [189]
+    aufgaben: ["6.1"]
+    deckt: [c11.pfad]
+    frage: |-
+      Im aktuellen Ordner gibt es keine Datei `Beschreibung.txt`. Welche Fehlermeldung erscheint?
+      ```python
+      datei = open("Beschreibung.txt", "r")
+      ```
+    antwort: |-
+      ```text
+      FileNotFoundError: [Errno 2] No such file or directory: 'Beschreibung.txt'
+      ```
+      Pfad prüfen: Liegt die Datei in einem anderen Ordner, muss der Pfad dorthin angegeben werden, z. B. `"../Daten/Beschreibung.txt"`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    aufgaben: ["6.1"]
+    deckt: [c11.pfad]
+    frage: |-
+      Was bedeutet der Pfad `"../Daten/Beschreibung.txt"`?
+    antwort: |-
+      Ein **relativer** Pfad: `..` geht vom **aktuellen Arbeitsordner** (in Jupyter meist der Ordner des Notebooks) eine Ebene nach oben, dann in den Ordner `Daten` zur Datei `Beschreibung.txt`.
+
+  # ---------------------------------------------------------------- Auswerten
+  - typ: code_ausgabe
+    folien: [191]
+    deckt: [c11.auswerten]
+    frage: |-
+      Die Datei `werte.txt` enthält:
+      ```text
+      1.5
+      2.0
+      2.5
+      ```
+      Was gibt der Code aus?
+      ```python
+      datei = open("werte.txt", "r")
+      summe = 0
+      for zeile in datei:
+          summe += float(zeile)
+      datei.close()
+      print(summe)
+      ```
+    antwort: |-
+      ```text
+      6.0
+      ```
+      Jede Zeile ist ein String; `float()` wandelt ihn um (das `\n` am Ende stört dabei nicht).
+    tests: [{p: 1, t: 2, dateien: {"werte.txt": "t1"}}]
+
+  - typ: code_schreiben
+    folien: [187]
+    aufgaben: ["6.1"]
+    deckt: [c11.auswerten]
+    frage: |-
+      Zähle, wie viele Zeilen der Datei `log.txt` den Text `FEHLER` enthalten, und gib die Anzahl aus (nutze `find()`).
+    antwort: |-
+      ```python
+      datei = open("log.txt", "r")
+      anzahl = 0
+      for zeile in datei:
+          if zeile.find("FEHLER") != -1:
+              anzahl += 1
+      datei.close()
+      print(anzahl)
+      ```
+      Für eine Datei mit den Zeilen `OK`, `FEHLER 12`, `FEHLER 7` erscheint:
+      ```text
+      2
+      ```
+    tests: [{p: 1, t: 1, dateien: {"log.txt": "OK\nFEHLER 12\nFEHLER 7\n"}}]
+
+  - typ: code_ausgabe
+    aufgaben: ["6.2"]
+    deckt: [c11.auswerten]
+    frage: |-
+      Die Datei `werte.txt` enthält:
+      ```text
+      20,5
+      21,0
+      ```
+      Was gibt der Code aus?
+      ```python
+      datei = open("werte.txt", "r")
+      for zeile in datei:
+          print(zeile.replace(",", "."), end="")
+      datei.close()
+      ```
+    antwort: |-
+      ```text
+      20.5
+      21.0
+      ```
+      Jede Zeile wird bearbeitet: Dezimalkomma → Punkt (erst dann klappt später `float(…)`). `end=""` verhindert doppelte Zeilenumbrüche.
+    tests: [{p: 1, t: 2, dateien: {"werte.txt": "t1"}}]

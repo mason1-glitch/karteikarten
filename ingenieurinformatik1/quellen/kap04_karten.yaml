@@ -1,0 +1,389 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 4: Verzweigungen
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF), Aufgaben 3.1–3.6.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap04_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap04_verzweigungen.csv
+matrix: ingenieurinformatik1/quellen/kap04_abdeckung.md
+titel: "Kapitel 4: Verzweigungen (if, elif, else) und Einrückung"
+id_praefix: "K04."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+inhalte:
+  - {id: c04.if_else, gewicht: 3, folie: "112–116", aufgaben: "3.1, 3.5", text: "if/else: Bedingung, Doppelpunkt, eingerückter Block, else optional"}
+  - {id: c04.elif, gewicht: 3, folie: "115", aufgaben: "3.3, 3.4, 3.5", text: "if/elif/else-Kette: nur der erste wahre Zweig läuft, Reihenfolge der Bedingungen"}
+  - {id: c04.einrueckung, gewicht: 3, folie: "117", aufgaben: "3.3", text: "Einrückung bestimmt die Blockzugehörigkeit, IndentationError"}
+  - {id: c04.verschachtelt, gewicht: 2, folie: "118", aufgaben: "3.6", text: "Verschachtelte Verzweigungen"}
+  - {id: c04.strvergleich, gewicht: 2, folie: "", aufgaben: "3.5, 3.7", text: "Strings vergleichen (Groß-/Kleinschreibung, \"3\" ≠ 3)"}
+  - {id: c04.grundstrukturen, gewicht: 1, folie: "109–111", aufgaben: "", text: "Grundstrukturen: sequentiell, auswählend, iterativ, springend; Anweisung, Folge, Bedingung"}
+
+karten:
+  # ---------------------------------------------------------------- if / else
+  - typ: code_ausgabe
+    folien: [114]
+    deckt: [c04.if_else]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      druck = 7.5
+      if druck > 8:
+          print("Ventil öffnen")
+      else:
+          print("Druck ok")
+      print("Ende")
+      ```
+    antwort: |-
+      ```text
+      Druck ok
+      Ende
+      ```
+      Die Bedingung ist `False` → der else-Block läuft; `print("Ende")` steht außerhalb und läuft immer.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [114]
+    deckt: [c04.if_else]
+    frage: |-
+      Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was fehlt?
+      ```python
+      temperatur = 95
+      if temperatur > 90
+          print("Kühlung an")
+      ```
+    antwort: |-
+      Einen **SyntaxError**: Nach der Bedingung fehlt der **Doppelpunkt**.
+      ```python
+      temperatur = 95
+      if temperatur > 90:
+          print("Kühlung an")
+      ```
+    tests: [{p: 1, abbruch: SyntaxError}, {p: 2}]
+
+  - typ: code_schreiben
+    folien: [114, 116]
+    aufgaben: ["3.5"]
+    deckt: [c04.if_else]
+    frage: |-
+      Schreib Code, der eine Drehzahl als Ganzzahl einliest und `Überdrehzahl!` ausgibt, wenn sie größer als 6000 ist, sonst `OK`.
+    antwort: |-
+      ```python
+      drehzahl = int(input("Drehzahl: "))
+      if drehzahl > 6000:
+          print("Überdrehzahl!")
+      else:
+          print("OK")
+      ```
+    tests: [{p: 1, eingabe: "6500\n"}]
+
+  - typ: begriff
+    folien: [112, 115]
+    deckt: [c04.if_else]
+    frage: |-
+      Was passiert bei einem `if` **ohne** `else`, wenn die Bedingung `False` ergibt?
+    antwort: |-
+      Der eingerückte Block wird übersprungen; das Programm macht mit der ersten Anweisung nach dem Block weiter. Der else-Teil ist optional.
+
+  - typ: begriff
+    folien: [114]
+    deckt: [c04.if_else]
+    frage: |-
+      Was bezeichnet das Skript als **„wahr“-Suite** und als **„falsch“-Suite** einer if-else-Anweisung?
+    antwort: |-
+      Die beiden eingerückten Codeblöcke: Die „wahr“-Suite unter `if …:` läuft, wenn die Bedingung zutrifft, die „falsch“-Suite unter `else:`, wenn nicht.
+
+  # ---------------------------------------------------------------- elif
+  - typ: code_ausgabe
+    folien: [115]
+    aufgaben: ["3.3"]
+    deckt: [c04.elif]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      drehzahl = 4500
+      if drehzahl > 3000:
+          print("erhöht")
+      elif drehzahl > 4000:
+          print("hoch")
+      else:
+          print("normal")
+      ```
+    antwort: |-
+      ```text
+      erhöht
+      ```
+      Nur der **erste** wahre Zweig läuft. `> 4000` wird nie geprüft, weil `> 3000` vorher schon greift – die strengere Bedingung gehört nach oben.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [115]
+    aufgaben: ["3.4"]
+    deckt: [c04.elif]
+    frage: |-
+      Bei 95 °C soll nur `kritisch` erscheinen. Was gibt der Code aus, und was ist zu ändern?
+      ```python
+      temp = 95
+      if temp > 90:
+          print("kritisch")
+      if temp > 70:
+          print("warm")
+      ```
+    antwort: |-
+      ```text
+      kritisch
+      warm
+      ```
+      Zwei getrennte `if` werden beide geprüft. Mit `elif` statt des zweiten `if` läuft nur der erste zutreffende Zweig.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [115]
+    aufgaben: ["3.4"]
+    deckt: [c04.elif]
+    frage: |-
+      Ordne eine Maßabweichung `abw` (in mm) ein: unter 0.1 → `gut`, unter 0.5 → `nacharbeiten`, sonst `Ausschuss`. Beispiel: `abw = 0.3`.
+    antwort: |-
+      ```python
+      abw = 0.3
+      if abw < 0.1:
+          print("gut")
+      elif abw < 0.5:
+          print("nacharbeiten")
+      else:
+          print("Ausschuss")
+      ```
+      ```text
+      nacharbeiten
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [115]
+    deckt: [c04.elif]
+    frage: |-
+      Wie viele Zweige einer if/elif/else-Kette werden **höchstens** ausgeführt?
+    antwort: |-
+      **Einer**: der erste, dessen Bedingung `True` ist; trifft keine zu, der else-Zweig. Mit else läuft also genau einer, ohne else eventuell keiner. Nach dem ersten Treffer werden die übrigen Bedingungen nicht mehr geprüft.
+
+  # ---------------------------------------------------------------- Einrückung
+  - typ: code_ausgabe
+    folien: [117]
+    aufgaben: ["3.3"]
+    deckt: [c04.einrueckung]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      menge = 40
+      if menge > 50:
+          menge -= 10
+          print(menge)
+      menge += 5
+      print(menge)
+      ```
+    antwort: |-
+      ```text
+      45
+      ```
+      Der if-Block wird übersprungen; `menge += 5` ist nicht eingerückt und läuft immer.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [117]
+    aufgaben: ["3.3"]
+    deckt: [c04.einrueckung]
+    frage: |-
+      Was gibt der Code aus? Achte auf die Einrückung der Zeile `menge += 5`.
+      ```python
+      menge = 40
+      if menge > 50:
+          menge -= 10
+          print(menge)
+          menge += 5
+      print(menge)
+      ```
+    antwort: |-
+      ```text
+      40
+      ```
+      Jetzt gehört `menge += 5` durch die Einrückung zum if-Block und wird mit übersprungen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [117]
+    aufgaben: ["3.3"]
+    deckt: [c04.einrueckung]
+    frage: |-
+      `Lüfter geprüft` soll **immer** erscheinen. Bei `temp = 85` fehlt die Meldung. Warum, und wie korrigierst du das?
+      ```python
+      temp = 85
+      if temp > 80:
+          luefter = "an"
+      else:
+          luefter = "aus"
+          print("Lüfter geprüft")
+      ```
+    antwort: |-
+      Die Meldung ist in den else-Block eingerückt und läuft nur, wenn die Bedingung `False` ist. Sie muss auf die Ebene von `if`:
+      ```python
+      temp = 85
+      if temp > 80:
+          luefter = "an"
+      else:
+          luefter = "aus"
+      print("Lüfter geprüft")
+      ```
+      ```text
+      Lüfter geprüft
+      ```
+    tests: [{p: 1}, {p: 2, t: 1}]
+
+  - typ: code_fehler
+    folien: [117]
+    deckt: [c04.einrueckung]
+    frage: |-
+      Welche Fehlermeldung erscheint?
+      ```python
+      spannung = 230
+          print(spannung)
+      ```
+    antwort: |-
+      ```text
+      IndentationError: unexpected indent
+      ```
+      Zeile 2 ist eingerückt, obwohl kein Block (if, Schleife, def) begonnen wurde.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [117]
+    deckt: [c04.einrueckung]
+    frage: |-
+      Welche Aufgabe hat die **Einrückung** in Python?
+    antwort: |-
+      Sie ist das Strukturierungselement: Die Einrückung legt fest, welche Anweisungen zu einem Block (if, else, Schleife, Funktion) gehören. Ergänzung: Viele andere Sprachen nutzen dafür geschweifte Klammern.
+
+  # ---------------------------------------------------------------- verschachtelt
+  - typ: code_ausgabe
+    folien: [118]
+    aufgaben: ["3.6"]
+    deckt: [c04.verschachtelt]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      modus = "auto"
+      temp = 65
+      if modus == "auto":
+          if temp > 70:
+              print("Kühlen")
+          else:
+              print("Halten")
+      ```
+    antwort: |-
+      ```text
+      Halten
+      ```
+      Die äußere Bedingung trifft zu; im inneren if ist `65 > 70` falsch → innerer else-Zweig.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [118]
+    deckt: [c04.verschachtelt]
+    frage: |-
+      Schreib mit **zwei verschachtelten** if-Anweisungen: Wenn die Maschine läuft (`laeuft = True`) und mehr als 1000 Betriebsstunden hat (`stunden = 1200`), gib `Wartung fällig` aus.
+    antwort: |-
+      ```python
+      laeuft = True
+      stunden = 1200
+      if laeuft:
+          if stunden > 1000:
+              print("Wartung fällig")
+      ```
+      ```text
+      Wartung fällig
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [118]
+    deckt: [c04.verschachtelt]
+    frage: |-
+      Was ist der Unterschied zwischen `if a:` mit eingerücktem `if b:` und `if a and b:`?
+    antwort: |-
+      Ohne else-Zweige verhalten sich beide gleich. Die Verschachtelung erlaubt aber, für jede Ebene eigene else-Zweige zu schreiben (z. B. eine Meldung, wenn nur `a` zutrifft).
+
+  # ---------------------------------------------------------------- String-Vergleich
+  - typ: code_ausgabe
+    aufgaben: ["3.5"]
+    deckt: [c04.strvergleich]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      modus = "Auto"
+      if modus == "auto":
+          print("Regelung aktiv")
+      else:
+          print("Handbetrieb")
+      ```
+    antwort: |-
+      ```text
+      Handbetrieb
+      ```
+      Der Vergleich unterscheidet Groß- und Kleinschreibung: `"Auto"` ist nicht gleich `"auto"`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    aufgaben: ["3.5"]
+    deckt: [c04.strvergleich]
+    frage: |-
+      Der Nutzer tippt `3`. Erwartet ist `Kalibrierung`. Was erscheint, und warum?
+      ```python
+      code = input()
+      if code == 3:
+          print("Kalibrierung")
+      else:
+          print("unbekannt")
+      ```
+    antwort: |-
+      ```text
+      unbekannt
+      ```
+      `input()` liefert den String `"3"`, und `"3" == 3` ist `False`. Korrektur: `code = int(input())` oder mit `"3"` vergleichen.
+    tests: [{p: 1, t: 1, eingabe: "3\n"}]
+
+  - typ: code_schreiben
+    aufgaben: ["3.5"]
+    deckt: [c04.strvergleich]
+    frage: |-
+      Schreib Code, der die Farbe der Signalleuchte einliest und den Zustand ausgibt: `grün` → `Betrieb`, `gelb` → `Warnung`, sonst `Störung`.
+    antwort: |-
+      ```python
+      farbe = input("Farbe: ")
+      if farbe == "grün":
+          print("Betrieb")
+      elif farbe == "gelb":
+          print("Warnung")
+      else:
+          print("Störung")
+      ```
+    tests: [{p: 1, eingabe: "gelb\n"}]
+
+  # ---------------------------------------------------------------- Grundstrukturen
+  - typ: begriff
+    folien: [109]
+    deckt: [c04.grundstrukturen]
+    frage: |-
+      Zu welcher Grundstruktur gehört laut Skript eine **if-Anweisung**, zu welcher eine **Schleife** und zu welcher ein **Funktionsaufruf**?
+    antwort: |-
+      - if-Anweisung: **auswählend** (Verzweigung)
+      - Schleife: **iterativ**
+      - Funktionsaufruf: **springend**
+
+      Einfache Anweisungen wie eine Zuweisung sind **sequentiell**.
+
+  - typ: unterschied
+    folien: [111]
+    deckt: [c04.grundstrukturen]
+    frage: |-
+      Was ist der Unterschied zwischen einer **Anweisung** und einer **Folge (Sequenz)**?
+    antwort: |-
+      - Anweisung: kleinste ausführbare Einheit eines Programms (z. B. `x = 5`).
+      - Folge: mehrere Anweisungen, die nacheinander und jede genau einmal abgearbeitet werden.

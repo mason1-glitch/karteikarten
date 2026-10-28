@@ -1,0 +1,96 @@
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_beac2fa968.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6f1440652a.png)
+Die Bedingung ist `False` → der else-Block läuft; `print(""Ende"")` steht außerhalb und läuft immer.
+
+*F. 114*"
+"Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was fehlt?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_47f7f1d371.png)","Einen **SyntaxError**: Nach der Bedingung fehlt der **Doppelpunkt**.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f3be3140d7.png)
+
+*F. 114*"
+"Schreib Code, der eine Drehzahl als Ganzzahl einliest und `Überdrehzahl!` ausgibt, wenn sie größer als 6000 ist, sonst `OK`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_39a8bcae4d.png)
+
+*F. 114, 116 · Aufg. 3.5*"
+"Was passiert bei einem `if` **ohne** `else`, wenn die Bedingung `False` ergibt?","Der eingerückte Block wird übersprungen; das Programm macht mit der ersten Anweisung nach dem Block weiter. Der else-Teil ist optional.
+
+*F. 112, 115*"
+"Was bezeichnet das Skript als **„wahr“-Suite** und als **„falsch“-Suite** einer if-else-Anweisung?","Die beiden eingerückten Codeblöcke: Die „wahr“-Suite unter `if …:` läuft, wenn die Bedingung zutrifft, die „falsch“-Suite unter `else:`, wenn nicht.
+
+*F. 114*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8b614543a7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_025e6055bb.png)
+Nur der **erste** wahre Zweig läuft. `> 4000` wird nie geprüft, weil `> 3000` vorher schon greift – die strengere Bedingung gehört nach oben.
+
+*F. 115 · Aufg. 3.3*"
+"Bei 95 °C soll nur `kritisch` erscheinen. Was gibt der Code aus, und was ist zu ändern?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8ff4c92df7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fbb589c225.png)
+Zwei getrennte `if` werden beide geprüft. Mit `elif` statt des zweiten `if` läuft nur der erste zutreffende Zweig.
+
+*F. 115 · Aufg. 3.4*"
+"Ordne eine Maßabweichung `abw` (in mm) ein: unter 0.1 → `gut`, unter 0.5 → `nacharbeiten`, sonst `Ausschuss`. Beispiel: `abw = 0.3`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_05518bc649.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5597c7770a.png)
+
+*F. 115 · Aufg. 3.4*"
+"Wie viele Zweige einer if/elif/else-Kette werden **höchstens** ausgeführt?","**Einer**: der erste, dessen Bedingung `True` ist; trifft keine zu, der else-Zweig. Mit else läuft also genau einer, ohne else eventuell keiner. Nach dem ersten Treffer werden die übrigen Bedingungen nicht mehr geprüft.
+
+*F. 115*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b15ab89f12.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c50cf53eec.png)
+Der if-Block wird übersprungen; `menge += 5` ist nicht eingerückt und läuft immer.
+
+*F. 117 · Aufg. 3.3*"
+"Was gibt der Code aus? Achte auf die Einrückung der Zeile `menge += 5`.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c0d6a66039.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f255244738.png)
+Jetzt gehört `menge += 5` durch die Einrückung zum if-Block und wird mit übersprungen.
+
+*F. 117 · Aufg. 3.3*"
+"`Lüfter geprüft` soll **immer** erscheinen. Bei `temp = 85` fehlt die Meldung. Warum, und wie korrigierst du das?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cd25de6e21.png)","Die Meldung ist in den else-Block eingerückt und läuft nur, wenn die Bedingung `False` ist. Sie muss auf die Ebene von `if`:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_68c4f25157.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f16d11a700.png)
+
+*F. 117 · Aufg. 3.3*"
+"Welche Fehlermeldung erscheint?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e6aecb8021.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_442657e410.png)
+Zeile 2 ist eingerückt, obwohl kein Block (if, Schleife, def) begonnen wurde.
+
+*F. 117*"
+"Welche Aufgabe hat die **Einrückung** in Python?","Sie ist das Strukturierungselement: Die Einrückung legt fest, welche Anweisungen zu einem Block (if, else, Schleife, Funktion) gehören. Ergänzung: Viele andere Sprachen nutzen dafür geschweifte Klammern.
+
+*F. 117*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5c34808a8e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ed60e56478.png)
+Die äußere Bedingung trifft zu; im inneren if ist `65 > 70` falsch → innerer else-Zweig.
+
+*F. 118 · Aufg. 3.6*"
+"Schreib mit **zwei verschachtelten** if-Anweisungen: Wenn die Maschine läuft (`laeuft = True`) und mehr als 1000 Betriebsstunden hat (`stunden = 1200`), gib `Wartung fällig` aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_85508d0d44.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8d394bcb92.png)
+
+*F. 118*"
+"Was ist der Unterschied zwischen `if a:` mit eingerücktem `if b:` und `if a and b:`?","Ohne else-Zweige verhalten sich beide gleich. Die Verschachtelung erlaubt aber, für jede Ebene eigene else-Zweige zu schreiben (z. B. eine Meldung, wenn nur `a` zutrifft).
+
+*F. 118*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d38833f909.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7b071b15b7.png)
+Der Vergleich unterscheidet Groß- und Kleinschreibung: `""Auto""` ist nicht gleich `""auto""`.
+
+*Aufg. 3.5*"
+"Der Nutzer tippt `3`. Erwartet ist `Kalibrierung`. Was erscheint, und warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_28634b66a8.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cc3e98e941.png)
+`input()` liefert den String `""3""`, und `""3"" == 3` ist `False`. Korrektur: `code = int(input())` oder mit `""3""` vergleichen.
+
+*Aufg. 3.5*"
+"Schreib Code, der die Farbe der Signalleuchte einliest und den Zustand ausgibt: `grün` → `Betrieb`, `gelb` → `Warnung`, sonst `Störung`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_84b1ba7de0.png)
+
+*Aufg. 3.5*"
+"Zu welcher Grundstruktur gehört laut Skript eine **if-Anweisung**, zu welcher eine **Schleife** und zu welcher ein **Funktionsaufruf**?","- if-Anweisung: **auswählend** (Verzweigung)
+- Schleife: **iterativ**
+- Funktionsaufruf: **springend**
+
+Einfache Anweisungen wie eine Zuweisung sind **sequentiell**.
+
+*F. 109*"
+"Was ist der Unterschied zwischen einer **Anweisung** und einer **Folge (Sequenz)**?","- Anweisung: kleinste ausführbare Einheit eines Programms (z. B. `x = 5`).
+- Folge: mehrere Anweisungen, die nacheinander und jede genau einmal abgearbeitet werden.
+
+*F. 111*"

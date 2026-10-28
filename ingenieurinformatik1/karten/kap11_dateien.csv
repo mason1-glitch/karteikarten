@@ -1,0 +1,134 @@
+"Welche drei Dateimodi für `open()` nennt das Skript auf F. 189 und 193?","- `""r""` (read): nur lesen
+- `""w""` (write): schreiben, vorhandener Inhalt wird **überschrieben**
+- `""a""` (append): neuen Inhalt **ans Ende** anhängen
+
+(F. 195 zeigt zusätzlich `""r+""` zum Lesen und Schreiben.)
+
+*F. 189, 193*"
+"Die Datei `log.txt` existiert. Welche Fehlermeldung erscheint, und warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e592898745.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c1a0ea0c3d.png)
+Ohne Modus öffnet `open()` die Datei automatisch im Modus `""r""` – nur **lesen** (F. 189). Zum Schreiben `""w""` oder `""a""` angeben.
+
+*F. 189*"
+"Neue Einträge sollen **ans Ende** der vorhandenen Logdatei angehängt werden. Ergänze den Modus.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_06896a33f8.png)","`""a""`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4a9f1d36b8.png)
+
+*F. 189, 194 · Aufg. 6.2*"
+"Welche Fehlermeldung erscheint, und was ist falsch?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c57412ad3d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f593ea6db1.png)
+Im Modus `""w""` darf nur geschrieben werden. Zum Lesen mit `""r""` öffnen – Vorsicht: `""w""` hat den Inhalt außerdem schon gelöscht.
+
+*F. 189*"
+"Die Datei `temp.txt` enthält:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4e1455aa8c.png)
+Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_eb7d69ab83.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f60dee4236.png)
+`read(4)` liest genau 4 Zeichen: `-`, `0`, `.`, `2`.
+
+*F. 190*"
+"Die Datei `status.txt` enthält:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7e5163bbc6.png)
+Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6d98ceeab7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7e5163bbc6.png)
+`read()` ohne Argument liest die **ganze** Datei als einen String (inklusive der Zeilenumbrüche).
+
+*F. 190 · Aufg. 6.1*"
+"Was ist der Unterschied zwischen `datei.read()` und `datei.read(10)`?","- `read()`: liest die **gesamte** Datei als einen String.
+- `read(10)`: liest nur die **nächsten 10 Zeichen**.
+
+*F. 190*"
+"Die Datei `teile.txt` enthält:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_850a70186d.png)
+Warum erscheint zwischen den Teilen eine Leerzeile, und wie verhinderst du sie?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6a3cb6ce94.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9b09c46515.png)
+Jede gelesene Zeile endet schon mit `\n`, und print() hängt noch einen Zeilenumbruch an. Lösung: `print(zeile, end="""")`.
+
+*F. 191 · Aufg. 6.1*"
+"Die Datei `teile.txt` enthält:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d3793ce6f2.png)
+Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a027888d21.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f71ae265c5.png)
+Die for-Schleife liest die Datei Zeile für Zeile.
+
+*F. 191 · Aufg. 6.1*"
+"Welches Zeichen steht am Ende jeder Zeile, die man mit `for zeile in datei:` liest?","Der Zeilenumbruch `\n` (bei der letzten Zeile nur, wenn die Datei damit endet). Deshalb beim Ausgeben `end=""""` verwenden; `float(zeile)` stört er dagegen nicht.
+
+*F. 191 · Aufg. 6.2*"
+"Die Datei `teile.txt` enthält (mit Zeilenumbruch am Ende):
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_850a70186d.png)
+Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1406173a58.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_91b946a8ed.png)
+readlines() liefert eine **Liste** mit allen Zeilen – jeweils mit `\n` am Ende.
+
+*F. 191 · Aufg. 6.1*"
+"Was ist der Unterschied zwischen `datei.readlines()` und `datei.readline()`?","- `readlines()`: liest **alle** Zeilen auf einmal und gibt eine **Liste** zurück.
+- `readline()`: liest nur die **nächste** Zeile und gibt sie als **String** zurück.
+
+*F. 191*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ca298391cd.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9def26b7f3.png)
+write() fügt – anders als print() – **keinen** Zeilenumbruch ein. Dafür `""\n""` selbst anhängen.
+
+*F. 194 · Aufg. 6.2*"
+"Welche Fehlermeldung erscheint, und wie behebst du sie?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c40c24f945.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_eae847d7ea.png)
+write() schreibt nur Strings: `datei.write(str(drehzahl) + ""\n"")`.
+
+*F. 194 · Aufg. 6.2*"
+"Schreib die Werte `[20.5, 21.0]` **zeilenweise** in die Datei `messung.txt` (vorhandenen Inhalt überschreiben).","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_43d0b6f20c.png)
+
+*F. 194 · Aufg. 6.2*"
+"Die Datei `log.txt` enthält vorher (mit Zeilenumbruch am Ende):
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_240f9c6393.png)
+Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f34715799e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4934591512.png)
+`""a""` hängt an – der alte Inhalt bleibt erhalten.
+
+*F. 194 · Aufg. 6.2*"
+"Die Datei `log.txt` enthält vorher:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_240f9c6393.png)
+Was gibt der Code aus? Achte auf den Modus.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c3e4e6ed33.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_116a350738.png)
+`""w""` löscht den alten Inhalt beim Öffnen.
+
+*F. 193, 194 · Aufg. 6.2*"
+"Was ist der Unterschied zwischen `open(""log.txt"", ""w"")` und `open(""log.txt"", ""a"")`?","- `""w""`: Datei wird neu angelegt bzw. ihr Inhalt **überschrieben**.
+- `""a""`: neuer Inhalt wird **ans Ende angehängt**, der alte bleibt.
+
+*F. 193, 194*"
+"Warum muss eine Datei nach der Arbeit mit `close()` geschlossen werden?","close() beendet den Zugriff auf die Datei. Ergänzung (das Material sagt nur, dass man schließen muss): Beim Schreiben ist erst danach sicher alles in der Datei gespeichert – vorher kann Geschriebenes noch fehlen.
+
+*F. 190, 194 · Aufg. 6.1*"
+"Welche Fehlermeldung erscheint?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7485505872.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_aa0ffa3710.png)
+Nach close() ist kein Zugriff mehr möglich – close() gehört ans Ende.
+
+*F. 194*"
+"Im aktuellen Ordner gibt es keine Datei `Beschreibung.txt`. Welche Fehlermeldung erscheint?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b849cb0084.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6fb0575d5e.png)
+Pfad prüfen: Liegt die Datei in einem anderen Ordner, muss der Pfad dorthin angegeben werden, z. B. `""../Daten/Beschreibung.txt""`.
+
+*F. 189 · Aufg. 6.1*"
+"Was bedeutet der Pfad `""../Daten/Beschreibung.txt""`?","Ein **relativer** Pfad: `..` geht vom **aktuellen Arbeitsordner** (in Jupyter meist der Ordner des Notebooks) eine Ebene nach oben, dann in den Ordner `Daten` zur Datei `Beschreibung.txt`.
+
+*Aufg. 6.1*"
+"Die Datei `werte.txt` enthält:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3670cd9afd.png)
+Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_16bf180109.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9c638dd752.png)
+Jede Zeile ist ein String; `float()` wandelt ihn um (das `\n` am Ende stört dabei nicht).
+
+*F. 191*"
+"Zähle, wie viele Zeilen der Datei `log.txt` den Text `FEHLER` enthalten, und gib die Anzahl aus (nutze `find()`).","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_eb8ee04455.png)
+Für eine Datei mit den Zeilen `OK`, `FEHLER 12`, `FEHLER 7` erscheint:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+
+*F. 187 · Aufg. 6.1*"
+"Die Datei `werte.txt` enthält:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f6c5b7e8e6.png)
+Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e61fb9fc77.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_46c09d6101.png)
+Jede Zeile wird bearbeitet: Dezimalkomma → Punkt (erst dann klappt später `float(…)`). `end=""""` verhindert doppelte Zeilenumbrüche.
+
+*Aufg. 6.2*"

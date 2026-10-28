@@ -1,0 +1,87 @@
+"Was ist eine **CSV-Datei**?","Comma Separated Values: eine Textdatei mit einem Datensatz pro Zeile; die Werte sind durch Komma oder Semikolon getrennt. Meist enthält die erste Zeile die Spaltenüberschriften (Kopfzeile).
+
+*F. 198*"
+"Die Datei `messung.csv` enthält:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_713ba279eb.png)
+Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e715a612e9.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f71ae265c5.png)
+Die Kopfzeile wird zu den Spaltennamen und zählt nicht als Datenzeile.
+
+*F. 198, 201 · Aufg. 6.3*"
+"Ergänze die Funktion, die eine CSV-Datei in einen DataFrame einliest.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_520c2f7fb3.png)","`read_csv`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6d5337fa96.png)
+
+*F. 201 · Aufg. 6.3*"
+"Die Kopfzeile von `autos.csv` lautet `Marke,Baujahr,Kraftstoffverbrauch (l/100km)`. Welche Fehlermeldung erscheint?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3583e8af03.png)","Letzte Zeile der Fehlermeldung:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b566df1779.png)
+Der Spaltenname muss **exakt** stimmen – inklusive Einheit in Klammern: `df[""Kraftstoffverbrauch (l/100km)""]`.
+
+*Aufg. 6.3*"
+"Wofür setzt man die Bibliothek **pandas** im Ingenieurbereich ein?","Zum Einlesen, Bearbeiten und Analysieren großer Tabellen (z. B. Messdaten aus CSV-Dateien): Filtern, Sortieren, Gruppieren – oft zusammen mit NumPy und matplotlib.
+
+*F. 199, 200*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_62b7e3b88a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a8d79af39d.png)
+Jeder Schlüssel des Dictionarys wird eine Spalte; links steht der Zeilenindex ab 0.
+
+*Aufg. 6.3*"
+"Ergänze, sodass nur die Spalte **Druck** ausgegeben wird.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_211be71299.png)","`""Druck""` – der Spaltenname als String in eckigen Klammern.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0b9f0171b2.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fc84b1c7ce.png)
+
+*Aufg. 6.3*"
+"Was ist ein **DataFrame** in pandas?","Eine Tabelle mit benannten Spalten und einem Zeilenindex (ab 0). So liegt z. B. eine mit `pd.read_csv()` eingelesene CSV-Datei im Programm vor.
+
+*Aufg. 6.3*"
+"Nach dem Einlesen sollen nur die **ersten fünf Zeilen** zur Kontrolle angezeigt werden. Ergänze die Methode.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cc4ad737b8.png)","`head`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_503a7467ee.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_dec422cceb.png)
+
+*Aufg. 6.3, 6.4*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5193d61cb0.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+Die Bedingung in den eckigen Klammern wählt nur die Zeilen aus, für die sie `True` ist (Welle und Gehäuse).
+
+*F. 200 · Aufg. 6.3*"
+"Es sollen nur die Zeilen der Fertigungslinie `""B""` übrig bleiben. Ergänze den Operator.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_66b2ef1a5c.png)","`==`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_80ac71be86.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+
+*Aufg. 6.4*"
+"Gewünscht sind die **Zeilen** mit einer Temperatur über 80 °C. Was erscheint stattdessen, und wie lautet der richtige Filter?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_35d835600b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_91e59eb2ee.png)
+Der Vergleich allein liefert nur Wahrheitswerte je Zeile. Erst `df[df[""Temp""] > 80]` wählt damit die Zeilen aus.
+
+*Aufg. 6.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c6d9eca923.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5a4065266a.png)
+Absteigend sortiert; der ursprüngliche Zeilenindex wandert mit.
+
+*Aufg. 6.3*"
+"Die Bohrungen sollen **aufsteigend** nach Durchmesser `d` sortiert werden. Ergänze das Argument.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3460e1c70f.png)","`by=""d""` (auch `""d""` allein ist richtig; aufsteigend ist Standard, `ascending=True` darf man zusätzlich angeben)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2bbe484abd.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_398e5cdef5.png)
+
+*Aufg. 6.3, 6.4*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b4e4119d27.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bcfcf95130.png)
+Je Anlage wird der Mittelwert der Temperatur berechnet; die Gruppen erscheinen sortiert nach Gruppenname.
+
+*F. 200 · Aufg. 6.3*"
+"Was berechnet `df.groupby(""Schicht"")[""Ausschuss""].mean()`?","Die Zeilen werden nach dem Wert in der Spalte `Schicht` in Gruppen eingeteilt; für jede Schicht wird der **Mittelwert** der Spalte `Ausschuss` berechnet.
+
+*F. 200 · Aufg. 6.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0ff703ec3a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f71ae265c5.png)
+`value_counts()` zählt, wie oft jeder Fehlercode vorkommt; mit `[""E1""]` liest man die Anzahl für E1 ab.
+
+*Aufg. 6.5*"
+"Was liefert `df[""Fehler""].value_counts()`?","Für jeden Wert, der in der Spalte vorkommt, die **Anzahl** seiner Vorkommen – absteigend sortiert. Die Werte stehen im Index (`anzahl.index`), die Anzahlen in `anzahl.values`.
+
+*Aufg. 6.5*"

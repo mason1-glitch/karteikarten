@@ -1,0 +1,201 @@
+"Was ist eine **Variable** (laut Skript)?","Eine Stelle im Hauptspeicher, die man über einen Namen (Bezeichner) ansprechen kann. Man speichert darin einen Wert und ruft ihn später über den Namen wieder ab.
+
+*F. 49, 70*"
+"Was bezeichnet man als **Initialisierung** einer Variablen?","Die **erstmalige** Wertzuweisung, z. B. `zaehler = 0`.
+
+*F. 71*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b9395822a2.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_dcf4492121.png)
+Rechts vom `=` wird zuerst mit dem alten Wert gerechnet: 2 → 5 → 10.
+
+*F. 49*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7ff03a6a53.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a647012ffb.png)
+`ist = soll` übernimmt den Wert, den `soll` in diesem Moment hat. Die spätere Zuweisung an `soll` ändert `ist` nicht.
+
+*F. 70, 71*"
+"Welche Fehlermeldung erscheint, und warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ca46e659a7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a4f215b680.png)
+Python arbeitet von oben nach unten. In Zeile 1 existiert `temperatur` noch nicht – erst zuweisen, dann verwenden.
+
+*F. 49*"
+"Welche dieser Bezeichner sind in Python **ungültig**, und warum?
+`max_temp`, `2te_messung`, `_zaehler`, `druck bar`, `for`","- `2te_messung`: beginnt mit einer Ziffer (erlaubt sind Buchstabe oder `_`).
+- `druck bar`: enthält ein Leerzeichen.
+- `for`: reserviertes Schlüsselwort.
+
+`max_temp` und `_zaehler` sind gültig.
+
+*F. 58, 62*"
+"Was ist der Unterschied zwischen den Bezeichnern `Ergebnis`, `ERGEBNIS` und `ergebnis`?","Es sind **drei verschiedene** Variablen: Python unterscheidet Groß- und Kleinschreibung (case-sensitiv).
+
+*F. 58*"
+"Was sind **reservierte Schlüsselwörter**?","Wörter mit fester Bedeutung in Python, die man nicht als Bezeichner verwenden darf – z. B. `if`, `for`, `def`, `return`, `while`, `True`.
+
+*F. 62*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1115c0d28c.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1e1280668a.png)
+Anführungszeichen machen aus der Zahl einen Text.
+
+*F. 66–68*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c0eb7bc38c.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_10e4d19e09.png)
+Auch mit `.0` ist es eine Gleitkommazahl.
+
+*F. 67 · Aufg. 2.3*"
+"Lege für eine Pumpe drei Variablen mit passendem Datentyp an: Inventarnummer **7731** (Ganzzahl), Förderhöhe **12 m** (als Kommazahl), Bezeichnung **Kreiselpumpe P3**.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4a8b006d0d.png)
+`12.0` statt `12`, damit es ein float ist; Text steht in Anführungszeichen.
+
+*F. 67, 68 · Aufg. 2.3*"
+"Was ist der Unterschied zwischen `5`, `5.0` und `""5""`?","- `5`: int (Ganzzahl)
+- `5.0`: float (Gleitkommazahl)
+- `""5""`: str (Text) – damit kann man nicht rechnen, `+` verkettet nur.
+
+*F. 64, 67, 68*"
+"Welche drei Arten von Daten unterscheidet die elektronische Datenverarbeitung laut Skript?","- Boolesche Daten (wahr/falsch, 1/0) → `bool`
+- Numerische Daten (Zahlen) → `int`, `float`
+- Alphanumerische Daten (Text) → `str`
+
+*F. 64*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a1629f5ee9.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1039d35886.png)
+
+*F. 66*"
+"Ergänze die Lücke, sodass der **Datentyp** von `messwert` ausgegeben wird.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ec7ee9b816.png)","`type`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4c174547ff.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_10e4d19e09.png)
+
+*F. 66 · Aufg. 2.2*"
+"Der Nutzer tippt `42` ein. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_acd65309b4.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a7d84b0ba9.png)
+`input()` liefert immer einen String; erst `float()` macht daraus eine Zahl. `eingabe` selbst bleibt ein String.
+
+*F. 49, 66 · Aufg. 3.5*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6ca7e920b3.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fb657390d4.png)
+Der Datentyp einer Variablen richtet sich nach dem zuletzt zugewiesenen Wert.
+
+*F. 71*"
+"Was ist laut Skript der Unterschied zwischen Variablen in C++ und in Python?","- C++: Variable wird vorher **deklariert und typisiert**, z. B. `int zaehler = 0;` – der Typ steht fest.
+- Python: Der Typ wird **implizit** durch den zugewiesenen Wert festgelegt und kann sich bei jeder neuen Zuweisung ändern.
+
+*F. 70, 71*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6793d6c41b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2cca0ca1ae.png)
+Achtung: Die Operatortabelle im Skript (F. 104) schreibt vereinfacht „c erhält den Wert 2“ – Python liefert bei `/` aber immer einen float.
+
+*F. 104 · Aufg. 2.2*"
+"Welche Fehlermeldung erscheint, und wie behebst du sie?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a3dd751c9e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_323b62d089.png)
+`900 / 2` ist `450.0`, damit ist auch `balken` ein float (`4.0`), und ein String lässt sich nur mit einem int vervielfachen. Korrektur mit Ganzzahldivision:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2fd916e0fd.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2926812a6d.png)
+
+*Aufg. 2.2*"
+"Warum liefert `12 * 3` einen int, `12 / 3` aber einen float – obwohl beide Ergebnisse ganzzahlig sind?","Python legt den Ergebnistyp nach **Operator und Operandentypen** fest, nicht nach dem konkreten Ergebnis: Ein Produkt zweier int ist immer ganzzahlig → int. Eine Division kann einen Rest haben (`7 / 2 = 3.5`), deshalb liefert `/` grundsätzlich float (`12 / 3` → `4.0`).
+
+*Aufg. 2.2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_35ca0d9a80.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2d6c2adf48.png)
+Ist ein Operand ein float, ist auch das Ergebnis ein float.
+
+*F. 74 · Aufg. 2.2*"
+"Was versteht man unter **impliziter** Typumwandlung?","Python ändert den Datentyp **automatisch**, ohne dass man eine Umwandlungsfunktion aufruft – z. B. wird bei `2 + 0.5` die 2 als float verrechnet, das Ergebnis ist ein float. (Das Skript, F. 74, zählt auch die Neuzuweisung eines Werts anderen Typs dazu; genau genommen bekommt die Variable dann nur einen neuen Wert.)
+
+*F. 74*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1da874c6fe.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5fb2f7a788.png)
+Erst umwandeln, dann addieren. Ohne `int()` käme `1250380` heraus.
+
+*F. 75 · Aufg. 1.2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_97cd434463.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_646444ac6a.png)
+`int()` schneidet ab, also Richtung 0 – nicht abrunden auf −4.
+
+*F. 75*"
+"Ergänze die Lücke, sodass die Nachkommastellen **abgeschnitten** werden (Ergebnis `18`).
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9ac94350de.png)","`int`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_02d092748a.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_701dcdf1da.png)
+`round()` würde hier auf 19 runden – abgeschnitten wird nur mit `int()`.
+
+*F. 75 · Aufg. 2.4*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a5b0fbf62e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_933b950d09.png)
+
+*F. 75 · Aufg. 2.4*"
+"Welche Fehlermeldung erscheint, und wie lautet die Korrektur?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5d38f8b3a2.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d2c663001b.png)
+Python verwendet den **Punkt** als Dezimaltrennzeichen:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_61e6fab812.png)
+
+*F. 67, 75 · Aufg. 2.4*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_af4523cb00.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cd3f65192e.png)
+
+*F. 75*"
+"Ein Drucksensor liefert `druck_text = ""2.5""` (Text, in bar). Schreib Code, der den Druck in kPa ausgibt (1 bar = 100 kPa).","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e7ab84c5ec.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4e7cec4fd7.png)
+
+*F. 75 · Aufg. 2.4*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_522101b6b3.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b28cf0aad3.png)
+Nach `str()` sind es Texte – `+` verkettet sie.
+
+*F. 75*"
+"Ergänze die Lücke, sodass `Prüfjahr: 2026` ausgegeben wird.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f2cacff943.png)","`str`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_aac7797ff0.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e1fcc409a7.png)
+
+*F. 135*"
+"Wozu braucht man `str()` typischerweise?","Um eine Zahl in Text umzuwandeln, damit man sie mit `+` an einen anderen String hängen kann (z. B. `""ID: "" + str(1042)`).
+
+*F. 75, 135*"
+"Welche Fehlermeldung erscheint, und wie kommst du trotzdem zur Ganzzahl `72`?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d745db43c4.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b45d3bf034.png)
+`int()` kann einen Text mit Dezimalpunkt nicht direkt umwandeln. Erst `float`, dann `int`:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_39924fffdb.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9ac9f6063f.png)
+
+*F. 75*"
+"Was bedeutet die Fehlermeldung?
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_778691afc3.png)","Der Text `'abc'` lässt sich nicht als ganze Zahl lesen – der **Wert** passt nicht zur Umwandlung mit `int()` (meist eine falsche Eingabe bei `int(input())`).
+
+*F. 75*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3f84e5fe3c.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f41ffbed74.png)
+Gleitkommazahlen werden binär mit begrenzter Stellenzahl gespeichert – es entstehen kleine Rundungsfehler. Für die Anzeige hilft eine Formatangabe wie `f""{wert:.2f}""`.
+
+*F. 67, 97 · Aufg. 2.4*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_541ee3a0b5.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7ec3748004.png)
+
+*F. 67, 97*"
+"Warum ergibt `0.1 + 0.2 == 0.3` in Python `False`?","float-Werte haben nur begrenzt viele Stellen; 0.1 und 0.2 lassen sich im Binärsystem nicht exakt darstellen. Die Summe ist `0.30000000000000004` – also nicht genau 0.3 (Rundungsfehler).
+
+*F. 67, 97*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_57ed2710ac.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_04a9b82934.png)
+Ein Vergleich liefert einen Wahrheitswert, den man in einer Variablen speichern kann.
+
+*F. 66, 112*"
+"Welche Werte kann der Datentyp `bool` annehmen, und wie schreibt man sie in Python?","Nur `True` (wahr) und `False` (falsch) – mit großem Anfangsbuchstaben.
+
+*F. 66*"
+"Die Variable `fehler` soll den Wahrheitswert **falsch** bekommen. Ergänze die Lücke.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7f60403632.png)","`False` (ohne Anführungszeichen, großes F)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_550310824d.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a9a4674e80.png)
+
+*F. 66*"
+"Was legt die **Syntax** einer Programmiersprache fest?","Wie Anweisungen aufgebaut sein müssen: welche Zeichen erlaubt sind und wie sie angeordnet werden dürfen (vergleichbar mit dem Satzbau).
+
+*F. 57*"
+"Was ist der Unterschied zwischen **Syntax** und **Semantik**?","- Syntax: Regeln für den **Aufbau** der Anweisungen.
+- Semantik: **Bedeutung** der Anweisungen.
+
+Beispiel: `summe = a - b` ist syntaktisch korrekt, hat aber die falsche Bedeutung, wenn eine Summe gemeint ist.
+
+*F. 57*"

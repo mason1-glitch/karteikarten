@@ -1,0 +1,81 @@
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b932bc37f0.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cd23f7e8d1.png)
+Mit `print()` wird ein NumPy-Array **ohne Kommas** ausgegeben – so unterscheidet man es auf einen Blick von einer Liste.
+
+*F. 162*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e71e745787.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0325b83956.png)
+Eine verschachtelte Liste wird zum 2D-Array (Matrix), jede Zeile in einer eigenen Ausgabezeile.
+
+*F. 162*"
+"NumPy ist als `np` importiert. Wie wird aus der Liste `[1.2, 1.4]` ein NumPy-Array?","`np.array([1.2, 1.4])` – die Liste wird `np.array()` übergeben.
+
+*F. 158, 162 · Aufg. 4.6*"
+"Welche Fehlermeldung erscheint, und was fehlt?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f13b2601d7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6ce1487253.png)
+Der Import fehlt: `import numpy as np` vor der ersten Verwendung.
+
+*F. 162*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8527b03937.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bbabd82964.png)
+`(2, 3)` = 2 Zeilen, 3 Spalten, alle mit 7 gefüllt.
+
+*F. 163 · Aufg. 4.6*"
+"Ergänze, sodass ein Array mit 2 Zeilen und 3 Spalten aus **Nullen** entsteht.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_61b9ddac9f.png)","`zeros`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7f1081c2eb.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5813c49021.png)
+`0.` bedeutet 0.0 – np.zeros erzeugt Gleitkommazahlen. Mit `np.ones` entstehen Einsen.
+
+*F. 163*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_64e793a0a5.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a396e00ad3.png)
+`[Zeile, Spalte]`; ein `:` steht für „alle“.
+
+*F. 164 · Aufg. 4.6*"
+"Ergänze, sodass die **dritte Spalte** ausgegeben wird (`[3 6]`).
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f487928dda.png)","`:, 2`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cb14688fe8.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9d3e64f893.png)
+Achtung: Im Skript (F. 164) steht über `d[:,2]` der Kommentar „die erste“ Spalte – gemeint ist die dritte (Index 2).
+
+*F. 164*"
+"Was ist der Unterschied zwischen `d[1, :]` und `d[:, 1]`?","- `d[1, :]`: die ganze **Zeile** mit Index 1
+- `d[:, 1]`: die ganze **Spalte** mit Index 1
+
+*F. 164*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1406332933.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b791f4ba4e.png)
+Ein einzelner Wert wird auf die ganze Zeile verteilt (Broadcasting).
+
+*F. 165 · Aufg. 4.6*"
+"Erzeuge ein 3×3-Array aus Nullen und setze die **erste Spalte** auf 1 – mit einer einzigen Zuweisung. Gib das Array aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6042bb3c60.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cabf36146f.png)
+
+*F. 165*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_833ebb81ae.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c17e074526.png)
+Die Rechnung wird auf **jedes** Element angewendet – ohne Schleife (hier m → mm bzw. + 0,25 m Zugabe).
+
+*F. 166 · Aufg. 4.6*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_435b47535d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4a671867a5.png)
+Elementweise Differenz; NumPy richtet die Zahlen mit Leerzeichen aus.
+
+*F. 166 · Aufg. 4.6*"
+"Welche Fehlermeldung erscheint?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_221992539e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cadfaa8cba.png)
+Die Formen (2,) und (3,) passen nicht zusammen: Elementweise Rechnung braucht hier gleich lange Arrays (oder einen einzelnen Wert).
+Ergänzung: NumPy kann nach bestimmten Regeln auch verschiedene Formen kombinieren (Broadcasting), z. B. Matrix + Zeile.
+
+*F. 166*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_650fa4cf52.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_473ef774dc.png)
+Beim Array wird jedes Element **multipliziert** (F. 166). Ergänzung: Bei einer Liste **wiederholt** `* 2` den Inhalt.
+
+*F. 159, 166*"
+"Warum rechnet man laut Skript mit NumPy-Arrays statt mit Listen, obwohl Listen flexibler sind?","- **Geschwindigkeit:** Rechnungen mit Arrays sind um Größenordnungen schneller (Skript-Beispiel: 1 Tag statt 3 Jahre).
+- Array: alle Elemente haben **denselben Datentyp** → Typinformation nur einmal gespeichert, Werte liegen direkt im Speicherblock.
+- Liste: speichert zu jedem Element den Typ und nur Verweise (Zeiger) auf die Elemente; nicht direkt auf GPUs verarbeitbar.
+
+*F. 159–161*"

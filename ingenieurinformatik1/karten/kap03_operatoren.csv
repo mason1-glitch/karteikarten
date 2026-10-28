@@ -1,0 +1,206 @@
+"23 Bolzen werden in Kisten zu je 4 Stück verpackt. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a22c28c2cf.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8135bccbbd.png)
+23 Bolzen in Kisten zu je 4: `/` Division (float), `//` volle Kisten, `%` übrige Bolzen.
+
+*F. 104 · Aufg. 3.1*"
+"Was ist der Unterschied zwischen `/` und `//`?","- `/`: normale Division, Ergebnis immer float (`7 / 2` → `3.5`, auch `8 / 2` → `4.0`; die Tabelle auf F. 104 schreibt hier vereinfacht „Wert 2“).
+- `//`: Ganzzahldivision, liefert den ganzzahligen Anteil: `7 // 2` → `3`. Bei zwei int ist das Ergebnis int.
+
+*F. 104 · Aufg. 2.2, 3.1*"
+"47 Lagerbolzen sollen in Kisten zu je 12 Stück. Schreib Code, der ausgibt, wie viele **volle Kisten** es gibt und wie viele **Bolzen übrig** bleiben.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_18736a2f65.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ba3adf327b.png)
+
+*F. 104 · Aufg. 3.9*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8c1def240a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8680b64a6c.png)
+`//` rundet **ab** (Richtung minus unendlich). Bei positiven Zahlen wirkt das wie Abschneiden (so beschreibt es das Skript), bei negativen nicht: -3.5 → -4.
+
+*F. 104*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5a70f8e47a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cd3f65192e.png)
+Ist ein Operand ein float, liefert auch `//` einen float – nur ohne Nachkommaanteil.
+
+*F. 104*"
+"Ergänze die Operatoren, sodass `2 h 15 min` ausgegeben wird.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1d03703f63.png)","Erst `//` (volle Stunden), dann `%` (Restminuten):
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6f15843070.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7cb7fbf908.png)
+
+*F. 104*"
+"Wofür verwendet man die **Ganzzahldivision** `//` typischerweise?","Wenn nur der ganzzahlige Anteil zählt: volle Kisten, volle Stunden, ganzzahliges Halbieren (`gewicht // 2`) – und um einen int statt float zu behalten.
+
+*F. 104 · Aufg. 3.10*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b00cab3650.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bd90b9cc23.png)
+`3 % 5`: 5 passt 0-mal in 3, der Rest ist 3.
+
+*F. 104 · Aufg. 3.9*"
+"Jedes **fünfte** Teil (Nummer 5, 10, 15 …) soll geprüft werden. Ergänze die Lücke.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c905e7747e.png)","`%`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_23efb7ea14.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6c3629efdc.png)
+
+*F. 104 · Aufg. 3.1*"
+"Schreib Code, der für eine Ganzzahl `n` ausgibt, ob sie `gerade` oder `ungerade` ist (Beispiel `n = 7`).","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b7289a74c8.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bb14a291b9.png)
+
+*F. 104 · Aufg. 3.10*"
+"Wie prüfst du mit `%`, ob `a` durch `b` **teilbar** ist?","`a % b == 0` – teilbar heißt: Die Division geht ohne Rest auf.
+
+*F. 104 · Aufg. 3.9*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_687e65be4e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b499bd7fcc.png)
+Hunderter, Zehner, Einer: `// 10` streicht die letzte Ziffer, `% 10` liefert die letzte Ziffer.
+
+*Aufg. 3.1*"
+"Die dreistellige Bauteilnummer `n = 805` wurde verdreht erfasst. Schreib Code, der ihre Ziffern mit `//` und `%` zerlegt und **rückwärts** als Zahl ausgibt (`508`).","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_34e48c57cb.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_887b933e12.png)
+
+*Aufg. 3.1*"
+"Ergänze, sodass `einer` die **letzte Ziffer** von `zahl` enthält.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fe0c01d636.png)","`% 10`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b47b74a8ba.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f87dc373c7.png)
+
+*Aufg. 5.4*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9ce585a212.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cfdb609d1e.png)
+`**` bindet stärker als `*`: erst r² = 9, dann 4 · 9.
+
+*F. 104, 119 · Aufg. 3.2*"
+"Berechne mit dem Potenzoperator die Fläche eines Kreises mit `r = 2` (A = 3.14 · r²) und gib sie aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4ca727818e.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_96b62e83f9.png)
+
+*F. 104*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fd1ef3b102.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6fc008796d.png)
+
+*F. 105*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6948fe954a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6d4db190ec.png)
+`240 / 2` ist `120.0`; Python vergleicht int und float nach dem Zahlenwert.
+
+*F. 105 · Aufg. 3.2*"
+"Welche Fehlermeldung erscheint, und wie behebst du sie?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f26f9300dc.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_359a8b75d6.png)
+Text und Zahl lassen sich nicht der Größe nach vergleichen. Korrektur: `print(int(messwert) > 80)`.
+
+*F. 105*"
+"Mit welchem Operator prüfst du in Python auf **Ungleichheit**?","`!=` (z. B. `eingabe != passwort`). Die im Skript zusätzlich genannte Schreibweise `<>` gibt es in Python 3 nicht.
+
+*F. 105*"
+"Was ist der Unterschied zwischen `a = 5` und `a == 5`?","- `a = 5`: **Zuweisung** – `a` bekommt den Wert 5.
+- `a == 5`: **Vergleich** – prüft, ob `a` gleich 5 ist, und liefert `True` oder `False`.
+
+*F. 113*"
+"Der Code bricht schon beim Start ab. Welche Fehlerart meldet Python, und wo liegt der Fehler?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2119f57a1d.png)","Einen **SyntaxError** (der genaue Meldungstext hängt von der Python-Version ab). In der Bedingung steht `=` (Zuweisung) statt `==` (Vergleich). Achtung: Das Skript (F. 105) nennt bei „Gleichheit“ zusätzlich „(oder =)“ – in Python ist `=` aber immer eine Zuweisung:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_05e5569725.png)
+
+*F. 113*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0a0f8ec85f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6d4db190ec.png)
+Erst wird `stufe == 3` ausgewertet (True), dann wird das Ergebnis `ok` zugewiesen.
+
+*F. 113*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bff4a42d59.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6fc008796d.png)
+`or`: eine wahre Bedingung genügt. `and`: beide müssen wahr sein.
+
+*F. 106*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ab595739c9.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6fc008796d.png)
+`not` kehrt den Wahrheitswert um; der Vergleich `3 > 2` wird zuerst ausgewertet.
+
+*F. 106*"
+"Schreib Code, der `Freigabe` ausgibt, wenn die Temperatur `t` zwischen 20 und 30 °C liegt (beide Grenzen eingeschlossen), sonst `Gesperrt`. Beispiel: `t = 25`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_29449fe28f.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_24dabdf863.png)
+
+*F. 106 · Aufg. 3.1*"
+"Was ist der Unterschied zwischen `and` und `or`?","- `A and B` ist nur `True`, wenn **beide** Operanden `True` sind.
+- `A or B` ist `True`, wenn **mindestens einer** `True` ist.
+
+*F. 106*"
+"Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was ist falsch?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_337abb85cd.png)","Einen **SyntaxError**: `&&` gibt es in Python nicht. Das Skript (F. 106) nennt „and (oder &&)“ – das ist die Schreibweise anderer Sprachen; in Python gilt nur `and`:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a2e6b46900.png)
+
+*F. 106*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b46acfa523.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f87dc373c7.png)
+Zuerst `2 ** 3 = 8`, dann `*` und `//` von links nach rechts: `3 * 8 = 24`, `24 // 4 = 6`.
+
+*F. 119 · Aufg. 3.2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_60a787e4fb.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4f94c82d8e.png)
+`%` bindet stärker als `+` und `-`: `3 % 4 = 3`, dann `12 + 3 - 1`. Wer `(teile + 3) % 4 - 1` meint, muss Klammern setzen (Ergebnis dann 2).
+
+*F. 119 · Aufg. 3.2*"
+"Der Mittelwert von zwei Messungen soll `15.0` sein. Was gibt der Code aus, und wie korrigierst du ihn?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6551d9a2c4.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0911057891.png)
+Punkt vor Strich: Es wird nur `b` halbiert. Mit Klammern:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_59baa6dcb6.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_65a87101bb.png)
+
+*F. 119*"
+"In welcher Reihenfolge wertet Python `**`, `*`/`/`/`//`/`%` und `+`/`-` aus?","Zuerst `**`, dann `*`, `/`, `//`, `%` (untereinander von links nach rechts), zuletzt `+` und `-`. Eine andere Reihenfolge erzwingt man mit **Klammern**.
+
+*F. 119*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2e96750b2b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6fc008796d.png)
+`and` wird vor `or` ausgewertet: `(False and False) or True`. Die Klammern in Zeile 2 ändern die Reihenfolge.
+
+*F. 119 · Aufg. 3.2*"
+"Alarm soll nur kommen, wenn (Druck > 8 **oder** Temperatur > 90) **und** die Anlage läuft. Die Anlage steht – trotzdem erscheint `Alarm`. Warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b9f8364627.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d1bdb12630.png)
+`and` bindet stärker als `or`; Python rechnet `druck > 8 or (temp > 90 and laeuft)`. Korrektur mit Klammern:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3e654015f2.png)
+
+*F. 119 · Aufg. 3.2*"
+"In welcher Reihenfolge werden in einer Bedingung Rechenoperatoren, Vergleiche, `not`, `and` und `or` ausgewertet?","Rechenoperatoren → Vergleiche → `not` → `and` → `or`. Im Zweifel Klammern setzen.
+
+*F. 119*"
+"Was bedeutet **Kurzschlussauswertung** (short-circuit) bei `A or B`?","Ist `A` schon `True`, steht das Ergebnis fest – `B` wird gar nicht mehr ausgewertet. Bei `A and B` gilt das Gleiche, wenn `A` `False` ist.
+
+*Aufg. 3.2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1fd5217d79.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6d4db190ec.png)
+Kein ZeroDivisionError: Der linke Teil ist schon `True`, deshalb wird `10 / divisor` nicht berechnet.
+
+*Aufg. 3.2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_aca10e2b5b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3216ff472e.png)
+10 → 15 → 30 → 29.
+
+*F. 117 · Aufg. 3.10*"
+"Wofür ist `zaehler += 1` die Kurzschreibweise?","Für `zaehler = zaehler + 1`. Entsprechend gibt es `-=`, `*=`, `/=`, `//=` usw.
+
+*F. 117, 119*"
+"Welche Fehlermeldung erscheint, und was fehlt?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fb95698f81.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_db6ec1d9ba.png)
+`+=` braucht einen Startwert. Vor der Schleife fehlt `anzahl = 0`.
+
+*F. 117*"
+"Wie rechnest du eine Dezimalzahl in eine Binärzahl um? Zeig es an 22.","Fortgesetzt durch 2 teilen und die Reste notieren, dann die Reste **von unten nach oben** lesen:
+22 : 2 = 11 Rest 0 · 11 : 2 = 5 Rest 1 · 5 : 2 = 2 Rest 1 · 2 : 2 = 1 Rest 0 · 1 : 2 = 0 Rest 1 → **10110**
+
+*F. 90 · Aufg. 5.4*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e9f0f852d5.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_de3073d111.png)
+Reste: 6 % 2 = 0, 3 % 2 = 1, 1 % 2 = 1. `insert(0, …)` setzt jede neue Ziffer vorne ein – so stehen sie gleich in der richtigen Reihenfolge (6 = 110₂).
+
+*F. 90 · Aufg. 5.4*"
+"Welche Dezimalzahl ist die Binärzahl **1011**?","**11** – Stellenwerte von rechts 1, 2, 4, 8: 1·8 + 0·4 + 1·2 + 1·1 = 11.
+
+*F. 89*"
+"Wie viele Bit fasst eine Hexadezimalziffer zusammen?","4 Bit – ein Halb-Byte (Nibble). Damit gibt es 2⁴ = 16 mögliche Bitfolgen, also 16 Ziffern.
+
+*F. 91*"
+"Welche 16 Zeichen verwendet das Hexadezimalsystem?","Die Ziffern `0`–`9` und die Buchstaben `A`–`F` (A = 10, B = 11 … F = 15).
+
+*F. 91*"
+"Ergänzung: Python versteht die im Skript (F. 95) gezeigte Schreibweise `0x…` direkt als Hexadezimalzahl. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3763807f07.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_28dc402144.png)
+2 · 16 + F (= 15) = 47. print() zeigt Zahlen immer dezimal.
+
+*F. 93, 95*"
