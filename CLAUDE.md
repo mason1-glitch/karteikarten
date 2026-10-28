@@ -7,6 +7,7 @@ Maschinenbau, Ostfalia (BM1b, PO2025). Karteikarten zum Import in die App StudyC
 <fach>/bilder/   PNG-Bilder, die in den Karten verlinkt sind
 <fach>/quellen/  optional: Kartenquelle (YAML), Bildausschnitte (YAML), Abdeckungsmatrix (MD)
 werkzeuge/       stil.py – einheitlicher Diagrammstil
+                 codebilder.py – Code-Blöcke als farbige Bilder (Syntax-Highlighting)
                  karten.py – CSV aus YAML bauen und prüfen (Abdeckung, LaTeX, Rechnungen, Wortlaut, Links)
                  folienbilder.py – Schaubilder aus dem Skript-PDF ausschneiden und Felder verdecken
 ```
@@ -23,6 +24,7 @@ Fächer: bwl, mathe1, ingenieurinformatik1, konstruktionsgrundlagen, cad, werkst
 - **Kein LaTeX** – wird nicht gerendert. Formeln in Unicode schreiben: σ = F / S₀, ε, Δl, ², ≈, ≤, ·, √.
 - Bilder als Markdown-Link mit vollem Raw-Link:
   `![Beschreibung](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/<fach>/bilder/<datei>.png)`
+- **Code immer farbig als Bild.** Die App zeigt ```-Blöcke nur einfarbig (Sprachangabe und HTML werden ignoriert, Einrückung ohne Codeblock geht verloren). Deshalb Code als normalen Markdown-Block mit Sprache schreiben (```python, ```c, ```text für Ausgaben) und dann `python3 werkzeuge/codebilder.py <fach>/karten/<datei>.csv` ausführen – das rendert jeden Block als PNG (Farbschema One Dark) nach `<fach>/bilder/code_<hash>.png` und ersetzt ihn durch den Bild-Link. `karten.py bauen` macht das automatisch. Inline-Code (`x`) bleibt Text.
 - Dateiname der CSV: `<thema>.csv` bzw. `kap<nr>_<thema>.csv`, nur Kleinbuchstaben, Bindestriche, keine Umlaute.
 
 ## Gute Karten (Standard – ein Auftrag im Chat, z. B. ein Rieseberg-Prompt, geht vor)

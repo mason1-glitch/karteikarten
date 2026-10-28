@@ -21,6 +21,7 @@ Quelle je Kapitel, z. B. bwl/quellen/kap1-2_karten.yaml:
         rechnung: [...]            # optional, wird nachgerechnet (siehe RECHNER)
 
 Bilder: {{bild:<datei ohne .png>|Beschreibung}} wird zum Raw-Link auf <fach>/bilder/.
+Code: ```sprache … ```-Blöcke werden zu farbigen Bildern (werkzeuge/codebilder.py).
 Die Folienangabe (*F. …*) hängt das Werkzeug an jede Antwort an.
 
 Aufrufe (aus dem Repo-Wurzelordner):
@@ -46,6 +47,9 @@ import tempfile
 import urllib.request
 
 import yaml
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from codebilder import code_einsetzen  # Code-Blöcke → farbige Bilder (werkzeuge/codebilder.py)
 
 WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO_RAW = "https://raw.githubusercontent.com/mason1-glitch/karteikarten/main"
@@ -98,8 +102,8 @@ def bilder_einsetzen(text, fach):
 
 
 def felder(q, k):
-    frage = bilder_einsetzen(k["frage"].strip(), q["fach"])
-    antwort = bilder_einsetzen(k["antwort"].strip(), q["fach"])
+    frage = code_einsetzen(bilder_einsetzen(k["frage"].strip(), q["fach"]), q["fach"])
+    antwort = code_einsetzen(bilder_einsetzen(k["antwort"].strip(), q["fach"]), q["fach"])
     antwort += f"\n\n*{folien_text(k['folien'])}*"
     return frage, antwort
 
