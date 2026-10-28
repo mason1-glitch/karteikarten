@@ -50,15 +50,15 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K09.002 | code_fehler | F. 171 | Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was fehlt? ```python def leistung(spannung, |
 | K09.003 | code_schreiben | F. 171, 180 · Aufg. 5.3 | Schreib eine Funktion `kreisflaeche(d)`, die für den Durchmesser `d` die Fläche A = π · d² / 4 **zurückgibt**  |
 | K09.004 | begriff | F. 171 | Aus welchen Teilen besteht die erste Zeile einer Funktionsdefinition, und was folgt darunter? |
-| K09.005 | code_ausgabe | F. 178 · Aufg. 5.2 | Was gibt der Code aus? ```python def melden():     print("B")  print("A") melden() print("C") ``` |
+| K09.005 | code_ausgabe | F. 178 · Aufg. 5.2 | Was gibt der Code aus? ```python def kalibrieren():     print("Kalibrierung")  print("Start") kalibrieren() pr |
 | K09.006 | code_ausgabe | F. 178 · Aufg. 5.2 | Was gibt der Code aus? ```python def starten():     print("Motor startet")  print("Programm fertig") ``` |
 | K09.007 | code_ausgabe | F. 178 · Aufg. 5.2 | Was gibt der Code aus? ```python def quadrat(x):     print("in quadrat")     return x * x  print("vorher") y = |
 | K09.008 | begriff | F. 178 · Aufg. 5.2 | Was passiert im Programmablauf, wenn eine Funktion aufgerufen wird? |
 | K09.009 | code_ausgabe | F. 180 | Was gibt der Code aus? ```python def volumen(l, b, h):     return l * b * h  v = volumen(2, 3, 4) print(v / 2) |
 | K09.010 | code_ausgabe | F. 180 | Was gibt der Code aus? ```python def pruefe(wert):     if wert < 0:         return "negativ"     return "ok"   |
-| K09.011 | code_luecke | F. 180 · Aufg. 5.5 | Die Funktion soll den Durchsatz **zurückgeben**. Ergänze das Schlüsselwort. ```python def durchsatz(stueck, st |
+| K09.011 | code_luecke | F. 180 · Aufg. 5.5 | Die Funktion soll das Drehmoment M = F · r (in N·m) **zurückgeben**. Ergänze das Schlüsselwort. ```python def  |
 | K09.012 | begriff | F. 173, 180 | Was bewirkt `return wert` in einer Funktion? |
-| K09.013 | code_ausgabe | Aufg. 5.3 | Was gibt der Code aus? ```python def addiere(a, b):     print(a + b)  ergebnis = addiere(3, 4) print("Rückgabe |
+| K09.013 | code_ausgabe | Aufg. 5.3 | Was gibt der Code aus? ```python def flaeche(breite, hoehe):     print(breite * hoehe)  a = flaeche(4, 5) prin |
 | K09.014 | code_fehler | Aufg. 5.3 | Was erscheint auf dem Bildschirm, und wie korrigierst du die Funktion? ```python def flaeche(b, h):     print( |
 | K09.015 | unterschied | Aufg. 5.3 | Was ist der Unterschied zwischen `print(ergebnis)` und `return ergebnis` in einer Funktion? |
 | K09.016 | code_ausgabe | Aufg. 5.3 | Was gibt der Code aus? ```python def teile(a, b):     if b == 0:         return None     return a / b  print(t |
@@ -68,23 +68,23 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K09.020 | code_fehler | F. 176 · Aufg. 5.1 | Welche Fehlermeldung erscheint? ```python def ventil(nr, zustand):     print("Ventil", nr, zustand)  ventil(3) |
 | K09.021 | begriff | F. 176 · Aufg. 5.1 | Was bedeutet diese Fehlermeldung? ```text TypeError: ventil() takes 2 positional arguments but 3 were given `` |
 | K09.022 | code_fehler | F. 175 · Aufg. 5.1 | Welche Fehlermeldung erscheint, und wie behebst du sie? ```python starten()  def starten():     print("Start") |
-| K09.023 | code_ausgabe | F. 175 | Was gibt der Code aus? ```python def a():     b()  def b():     print("b läuft")  a() ``` |
+| K09.023 | code_ausgabe | F. 175 | Was gibt der Code aus? ```python def pruefen():     messen()  def messen():     print("Messung läuft")  pruefe |
 | K09.024 | begriff | F. 175 | Welche Reihenfolge von Definition und Aufruf schreibt Python bei Funktionen vor, und welcher Fehler entsteht s |
 | K09.025 | code_ausgabe | Aufg. 5.2, 5.6 | Was gibt der Code aus? ```python def zerlege(minuten):     return minuten // 60, minuten % 60  h, m = zerlege( |
-| K09.026 | code_luecke | Aufg. 5.2 | Die Funktion liefert Start- und Endzeit. Ergänze die linke Seite, sodass beide Werte in eigenen Variablen land |
+| K09.026 | code_luecke | Aufg. 5.2 | Die Funktion liefert untere und obere Grenze eines Messbereichs. Ergänze die linke Seite, sodass beide Werte i |
 | K09.027 | code_schreiben | Aufg. 5.6 | Schreib eine Funktion `tausche(x, y)`, die beide Werte vertauscht **zurückgibt**, und vertausche damit `links  |
 | K09.028 | code_ausgabe | F. 182 · Aufg. 5.6 | Was gibt der Code aus? ```python def kalibrieren():     offset = 5     print("innen:", offset)  offset = 0 kal |
 | K09.029 | code_fehler | F. 182 | Welche Fehlermeldung erscheint? ```python def messen():     wert = 42  messen() print(wert) ``` |
 | K09.030 | begriff | F. 182 | Was ist eine **lokale** Variable? |
-| K09.031 | code_ausgabe | F. 183 · Aufg. 5.6 | Was gibt der Code aus? ```python zaehler = 0 def zaehlen():     global zaehler     zaehler += 1  zaehlen() zae |
+| K09.031 | code_ausgabe | F. 183 · Aufg. 5.6 | Was gibt der Code aus? ```python ausschuss = 5 def melden():     global ausschuss     ausschuss += 1  melden() |
 | K09.032 | begriff | F. 183 · Aufg. 5.6 | Warum sollte man `global` sparsam einsetzen, und was ist die bessere Alternative? |
-| K09.033 | code_ausgabe | Aufg. 5.6 | Was gibt der Code aus? ```python def verdopple(wert):     wert = wert * 2     return wert  temp = 80 verdopple |
+| K09.033 | code_ausgabe | Aufg. 5.6 | Was gibt der Code aus? ```python def in_mm(laenge):     laenge = laenge * 10     return laenge  mass = 12 in_m |
 | K09.034 | code_fehler | Aufg. 5.6 | Die Werte sollen getauscht werden. Was gibt der Code aus, und warum klappt es nicht? ```python def tausche(x,  |
 | K09.035 | begriff | F. 182 · Aufg. 5.6 | Warum ändert `wert = wert * 2` in einer Funktion nicht die Variable, die der Aufrufer übergeben hat? |
 | K09.036 | code_ausgabe | Aufg. 5.6 | **Ergänzung** (nicht im Skript): Was gibt der Code aus? ```python def anfuegen(liste):     liste.append(99)  w |
-| K09.037 | unterschied | F. 172–174 | Was ist laut Skript der Unterschied zwischen einer **Prozedur** und einer **Funktion**, und was ist eine **Met |
-| K09.038 | begriff | F. 174 | Ordne nach Skript zu: Ist `melden`, `doppelt` bzw. `append` eine Prozedur, eine Funktion oder eine Methode? `` |
+| K09.037 | unterschied | F. 172–174 | Was ist der Unterschied zwischen einer **Prozedur**, einer **Funktion** und einer **Methode**? |
+| K09.038 | begriff | F. 174 | Ordne zu (wie in der Übung F. 174): Ist `melden`, `doppelt` bzw. `append` eine Prozedur, eine Funktion oder ei |
 | K09.039 | begriff | F. 170 | Welche Vorteile nennt das Skript für Funktionen? |
-| K09.040 | code_schreiben | F. 170 · Aufg. 5.3 | Fasse die doppelte Berechnung in eine Funktion `volumen(masse, dichte)` zusammen, sodass dieselbe Ausgabe ents |
+| K09.040 | code_schreiben | F. 170 · Aufg. 5.3 | Fasse die doppelte Berechnung des Übersetzungsverhältnisses i = z₂ / z₁ (Zähnezahlen) in eine Funktion `uebers |
 | K09.041 | begriff | F. 177, 178 · Aufg. 5.2 | Wie machst du sichtbar, in welcher Reihenfolge ein Programm mit Funktionen tatsächlich abläuft? |
-| K09.042 | code_ausgabe | Aufg. 5.2 | Was gibt der Code aus? ```python def b():     print("  b") def a():     print("a Start")     b()     print("a  |
+| K09.042 | code_ausgabe | Aufg. 5.2 | Was gibt der Code mit den Trace-Ausgaben aus? ```python def messen():     print(">>> messen gestartet")     re |

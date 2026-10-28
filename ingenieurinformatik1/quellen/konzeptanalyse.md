@@ -6,11 +6,11 @@ Stand: 28.10.2026. Grundlage: alle Aufgaben, Lösungen und Daten aus `Informatik
 
 1. Jedes Lösungs-Notebook wurde gelesen; ein Skript zählte zusätzlich, in wie vielen Lösungen eine Syntaxform vorkommt (z. B. f-Strings in 21, `input()` in 18, `for` in 11, `def` in 6, `groupby` in 1 Lösung). Die Zählung wurde von Hand bereinigt (z. B. `%` in Zeitformaten ist kein Modulo).
 2. Gewicht **3**: in vielen Aufgaben nötig (≥ 8 Lösungen) oder Grundlage fast jeder Aufgabe (Ein-/Ausgabe, Typumwandlung, Verzweigungen, Schleifen, Funktionen). Gewicht **2**: in 3–7 Lösungen oder eigener Skriptabschnitt. Gewicht **1**: in 1–2 Lösungen oder nur im Skript.
-3. Umfang folgt dem Gewicht: Gewicht 3 → 3–7 Karten (Ø 4,8), Gewicht 2 → 2–5 (Ø 3,4), Gewicht 1 → 2–4 (Ø 2,2). Jedes Konzept hat mindestens zwei Karten **unterschiedlichen Typs**.
+3. Umfang folgt dem Gewicht: Gewicht 3 → 3–7 Karten (Ø 4,7), Gewicht 2 → 2–5 Karten (Ø 3,3), Gewicht 1 → 2–4 Karten (Ø 2,2). Jedes Konzept hat mindestens zwei Karten **unterschiedlichen Typs**.
 
 ## Kartentypen und Umfang – Begründung
 
-Nach dem Minimum-Information-Prinzip (Wozniak, *20 rules of formulating knowledge*) fragt jede Karte genau eine Sache ab, Code bleibt bei höchstens 8 Zeilen, und Aufzählungen werden vermieden. Weil aktives Abrufen besser behalten wird als Wiederlesen (Testing-Effekt, Roediger & Karpicke 2006), dominieren Karten, auf denen man selbst etwas erzeugt: Ausgaben vorhersagen trainiert das Code-Lesen Zeile für Zeile, das in Studien das Programmieren von Anfängern verbessert (Xie, Nelson & Ko 2018); Lückentexte (Cloze) und „Schreib Code, der …“ trainieren exakte Syntax wie bei Code auf Papier; „Finde den Fehler“ übt das Lesen echter englischer Fehlermeldungen. Der Umfang (438 Karten) ergibt sich aus 143 Konzepten × 2–7 Karten; bei 20–25 neuen Karten am Tag ist der Satz in drei Wochen eingeführt und bis zur Klausur mehrfach wiederholt.
+Nach dem Minimum-Information-Prinzip (Wozniak, *20 rules of formulating knowledge*) fragt jede Karte genau eine Sache ab, Code bleibt bei höchstens 8 Zeilen, und Aufzählungen werden vermieden. Weil aktives Abrufen besser behalten wird als Wiederlesen (Testing-Effekt, Roediger & Karpicke 2006), dominieren Karten, auf denen man selbst etwas erzeugt: Ausgaben vorhersagen trainiert das Code-Lesen Zeile für Zeile, das in Studien das Programmieren von Anfängern verbessert (Xie, Nelson & Ko 2018); Lückentexte (Cloze) und „Schreib Code, der …“ trainieren exakte Syntax wie bei Code auf Papier; „Finde den Fehler“ übt das Lesen echter englischer Fehlermeldungen. Der Umfang (434 Karten) ergibt sich aus 142 Konzepten × 2–7 Karten; bei 20–25 neuen Karten am Tag ist der Satz in drei Wochen eingeführt und bis zur Klausur mehrfach wiederholt.
 
 | Typ | Was trainiert er? |
 |---|---|
@@ -31,7 +31,7 @@ Nach dem Minimum-Information-Prinzip (Wozniak, *20 rules of formulating knowledg
 
 - `lambda`, `map()`, `filter()`: kommen weder in den Aufgaben noch im Skript vor (nur `lambda` in der Schlüsselwort-Tabelle F. 62). Das Funktions-als-Argument-Prinzip deckt `sort(key=…)` ab (F. 147).
 - Reine Rechnerarchitektur-Theorie (EVA, Von-Neumann, CPU, Bits/Bytes, Analog/Digital, Bereiche der Informatik): für das Lösen der Programmieraufgaben nicht nötig; Zahlensysteme sind wegen Aufg. 5.4 enthalten.
-- Echte Arrays mit dem Modul `array` (F. 157, „nice to know“), seaborn (F. 211), `open(…, "r+")` (F. 195).
+- Echte Arrays mit dem Modul `array` (F. 157, „nice to know“), seaborn (F. 211), `open(…, "r+")` (F. 195, nur ein Beispiel ohne Aufgabe; in der Abdeckungsmatrix von Kapitel 11 als ausgelassen vermerkt).
 
 ## Auffälligkeiten im Skript (auf den Karten berücksichtigt)
 
@@ -41,7 +41,14 @@ Nach dem Minimum-Information-Prinzip (Wozniak, *20 rules of formulating knowledg
 - F. 97: `1 / 3 * 3` ergibt in Python genau `1.0`; Rundungsfehler zeigen z. B. `0.1 + 0.2` oder `85.0 - 72.4`.
 - F. 164: Kommentar „(Hier die erste)“ über `d[:,2]` – gemeint ist die dritte Spalte.
 - F. 182: Zuweisungen in einer **Schleife** wirken sehr wohl außerhalb; nur Funktionen haben einen eigenen Gültigkeitsbereich.
+- F. 195: Kommentar „Überschreiben des bisherigen Inhalts“ bei `"r+"` – r+ überschreibt nur ab Dateianfang so viele Zeichen, wie geschrieben werden.
+- F. 208: `savefig` speichert nicht „im Speicherort des Programmskripts“, sondern im aktuellen Arbeitsordner (in Jupyter meist der Ordner des Notebooks). Gleiches gilt für relative Pfade bei `open()`.
+- Aufg. 5.6 sagt, eine Funktion erhalte „eine Kopie des Wertes“. Genauer: Der Parameter ist eine eigene lokale Variable, eine Neuzuweisung wirkt nicht nach außen – eine Liste, die in der Funktion mit `append` verändert wird, ist aber auch außen verändert (Karte als Ergänzung).
 - Aufgaben 3.7/3.8: Die Lösungsdateien sind gegenüber den Dateinamen vertauscht betitelt; die Karten nutzen die Dateinummer.
+
+## Externe Prüfung
+
+Vier unabhängige Prüfdurchgänge (ohne Kenntnis der Entstehung): (A) mechanisch – alle Code-Karten unter Python 3.9 und 3.13 mit zwei Hash-Seeds ausgeführt, Abdeckung nachgezählt, CSV-Format und alle Code-Bilder geprüft; (B–D) fachlich und didaktisch je ein Kapitelblock. Alle Befunde der Schwere „hoch“ und „mittel“ sind korrigiert (u. a. 1:1 übernommene Aufgabenbeispiele durch neue Szenarien ersetzt, Dubletten umgebaut, zusammengesetzte Karten geteilt, Ergänzungen gekennzeichnet); danach liefen alle Tests erneut fehlerfrei.
 
 ## Konzepte nach Kapitel
 
@@ -50,7 +57,7 @@ Nach dem Minimum-Information-Prinzip (Wozniak, *20 rules of formulating knowledg
 | Konzept / Syntax | Gewicht | Skript | Aufgaben | Karten |
 |---|---:|---|---|---:|
 | print() mit mehreren Argumenten (Leerzeichen dazwischen), Leerzeile mit print() | 3 | F. 48 | 1.1, 2.3 | 6 |
-| print(..., end="") unterdrückt den Zeilenumbruch | 2 | F. 52 | 1.3, 4.3 | 4 |
+| print(..., end="") unterdrückt den Zeilenumbruch | 2 | F. 52 | 1.3, 4.3 | 3 |
 | Escape-Sequenz \n (Zeilenumbruch) | 2 | F. 52–53 | 1.3, 1.4 | 3 |
 | Escape-Sequenz \t (Tabulator) | 2 | F. 53 | 1.3, 1.4 | 4 |
 | Steuerzeichen \r (Wagenrücklauf) und \b (Backspace) | 1 | F. 53 | 1.3 | 3 |
@@ -79,8 +86,8 @@ Typische Fehlerquellen:
 | Standarddatentypen int, float, str, bool | 3 | F. 64–68 | 2.3 | 5 |
 | type() gibt den Datentyp aus (<class 'int'> …) | 2 | F. 66 | 2.2–2.4 | 4 |
 | Datentyp ändert sich mit dem zugewiesenen Wert (keine Deklaration wie in C++) | 1 | F. 70–71 | – | 2 |
-| / liefert immer float (auch 1500 / 2) | 3 | F. 104 | 2.2 | 4 |
-| Implizite Typumwandlung: int mit float → float, int * int bleibt int | 2 | F. 74 | 2.2 | 4 |
+| / liefert immer float (auch 1500 / 2) | 3 | F. 104 | 2.2 | 3 |
+| Implizite Typumwandlung: int mit float → float, int * int bleibt int | 2 | F. 74 | 2.2 | 3 |
 | int(): String → Ganzzahl, float → Ganzzahl (schneidet ab, rundet nicht) | 3 | F. 75 | 1.2, 2.4 | 5 |
 | float(): String → Kommazahl, Punkt statt Komma | 3 | F. 67, 75 | 2.4, 3.5 | 4 |
 | str(): Zahl → Text (z. B. für Verkettung) | 2 | F. 75, 135 | 1.3 | 3 |
@@ -114,7 +121,7 @@ Typische Fehlerquellen:
 | Kurzschlussauswertung (Short-Circuit) bei or/and | 1 | – | 3.2 | 2 |
 | Erweiterte Zuweisung += -= *= //= | 2 | F. 117, 119 | 3.8, 3.10, 6.1 | 3 |
 | Binärsystem: Dezimal ↔ Binär (fortgesetzte Division durch 2) | 1 | F. 85–90 | 5.4 | 3 |
-| Hexadezimalsystem (Nibble, 0–9/A–F, 0x-Schreibweise) | 1 | F. 91–95 | – | 2 |
+| Hexadezimalsystem (Nibble, 0–9/A–F, 0x-Schreibweise) | 1 | F. 91–95 | – | 3 |
 
 Typische Fehlerquellen:
 
@@ -147,7 +154,7 @@ Typische Fehlerquellen:
 
 | Konzept / Syntax | Gewicht | Skript | Aufgaben | Karten |
 |---|---:|---|---|---:|
-| while-Schleife: läuft, solange die Bedingung wahr ist; Zähler | 3 | F. 123, 125 | 2.9, 3.7, 3.10 | 6 |
+| while-Schleife: läuft, solange die Bedingung wahr ist; Zähler | 3 | F. 123, 125 | 2.9, 3.7, 3.10 | 5 |
 | Endlosschleife (Bedingung bleibt wahr, Zähler vergessen) | 2 | F. 126 | – | 3 |
 | while mit zwei Bedingungen (and) und Auswertung nach der Schleife | 2 | – | 3.7 | 3 |
 | Eingabe wiederholen, bis sie passt (Startwert vor der Schleife) | 2 | F. 125 | 3.7 | 3 |
@@ -172,8 +179,8 @@ Typische Fehlerquellen:
 
 | Konzept / Syntax | Gewicht | Skript | Aufgaben | Karten |
 |---|---:|---|---|---:|
-| len() – Anzahl der Zeichen (Leerzeichen zählen mit) | 3 | F. 136 | 4.1, 4.4 | 5 |
-| Zugriff s[i]: Index ab 0, s[-1] letztes Zeichen | 3 | F. 136 | 4.1 | 5 |
+| len() – Anzahl der Zeichen (Leerzeichen zählen mit) | 3 | F. 136 | 4.1, 4.4 | 4 |
+| Zugriff s[i]: Index ab 0, s[-1] letztes Zeichen | 3 | F. 136 | 4.1 | 4 |
 | IndexError: string index out of range | 1 | F. 136 | – | 2 |
 | Slicing s[von:bis] (bis ausgeschlossen, Grenzen weglassbar) | 2 | F. 137 | 4.1 | 5 |
 | Slicing mit Schrittweite s[von:bis:schritt] | 1 | F. 137 | – | 2 |
@@ -181,7 +188,7 @@ Typische Fehlerquellen:
 | replace(): ersetzt alle Vorkommen, liefert neuen String, verkettbar | 2 | F. 138 | 4.1, 6.2 | 4 |
 | count(): Vorkommen zählen (Groß-/Kleinschreibung beachten) | 2 | F. 146 | 6.1 | 3 |
 | Strings sind unveränderlich (Ergebnis neu zuweisen) | 1 | F. 138 | 4.1 | 3 |
-| Strings mit find() und Slicing zerlegen und neu zusammensetzen | 2 | F. 137–138 | 4.1 | 4 |
+| Strings mit find() und Slicing zerlegen und neu zusammensetzen | 2 | F. 137–138 | 4.1 | 3 |
 
 Typische Fehlerquellen:
 
@@ -212,7 +219,7 @@ Typische Fehlerquellen:
 | List-Comprehension zum Anlegen von Listen/Rastern | 1 | – | 4.3 | 2 |
 | Benutzereingabe ab 1 → Index ab 0 (reihe - 1) | 2 | – | 4.3, 4.5 | 3 |
 | Tupel: unveränderlich, runde Klammern, Entpacken | 1 | F. 155 | 5.2, 5.6 | 3 |
-| Zuweisung kopiert keine Liste (Referenz) – .copy() | 1 | F. 161 | 4.6 | 2 |
+| Zuweisung kopiert keine Liste/kein Array (Referenz) – .copy() | 1 | – | 4.6 | 2 |
 
 Typische Fehlerquellen:
 
@@ -232,7 +239,6 @@ Typische Fehlerquellen:
 | Ganze Zeile/Spalte auf einen Wert setzen | 1 | F. 165 | 4.6 | 2 |
 | Elementweise Rechnung (Broadcasting), Arrays gleicher Form verrechnen | 2 | F. 166 | 4.6 | 3 |
 | NumPy-Array vs. Liste (gleicher Datentyp, Geschwindigkeit, * verhält sich anders) | 1 | F. 159–161 | – | 2 |
-| Zuweisung erzeugt keine Kopie – .copy() | 1 | – | 4.6 | 2 |
 
 Typische Fehlerquellen:
 
@@ -240,7 +246,7 @@ Typische Fehlerquellen:
 - `d[:, 2]` ist die dritte Spalte (Index 2).
 - `liste * 2` wiederholt, `array * 2` multipliziert.
 - Arrays unterschiedlicher Form verrechnet → ValueError (broadcast).
-- Zuweisung statt `.copy()`.
+- Zuweisung statt `.copy()` (Karten dazu in Kapitel 7, gilt für Listen und Arrays).
 
 ### Kapitel 9: Funktionen (def, return, Parameter, Gültigkeit) (`kap09_funktionen.csv`)
 
@@ -275,13 +281,13 @@ Typische Fehlerquellen:
 |---|---:|---|---|---:|
 | import modul, Aufruf modul.funktion(), fehlender Import → NameError | 3 | F. 77–79 | 2.5–2.9, 3.4, 6.1–6.5 | 4 |
 | import … as … (np, pd, plt) und from … import … | 2 | F. 205 | 2.1, 4.3, 4.6, 6.3 | 3 |
-| math.sqrt, math.pi, math.ceil (aufrunden) | 2 | – | 2.5, 2.6 | 5 |
+| math.sqrt, math.pi, math.ceil (aufrunden) | 2 | – | 2.5, 2.6 | 4 |
 | random.randint(a, b) – beide Grenzen eingeschlossen | 2 | – | 2.5, 2.9, 3.4, 3.6 | 4 |
 | time.sleep(sekunden) – Programm anhalten | 2 | – | 1.3, 2.7, 2.9 | 2 |
 | Zeit formatieren mit strftime: %d %m %Y %H %M %S | 2 | – | 2.5, 2.8, 2.9, 5.5 | 5 |
 | datetime.datetime.now() und .strftime() | 2 | F. 194 | 5.5, 6.2 | 3 |
 | Bibliotheken installieren (pip install) vs. importieren | 1 | – | 2.5 | 2 |
-| qrcode.make(text) und display() im Notebook | 1 | – | 2.6–2.8 | 2 |
+| qrcode.make(text) und display() im Notebook | 1 | – | 2.6–2.8 | 3 |
 
 Typische Fehlerquellen:
 
@@ -319,7 +325,7 @@ Typische Fehlerquellen:
 |---|---:|---|---|---:|
 | CSV-Format: ein Datensatz pro Zeile, Trennzeichen, Kopfzeile | 1 | F. 198 | 6.3 | 2 |
 | pd.read_csv() → DataFrame; Spaltennamen exakt (KeyError) | 2 | F. 199–201 | 6.3–6.5 | 4 |
-| DataFrame aus Dictionary, Spalte df["Name"], len(df), head() | 2 | F. 200 | 6.3, 6.4 | 3 |
+| DataFrame aus Dictionary, Spalte df["Name"], len(df), head() | 2 | F. 200 | 6.3, 6.4 | 4 |
 | Zeilen filtern: df[df["Spalte"] > wert] | 2 | F. 200 | 6.3–6.5 | 3 |
 | sort_values(by=…, ascending=…) | 2 | – | 6.3, 6.4 | 2 |
 | groupby("A")["B"].mean() – Mittelwert je Gruppe | 1 | F. 200 | 6.3 | 2 |
@@ -328,7 +334,7 @@ Typische Fehlerquellen:
 Typische Fehlerquellen:
 
 - Spaltenname nicht exakt (Einheit in Klammern) → KeyError.
-- `df["Kosten"] > 4000` allein filtert nicht, erst `df[df["Kosten"] > 4000]`.
+- `df["Temp"] > 80` allein filtert nicht, erst `df[df["Temp"] > 80]`.
 - Nach `sort_values` bleibt der alte Index erhalten.
 - `ascending=False` für absteigend vergessen.
 - Kopfzeile wird nicht als Datenzeile gezählt.
@@ -343,7 +349,7 @@ Typische Fehlerquellen:
 | label=… und plt.legend() | 1 | F. 205 | 2.1, 6.5 | 2 |
 | Balkendiagramm plt.bar(kategorien, werte) | 2 | F. 207 | 6.1, 6.5 | 3 |
 | Histogramm plt.hist(daten, bins=…) | 1 | F. 207 | 6.5 | 2 |
-| Streudiagramm plt.scatter(x, y) | 1 | F. 209 | 6.5 | 2 |
+| Streudiagramm plt.scatter(x, y) | 1 | – | 6.5 | 2 |
 | Mehrere Diagramme: fig, (ax1, ax2) = plt.subplots(1, 2), ax.set_title, tight_layout | 1 | – | 6.5 | 2 |
 | plt.savefig("datei.png", dpi=…) vor plt.show() | 1 | F. 208 | 6.5 | 2 |
 | x und y müssen gleich lang sein (ValueError) | 1 | F. 205 | – | 2 |
@@ -351,7 +357,7 @@ Typische Fehlerquellen:
 
 Typische Fehlerquellen:
 
-- Beschriftungen oder `savefig` erst nach `plt.show()`.
+- `savefig` erst nach `plt.show()`; x- und y-Beschriftung vertauscht (das erste Argument von `plot` liegt auf der x-Achse).
 - x- und y-Liste unterschiedlich lang → ValueError.
 - `legend()` ohne `label=` → leere Legende.
 - Bei Subplots `plt.title` statt `ax.set_title`.

@@ -31,7 +31,7 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      kennung = "PRESS-042"
+      kennung = "DREH-7731"
       print(len(kennung))
       ```
     antwort: |-
@@ -57,26 +57,6 @@ karten:
       Leerzeichen zählen mit – auch das am Ende.
     tests: [{p: 1, t: 1}]
 
-  - typ: code_luecke
-    folien: [136]
-    deckt: [c06.len, c06.index]
-    frage: |-
-      Ergänze den Index so, dass das **letzte** Zeichen ausgegeben wird – nur mit `len()`, ohne negative Zahl.
-      ```python
-      code = "QX-718"
-      print(code[___])
-      ```
-    antwort: |-
-      `len(code) - 1` – der letzte Index ist eins kleiner als die Länge.
-      ```python
-      code = "QX-718"
-      print(code[len(code) - 1])
-      ```
-      ```text
-      8
-      ```
-    tests: [{p: 2, t: 1}]
-
   - typ: code_schreiben
     folien: [136]
     deckt: [c06.len]
@@ -100,16 +80,16 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      kennung = "PRESS-042-A"
+      kennung = "FRAES-117-B"
       print(kennung[0])
       print(kennung[-1])
       print(kennung[6])
       ```
     antwort: |-
       ```text
-      P
-      A
-      0
+      F
+      B
+      1
       ```
       Index 6 ist das 7. Zeichen (die Zählung beginnt bei 0).
     tests: [{p: 1, t: 1}]
@@ -118,9 +98,9 @@ karten:
     folien: [136]
     deckt: [c06.index]
     frage: |-
-      Welchen Index hat das **erste** Zeichen eines Strings, und welches Zeichen liefert `s[-1]`?
+      Welchen Index hat das **erste** Zeichen eines Strings?
     antwort: |-
-      Das erste Zeichen hat den Index **0**. `s[-1]` liefert das **letzte** Zeichen (negative Indizes zählen von hinten).
+      Den Index **0** – die Zählung beginnt bei 0, das n-te Zeichen hat also den Index n − 1.
 
   - typ: code_luecke
     folien: [136]
@@ -132,7 +112,7 @@ karten:
       print(typ[___])
       ```
     antwort: |-
-      `2`
+      `2` (von hinten gezählt ginge auch `-3`)
       ```python
       typ = "M27-B"
       print(typ[2])
@@ -235,7 +215,7 @@ karten:
       print(datum[___])
       ```
     antwort: |-
-      `0:4`
+      `0:4` (oder kurz `:4`)
       ```python
       datum = "2026-10-28"
       print(datum[0:4])
@@ -251,7 +231,7 @@ karten:
     frage: |-
       Welche Zeichen enthält der Ausschnitt `s[von:bis]`?
     antwort: |-
-      Alle Zeichen ab Index `von` (**eingeschlossen**) bis vor Index `bis` (**ausgeschlossen**) – also `bis - von` Zeichen.
+      Alle Zeichen ab Index `von` (**eingeschlossen**) bis vor Index `bis` (**ausgeschlossen**) – also `bis - von` Zeichen, solange beide Grenzen im String liegen. Ragt `bis` über das Ende hinaus, endet der Ausschnitt einfach am Stringende (`"Welle"[2:10]` → `"lle"`).
 
   - typ: code_schreiben
     folien: [137]
@@ -266,7 +246,7 @@ karten:
       ```text
       csv
       ```
-      Negative Indizes zählen von hinten; `-3:` heißt „ab dem drittletzten Zeichen bis zum Ende“.
+      Ergänzung (im Material nur `[-1]`): Negative Indizes zählen von hinten; `-3:` heißt *ab dem drittletzten Zeichen bis zum Ende*.
     tests: [{p: 1, t: 1}]
 
   # ---------------------------------------------------------------- Slicing mit Schritt
@@ -314,16 +294,16 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      text = "Wartung Presse Halle-3"
-      print(text.find("Halle"))
-      print(text.find("Fräse"))
+      text = "Messstelle Kühlkreis Pumpe-2"
+      print(text.find("Pumpe"))
+      print(text.find("Ventil"))
       ```
     antwort: |-
       ```text
-      15
+      21
       -1
       ```
-      find() liefert die Position, an der der Suchtext **beginnt**, und `-1`, wenn er nicht vorkommt.
+      find() liefert die Position, an der der Suchtext **beginnt** (F. 138). Ergänzung: Kommt er nicht vor, liefert find() `-1`.
     tests: [{p: 1, t: 1}]
 
   - typ: begriff
@@ -332,7 +312,7 @@ karten:
     frage: |-
       Was liefert `text.find("x")`, wenn `"x"` im Text **nicht** vorkommt?
     antwort: |-
-      Den Wert `-1` – es gibt keinen Fehler. Deshalb vor dem Weiterrechnen prüfen: `if pos != -1:`.
+      Ergänzung (im Skript nicht erwähnt): den Wert `-1` – es gibt keinen Fehler. Deshalb vor dem Weiterrechnen prüfen: `if pos != -1:`.
 
   - typ: code_ausgabe
     folien: [138]
@@ -412,11 +392,11 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      print("HALLE".replace("A", "4").replace("L", "1"))
+      print("MOTOR".replace("O", "0").replace("R", "2"))
       ```
     antwort: |-
       ```text
-      H411E
+      M0T02
       ```
       Verkettete Aufrufe arbeiten von links nach rechts, jeweils auf dem Ergebnis des vorherigen.
     tests: [{p: 1, t: 1}]
@@ -504,7 +484,7 @@ karten:
       ```text
       TypeError: 'str' object does not support item assignment
       ```
-      Einzelne Zeichen eines Strings lassen sich nicht ändern. Neuen String bauen:
+      Ergänzung: Strings sind unveränderlich – einzelne Zeichen lassen sich nicht überschreiben (F. 138 sagt dazu nur, dass das Ergebnis von replace() neu zugewiesen werden muss). Neuen String bauen:
       ```python
       kennung = "A-17"
       kennung = "B" + kennung[1:]
@@ -560,11 +540,3 @@ karten:
       Sandra Holz
       ```
     tests: [{p: 1, t: 1}]
-
-  - typ: begriff
-    aufgaben: ["4.1"]
-    deckt: [c06.zerlegen]
-    frage: |-
-      Beim Zerlegen von `"GmbH, Motor"` beginnt das zweite Wort bei `komma + 2`, nicht bei `komma + 1`. Warum?
-    antwort: |-
-      Nach dem Komma steht noch ein **Leerzeichen**. `komma + 1` würde den Ausschnitt mit diesem Leerzeichen beginnen lassen.

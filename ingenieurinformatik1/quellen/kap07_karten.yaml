@@ -31,7 +31,7 @@ inhalte:
   - {id: c07.comprehension, gewicht: 1, folie: "", aufgaben: "4.3", text: "List-Comprehension zum Anlegen von Listen/Rastern"}
   - {id: c07.umrechnung, gewicht: 2, folie: "", aufgaben: "4.3, 4.5", text: "Benutzereingabe ab 1 → Index ab 0 (reihe - 1)"}
   - {id: c07.tupel, gewicht: 1, folie: "155", aufgaben: "5.2, 5.6", text: "Tupel: unveränderlich, runde Klammern, Entpacken"}
-  - {id: c07.referenz, gewicht: 1, folie: "161", aufgaben: "4.6", text: "Zuweisung kopiert keine Liste (Referenz) – .copy()"}
+  - {id: c07.referenz, gewicht: 1, folie: "", aufgaben: "4.6", text: "Zuweisung kopiert keine Liste/kein Array (Referenz) – .copy()"}
 
 karten:
   # ---------------------------------------------------------------- Liste anlegen
@@ -57,7 +57,7 @@ karten:
     folien: [141, 142]
     deckt: [c07.liste]
     frage: |-
-      Was ist eine **Liste** in Python, und wie legst du eine leere Liste an?
+      Was ist eine **Liste** in Python?
     antwort: |-
       Ein sequentieller Datentyp: mehrere kommagetrennte Werte in **eckigen Klammern**, Zugriff über den Index ab 0. Der Inhalt lässt sich dynamisch ändern. Leere Liste: `werte = []`.
 
@@ -87,7 +87,7 @@ karten:
       Was ist laut Skript der Unterschied zwischen einer Python-**Liste** und einem **Array** in vielen anderen Sprachen?
     antwort: |-
       - Liste: kann Werte **unterschiedlicher** Datentypen enthalten und dynamisch wachsen.
-      - Array: alle Elemente haben **denselben** Datentyp und liegen direkt hintereinander im Speicher; die Größe wird beim Anlegen festgelegt.
+      - Array: alle Elemente haben **denselben** Datentyp; beim Anlegen wird Speicher für eine feste Anzahl Elemente reserviert (z. B. 10 × Speicher des Datentyps).
 
   # ---------------------------------------------------------------- Zugriff
   - typ: code_ausgabe
@@ -152,7 +152,7 @@ karten:
       print(werte)
       ```
     antwort: |-
-      `-1` (oder `len(werte) - 1`)
+      `-1` (oder `len(werte) - 1`; bei dieser Liste auch `2`)
       ```python
       werte = [4, 8, 15]
       werte[-1] = 0
@@ -299,7 +299,7 @@ karten:
       ```text
       101 [102, 103]
       ```
-      pop() gibt das entfernte Element zurück – man kann es gleich weiterverwenden.
+      Ergänzung (im Skript nicht gezeigt): pop() gibt das entfernte Element zurück – man kann es gleich weiterverwenden.
     tests: [{p: 1, t: 1}]
 
   - typ: code_fehler
@@ -325,13 +325,13 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      marken = ["BMW", "VW", "BMW"]
-      marken.remove("BMW")
-      print(marken)
+      schrauben = ["M6", "M8", "M6"]
+      schrauben.remove("M6")
+      print(schrauben)
       ```
     antwort: |-
       ```text
-      ['VW', 'BMW']
+      ['M8', 'M6']
       ```
       remove() löscht nur das **erste** passende Element.
     tests: [{p: 1, t: 1}]
@@ -404,17 +404,14 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      werte = [3, 1, 2, 3]
-      print(werte.count(3))
-      werte.sort()
-      print(werte)
+      bohrungen = [6, 8, 6, 10]
+      print(bohrungen.count(6))
       ```
     antwort: |-
       ```text
       2
-      [1, 2, 3, 3]
       ```
-      count() zählt Vorkommen; sort() sortiert die Liste selbst (aufsteigend).
+      count() zählt, wie oft der Wert in der Liste vorkommt (hier zwei 6-mm-Bohrungen).
     tests: [{p: 1, t: 1}]
 
   - typ: code_luecke
@@ -476,17 +473,17 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      regal = ["Kolben", "-", "Lager"]
-      for i in range(len(regal)):
-          if regal[i] != "-":
-              print(i, regal[i])
+      kanaele = ["T1", "", "T3"]
+      for i in range(len(kanaele)):
+          if kanaele[i] != "":
+              print(i, kanaele[i])
       ```
     antwort: |-
       ```text
-      0 Kolben
-      2 Lager
+      0 T1
+      2 T3
       ```
-      `i` läuft über die Indizes 0, 1, 2; `regal[i]` liefert das Element dazu.
+      `i` läuft über die Indizes 0, 1, 2; `kanaele[i]` liefert das Element dazu; der leere Kanal 1 wird übersprungen.
     tests: [{p: 1, t: 1}]
 
   - typ: unterschied
@@ -529,19 +526,19 @@ karten:
     folien: [148]
     deckt: [c07.durchlaufen]
     frage: |-
-      Schreib eine Funktion `fahrenheit(c)` (F = C · 9/5 + 32) und gib damit für jede Temperatur in `temp = [18.0, 20.0]` eine Zeile `18.0 C: 64.4 F` aus.
+      Schreib eine Funktion `m_pro_s(kmh)`, die km/h in m/s umrechnet (÷ 3.6), und gib damit für jede Geschwindigkeit in `v = [36.0, 72.0]` eine Zeile `36.0 km/h = 10.0 m/s` aus.
     antwort: |-
       ```python
-      def fahrenheit(c):
-          return c * 9 / 5 + 32
+      def m_pro_s(kmh):
+          return kmh / 3.6
 
-      temp = [18.0, 20.0]
-      for t in temp:
-          print(t, "C:", fahrenheit(t), "F")
+      v = [36.0, 72.0]
+      for kmh in v:
+          print(kmh, "km/h =", m_pro_s(kmh), "m/s")
       ```
       ```text
-      18.0 C: 64.4 F
-      20.0 C: 68.0 F
+      36.0 km/h = 10.0 m/s
+      72.0 km/h = 20.0 m/s
       ```
     tests: [{p: 1, t: 1}]
 
@@ -552,9 +549,9 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      wartung = [102, 105]
-      print(103 in wartung)
-      print(105 in wartung)
+      gesperrt = [7, 9]
+      print(8 in gesperrt)
+      print(9 in gesperrt)
       ```
     antwort: |-
       ```text
@@ -568,24 +565,24 @@ karten:
     aufgaben: ["3.8"]
     deckt: [c07.in]
     frage: |-
-      Nur Nummern, die **nicht** in der Wartungsliste stehen, werden montiert. Ergänze die Lücke.
+      Nur Stationen, die **nicht** gesperrt sind, werden freigegeben. Ergänze die Lücke.
       ```python
-      wartung = [102, 105]
-      for nr in [101, 102, 103]:
-          if nr ___ wartung:
-              print(nr, "Montage")
+      gesperrt = [7, 9]
+      for nr in [6, 7, 8]:
+          if nr ___ gesperrt:
+              print(nr, "frei")
       ```
     antwort: |-
-      `not in`
+      `not in` (Ergänzung: die Verneinung von `in`, die im Material nicht vorkommt)
       ```python
-      wartung = [102, 105]
-      for nr in [101, 102, 103]:
-          if nr not in wartung:
-              print(nr, "Montage")
+      gesperrt = [7, 9]
+      for nr in [6, 7, 8]:
+          if nr not in gesperrt:
+              print(nr, "frei")
       ```
       ```text
-      101 Montage
-      103 Montage
+      6 frei
+      8 frei
       ```
     tests: [{p: 2, t: 1}]
 
@@ -622,14 +619,14 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      matrix = [[1, 2, 3], [4, 5, 6]]
-      print(matrix[1][0])
-      print(matrix[0][2])
+      raster = [[11, 12, 13], [21, 22, 23]]
+      print(raster[1][0])
+      print(raster[0][2])
       ```
     antwort: |-
       ```text
-      4
-      3
+      21
+      13
       ```
       Erster Index = Zeile, zweiter Index = Spalte, beide ab 0.
     tests: [{p: 1, t: 1}]
@@ -740,12 +737,12 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      raster = [["-" for s in range(3)] for r in range(2)]
+      raster = [[0 for s in range(3)] for r in range(2)]
       print(raster)
       ```
     antwort: |-
       ```text
-      [['-', '-', '-'], ['-', '-', '-']]
+      [[0, 0, 0], [0, 0, 0]]
       ```
       Innen entsteht eine Zeile mit 3 Feldern, außen wird sie 2-mal erzeugt → 2 Zeilen × 3 Spalten.
     tests: [{p: 1, t: 1}]
@@ -760,7 +757,7 @@ karten:
       print(werte)
       ```
     antwort: |-
-      `range(5)`
+      `range(5)` (jedes range mit genau 5 Werten, z. B. `range(1, 6)`, liefert dasselbe)
       ```python
       werte = [0 for i in range(5)]
       print(werte)
@@ -861,44 +858,43 @@ karten:
 
   # ---------------------------------------------------------------- Referenz / Kopie
   - typ: code_ausgabe
-    folien: [161]
     aufgaben: ["4.6"]
     deckt: [c07.referenz]
     frage: |-
       Was gibt der Code aus?
       ```python
-      soll = [20, 20, 20]
-      backup = soll
-      backup[0] = 99
-      print(soll)
+      toleranzen = [0.1, 0.2, 0.1]
+      reserve = toleranzen
+      reserve[0] = 0.5
+      print(toleranzen)
       ```
     antwort: |-
       ```text
-      [99, 20, 20]
+      [0.5, 0.2, 0.1]
       ```
-      `backup = soll` kopiert die Liste nicht – beide Namen zeigen auf **dieselbe** Liste.
+      `reserve = toleranzen` kopiert die Liste nicht – beide Namen zeigen auf **dieselbe** Liste. Das gilt genauso für NumPy-Arrays (Aufg. 4.6).
     tests: [{p: 1, t: 1}]
 
   - typ: code_luecke
     aufgaben: ["4.6"]
     deckt: [c07.referenz]
     frage: |-
-      `backup` soll eine **unabhängige** Kopie sein, damit `soll` unverändert bleibt. Ergänze die Lücke.
+      `reserve` soll eine **unabhängige** Kopie sein, damit `toleranzen` unverändert bleibt. Ergänze die Lücke.
       ```python
-      soll = [20, 20, 20]
-      backup = soll.___
-      backup[0] = 99
-      print(soll)
+      toleranzen = [0.1, 0.2, 0.1]
+      reserve = toleranzen.___
+      reserve[0] = 0.5
+      print(toleranzen)
       ```
     antwort: |-
-      `copy()`
+      `copy()` – bei NumPy-Arrays genauso: `arr.copy()`.
       ```python
-      soll = [20, 20, 20]
-      backup = soll.copy()
-      backup[0] = 99
-      print(soll)
+      toleranzen = [0.1, 0.2, 0.1]
+      reserve = toleranzen.copy()
+      reserve[0] = 0.5
+      print(toleranzen)
       ```
       ```text
-      [20, 20, 20]
+      [0.1, 0.2, 0.1]
       ```
     tests: [{p: 2, t: 1}]

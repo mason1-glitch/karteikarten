@@ -3,7 +3,7 @@
 Eine Liste darf Werte verschiedener Datentypen enthalten; print() zeigt Strings darin in einfachen Anführungszeichen.
 
 *F. 142*"
-"Was ist eine **Liste** in Python, und wie legst du eine leere Liste an?","Ein sequentieller Datentyp: mehrere kommagetrennte Werte in **eckigen Klammern**, Zugriff über den Index ab 0. Der Inhalt lässt sich dynamisch ändern. Leere Liste: `werte = []`.
+"Was ist eine **Liste** in Python?","Ein sequentieller Datentyp: mehrere kommagetrennte Werte in **eckigen Klammern**, Zugriff über den Index ab 0. Der Inhalt lässt sich dynamisch ändern. Leere Liste: `werte = []`.
 
 *F. 141, 142*"
 "Gegeben sind `t1 = 20.1`, `t2 = 20.4`, `t3 = 19.8`. Fasse die drei Werte in **einer Liste** zusammen und gib sie aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_98b035394a.png)
@@ -11,7 +11,7 @@ Eine Liste darf Werte verschiedener Datentypen enthalten; print() zeigt Strings 
 
 *F. 141 · Aufg. 4.2*"
 "Was ist laut Skript der Unterschied zwischen einer Python-**Liste** und einem **Array** in vielen anderen Sprachen?","- Liste: kann Werte **unterschiedlicher** Datentypen enthalten und dynamisch wachsen.
-- Array: alle Elemente haben **denselben** Datentyp und liegen direkt hintereinander im Speicher; die Größe wird beim Anlegen festgelegt.
+- Array: alle Elemente haben **denselben** Datentyp; beim Anlegen wird Speicher für eine feste Anzahl Elemente reserviert (z. B. 10 × Speicher des Datentyps).
 
 *F. 142, 156, 157*"
 "Was gibt der Code aus?
@@ -29,7 +29,7 @@ Drei Elemente haben die Indizes 0, 1 und 2.
 
 *F. 141*"
 "Das **letzte** Element soll auf 0 gesetzt werden. Ergänze den Index.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5b885232e9.png)","`-1` (oder `len(werte) - 1`)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5b885232e9.png)","`-1` (oder `len(werte) - 1`; bei dieser Liste auch `2`)
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f3ec7a5459.png)
 ![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0e9c4fb591.png)
 
@@ -68,7 +68,7 @@ pop(1) entfernt das Element an **Position** 1.
 *F. 145 · Aufg. 4.2*"
 "Was gibt der Code aus?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b429f1cf6f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_19d99b16e3.png)
-pop() gibt das entfernte Element zurück – man kann es gleich weiterverwenden.
+Ergänzung (im Skript nicht gezeigt): pop() gibt das entfernte Element zurück – man kann es gleich weiterverwenden.
 
 *F. 145*"
 "Welche Fehlermeldung erscheint?
@@ -77,7 +77,7 @@ Es gibt nur die Positionen 0 und 1.
 
 *F. 145*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3c07baa196.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4e7c44c49e.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9458138b6e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f58b4dc51b.png)
 remove() löscht nur das **erste** passende Element.
 
 *F. 145*"
@@ -99,8 +99,8 @@ Der Wert kommt nicht in der Liste vor. Vorher prüfen: `if ""Ventil"" in teile:`
 
 *F. 146 · Aufg. 4.2*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_95b3be306f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_72285a2b24.png)
-count() zählt Vorkommen; sort() sortiert die Liste selbst (aufsteigend).
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e7f268ceb1.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+count() zählt, wie oft der Wert in der Liste vorkommt (hier zwei 6-mm-Bohrungen).
 
 *F. 146*"
 "Die Liste soll **absteigend** sortiert werden. Ergänze den Parameter.
@@ -118,8 +118,8 @@ Sortiert wird nach dem Rückgabewert der Funktion, also nach der Länge (3, 5, 6
 
 *F. 147*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bac8ad2bbf.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_75d036a3aa.png)
-`i` läuft über die Indizes 0, 1, 2; `regal[i]` liefert das Element dazu.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_44fea52118.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8c6754c70f.png)
+`i` läuft über die Indizes 0, 1, 2; `kanaele[i]` liefert das Element dazu; der leere Kanal 1 wird übersprungen.
 
 *F. 152 · Aufg. 4.4*"
 "Was ist der Unterschied zwischen `for x in liste:` und `for i in range(len(liste)):`?","- `for x in liste`: `x` ist direkt das **Element** – einfach, aber man kennt die Position nicht.
@@ -133,19 +133,19 @@ Sortiert wird nach dem Rückgabewert der Funktion, also nach der Länge (3, 5, 6
 ![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_14b1acc249.png)
 
 *F. 143*"
-"Schreib eine Funktion `fahrenheit(c)` (F = C · 9/5 + 32) und gib damit für jede Temperatur in `temp = [18.0, 20.0]` eine Zeile `18.0 C: 64.4 F` aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_73ac07d7a9.png)
-![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_242282c9bb.png)
+"Schreib eine Funktion `m_pro_s(kmh)`, die km/h in m/s umrechnet (÷ 3.6), und gib damit für jede Geschwindigkeit in `v = [36.0, 72.0]` eine Zeile `36.0 km/h = 10.0 m/s` aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_892661605c.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ae68e7833b.png)
 
 *F. 148*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_22d5546594.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8366c3335b.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_94b25ba868.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8366c3335b.png)
 `in` prüft, ob der Wert in der Liste vorkommt, und liefert einen Wahrheitswert.
 
 *Aufg. 3.8*"
-"Nur Nummern, die **nicht** in der Wartungsliste stehen, werden montiert. Ergänze die Lücke.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e46e7cbbab.png)","`not in`
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fe7836318e.png)
-![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c79bd23408.png)
+"Nur Stationen, die **nicht** gesperrt sind, werden freigegeben. Ergänze die Lücke.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_69cd4475e4.png)","`not in` (Ergänzung: die Verneinung von `in`, die im Material nicht vorkommt)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_71b6528278.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4509392e86.png)
 
 *Aufg. 3.8*"
 "Was gibt der Code aus?
@@ -157,7 +157,7 @@ enumerate() liefert in jedem Durchlauf ein Paar aus Index (ab 0) und Element.
 
 *Aufg. 4.4*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_088faa3f7d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3f2b1cede5.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_48df05d6c8.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fee05841d8.png)
 Erster Index = Zeile, zweiter Index = Spalte, beide ab 0.
 
 *F. 151*"
@@ -188,12 +188,12 @@ Die äußere Schleife läuft über die Zeilen, die innere über die Werte einer 
 
 *F. 151, 152 · Aufg. 4.3*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fb6f4d9625.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_02721c79b8.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_614f813b26.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0ed33b9a5c.png)
 Innen entsteht eine Zeile mit 3 Feldern, außen wird sie 2-mal erzeugt → 2 Zeilen × 3 Spalten.
 
 *Aufg. 4.3*"
 "Ergänze, sodass eine Liste mit **fünf Nullen** entsteht.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7e7a43f7a8.png)","`range(5)`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7e7a43f7a8.png)","`range(5)` (jedes range mit genau 5 Werten, z. B. `range(1, 6)`, liefert dasselbe)
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d0be3dc67a.png)
 ![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_aeff5ad2e7.png)
 
@@ -226,13 +226,13 @@ Ein Tupel lässt sich auf mehrere Variablen verteilen (entpacken) – so nimmt m
 
 *F. 155 · Aufg. 5.6*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_93c929bbdd.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0033773646.png)
-`backup = soll` kopiert die Liste nicht – beide Namen zeigen auf **dieselbe** Liste.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9f0702722d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fa5f8a81f9.png)
+`reserve = toleranzen` kopiert die Liste nicht – beide Namen zeigen auf **dieselbe** Liste. Das gilt genauso für NumPy-Arrays (Aufg. 4.6).
 
-*F. 161 · Aufg. 4.6*"
-"`backup` soll eine **unabhängige** Kopie sein, damit `soll` unverändert bleibt. Ergänze die Lücke.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4df4024ef3.png)","`copy()`
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6df35dfac2.png)
-![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_176f6e4d34.png)
+*Aufg. 4.6*"
+"`reserve` soll eine **unabhängige** Kopie sein, damit `toleranzen` unverändert bleibt. Ergänze die Lücke.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7a2a8a82bb.png)","`copy()` – bei NumPy-Arrays genauso: `arr.copy()`.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ec02874e53.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_be32a0f4eb.png)
 
 *Aufg. 4.6*"

@@ -24,7 +24,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | Konzept | Gewicht | Quelle | Karten | Typen |
 |---|---:|---|---|---|
 | print() mit mehreren Argumenten (Leerzeichen dazwischen), Leerzeile mit print() | 3 | F. 48 · Aufg. 1.1, 2.3 | K01.001, K01.002, K01.003, K01.004, K01.009, K01.027 | 4 |
-| print(..., end="") unterdrückt den Zeilenumbruch | 2 | F. 52 · Aufg. 1.3, 4.3 | K01.005, K01.006, K01.007, K01.016 | 3 |
+| print(..., end="") unterdrückt den Zeilenumbruch | 2 | F. 52 · Aufg. 1.3, 4.3 | K01.005, K01.006, K01.007 | 3 |
 | Escape-Sequenz \n (Zeilenumbruch) | 2 | F. 52–53 · Aufg. 1.3, 1.4 | K01.008, K01.009, K01.010 | 2 |
 | Escape-Sequenz \t (Tabulator) | 2 | F. 53 · Aufg. 1.3, 1.4 | K01.011, K01.012, K01.013, K01.018 | 3 |
 | Steuerzeichen \r (Wagenrücklauf) und \b (Backspace) | 1 | F. 53 · Aufg. 1.3 | K01.014, K01.015, K01.016 | 2 |
@@ -42,7 +42,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 |---|---|---|---|
 | K01.001 | code_ausgabe | F. 48 · Aufg. 2.3 | Was gibt der Code aus? ```python spannung = 230 print("Spannung:", spannung, "V") ``` |
 | K01.002 | code_ausgabe | F. 52 · Aufg. 1.3 | Was gibt der Code aus? ```python print("Messung 1") print() print("Messung 2") ``` |
-| K01.003 | begriff | F. 48 | Was nennt das Skript die **Parameterliste** einer Funktion, z. B. bei `print("Druck:", 2.5)`? |
+| K01.003 | begriff | F. 48 | Was bezeichnet das Skript als **Parameterliste** einer Funktion, z. B. bei `print("Druck:", 2.5)`? |
 | K01.004 | code_schreiben | F. 48 · Aufg. 2.3 | Gegeben ist `druck = 2.5`. Schreib **eine** print-Zeile ohne `+`, die Folgendes ausgibt: ```text Druck: 2.5 ba |
 | K01.005 | code_ausgabe | F. 52 · Aufg. 1.3 | Was gibt der Code aus? ```python print("Lade", end="") print("...", end="") print("fertig") ``` |
 | K01.006 | code_luecke | F. 52 · Aufg. 1.3 | Ergänze die Lücke, sodass genau `Status: OK` in **einer** Zeile erscheint. ```python print("Status:", end=___) |
@@ -55,7 +55,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K01.013 | code_fehler | F. 53 · Aufg. 1.4 | Gewünscht ist ein Tabulator zwischen `Strom:` und `OK`. Was gibt der Code stattdessen aus, und wo liegt der Fe |
 | K01.014 | begriff | F. 53 · Aufg. 1.3 | Was bewirkt das Steuerzeichen `\r` (carriage return)? |
 | K01.015 | begriff | F. 53 · Aufg. 1.3 | Was bewirkt das Steuerzeichen `\b` (backspace)? |
-| K01.016 | code_luecke | F. 52, 53 · Aufg. 1.3 | Der Fortschritt soll sich auf **derselben Zeile** aktualisieren (`10 %`, dann `20 %` …). Ergänze beide Lücken. |
+| K01.016 | code_luecke | F. 52, 53 · Aufg. 1.3 | Der Fortschritt soll sich auf **derselben Zeile** aktualisieren (`10 %`, dann `20 %` …). Ergänze das Steuerzei |
 | K01.017 | code_ausgabe | F. 69 | Was gibt der Code aus? ```python print("Bauteil \"A7\" geprüft") ``` |
 | K01.018 | code_fehler | F. 53, 69 | Gewünscht ist die Ausgabe `Ordner: C:\temp`. Warum klappt das nicht, und wie lautet die Korrektur? ```python p |
 | K01.019 | begriff | F. 49 · Aufg. 1.2 | Welchen Datentyp liefert `input()` zurück, wenn der Nutzer `230` eintippt? |
@@ -74,11 +74,11 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K01.032 | code_fehler | Aufg. 2.6 | Gewünscht ist `Temperatur: 85 °C`. Was erscheint stattdessen, und was fehlt? ```python temperatur = 85 print(" |
 | K01.033 | code_ausgabe | Aufg. 2.9 | Was gibt der Code aus? ```python for i in range(2):     print(f"Messung {i + 1}") ``` |
 | K01.034 | code_ausgabe | Aufg. 2.6 | Was gibt der Code aus? ```python name = "Fräse" text = f"""Maschine: {name} Status: OK""" print(text) ``` |
-| K01.035 | begriff | Aufg. 2.6 | Was ist ein **f-String**, und welchen Vorteil hat er gegenüber `+`? |
+| K01.035 | begriff | Aufg. 2.6 | Was ist ein **f-String**? |
 | K01.036 | code_ausgabe | Aufg. 3.11 | Was gibt der Code aus? ```python guthaben = 1234.5678 print(f"{guthaben:.2f} €") ``` |
 | K01.037 | code_luecke | Aufg. 5.3 | Ergänze die Formatangabe, sodass `Volumen: 6.4 l` ausgegeben wird (eine Nachkommastelle). ```python volumen =  |
 | K01.038 | code_ausgabe | Aufg. 3.11 | Was gibt der Code aus? ```python stueck = 7 print(f"{stueck:.2f}") ``` |
 | K01.039 | unterschied | F. 75 · Aufg. 2.4, 3.11 | Was ist der Unterschied zwischen `int(9.99)` und `f"{9.99:.0f}"`? |
 | K01.040 | code_ausgabe | F. 59, 60 · Aufg. 2.1 | Was gibt der Code aus? ```python # print("Start") print("Messung läuft")  # Status #print("Debug") ``` |
-| K01.041 | begriff | F. 59 · Aufg. 2.1 | Was bedeutet es, eine Codezeile **auszukommentieren**, und wozu ist das nützlich? |
-| K01.042 | code_ausgabe | F. 60 | Was gibt der Code aus? ```python """ print("A") """ print("B") ``` |
+| K01.041 | begriff | F. 59 · Aufg. 2.1 | Was bedeutet es, eine Codezeile **auszukommentieren**? |
+| K01.042 | code_ausgabe | F. 60 | Was gibt der Code aus? ```python """ print("Debug: Rohwerte") """ print("Messung gestartet") ``` |

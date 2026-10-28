@@ -69,7 +69,7 @@ karten:
     folien: [48]
     deckt: [c01.print]
     frage: |-
-      Was nennt das Skript die **Parameterliste** einer Funktion, z. B. bei `print("Druck:", 2.5)`?
+      Was bezeichnet das Skript als **Parameterliste** einer Funktion, z. B. bei `print("Druck:", 2.5)`?
     antwort: |-
       Alles zwischen der öffnenden und der schließenden runden Klammer hinter dem Funktionsnamen – hier `"Druck:", 2.5`. Die Klammer zeigt an, dass es eine Funktion ist.
 
@@ -180,7 +180,7 @@ karten:
     frage: |-
       Was ist eine **Escape-Sequenz** (Steuerzeichen) in einem String?
     antwort: |-
-      Eine Zeichenfolge, die mit einem Backslash `\` beginnt und nicht als Text, sondern als Steuerzeichen ausgegeben wird – z. B. `\n` für einen Zeilenvorschub (newline).
+      Eine Zeichenfolge, die mit einem Backslash `\` beginnt und eine Sonderbedeutung hat: entweder ein Steuerzeichen wie `\n` (Zeilenvorschub, newline) und `\t`, oder ein Zeichen, das sonst nicht im String stehen könnte, wie `\"` und `\\`.
 
   # ---------------------------------------------------------------- \t
   - typ: begriff
@@ -246,15 +246,15 @@ karten:
   - typ: code_luecke
     folien: [52, 53]
     aufgaben: ["1.3"]
-    deckt: [c01.escape_rb, c01.end]
+    deckt: [c01.escape_rb]
     frage: |-
-      Der Fortschritt soll sich auf **derselben Zeile** aktualisieren (`10 %`, dann `20 %` …). Ergänze beide Lücken.
+      Der Fortschritt soll sich auf **derselben Zeile** aktualisieren (`10 %`, dann `20 %` …). Ergänze das Steuerzeichen.
       ```python
       for p in range(0, 101, 10):
-          print(___ + str(p) + " %", end=___)
+          print(___ + str(p) + " %", end="")
       ```
     antwort: |-
-      `"\r"` am Anfang (Cursor zurück an den Zeilenanfang) und `end=""` (kein Zeilenumbruch):
+      `"\r"`: Der Cursor springt zurück an den Zeilenanfang, die neue Zahl überschreibt die alte (`end=""` verhindert den Zeilenumbruch).
       ```python
       for p in range(0, 101, 10):
           print("\r" + str(p) + " %", end="")
@@ -560,7 +560,7 @@ karten:
     aufgaben: ["2.6"]
     deckt: [c01.fstring]
     frage: |-
-      Was ist ein **f-String**, und welchen Vorteil hat er gegenüber `+`?
+      Was ist ein **f-String**?
     antwort: |-
       Ein String mit vorangestelltem `f`, z. B. `f"ID: {nr}"`. Ausdrücke in `{}` werden ausgewertet und eingesetzt; Zahlen werden dabei automatisch in Text umgewandelt – kein `str()` nötig.
 
@@ -660,7 +660,7 @@ karten:
     aufgaben: ["2.1"]
     deckt: [c01.kommentar]
     frage: |-
-      Was bedeutet es, eine Codezeile **auszukommentieren**, und wozu ist das nützlich?
+      Was bedeutet es, eine Codezeile **auszukommentieren**?
     antwort: |-
       Man setzt ein `#` davor, sodass Python die Zeile nicht mehr ausführt, sie aber im Code stehen bleibt – praktisch bei der Fehlersuche (z. B. Debug-Ausgaben abschalten).
 
@@ -671,13 +671,13 @@ karten:
       Was gibt der Code aus?
       ```python
       """
-      print("A")
+      print("Debug: Rohwerte")
       """
-      print("B")
+      print("Messung gestartet")
       ```
     antwort: |-
       ```text
-      B
+      Messung gestartet
       ```
-      Alles zwischen den dreifachen Anführungszeichen ist ein mehrzeiliger Kommentarblock und wird nicht ausgeführt.
+      Das Skript (F. 60) nennt das einen mehrzeiligen Kommentarblock: Der Code darin wird nicht ausgeführt. Ergänzung: Genau genommen ist es ein String, den Python nicht weiter verwendet – er muss deshalb richtig eingerückt sein, und `\` wirkt darin weiter als Escape-Zeichen.
     tests: [{p: 1, t: 1}]

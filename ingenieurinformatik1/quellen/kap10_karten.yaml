@@ -50,38 +50,38 @@ karten:
     frage: |-
       Welche **Fehlerart** meldet Python, und was fehlt?
       ```python
-      toleranz = math.sqrt(16.0)
-      print(toleranz)
+      kante = math.sqrt(2.25)
+      print(kante)
       ```
     antwort: |-
       Einen **NameError** (`name 'math' is not defined`; neuere Python-Versionen hängen einen Import-Hinweis an). Es fehlt `import math` vor der ersten Verwendung.
     tests: [{p: 1, abbruch: NameError}]
 
   - typ: begriff
-    folien: [77, 78]
+    folien: [77, 78, 205]
     aufgaben: ["2.5"]
     deckt: [c10.import]
     frage: |-
-      Was ist eine **Bibliothek** (ein Modul) in Python, und wie macht man ihre Funktionen im Programm verfügbar?
+      Was ist eine **Bibliothek** in Python?
     antwort: |-
-      Eine fertige Sammlung von Funktionen für bestimmte Aufgaben (z. B. Mathematik, Zufall, Zeit, Diagramme). Mit `import name` wird sie aktiviert; danach `name.funktion()`.
+      Eine fertige Sammlung von Funktionen für bestimmte Aufgaben (z. B. Mathematik, Zufall, Zeit, Diagramme) – wie ein Werkzeugkasten, den man ins eigene Programm holt, statt alles selbst zu schreiben. Eine Bibliothek kann aus mehreren **Modulen** bestehen: `pyplot` ist z. B. ein Modul der Bibliothek `matplotlib` (F. 205).
 
   - typ: code_luecke
     aufgaben: ["2.5"]
     deckt: [c10.import]
     frage: |-
-      Ergänze die erste Zeile, damit `random.randint` verfügbar ist.
+      Ergänze die erste Zeile, damit `random.randint` verfügbar ist (zufällige Drehzahl `n`).
       ```python
       ___ random
-      wurf = random.randint(1, 6)
-      print(wurf >= 1 and wurf <= 6)
+      n = random.randint(1000, 3000)
+      print(n >= 1000 and n <= 3000)
       ```
     antwort: |-
       `import`
       ```python
       import random
-      wurf = random.randint(1, 6)
-      print(wurf >= 1 and wurf <= 6)
+      n = random.randint(1000, 3000)
+      print(n >= 1000 and n <= 3000)
       ```
       ```text
       True
@@ -112,25 +112,22 @@ karten:
     frage: |-
       Was ist der Unterschied zwischen `import math` und `from math import ceil`?
     antwort: |-
-      - `import math`: Aufruf mit Modulnamen – `math.ceil(7.2)`.
-      - `from math import ceil`: nur `ceil` wird geholt und direkt aufgerufen – `ceil(7.2)` (so z. B. `from IPython.display import clear_output`).
+      - `import math`: Aufruf mit Modulnamen – `math.ceil(2.1)`.
+      - `from math import ceil`: nur `ceil` wird geholt und direkt aufgerufen – `ceil(2.1)` (so z. B. `from IPython.display import clear_output`).
 
-  - typ: code_ausgabe
+  - typ: code_fehler
     aufgaben: ["4.3"]
-    deckt: [c10.import_as, c10.math]
+    deckt: [c10.import_as]
     frage: |-
-      Was gibt der Code aus?
+      Welche **Fehlerart** meldet Python, und warum?
       ```python
       from math import ceil
-      print(ceil(7.2))
+      print(math.ceil(3.4))
       ```
     antwort: |-
-      ```text
-      8
-      ```
-    tests: [{p: 1, t: 1}]
+      Einen **NameError** (`name 'math' is not defined`; neuere Python-Versionen hängen einen Hinweis an). `from math import ceil` holt nur den Namen `ceil`, nicht `math`. Richtig: `print(ceil(3.4))` → `4`.
+    tests: [{p: 1, abbruch: NameError}]
 
-  # ---------------------------------------------------------------- math
   - typ: code_ausgabe
     aufgaben: ["2.5", "2.6"]
     deckt: [c10.math]
@@ -138,31 +135,32 @@ karten:
       Was gibt der Code aus?
       ```python
       import math
-      print(math.ceil(7.2))
-      print(math.ceil(7.0))
+      rollen = 2.1
+      print(math.ceil(rollen))
+      print(math.ceil(2.0))
       ```
     antwort: |-
       ```text
-      8
-      7
+      3
+      2
       ```
-      `math.ceil` rundet auf die nächste **ganze Zahl auf**; ist der Wert schon ganz, bleibt er.
+      `math.ceil` rundet auf die nächste **ganze Zahl auf** (2,1 Rollen Draht → 3 kaufen); ist der Wert schon ganz, bleibt er.
     tests: [{p: 1, t: 1}]
 
   - typ: code_schreiben
     aufgaben: ["2.5"]
     deckt: [c10.math]
     frage: |-
-      Berechne den Umfang einer Welle mit `r = 5` cm (U = 2 · π · r) mit `math.pi` und gib ihn mit zwei Nachkommastellen aus.
+      Berechne die Fläche eines Kolbens mit `d = 80` mm (A = π · d² / 4) mit `math.pi` und gib sie mit einer Nachkommastelle aus.
     antwort: |-
       ```python
       import math
-      r = 5
-      umfang = 2 * math.pi * r
-      print(f"{umfang:.2f} cm")
+      d = 80
+      flaeche = math.pi * d ** 2 / 4
+      print(f"{flaeche:.1f} mm²")
       ```
       ```text
-      31.42 cm
+      5026.5 mm²
       ```
     tests: [{p: 1, t: 1}]
 
@@ -198,18 +196,18 @@ karten:
     aufgaben: ["3.4"]
     deckt: [c10.random]
     frage: |-
-      Erzeuge eine zufällige Diagnosenummer von **0 bis 7** (beide möglich). Ergänze die Argumente.
+      Wähle für die Stichprobe zufällig eins von 12 Werkstücken aus (Nummern **1 bis 12**, beide möglich). Ergänze die Argumente.
       ```python
       import random
-      code = random.randint(___)
-      print(code)
+      nr = random.randint(___)
+      print(nr)
       ```
     antwort: |-
-      `0, 7`
+      `1, 12`
       ```python
       import random
-      code = random.randint(0, 7)
-      print(code)
+      nr = random.randint(1, 12)
+      print(nr)
       ```
     tests: [{p: 2}]
 
@@ -217,13 +215,13 @@ karten:
     aufgaben: ["2.9"]
     deckt: [c10.random]
     frage: |-
-      Simuliere **fünf** ganzzahlige Temperaturwerte zwischen 50 und 90 °C und sammle sie in einer Liste.
+      Simuliere **fünf** ganzzahlige Druckwerte zwischen 2 und 8 bar und sammle sie in einer Liste.
     antwort: |-
       ```python
       import random
       werte = []
       for i in range(5):
-          werte.append(random.randint(50, 90))
+          werte.append(random.randint(2, 8))
       print(werte)
       ```
     tests: [{p: 1}]
@@ -270,14 +268,14 @@ karten:
       Was gibt der Code aus? (Ergänzung: `datetime.datetime(…)` erzeugt hier einen festen Zeitpunkt statt der aktuellen Zeit.)
       ```python
       import datetime
-      zeit = datetime.datetime(2026, 3, 3, 14, 30, 5)
-      print(zeit.strftime("%d.%m.%Y %H:%M"))
+      zeit = datetime.datetime(2026, 11, 9, 7, 5, 30)
+      print(zeit.strftime("%H:%M Uhr, %d.%m."))
       ```
     antwort: |-
       ```text
-      03.03.2026 14:30
+      07:05 Uhr, 09.11.
       ```
-      Tag und Monat werden zweistellig ausgegeben; die Sekunden fehlen, weil `%S` nicht im Format steht.
+      Alle Angaben werden zweistellig (mit führender Null) ausgegeben; Sekunden und Jahr fehlen, weil `%S` und `%Y` nicht im Format stehen. Alles andere im Format (`Uhr, ` und die Punkte) wird unverändert übernommen.
     tests: [{p: 1, t: 1}]
 
   - typ: begriff
@@ -299,17 +297,19 @@ karten:
     aufgaben: ["2.9"]
     deckt: [c10.strftime]
     frage: |-
-      Ergänze das Format, sodass die aktuelle Uhrzeit als `Stunde:Minute:Sekunde` erscheint (z. B. `14:30:05`).
+      Ergänze das Format für einen Zeitstempel im Dateinamen der Form `Jahr-Monat-Tag_StundeMinute` (z. B. `2026-10-28_1430`).
       ```python
       import time
-      zeit = time.strftime(___, time.localtime())
+      jetzt = time.localtime()
+      zeit = time.strftime(___, jetzt)
       print(zeit)
       ```
     antwort: |-
-      `"%H:%M:%S"`
+      `"%Y-%m-%d_%H%M"`
       ```python
       import time
-      zeit = time.strftime("%H:%M:%S", time.localtime())
+      jetzt = time.localtime()
+      zeit = time.strftime("%Y-%m-%d_%H%M", jetzt)
       print(zeit)
       ```
     tests: [{p: 2}]
@@ -318,17 +318,17 @@ karten:
     aufgaben: ["2.8"]
     deckt: [c10.strftime]
     frage: |-
-      Gewünscht ist das Datum mit **vierstelligem** Jahr. Was gibt der Code aus, und was ist falsch? (Fester Zeitpunkt als Ergänzung, siehe oben.)
+      Gewünscht ist das Datum mit **vierstelligem** Jahr. Was gibt der Code aus, und was ist falsch? (Ergänzung: `datetime.datetime(…)` erzeugt hier einen festen Zeitpunkt.)
       ```python
       import datetime
-      zeit = datetime.datetime(2026, 10, 7, 10, 0)
+      zeit = datetime.datetime(2026, 4, 15, 9, 0)
       print(zeit.strftime("%d.%m.%y"))
       ```
     antwort: |-
       ```text
-      07.10.26
+      15.04.26
       ```
-      Kleines `%y` steht für das zweistellige Jahr. Richtig: `%Y` → `07.10.2026`.
+      Kleines `%y` steht für das zweistellige Jahr (so in Aufg. 2.8). Richtig: `%Y` → `15.04.2026`.
     tests: [{p: 1, t: 1}]
 
   # ---------------------------------------------------------------- datetime
@@ -336,13 +336,13 @@ karten:
     aufgaben: ["5.5"]
     deckt: [c10.datetime]
     frage: |-
-      Gib einen Protokolleintrag im Format `[2026-10-28 14:30:00] Maschine 3 gestartet` mit der **aktuellen** Zeit aus. Nutze `datetime`.
+      Gib eine Statuszeile im Format `Pumpe 2 aus (14:30)` mit der **aktuellen** Uhrzeit aus. Nutze `datetime`.
     antwort: |-
       ```python
       import datetime
       jetzt = datetime.datetime.now()
-      zeit = jetzt.strftime("%Y-%m-%d %H:%M:%S")
-      print(f"[{zeit}] Maschine 3 gestartet")
+      uhrzeit = jetzt.strftime("%H:%M")
+      print(f"Pumpe 2 aus ({uhrzeit})")
       ```
     tests: [{p: 1}]
 
@@ -367,7 +367,7 @@ karten:
       print(jetzt.strftime("%Y-%m-%d"))
       ```
     antwort: |-
-      `now()`
+      `now()` (Ergänzung: `today()` liefert hier dasselbe)
       ```python
       import datetime
       jetzt = datetime.datetime.now()
@@ -409,9 +409,35 @@ karten:
     tests: [{p: 1, jupyter: true}]
 
   - typ: begriff
-    aufgaben: ["2.6", "2.7"]
+    aufgaben: ["2.6"]
     deckt: [c10.qrcode]
     frage: |-
-      Was liefert `qrcode.make(text)`, und wie bringst du mehrere Zeilen Maschinendaten in einen QR-Code?
+      Was liefert `qrcode.make(text)`?
     antwort: |-
-      Ein **Bild** des QR-Codes (anzeigen mit `display(bild)`). Mehrere Zeilen: den Text vorher als (f-)String mit `\n` oder in dreifachen Anführungszeichen zusammensetzen und diesen String übergeben.
+      Ein **Bild** des QR-Codes, der den Text enthält (im Notebook anzeigen mit `display(bild)`).
+  - typ: code_luecke
+    aufgaben: ["2.6", "2.8"]
+    deckt: [c10.qrcode]
+    frage: |-
+      Der QR-Code soll den Text in **zwei Zeilen** enthalten. Ergänze die Lücke im String.
+      ```python
+      import qrcode
+      nr = 3
+      text = f"Maschine {nr}___Status: OK"
+      bild = qrcode.make(text)
+      print(text)
+      ```
+    antwort: |-
+      `\n` (Zeilenumbruch im String; alternativ den Text in dreifachen Anführungszeichen über zwei Zeilen schreiben)
+      ```python
+      import qrcode
+      nr = 3
+      text = f"Maschine {nr}\nStatus: OK"
+      bild = qrcode.make(text)
+      print(text)
+      ```
+      ```text
+      Maschine 3
+      Status: OK
+      ```
+    tests: [{p: 2, t: 1}]

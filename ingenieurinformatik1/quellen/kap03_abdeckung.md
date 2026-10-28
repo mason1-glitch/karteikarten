@@ -1,18 +1,18 @@
 # Abdeckungsmatrix – Kapitel 3: Operatoren und Zahlensysteme
 
-Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/kap03_karten.yaml`. 45 Karten, 14 prüfbare Inhalte, 0 Wiederholungsfragen.
+Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/kap03_karten.yaml`. 46 Karten, 14 prüfbare Inhalte, 0 Wiederholungsfragen.
 
 ## Karten je Typ
 
 | Typ | Anzahl |
 |---|---:|
-| Begriff ↔ Erklärung | 10 |
+| Begriff ↔ Erklärung | 11 |
 | Lückentext im Code | 3 |
 | Was gibt der Code aus? | 18 |
 | Finde den Fehler | 6 |
 | Schreib Code, der … | 5 |
 | Was ist der Unterschied …? | 3 |
-| **Summe** | **45** |
+| **Summe** | **46** |
 
 Karten mit Bild: 0.
 
@@ -36,7 +36,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | Kurzschlussauswertung (Short-Circuit) bei or/and | 1 | Aufg. 3.2 | K03.036, K03.037 | 2 |
 | Erweiterte Zuweisung += -= *= //= | 2 | F. 117, 119 · Aufg. 3.8, 3.10, 6.1 | K03.038, K03.039, K03.040 | 3 |
 | Binärsystem: Dezimal ↔ Binär (fortgesetzte Division durch 2) | 1 | F. 85–90 · Aufg. 5.4 | K03.041, K03.042, K03.043 | 2 |
-| Hexadezimalsystem (Nibble, 0–9/A–F, 0x-Schreibweise) | 1 | F. 91–95 | K03.044, K03.045 | 2 |
+| Hexadezimalsystem (Nibble, 0–9/A–F, 0x-Schreibweise) | 1 | F. 91–95 | K03.044, K03.045, K03.046 | 2 |
 
 ## Annahmen
 
@@ -48,7 +48,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 
 | ID | Typ | Folien | Frage |
 |---|---|---|---|
-| K03.001 | code_ausgabe | F. 104 · Aufg. 3.1 | Was gibt der Code aus? ```python print(17 / 5) print(17 // 5) print(17 % 5) ``` |
+| K03.001 | code_ausgabe | F. 104 · Aufg. 3.1 | Was gibt der Code aus? ```python print(23 / 4) print(23 // 4) print(23 % 4) ``` |
 | K03.002 | unterschied | F. 104 · Aufg. 2.2, 3.1 | Was ist der Unterschied zwischen `/` und `//`? |
 | K03.003 | code_schreiben | F. 104 · Aufg. 3.9 | 47 Lagerbolzen sollen in Kisten zu je 12 Stück. Schreib Code, der ausgibt, wie viele **volle Kisten** es gibt  |
 | K03.004 | code_ausgabe | F. 104 | Was gibt der Code aus? ```python print(-7 // 2) ``` |
@@ -60,26 +60,26 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K03.010 | code_schreiben | F. 104 · Aufg. 3.10 | Schreib Code, der für eine Ganzzahl `n` ausgibt, ob sie `gerade` oder `ungerade` ist (Beispiel `n = 7`). |
 | K03.011 | begriff | F. 104 · Aufg. 3.9 | Wie prüfst du mit `%`, ob `a` durch `b` **teilbar** ist? |
 | K03.012 | code_ausgabe | Aufg. 3.1 | Was gibt der Code aus? ```python zahl = 472 print(zahl // 100) print(zahl // 10 % 10) print(zahl % 10) ``` |
-| K03.013 | code_schreiben | Aufg. 3.1 | Schreib Code, der die **Quersumme** der dreistelligen Prüfnummer `n = 805` berechnet und ausgibt. |
+| K03.013 | code_schreiben | Aufg. 3.1 | Schreib Code, der die Ziffern der dreistelligen Zahl `n = 805` mit `//` und `%` zerlegt und **rückwärts** als  |
 | K03.014 | code_luecke | Aufg. 5.4 | Ergänze, sodass `einer` die **letzte Ziffer** von `zahl` enthält. ```python zahl = 2026 einer = zahl ___ print |
-| K03.015 | code_ausgabe | F. 104, 119 · Aufg. 3.2 | Was gibt der Code aus? ```python print(2 ** 3) print(2 * 3 ** 2) ``` |
+| K03.015 | code_ausgabe | F. 104, 119 · Aufg. 3.2 | Was gibt der Code aus? ```python print(3 ** 2) print(4 * 3 ** 2) ``` |
 | K03.016 | code_schreiben | F. 104 | Berechne mit dem Potenzoperator die Fläche eines Kreises mit `r = 2` (A = 3.14 · r²) und gib sie aus. |
 | K03.017 | code_ausgabe | F. 105 | Was gibt der Code aus? ```python druck = 6 print(druck >= 6) print(druck != 6) ``` |
-| K03.018 | code_ausgabe | F. 105 · Aufg. 3.2 | Was gibt der Code aus? ```python laenge = 450 print(laenge == 900 / 2) ``` |
+| K03.018 | code_ausgabe | F. 105 · Aufg. 3.2 | Was gibt der Code aus? ```python hub = 120 print(hub == 240 / 2) ``` |
 | K03.019 | code_fehler | F. 105 | Welche Fehlermeldung erscheint, und wie behebst du sie? ```python messwert = "85" print(messwert > 80) ``` |
 | K03.020 | begriff | F. 105 | Mit welchem Operator prüfst du in Python auf **Ungleichheit**? |
 | K03.021 | unterschied | F. 113 | Was ist der Unterschied zwischen `a = 5` und `a == 5`? |
 | K03.022 | code_fehler | F. 113 | Der Code bricht schon beim Start ab. Welche Fehlerart meldet Python, und wo liegt der Fehler? ```python status |
-| K03.023 | code_ausgabe | F. 113 | Was gibt der Code aus? ```python x = 3 ok = x == 3 print(ok) ``` |
+| K03.023 | code_ausgabe | F. 113 | Was gibt der Code aus? ```python stufe = 3 ok = stufe == 3 print(ok) ``` |
 | K03.024 | code_ausgabe | F. 106 | Was gibt der Code aus? ```python temperatur = 70 druck = 9 print(temperatur > 80 or druck > 8) print(temperatu |
 | K03.025 | code_ausgabe | F. 106 | Was gibt der Code aus? ```python gefunden = False print(not gefunden) print(not 3 > 2) ``` |
 | K03.026 | code_schreiben | F. 106 · Aufg. 3.1 | Schreib Code, der `Freigabe` ausgibt, wenn die Temperatur `t` zwischen 20 und 30 °C liegt (beide Grenzen einge |
 | K03.027 | unterschied | F. 106 | Was ist der Unterschied zwischen `and` und `or`? |
-| K03.028 | code_fehler | F. 106 | Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was ist falsch? ```python a = 3 b = 4 if a  |
+| K03.028 | code_fehler | F. 106 | Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was ist falsch? ```python druck = 3 temp =  |
 | K03.029 | code_ausgabe | F. 119 · Aufg. 3.2 | Was gibt der Code aus? ```python punkte = 3 * 2 ** 3 // 4 print(punkte) ``` |
-| K03.030 | code_ausgabe | F. 119 · Aufg. 3.2 | Was gibt der Code aus? ```python laenge = 9 print(laenge + 1 % 5 - 1) ``` |
+| K03.030 | code_ausgabe | F. 119 · Aufg. 3.2 | Was gibt der Code aus? ```python teile = 12 print(teile + 3 % 4 - 1) ``` |
 | K03.031 | code_fehler | F. 119 | Der Mittelwert von zwei Messungen soll `15.0` sein. Was gibt der Code aus, und wie korrigierst du ihn? ```pyth |
-| K03.032 | begriff | F. 119 | In welcher Reihenfolge wertet Python `**`, `*`/`/`/`//`/`%` und `+`/`-` aus, und wie erzwingst du eine andere  |
+| K03.032 | begriff | F. 119 | In welcher Reihenfolge wertet Python `**`, `*`/`/`/`//`/`%` und `+`/`-` aus? |
 | K03.033 | code_ausgabe | F. 119 · Aufg. 3.2 | Was gibt der Code aus? ```python print(False and False or True) print(False and (False or True)) ``` |
 | K03.034 | code_fehler | F. 119 · Aufg. 3.2 | Alarm soll nur kommen, wenn (Druck > 8 **oder** Temperatur > 90) **und** die Anlage läuft. Die Anlage steht –  |
 | K03.035 | begriff | F. 119 | In welcher Reihenfolge werden in einer Bedingung Rechenoperatoren, Vergleiche, `not`, `and` und `or` ausgewert |
@@ -88,8 +88,9 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K03.038 | code_ausgabe | F. 117 · Aufg. 3.10 | Was gibt der Code aus? ```python stueck = 10 stueck += 5 stueck *= 2 stueck -= 1 print(stueck) ``` |
 | K03.039 | begriff | F. 117, 119 | Wofür ist `zaehler += 1` die Kurzschreibweise? |
 | K03.040 | code_fehler | F. 117 | Welche Fehlermeldung erscheint, und was fehlt? ```python for i in range(3):     anzahl += 1 print(anzahl) ``` |
-| K03.041 | begriff | F. 90 · Aufg. 5.4 | Wie rechnest du eine Dezimalzahl in eine Binärzahl um? Zeig es an 13. |
+| K03.041 | begriff | F. 90 · Aufg. 5.4 | Wie rechnest du eine Dezimalzahl in eine Binärzahl um? Zeig es an 22. |
 | K03.042 | code_ausgabe | F. 90 · Aufg. 5.4 | Was gibt der Code aus? ```python zahl = 6 ziffern = [] while zahl > 0:     ziffern.insert(0, zahl % 2)     zah |
 | K03.043 | begriff | F. 89 | Welche Dezimalzahl ist die Binärzahl **1011**? |
-| K03.044 | begriff | F. 91 | Wie viele Bit fasst eine Hexadezimalziffer zusammen, und welche Zeichen verwendet das Hexadezimalsystem? |
-| K03.045 | code_ausgabe | F. 93, 95 | Python versteht die Schreibweise `0x…` für Hexadezimalzahlen. Was gibt der Code aus? ```python print(0x2F) ``` |
+| K03.044 | begriff | F. 91 | Wie viele Bit fasst eine Hexadezimalziffer zusammen? |
+| K03.045 | begriff | F. 91 | Welche 16 Zeichen verwendet das Hexadezimalsystem? |
+| K03.046 | code_ausgabe | F. 93, 95 | Ergänzung: Python versteht die im Skript (F. 95) gezeigte Schreibweise `0x…` direkt als Hexadezimalzahl. Was g |

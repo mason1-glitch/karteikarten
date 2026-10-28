@@ -12,6 +12,9 @@ min_typen: 2
 max_codezeilen: 8
 keine_janein: true
 
+annahmen:
+  - "Skript F. 208: savefig lege die Grafik „im Speicherort des Programmskripts“ ab. Tatsächlich landet eine Datei ohne Pfad im aktuellen Arbeitsordner (in Jupyter meist der Ordner des Notebooks); beides stimmt nur überein, wenn das Programm aus seinem eigenen Ordner gestartet wird. Die Karte nennt den Arbeitsordner und die Abweichung."
+
 inhalte:
   - {id: c13.plot, gewicht: 2, folie: "205", aufgaben: "2.1, 2.9", text: "import matplotlib.pyplot as plt, plt.plot(x, y), plt.show()"}
   - {id: c13.stil, gewicht: 1, folie: "206", aufgaben: "2.1", text: "Linienstil: Formatstring \"b-o\", color, linestyle, linewidth, marker"}
@@ -19,7 +22,7 @@ inhalte:
   - {id: c13.legend, gewicht: 1, folie: "205", aufgaben: "2.1, 6.5", text: "label=… und plt.legend()"}
   - {id: c13.bar, gewicht: 2, folie: "207", aufgaben: "6.1, 6.5", text: "Balkendiagramm plt.bar(kategorien, werte)"}
   - {id: c13.hist, gewicht: 1, folie: "207", aufgaben: "6.5", text: "Histogramm plt.hist(daten, bins=…)"}
-  - {id: c13.scatter, gewicht: 1, folie: "209", aufgaben: "6.5", text: "Streudiagramm plt.scatter(x, y)"}
+  - {id: c13.scatter, gewicht: 1, folie: "", aufgaben: "6.5", text: "Streudiagramm plt.scatter(x, y)"}
   - {id: c13.subplots, gewicht: 1, folie: "", aufgaben: "6.5", text: "Mehrere Diagramme: fig, (ax1, ax2) = plt.subplots(1, 2), ax.set_title, tight_layout"}
   - {id: c13.savefig, gewicht: 1, folie: "208", aufgaben: "6.5", text: "plt.savefig(\"datei.png\", dpi=…) vor plt.show()"}
   - {id: c13.laenge, gewicht: 1, folie: "205", aufgaben: "", text: "x und y müssen gleich lang sein (ValueError)"}
@@ -49,21 +52,21 @@ karten:
     aufgaben: ["2.9"]
     deckt: [c13.plot]
     frage: |-
-      Ergänze die Funktion, die eine **Linie** durch die Punkte zeichnet.
+      Ergänze die Funktion, die die Kraft über dem Weg als **Linie** zeichnet.
       ```python
       import matplotlib.pyplot as plt
-      x = [1, 2, 3, 4, 5]
-      y = [2, 4, 6, 8, 10]
-      plt.___(x, y)
+      weg = [0.0, 0.2, 0.4, 0.6]
+      kraft = [0, 100, 200, 300]
+      plt.___(weg, kraft)
       plt.show()
       ```
     antwort: |-
       `plot`
       ```python
       import matplotlib.pyplot as plt
-      x = [1, 2, 3, 4, 5]
-      y = [2, 4, 6, 8, 10]
-      plt.plot(x, y)
+      weg = [0.0, 0.2, 0.4, 0.6]
+      kraft = [0, 100, 200, 300]
+      plt.plot(weg, kraft)
       plt.show()
       ```
     tests: [{p: 2}]
@@ -82,12 +85,12 @@ karten:
     aufgaben: ["2.1"]
     deckt: [c13.stil]
     frage: |-
-      Wie sieht die gezeichnete Linie aus?
+      Wie sieht die gezeichnete Weg-Zeit-Linie aus?
       ```python
       import matplotlib.pyplot as plt
-      x = [1, 2, 3, 4]
-      y = [2, 4, 6, 8]
-      plt.plot(x, y, "r--o")
+      t = [1, 2, 3, 4]  # Zeit in s
+      s = [2, 4, 6, 8]  # Weg in m
+      plt.plot(t, s, "r--o")
       plt.show()
       ```
     antwort: |-
@@ -99,22 +102,22 @@ karten:
     folien: [206]
     deckt: [c13.stil]
     frage: |-
-      Die Linie soll grün, **gestrichelt** und mit Kreis-Markern erscheinen. Ergänze den Linienstil.
+      Der Ausschuss pro Tag soll als grüne, **gestrichelte** Linie mit Kreis-Markern erscheinen. Ergänze den Linienstil.
       ```python
       import matplotlib.pyplot as plt
-      x = [1, 2, 3]
-      y = [3, 5, 4]
-      plt.plot(x, y, color="green",
+      tag = [1, 2, 3]
+      ausschuss = [3, 5, 4]
+      plt.plot(tag, ausschuss, color="green",
                linestyle=___, marker="o")
       plt.show()
       ```
     antwort: |-
-      `"--"`
+      `"--"` (gleichwertig: `"dashed"`)
       ```python
       import matplotlib.pyplot as plt
-      x = [1, 2, 3]
-      y = [3, 5, 4]
-      plt.plot(x, y, color="green",
+      tag = [1, 2, 3]
+      ausschuss = [3, 5, 4]
+      plt.plot(tag, ausschuss, color="green",
                linestyle="--", marker="o")
       plt.show()
       ```
@@ -144,18 +147,21 @@ karten:
     tests: [{p: 2}]
 
   - typ: code_fehler
-    folien: [205, 208]
+    folien: [205]
     deckt: [c13.beschriftung]
     frage: |-
-      Im angezeigten Diagramm fehlt der Titel. Warum?
+      Was ist an der Beschriftung dieses Diagramms falsch?
       ```python
       import matplotlib.pyplot as plt
-      plt.plot([1, 2], [3, 4])
+      zeit = [0, 10, 20]
+      temp = [20, 35, 48]
+      plt.plot(zeit, temp)
+      plt.xlabel("Temperatur (°C)")
+      plt.ylabel("Zeit (s)")
       plt.show()
-      plt.title("Temperaturverlauf")
       ```
     antwort: |-
-      `plt.show()` zeigt das Diagramm an und schließt es; der Titel kommt danach zu spät. Alle Beschriftungen gehören **vor** `plt.show()`.
+      Die Achsen sind vertauscht beschriftet: Das **erste** Argument von `plt.plot` (`zeit`) liegt auf der x-Achse. Richtig: `plt.xlabel("Zeit (s)")` und `plt.ylabel("Temperatur (°C)")`.
     tests: [{p: 1}]
 
   - typ: code_schreiben
@@ -182,13 +188,13 @@ karten:
     aufgaben: ["2.1"]
     deckt: [c13.legend]
     frage: |-
-      Zeichne zwei Linien in **ein** Diagramm – `[1, 2, 3]` als „Anstieg“ und `[3, 2, 1]` als „Abstieg“ über `x = [1, 2, 3]` – und zeige eine Legende an.
+      Zeichne Soll- und Ist-Temperatur in **ein** Diagramm – `[60, 60, 60]` als „Soll“ und `[52, 58, 61]` als „Ist“ über `zeit = [0, 5, 10]` – und zeige eine Legende an.
     antwort: |-
       ```python
       import matplotlib.pyplot as plt
-      x = [1, 2, 3]
-      plt.plot(x, [1, 2, 3], label="Anstieg")
-      plt.plot(x, [3, 2, 1], label="Abstieg")
+      zeit = [0, 5, 10]
+      plt.plot(zeit, [60, 60, 60], label="Soll")
+      plt.plot(zeit, [52, 58, 61], label="Ist")
       plt.legend()
       plt.show()
       ```
@@ -218,15 +224,15 @@ karten:
       Welches Diagramm entsteht?
       ```python
       import matplotlib.pyplot as plt
-      abteilungen = ["Fertigung", "Logistik", "Qualität"]
-      mitarbeiter = [45, 22, 18]
-      plt.bar(abteilungen, mitarbeiter)
-      plt.title("Mitarbeiter pro Abteilung")
+      hallen = ["Halle 1", "Halle 2", "Halle 3"]
+      verbrauch = [120, 85, 140]
+      plt.bar(hallen, verbrauch)
+      plt.title("Stromverbrauch (MWh)")
       plt.show()
       ```
     antwort: |-
-      Ein **Balkendiagramm** mit drei Balken der Höhe 45, 22 und 18; die Kategorien stehen an der x-Achse.
-      {{bild:plot_balken|Balkendiagramm Mitarbeiter pro Abteilung}}
+      Ein **Balkendiagramm** mit drei Balken der Höhe 120, 85 und 140; die Kategorien (Hallen) stehen an der x-Achse.
+      {{bild:plot_balken_hallen|Balkendiagramm Stromverbrauch je Halle}}
     tests: [{p: 1}]
 
   - typ: code_luecke
@@ -234,21 +240,21 @@ karten:
     aufgaben: ["6.1"]
     deckt: [c13.bar]
     frage: |-
-      Die Anzahl jedes Vokals soll als **Balkendiagramm** erscheinen. Ergänze die Funktion.
+      Die Stückzahlen der drei Schichten sollen als Diagramm mit **senkrechten Balken (Säulen)** erscheinen. Ergänze die Funktion.
       ```python
       import matplotlib.pyplot as plt
-      vokale = ["a", "e", "i", "o", "u"]
-      anzahl = [42, 95, 51, 12, 20]
-      plt.___(vokale, anzahl)
+      schichten = ["Früh", "Spät", "Nacht"]
+      stueck = [410, 385, 220]
+      plt.___(schichten, stueck)
       plt.show()
       ```
     antwort: |-
-      `bar`
+      `bar` (Ergänzung: `barh` zeichnet waagerechte Balken)
       ```python
       import matplotlib.pyplot as plt
-      vokale = ["a", "e", "i", "o", "u"]
-      anzahl = [42, 95, 51, 12, 20]
-      plt.bar(vokale, anzahl)
+      schichten = ["Früh", "Spät", "Nacht"]
+      stueck = [410, 385, 220]
+      plt.bar(schichten, stueck)
       plt.show()
       ```
     tests: [{p: 2}]
@@ -258,17 +264,18 @@ karten:
     aufgaben: ["6.5"]
     deckt: [c13.bar]
     frage: |-
-      `df` hat eine Spalte `Marke`. Zeichne ein Balkendiagramm mit der **Anzahl der Fahrzeuge je Marke**.
+      `df` hat eine Spalte `Status` (z. B. „OK“, „Ausschuss“). Zeichne ein Balkendiagramm mit der **Anzahl der Teile je Status**.
     antwort: |-
       ```python
       import pandas as pd
       import matplotlib.pyplot as plt
-      df = pd.DataFrame({"Marke": ["VW", "BMW", "VW"]})
-      anzahl = df["Marke"].value_counts()
+      status = ["OK", "OK", "Ausschuss"]
+      df = pd.DataFrame({"Status": status})
+      anzahl = df["Status"].value_counts()
       plt.bar(anzahl.index, anzahl.values)
       plt.show()
       ```
-      `value_counts()` zählt je Marke; `index` = Marken, `values` = Anzahlen.
+      Zeile 3–4 erzeugen nur Beispieldaten. `value_counts()` zählt je Status; `index` = Status-Werte, `values` = Anzahlen.
     tests: [{p: 1}]
 
   # ---------------------------------------------------------------- Histogramm
@@ -286,26 +293,26 @@ karten:
     aufgaben: ["6.5"]
     deckt: [c13.hist]
     frage: |-
-      Ergänze den Parameter, sodass das Histogramm **6 Klassen** hat.
+      Ergänze den Parameter, sodass das Histogramm der gemessenen Durchmesser **4 Klassen** hat.
       ```python
       import matplotlib.pyplot as plt
-      messwerte = [12, 15, 14, 13, 16, 15, 14, 17, 13, 12]
-      plt.hist(messwerte, ___=6)
+      d = [9.98, 10.01, 10.0, 9.99, 10.02, 10.0]  # mm
+      plt.hist(d, ___=4)
       plt.show()
       ```
     antwort: |-
       `bins`
       ```python
       import matplotlib.pyplot as plt
-      messwerte = [12, 15, 14, 13, 16, 15, 14, 17, 13, 12]
-      plt.hist(messwerte, bins=6)
+      d = [9.98, 10.01, 10.0, 9.99, 10.02, 10.0]  # mm
+      plt.hist(d, bins=4)
       plt.show()
       ```
     tests: [{p: 2}]
 
   # ---------------------------------------------------------------- Streudiagramm
   - typ: unterschied
-    folien: [205, 209]
+    folien: [205]
     aufgaben: ["6.5"]
     deckt: [c13.scatter]
     frage: |-
@@ -318,15 +325,15 @@ karten:
     aufgaben: ["6.5"]
     deckt: [c13.scatter]
     frage: |-
-      Stelle `temperatur = [20, 25, 30]` (x) gegen `leistung = [80, 88, 85]` (y) als **Streudiagramm** mit Achsenbeschriftung dar.
+      Stelle `drehzahl = [1000, 2000, 3000]` (x) gegen `vibration = [0.8, 1.5, 2.9]` (y) als **Streudiagramm** mit Achsenbeschriftung dar.
     antwort: |-
       ```python
       import matplotlib.pyplot as plt
-      temperatur = [20, 25, 30]
-      leistung = [80, 88, 85]
-      plt.scatter(temperatur, leistung)
-      plt.xlabel("Temperatur (°C)")
-      plt.ylabel("Leistung (%)")
+      drehzahl = [1000, 2000, 3000]
+      vibration = [0.8, 1.5, 2.9]
+      plt.scatter(drehzahl, vibration)
+      plt.xlabel("Drehzahl (1/min)")
+      plt.ylabel("Schwingung (mm/s)")
       plt.show()
       ```
     tests: [{p: 1}]
@@ -336,15 +343,15 @@ karten:
     aufgaben: ["6.5"]
     deckt: [c13.subplots]
     frage: |-
-      Zeige ein Balkendiagramm und ein Histogramm **nebeneinander** in einer Abbildung, jeweils mit eigenem Titel.
+      Zeige ein Liniendiagramm und ein Balkendiagramm **nebeneinander** in einer Abbildung, jeweils mit eigenem Titel.
     antwort: |-
       ```python
       import matplotlib.pyplot as plt
       fig, (ax1, ax2) = plt.subplots(1, 2)
-      ax1.bar(["A", "B"], [10, 20])
-      ax1.set_title("Stückzahl")
-      ax2.hist([1, 2, 2, 3], bins=3)
-      ax2.set_title("Verteilung")
+      ax1.plot([0, 5, 10], [20, 45, 60])
+      ax1.set_title("Aufheizkurve")
+      ax2.bar(["Ofen 1", "Ofen 2"], [850, 910])
+      ax2.set_title("Höchsttemperatur")
       plt.tight_layout()
       plt.show()
       ```
@@ -366,15 +373,15 @@ karten:
     aufgaben: ["6.5"]
     deckt: [c13.savefig]
     frage: |-
-      Die gespeicherte Datei `diagramm.png` ist leer. Warum?
+      Die gespeicherte Datei `stueckzahl.png` ist leer. Warum?
       ```python
       import matplotlib.pyplot as plt
-      plt.bar(["X", "Y"], [5, 8])
+      plt.bar(["Linie 1", "Linie 2"], [340, 410])
       plt.show()
-      plt.savefig("diagramm.png")
+      plt.savefig("stueckzahl.png")
       ```
     antwort: |-
-      Nach `plt.show()` ist die Grafik geschlossen; `savefig` speichert dann ein leeres Bild. Richtig: erst `plt.savefig(...)`, dann `plt.show()`.
+      Nach `plt.show()` ist die Grafik geschlossen (F. 208); `savefig` speichert dann ein leeres Bild. Richtig: erst `plt.savefig(...)`, dann `plt.show()`.
     tests: [{p: 1}]
 
   - typ: code_luecke
@@ -397,7 +404,7 @@ karten:
       plt.savefig("verteilung.png", dpi=300)
       plt.show()
       ```
-      Die Datei landet im Ordner des Programms.
+      Die Datei landet im **aktuellen Arbeitsordner** (in Jupyter meist der Ordner des Notebooks). Das Skript (F. 208) sagt „im Speicherort des Programmskripts“ – das stimmt nur, wenn das Programm aus seinem eigenen Ordner gestartet wird.
     tests: [{p: 2}]
 
   # ---------------------------------------------------------------- gleiche Länge
@@ -408,15 +415,15 @@ karten:
       Welche Fehlermeldung erscheint?
       ```python
       import matplotlib.pyplot as plt
-      x = [1, 2, 3]
-      y = [10, 20]
-      plt.plot(x, y)
+      zeit = [0, 1, 2]
+      temp = [20, 25]
+      plt.plot(zeit, temp)
       ```
     antwort: |-
       ```text
       ValueError: x and y must have same first dimension, but have shapes (3,) and (2,)
       ```
-      Zu jedem x-Wert gehört genau ein y-Wert – beide Listen müssen gleich lang sein.
+      Zu jedem Zeitpunkt (x) gehört genau ein Temperaturwert (y) – beide Listen müssen gleich lang sein.
     tests: [{p: 1, t: 1}]
 
   - typ: begriff
@@ -432,13 +439,13 @@ karten:
     aufgaben: ["6.4"]
     deckt: [c13.plotly]
     frage: |-
-      Ergänze die plotly-Funktion für ein **Liniendiagramm** aus dem DataFrame.
+      Ergänze die plotly-Funktion, die den Drehzahlverlauf als **Liniendiagramm** aus dem DataFrame zeichnet.
       ```python
       import pandas as pd
       import plotly.express as px
-      df = pd.DataFrame({"Monat": ["Jan", "Feb"],
-                         "Umsatz": [120, 135]})
-      fig = px.___(df, x="Monat", y="Umsatz")
+      df = pd.DataFrame({"Zeit": [0, 10, 20],
+                         "Drehzahl": [0, 1500, 3000]})
+      fig = px.___(df, x="Zeit", y="Drehzahl")
       fig.show()
       ```
     antwort: |-
@@ -446,9 +453,9 @@ karten:
       ```python
       import pandas as pd
       import plotly.express as px
-      df = pd.DataFrame({"Monat": ["Jan", "Feb"],
-                         "Umsatz": [120, 135]})
-      fig = px.line(df, x="Monat", y="Umsatz")
+      df = pd.DataFrame({"Zeit": [0, 10, 20],
+                         "Drehzahl": [0, 1500, 3000]})
+      fig = px.line(df, x="Zeit", y="Drehzahl")
       fig.show()
       ```
       Bei plotly gibt man den DataFrame und die **Spaltennamen** an.
@@ -459,19 +466,19 @@ karten:
     aufgaben: ["6.4"]
     deckt: [c13.plotly]
     frage: |-
-      Lies `temperatures.csv` (Spalten `Anlage`, `Datum`, `Temperatur`, `Luftfeuchtigkeit`) ein und erstelle einen **3D-Streuplot** (x = Datum, y = Temperatur, z = Luftfeuchtigkeit), die Punkte **nach Anlage eingefärbt**.
+      Lies `pruefstand.csv` (Spalten `Motor`, `Drehzahl`, `Drehmoment`, `Temperatur`) ein und erstelle einen **3D-Streuplot** (x = Drehzahl, y = Drehmoment, z = Temperatur), die Punkte **nach Motor eingefärbt**.
     antwort: |-
       ```python
       import pandas as pd
       import plotly.express as px
-      df = pd.read_csv("temperatures.csv")
-      fig = px.scatter_3d(df, x="Datum",
-                          y="Temperatur",
-                          z="Luftfeuchtigkeit",
-                          color="Anlage")
+      df = pd.read_csv("pruefstand.csv")
+      fig = px.scatter_3d(df, x="Drehzahl",
+                          y="Drehmoment",
+                          z="Temperatur",
+                          color="Motor")
       fig.show()
       ```
-    tests: [{p: 1, dateien: {"temperatures.csv": "Anlage,Datum,Temperatur,Luftfeuchtigkeit\nMachine 1,2023-01-13,18.6,79.8\nMachine 2,2023-10-24,16.5,79.5\n"}}]
+    tests: [{p: 1, dateien: {"pruefstand.csv": "Motor,Drehzahl,Drehmoment,Temperatur\nM1,1500,120,65\nM2,3000,95,80\n"}}]
 
   - typ: unterschied
     folien: [204, 209]
@@ -480,8 +487,8 @@ karten:
     frage: |-
       Was ist der Unterschied zwischen Diagrammen aus **matplotlib** und aus **plotly express**?
     antwort: |-
-      - matplotlib: der Standard für **statische** Diagramme (Linie, Balken, Histogramm), Daten meist als Listen.
-      - plotly express: **interaktive** Diagramme (zoomen, drehen, Werte beim Überfahren), direkt aus einem DataFrame über Spaltennamen – auch 3D.
+      - matplotlib: der verbreitete Klassiker (F. 204) für Linie, Balken, Histogramm; Daten meist als Listen, im Notebook als **festes Bild**.
+      - plotly express: **interaktive** Diagramme im Notebook (zoomen, drehen, Werte beim Überfahren), direkt aus einem DataFrame über Spaltennamen, z. B. 3D-Streuplots mit `px.scatter_3d`.
 
   - typ: begriff
     aufgaben: ["6.4"]

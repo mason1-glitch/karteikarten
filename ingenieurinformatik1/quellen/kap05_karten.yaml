@@ -58,18 +58,18 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      gewicht = 40
+      wert = 54
       schritte = 0
-      while gewicht % 2 == 0:
-          gewicht = gewicht // 2
+      while wert % 3 == 0:
+          wert = wert // 3
           schritte += 1
-      print(gewicht, schritte)
+      print(wert, schritte)
       ```
     antwort: |-
       ```text
-      5 3
+      2 3
       ```
-      40 → 20 → 10 → 5; 5 ist ungerade, die Schleife endet nach 3 Halbierungen.
+      54 → 18 → 6 → 2; 2 ist nicht durch 3 teilbar, die Schleife endet nach 3 Durchläufen.
     tests: [{p: 1, t: 1}]
 
   - typ: code_schreiben
@@ -91,19 +91,11 @@ karten:
       ```
     tests: [{p: 1, t: 1}]
 
-  - typ: begriff
-    folien: [125]
-    deckt: [c05.while]
-    frage: |-
-      Wann eignet sich eine **while**-Schleife besser als eine for-Schleife?
-    antwort: |-
-      Wenn vorher nicht feststeht, wie oft wiederholt wird: Der Rumpf läuft, **solange** eine Bedingung erfüllt ist (z. B. bis ein Grenzwert erreicht oder eine Eingabe gültig ist).
-
   - typ: code_luecke
     folien: [125]
     deckt: [c05.while]
     frage: |-
-      Die Schleife soll laufen, **solange** die Temperatur kleiner als 25 ist. Ergänze den Operator. Was wird danach ausgegeben?
+      Die Schleife soll laufen, **solange** die Temperatur kleiner als 25 ist. Ergänze den Operator.
       ```python
       temperatur = 20
       while temperatur ___ 25:
@@ -153,52 +145,48 @@ karten:
     antwort: |-
       Eine Schleife, die nie endet, weil ihre Bedingung immer wahr bleibt – meist, weil die Variable aus der Bedingung im Rumpf nicht verändert wird. (`while True:` ohne `break` ist absichtlich endlos.)
 
-  - typ: code_luecke
+  - typ: code_fehler
     folien: [126]
     deckt: [c05.endlos]
     frage: |-
-      Ergänze die fehlende Zeile, damit die Schleife nach drei Messungen endet.
+      Warum endet diese Schleife nie, und wie machst du sie sicher?
       ```python
-      i = 1
-      while i <= 3:
-          print("Messung", i)
-          ___
+      hub = 1
+      while hub != 10:
+          hub += 2
       ```
     antwort: |-
-      `i += 1`
+      `hub` nimmt nur ungerade Werte an (1, 3, 5, 7, 9, 11 …) und wird **nie genau** 10 – die Bedingung bleibt immer wahr. Sicherer ist ein Größenvergleich:
       ```python
-      i = 1
-      while i <= 3:
-          print("Messung", i)
-          i += 1
+      hub = 1
+      while hub < 10:
+          hub += 2
+      print(hub)
       ```
       ```text
-      Messung 1
-      Messung 2
-      Messung 3
+      11
       ```
-    tests: [{p: 2, t: 1}]
+    tests: [{p: 1, nicht_ausfuehren: "Endlosschleife (Absicht der Karte)"}, {p: 2, t: 1}]
 
-  # ---------------------------------------------------------------- while mit zwei Bedingungen
   - typ: code_ausgabe
     aufgaben: ["3.7"]
     deckt: [c05.while_and]
     frage: |-
       Was gibt der Code aus?
       ```python
-      versuche = 0
-      gefunden = False
-      while not gefunden and versuche < 3:
-          versuche += 1
-          if versuche == 2:
-              gefunden = True
-      print(versuche, gefunden)
+      messungen = 0
+      stabil = False
+      while not stabil and messungen < 3:
+          messungen += 1
+          if messungen == 2:
+              stabil = True
+      print(messungen, stabil)
       ```
     antwort: |-
       ```text
       2 True
       ```
-      Nach dem 2. Durchlauf ist `not gefunden` falsch – die ganze and-Bedingung ist falsch, die Schleife endet.
+      Nach dem 2. Durchlauf ist `not stabil` falsch – die ganze and-Bedingung ist falsch, die Schleife endet.
     tests: [{p: 1, t: 1}]
 
   - typ: code_luecke
@@ -236,7 +224,7 @@ karten:
     frage: |-
       Eine while-Schleife endet entweder bei richtigem Passwort **oder** nach 5 Fehlversuchen. Warum braucht man nach der Schleife noch ein `if`?
     antwort: |-
-      Die Schleife verrät nicht, **welche** Bedingung sie beendet hat. Erst `if eingabe == passwort:` entscheidet danach, ob „Zugang gewährt“ oder „gesperrt“ ausgegeben wird.
+      Die Schleife verrät nicht, **welche** Bedingung sie beendet hat. Erst `if eingabe == passwort:` entscheidet danach, ob `Zugang gewährt` oder `gesperrt` ausgegeben wird.
 
   # ---------------------------------------------------------------- Eingabe wiederholen
   - typ: code_ausgabe
@@ -244,23 +232,23 @@ karten:
     aufgaben: ["3.7"]
     deckt: [c05.while_eingabe]
     frage: |-
-      Der Nutzer tippt nacheinander `rot`, `gelb`, `grün`. Was gibt der Code aus?
+      Der Nutzer tippt nacheinander `WARN`, `FEHLER`, `OK`. Was gibt der Code aus?
       ```python
-      farbe = ""
-      while farbe != "grün":
-          farbe = input()
-          print("Eingabe:", farbe)
-      print("Freigabe")
+      status = ""
+      while status != "OK":
+          status = input()
+          print("Meldung:", status)
+      print("Anlage frei")
       ```
     antwort: |-
       ```text
-      Eingabe: rot
-      Eingabe: gelb
-      Eingabe: grün
-      Freigabe
+      Meldung: WARN
+      Meldung: FEHLER
+      Meldung: OK
+      Anlage frei
       ```
-      Die Bedingung wird erst am Anfang des nächsten Durchlaufs geprüft – deshalb erscheint auch `Eingabe: grün`.
-    tests: [{p: 1, t: 1, eingabe: "rot\ngelb\ngrün\n"}]
+      Die Bedingung wird erst am Anfang des nächsten Durchlaufs geprüft – deshalb erscheint auch `Meldung: OK`.
+    tests: [{p: 1, t: 1, eingabe: "WARN\nFEHLER\nOK\n"}]
 
   - typ: code_schreiben
     folien: [125]
@@ -284,7 +272,7 @@ karten:
     frage: |-
       Warum steht vor `while eingabe != passwort:` die Zeile `eingabe = ""`?
     antwort: |-
-      Die Variable muss beim ersten Prüfen der Bedingung schon existieren (sonst NameError). Der leere String ist garantiert falsch, also läuft die Schleife mindestens einmal und fragt ab.
+      Die Variable muss beim ersten Prüfen der Bedingung schon existieren (sonst NameError). Der leere String ist sicher **ungleich** dem Passwort – die Bedingung ist also wahr, und die Schleife läuft mindestens einmal und fragt ab.
 
   # ---------------------------------------------------------------- for
   - typ: code_ausgabe
@@ -308,7 +296,7 @@ karten:
 
   - typ: code_ausgabe
     deckt: [c05.for]
-    aufgaben: ["6.1"]
+    folien: [143]
     frage: |-
       Was gibt der Code aus?
       ```python
@@ -321,7 +309,7 @@ karten:
       B
       3
       ```
-      Auch ein String lässt sich Zeichen für Zeichen durchlaufen.
+      Ergänzung: Nicht nur Listen (F. 143), auch ein String lässt sich mit for Zeichen für Zeichen durchlaufen.
     tests: [{p: 1, t: 1}]
 
   - typ: code_schreiben
@@ -349,7 +337,7 @@ karten:
     frage: |-
       Was ist der Unterschied zwischen einer **for**- und einer **while**-Schleife?
     antwort: |-
-      - for: iterative (zählergesteuerte) Schleife – läuft über die Elemente einer Liste/eines range; die Anzahl der Durchläufe steht vorher fest.
+      - for: iterative (zählergesteuerte) Schleife – läuft über die Elemente einer Liste/eines range; die Anzahl der Durchläufe steht vorher fest (sofern kein `break` die Schleife beendet).
       - while: bedingte Schleife – läuft, solange eine Bedingung wahr ist; die Anzahl ergibt sich erst beim Ablauf.
 
   - typ: begriff
@@ -409,7 +397,7 @@ karten:
           print(i)
       ```
     antwort: |-
-      `1, 6` – der Endwert muss eins **größer** sein als die letzte gewünschte Zahl.
+      `1, 6` (gleichwertig: `1, 6, 1`) – der Endwert muss eins **größer** sein als die letzte gewünschte Zahl.
       ```python
       for i in range(1, 6):
           print(i)
@@ -578,16 +566,16 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      kapital = 1000
+      restwert = 2000
       for jahr in range(2):
-          kapital = kapital * 1.05
-      print(f"{kapital:.2f}")
+          restwert = restwert * 0.9
+      print(f"{restwert:.2f}")
       ```
     antwort: |-
       ```text
-      1102.50
+      1620.00
       ```
-      Zinseszins: 1000 · 1.05 · 1.05 = 1102.5.
+      Jedes Jahr verliert die Anlage 10 % ihres Werts: 2000 · 0.9 · 0.9 = 1620. Jeder neue Wert baut auf dem vorigen auf (wie beim Zinseszins).
     tests: [{p: 1, t: 1}]
 
   - typ: code_schreiben
@@ -616,19 +604,19 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      for teil in ["T1", "T2", "X", "T4"]:
-          if teil == "X":
-              print("Stopp bei", teil)
+      for wert in [21, 22, 99, 23]:
+          if wert > 90:
+              print("Grenzwert:", wert)
               break
-          print(teil, "ok")
+          print(wert, "ok")
       ```
     antwort: |-
       ```text
-      T1 ok
-      T2 ok
-      Stopp bei X
+      21 ok
+      22 ok
+      Grenzwert: 99
       ```
-      `break` beendet die Schleife sofort – `T4` wird nicht mehr erreicht.
+      `break` beendet die Schleife sofort – `23` wird nicht mehr geprüft.
     tests: [{p: 1, t: 1}]
 
   - typ: begriff
@@ -809,7 +797,7 @@ karten:
       ```text
       9 9
       ```
-      Variablen aus einer Schleife bestehen danach weiter und behalten ihren letzten Wert. (Das Skript, F. 182, nennt Schleifen zusammen mit Funktionen als „lokal“ – das gilt in Python nur für Funktionen.)
+      Variablen aus einer Schleife bestehen danach weiter und behalten ihren letzten Wert. (Das Skript, F. 182, nennt Schleifen zusammen mit Funktionen als „lokal“ – das gilt für Funktionen, nicht für for- und while-Schleifen.)
     tests: [{p: 1, t: 1}]
 
   - typ: begriff
@@ -818,4 +806,4 @@ karten:
     frage: |-
       Wie findest du heraus, was eine Schleife Schritt für Schritt tut, **ohne** sie auszuführen?
     antwort: |-
-      Mit einer Tabelle (Schreibtischtest): Für jeden Durchlauf die Bedingung und die Werte aller Variablen notieren, bis die Bedingung falsch ist bzw. die Liste zu Ende ist. Am Rechner hilft eine `print()`-Ausgabe im Rumpf.
+      Mit einer Tabelle: Für jeden Durchlauf die Bedingung und die Werte aller Variablen notieren, bis die Bedingung falsch ist bzw. die Liste zu Ende ist. (Ergänzung: Diese Methode heißt Schreibtischtest.)

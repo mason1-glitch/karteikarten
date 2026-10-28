@@ -16,7 +16,7 @@ Die Funktion wird einmal definiert und zweimal mit verschiedenen Werten aufgeruf
 
 *F. 171*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4f6139dc10.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3fce186e0d.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1c5664bb14.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bb095d9cc3.png)
 Beim Aufruf springt das Programm in die Funktion und danach zurück hinter die Aufrufstelle.
 
 *F. 178 · Aufg. 5.2*"
@@ -42,17 +42,17 @@ Der Rückgabewert 24 wird in `v` gespeichert und weiterverarbeitet.
 `return` beendet die Funktion sofort – bei -2 wird die letzte Zeile nicht mehr erreicht.
 
 *F. 180*"
-"Die Funktion soll den Durchsatz **zurückgeben**. Ergänze das Schlüsselwort.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d5e5703720.png)","`return`
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cce4856b7f.png)
-![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_594fd52986.png)
+"Die Funktion soll das Drehmoment M = F · r (in N·m) **zurückgeben**. Ergänze das Schlüsselwort.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1432343516.png)","`return`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a8e3ad6085.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_dff1209afe.png)
 
 *F. 180 · Aufg. 5.5*"
 "Was bewirkt `return wert` in einer Funktion?","Die Funktion endet und liefert `wert` an die Aufrufstelle zurück. Dort kann man ihn speichern (`x = f()`) oder direkt weiterverwenden.
 
 *F. 173, 180*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1dfbda53e5.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a9ea607763.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_abf9b24958.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_98a0388c9d.png)
 Die Funktion **gibt aus**, gibt aber nichts **zurück** – ohne `return` ist der Rückgabewert `None`.
 
 *Aufg. 5.3*"
@@ -64,11 +64,12 @@ Beide Aufrufe liefern `None`. Mit `return b * h` statt `print(b * h)` ergibt `ge
 *Aufg. 5.3*"
 "Was ist der Unterschied zwischen `print(ergebnis)` und `return ergebnis` in einer Funktion?","- `print()`: zeigt den Wert auf dem Bildschirm; die Funktion liefert trotzdem `None`.
 - `return`: gibt den Wert an den Aufrufer zurück, der damit weiterrechnen kann; auf dem Bildschirm erscheint nichts.
+Ergänzung: In Jupyter zeigt eine Zelle, deren **letzte Zeile** ein Funktionsaufruf ist, den Rückgabewert trotzdem als `Out[…]` an.
 
 *Aufg. 5.3*"
 "Was gibt der Code aus?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b02496607d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cc8fc55966.png)
-`None` steht für „kein Ergebnis“. Der Aufrufer prüft das mit `if ergebnis is not None:`.
+`None` steht für *kein Ergebnis*. Der Aufrufer prüft das mit `if ergebnis is not None:`.
 
 *Aufg. 5.3*"
 "Was gibt der Code aus?
@@ -76,7 +77,7 @@ Beide Aufrufe liefern `None`. Mit `return b * h` statt `print(b * h)` ergibt `ge
 Die Werte werden nach der **Reihenfolge** zugeordnet: `richtung = 50`, `tempo = ""links""`.
 
 *F. 176 · Aufg. 5.1*"
-"Was legt die Parameterliste in der def-Zeile fest, und was muss beim Aufruf übereinstimmen?","Sie legt Namen und **Reihenfolge** der Werte fest, die die Funktion erwartet. Beim Aufruf müssen Anzahl und Reihenfolge der übergebenen Werte dazu passen.
+"Was legt die Parameterliste in der def-Zeile fest, und was muss beim Aufruf übereinstimmen?","Sie legt Namen und **Reihenfolge** der Werte fest, die die Funktion erwartet. Beim Aufruf müssen Anzahl und Reihenfolge der übergebenen Werte dazu passen (bei Übergabe ohne Parameternamen).
 
 *F. 176*"
 "Schreib eine Funktion `spannung(kraft, flaeche)`, die σ = F / A zurückgibt, und gib das Ergebnis für F = 500 N und A = 25 mm² aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_262558e0f8.png)
@@ -98,8 +99,8 @@ Die Funktion wird aufgerufen, bevor sie definiert ist. Die Definition muss **vor
 
 *F. 175 · Aufg. 5.1*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b7bf7ce7dc.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_aa14eb2307.png)
-Kein Fehler: Entscheidend ist, dass `b` **beim Aufruf** von `a()` schon definiert ist – und das ist sie, weil `a()` erst in der letzten Zeile aufgerufen wird.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d75ca9e586.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d7e9ce36fb.png)
+Kein Fehler: Entscheidend ist, dass `messen` **beim Aufruf** von `pruefen()` schon definiert ist – und das ist sie, weil `pruefen()` erst in der letzten Zeile aufgerufen wird.
 
 *F. 175*"
 "Welche Reihenfolge von Definition und Aufruf schreibt Python bei Funktionen vor, und welcher Fehler entsteht sonst?","Erst definieren, dann aufrufen. Ruft man eine Funktion auf, bevor `def` ausgeführt wurde, entsteht ein **NameError**.
@@ -107,13 +108,13 @@ Kein Fehler: Entscheidend ist, dass `b` **beim Aufruf** von `a()` schon definier
 *F. 175*"
 "Was gibt der Code aus?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_14cdee93d0.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7cb7fbf908.png)
-`return a, b` gibt zwei Werte zurück; links vom `=` werden sie auf zwei Variablen verteilt.
+`return a, b` gibt zwei Werte zurück (als Tupel); links vom `=` werden sie auf zwei Variablen verteilt.
 
 *Aufg. 5.2, 5.6*"
-"Die Funktion liefert Start- und Endzeit. Ergänze die linke Seite, sodass beide Werte in eigenen Variablen landen.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_479cfbdb7d.png)","`start, ende`
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1b699ad23e.png)
-![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_24c8ca8bd5.png)
+"Die Funktion liefert untere und obere Grenze eines Messbereichs. Ergänze die linke Seite, sodass beide Werte in eigenen Variablen landen.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bd5b771543.png)","`unten, oben`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8e5df89f72.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f87dc373c7.png)
 
 *Aufg. 5.2*"
 "Schreib eine Funktion `tausche(x, y)`, die beide Werte vertauscht **zurückgibt**, und vertausche damit `links = 3` und `rechts = 8`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_541b63262c.png)
@@ -134,7 +135,7 @@ Kein Fehler: Entscheidend ist, dass `b` **beim Aufruf** von `a()` schon definier
 
 *F. 182*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_06b6c11054.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_53942e1921.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8918a8012b.png)
 Durch `global` greift die Funktion auf die äußere Variable zu und verändert sie.
 
 *F. 183 · Aufg. 5.6*"
@@ -142,8 +143,8 @@ Durch `global` greift die Funktion auf die äußere Variable zu und verändert s
 
 *F. 183 · Aufg. 5.6*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fcbeca63e8.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bbeb2d2472.png)
-Die Funktion ändert nur ihren Parameter `wert`. Der Rückgabewert wird nicht gespeichert – richtig wäre `temp = verdopple(temp)`.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ece35d066b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_804157e596.png)
+Die Funktion ändert nur ihren Parameter `laenge`. Der Rückgabewert wird nicht gespeichert – richtig wäre `mass = in_mm(mass)`.
 
 *Aufg. 5.6*"
 "Die Werte sollen getauscht werden. Was gibt der Code aus, und warum klappt es nicht?
@@ -159,15 +160,15 @@ Die Funktion ändert nur ihren Parameter `wert`. Der Rückgabewert wird nicht ge
 Ergänzung: Hier wird der Parameter nicht neu zugewiesen, sondern die **übergebene Liste selbst** verändert – das ist auch außen sichtbar.
 
 *Aufg. 5.6*"
-"Was ist laut Skript der Unterschied zwischen einer **Prozedur** und einer **Funktion**, und was ist eine **Methode**?","- Prozedur: Unterprogramm **ohne** Rückgabewert.
-- Funktion: Unterprogramm **mit** Rückgabewert (heute nennt man meist beides „Funktion“).
-- Methode: wird über ein Objekt mit Punkt aufgerufen, z. B. `cars.index(""VW"")` oder `text.replace(…)`.
+"Was ist der Unterschied zwischen einer **Prozedur**, einer **Funktion** und einer **Methode**?","- Prozedur: Unterprogramm **ohne** Rückgabewert (F. 172).
+- Funktion: Unterprogramm **mit** Rückgabewert (F. 173); heute nennt man meist beides „Funktion“.
+- Methode (Ergänzung, das Skript definiert den Begriff nicht): Funktion, die zu einem Objekt wie einer Liste oder einem String gehört, z. B. `teile.append(""B"")`. `math.sqrt()` ist keine Methode, sondern eine Funktion des Moduls `math`.
 
 *F. 172–174*"
-"Ordne nach Skript zu: Ist `melden`, `doppelt` bzw. `append` eine Prozedur, eine Funktion oder eine Methode?
+"Ordne zu (wie in der Übung F. 174): Ist `melden`, `doppelt` bzw. `append` eine Prozedur, eine Funktion oder eine Methode?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f177e94cd6.png)","- `melden`: Prozedur (kein Rückgabewert)
 - `doppelt`: Funktion (liefert einen Wert zurück)
-- `append`: Methode (wird über die Liste `teile.` aufgerufen)
+- `append`: Methode – gehört zur Liste `teile` und wird mit Punkt aufgerufen (Ergänzung: das Skript definiert „Methode“ nicht)
 
 *F. 174*"
 "Welche Vorteile nennt das Skript für Funktionen?","- Programmteile, die mehrmals gebraucht werden, schreibt man nur **einmal**.
@@ -175,16 +176,16 @@ Ergänzung: Hier wird der Parameter nicht neu zugewiesen, sondern die **übergeb
 - Komplexe Programme werden durch den **modularen** Aufbau übersichtlicher.
 
 *F. 170*"
-"Fasse die doppelte Berechnung in eine Funktion `volumen(masse, dichte)` zusammen, sodass dieselbe Ausgabe entsteht.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6e68b99202.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b59dec8d16.png)
-![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ece81c6e55.png)
+"Fasse die doppelte Berechnung des Übersetzungsverhältnisses i = z₂ / z₁ (Zähnezahlen) in eine Funktion `uebersetzung(z2, z1)` zusammen, sodass dieselbe Ausgabe entsteht.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3c315e14fb.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9c1bb2bedb.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d95000f5db.png)
 
 *F. 170 · Aufg. 5.3*"
 "Wie machst du sichtbar, in welcher Reihenfolge ein Programm mit Funktionen tatsächlich abläuft?","Mit **Trace-Ausgaben**: `print()` am Anfang und Ende jeder Funktion (z. B. `"">>> berechne gestartet""`). Alternativ im **Debugger** Zeile für Zeile durchgehen.
 
 *F. 177, 178 · Aufg. 5.2*"
-"Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_46e6a6c63a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9a520851dc.png)
-`a` ruft mitten im Ablauf `b` auf; danach geht es in `a` hinter dem Aufruf weiter.
+"Was gibt der Code mit den Trace-Ausgaben aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0a51448322.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2206e9da26.png)
+Die Trace-Ausgabe zeigt, wann die Funktion läuft: erst beim Aufruf in Zeile 6. Danach geht es mit dem Rückgabewert hinter der Aufrufstelle weiter.
 
 *Aufg. 5.2*"

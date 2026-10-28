@@ -104,18 +104,18 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      def melden():
-          print("B")
+      def kalibrieren():
+          print("Kalibrierung")
 
-      print("A")
-      melden()
-      print("C")
+      print("Start")
+      kalibrieren()
+      print("Messung")
       ```
     antwort: |-
       ```text
-      A
-      B
-      C
+      Start
+      Kalibrierung
+      Messung
       ```
       Beim Aufruf springt das Programm in die Funktion und danach zurück hinter die Aufrufstelle.
     tests: [{p: 1, t: 1}]
@@ -218,23 +218,23 @@ karten:
     aufgaben: ["5.5"]
     deckt: [c09.return]
     frage: |-
-      Die Funktion soll den Durchsatz **zurückgeben**. Ergänze das Schlüsselwort.
+      Die Funktion soll das Drehmoment M = F · r (in N·m) **zurückgeben**. Ergänze das Schlüsselwort.
       ```python
-      def durchsatz(stueck, stunden):
-          ___ stueck / stunden
+      def drehmoment(kraft, hebel):
+          ___ kraft * hebel
 
-      print(durchsatz(480, 8))
+      print(drehmoment(200, 0.25))
       ```
     antwort: |-
       `return`
       ```python
-      def durchsatz(stueck, stunden):
-          return stueck / stunden
+      def drehmoment(kraft, hebel):
+          return kraft * hebel
 
-      print(durchsatz(480, 8))
+      print(drehmoment(200, 0.25))
       ```
       ```text
-      60.0
+      50.0
       ```
     tests: [{p: 2, t: 1}]
 
@@ -253,16 +253,16 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      def addiere(a, b):
-          print(a + b)
+      def flaeche(breite, hoehe):
+          print(breite * hoehe)
 
-      ergebnis = addiere(3, 4)
-      print("Rückgabe:", ergebnis)
+      a = flaeche(4, 5)
+      print("Fläche:", a)
       ```
     antwort: |-
       ```text
-      7
-      Rückgabe: None
+      20
+      Fläche: None
       ```
       Die Funktion **gibt aus**, gibt aber nichts **zurück** – ohne `return` ist der Rückgabewert `None`.
     tests: [{p: 1, t: 1}]
@@ -296,6 +296,7 @@ karten:
     antwort: |-
       - `print()`: zeigt den Wert auf dem Bildschirm; die Funktion liefert trotzdem `None`.
       - `return`: gibt den Wert an den Aufrufer zurück, der damit weiterrechnen kann; auf dem Bildschirm erscheint nichts.
+      Ergänzung: In Jupyter zeigt eine Zelle, deren **letzte Zeile** ein Funktionsaufruf ist, den Rückgabewert trotzdem als `Out[…]` an.
 
   - typ: code_ausgabe
     aufgaben: ["5.3"]
@@ -316,7 +317,7 @@ karten:
       None
       1.5
       ```
-      `None` steht für „kein Ergebnis“. Der Aufrufer prüft das mit `if ergebnis is not None:`.
+      `None` steht für *kein Ergebnis*. Der Aufrufer prüft das mit `if ergebnis is not None:`.
     tests: [{p: 1, t: 1}]
 
   # ---------------------------------------------------------------- Parameter
@@ -345,7 +346,7 @@ karten:
     frage: |-
       Was legt die Parameterliste in der def-Zeile fest, und was muss beim Aufruf übereinstimmen?
     antwort: |-
-      Sie legt Namen und **Reihenfolge** der Werte fest, die die Funktion erwartet. Beim Aufruf müssen Anzahl und Reihenfolge der übergebenen Werte dazu passen.
+      Sie legt Namen und **Reihenfolge** der Werte fest, die die Funktion erwartet. Beim Aufruf müssen Anzahl und Reihenfolge der übergebenen Werte dazu passen (bei Übergabe ohne Parameternamen).
 
   - typ: code_schreiben
     folien: [176]
@@ -422,19 +423,19 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      def a():
-          b()
+      def pruefen():
+          messen()
 
-      def b():
-          print("b läuft")
+      def messen():
+          print("Messung läuft")
 
-      a()
+      pruefen()
       ```
     antwort: |-
       ```text
-      b läuft
+      Messung läuft
       ```
-      Kein Fehler: Entscheidend ist, dass `b` **beim Aufruf** von `a()` schon definiert ist – und das ist sie, weil `a()` erst in der letzten Zeile aufgerufen wird.
+      Kein Fehler: Entscheidend ist, dass `messen` **beim Aufruf** von `pruefen()` schon definiert ist – und das ist sie, weil `pruefen()` erst in der letzten Zeile aufgerufen wird.
     tests: [{p: 1, t: 1}]
 
   - typ: begriff
@@ -462,32 +463,32 @@ karten:
       ```text
       2 h 15 min
       ```
-      `return a, b` gibt zwei Werte zurück; links vom `=` werden sie auf zwei Variablen verteilt.
+      `return a, b` gibt zwei Werte zurück (als Tupel); links vom `=` werden sie auf zwei Variablen verteilt.
     tests: [{p: 1, t: 1}]
 
   - typ: code_luecke
     aufgaben: ["5.2"]
     deckt: [c09.mehrere]
     frage: |-
-      Die Funktion liefert Start- und Endzeit. Ergänze die linke Seite, sodass beide Werte in eigenen Variablen landen.
+      Die Funktion liefert untere und obere Grenze eines Messbereichs. Ergänze die linke Seite, sodass beide Werte in eigenen Variablen landen.
       ```python
-      def zeiten():
-          return 6, 22
+      def grenzen():
+          return 18, 24
 
-      ___ = zeiten()
-      print(ende - start)
+      ___ = grenzen()
+      print(oben - unten)
       ```
     antwort: |-
-      `start, ende`
+      `unten, oben`
       ```python
-      def zeiten():
-          return 6, 22
+      def grenzen():
+          return 18, 24
 
-      start, ende = zeiten()
-      print(ende - start)
+      unten, oben = grenzen()
+      print(oben - unten)
       ```
       ```text
-      16
+      6
       ```
     tests: [{p: 2, t: 1}]
 
@@ -570,18 +571,18 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      zaehler = 0
-      def zaehlen():
-          global zaehler
-          zaehler += 1
+      ausschuss = 5
+      def melden():
+          global ausschuss
+          ausschuss += 1
 
-      zaehlen()
-      zaehlen()
-      print(zaehler)
+      melden()
+      melden()
+      print(ausschuss)
       ```
     antwort: |-
       ```text
-      2
+      7
       ```
       Durch `global` greift die Funktion auf die äußere Variable zu und verändert sie.
     tests: [{p: 1, t: 1}]
@@ -602,19 +603,19 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      def verdopple(wert):
-          wert = wert * 2
-          return wert
+      def in_mm(laenge):
+          laenge = laenge * 10
+          return laenge
 
-      temp = 80
-      verdopple(temp)
-      print(temp)
+      mass = 12
+      in_mm(mass)
+      print(mass)
       ```
     antwort: |-
       ```text
-      80
+      12
       ```
-      Die Funktion ändert nur ihren Parameter `wert`. Der Rückgabewert wird nicht gespeichert – richtig wäre `temp = verdopple(temp)`.
+      Die Funktion ändert nur ihren Parameter `laenge`. Der Rückgabewert wird nicht gespeichert – richtig wäre `mass = in_mm(mass)`.
     tests: [{p: 1, t: 1}]
 
   - typ: code_fehler
@@ -672,17 +673,17 @@ karten:
     folien: [172, 173, 174]
     deckt: [c09.begriffe]
     frage: |-
-      Was ist laut Skript der Unterschied zwischen einer **Prozedur** und einer **Funktion**, und was ist eine **Methode**?
+      Was ist der Unterschied zwischen einer **Prozedur**, einer **Funktion** und einer **Methode**?
     antwort: |-
-      - Prozedur: Unterprogramm **ohne** Rückgabewert.
-      - Funktion: Unterprogramm **mit** Rückgabewert (heute nennt man meist beides „Funktion“).
-      - Methode: wird über ein Objekt mit Punkt aufgerufen, z. B. `cars.index("VW")` oder `text.replace(…)`.
+      - Prozedur: Unterprogramm **ohne** Rückgabewert (F. 172).
+      - Funktion: Unterprogramm **mit** Rückgabewert (F. 173); heute nennt man meist beides „Funktion“.
+      - Methode (Ergänzung, das Skript definiert den Begriff nicht): Funktion, die zu einem Objekt wie einer Liste oder einem String gehört, z. B. `teile.append("B")`. `math.sqrt()` ist keine Methode, sondern eine Funktion des Moduls `math`.
 
   - typ: begriff
     folien: [174]
     deckt: [c09.begriffe]
     frage: |-
-      Ordne nach Skript zu: Ist `melden`, `doppelt` bzw. `append` eine Prozedur, eine Funktion oder eine Methode?
+      Ordne zu (wie in der Übung F. 174): Ist `melden`, `doppelt` bzw. `append` eine Prozedur, eine Funktion oder eine Methode?
       ```python
       def melden(text):
           print(text)
@@ -696,7 +697,7 @@ karten:
     antwort: |-
       - `melden`: Prozedur (kein Rückgabewert)
       - `doppelt`: Funktion (liefert einen Wert zurück)
-      - `append`: Methode (wird über die Liste `teile.` aufgerufen)
+      - `append`: Methode – gehört zur Liste `teile` und wird mit Punkt aufgerufen (Ergänzung: das Skript definiert „Methode“ nicht)
     tests: [{p: 1}]
 
   # ---------------------------------------------------------------- Modularisierung
@@ -715,24 +716,24 @@ karten:
     aufgaben: ["5.3"]
     deckt: [c09.modular]
     frage: |-
-      Fasse die doppelte Berechnung in eine Funktion `volumen(masse, dichte)` zusammen, sodass dieselbe Ausgabe entsteht.
+      Fasse die doppelte Berechnung des Übersetzungsverhältnisses i = z₂ / z₁ (Zähnezahlen) in eine Funktion `uebersetzung(z2, z1)` zusammen, sodass dieselbe Ausgabe entsteht.
       ```python
-      v1 = 50 / 7.85
-      print(f"{v1:.2f} l")
-      v2 = 120 / 7.85
-      print(f"{v2:.2f} l")
+      i1 = 48 / 16
+      print(f"i = {i1:.2f}")
+      i2 = 60 / 24
+      print(f"i = {i2:.2f}")
       ```
     antwort: |-
       ```python
-      def volumen(masse, dichte):
-          return masse / dichte
+      def uebersetzung(z2, z1):
+          return z2 / z1
 
-      for m in [50, 120]:
-          print(f"{volumen(m, 7.85):.2f} l")
+      print(f"i = {uebersetzung(48, 16):.2f}")
+      print(f"i = {uebersetzung(60, 24):.2f}")
       ```
       ```text
-      6.37 l
-      15.29 l
+      i = 3.00
+      i = 2.50
       ```
     tests: [{p: 1, t: 1}, {p: 2, t: 1}]
 
@@ -750,22 +751,21 @@ karten:
     aufgaben: ["5.2"]
     deckt: [c09.trace]
     frage: |-
-      Was gibt der Code aus?
+      Was gibt der Code mit den Trace-Ausgaben aus?
       ```python
-      def b():
-          print("  b")
-      def a():
-          print("a Start")
-          b()
-          print("a Ende")
+      def messen():
+          print(">>> messen gestartet")
+          return 21.5
 
-      a()
+      print("Start")
+      wert = messen()
+      print("Wert:", wert)
       ```
     antwort: |-
       ```text
-      a Start
-        b
-      a Ende
+      Start
+      >>> messen gestartet
+      Wert: 21.5
       ```
-      `a` ruft mitten im Ablauf `b` auf; danach geht es in `a` hinter dem Aufruf weiter.
+      Die Trace-Ausgabe zeigt, wann die Funktion läuft: erst beim Aufruf in Zeile 6. Danach geht es mit dem Rückgabewert hinter der Aufrufstelle weiter.
     tests: [{p: 1, t: 1}]

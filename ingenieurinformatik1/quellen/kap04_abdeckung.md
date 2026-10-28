@@ -37,7 +37,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K04.002 | code_fehler | F. 114 | Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was fehlt? ```python temperatur = 95 if tem |
 | K04.003 | code_schreiben | F. 114, 116 · Aufg. 3.5 | Schreib Code, der eine Drehzahl als Ganzzahl einliest und `Überdrehzahl!` ausgibt, wenn sie größer als 6000 is |
 | K04.004 | begriff | F. 112, 115 | Was passiert bei einem `if` **ohne** `else`, wenn die Bedingung `False` ergibt? |
-| K04.005 | begriff | F. 114 | Was nennt das Skript die **„wahr“-Suite** und die **„falsch“-Suite** einer if-else-Anweisung? |
+| K04.005 | begriff | F. 114 | Was bezeichnet das Skript als **„wahr“-Suite** und als **„falsch“-Suite** einer if-else-Anweisung? |
 | K04.006 | code_ausgabe | F. 115 · Aufg. 3.3 | Was gibt der Code aus? ```python drehzahl = 4500 if drehzahl > 3000:     print("erhöht") elif drehzahl > 4000: |
 | K04.007 | code_fehler | F. 115 · Aufg. 3.4 | Bei 95 °C soll nur `kritisch` erscheinen. Was gibt der Code aus, und was ist zu ändern? ```python temp = 95 if |
 | K04.008 | code_schreiben | F. 115 · Aufg. 3.4 | Ordne eine Maßabweichung `abw` (in mm) ein: unter 0.1 → `gut`, unter 0.5 → `nacharbeiten`, sonst `Ausschuss`.  |
@@ -50,8 +50,8 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K04.015 | code_ausgabe | F. 118 · Aufg. 3.6 | Was gibt der Code aus? ```python modus = "auto" temp = 65 if modus == "auto":     if temp > 70:         print( |
 | K04.016 | code_schreiben | F. 118 | Schreib mit **zwei verschachtelten** if-Anweisungen: Wenn die Maschine läuft (`laeuft = True`) und mehr als 10 |
 | K04.017 | unterschied | F. 118 | Was ist der Unterschied zwischen `if a:` mit eingerücktem `if b:` und `if a and b:`? |
-| K04.018 | code_ausgabe | Aufg. 3.5 | Was gibt der Code aus? ```python material = "stahl" if material == "Stahl":     print("7.85 kg/dm³") else:     |
+| K04.018 | code_ausgabe | Aufg. 3.5 | Was gibt der Code aus? ```python modus = "Auto" if modus == "auto":     print("Regelung aktiv") else:     prin |
 | K04.019 | code_fehler | Aufg. 3.5 | Der Nutzer tippt `3`. Erwartet ist `Kalibrierung`. Was erscheint, und warum? ```python code = input() if code  |
-| K04.020 | code_schreiben | Aufg. 3.5 | Schreib Code, der einen Werkstoffnamen einliest und die Dichte ausgibt: `Alu` → `2.7`, `Stahl` → `7.85`, sonst |
+| K04.020 | code_schreiben | Aufg. 3.5 | Schreib Code, der die Farbe der Signalleuchte einliest und den Zustand ausgibt: `grün` → `Betrieb`, `gelb` → ` |
 | K04.021 | begriff | F. 109 | Zu welcher Grundstruktur gehört laut Skript eine **if-Anweisung**, zu welcher eine **Schleife** und zu welcher |
 | K04.022 | unterschied | F. 111 | Was ist der Unterschied zwischen einer **Anweisung** und einer **Folge (Sequenz)**? |

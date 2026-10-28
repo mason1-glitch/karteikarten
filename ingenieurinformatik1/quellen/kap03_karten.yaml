@@ -40,15 +40,15 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      print(17 / 5)
-      print(17 // 5)
-      print(17 % 5)
+      print(23 / 4)
+      print(23 // 4)
+      print(23 % 4)
       ```
     antwort: |-
       ```text
-      3.4
+      5.75
+      5
       3
-      2
       ```
       `/` Division (float), `//` ganzzahliger Anteil, `%` Rest.
     tests: [{p: 1, t: 1}]
@@ -61,7 +61,7 @@ karten:
       Was ist der Unterschied zwischen `/` und `//`?
     antwort: |-
       - `/`: normale Division, Ergebnis immer float (`7 / 2` → `3.5`).
-      - `//`: Ganzzahldivision, der Nachkommateil fällt weg (`7 // 2` → `3`); bei zwei int ist das Ergebnis int.
+      - `//`: Ganzzahldivision, das Ergebnis wird **abgerundet**: `7 // 2` → `3`, aber `-7 // 2` → `-4`. Bei zwei int ist das Ergebnis int.
 
   - typ: code_schreiben
     folien: [104]
@@ -239,17 +239,17 @@ karten:
     aufgaben: ["3.1"]
     deckt: [c03.ziffern]
     frage: |-
-      Schreib Code, der die **Quersumme** der dreistelligen Prüfnummer `n = 805` berechnet und ausgibt.
+      Schreib Code, der die Ziffern der dreistelligen Zahl `n = 805` mit `//` und `%` zerlegt und **rückwärts** als Zahl ausgibt (`508`).
     antwort: |-
       ```python
       n = 805
       hunderter = n // 100
       zehner = n // 10 % 10
       einer = n % 10
-      print(hunderter + zehner + einer)
+      print(einer * 100 + zehner * 10 + hunderter)
       ```
       ```text
-      13
+      508
       ```
     tests: [{p: 1, t: 1}]
 
@@ -283,15 +283,15 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      print(2 ** 3)
-      print(2 * 3 ** 2)
+      print(3 ** 2)
+      print(4 * 3 ** 2)
       ```
     antwort: |-
       ```text
-      8
-      18
+      9
+      36
       ```
-      `**` bindet stärker als `*`: erst 3² = 9, dann 2 · 9.
+      `**` bindet stärker als `*`: erst 3² = 9, dann 4 · 9.
     tests: [{p: 1, t: 1}]
 
   - typ: code_schreiben
@@ -335,14 +335,14 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      laenge = 450
-      print(laenge == 900 / 2)
+      hub = 120
+      print(hub == 240 / 2)
       ```
     antwort: |-
       ```text
       True
       ```
-      `900 / 2` ist `450.0`; Python vergleicht int und float nach dem Zahlenwert.
+      `240 / 2` ist `120.0`; Python vergleicht int und float nach dem Zahlenwert.
     tests: [{p: 1, t: 1}]
 
   - typ: code_fehler
@@ -390,7 +390,7 @@ karten:
           print("Maschine läuft")
       ```
     antwort: |-
-      Einen **SyntaxError** (der genaue Meldungstext hängt von der Python-Version ab). In der Bedingung steht `=` (Zuweisung) statt `==` (Vergleich):
+      Einen **SyntaxError** (der genaue Meldungstext hängt von der Python-Version ab). In der Bedingung steht `=` (Zuweisung) statt `==` (Vergleich). Achtung: Das Skript (F. 105) nennt bei „Gleichheit“ zusätzlich „(oder =)“ – in Python ist `=` aber immer eine Zuweisung:
       ```python
       status = "aktiv"
       if status == "aktiv":
@@ -404,15 +404,15 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      x = 3
-      ok = x == 3
+      stufe = 3
+      ok = stufe == 3
       print(ok)
       ```
     antwort: |-
       ```text
       True
       ```
-      Erst wird `x == 3` ausgewertet (True), dann wird das Ergebnis `ok` zugewiesen.
+      Erst wird `stufe == 3` ausgewertet (True), dann wird das Ergebnis `ok` zugewiesen.
     tests: [{p: 1, t: 1}]
 
   # ---------------------------------------------------------------- and / or / not
@@ -487,18 +487,18 @@ karten:
     frage: |-
       Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was ist falsch?
       ```python
-      a = 3
-      b = 4
-      if a > 0 && b > 0:
-          print("beide positiv")
+      druck = 3
+      temp = 40
+      if druck > 0 && temp > 0:
+          print("Sensoren liefern Werte")
       ```
     antwort: |-
-      Einen **SyntaxError**: `&&` gibt es in Python nicht (das Skript nennt es nur als Schreibweise anderer Sprachen). Richtig ist `and`:
+      Einen **SyntaxError**: `&&` gibt es in Python nicht. Das Skript (F. 106) nennt „and (oder &&)“ – das ist die Schreibweise anderer Sprachen; in Python gilt nur `and`:
       ```python
-      a = 3
-      b = 4
-      if a > 0 and b > 0:
-          print("beide positiv")
+      druck = 3
+      temp = 40
+      if druck > 0 and temp > 0:
+          print("Sensoren liefern Werte")
       ```
     tests: [{p: 1, abbruch: SyntaxError}, {p: 2}]
 
@@ -527,14 +527,14 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      laenge = 9
-      print(laenge + 1 % 5 - 1)
+      teile = 12
+      print(teile + 3 % 4 - 1)
       ```
     antwort: |-
       ```text
-      9
+      14
       ```
-      `%` bindet stärker als `+` und `-`: `1 % 5 = 1`, dann `9 + 1 - 1`. Gemeint war vermutlich `(laenge + 1) % 5 - 1`.
+      `%` bindet stärker als `+` und `-`: `3 % 4 = 3`, dann `12 + 3 - 1`. Wer `(teile + 3) % 4 - 1` meint, muss Klammern setzen (Ergebnis dann 2).
     tests: [{p: 1, t: 1}]
 
   - typ: code_fehler
@@ -568,7 +568,7 @@ karten:
     folien: [119]
     deckt: [c03.rang_arith]
     frage: |-
-      In welcher Reihenfolge wertet Python `**`, `*`/`/`/`//`/`%` und `+`/`-` aus, und wie erzwingst du eine andere Reihenfolge?
+      In welcher Reihenfolge wertet Python `**`, `*`/`/`/`//`/`%` und `+`/`-` aus?
     antwort: |-
       Zuerst `**`, dann `*`, `/`, `//`, `%` (untereinander von links nach rechts), zuletzt `+` und `-`. Eine andere Reihenfolge erzwingt man mit **Klammern**.
 
@@ -703,10 +703,10 @@ karten:
     aufgaben: ["5.4"]
     deckt: [c03.binaer]
     frage: |-
-      Wie rechnest du eine Dezimalzahl in eine Binärzahl um? Zeig es an 13.
+      Wie rechnest du eine Dezimalzahl in eine Binärzahl um? Zeig es an 22.
     antwort: |-
       Fortgesetzt durch 2 teilen und die Reste notieren, dann die Reste **von unten nach oben** lesen:
-      13 : 2 = 6 Rest 1 · 6 : 2 = 3 Rest 0 · 3 : 2 = 1 Rest 1 · 1 : 2 = 0 Rest 1 → **1101**
+      22 : 2 = 11 Rest 0 · 11 : 2 = 5 Rest 1 · 5 : 2 = 2 Rest 1 · 2 : 2 = 1 Rest 0 · 1 : 2 = 0 Rest 1 → **10110**
 
   - typ: code_ausgabe
     folien: [90]
@@ -742,15 +742,23 @@ karten:
     folien: [91]
     deckt: [c03.hex]
     frage: |-
-      Wie viele Bit fasst eine Hexadezimalziffer zusammen, und welche Zeichen verwendet das Hexadezimalsystem?
+      Wie viele Bit fasst eine Hexadezimalziffer zusammen?
     antwort: |-
-      4 Bit (ein Nibble, 2⁴ = 16 Möglichkeiten). Zeichen: `0`–`9` und `A`–`F` (A = 10 … F = 15).
+      4 Bit – ein Halb-Byte (Nibble). Damit gibt es 2⁴ = 16 mögliche Bitfolgen, also 16 Ziffern.
+
+  - typ: begriff
+    folien: [91]
+    deckt: [c03.hex]
+    frage: |-
+      Welche 16 Zeichen verwendet das Hexadezimalsystem?
+    antwort: |-
+      Die Ziffern `0`–`9` und die Buchstaben `A`–`F` (A = 10, B = 11 … F = 15).
 
   - typ: code_ausgabe
     folien: [93, 95]
     deckt: [c03.hex]
     frage: |-
-      Python versteht die Schreibweise `0x…` für Hexadezimalzahlen. Was gibt der Code aus?
+      Ergänzung: Python versteht die im Skript (F. 95) gezeigte Schreibweise `0x…` direkt als Hexadezimalzahl. Was gibt der Code aus?
       ```python
       print(0x2F)
       ```

@@ -40,7 +40,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | List-Comprehension zum Anlegen von Listen/Rastern | 1 | Aufg. 4.3 | K07.042, K07.043 | 2 |
 | Benutzereingabe ab 1 → Index ab 0 (reihe - 1) | 2 | Aufg. 4.3, 4.5 | K07.044, K07.045, K07.046 | 3 |
 | Tupel: unveränderlich, runde Klammern, Entpacken | 1 | F. 155 · Aufg. 5.2, 5.6 | K07.047, K07.048, K07.049 | 3 |
-| Zuweisung kopiert keine Liste (Referenz) – .copy() | 1 | F. 161 · Aufg. 4.6 | K07.050, K07.051 | 2 |
+| Zuweisung kopiert keine Liste/kein Array (Referenz) – .copy() | 1 | Aufg. 4.6 | K07.050, K07.051 | 2 |
 
 ## Annahmen
 
@@ -51,7 +51,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | ID | Typ | Folien | Frage |
 |---|---|---|---|
 | K07.001 | code_ausgabe | F. 142 | Was gibt der Code aus? ```python teile = ["Kolben", "Dichtung", 13, True] print(teile) print(len(teile)) ``` |
-| K07.002 | begriff | F. 141, 142 | Was ist eine **Liste** in Python, und wie legst du eine leere Liste an? |
+| K07.002 | begriff | F. 141, 142 | Was ist eine **Liste** in Python? |
 | K07.003 | code_schreiben | F. 141 · Aufg. 4.2 | Gegeben sind `t1 = 20.1`, `t2 = 20.4`, `t3 = 19.8`. Fasse die drei Werte in **einer Liste** zusammen und gib s |
 | K07.004 | unterschied | F. 142, 156, 157 | Was ist laut Skript der Unterschied zwischen einer Python-**Liste** und einem **Array** in vielen anderen Spra |
 | K07.005 | code_ausgabe | F. 143 | Was gibt der Code aus? ```python druecke = [2.0, 2.5, 3.1, 2.8] print(druecke[1]) print(druecke[-1]) ``` |
@@ -67,31 +67,31 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K07.015 | code_ausgabe | F. 145 · Aufg. 4.2 | Was gibt der Code aus? ```python teile = ["A", "B", "C", "D"] teile.pop(1) print(teile) ``` |
 | K07.016 | code_ausgabe | F. 145 | Was gibt der Code aus? ```python auftraege = [101, 102, 103] naechster = auftraege.pop(0) print(naechster, auf |
 | K07.017 | code_fehler | F. 145 | Welche Fehlermeldung erscheint? ```python teile = ["A", "B"] teile.pop(2) ``` |
-| K07.018 | code_ausgabe | F. 145 | Was gibt der Code aus? ```python marken = ["BMW", "VW", "BMW"] marken.remove("BMW") print(marken) ``` |
+| K07.018 | code_ausgabe | F. 145 | Was gibt der Code aus? ```python schrauben = ["M6", "M8", "M6"] schrauben.remove("M6") print(schrauben) ``` |
 | K07.019 | code_fehler | F. 145 | Welche Fehlermeldung erscheint? ```python teile = ["Welle", "Lager"] teile.remove("Ventil") ``` |
 | K07.020 | unterschied | F. 145 · Aufg. 4.2 | Was ist der Unterschied zwischen `liste.pop(2)` und `liste.remove(2)`? |
 | K07.021 | code_ausgabe | F. 146 · Aufg. 4.2 | Was gibt der Code aus? ```python lager = ["Kolben", "Ventil", "Lager"] print(lager.index("Lager")) ``` |
 | K07.022 | code_schreiben | F. 146 · Aufg. 4.2 | Ersetze in `lager = ["Kolben", "Ventil", "Lager"]` das Teil `"Ventil"` durch `"Feder"`, **ohne** die Position  |
-| K07.023 | code_ausgabe | F. 146 | Was gibt der Code aus? ```python werte = [3, 1, 2, 3] print(werte.count(3)) werte.sort() print(werte) ``` |
+| K07.023 | code_ausgabe | F. 146 | Was gibt der Code aus? ```python bohrungen = [6, 8, 6, 10] print(bohrungen.count(6)) ``` |
 | K07.024 | code_luecke | F. 146, 147 | Die Liste soll **absteigend** sortiert werden. Ergänze den Parameter. ```python werte = [12, 40, 7] werte.sort |
 | K07.025 | code_ausgabe | F. 147 | Was gibt der Code aus? ```python def laenge(e):     return len(e)  teile = ["Welle", "Bolzen", "Rad"] teile.so |
 | K07.026 | begriff | F. 147 | Was bewirkt der Parameter `key` bei `liste.sort(key=funktion)`? |
-| K07.027 | code_ausgabe | F. 152 · Aufg. 4.4 | Was gibt der Code aus? ```python regal = ["Kolben", "-", "Lager"] for i in range(len(regal)):     if regal[i]  |
+| K07.027 | code_ausgabe | F. 152 · Aufg. 4.4 | Was gibt der Code aus? ```python kanaele = ["T1", "", "T3"] for i in range(len(kanaele)):     if kanaele[i] != |
 | K07.028 | unterschied | F. 143, 152 | Was ist der Unterschied zwischen `for x in liste:` und `for i in range(len(liste)):`? |
 | K07.029 | code_fehler | F. 143 | Alle Werte sollen verzehnfacht werden. Was gibt der Code aus, und wie korrigierst du ihn? ```python werte = [1 |
-| K07.030 | code_schreiben | F. 148 | Schreib eine Funktion `fahrenheit(c)` (F = C · 9/5 + 32) und gib damit für jede Temperatur in `temp = [18.0, 2 |
-| K07.031 | code_ausgabe | Aufg. 3.8 | Was gibt der Code aus? ```python wartung = [102, 105] print(103 in wartung) print(105 in wartung) ``` |
-| K07.032 | code_luecke | Aufg. 3.8 | Nur Nummern, die **nicht** in der Wartungsliste stehen, werden montiert. Ergänze die Lücke. ```python wartung  |
+| K07.030 | code_schreiben | F. 148 | Schreib eine Funktion `m_pro_s(kmh)`, die km/h in m/s umrechnet (÷ 3.6), und gib damit für jede Geschwindigkei |
+| K07.031 | code_ausgabe | Aufg. 3.8 | Was gibt der Code aus? ```python gesperrt = [7, 9] print(8 in gesperrt) print(9 in gesperrt) ``` |
+| K07.032 | code_luecke | Aufg. 3.8 | Nur Stationen, die **nicht** gesperrt sind, werden freigegeben. Ergänze die Lücke. ```python gesperrt = [7, 9] |
 | K07.033 | code_ausgabe | Aufg. 4.4 | Was gibt der Code aus? ```python for nr, teil in enumerate(["Kolben", "Ventil"]):     print(nr, teil) ``` |
 | K07.034 | unterschied | Aufg. 4.4 | Was ist der Unterschied zwischen `for i in range(len(teile)):` und `for i, teil in enumerate(teile):`? |
-| K07.035 | code_ausgabe | F. 151 | Was gibt der Code aus? ```python matrix = [[1, 2, 3], [4, 5, 6]] print(matrix[1][0]) print(matrix[0][2]) ``` |
+| K07.035 | code_ausgabe | F. 151 | Was gibt der Code aus? ```python raster = [[11, 12, 13], [21, 22, 23]] print(raster[1][0]) print(raster[0][2]) |
 | K07.036 | code_ausgabe | F. 150, 152 | Was gibt der Code aus? ```python lager = [["A", "-"], ["-", "B"], ["C", "-"]] print(len(lager)) print(len(lage |
 | K07.037 | code_luecke | F. 151 · Aufg. 4.3 | `"Feder"` soll in die **zweite Zeile, erste Spalte**. Ergänze die Indizes. ```python lager = [["-", "-"], ["-" |
 | K07.038 | begriff | F. 150, 151 | Wie ist eine zweidimensionale Liste aufgebaut, und was bedeuten die Indizes in `matrix[i][j]`? |
 | K07.039 | code_ausgabe | F. 151 | Was gibt der Code aus? ```python raster = [[1, 2], [3, 4]] for zeile in raster:     summe = 0     for wert in  |
 | K07.040 | code_schreiben | F. 152 · Aufg. 4.4 | Suche in `lager = [["A", "-"], ["-", "B"]]` das Teil `"B"` und gib seine Position **ab 1 gezählt** aus (`Reihe |
 | K07.041 | begriff | F. 151, 152 · Aufg. 4.3 | Wie oft wird der innere Rumpf zweier verschachtelter Schleifen über ein Raster mit 8 Zeilen und 8 Spalten ausg |
-| K07.042 | code_ausgabe | Aufg. 4.3 | Was gibt der Code aus? ```python raster = [["-" for s in range(3)] for r in range(2)] print(raster) ``` |
+| K07.042 | code_ausgabe | Aufg. 4.3 | Was gibt der Code aus? ```python raster = [[0 for s in range(3)] for r in range(2)] print(raster) ``` |
 | K07.043 | code_luecke | Aufg. 4.3 | Ergänze, sodass eine Liste mit **fünf Nullen** entsteht. ```python werte = [0 for i in ___] print(werte) ``` |
 | K07.044 | code_fehler | Aufg. 4.3 | Der Nutzer möchte in **Reihe 2, Spalte 1** einlagern (er zählt ab 1). Welche Fehlermeldung erscheint, und was  |
 | K07.045 | code_ausgabe | Aufg. 4.5 | Was gibt der Code aus? ```python lager = [["A", "B"], ["C", "D"]] reihe = 1 spalte = 2 print(lager[reihe - 1][ |
@@ -99,5 +99,5 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | K07.047 | unterschied | F. 155 | Was ist der Unterschied zwischen einer **Liste** und einem **Tupel**? |
 | K07.048 | code_fehler | F. 155 | Welche Fehlermeldung erscheint? ```python abmessungen = (120, 80, 40) abmessungen[0] = 125 ``` |
 | K07.049 | code_ausgabe | F. 155 · Aufg. 5.6 | Was gibt der Code aus? ```python punkt = (3.5, 7.0) x, y = punkt print(y) ``` |
-| K07.050 | code_ausgabe | F. 161 · Aufg. 4.6 | Was gibt der Code aus? ```python soll = [20, 20, 20] backup = soll backup[0] = 99 print(soll) ``` |
-| K07.051 | code_luecke | Aufg. 4.6 | `backup` soll eine **unabhängige** Kopie sein, damit `soll` unverändert bleibt. Ergänze die Lücke. ```python s |
+| K07.050 | code_ausgabe | Aufg. 4.6 | Was gibt der Code aus? ```python toleranzen = [0.1, 0.2, 0.1] reserve = toleranzen reserve[0] = 0.5 print(tole |
+| K07.051 | code_luecke | Aufg. 4.6 | `reserve` soll eine **unabhängige** Kopie sein, damit `toleranzen` unverändert bleibt. Ergänze die Lücke. ```p |

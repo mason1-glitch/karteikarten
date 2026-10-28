@@ -1,6 +1,6 @@
 "Was gibt der Code aus?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_da2d300866.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9b376c8db5.png)
-Ein NumPy-Array wird **ohne Kommas** ausgegeben – so unterscheidet man es auf einen Blick von einer Liste.
+Mit `print()` wird ein NumPy-Array **ohne Kommas** ausgegeben – so unterscheidet man es auf einen Blick von einer Liste.
 
 *F. 162*"
 "Was gibt der Code aus?
@@ -8,7 +8,7 @@ Ein NumPy-Array wird **ohne Kommas** ausgegeben – so unterscheidet man es auf 
 Eine verschachtelte Liste wird zum 2D-Array (Matrix), jede Zeile in einer eigenen Ausgabezeile.
 
 *F. 162*"
-"Wie importiert man NumPy üblicherweise, und wie wird aus der Liste `[19.5, 20.1]` ein Array?","`import numpy as np`, dann `np.array([19.5, 20.1])`.
+"Wie importiert man NumPy üblicherweise, und wie wird aus der Liste `[1.2, 1.4]` ein Array?","`import numpy as np`, dann `np.array([1.2, 1.4])`.
 
 *F. 158, 162 · Aufg. 4.6*"
 "Welche Fehlermeldung erscheint, und was fehlt?
@@ -45,7 +45,7 @@ Achtung: Im Skript (F. 164) steht über `d[:,2]` der Kommentar „die erste“ S
 
 *F. 164*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_61fb3813e4.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4ecfcf42bb.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1406332933.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b791f4ba4e.png)
 Ein einzelner Wert wird auf die ganze Zeile verteilt (Broadcasting).
 
 *F. 165 · Aufg. 4.6*"
@@ -54,8 +54,8 @@ Ein einzelner Wert wird auf die ganze Zeile verteilt (Broadcasting).
 
 *F. 165*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_396079443e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_93f52a4277.png)
-Die Rechnung wird auf **jedes** Element angewendet – ohne Schleife.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_833ebb81ae.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c17e074526.png)
+Die Rechnung wird auf **jedes** Element angewendet – ohne Schleife (hier m → mm bzw. + 0,25 m Zugabe).
 
 *F. 166 · Aufg. 4.6*"
 "Was gibt der Code aus?
@@ -65,26 +65,17 @@ Elementweise Differenz; NumPy richtet die Zahlen mit Leerzeichen aus.
 *F. 166 · Aufg. 4.6*"
 "Welche Fehlermeldung erscheint?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8e69ba051f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cadfaa8cba.png)
-Elementweise Rechnung braucht Arrays gleicher Form (oder einen einzelnen Wert).
+Die Formen (2,) und (3,) passen nicht zusammen: Elementweise Rechnung braucht hier gleich lange Arrays (oder einen einzelnen Wert).
+Ergänzung: NumPy kann nach bestimmten Regeln auch verschiedene Formen kombinieren (Broadcasting), z. B. Matrix + Zeile.
 
 *F. 166*"
 "Was gibt der Code aus?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_650fa4cf52.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_473ef774dc.png)
-Bei einer Liste **wiederholt** `* 2` den Inhalt, beim Array wird jedes Element **multipliziert**.
+Beim Array wird jedes Element **multipliziert** (F. 166). Ergänzung: Bei einer Liste **wiederholt** `* 2` den Inhalt.
 
 *F. 159, 166*"
-"Was ist laut Skript der Unterschied zwischen einer Python-Liste und einem NumPy-Array?","- Array: alle Elemente haben **denselben Datentyp** (Typinformation nur einmal gespeichert), Daten liegen zusammenhängend im Speicher → mathematische Operationen sind viel schneller.
-- Liste: flexibler (gemischte Typen), speichert aber nur Verweise auf die einzelnen Elemente.
+"Warum rechnet man laut Skript mit NumPy-Arrays statt mit Listen, obwohl Listen flexibler sind?","- **Geschwindigkeit:** Rechnungen mit Arrays sind um Größenordnungen schneller (Skript-Beispiel: 1 Tag statt 3 Jahre).
+- Array: alle Elemente haben **denselben Datentyp** → Typinformation nur einmal gespeichert, Werte liegen direkt im Speicherblock.
+- Liste: speichert zu jedem Element den Typ und nur Verweise (Zeiger) auf die Elemente; nicht direkt auf GPUs verarbeitbar.
 
 *F. 159–161*"
-"Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_be6eb44c7f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_63486befee.png)
-`backup = soll` ist keine Kopie: Beide Namen zeigen auf dasselbe Array.
-
-*Aufg. 4.6*"
-"Ergänze, sodass `backup` eine **echte Kopie** ist und `soll` unverändert bleibt.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4e4339fb8d.png)","`copy()`
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6821bb9f29.png)
-![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e76c089053.png)
-
-*Aufg. 4.6*"

@@ -14,7 +14,7 @@ Die Bedingung ist `False` → der else-Block läuft; `print(""Ende"")` steht au�
 "Was passiert bei einem `if` **ohne** `else`, wenn die Bedingung `False` ergibt?","Der eingerückte Block wird übersprungen; das Programm macht mit der ersten Anweisung nach dem Block weiter. Der else-Teil ist optional.
 
 *F. 112, 115*"
-"Was nennt das Skript die **„wahr“-Suite** und die **„falsch“-Suite** einer if-else-Anweisung?","Die beiden eingerückten Codeblöcke: Die „wahr“-Suite unter `if …:` läuft, wenn die Bedingung zutrifft, die „falsch“-Suite unter `else:`, wenn nicht.
+"Was bezeichnet das Skript als **„wahr“-Suite** und als **„falsch“-Suite** einer if-else-Anweisung?","Die beiden eingerückten Codeblöcke: Die „wahr“-Suite unter `if …:` läuft, wenn die Bedingung zutrifft, die „falsch“-Suite unter `else:`, wenn nicht.
 
 *F. 114*"
 "Was gibt der Code aus?
@@ -31,7 +31,7 @@ Zwei getrennte `if` werden beide geprüft. Mit `elif` statt des zweiten `if` lä
 ![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5597c7770a.png)
 
 *F. 115 · Aufg. 3.4*"
-"Wie viele Zweige einer if/elif/else-Kette werden **höchstens** ausgeführt?","Genau einer: der erste, dessen Bedingung `True` ist; trifft keine zu, der else-Zweig. Ohne else kann es auch keiner sein. Nach dem ersten Treffer werden die übrigen Bedingungen nicht mehr geprüft.
+"Wie viele Zweige einer if/elif/else-Kette werden **höchstens** ausgeführt?","**Einer**: der erste, dessen Bedingung `True` ist; trifft keine zu, der else-Zweig. Mit else läuft also genau einer, ohne else eventuell keiner. Nach dem ersten Treffer werden die übrigen Bedingungen nicht mehr geprüft.
 
 *F. 115*"
 "Was gibt der Code aus?
@@ -55,7 +55,7 @@ Jetzt gehört `menge += 5` durch die Einrückung zum if-Block und wird mit über
 Zeile 2 ist eingerückt, obwohl kein Block (if, Schleife, def) begonnen wurde.
 
 *F. 117*"
-"Welche Aufgabe hat die **Einrückung** in Python?","Sie ist das Strukturierungselement: Die Einrückung legt fest, welche Anweisungen zu einem Block (if, else, Schleife, Funktion) gehören. Andere Sprachen nutzen dafür Klammern.
+"Welche Aufgabe hat die **Einrückung** in Python?","Sie ist das Strukturierungselement: Die Einrückung legt fest, welche Anweisungen zu einem Block (if, else, Schleife, Funktion) gehören. Ergänzung: Viele andere Sprachen nutzen dafür geschweifte Klammern.
 
 *F. 117*"
 "Was gibt der Code aus?
@@ -71,8 +71,8 @@ Die äußere Bedingung trifft zu; im inneren if ist `65 > 70` falsch → innerer
 
 *F. 118*"
 "Was gibt der Code aus?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3252750a3b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cc3e98e941.png)
-Der Vergleich unterscheidet Groß- und Kleinschreibung: `""stahl""` ist nicht gleich `""Stahl""`.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d38833f909.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7b071b15b7.png)
+Der Vergleich unterscheidet Groß- und Kleinschreibung: `""Auto""` ist nicht gleich `""auto""`.
 
 *Aufg. 3.5*"
 "Der Nutzer tippt `3`. Erwartet ist `Kalibrierung`. Was erscheint, und warum?
@@ -80,7 +80,7 @@ Der Vergleich unterscheidet Groß- und Kleinschreibung: `""stahl""` ist nicht gl
 `input()` liefert den String `""3""`, und `""3"" == 3` ist `False`. Korrektur: `code = int(input())` oder mit `""3""` vergleichen.
 
 *Aufg. 3.5*"
-"Schreib Code, der einen Werkstoffnamen einliest und die Dichte ausgibt: `Alu` → `2.7`, `Stahl` → `7.85`, sonst `unbekannt`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e6db365b77.png)
+"Schreib Code, der die Farbe der Signalleuchte einliest und den Zustand ausgibt: `grün` → `Betrieb`, `gelb` → `Warnung`, sonst `Störung`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_84b1ba7de0.png)
 
 *Aufg. 3.5*"
 "Zu welcher Grundstruktur gehört laut Skript eine **if-Anweisung**, zu welcher eine **Schleife** und zu welcher ein **Funktionsaufruf**?","- if-Anweisung: **auswählend** (Verzweigung)

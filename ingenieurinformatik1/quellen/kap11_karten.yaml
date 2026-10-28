@@ -11,6 +11,9 @@ min_typen: 2
 max_codezeilen: 8
 keine_janein: true
 
+ausgelassen:
+  - {folien: "195", grund: "Modus \"r+\" (Lesen und Schreiben): nur ein Beispiel, in keiner Aufgabe genutzt. Der Kommentar „Überschreiben des bisherigen Inhalts“ ist ungenau: r+ überschreibt ab Dateianfang nur so viele Zeichen, wie geschrieben werden (geprüft)."}
+
 inhalte:
   - {id: c11.open, gewicht: 2, folie: "189, 193", aufgaben: "6.1, 6.2", text: "open(pfad, modus): \"r\", \"w\", \"a\"; ohne Modus \"r\""}
   - {id: c11.read, gewicht: 2, folie: "190", aufgaben: "6.1", text: "read() ganze Datei, read(n) n Zeichen"}
@@ -28,11 +31,13 @@ karten:
     folien: [189, 193]
     deckt: [c11.open]
     frage: |-
-      Welche drei Dateimodi für `open()` nennt das Skript, und welcher gilt, wenn man keinen angibt?
+      Welche drei Dateimodi für `open()` nennt das Skript auf F. 189 und 193, und welcher gilt, wenn man keinen angibt?
     antwort: |-
       - `"r"` (read): nur lesen – **Standard**, wenn kein Modus angegeben ist
       - `"w"` (write): schreiben, vorhandener Inhalt wird **überschrieben**
       - `"a"` (append): neuen Inhalt **ans Ende** anhängen
+
+      (F. 195 zeigt zusätzlich `"r+"` zum Lesen und Schreiben.)
 
   - typ: code_luecke
     folien: [189, 194]
@@ -197,7 +202,7 @@ karten:
     aufgaben: ["6.1"]
     deckt: [c11.readlines]
     frage: |-
-      Die Datei `teile.txt` enthält:
+      Die Datei `teile.txt` enthält (mit Zeilenumbruch am Ende):
       ```text
       Kolben
       Ventil
@@ -289,7 +294,7 @@ karten:
     aufgaben: ["6.2"]
     deckt: [c11.w_a]
     frage: |-
-      Die Datei `log.txt` enthält vorher:
+      Die Datei `log.txt` enthält vorher (mit Zeilenumbruch am Ende):
       ```text
       A
       ```
@@ -352,7 +357,7 @@ karten:
     frage: |-
       Warum muss eine Datei nach der Arbeit mit `close()` geschlossen werden?
     antwort: |-
-      close() beendet den Zugriff und gibt die Datei frei. Beim Schreiben ist erst danach sicher alles in der Datei gespeichert; andere Programme können sie dann wieder öffnen.
+      close() beendet den Zugriff auf die Datei. Ergänzung (das Material sagt nur, dass man schließen muss): Beim Schreiben ist erst danach sicher alles in der Datei gespeichert – vorher kann Geschriebenes noch fehlen.
 
   - typ: code_fehler
     folien: [194]
@@ -394,7 +399,7 @@ karten:
     frage: |-
       Was bedeutet der Pfad `"../Daten/Beschreibung.txt"`?
     antwort: |-
-      Ein **relativer** Pfad: `..` geht vom Ordner des Programms eine Ebene nach oben, dann in den Ordner `Daten` zur Datei `Beschreibung.txt`.
+      Ein **relativer** Pfad: `..` geht vom **aktuellen Arbeitsordner** (in Jupyter meist der Ordner des Notebooks) eine Ebene nach oben, dann in den Ordner `Daten` zur Datei `Beschreibung.txt`.
 
   # ---------------------------------------------------------------- Auswerten
   - typ: code_ausgabe
@@ -449,22 +454,22 @@ karten:
     aufgaben: ["6.2"]
     deckt: [c11.auswerten]
     frage: |-
-      Die Datei `bericht.txt` enthält:
+      Die Datei `werte.txt` enthält:
       ```text
-      MESSUNG
-      ENDE
+      20,5
+      21,0
       ```
       Was gibt der Code aus?
       ```python
-      datei = open("bericht.txt", "r")
+      datei = open("werte.txt", "r")
       for zeile in datei:
-          print(zeile.replace("E", "3"), end="")
+          print(zeile.replace(",", "."), end="")
       datei.close()
       ```
     antwort: |-
       ```text
-      M3SSUNG
-      3ND3
+      20.5
+      21.0
       ```
-      Jede Zeile wird bearbeitet; `end=""` verhindert doppelte Zeilenumbrüche.
-    tests: [{p: 1, t: 2, dateien: {"bericht.txt": "t1"}}]
+      Jede Zeile wird bearbeitet: Dezimalkomma → Punkt (erst dann klappt später `float(…)`). `end=""` verhindert doppelte Zeilenumbrüche.
+    tests: [{p: 1, t: 2, dateien: {"werte.txt": "t1"}}]

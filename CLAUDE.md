@@ -8,7 +8,7 @@ Maschinenbau, Ostfalia (BM1b, PO2025). Karteikarten zum Import in die App StudyC
 <fach>/quellen/  optional: Kartenquelle (YAML), Bildausschnitte (YAML), Abdeckungsmatrix (MD)
 werkzeuge/       stil.py – einheitlicher Diagrammstil
                  codebilder.py – Code-Blöcke als farbige Bilder (Syntax-Highlighting)
-                 karten.py – CSV aus YAML bauen und prüfen (Abdeckung, LaTeX, Rechnungen, Wortlaut, Links)
+                 karten.py – CSV aus YAML bauen und prüfen (Abdeckung, LaTeX, Rechnungen, Wortlaut, Links; `code` führt Code-Karten aus)
                  folienbilder.py – Schaubilder aus dem Skript-PDF ausschneiden und Felder verdecken
 ```
 Für größere Kartensätze die Karten in `<fach>/quellen/<kapitel>_karten.yaml` pflegen und die CSV mit `werkzeuge/karten.py` erzeugen (Aufruf und Format stehen oben in den Werkzeugen); Vorlage: `bwl/quellen/`. Das Skript-PDF wird nur als Pfad übergeben, nie eingecheckt.

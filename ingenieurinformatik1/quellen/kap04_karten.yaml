@@ -88,7 +88,7 @@ karten:
     folien: [114]
     deckt: [c04.if_else]
     frage: |-
-      Was nennt das Skript die **„wahr“-Suite** und die **„falsch“-Suite** einer if-else-Anweisung?
+      Was bezeichnet das Skript als **„wahr“-Suite** und als **„falsch“-Suite** einer if-else-Anweisung?
     antwort: |-
       Die beiden eingerückten Codeblöcke: Die „wahr“-Suite unter `if …:` läuft, wenn die Bedingung zutrifft, die „falsch“-Suite unter `else:`, wenn nicht.
 
@@ -163,7 +163,7 @@ karten:
     frage: |-
       Wie viele Zweige einer if/elif/else-Kette werden **höchstens** ausgeführt?
     antwort: |-
-      Genau einer: der erste, dessen Bedingung `True` ist; trifft keine zu, der else-Zweig. Ohne else kann es auch keiner sein. Nach dem ersten Treffer werden die übrigen Bedingungen nicht mehr geprüft.
+      **Einer**: der erste, dessen Bedingung `True` ist; trifft keine zu, der else-Zweig. Mit else läuft also genau einer, ohne else eventuell keiner. Nach dem ersten Treffer werden die übrigen Bedingungen nicht mehr geprüft.
 
   # ---------------------------------------------------------------- Einrückung
   - typ: code_ausgabe
@@ -259,7 +259,7 @@ karten:
     frage: |-
       Welche Aufgabe hat die **Einrückung** in Python?
     antwort: |-
-      Sie ist das Strukturierungselement: Die Einrückung legt fest, welche Anweisungen zu einem Block (if, else, Schleife, Funktion) gehören. Andere Sprachen nutzen dafür Klammern.
+      Sie ist das Strukturierungselement: Die Einrückung legt fest, welche Anweisungen zu einem Block (if, else, Schleife, Funktion) gehören. Ergänzung: Viele andere Sprachen nutzen dafür geschweifte Klammern.
 
   # ---------------------------------------------------------------- verschachtelt
   - typ: code_ausgabe
@@ -317,17 +317,17 @@ karten:
     frage: |-
       Was gibt der Code aus?
       ```python
-      material = "stahl"
-      if material == "Stahl":
-          print("7.85 kg/dm³")
+      modus = "Auto"
+      if modus == "auto":
+          print("Regelung aktiv")
       else:
-          print("unbekannt")
+          print("Handbetrieb")
       ```
     antwort: |-
       ```text
-      unbekannt
+      Handbetrieb
       ```
-      Der Vergleich unterscheidet Groß- und Kleinschreibung: `"stahl"` ist nicht gleich `"Stahl"`.
+      Der Vergleich unterscheidet Groß- und Kleinschreibung: `"Auto"` ist nicht gleich `"auto"`.
     tests: [{p: 1, t: 1}]
 
   - typ: code_fehler
@@ -353,18 +353,18 @@ karten:
     aufgaben: ["3.5"]
     deckt: [c04.strvergleich]
     frage: |-
-      Schreib Code, der einen Werkstoffnamen einliest und die Dichte ausgibt: `Alu` → `2.7`, `Stahl` → `7.85`, sonst `unbekannt`.
+      Schreib Code, der die Farbe der Signalleuchte einliest und den Zustand ausgibt: `grün` → `Betrieb`, `gelb` → `Warnung`, sonst `Störung`.
     antwort: |-
       ```python
-      werkstoff = input("Werkstoff: ")
-      if werkstoff == "Alu":
-          print(2.7)
-      elif werkstoff == "Stahl":
-          print(7.85)
+      farbe = input("Farbe: ")
+      if farbe == "grün":
+          print("Betrieb")
+      elif farbe == "gelb":
+          print("Warnung")
       else:
-          print("unbekannt")
+          print("Störung")
       ```
-    tests: [{p: 1, eingabe: "Alu\n"}]
+    tests: [{p: 1, eingabe: "gelb\n"}]
 
   # ---------------------------------------------------------------- Grundstrukturen
   - typ: begriff

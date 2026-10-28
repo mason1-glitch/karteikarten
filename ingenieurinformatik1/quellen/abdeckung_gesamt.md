@@ -1,13 +1,13 @@
 # Abdeckung Konzept → Karten (alle Kapitel)
 
-143 Konzepte, 438 Karten. Lücken (Konzept ohne Karte oder mit weniger als zwei Kartentypen): **0**.
+142 Konzepte, 434 Karten. Lücken (Konzept ohne Karte oder mit weniger als zwei Kartentypen): **0**.
 
 | Kartentyp | Anzahl |
 |---|---:|
-| Was gibt der Code aus? | 158 |
-| Begriff ↔ Erklärung | 87 |
-| Finde den Fehler | 56 |
-| Lückentext im Code | 53 |
+| Was gibt der Code aus? | 154 |
+| Begriff ↔ Erklärung | 86 |
+| Finde den Fehler | 58 |
+| Lückentext im Code | 52 |
 | Schreib Code, der … | 49 |
 | Was ist der Unterschied …? | 35 |
 
@@ -16,7 +16,7 @@
 | Konzept | Gewicht | Karten | Typen |
 |---|---:|---|---|
 | print() mit mehreren Argumenten (Leerzeichen dazwischen), Leerzeile mit print() | 3 | K01.001, K01.002, K01.003, K01.004, K01.009, K01.027 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der …, Was ist der Unterschied …? |
-| print(..., end="") unterdrückt den Zeilenumbruch | 2 | K01.005, K01.006, K01.007, K01.016 | Was gibt der Code aus?, Lückentext im Code, Was ist der Unterschied …? |
+| print(..., end="") unterdrückt den Zeilenumbruch | 2 | K01.005, K01.006, K01.007 | Was gibt der Code aus?, Lückentext im Code, Was ist der Unterschied …? |
 | Escape-Sequenz \n (Zeilenumbruch) | 2 | K01.008, K01.009, K01.010 | Begriff ↔ Erklärung, Was gibt der Code aus? |
 | Escape-Sequenz \t (Tabulator) | 2 | K01.011, K01.012, K01.013, K01.018 | Begriff ↔ Erklärung, Finde den Fehler, Lückentext im Code |
 | Steuerzeichen \r (Wagenrücklauf) und \b (Backspace) | 1 | K01.014, K01.015, K01.016 | Begriff ↔ Erklärung, Lückentext im Code |
@@ -28,7 +28,7 @@
 | Formatangabe {wert:.2f} (Nachkommastellen, rundet) | 2 | K01.036, K01.037, K01.038, K01.039 | Was gibt der Code aus?, Lückentext im Code, Was ist der Unterschied …? |
 | Kommentare: # einzeilig, """ mehrzeilig, auskommentieren | 2 | K01.040, K01.041, K01.042 | Begriff ↔ Erklärung, Was gibt der Code aus? |
 
-## Kapitel 2: Variablen und Datentypen – `kap02_variablen-datentypen.csv` (46 Karten)
+## Kapitel 2: Variablen und Datentypen – `kap02_variablen-datentypen.csv` (44 Karten)
 
 | Konzept | Gewicht | Karten | Typen |
 |---|---:|---|---|
@@ -37,17 +37,17 @@
 | Standarddatentypen int, float, str, bool | 3 | K02.009, K02.010, K02.011, K02.012, K02.013 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der …, Was ist der Unterschied …? |
 | type() gibt den Datentyp aus (<class 'int'> …) | 2 | K02.009, K02.014, K02.015, K02.016 | Was gibt der Code aus?, Lückentext im Code |
 | Datentyp ändert sich mit dem zugewiesenen Wert (keine Deklaration wie in C++) | 1 | K02.017, K02.018 | Was gibt der Code aus?, Was ist der Unterschied …? |
-| / liefert immer float (auch 1500 / 2) | 3 | K02.019, K02.020, K02.021, K02.022 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler |
-| Implizite Typumwandlung: int mit float → float, int * int bleibt int | 2 | K02.022, K02.023, K02.024, K02.025 | Begriff ↔ Erklärung, Was gibt der Code aus? |
-| int(): String → Ganzzahl, float → Ganzzahl (schneidet ab, rundet nicht) | 3 | K02.026, K02.027, K02.028, K02.029, K02.037 | Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
-| float(): String → Kommazahl, Punkt statt Komma | 3 | K02.030, K02.031, K02.032, K02.033 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
-| str(): Zahl → Text (z. B. für Verkettung) | 2 | K02.034, K02.035, K02.036 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
-| ValueError bei ungültiger Umwandlung (int("72.4"), float("72,4")) | 2 | K02.031, K02.037, K02.038 | Begriff ↔ Erklärung, Finde den Fehler |
-| Rundungsfehler bei Gleitkommazahlen (0.1 + 0.2, 85.0 - 72.4) | 2 | K02.039, K02.040, K02.041 | Begriff ↔ Erklärung, Was gibt der Code aus? |
-| bool: True/False, Vergleiche liefern bool | 2 | K02.014, K02.042, K02.043, K02.044 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
-| Syntax und Semantik | 1 | K02.045, K02.046 | Begriff ↔ Erklärung, Was ist der Unterschied …? |
+| / liefert immer float (auch 1500 / 2) | 3 | K02.019, K02.020, K02.021 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler |
+| Implizite Typumwandlung: int mit float → float, int * int bleibt int | 2 | K02.021, K02.022, K02.023 | Begriff ↔ Erklärung, Was gibt der Code aus? |
+| int(): String → Ganzzahl, float → Ganzzahl (schneidet ab, rundet nicht) | 3 | K02.024, K02.025, K02.026, K02.027, K02.035 | Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
+| float(): String → Kommazahl, Punkt statt Komma | 3 | K02.028, K02.029, K02.030, K02.031 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
+| str(): Zahl → Text (z. B. für Verkettung) | 2 | K02.032, K02.033, K02.034 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
+| ValueError bei ungültiger Umwandlung (int("72.4"), float("72,4")) | 2 | K02.029, K02.035, K02.036 | Begriff ↔ Erklärung, Finde den Fehler |
+| Rundungsfehler bei Gleitkommazahlen (0.1 + 0.2, 85.0 - 72.4) | 2 | K02.037, K02.038, K02.039 | Begriff ↔ Erklärung, Was gibt der Code aus? |
+| bool: True/False, Vergleiche liefern bool | 2 | K02.014, K02.040, K02.041, K02.042 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
+| Syntax und Semantik | 1 | K02.043, K02.044 | Begriff ↔ Erklärung, Was ist der Unterschied …? |
 
-## Kapitel 3: Operatoren und Zahlensysteme – `kap03_operatoren.csv` (45 Karten)
+## Kapitel 3: Operatoren und Zahlensysteme – `kap03_operatoren.csv` (46 Karten)
 
 | Konzept | Gewicht | Karten | Typen |
 |---|---:|---|---|
@@ -64,7 +64,7 @@
 | Kurzschlussauswertung (Short-Circuit) bei or/and | 1 | K03.036, K03.037 | Begriff ↔ Erklärung, Was gibt der Code aus? |
 | Erweiterte Zuweisung += -= *= //= | 2 | K03.038, K03.039, K03.040 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler |
 | Binärsystem: Dezimal ↔ Binär (fortgesetzte Division durch 2) | 1 | K03.041, K03.042, K03.043 | Begriff ↔ Erklärung, Was gibt der Code aus? |
-| Hexadezimalsystem (Nibble, 0–9/A–F, 0x-Schreibweise) | 1 | K03.044, K03.045 | Begriff ↔ Erklärung, Was gibt der Code aus? |
+| Hexadezimalsystem (Nibble, 0–9/A–F, 0x-Schreibweise) | 1 | K03.044, K03.045, K03.046 | Begriff ↔ Erklärung, Was gibt der Code aus? |
 
 ## Kapitel 4: Verzweigungen (if, elif, else) und Einrückung – `kap04_verzweigungen.csv` (22 Karten)
 
@@ -77,37 +77,37 @@
 | Strings vergleichen (Groß-/Kleinschreibung, "3" ≠ 3) | 2 | K04.018, K04.019, K04.020 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
 | Grundstrukturen: sequentiell, auswählend, iterativ, springend; Anweisung, Folge, Bedingung | 1 | K04.021, K04.022 | Begriff ↔ Erklärung, Was ist der Unterschied …? |
 
-## Kapitel 5: Schleifen (while, for, range, break, continue) – `kap05_schleifen.csv` (44 Karten)
+## Kapitel 5: Schleifen (while, for, range, break, continue) – `kap05_schleifen.csv` (43 Karten)
 
 | Konzept | Gewicht | Karten | Typen |
 |---|---:|---|---|
-| while-Schleife: läuft, solange die Bedingung wahr ist; Zähler | 3 | K05.001, K05.002, K05.003, K05.004, K05.005, K05.018 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code, Schreib Code, der …, Was ist der Unterschied …? |
-| Endlosschleife (Bedingung bleibt wahr, Zähler vergessen) | 2 | K05.006, K05.007, K05.008 | Begriff ↔ Erklärung, Finde den Fehler, Lückentext im Code |
-| while mit zwei Bedingungen (and) und Auswertung nach der Schleife | 2 | K05.009, K05.010, K05.011 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
-| Eingabe wiederholen, bis sie passt (Startwert vor der Schleife) | 2 | K05.012, K05.013, K05.014 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der … |
-| for-Schleife über Liste/String; Schleifensteuerung und -rumpf | 3 | K05.015, K05.016, K05.017, K05.018, K05.019 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der …, Was ist der Unterschied …? |
-| range(stop), range(start, stop, schritt): Endwert ausgeschlossen | 3 | K05.020, K05.021, K05.022, K05.023, K05.024, K05.025, K05.028 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
-| range mit negativer Schrittweite (rückwärts zählen) | 1 | K05.026, K05.027 | Was gibt der Code aus?, Lückentext im Code |
-| Summe/Zähler/Zinseszins in der Schleife (Startwert vor der Schleife) | 3 | K05.028, K05.029, K05.030, K05.031, K05.032 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
-| break beendet die Schleife sofort | 2 | K05.033, K05.034, K05.035, K05.037 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der …, Was ist der Unterschied …? |
-| continue überspringt den Rest des Durchlaufs | 2 | K05.036, K05.037, K05.038 | Was gibt der Code aus?, Lückentext im Code, Was ist der Unterschied …? |
-| Merker-Variable (gefunden = False) über die Schleife hinweg | 2 | K05.039, K05.040, K05.041 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
-| Ablauf verfolgen: Durchläufe zählen, Werte nach der Schleife | 2 | K05.002, K05.042, K05.043, K05.044 | Begriff ↔ Erklärung, Was gibt der Code aus? |
+| while-Schleife: läuft, solange die Bedingung wahr ist; Zähler | 3 | K05.001, K05.002, K05.003, K05.004, K05.017 | Was gibt der Code aus?, Lückentext im Code, Schreib Code, der …, Was ist der Unterschied …? |
+| Endlosschleife (Bedingung bleibt wahr, Zähler vergessen) | 2 | K05.005, K05.006, K05.007 | Begriff ↔ Erklärung, Finde den Fehler |
+| while mit zwei Bedingungen (and) und Auswertung nach der Schleife | 2 | K05.008, K05.009, K05.010 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
+| Eingabe wiederholen, bis sie passt (Startwert vor der Schleife) | 2 | K05.011, K05.012, K05.013 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der … |
+| for-Schleife über Liste/String; Schleifensteuerung und -rumpf | 3 | K05.014, K05.015, K05.016, K05.017, K05.018 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der …, Was ist der Unterschied …? |
+| range(stop), range(start, stop, schritt): Endwert ausgeschlossen | 3 | K05.019, K05.020, K05.021, K05.022, K05.023, K05.024, K05.027 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
+| range mit negativer Schrittweite (rückwärts zählen) | 1 | K05.025, K05.026 | Was gibt der Code aus?, Lückentext im Code |
+| Summe/Zähler/Zinseszins in der Schleife (Startwert vor der Schleife) | 3 | K05.027, K05.028, K05.029, K05.030, K05.031 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
+| break beendet die Schleife sofort | 2 | K05.032, K05.033, K05.034, K05.036 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der …, Was ist der Unterschied …? |
+| continue überspringt den Rest des Durchlaufs | 2 | K05.035, K05.036, K05.037 | Was gibt der Code aus?, Lückentext im Code, Was ist der Unterschied …? |
+| Merker-Variable (gefunden = False) über die Schleife hinweg | 2 | K05.038, K05.039, K05.040 | Was gibt der Code aus?, Finde den Fehler, Schreib Code, der … |
+| Ablauf verfolgen: Durchläufe zählen, Werte nach der Schleife | 2 | K05.002, K05.041, K05.042, K05.043 | Begriff ↔ Erklärung, Was gibt der Code aus? |
 
-## Kapitel 6: Zeichenketten – Index, Slicing, find, replace, count – `kap06_strings.csv` (33 Karten)
+## Kapitel 6: Zeichenketten – Index, Slicing, find, replace, count – `kap06_strings.csv` (31 Karten)
 
 | Konzept | Gewicht | Karten | Typen |
 |---|---:|---|---|
-| len() – Anzahl der Zeichen (Leerzeichen zählen mit) | 3 | K06.001, K06.002, K06.003, K06.004, K06.008 | Was gibt der Code aus?, Lückentext im Code, Schreib Code, der … |
-| Zugriff s[i]: Index ab 0, s[-1] letztes Zeichen | 3 | K06.003, K06.005, K06.006, K06.007, K06.008 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
-| IndexError: string index out of range | 1 | K06.009, K06.010 | Begriff ↔ Erklärung, Finde den Fehler |
-| Slicing s[von:bis] (bis ausgeschlossen, Grenzen weglassbar) | 2 | K06.011, K06.012, K06.013, K06.014, K06.015 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code, Schreib Code, der … |
-| Slicing mit Schrittweite s[von:bis:schritt] | 1 | K06.016, K06.017 | Was gibt der Code aus?, Lückentext im Code |
-| find(): Startposition, -1 wenn nicht gefunden, Suche ab Position | 2 | K06.018, K06.019, K06.020, K06.021 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der … |
-| replace(): ersetzt alle Vorkommen, liefert neuen String, verkettbar | 2 | K06.022, K06.023, K06.024, K06.025 | Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
-| count(): Vorkommen zählen (Groß-/Kleinschreibung beachten) | 2 | K06.026, K06.027, K06.028 | Was gibt der Code aus?, Schreib Code, der … |
-| Strings sind unveränderlich (Ergebnis neu zuweisen) | 1 | K06.023, K06.029, K06.030 | Begriff ↔ Erklärung, Finde den Fehler |
-| Strings mit find() und Slicing zerlegen und neu zusammensetzen | 2 | K06.021, K06.031, K06.032, K06.033 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der … |
+| len() – Anzahl der Zeichen (Leerzeichen zählen mit) | 3 | K06.001, K06.002, K06.003, K06.007 | Was gibt der Code aus?, Schreib Code, der … |
+| Zugriff s[i]: Index ab 0, s[-1] letztes Zeichen | 3 | K06.004, K06.005, K06.006, K06.007 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
+| IndexError: string index out of range | 1 | K06.008, K06.009 | Begriff ↔ Erklärung, Finde den Fehler |
+| Slicing s[von:bis] (bis ausgeschlossen, Grenzen weglassbar) | 2 | K06.010, K06.011, K06.012, K06.013, K06.014 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code, Schreib Code, der … |
+| Slicing mit Schrittweite s[von:bis:schritt] | 1 | K06.015, K06.016 | Was gibt der Code aus?, Lückentext im Code |
+| find(): Startposition, -1 wenn nicht gefunden, Suche ab Position | 2 | K06.017, K06.018, K06.019, K06.020 | Begriff ↔ Erklärung, Was gibt der Code aus?, Schreib Code, der … |
+| replace(): ersetzt alle Vorkommen, liefert neuen String, verkettbar | 2 | K06.021, K06.022, K06.023, K06.024 | Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
+| count(): Vorkommen zählen (Groß-/Kleinschreibung beachten) | 2 | K06.025, K06.026, K06.027 | Was gibt der Code aus?, Schreib Code, der … |
+| Strings sind unveränderlich (Ergebnis neu zuweisen) | 1 | K06.022, K06.028, K06.029 | Begriff ↔ Erklärung, Finde den Fehler |
+| Strings mit find() und Slicing zerlegen und neu zusammensetzen | 2 | K06.020, K06.030, K06.031 | Was gibt der Code aus?, Schreib Code, der … |
 
 ## Kapitel 7: Listen, 2D-Listen und Tupel – `kap07_listen.csv` (51 Karten)
 
@@ -130,9 +130,9 @@
 | List-Comprehension zum Anlegen von Listen/Rastern | 1 | K07.042, K07.043 | Was gibt der Code aus?, Lückentext im Code |
 | Benutzereingabe ab 1 → Index ab 0 (reihe - 1) | 2 | K07.044, K07.045, K07.046 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler |
 | Tupel: unveränderlich, runde Klammern, Entpacken | 1 | K07.047, K07.048, K07.049 | Was gibt der Code aus?, Finde den Fehler, Was ist der Unterschied …? |
-| Zuweisung kopiert keine Liste (Referenz) – .copy() | 1 | K07.050, K07.051 | Was gibt der Code aus?, Lückentext im Code |
+| Zuweisung kopiert keine Liste/kein Array (Referenz) – .copy() | 1 | K07.050, K07.051 | Was gibt der Code aus?, Lückentext im Code |
 
-## Kapitel 8: NumPy-Arrays – `kap08_numpy.csv` (18 Karten)
+## Kapitel 8: NumPy-Arrays – `kap08_numpy.csv` (16 Karten)
 
 | Konzept | Gewicht | Karten | Typen |
 |---|---:|---|---|
@@ -142,7 +142,6 @@
 | Ganze Zeile/Spalte auf einen Wert setzen | 1 | K08.010, K08.011 | Was gibt der Code aus?, Schreib Code, der … |
 | Elementweise Rechnung (Broadcasting), Arrays gleicher Form verrechnen | 2 | K08.012, K08.013, K08.014 | Was gibt der Code aus?, Finde den Fehler |
 | NumPy-Array vs. Liste (gleicher Datentyp, Geschwindigkeit, * verhält sich anders) | 1 | K08.015, K08.016 | Was gibt der Code aus?, Was ist der Unterschied …? |
-| Zuweisung erzeugt keine Kopie – .copy() | 1 | K08.017, K08.018 | Was gibt der Code aus?, Lückentext im Code |
 
 ## Kapitel 9: Funktionen (def, return, Parameter, Gültigkeit) – `kap09_funktionen.csv` (42 Karten)
 
@@ -163,19 +162,19 @@
 | Wozu Funktionen: Wiederverwendung, Modularisierung (Refactoring) | 1 | K09.039, K09.040 | Begriff ↔ Erklärung, Schreib Code, der … |
 | Ablauf mit Trace-Ausgaben/Debugger verfolgen | 1 | K09.007, K09.041, K09.042 | Begriff ↔ Erklärung, Was gibt der Code aus? |
 
-## Kapitel 10: Bibliotheken – import, math, random, time, datetime, qrcode – `kap10_bibliotheken.csv` (27 Karten)
+## Kapitel 10: Bibliotheken – import, math, random, time, datetime, qrcode – `kap10_bibliotheken.csv` (28 Karten)
 
 | Konzept | Gewicht | Karten | Typen |
 |---|---:|---|---|
 | import modul, Aufruf modul.funktion(), fehlender Import → NameError | 3 | K10.001, K10.002, K10.003, K10.004 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
-| import … as … (np, pd, plt) und from … import … | 2 | K10.005, K10.006, K10.007 | Was gibt der Code aus?, Lückentext im Code, Was ist der Unterschied …? |
-| math.sqrt, math.pi, math.ceil (aufrunden) | 2 | K10.001, K10.007, K10.008, K10.009, K10.010 | Was gibt der Code aus?, Schreib Code, der …, Was ist der Unterschied …? |
+| import … as … (np, pd, plt) und from … import … | 2 | K10.005, K10.006, K10.007 | Finde den Fehler, Lückentext im Code, Was ist der Unterschied …? |
+| math.sqrt, math.pi, math.ceil (aufrunden) | 2 | K10.001, K10.008, K10.009, K10.010 | Was gibt der Code aus?, Schreib Code, der …, Was ist der Unterschied …? |
 | random.randint(a, b) – beide Grenzen eingeschlossen | 2 | K10.011, K10.012, K10.013, K10.014 | Begriff ↔ Erklärung, Lückentext im Code, Schreib Code, der …, Was ist der Unterschied …? |
 | time.sleep(sekunden) – Programm anhalten | 2 | K10.015, K10.016 | Begriff ↔ Erklärung, Lückentext im Code |
 | Zeit formatieren mit strftime: %d %m %Y %H %M %S | 2 | K10.017, K10.018, K10.019, K10.020, K10.022 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler, Lückentext im Code, Was ist der Unterschied …? |
 | datetime.datetime.now() und .strftime() | 2 | K10.021, K10.022, K10.023 | Lückentext im Code, Schreib Code, der …, Was ist der Unterschied …? |
 | Bibliotheken installieren (pip install) vs. importieren | 1 | K10.024, K10.025 | Begriff ↔ Erklärung, Was ist der Unterschied …? |
-| qrcode.make(text) und display() im Notebook | 1 | K10.026, K10.027 | Begriff ↔ Erklärung, Schreib Code, der … |
+| qrcode.make(text) und display() im Notebook | 1 | K10.026, K10.027, K10.028 | Begriff ↔ Erklärung, Lückentext im Code, Schreib Code, der … |
 
 ## Kapitel 11: Dateien öffnen, lesen, schreiben – `kap11_dateien.csv` (24 Karten)
 
@@ -191,17 +190,17 @@
 | Relativer Pfad (../Daten/…) und FileNotFoundError | 1 | K11.020, K11.021 | Begriff ↔ Erklärung, Finde den Fehler |
 | Dateiinhalt zeilenweise auswerten (float(zeile), zählen, ersetzen) | 2 | K11.022, K11.023, K11.024 | Was gibt der Code aus?, Schreib Code, der … |
 
-## Kapitel 12: CSV-Dateien und pandas – `kap12_pandas.csv` (17 Karten)
+## Kapitel 12: CSV-Dateien und pandas – `kap12_pandas.csv` (18 Karten)
 
 | Konzept | Gewicht | Karten | Typen |
 |---|---:|---|---|
 | CSV-Format: ein Datensatz pro Zeile, Trennzeichen, Kopfzeile | 1 | K12.001, K12.002 | Begriff ↔ Erklärung, Was gibt der Code aus? |
 | pd.read_csv() → DataFrame; Spaltennamen exakt (KeyError) | 2 | K12.002, K12.003, K12.004, K12.005 | Begriff ↔ Erklärung, Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
-| DataFrame aus Dictionary, Spalte df["Name"], len(df), head() | 2 | K12.006, K12.007, K12.008 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
-| Zeilen filtern: df[df["Spalte"] > wert] | 2 | K12.009, K12.010, K12.011 | Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
-| sort_values(by=…, ascending=…) | 2 | K12.012, K12.013 | Was gibt der Code aus?, Lückentext im Code |
-| groupby("A")["B"].mean() – Mittelwert je Gruppe | 1 | K12.014, K12.015 | Begriff ↔ Erklärung, Was gibt der Code aus? |
-| value_counts() – Häufigkeit jedes Werts | 1 | K12.016, K12.017 | Begriff ↔ Erklärung, Was gibt der Code aus? |
+| DataFrame aus Dictionary, Spalte df["Name"], len(df), head() | 2 | K12.006, K12.007, K12.008, K12.009 | Begriff ↔ Erklärung, Was gibt der Code aus?, Lückentext im Code |
+| Zeilen filtern: df[df["Spalte"] > wert] | 2 | K12.010, K12.011, K12.012 | Was gibt der Code aus?, Finde den Fehler, Lückentext im Code |
+| sort_values(by=…, ascending=…) | 2 | K12.013, K12.014 | Was gibt der Code aus?, Lückentext im Code |
+| groupby("A")["B"].mean() – Mittelwert je Gruppe | 1 | K12.015, K12.016 | Begriff ↔ Erklärung, Was gibt der Code aus? |
+| value_counts() – Häufigkeit jedes Werts | 1 | K12.017, K12.018 | Begriff ↔ Erklärung, Was gibt der Code aus? |
 
 ## Kapitel 13: Daten visualisieren mit matplotlib und plotly – `kap13_visualisierung.csv` (27 Karten)
 
