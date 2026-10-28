@@ -1,0 +1,904 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 7: Listen und Tupel
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF), Aufgaben 3.8, 4.2–4.6, 5.4.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap07_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap07_listen.csv
+matrix: ingenieurinformatik1/quellen/kap07_abdeckung.md
+titel: "Kapitel 7: Listen, 2D-Listen und Tupel"
+id_praefix: "K07."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Das Kopieren mit .copy() zeigt Aufg. 4.6 an NumPy-Arrays und sagt, dass es für Listen genauso gilt; die Karten nutzen liste.copy()."
+
+inhalte:
+  - {id: c07.liste, gewicht: 3, folie: "141–142", aufgaben: "4.2", text: "Liste anlegen (eckige Klammern, gemischte Typen, leere Liste)"}
+  - {id: c07.zugriff, gewicht: 3, folie: "142–143", aufgaben: "4.2", text: "Element lesen/ändern über den Index, IndexError"}
+  - {id: c07.append, gewicht: 2, folie: "144", aufgaben: "4.2, 6.2", text: "append(): Element am Ende anfügen (liefert None)"}
+  - {id: c07.insert, gewicht: 2, folie: "144", aufgaben: "4.2, 5.4", text: "insert(pos, wert): an Position einfügen"}
+  - {id: c07.pop, gewicht: 2, folie: "145", aufgaben: "4.2", text: "pop(index): Element an Position entfernen und zurückgeben"}
+  - {id: c07.remove, gewicht: 2, folie: "145", aufgaben: "4.2", text: "remove(wert): erstes passendes Element löschen"}
+  - {id: c07.index, gewicht: 1, folie: "146", aufgaben: "4.2", text: "index(wert): Position eines Werts"}
+  - {id: c07.methoden, gewicht: 1, folie: "145–146", aufgaben: "", text: "count(), sort(), reverse(), clear()"}
+  - {id: c07.sort_key, gewicht: 1, folie: "147", aufgaben: "", text: "sort(key=funktion, reverse=…): nach eigenem Kriterium sortieren"}
+  - {id: c07.durchlaufen, gewicht: 3, folie: "143, 148, 152", aufgaben: "3.8, 4.4", text: "Liste durchlaufen: for x in liste / for i in range(len(liste))"}
+  - {id: c07.in, gewicht: 1, folie: "", aufgaben: "3.8", text: "in: prüfen, ob ein Wert in der Liste ist"}
+  - {id: c07.enumerate, gewicht: 1, folie: "", aufgaben: "4.4", text: "enumerate(): Index und Element zugleich"}
+  - {id: c07.liste2d, gewicht: 2, folie: "150–151", aufgaben: "4.3–4.5", text: "2D-Liste: matrix[zeile][spalte]"}
+  - {id: c07.verschachtelt, gewicht: 2, folie: "151–152", aufgaben: "4.3–4.5", text: "Verschachtelte Schleifen über eine 2D-Liste"}
+  - {id: c07.comprehension, gewicht: 1, folie: "", aufgaben: "4.3", text: "List-Comprehension zum Anlegen von Listen/Rastern"}
+  - {id: c07.umrechnung, gewicht: 2, folie: "", aufgaben: "4.3, 4.5", text: "Benutzereingabe ab 1 → Index ab 0 (reihe - 1)"}
+  - {id: c07.tupel, gewicht: 1, folie: "155", aufgaben: "5.2, 5.6", text: "Tupel: unveränderlich, runde Klammern, Entpacken"}
+  - {id: c07.referenz, gewicht: 1, folie: "161", aufgaben: "4.6", text: "Zuweisung kopiert keine Liste (Referenz) – .copy()"}
+
+karten:
+  # ---------------------------------------------------------------- Liste anlegen
+  - typ: code_ausgabe
+    folien: [142]
+    deckt: [c07.liste]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      teile = ["Kolben", "Dichtung", 13, True]
+      print(teile)
+      print(len(teile))
+      ```
+    antwort: |-
+      ```text
+      ['Kolben', 'Dichtung', 13, True]
+      4
+      ```
+      Eine Liste darf Werte verschiedener Datentypen enthalten; print() zeigt Strings darin in einfachen Anführungszeichen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [141, 142]
+    deckt: [c07.liste]
+    frage: |-
+      Was ist eine **Liste** in Python, und wie legst du eine leere Liste an?
+    antwort: |-
+      Ein sequentieller Datentyp: mehrere kommagetrennte Werte in **eckigen Klammern**, Zugriff über den Index ab 0. Der Inhalt lässt sich dynamisch ändern. Leere Liste: `werte = []`.
+
+  - typ: code_schreiben
+    folien: [141]
+    aufgaben: ["4.2"]
+    deckt: [c07.liste]
+    frage: |-
+      Gegeben sind `t1 = 20.1`, `t2 = 20.4`, `t3 = 19.8`. Fasse die drei Werte in **einer Liste** zusammen und gib sie aus.
+    antwort: |-
+      ```python
+      t1 = 20.1
+      t2 = 20.4
+      t3 = 19.8
+      temperaturen = [t1, t2, t3]
+      print(temperaturen)
+      ```
+      ```text
+      [20.1, 20.4, 19.8]
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [142, 156, 157]
+    deckt: [c07.liste]
+    frage: |-
+      Was ist laut Skript der Unterschied zwischen einer Python-**Liste** und einem **Array** in vielen anderen Sprachen?
+    antwort: |-
+      - Liste: kann Werte **unterschiedlicher** Datentypen enthalten und dynamisch wachsen.
+      - Array: alle Elemente haben **denselben** Datentyp und liegen direkt hintereinander im Speicher; die Größe wird beim Anlegen festgelegt.
+
+  # ---------------------------------------------------------------- Zugriff
+  - typ: code_ausgabe
+    folien: [143]
+    deckt: [c07.zugriff]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      druecke = [2.0, 2.5, 3.1, 2.8]
+      print(druecke[1])
+      print(druecke[-1])
+      ```
+    antwort: |-
+      ```text
+      2.5
+      2.8
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [142]
+    aufgaben: ["4.2"]
+    deckt: [c07.zugriff]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      lager = ["Kolben", "Ventil", "Lager"]
+      lager[1] = "Feder"
+      print(lager)
+      ```
+    antwort: |-
+      ```text
+      ['Kolben', 'Feder', 'Lager']
+      ```
+      Über den Index kann man ein Element direkt überschreiben (anders als bei Strings).
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [141]
+    deckt: [c07.zugriff]
+    frage: |-
+      Welche Fehlermeldung erscheint?
+      ```python
+      werte = [5, 7, 9]
+      print(werte[3])
+      ```
+    antwort: |-
+      ```text
+      IndexError: list index out of range
+      ```
+      Drei Elemente haben die Indizes 0, 1 und 2.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [142]
+    deckt: [c07.zugriff]
+    frage: |-
+      Das **letzte** Element soll auf 0 gesetzt werden. Ergänze den Index.
+      ```python
+      werte = [4, 8, 15]
+      werte[___] = 0
+      print(werte)
+      ```
+    antwort: |-
+      `-1` (oder `len(werte) - 1`)
+      ```python
+      werte = [4, 8, 15]
+      werte[-1] = 0
+      print(werte)
+      ```
+      ```text
+      [4, 8, 0]
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- append
+  - typ: code_ausgabe
+    folien: [144]
+    deckt: [c07.append]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      messungen = []
+      messungen.append(20.5)
+      messungen.append(21.0)
+      print(messungen)
+      ```
+    antwort: |-
+      ```text
+      [20.5, 21.0]
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [144]
+    aufgaben: ["4.2"]
+    deckt: [c07.append]
+    frage: |-
+      Lies mit einer for-Schleife **drei** Messwerte (Kommazahlen) ein, sammle sie in einer Liste und gib die Liste aus.
+    antwort: |-
+      ```python
+      werte = []
+      for i in range(3):
+          werte.append(float(input("Wert: ")))
+      print(werte)
+      ```
+    tests: [{p: 1, eingabe: "1.5\n2.0\n2.5\n"}]
+
+  - typ: code_fehler
+    folien: [144]
+    deckt: [c07.append]
+    frage: |-
+      Was gibt der Code aus, und warum?
+      ```python
+      messungen = [1.2]
+      messungen = messungen.append(1.4)
+      print(messungen)
+      ```
+    antwort: |-
+      ```text
+      None
+      ```
+      append() ändert die Liste direkt und gibt nichts (`None`) zurück. Durch die Zuweisung geht die Liste verloren. Richtig: nur `messungen.append(1.4)`.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- insert
+  - typ: code_ausgabe
+    folien: [144]
+    deckt: [c07.insert]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      teile = ["A", "B", "C"]
+      teile.insert(1, "X")
+      print(teile)
+      ```
+    antwort: |-
+      ```text
+      ['A', 'X', 'B', 'C']
+      ```
+      Das neue Element bekommt den Index 1; die folgenden rutschen nach hinten.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [144]
+    aufgaben: ["5.4"]
+    deckt: [c07.insert, c07.append]
+    frage: |-
+      Was ist der Unterschied zwischen `liste.append(x)` und `liste.insert(0, x)`?
+    antwort: |-
+      - `append(x)`: hängt `x` **ans Ende** an.
+      - `insert(0, x)`: fügt `x` **vorne** ein (an Index 0) – praktisch, wenn Werte in umgekehrter Reihenfolge entstehen (z. B. Binärziffern).
+
+  - typ: code_luecke
+    folien: [144]
+    aufgaben: ["5.4"]
+    deckt: [c07.insert]
+    frage: |-
+      Jede neue Ziffer soll **vorne** in die Liste. Ergänze die Lücke.
+      ```python
+      ziffern = []
+      for z in [1, 2, 3]:
+          ziffern.insert(___, z)
+      print(ziffern)
+      ```
+    antwort: |-
+      `0`
+      ```python
+      ziffern = []
+      for z in [1, 2, 3]:
+          ziffern.insert(0, z)
+      print(ziffern)
+      ```
+      ```text
+      [3, 2, 1]
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- pop
+  - typ: code_ausgabe
+    folien: [145]
+    aufgaben: ["4.2"]
+    deckt: [c07.pop]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      teile = ["A", "B", "C", "D"]
+      teile.pop(1)
+      print(teile)
+      ```
+    antwort: |-
+      ```text
+      ['A', 'C', 'D']
+      ```
+      pop(1) entfernt das Element an **Position** 1.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [145]
+    deckt: [c07.pop]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      auftraege = [101, 102, 103]
+      naechster = auftraege.pop(0)
+      print(naechster, auftraege)
+      ```
+    antwort: |-
+      ```text
+      101 [102, 103]
+      ```
+      pop() gibt das entfernte Element zurück – man kann es gleich weiterverwenden.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [145]
+    deckt: [c07.pop]
+    frage: |-
+      Welche Fehlermeldung erscheint?
+      ```python
+      teile = ["A", "B"]
+      teile.pop(2)
+      ```
+    antwort: |-
+      ```text
+      IndexError: pop index out of range
+      ```
+      Es gibt nur die Positionen 0 und 1.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- remove
+  - typ: code_ausgabe
+    folien: [145]
+    deckt: [c07.remove]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      marken = ["BMW", "VW", "BMW"]
+      marken.remove("BMW")
+      print(marken)
+      ```
+    antwort: |-
+      ```text
+      ['VW', 'BMW']
+      ```
+      remove() löscht nur das **erste** passende Element.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [145]
+    deckt: [c07.remove]
+    frage: |-
+      Welche Fehlermeldung erscheint?
+      ```python
+      teile = ["Welle", "Lager"]
+      teile.remove("Ventil")
+      ```
+    antwort: |-
+      ```text
+      ValueError: list.remove(x): x not in list
+      ```
+      Der Wert kommt nicht in der Liste vor. Vorher prüfen: `if "Ventil" in teile:`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [145]
+    aufgaben: ["4.2"]
+    deckt: [c07.remove, c07.pop]
+    frage: |-
+      Was ist der Unterschied zwischen `liste.pop(2)` und `liste.remove(2)`?
+    antwort: |-
+      - `pop(2)`: entfernt das Element an **Position** 2 (und gibt es zurück).
+      - `remove(2)`: entfernt das erste Element mit dem **Wert** 2.
+
+  # ---------------------------------------------------------------- index
+  - typ: code_ausgabe
+    folien: [146]
+    aufgaben: ["4.2"]
+    deckt: [c07.index]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      lager = ["Kolben", "Ventil", "Lager"]
+      print(lager.index("Lager"))
+      ```
+    antwort: |-
+      ```text
+      2
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [146]
+    aufgaben: ["4.2"]
+    deckt: [c07.index]
+    frage: |-
+      Ersetze in `lager = ["Kolben", "Ventil", "Lager"]` das Teil `"Ventil"` durch `"Feder"`, **ohne** die Position selbst abzuzählen.
+    antwort: |-
+      ```python
+      lager = ["Kolben", "Ventil", "Lager"]
+      pos = lager.index("Ventil")
+      lager[pos] = "Feder"
+      print(lager)
+      ```
+      ```text
+      ['Kolben', 'Feder', 'Lager']
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- weitere Methoden
+  - typ: code_ausgabe
+    folien: [146]
+    deckt: [c07.methoden]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      werte = [3, 1, 2, 3]
+      print(werte.count(3))
+      werte.sort()
+      print(werte)
+      ```
+    antwort: |-
+      ```text
+      2
+      [1, 2, 3, 3]
+      ```
+      count() zählt Vorkommen; sort() sortiert die Liste selbst (aufsteigend).
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [146, 147]
+    deckt: [c07.methoden]
+    frage: |-
+      Die Liste soll **absteigend** sortiert werden. Ergänze den Parameter.
+      ```python
+      werte = [12, 40, 7]
+      werte.sort(___)
+      print(werte)
+      ```
+    antwort: |-
+      `reverse=True`
+      ```python
+      werte = [12, 40, 7]
+      werte.sort(reverse=True)
+      print(werte)
+      ```
+      ```text
+      [40, 12, 7]
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- sort(key=)
+  - typ: code_ausgabe
+    folien: [147]
+    deckt: [c07.sort_key]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def laenge(e):
+          return len(e)
+
+      teile = ["Welle", "Bolzen", "Rad"]
+      teile.sort(key=laenge)
+      print(teile)
+      ```
+    antwort: |-
+      ```text
+      ['Rad', 'Welle', 'Bolzen']
+      ```
+      Sortiert wird nach dem Rückgabewert der Funktion, also nach der Länge (3, 5, 6).
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [147]
+    deckt: [c07.sort_key]
+    frage: |-
+      Was bewirkt der Parameter `key` bei `liste.sort(key=funktion)`?
+    antwort: |-
+      Die Funktion wird für jedes Element aufgerufen; sortiert wird nach ihrem **Rückgabewert** (z. B. der Länge). Man übergibt den Funktionsnamen **ohne** Klammern.
+
+  # ---------------------------------------------------------------- durchlaufen
+  - typ: code_ausgabe
+    folien: [152]
+    aufgaben: ["4.4"]
+    deckt: [c07.durchlaufen]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      regal = ["Kolben", "-", "Lager"]
+      for i in range(len(regal)):
+          if regal[i] != "-":
+              print(i, regal[i])
+      ```
+    antwort: |-
+      ```text
+      0 Kolben
+      2 Lager
+      ```
+      `i` läuft über die Indizes 0, 1, 2; `regal[i]` liefert das Element dazu.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [143, 152]
+    deckt: [c07.durchlaufen]
+    frage: |-
+      Was ist der Unterschied zwischen `for x in liste:` und `for i in range(len(liste)):`?
+    antwort: |-
+      - `for x in liste`: `x` ist direkt das **Element** – einfach, aber man kennt die Position nicht.
+      - `for i in range(len(liste))`: `i` ist der **Index** – nötig, wenn man die Position ausgeben oder `liste[i]` ändern will.
+
+  - typ: code_fehler
+    folien: [143]
+    deckt: [c07.durchlaufen]
+    frage: |-
+      Alle Werte sollen verzehnfacht werden. Was gibt der Code aus, und wie korrigierst du ihn?
+      ```python
+      werte = [1, 2, 3]
+      for w in werte:
+          w = w * 10
+      print(werte)
+      ```
+    antwort: |-
+      ```text
+      [1, 2, 3]
+      ```
+      `w` ist nur eine Variable mit dem Wert des Elements; eine neue Zuweisung ändert die Liste nicht. Über den Index schreiben:
+      ```python
+      werte = [1, 2, 3]
+      for i in range(len(werte)):
+          werte[i] = werte[i] * 10
+      print(werte)
+      ```
+      ```text
+      [10, 20, 30]
+      ```
+    tests: [{p: 1, t: 1}, {p: 2, t: 2}]
+
+  - typ: code_schreiben
+    folien: [148]
+    deckt: [c07.durchlaufen]
+    frage: |-
+      Schreib eine Funktion `fahrenheit(c)` (F = C · 9/5 + 32) und gib damit für jede Temperatur in `temp = [18.0, 20.0]` eine Zeile `18.0 C: 64.4 F` aus.
+    antwort: |-
+      ```python
+      def fahrenheit(c):
+          return c * 9 / 5 + 32
+
+      temp = [18.0, 20.0]
+      for t in temp:
+          print(t, "C:", fahrenheit(t), "F")
+      ```
+      ```text
+      18.0 C: 64.4 F
+      20.0 C: 68.0 F
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- in
+  - typ: code_ausgabe
+    aufgaben: ["3.8"]
+    deckt: [c07.in]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      wartung = [102, 105]
+      print(103 in wartung)
+      print(105 in wartung)
+      ```
+    antwort: |-
+      ```text
+      False
+      True
+      ```
+      `in` prüft, ob der Wert in der Liste vorkommt, und liefert einen Wahrheitswert.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["3.8"]
+    deckt: [c07.in]
+    frage: |-
+      Nur Nummern, die **nicht** in der Wartungsliste stehen, werden montiert. Ergänze die Lücke.
+      ```python
+      wartung = [102, 105]
+      for nr in [101, 102, 103]:
+          if nr ___ wartung:
+              print(nr, "Montage")
+      ```
+    antwort: |-
+      `not in`
+      ```python
+      wartung = [102, 105]
+      for nr in [101, 102, 103]:
+          if nr not in wartung:
+              print(nr, "Montage")
+      ```
+      ```text
+      101 Montage
+      103 Montage
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- enumerate
+  - typ: code_ausgabe
+    aufgaben: ["4.4"]
+    deckt: [c07.enumerate]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for nr, teil in enumerate(["Kolben", "Ventil"]):
+          print(nr, teil)
+      ```
+    antwort: |-
+      ```text
+      0 Kolben
+      1 Ventil
+      ```
+      enumerate() liefert in jedem Durchlauf ein Paar aus Index (ab 0) und Element.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    aufgaben: ["4.4"]
+    deckt: [c07.enumerate]
+    frage: |-
+      Was ist der Unterschied zwischen `for i in range(len(teile)):` und `for i, teil in enumerate(teile):`?
+    antwort: |-
+      Beide liefern den Index `i`. Mit enumerate bekommt man zusätzlich gleich das Element `teil` – man muss nicht `teile[i]` schreiben.
+
+  # ---------------------------------------------------------------- 2D-Liste
+  - typ: code_ausgabe
+    folien: [151]
+    deckt: [c07.liste2d]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      matrix = [[1, 2, 3], [4, 5, 6]]
+      print(matrix[1][0])
+      print(matrix[0][2])
+      ```
+    antwort: |-
+      ```text
+      4
+      3
+      ```
+      Erster Index = Zeile, zweiter Index = Spalte, beide ab 0.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [150, 152]
+    deckt: [c07.liste2d]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      lager = [["A", "-"], ["-", "B"], ["C", "-"]]
+      print(len(lager))
+      print(len(lager[0]))
+      ```
+    antwort: |-
+      ```text
+      3
+      2
+      ```
+      `len(lager)` = Anzahl der Zeilen, `len(lager[0])` = Anzahl der Spalten (Länge der ersten Zeile).
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [151]
+    aufgaben: ["4.3"]
+    deckt: [c07.liste2d]
+    frage: |-
+      `"Feder"` soll in die **zweite Zeile, erste Spalte**. Ergänze die Indizes.
+      ```python
+      lager = [["-", "-"], ["-", "-"]]
+      lager[___][___] = "Feder"
+      print(lager)
+      ```
+    antwort: |-
+      `1` und `0`
+      ```python
+      lager = [["-", "-"], ["-", "-"]]
+      lager[1][0] = "Feder"
+      print(lager)
+      ```
+      ```text
+      [['-', '-'], ['Feder', '-']]
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: begriff
+    folien: [150, 151]
+    deckt: [c07.liste2d]
+    frage: |-
+      Wie ist eine zweidimensionale Liste aufgebaut, und was bedeuten die Indizes in `matrix[i][j]`?
+    antwort: |-
+      Eine Liste, deren Elemente selbst Listen sind (jede innere Liste = eine Zeile). `i` wählt die Zeile, `j` die Spalte in dieser Zeile.
+
+  # ---------------------------------------------------------------- verschachtelte Schleifen
+  - typ: code_ausgabe
+    folien: [151]
+    deckt: [c07.verschachtelt]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      raster = [[1, 2], [3, 4]]
+      for zeile in raster:
+          summe = 0
+          for wert in zeile:
+              summe += wert
+          print(summe)
+      ```
+    antwort: |-
+      ```text
+      3
+      7
+      ```
+      Die äußere Schleife läuft über die Zeilen, die innere über die Werte einer Zeile.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [152]
+    aufgaben: ["4.4"]
+    deckt: [c07.verschachtelt]
+    frage: |-
+      Suche in `lager = [["A", "-"], ["-", "B"]]` das Teil `"B"` und gib seine Position **ab 1 gezählt** aus (`Reihe 2 Spalte 2`).
+    antwort: |-
+      ```python
+      lager = [["A", "-"], ["-", "B"]]
+      for i in range(len(lager)):
+          for j in range(len(lager[i])):
+              if lager[i][j] == "B":
+                  print("Reihe", i + 1, "Spalte", j + 1)
+      ```
+      ```text
+      Reihe 2 Spalte 2
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [151, 152]
+    aufgaben: ["4.3"]
+    deckt: [c07.verschachtelt]
+    frage: |-
+      Wie oft wird der innere Rumpf zweier verschachtelter Schleifen über ein Raster mit 8 Zeilen und 8 Spalten ausgeführt?
+    antwort: |-
+      **64-mal**: Für jede der 8 Zeilen läuft die innere Schleife komplett über 8 Spalten (8 · 8).
+
+  # ---------------------------------------------------------------- List-Comprehension
+  - typ: code_ausgabe
+    aufgaben: ["4.3"]
+    deckt: [c07.comprehension]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      raster = [["-" for s in range(3)] for r in range(2)]
+      print(raster)
+      ```
+    antwort: |-
+      ```text
+      [['-', '-', '-'], ['-', '-', '-']]
+      ```
+      Innen entsteht eine Zeile mit 3 Feldern, außen wird sie 2-mal erzeugt → 2 Zeilen × 3 Spalten.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["4.3"]
+    deckt: [c07.comprehension]
+    frage: |-
+      Ergänze, sodass eine Liste mit **fünf Nullen** entsteht.
+      ```python
+      werte = [0 for i in ___]
+      print(werte)
+      ```
+    antwort: |-
+      `range(5)`
+      ```python
+      werte = [0 for i in range(5)]
+      print(werte)
+      ```
+      ```text
+      [0, 0, 0, 0, 0]
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- Index-Umrechnung
+  - typ: code_fehler
+    aufgaben: ["4.3"]
+    deckt: [c07.umrechnung]
+    frage: |-
+      Der Nutzer möchte in **Reihe 2, Spalte 1** einlagern (er zählt ab 1). Welche Fehlermeldung erscheint, und was fehlt?
+      ```python
+      lager = [["-", "-"], ["-", "-"]]
+      reihe = 2
+      spalte = 1
+      lager[reihe][spalte] = "Kolben"
+      ```
+    antwort: |-
+      ```text
+      IndexError: list index out of range
+      ```
+      Python zählt ab 0 – es gibt nur die Zeilen 0 und 1. Richtig: `lager[reihe - 1][spalte - 1] = "Kolben"`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    aufgaben: ["4.5"]
+    deckt: [c07.umrechnung]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      lager = [["A", "B"], ["C", "D"]]
+      reihe = 1
+      spalte = 2
+      print(lager[reihe - 1][spalte - 1])
+      ```
+    antwort: |-
+      ```text
+      B
+      ```
+      Reihe 1, Spalte 2 (vom Nutzer gezählt) entspricht `lager[0][1]`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    aufgaben: ["4.3", "4.5"]
+    deckt: [c07.umrechnung]
+    frage: |-
+      Warum schreibt man bei Benutzereingaben `lager[reihe - 1][spalte - 1]`?
+    antwort: |-
+      Menschen zählen Reihen und Spalten ab **1**, Python-Indizes beginnen bei **0**. Das `- 1` rechnet die Eingabe in den Index um (bei der Ausgabe umgekehrt `+ 1`).
+
+  # ---------------------------------------------------------------- Tupel
+  - typ: unterschied
+    folien: [155]
+    deckt: [c07.tupel]
+    frage: |-
+      Was ist der Unterschied zwischen einer **Liste** und einem **Tupel**?
+    antwort: |-
+      - Liste `[…]`: veränderbar (Elemente ändern, anfügen, löschen), dynamisch.
+      - Tupel `(…)`: **unveränderbar**, runde Klammern; dafür performanter.
+
+  - typ: code_fehler
+    folien: [155]
+    deckt: [c07.tupel]
+    frage: |-
+      Welche Fehlermeldung erscheint?
+      ```python
+      abmessungen = (120, 80, 40)
+      abmessungen[0] = 125
+      ```
+    antwort: |-
+      ```text
+      TypeError: 'tuple' object does not support item assignment
+      ```
+      Tupel sind unveränderbar. Soll sich der Inhalt ändern, eine Liste verwenden.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [155]
+    aufgaben: ["5.6"]
+    deckt: [c07.tupel]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      punkt = (3.5, 7.0)
+      x, y = punkt
+      print(y)
+      ```
+    antwort: |-
+      ```text
+      7.0
+      ```
+      Ein Tupel lässt sich auf mehrere Variablen verteilen (entpacken) – so nimmt man z. B. mehrere Rückgabewerte einer Funktion entgegen.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Referenz / Kopie
+  - typ: code_ausgabe
+    folien: [161]
+    aufgaben: ["4.6"]
+    deckt: [c07.referenz]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      soll = [20, 20, 20]
+      backup = soll
+      backup[0] = 99
+      print(soll)
+      ```
+    antwort: |-
+      ```text
+      [99, 20, 20]
+      ```
+      `backup = soll` kopiert die Liste nicht – beide Namen zeigen auf **dieselbe** Liste.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["4.6"]
+    deckt: [c07.referenz]
+    frage: |-
+      `backup` soll eine **unabhängige** Kopie sein, damit `soll` unverändert bleibt. Ergänze die Lücke.
+      ```python
+      soll = [20, 20, 20]
+      backup = soll.___
+      backup[0] = 99
+      print(soll)
+      ```
+    antwort: |-
+      `copy()`
+      ```python
+      soll = [20, 20, 20]
+      backup = soll.copy()
+      backup[0] = 99
+      print(soll)
+      ```
+      ```text
+      [20, 20, 20]
+      ```
+    tests: [{p: 2, t: 1}]

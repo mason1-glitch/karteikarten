@@ -1,0 +1,121 @@
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fd7592f72a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c703adf4ad.png)
+Funktionen eines Moduls ruft man mit `modul.funktion()` auf; `sqrt` liefert einen float.
+
+*F. 79 · Aufg. 2.5*"
+"Welche **Fehlerart** meldet Python, und was fehlt?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_683a21ca6f.png)","Einen **NameError** (`name 'math' is not defined`; neuere Python-Versionen hängen einen Import-Hinweis an). Es fehlt `import math` vor der ersten Verwendung.
+
+*Aufg. 2.5*"
+"Was ist eine **Bibliothek** (ein Modul) in Python, und wie macht man ihre Funktionen im Programm verfügbar?","Eine fertige Sammlung von Funktionen für bestimmte Aufgaben (z. B. Mathematik, Zufall, Zeit, Diagramme). Mit `import name` wird sie aktiviert; danach `name.funktion()`.
+
+*F. 77, 78 · Aufg. 2.5*"
+"Ergänze die erste Zeile, damit `random.randint` verfügbar ist.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a9e78d2293.png)","`import`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5d0613b907.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6d4db190ec.png)
+
+*Aufg. 2.5*"
+"Ergänze, sodass das Modul unter dem Kurznamen `plt` angesprochen werden kann.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8c80ddbdd6.png)","`as`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f279350823.png)
+Üblich sind auch `import numpy as np` und `import pandas as pd`.
+
+*F. 205 · Aufg. 2.1*"
+"Was ist der Unterschied zwischen `import math` und `from math import ceil`?","- `import math`: Aufruf mit Modulnamen – `math.ceil(7.2)`.
+- `from math import ceil`: nur `ceil` wird geholt und direkt aufgerufen – `ceil(7.2)` (so z. B. `from IPython.display import clear_output`).
+
+*Aufg. 4.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ed3ba19d4d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_018ec4356f.png)
+
+*Aufg. 4.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e8d73e1d26.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6d302eb91b.png)
+`math.ceil` rundet auf die nächste **ganze Zahl auf**; ist der Wert schon ganz, bleibt er.
+
+*Aufg. 2.5, 2.6*"
+"Berechne den Umfang einer Welle mit `r = 5` cm (U = 2 · π · r) mit `math.pi` und gib ihn mit zwei Nachkommastellen aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b68f638e54.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8e8e252480.png)
+
+*Aufg. 2.5*"
+"Was ist der Unterschied zwischen `math.ceil(3520.4)` und `int(3520.4)`?","- `math.ceil(3520.4)` → `3521`: rundet **auf** (z. B. Bestellmenge, die reichen muss).
+- `int(3520.4)` → `3520`: **schneidet** die Nachkommastellen ab.
+
+*F. 75 · Aufg. 2.6*"
+"Welche Werte kann `random.randint(1, 6)` liefern?","Die ganzen Zahlen **1 bis 6** – bei randint sind **beide** Grenzen eingeschlossen.
+
+*Aufg. 3.4*"
+"Was ist der Unterschied zwischen den Grenzen bei `random.randint(1, 6)` und `range(1, 6)`?","- `randint(1, 6)`: 6 ist **möglich** (obere Grenze eingeschlossen).
+- `range(1, 6)`: endet bei 5 (obere Grenze **ausgeschlossen**).
+
+*Aufg. 3.4, 3.9*"
+"Erzeuge eine zufällige Diagnosenummer von **0 bis 7** (beide möglich). Ergänze die Argumente.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8ca3dfd768.png)","`0, 7`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1105910fc0.png)
+
+*Aufg. 3.4*"
+"Simuliere **fünf** ganzzahlige Temperaturwerte zwischen 50 und 90 °C und sammle sie in einer Liste.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e08d40ac5d.png)
+
+*Aufg. 2.9*"
+"Was bewirkt `time.sleep(3)`?","Das Programm hält an dieser Stelle **3 Sekunden** an und macht danach weiter (z. B. Prüfpause oder Takt zwischen Messungen).
+
+*Aufg. 2.7*"
+"Zwischen den Messungen soll eine halbe Sekunde Pause sein. Ergänze den Funktionsnamen.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_01d77a01b6.png)","`sleep`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d18e62e9e5.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bdc52436a8.png)
+
+*Aufg. 2.9*"
+"Was gibt der Code aus? (Ergänzung: `datetime.datetime(…)` erzeugt hier einen festen Zeitpunkt statt der aktuellen Zeit.)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cdb8b16f89.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d21ff4af44.png)
+Tag und Monat werden zweistellig ausgegeben; die Sekunden fehlen, weil `%S` nicht im Format steht.
+
+*Aufg. 2.8, 5.5*"
+"Wofür stehen in einem strftime-Format `%d`, `%m`, `%Y`, `%H`, `%M` und `%S`?","| Platzhalter | Bedeutung |
+|---|---|
+| `%d` | Tag (01–31) |
+| `%m` | Monat (01–12) |
+| `%Y` | Jahr, vierstellig |
+| `%H` | Stunde (00–23) |
+| `%M` | Minute |
+| `%S` | Sekunde |
+
+*Aufg. 2.8, 5.5*"
+"Ergänze das Format, sodass die aktuelle Uhrzeit als `Stunde:Minute:Sekunde` erscheint (z. B. `14:30:05`).
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8dcdc8a548.png)","`""%H:%M:%S""`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c68d6480eb.png)
+
+*Aufg. 2.9*"
+"Gewünscht ist das Datum mit **vierstelligem** Jahr. Was gibt der Code aus, und was ist falsch? (Fester Zeitpunkt als Ergänzung, siehe oben.)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2d27fd50f4.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_415ab52f33.png)
+Kleines `%y` steht für das zweistellige Jahr. Richtig: `%Y` → `07.10.2026`.
+
+*Aufg. 2.8*"
+"Gib einen Protokolleintrag im Format `[2026-10-28 14:30:00] Maschine 3 gestartet` mit der **aktuellen** Zeit aus. Nutze `datetime`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f150432a39.png)
+
+*Aufg. 5.5*"
+"Was ist der Unterschied zwischen `time.strftime(format, time.localtime())` und `datetime.datetime.now().strftime(format)`?","Beide liefern die aktuelle Zeit als formatierten Text.
+- `time`: strftime ist eine **Funktion** des Moduls, die Zeit wird als zweites Argument übergeben.
+- `datetime`: `now()` liefert ein Zeit**objekt**; strftime ist eine **Methode** dieses Objekts.
+
+*Aufg. 2.8, 5.5*"
+"Ergänze den Aufruf, der den **aktuellen** Zeitpunkt liefert.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_68b55867cc.png)","`now()`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_df2fa2bc5b.png)
+
+*Aufg. 6.2*"
+"Wie installierst du direkt in einem Jupyter-Notebook eine Bibliothek, die nicht vorinstalliert ist (z. B. qrcode)?","Mit `!pip install qrcode` in einer Code-Zelle (mit Anaconda alternativ `!conda install qrcode`). `math`, `random` und `time` sind schon vorinstalliert und brauchen nur `import`.
+
+*Aufg. 2.5*"
+"Was ist der Unterschied zwischen `pip install qrcode` und `import qrcode`?","- `pip install`: lädt die Bibliothek herunter und installiert sie **einmalig** in der Python-Umgebung.
+- `import`: macht die installierte Bibliothek **im Programm** verfügbar – bei jedem Programmstart nötig.
+
+*Aufg. 2.5*"
+"Erzeuge im Notebook aus dem Text `""ID: 1042""` einen QR-Code und zeige ihn an.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c084ff6675.png)
+`display()` steht in Jupyter-Notebooks automatisch zur Verfügung.
+
+*Aufg. 2.6*"
+"Was liefert `qrcode.make(text)`, und wie bringst du mehrere Zeilen Maschinendaten in einen QR-Code?","Ein **Bild** des QR-Codes (anzeigen mit `display(bild)`). Mehrere Zeilen: den Text vorher als (f-)String mit `\n` oder in dreifachen Anführungszeichen zusammensetzen und diesen String übergeben.
+
+*Aufg. 2.6, 2.7*"

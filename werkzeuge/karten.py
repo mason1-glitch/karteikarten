@@ -32,6 +32,26 @@ Aufrufe (aus dem Repo-Wurzelordner):
 `bauen` prüft Aufbau, Abdeckung, LaTeX-Reste und Rechnungen und schreibt CSV + Abdeckungsmatrix.
 `pruefen` vergleicht zusätzlich jedes „Zitat“ per difflib mit dem Folientext (pdftotext, bei
 Bildfolien Tesseract-OCR) und testet mit --urls, ob alle Bild-Links erreichbar sind.
+
+Programmier-Karten (z. B. ingenieurinformatik1/quellen/): zusätzliche Schlüssel
+    id_praefix: "K01."          Karten-IDs K01.001, K01.002 … (eindeutig über mehrere Kapitel)
+    min_typen: 2                jedes Inhalt/Konzept braucht Karten von mind. 2 verschiedenen Typen
+    max_codezeilen: 8           kein Python-Block auf einer Karte länger als 8 Zeilen
+    keine_janein: true          Fragen, die mit „Ist/Gibt es/Kann …“ beginnen, sind Fehler
+    inhalte: [{id: …, text: …, gewicht: 1–3, folie: "74–75", aufgaben: "1.2, 2.4"}]
+  je Karte:
+    folien: [74]  und/oder  aufgaben: ["1.2"]   (Fußzeile: *F. 74 · Aufg. 1.2*; F. = PDF-Seite)
+    tests:                      jeder ```python-Block wird ausgeführt (Blöcke über Frage+Antwort
+      - {p: 1, t: 1}            durchgezählt): Python-Block 1 → Bildschirm == Text-Block 1
+      - {p: 2}                  (Bildschirm = stdout, bei Absturz + letzte Zeile der Fehlermeldung;
+                                Leerzeichen am Zeilenende zählen nicht – im Bild unsichtbar);
+                                ohne t: muss fehlerfrei laufen. Optional je Test: eingabe (stdin),
+                                dateien {name: inhalt | "t2" = Text-Block 2}, jupyter: true (display()),
+                                abbruch: "SyntaxError" (muss mit dieser Fehlerart abbrechen; für Meldungen,
+                                deren Wortlaut je nach Python-Version abweicht – die Karte nennt dann nur die Art),
+                                nicht_ausfuehren: "Grund" (nur für Endlosschleifen u. Ä.; erscheint im Protokoll).
+    Python-Blöcke mit ___ (Lücke) werden nicht ausgeführt; alle anderen brauchen einen Test.
+    python3 werkzeuge/karten.py code <yaml> [--python /pfad/python3.9 --python /pfad/python3.13]
 """
 import argparse
 import collections
@@ -69,7 +89,17 @@ TYPEN = {
     "maske": "Schaubild mit verdecktem Feld",
     "unstimmigkeit": "Unstimmigkeit im Skript",
     "klausurfrage": "Musterantwort Wiederholungsfrage",
+    # Programmier-Karten
+    "begriff": "Begriff ↔ Erklärung",
+    "code_luecke": "Lückentext im Code",
+    "code_ausgabe": "Was gibt der Code aus?",
+    "code_fehler": "Finde den Fehler",
+    "code_schreiben": "Schreib Code, der …",
+    "unterschied": "Was ist der Unterschied …?",
 }
+
+JANEIN = re.compile(r"^\W*(Ist|Sind|Gibt es|Kann|Können|Darf|Dürfen|Muss|Müssen|Hat|Haben|Wird|Werden|Stimmt|"
+                    r"Funktioniert|Läuft|Führt|Liefert|Bleibt|Ändert|Erzeugt|Gehört|Braucht|Lässt)\b")
 
 LATEX_MUSTER = [r"\$", r"\\frac", r"\\cdot", r"\\times", r"\\text", r"\\\(", r"\\\[", r"\^\{", r"_\{",
                 r"\\le\b", r"\\ge\b", r"\\approx", r"\\sum", r"\\varnothing", r"\\emptyset"]
@@ -80,9 +110,20 @@ LATEX_MUSTER = [r"\$", r"\\frac", r"\\cdot", r"\\times", r"\\text", r"\\\(", r"\
 def lade(pfad):
     with open(pfad, encoding="utf-8") as f:
         q = yaml.safe_load(f)
+    q.setdefault("wiederholungsfragen", [])
+    praefix = q.get("id_praefix", "K")
     for i, k in enumerate(q["karten"], 1):
-        k["id"] = f"K{i:03d}"
+        k["id"] = f"{praefix}{i:03d}"
     return q
+
+
+def fusszeile(k):
+    teile = []
+    if k.get("folien"):
+        teile.append(folien_text(k["folien"]))
+    if k.get("aufgaben"):
+        teile.append("Aufg. " + ", ".join(str(a) for a in k["aufgaben"]))
+    return " · ".join(teile)
 
 
 def folien_text(folien):
@@ -104,12 +145,99 @@ def bilder_einsetzen(text, fach):
 def felder(q, k):
     frage = code_einsetzen(bilder_einsetzen(k["frage"].strip(), q["fach"]), q["fach"])
     antwort = code_einsetzen(bilder_einsetzen(k["antwort"].strip(), q["fach"]), q["fach"])
-    antwort += f"\n\n*{folien_text(k['folien'])}*"
+    antwort += f"\n\n*{fusszeile(k)}*"
     return frage, antwort
 
 
 def bildnamen(text):
     return re.findall(r"\{\{bild:([^}|]+)", text)
+
+
+# ---------------------------------------------------------------- Code-Blöcke ausführen
+
+BLOCK_RE = re.compile(r"^```[ \t]*(?P<sprache>[\w+#.-]*)[ \t]*\n(?P<code>.*?)\n?^```[ \t]*$", re.M | re.S)
+PYTHON = ("", "python", "py", "python3")
+
+
+def code_bloecke(k):
+    """Python- und Text-Blöcke einer Karte (Frage, dann Antwort) in Reihenfolge."""
+    pb, tb = [], []
+    for feld in ("frage", "antwort"):
+        for m in BLOCK_RE.finditer(k.get(feld) or ""):
+            code = m["code"].rstrip("\n")
+            if m["sprache"].lower() in PYTHON:
+                pb.append(code)
+            elif m["sprache"].lower() == "text":
+                tb.append(code)
+    return pb, tb
+
+
+def fuehre_aus(code, python, eingabe="", dateien=None, jupyter=False):
+    """Code wie ein Skript ausführen. Rückgabe: Bildschirmtext (stdout, bei Absturz + letzte Fehlerzeile), ok."""
+    with tempfile.TemporaryDirectory() as tmp:
+        for name, inhalt in (dateien or {}).items():
+            with open(os.path.join(tmp, name), "w", encoding="utf-8", newline="") as f:
+                f.write(inhalt)
+        with open(os.path.join(tmp, "karte.py"), "w", encoding="utf-8") as f:
+            f.write(code + "\n")
+        if jupyter:
+            befehl = [python, "-c", "import builtins, runpy; builtins.display = lambda *a, **k: None; "
+                                    "runpy.run_path('karte.py', run_name='__main__')"]
+        else:
+            befehl = [python, "karte.py"]
+        umg = dict(os.environ, MPLBACKEND="Agg", PYTHONIOENCODING="utf-8", PLOTLY_RENDERER="json")
+        r = subprocess.run(befehl, cwd=tmp, input=eingabe, capture_output=True, text=True, timeout=120, env=umg,
+                           encoding="utf-8")
+    if r.returncode == 0:
+        return r.stdout, True
+    letzte = [z for z in r.stderr.splitlines() if z.strip()]
+    return r.stdout + (letzte[-1] if letzte else ""), False
+
+
+def zeilen_ohne_endleerzeichen(text):
+    """Vergleichsform: Leerzeichen am Zeilenende sind im Bild unsichtbar und zählen nicht."""
+    return [z.rstrip() for z in text.rstrip("\n").split("\n")]
+
+
+def pruefe_code(q, pythons):
+    """Alle Tests ausführen. Rückgabe: Fehlerliste, Protokollzeilen."""
+    fehler, protokoll = [], []
+    for k in q["karten"]:
+        pb, tb = code_bloecke(k)
+        for t in k.get("tests", []) or []:
+            code = pb[t["p"] - 1]
+            if t.get("nicht_ausfuehren"):
+                protokoll.append(f"{k['id']} P{t['p']} nicht ausgeführt: {t['nicht_ausfuehren']}")
+                continue
+            dateien = {}
+            for name, inhalt in {**k.get("dateien", {}), **t.get("dateien", {})}.items():
+                m = re.fullmatch(r"t(\d+)", str(inhalt))
+                dateien[name] = tb[int(m.group(1)) - 1] + "\n" if m else inhalt
+            for py in pythons:
+                ist, ok = fuehre_aus(code, py, t.get("eingabe", ""), dateien, t.get("jupyter", False))
+                version = subprocess.run([py, "-c", "import sys; print(sys.version.split()[0])"],
+                                         capture_output=True, text=True).stdout.strip()
+                if "abbruch" in t:
+                    letzte = ist.splitlines()[-1] if ist.strip() else ""
+                    gleich = not ok and letzte.startswith(t["abbruch"] + ":")
+                    protokoll.append(f"{k['id']} P{t['p']} bricht mit {t['abbruch']} ab (Python {version}): "
+                                     f"{'OK' if gleich else 'FEHLER'}")
+                    if not gleich:
+                        fehler.append(f"{k['id']} P{t['p']} (Python {version}): erwartet {t['abbruch']}, "
+                                      f"tatsächlich: {letzte or 'kein Fehler'}")
+                elif "t" in t:
+                    soll = tb[t["t"] - 1]
+                    gleich = zeilen_ohne_endleerzeichen(ist) == zeilen_ohne_endleerzeichen(soll)
+                    protokoll.append(f"{k['id']} P{t['p']}→T{t['t']} (Python {version}): "
+                                     f"{'OK' if gleich else 'FEHLER'}")
+                    if not gleich:
+                        fehler.append(f"{k['id']} P{t['p']} (Python {version}): Karte sagt\n{soll}\n--- tatsächlich:\n"
+                                      f"{ist.rstrip()}")
+                else:
+                    protokoll.append(f"{k['id']} P{t['p']} läuft (Python {version}): {'OK' if ok else 'FEHLER'}")
+                    if not ok:
+                        fehler.append(f"{k['id']} P{t['p']} (Python {version}) bricht ab: {ist.splitlines()[-1]}")
+    return fehler, protokoll
 
 
 # ---------------------------------------------------------------- Rechner (unabhängige Nachrechnung)
@@ -199,9 +327,35 @@ def pruefe_aufbau(q):
     gedeckt = collections.defaultdict(list)
     fragen_gesehen = {}
     for k in q["karten"]:
-        for feld in ("typ", "folien", "deckt", "frage", "antwort"):
+        for feld in ("typ", "deckt", "frage", "antwort"):
             if not k.get(feld):
                 fehler.append(f"{k['id']}: Feld „{feld}“ fehlt")
+        if not k.get("folien") and not k.get("aufgaben"):
+            fehler.append(f"{k['id']}: Feld „folien“ (oder „aufgaben“) fehlt")
+        pb, tb = code_bloecke(k)
+        if q.get("max_codezeilen"):
+            for n, code in enumerate(pb, 1):
+                if len(code.splitlines()) > q["max_codezeilen"]:
+                    fehler.append(f"{k['id']}: Python-Block {n} hat {len(code.splitlines())} Zeilen "
+                                  f"(max. {q['max_codezeilen']})")
+                for zeile in code.splitlines():
+                    if len(zeile) > 52:
+                        warnungen.append(f"{k['id']}: Codezeile mit {len(zeile)} Zeichen (Bild wird breit)")
+        if q.get("keine_janein") and JANEIN.search(k.get("frage", "")):
+            fehler.append(f"{k['id']}: Ja/Nein-Frage? „{k['frage'].splitlines()[0][:60]}“")
+        getestet = set()
+        for t in k.get("tests", []) or []:
+            if not 1 <= t.get("p", 0) <= len(pb):
+                fehler.append(f"{k['id']}: Test verweist auf Python-Block {t.get('p')} (vorhanden: {len(pb)})")
+                continue
+            if "t" in t and not 1 <= t["t"] <= len(tb):
+                fehler.append(f"{k['id']}: Test verweist auf Text-Block {t['t']} (vorhanden: {len(tb)})")
+            if "___" in pb[t["p"] - 1]:
+                fehler.append(f"{k['id']}: Python-Block {t['p']} enthält eine Lücke und kann nicht laufen")
+            getestet.add(t["p"])
+        for n, code in enumerate(pb, 1):
+            if "___" not in code and n not in getestet:
+                fehler.append(f"{k['id']}: Python-Block {n} hat keinen Test")
         if k.get("typ") not in TYPEN:
             fehler.append(f"{k['id']}: unbekannter Typ {k.get('typ')}")
         for d in k.get("deckt", []):
@@ -235,6 +389,13 @@ def pruefe_aufbau(q):
     for iid in inhalte:
         if not gedeckt[iid]:
             fehler.append(f"Inhalt {iid} ({inhalte[iid]['text']}) ist durch keine Karte abgedeckt")
+    if q.get("min_typen"):
+        karten = {k["id"]: k for k in q["karten"]}
+        for iid in inhalte:
+            typen = {karten[kid]["typ"] for kid in gedeckt[iid]}
+            if gedeckt[iid] and len(typen) < q["min_typen"]:
+                fehler.append(f"Inhalt {iid}: nur {len(typen)} Kartentyp(en) ({', '.join(sorted(typen))}), "
+                              f"verlangt {q['min_typen']}")
     for wid, w in wfragen.items():
         karten = [k["id"] for k in q["karten"] if k.get("w") == wid]
         if not karten:
@@ -296,8 +457,9 @@ def matrix_text(q, gedeckt):
     mit_bild = sum(1 for k in q["karten"] if bildnamen(k["frage"] + k["antwort"]))
     z += ["", f"Karten mit Bild: {mit_bild}.", ""]
 
-    z += ["## Wiederholungsfragen (F. 22, F. 51)", "",
-          "| Nr. | Folie | Frage | Musterantwort | benötigte Inhalte | abgedeckt durch |", "|---|---|---|---|---|---|"]
+    if q["wiederholungsfragen"]:
+        z += ["## Wiederholungsfragen (F. 22, F. 51)", "",
+              "| Nr. | Folie | Frage | Musterantwort | benötigte Inhalte | abgedeckt durch |", "|---|---|---|---|---|---|"]
     for w in q["wiederholungsfragen"]:
         muster = ", ".join(k["id"] for k in q["karten"] if k.get("w") == w["id"])
         durch = sorted({kid for b in w["braucht"] for kid in gedeckt[b]})
@@ -305,11 +467,23 @@ def matrix_text(q, gedeckt):
         z.append(f"| {w['id']} | {w['folie']} | {w['frage']} | {muster} | {len(w['braucht'])} {'✓' if ok else '✗'} | "
                  f"{', '.join(durch)} |")
 
-    z += ["", "## Inhalte je Folie", "", "| Folie | Inhalt | Karten |", "|---|---|---|"]
-    for i in inhalte:
-        z.append(f"| {i['folie']} | {i['text']} | {', '.join(gedeckt[i['id']]) or '**fehlt**'} |")
+    if any("gewicht" in i for i in inhalte):
+        z += ["", "## Konzepte → Karten", "", "Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. "
+              "F. = Seite im Skript-PDF, Aufg. = Aufgabe im Ordner Informatik-1---Aufgaben-und-Beispiele.", "",
+              "| Konzept | Gewicht | Quelle | Karten | Typen |", "|---|---:|---|---|---|"]
+        for i in inhalte:
+            quelle = " · ".join(x for x in (f"F. {i['folie']}" if i.get("folie") else "",
+                                            f"Aufg. {i['aufgaben']}" if i.get("aufgaben") else "") if x)
+            typen = sorted({karten[kid]["typ"] for kid in gedeckt[i["id"]]})
+            z.append(f"| {i['text']} | {i['gewicht']} | {quelle} | {', '.join(gedeckt[i['id']]) or '**fehlt**'} | "
+                     f"{len(typen)} |")
+    else:
+        z += ["", "## Inhalte je Folie", "", "| Folie | Inhalt | Karten |", "|---|---|---|"]
+        for i in inhalte:
+            z.append(f"| {i['folie']} | {i['text']} | {', '.join(gedeckt[i['id']]) or '**fehlt**'} |")
 
-    z += ["", "## Bewusst ausgelassene Folien", "", "| Folien | Grund |", "|---|---|"]
+    if q.get("ausgelassen"):
+        z += ["", "## Bewusst ausgelassene Folien", "", "| Folien | Grund |", "|---|---|"]
     for a in q.get("ausgelassen", []):
         z.append(f"| {a['folien']} | {a['grund']} |")
 
@@ -317,7 +491,7 @@ def matrix_text(q, gedeckt):
     if unst:
         z += ["", "## Unstimmigkeiten im Skript (je eine Karte)", ""]
         for k in unst:
-            z.append(f"- {k['id']} ({folien_text(k['folien'])}): {k['frage'].splitlines()[0]}")
+            z.append(f"- {k['id']} ({fusszeile(k)}): {k['frage'].splitlines()[0]}")
 
     if q.get("annahmen"):
         z += ["", "## Annahmen", ""] + [f"- {a}" for a in q["annahmen"]]
@@ -325,7 +499,7 @@ def matrix_text(q, gedeckt):
     z += ["", "## Karten-Index", "", "| ID | Typ | Folien | Frage |", "|---|---|---|---|"]
     for k in q["karten"]:
         frage = re.sub(r"\{\{bild:[^}]+\}\}", "[Bild]", k["frage"]).replace("\n", " ").replace("|", "/")
-        z.append(f"| {k['id']} | {k['typ']} | {folien_text(k['folien'])} | {frage[:110]} |")
+        z.append(f"| {k['id']} | {k['typ']} | {fusszeile(k)} | {frage[:110]} |")
     return "\n".join(z) + "\n"
 
 
@@ -333,7 +507,7 @@ def liste_text(q):
     z = []
     for k in q["karten"]:
         frage, antwort = felder(q, k)
-        z += [f"## {k['id']} · {TYPEN[k['typ']]} · {folien_text(k['folien'])}", "", "**Frage**", "", frage, "",
+        z += [f"## {k['id']} · {TYPEN[k['typ']]} · {fusszeile(k)}", "", "**Frage**", "", frage, "",
               "**Antwort**", "", antwort, "", "---", ""]
     return "\n".join(z)
 
@@ -396,7 +570,7 @@ def bester_treffer(zitat, quellen):
 
 
 def pruefe_wortlaut(q, pdf, tessdata):
-    alle_folien = sorted({f for k in q["karten"] for f in k["folien"]})
+    alle_folien = sorted({f for k in q["karten"] for f in k.get("folien", [])})
     quellen = folien_quellen(pdf, alle_folien, set(q.get("ocr_folien", [])), tessdata)
     ergebnisse = []
     for k in q["karten"]:
@@ -405,7 +579,7 @@ def pruefe_wortlaut(q, pdf, tessdata):
                 teil_n = normiere(teil)
                 if len(teil_n) < 12:
                     continue
-                pool = [t for f in k["folien"] for t in quellen[f]]
+                pool = [t for f in k.get("folien", []) for t in quellen[f]]
                 ratio, treffer = bester_treffer(teil_n, pool)
                 ergebnisse.append((k["id"], ratio, teil.strip(), treffer))
     return ergebnisse
@@ -426,12 +600,49 @@ def pruefe_urls(q):
     return fehler, len(namen)
 
 
+# ---------------------------------------------------------------- Gesamtabdeckung über mehrere Kapitel
+
+def gesamt(pfade, ausgabe):
+    """Abdeckungstabelle Konzept → Karten-IDs über alle Kapitel (für Programmier-Karten)."""
+    zeilen, fehler, alle_typen = [], [], collections.Counter()
+    karten_n, konzepte_n = 0, 0
+    kopf = ["# Abdeckung Konzept → Karten (alle Kapitel)", ""]
+    for pfad in pfade:
+        q = lade(pfad)
+        _, _, gedeckt = pruefe_aufbau(q)
+        karten = {k["id"]: k for k in q["karten"]}
+        karten_n += len(karten)
+        alle_typen.update(k["typ"] for k in q["karten"])
+        zeilen += ["", f"## {q['titel']} – `{os.path.basename(q['csv'])}` ({len(karten)} Karten)", "",
+                   "| Konzept | Gewicht | Karten | Typen |", "|---|---:|---|---|"]
+        for i in q["inhalte"]:
+            konzepte_n += 1
+            ids = gedeckt[i["id"]]
+            typen = sorted({karten[kid]["typ"] for kid in ids})
+            if len(typen) < q.get("min_typen", 1):
+                fehler.append(f"{i['id']}: {len(typen)} Typ(en)")
+            zeilen.append(f"| {i['text']} | {i.get('gewicht', '')} | {', '.join(ids) or '**fehlt**'} | "
+                          f"{', '.join(TYPEN[t] for t in typen)} |")
+    kopf += [f"{konzepte_n} Konzepte, {karten_n} Karten. Lücken (Konzept ohne Karte oder mit weniger als "
+             f"zwei Kartentypen): **{len(fehler)}**.", "", "| Kartentyp | Anzahl |", "|---|---:|"]
+    kopf += [f"| {TYPEN[t]} | {n} |" for t, n in alle_typen.most_common()]
+    text = "\n".join(kopf + zeilen + ([""] + [f"- Lücke: {f}" for f in fehler] if fehler else [])) + "\n"
+    if ausgabe:
+        with open(ausgabe, "w", encoding="utf-8") as f:
+            f.write(text)
+    print(text if not ausgabe else f"{konzepte_n} Konzepte, {karten_n} Karten, {len(fehler)} Lücken → {ausgabe}")
+    if fehler:
+        sys.exit(1)
+
+
 # ---------------------------------------------------------------- Hauptprogramm
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("befehl", choices=["bauen", "pruefen", "liste"])
-    ap.add_argument("quelle")
+    ap.add_argument("befehl", choices=["bauen", "pruefen", "liste", "code", "gesamt"])
+    ap.add_argument("quelle", nargs="+")
+    ap.add_argument("--python", action="append", help="Python-Interpreter für `code` (mehrfach möglich)")
+    ap.add_argument("--ausgabe", help="`gesamt`: Abdeckungstabelle über alle Kapitel hierhin schreiben")
     ap.add_argument("--skript", help="Skript-PDF für den Wortlaut-Abgleich")
     ap.add_argument("--tessdata", help="Ordner mit deu.traineddata (falls nicht systemweit)")
     ap.add_argument("--urls", action="store_true", help="Bild-Links im Netz prüfen")
@@ -439,8 +650,22 @@ def main():
     ap.add_argument("--schwelle", type=float, default=1.0, help="Zitate unter dieser Ähnlichkeit melden")
     args = ap.parse_args()
 
+    if args.befehl == "gesamt":
+        gesamt(args.quelle, args.ausgabe)
+        return
+    if len(args.quelle) > 1:
+        ap.error("bitte nur eine Quelle (mehrere nur bei `gesamt`)")
+    args.quelle = args.quelle[0]
     q = lade(args.quelle)
     q["_pfad"] = os.path.abspath(args.quelle)
+
+    if args.befehl == "code":
+        cf, protokoll = pruefe_code(q, args.python or [sys.executable])
+        print("\n".join(protokoll))
+        print(f"\n{len(protokoll)} Ausführungen, {len(cf)} Fehler")
+        for f in cf:
+            print("FEHLER:", f, file=sys.stderr)
+        sys.exit(1 if cf else 0)
 
     if args.befehl == "liste":
         print(liste_text(q))

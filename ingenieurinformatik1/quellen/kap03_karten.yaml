@@ -1,0 +1,762 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 3: Operatoren und Zahlensysteme
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF), Aufgaben 3.1, 3.2, 3.10, 5.4.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap03_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap03_operatoren.csv
+matrix: ingenieurinformatik1/quellen/kap03_abdeckung.md
+titel: "Kapitel 3: Operatoren und Zahlensysteme"
+id_praefix: "K03."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Skript F. 104 beschreibt // als „Nachkommateil wird abgeschnitten“. Für negative Zahlen rundet Python ab (-7 // 2 = -4); die Karte K03 zu -7 // 2 weist darauf hin."
+  - "Skript F. 105/106 nennt Schreibweisen anderer Sprachen (=, <>, MOD, !, &&, ||). In Python 3 gibt es nur ==, !=, %, not, and, or – die Karten verwenden ausschließlich diese."
+  - "Skript F. 119 ordnet <, <=, >, >= über == und != ein. In Python haben alle Vergleichsoperatoren denselben Rang; keine Karte fragt danach."
+
+inhalte:
+  - {id: c03.arith, gewicht: 3, folie: "103–104", aufgaben: "3.1, 3.2", text: "Arithmetische Operatoren + - * / // % **"}
+  - {id: c03.ganzzahl, gewicht: 3, folie: "104", aufgaben: "3.1, 3.9, 3.10, 5.4", text: "Ganzzahldivision // (abrunden), Ergebnis-Typ"}
+  - {id: c03.modulo, gewicht: 3, folie: "104", aufgaben: "3.1, 3.9, 3.10, 5.4", text: "Modulo %: Rest, Teilbarkeit (x % n == 0), gerade/ungerade"}
+  - {id: c03.ziffern, gewicht: 2, folie: "", aufgaben: "3.1, 5.4", text: "Ziffern einer Zahl mit // und % zerlegen (Quersumme)"}
+  - {id: c03.potenz, gewicht: 1, folie: "104", aufgaben: "3.2", text: "Potenz **"}
+  - {id: c03.vergleich, gewicht: 3, folie: "105", aufgaben: "3.1–3.10", text: "Vergleichsoperatoren == != < > <= >= liefern bool; int und float vergleichbar, str und int nicht"}
+  - {id: c03.zuweisung_vergleich, gewicht: 3, folie: "113", aufgaben: "3.1", text: "= (Zuweisung) vs. == (Vergleich)"}
+  - {id: c03.logisch, gewicht: 3, folie: "106", aufgaben: "3.1, 3.7, 3.11", text: "Logische Operatoren and, or, not"}
+  - {id: c03.rang_arith, gewicht: 2, folie: "119", aufgaben: "3.2", text: "Rangfolge: ** vor * / // % vor + -, Klammern"}
+  - {id: c03.rang_logisch, gewicht: 2, folie: "119", aufgaben: "3.2", text: "Rangfolge: Arithmetik vor Vergleich vor not vor and vor or"}
+  - {id: c03.kurzschluss, gewicht: 1, folie: "", aufgaben: "3.2", text: "Kurzschlussauswertung (Short-Circuit) bei or/and"}
+  - {id: c03.erweitert, gewicht: 2, folie: "117, 119", aufgaben: "3.8, 3.10, 6.1", text: "Erweiterte Zuweisung += -= *= //="}
+  - {id: c03.binaer, gewicht: 1, folie: "85–90", aufgaben: "5.4", text: "Binärsystem: Dezimal ↔ Binär (fortgesetzte Division durch 2)"}
+  - {id: c03.hex, gewicht: 1, folie: "91–95", aufgaben: "", text: "Hexadezimalsystem (Nibble, 0–9/A–F, 0x-Schreibweise)"}
+
+karten:
+  # ---------------------------------------------------------------- Arithmetik
+  - typ: code_ausgabe
+    folien: [104]
+    aufgaben: ["3.1"]
+    deckt: [c03.arith]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print(17 / 5)
+      print(17 // 5)
+      print(17 % 5)
+      ```
+    antwort: |-
+      ```text
+      3.4
+      3
+      2
+      ```
+      `/` Division (float), `//` ganzzahliger Anteil, `%` Rest.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [104]
+    aufgaben: ["2.2", "3.1"]
+    deckt: [c03.arith, c03.ganzzahl]
+    frage: |-
+      Was ist der Unterschied zwischen `/` und `//`?
+    antwort: |-
+      - `/`: normale Division, Ergebnis immer float (`7 / 2` → `3.5`).
+      - `//`: Ganzzahldivision, der Nachkommateil fällt weg (`7 // 2` → `3`); bei zwei int ist das Ergebnis int.
+
+  - typ: code_schreiben
+    folien: [104]
+    aufgaben: ["3.9"]
+    deckt: [c03.arith, c03.ganzzahl, c03.modulo]
+    frage: |-
+      47 Lagerbolzen sollen in Kisten zu je 12 Stück. Schreib Code, der ausgibt, wie viele **volle Kisten** es gibt und wie viele **Bolzen übrig** bleiben.
+    antwort: |-
+      ```python
+      teile = 47
+      kisten = teile // 12
+      rest = teile % 12
+      print(kisten, "Kisten,", rest, "übrig")
+      ```
+      ```text
+      3 Kisten, 11 übrig
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- //
+  - typ: code_ausgabe
+    folien: [104]
+    deckt: [c03.ganzzahl]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print(-7 // 2)
+      ```
+    antwort: |-
+      ```text
+      -4
+      ```
+      `//` rundet **ab** (Richtung minus unendlich). Bei positiven Zahlen wirkt das wie Abschneiden (so beschreibt es das Skript), bei negativen nicht: -3.5 → -4.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [104]
+    deckt: [c03.ganzzahl]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      laenge = 7.5
+      print(laenge // 2)
+      ```
+    antwort: |-
+      ```text
+      3.0
+      ```
+      Ist ein Operand ein float, liefert auch `//` einen float – nur ohne Nachkommaanteil.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [104]
+    deckt: [c03.ganzzahl, c03.modulo]
+    frage: |-
+      Ergänze die Operatoren, sodass `2 h 15 min` ausgegeben wird.
+      ```python
+      minuten = 135
+      print(minuten ___ 60, "h", minuten ___ 60, "min")
+      ```
+    antwort: |-
+      Erst `//` (volle Stunden), dann `%` (Restminuten):
+      ```python
+      minuten = 135
+      print(minuten // 60, "h", minuten % 60, "min")
+      ```
+      ```text
+      2 h 15 min
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: begriff
+    folien: [104]
+    aufgaben: ["3.10"]
+    deckt: [c03.ganzzahl]
+    frage: |-
+      Wofür verwendet man die **Ganzzahldivision** `//` typischerweise?
+    antwort: |-
+      Wenn nur der ganzzahlige Anteil zählt: volle Kisten, volle Stunden, ganzzahliges Halbieren (`gewicht // 2`) – und um einen int statt float zu behalten.
+
+  # ---------------------------------------------------------------- %
+  - typ: code_ausgabe
+    folien: [104]
+    aufgaben: ["3.9"]
+    deckt: [c03.modulo]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print(10 % 3)
+      print(12 % 4)
+      print(3 % 5)
+      ```
+    antwort: |-
+      ```text
+      1
+      0
+      3
+      ```
+      `3 % 5`: 5 passt 0-mal in 3, der Rest ist 3.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [104]
+    aufgaben: ["3.1"]
+    deckt: [c03.modulo]
+    frage: |-
+      Jedes **fünfte** Teil (Nummer 5, 10, 15 …) soll geprüft werden. Ergänze die Lücke.
+      ```python
+      teil_nr = 35
+      if teil_nr ___ 5 == 0:
+          print("Prüfen")
+      ```
+    antwort: |-
+      `%`
+      ```python
+      teil_nr = 35
+      if teil_nr % 5 == 0:
+          print("Prüfen")
+      ```
+      ```text
+      Prüfen
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_schreiben
+    folien: [104]
+    aufgaben: ["3.10"]
+    deckt: [c03.modulo]
+    frage: |-
+      Schreib Code, der für eine Ganzzahl `n` ausgibt, ob sie `gerade` oder `ungerade` ist (Beispiel `n = 7`).
+    antwort: |-
+      ```python
+      n = 7
+      if n % 2 == 0:
+          print("gerade")
+      else:
+          print("ungerade")
+      ```
+      ```text
+      ungerade
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [104]
+    aufgaben: ["3.9"]
+    deckt: [c03.modulo]
+    frage: |-
+      Wie prüfst du mit `%`, ob `a` durch `b` **teilbar** ist?
+    antwort: |-
+      `a % b == 0` – teilbar heißt: Die Division geht ohne Rest auf.
+
+  # ---------------------------------------------------------------- Ziffern
+  - typ: code_ausgabe
+    aufgaben: ["3.1"]
+    deckt: [c03.ziffern]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      zahl = 472
+      print(zahl // 100)
+      print(zahl // 10 % 10)
+      print(zahl % 10)
+      ```
+    antwort: |-
+      ```text
+      4
+      7
+      2
+      ```
+      Hunderter, Zehner, Einer: `// 10` streicht die letzte Ziffer, `% 10` liefert die letzte Ziffer.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["3.1"]
+    deckt: [c03.ziffern]
+    frage: |-
+      Schreib Code, der die **Quersumme** der dreistelligen Prüfnummer `n = 805` berechnet und ausgibt.
+    antwort: |-
+      ```python
+      n = 805
+      hunderter = n // 100
+      zehner = n // 10 % 10
+      einer = n % 10
+      print(hunderter + zehner + einer)
+      ```
+      ```text
+      13
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["5.4"]
+    deckt: [c03.ziffern]
+    frage: |-
+      Ergänze, sodass `einer` die **letzte Ziffer** von `zahl` enthält.
+      ```python
+      zahl = 2026
+      einer = zahl ___
+      print(einer)
+      ```
+    antwort: |-
+      `% 10`
+      ```python
+      zahl = 2026
+      einer = zahl % 10
+      print(einer)
+      ```
+      ```text
+      6
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- **
+  - typ: code_ausgabe
+    folien: [104, 119]
+    aufgaben: ["3.2"]
+    deckt: [c03.potenz, c03.rang_arith]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print(2 ** 3)
+      print(2 * 3 ** 2)
+      ```
+    antwort: |-
+      ```text
+      8
+      18
+      ```
+      `**` bindet stärker als `*`: erst 3² = 9, dann 2 · 9.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [104]
+    deckt: [c03.potenz]
+    frage: |-
+      Berechne mit dem Potenzoperator die Fläche eines Kreises mit `r = 2` (A = 3.14 · r²) und gib sie aus.
+    antwort: |-
+      ```python
+      r = 2
+      flaeche = 3.14 * r ** 2
+      print(flaeche)
+      ```
+      ```text
+      12.56
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Vergleiche
+  - typ: code_ausgabe
+    folien: [105]
+    deckt: [c03.vergleich]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      druck = 6
+      print(druck >= 6)
+      print(druck != 6)
+      ```
+    antwort: |-
+      ```text
+      True
+      False
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [105]
+    aufgaben: ["3.2"]
+    deckt: [c03.vergleich]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      laenge = 450
+      print(laenge == 900 / 2)
+      ```
+    antwort: |-
+      ```text
+      True
+      ```
+      `900 / 2` ist `450.0`; Python vergleicht int und float nach dem Zahlenwert.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [105]
+    deckt: [c03.vergleich]
+    frage: |-
+      Welche Fehlermeldung erscheint, und wie behebst du sie?
+      ```python
+      messwert = "85"
+      print(messwert > 80)
+      ```
+    antwort: |-
+      ```text
+      TypeError: '>' not supported between instances of 'str' and 'int'
+      ```
+      Text und Zahl lassen sich nicht der Größe nach vergleichen. Korrektur: `print(int(messwert) > 80)`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [105]
+    deckt: [c03.vergleich]
+    frage: |-
+      Mit welchem Operator prüfst du in Python auf **Ungleichheit**?
+    antwort: |-
+      `!=` (z. B. `eingabe != passwort`). Die im Skript zusätzlich genannte Schreibweise `<>` gibt es in Python 3 nicht.
+
+  # ---------------------------------------------------------------- = vs ==
+  - typ: unterschied
+    folien: [113]
+    deckt: [c03.zuweisung_vergleich]
+    frage: |-
+      Was ist der Unterschied zwischen `a = 5` und `a == 5`?
+    antwort: |-
+      - `a = 5`: **Zuweisung** – `a` bekommt den Wert 5.
+      - `a == 5`: **Vergleich** – prüft, ob `a` gleich 5 ist, und liefert `True` oder `False`.
+
+  - typ: code_fehler
+    folien: [113]
+    deckt: [c03.zuweisung_vergleich]
+    frage: |-
+      Der Code bricht schon beim Start ab. Welche Fehlerart meldet Python, und wo liegt der Fehler?
+      ```python
+      status = "aktiv"
+      if status = "aktiv":
+          print("Maschine läuft")
+      ```
+    antwort: |-
+      Einen **SyntaxError** (der genaue Meldungstext hängt von der Python-Version ab). In der Bedingung steht `=` (Zuweisung) statt `==` (Vergleich):
+      ```python
+      status = "aktiv"
+      if status == "aktiv":
+          print("Maschine läuft")
+      ```
+    tests: [{p: 1, abbruch: SyntaxError}, {p: 2}]
+
+  - typ: code_ausgabe
+    folien: [113]
+    deckt: [c03.zuweisung_vergleich]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      x = 3
+      ok = x == 3
+      print(ok)
+      ```
+    antwort: |-
+      ```text
+      True
+      ```
+      Erst wird `x == 3` ausgewertet (True), dann wird das Ergebnis `ok` zugewiesen.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- and / or / not
+  - typ: code_ausgabe
+    folien: [106]
+    deckt: [c03.logisch]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      temperatur = 70
+      druck = 9
+      print(temperatur > 80 or druck > 8)
+      print(temperatur > 80 and druck > 8)
+      ```
+    antwort: |-
+      ```text
+      True
+      False
+      ```
+      `or`: eine wahre Bedingung genügt. `and`: beide müssen wahr sein.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [106]
+    deckt: [c03.logisch]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      gefunden = False
+      print(not gefunden)
+      print(not 3 > 2)
+      ```
+    antwort: |-
+      ```text
+      True
+      False
+      ```
+      `not` kehrt den Wahrheitswert um; der Vergleich `3 > 2` wird zuerst ausgewertet.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [106]
+    aufgaben: ["3.1"]
+    deckt: [c03.logisch]
+    frage: |-
+      Schreib Code, der `Freigabe` ausgibt, wenn die Temperatur `t` zwischen 20 und 30 °C liegt (beide Grenzen eingeschlossen), sonst `Gesperrt`. Beispiel: `t = 25`.
+    antwort: |-
+      ```python
+      t = 25
+      if t >= 20 and t <= 30:
+          print("Freigabe")
+      else:
+          print("Gesperrt")
+      ```
+      ```text
+      Freigabe
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [106]
+    deckt: [c03.logisch]
+    frage: |-
+      Was ist der Unterschied zwischen `and` und `or`?
+    antwort: |-
+      - `A and B` ist nur `True`, wenn **beide** Operanden `True` sind.
+      - `A or B` ist `True`, wenn **mindestens einer** `True` ist.
+
+  - typ: code_fehler
+    folien: [106]
+    deckt: [c03.logisch]
+    frage: |-
+      Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was ist falsch?
+      ```python
+      a = 3
+      b = 4
+      if a > 0 && b > 0:
+          print("beide positiv")
+      ```
+    antwort: |-
+      Einen **SyntaxError**: `&&` gibt es in Python nicht (das Skript nennt es nur als Schreibweise anderer Sprachen). Richtig ist `and`:
+      ```python
+      a = 3
+      b = 4
+      if a > 0 and b > 0:
+          print("beide positiv")
+      ```
+    tests: [{p: 1, abbruch: SyntaxError}, {p: 2}]
+
+  # ---------------------------------------------------------------- Rangfolge Arithmetik
+  - typ: code_ausgabe
+    folien: [119]
+    aufgaben: ["3.2"]
+    deckt: [c03.rang_arith]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      punkte = 3 * 2 ** 3 // 4
+      print(punkte)
+      ```
+    antwort: |-
+      ```text
+      6
+      ```
+      Zuerst `2 ** 3 = 8`, dann `*` und `//` von links nach rechts: `3 * 8 = 24`, `24 // 4 = 6`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [119]
+    aufgaben: ["3.2"]
+    deckt: [c03.rang_arith]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      laenge = 9
+      print(laenge + 1 % 5 - 1)
+      ```
+    antwort: |-
+      ```text
+      9
+      ```
+      `%` bindet stärker als `+` und `-`: `1 % 5 = 1`, dann `9 + 1 - 1`. Gemeint war vermutlich `(laenge + 1) % 5 - 1`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [119]
+    deckt: [c03.rang_arith]
+    frage: |-
+      Der Mittelwert von zwei Messungen soll `15.0` sein. Was gibt der Code aus, und wie korrigierst du ihn?
+      ```python
+      a = 10
+      b = 20
+      mittel = a + b / 2
+      print(mittel)
+      ```
+    antwort: |-
+      ```text
+      20.0
+      ```
+      Punkt vor Strich: Es wird nur `b` halbiert. Mit Klammern:
+      ```python
+      a = 10
+      b = 20
+      mittel = (a + b) / 2
+      print(mittel)
+      ```
+      ```text
+      15.0
+      ```
+    tests: [{p: 1, t: 1}, {p: 2, t: 2}]
+
+  - typ: begriff
+    folien: [119]
+    deckt: [c03.rang_arith]
+    frage: |-
+      In welcher Reihenfolge wertet Python `**`, `*`/`/`/`//`/`%` und `+`/`-` aus, und wie erzwingst du eine andere Reihenfolge?
+    antwort: |-
+      Zuerst `**`, dann `*`, `/`, `//`, `%` (untereinander von links nach rechts), zuletzt `+` und `-`. Eine andere Reihenfolge erzwingt man mit **Klammern**.
+
+  # ---------------------------------------------------------------- Rangfolge logisch
+  - typ: code_ausgabe
+    folien: [119]
+    aufgaben: ["3.2"]
+    deckt: [c03.rang_logisch]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print(False and False or True)
+      print(False and (False or True))
+      ```
+    antwort: |-
+      ```text
+      True
+      False
+      ```
+      `and` wird vor `or` ausgewertet: `(False and False) or True`. Die Klammern in Zeile 2 ändern die Reihenfolge.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [119]
+    aufgaben: ["3.2"]
+    deckt: [c03.rang_logisch]
+    frage: |-
+      Alarm soll nur kommen, wenn (Druck > 8 **oder** Temperatur > 90) **und** die Anlage läuft. Die Anlage steht – trotzdem erscheint `Alarm`. Warum?
+      ```python
+      druck = 9
+      temp = 50
+      laeuft = False
+      if druck > 8 or temp > 90 and laeuft:
+          print("Alarm")
+      ```
+    antwort: |-
+      ```text
+      Alarm
+      ```
+      `and` bindet stärker als `or`; Python rechnet `druck > 8 or (temp > 90 and laeuft)`. Korrektur mit Klammern:
+      ```python
+      druck = 9
+      temp = 50
+      laeuft = False
+      if (druck > 8 or temp > 90) and laeuft:
+          print("Alarm")
+      ```
+    tests: [{p: 1, t: 1}, {p: 2}]
+
+  - typ: begriff
+    folien: [119]
+    deckt: [c03.rang_logisch]
+    frage: |-
+      In welcher Reihenfolge werden in einer Bedingung Rechenoperatoren, Vergleiche, `not`, `and` und `or` ausgewertet?
+    antwort: |-
+      Rechenoperatoren → Vergleiche → `not` → `and` → `or`. Im Zweifel Klammern setzen.
+
+  # ---------------------------------------------------------------- Kurzschluss
+  - typ: begriff
+    aufgaben: ["3.2"]
+    deckt: [c03.kurzschluss]
+    frage: |-
+      Was bedeutet **Kurzschlussauswertung** (short-circuit) bei `A or B`?
+    antwort: |-
+      Ist `A` schon `True`, steht das Ergebnis fest – `B` wird gar nicht mehr ausgewertet. Bei `A and B` gilt das Gleiche, wenn `A` `False` ist.
+
+  - typ: code_ausgabe
+    aufgaben: ["3.2"]
+    deckt: [c03.kurzschluss]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      divisor = 0
+      print(divisor == 0 or 10 / divisor > 1)
+      ```
+    antwort: |-
+      ```text
+      True
+      ```
+      Kein ZeroDivisionError: Der linke Teil ist schon `True`, deshalb wird `10 / divisor` nicht berechnet.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- erweiterte Zuweisung
+  - typ: code_ausgabe
+    folien: [117]
+    aufgaben: ["3.10"]
+    deckt: [c03.erweitert]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      stueck = 10
+      stueck += 5
+      stueck *= 2
+      stueck -= 1
+      print(stueck)
+      ```
+    antwort: |-
+      ```text
+      29
+      ```
+      10 → 15 → 30 → 29.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [117, 119]
+    deckt: [c03.erweitert]
+    frage: |-
+      Wofür ist `zaehler += 1` die Kurzschreibweise?
+    antwort: |-
+      Für `zaehler = zaehler + 1`. Entsprechend gibt es `-=`, `*=`, `/=`, `//=` usw.
+
+  - typ: code_fehler
+    folien: [117]
+    deckt: [c03.erweitert]
+    frage: |-
+      Welche Fehlermeldung erscheint, und was fehlt?
+      ```python
+      for i in range(3):
+          anzahl += 1
+      print(anzahl)
+      ```
+    antwort: |-
+      ```text
+      NameError: name 'anzahl' is not defined
+      ```
+      `+=` braucht einen Startwert. Vor der Schleife fehlt `anzahl = 0`.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Binär
+  - typ: begriff
+    folien: [90]
+    aufgaben: ["5.4"]
+    deckt: [c03.binaer]
+    frage: |-
+      Wie rechnest du eine Dezimalzahl in eine Binärzahl um? Zeig es an 13.
+    antwort: |-
+      Fortgesetzt durch 2 teilen und die Reste notieren, dann die Reste **von unten nach oben** lesen:
+      13 : 2 = 6 Rest 1 · 6 : 2 = 3 Rest 0 · 3 : 2 = 1 Rest 1 · 1 : 2 = 0 Rest 1 → **1101**
+
+  - typ: code_ausgabe
+    folien: [90]
+    aufgaben: ["5.4"]
+    deckt: [c03.binaer]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      zahl = 6
+      ziffern = []
+      while zahl > 0:
+          ziffern.insert(0, zahl % 2)
+          zahl = zahl // 2
+      print(ziffern)
+      ```
+    antwort: |-
+      ```text
+      [1, 1, 0]
+      ```
+      Reste: 6 % 2 = 0, 3 % 2 = 1, 1 % 2 = 1. `insert(0, …)` setzt jede neue Ziffer vorne ein – so stehen sie gleich in der richtigen Reihenfolge (6 = 110₂).
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [89]
+    deckt: [c03.binaer]
+    frage: |-
+      Welche Dezimalzahl ist die Binärzahl **1011**?
+    antwort: |-
+      **11** – Stellenwerte von rechts 1, 2, 4, 8: 1·8 + 0·4 + 1·2 + 1·1 = 11.
+
+  # ---------------------------------------------------------------- Hex
+  - typ: begriff
+    folien: [91]
+    deckt: [c03.hex]
+    frage: |-
+      Wie viele Bit fasst eine Hexadezimalziffer zusammen, und welche Zeichen verwendet das Hexadezimalsystem?
+    antwort: |-
+      4 Bit (ein Nibble, 2⁴ = 16 Möglichkeiten). Zeichen: `0`–`9` und `A`–`F` (A = 10 … F = 15).
+
+  - typ: code_ausgabe
+    folien: [93, 95]
+    deckt: [c03.hex]
+    frage: |-
+      Python versteht die Schreibweise `0x…` für Hexadezimalzahlen. Was gibt der Code aus?
+      ```python
+      print(0x2F)
+      ```
+    antwort: |-
+      ```text
+      47
+      ```
+      2 · 16 + F (= 15) = 47. print() zeigt Zahlen immer dezimal.
+    tests: [{p: 1, t: 1}]

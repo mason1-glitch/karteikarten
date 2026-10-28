@@ -1,0 +1,492 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 13: Daten visualisieren
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF), Aufgaben 2.1, 2.9, 6.1, 6.4, 6.5.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap13_karten.yaml
+# Antwortbilder der Diagramm-Karten: python3 ingenieurinformatik1/quellen/diagramme.py
+# Die Code-Tests laufen mit MPLBACKEND=Agg (kein Fenster) und PLOTLY_RENDERER=json (braucht nbformat).
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap13_visualisierung.csv
+matrix: ingenieurinformatik1/quellen/kap13_abdeckung.md
+titel: "Kapitel 13: Daten visualisieren mit matplotlib und plotly"
+id_praefix: "K13."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+inhalte:
+  - {id: c13.plot, gewicht: 2, folie: "205", aufgaben: "2.1, 2.9", text: "import matplotlib.pyplot as plt, plt.plot(x, y), plt.show()"}
+  - {id: c13.stil, gewicht: 1, folie: "206", aufgaben: "2.1", text: "Linienstil: Formatstring \"b-o\", color, linestyle, linewidth, marker"}
+  - {id: c13.beschriftung, gewicht: 2, folie: "205", aufgaben: "2.1, 6.1, 6.5", text: "title, xlabel, ylabel, grid – vor show()"}
+  - {id: c13.legend, gewicht: 1, folie: "205", aufgaben: "2.1, 6.5", text: "label=… und plt.legend()"}
+  - {id: c13.bar, gewicht: 2, folie: "207", aufgaben: "6.1, 6.5", text: "Balkendiagramm plt.bar(kategorien, werte)"}
+  - {id: c13.hist, gewicht: 1, folie: "207", aufgaben: "6.5", text: "Histogramm plt.hist(daten, bins=…)"}
+  - {id: c13.scatter, gewicht: 1, folie: "209", aufgaben: "6.5", text: "Streudiagramm plt.scatter(x, y)"}
+  - {id: c13.subplots, gewicht: 1, folie: "", aufgaben: "6.5", text: "Mehrere Diagramme: fig, (ax1, ax2) = plt.subplots(1, 2), ax.set_title, tight_layout"}
+  - {id: c13.savefig, gewicht: 1, folie: "208", aufgaben: "6.5", text: "plt.savefig(\"datei.png\", dpi=…) vor plt.show()"}
+  - {id: c13.laenge, gewicht: 1, folie: "205", aufgaben: "", text: "x und y müssen gleich lang sein (ValueError)"}
+  - {id: c13.plotly, gewicht: 1, folie: "209", aufgaben: "6.4", text: "plotly.express: px.line, px.scatter_3d(color=…), update_layout, fig.show()"}
+
+karten:
+  # ---------------------------------------------------------------- plot
+  - typ: code_schreiben
+    folien: [205]
+    aufgaben: ["2.1"]
+    deckt: [c13.plot]
+    frage: |-
+      Zeichne den Temperaturverlauf `stunden = [8, 9, 10]`, `temp = [72, 78, 81]` als **Liniendiagramm** und zeige es an.
+    antwort: |-
+      ```python
+      import matplotlib.pyplot as plt
+      stunden = [8, 9, 10]
+      temp = [72, 78, 81]
+      plt.plot(stunden, temp)
+      plt.show()
+      ```
+      Erst die x-Werte, dann die y-Werte.
+    tests: [{p: 1}]
+
+  - typ: code_luecke
+    folien: [205]
+    aufgaben: ["2.9"]
+    deckt: [c13.plot]
+    frage: |-
+      Ergänze die Funktion, die eine **Linie** durch die Punkte zeichnet.
+      ```python
+      import matplotlib.pyplot as plt
+      x = [1, 2, 3, 4, 5]
+      y = [2, 4, 6, 8, 10]
+      plt.___(x, y)
+      plt.show()
+      ```
+    antwort: |-
+      `plot`
+      ```python
+      import matplotlib.pyplot as plt
+      x = [1, 2, 3, 4, 5]
+      y = [2, 4, 6, 8, 10]
+      plt.plot(x, y)
+      plt.show()
+      ```
+    tests: [{p: 2}]
+
+  - typ: begriff
+    folien: [205]
+    deckt: [c13.plot]
+    frage: |-
+      Was ist **pyplot**, und wie wird es üblicherweise importiert?
+    antwort: |-
+      Ein Modul der Bibliothek matplotlib zum einfachen Erstellen von Plots und Diagrammen: `import matplotlib.pyplot as plt`.
+
+  # ---------------------------------------------------------------- Stil
+  - typ: code_ausgabe
+    folien: [206]
+    aufgaben: ["2.1"]
+    deckt: [c13.stil]
+    frage: |-
+      Wie sieht die gezeichnete Linie aus?
+      ```python
+      import matplotlib.pyplot as plt
+      x = [1, 2, 3, 4]
+      y = [2, 4, 6, 8]
+      plt.plot(x, y, "r--o")
+      plt.show()
+      ```
+    antwort: |-
+      **Rot** (`r`), **gestrichelt** (`--`), mit **Kreis-Markern** (`o`) an den Messpunkten:
+      {{bild:plot_formatstring|Rote gestrichelte Linie mit Kreismarkern}}
+    tests: [{p: 1}]
+
+  - typ: code_luecke
+    folien: [206]
+    deckt: [c13.stil]
+    frage: |-
+      Die Linie soll grün, **gestrichelt** und mit Kreis-Markern erscheinen. Ergänze den Linienstil.
+      ```python
+      import matplotlib.pyplot as plt
+      x = [1, 2, 3]
+      y = [3, 5, 4]
+      plt.plot(x, y, color="green",
+               linestyle=___, marker="o")
+      plt.show()
+      ```
+    antwort: |-
+      `"--"`
+      ```python
+      import matplotlib.pyplot as plt
+      x = [1, 2, 3]
+      y = [3, 5, 4]
+      plt.plot(x, y, color="green",
+               linestyle="--", marker="o")
+      plt.show()
+      ```
+    tests: [{p: 2}]
+
+  # ---------------------------------------------------------------- Beschriftung
+  - typ: code_luecke
+    folien: [205]
+    aufgaben: ["2.1"]
+    deckt: [c13.beschriftung]
+    frage: |-
+      Ergänze die Funktion, die die **x-Achse** beschriftet.
+      ```python
+      import matplotlib.pyplot as plt
+      plt.plot([8, 9, 10], [72, 78, 81])
+      plt.___("Uhrzeit (h)")
+      plt.show()
+      ```
+    antwort: |-
+      `xlabel` (die y-Achse entsprechend mit `ylabel`)
+      ```python
+      import matplotlib.pyplot as plt
+      plt.plot([8, 9, 10], [72, 78, 81])
+      plt.xlabel("Uhrzeit (h)")
+      plt.show()
+      ```
+    tests: [{p: 2}]
+
+  - typ: code_fehler
+    folien: [205, 208]
+    deckt: [c13.beschriftung]
+    frage: |-
+      Im angezeigten Diagramm fehlt der Titel. Warum?
+      ```python
+      import matplotlib.pyplot as plt
+      plt.plot([1, 2], [3, 4])
+      plt.show()
+      plt.title("Temperaturverlauf")
+      ```
+    antwort: |-
+      `plt.show()` zeigt das Diagramm an und schließt es; der Titel kommt danach zu spät. Alle Beschriftungen gehören **vor** `plt.show()`.
+    tests: [{p: 1}]
+
+  - typ: code_schreiben
+    folien: [205]
+    aufgaben: ["2.1", "6.1"]
+    deckt: [c13.beschriftung]
+    frage: |-
+      Zeichne die Punkte `[8, 9, 10]` / `[72, 78, 81]` als Linie mit Titel `Temperaturverlauf`, Achsenbeschriftungen `Uhrzeit (h)` und `Temperatur (°C)` sowie einem Gitternetz.
+    antwort: |-
+      ```python
+      import matplotlib.pyplot as plt
+      plt.plot([8, 9, 10], [72, 78, 81])
+      plt.title("Temperaturverlauf")
+      plt.xlabel("Uhrzeit (h)")
+      plt.ylabel("Temperatur (°C)")
+      plt.grid(True)
+      plt.show()
+      ```
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- Legende
+  - typ: code_schreiben
+    folien: [205]
+    aufgaben: ["2.1"]
+    deckt: [c13.legend]
+    frage: |-
+      Zeichne zwei Linien in **ein** Diagramm – `[1, 2, 3]` als „Anstieg“ und `[3, 2, 1]` als „Abstieg“ über `x = [1, 2, 3]` – und zeige eine Legende an.
+    antwort: |-
+      ```python
+      import matplotlib.pyplot as plt
+      x = [1, 2, 3]
+      plt.plot(x, [1, 2, 3], label="Anstieg")
+      plt.plot(x, [3, 2, 1], label="Abstieg")
+      plt.legend()
+      plt.show()
+      ```
+    tests: [{p: 1}]
+
+  - typ: code_fehler
+    folien: [205]
+    deckt: [c13.legend]
+    frage: |-
+      Die Legende bleibt leer. Was fehlt?
+      ```python
+      import matplotlib.pyplot as plt
+      plt.plot([1, 2, 3], [20, 22, 21])
+      plt.legend()
+      plt.show()
+      ```
+    antwort: |-
+      Die Linie hat keinen Namen: Erst `label="Temperatur"` in `plt.plot(...)` gibt der Legende einen Eintrag.
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- Balken
+  - typ: code_ausgabe
+    folien: [207]
+    aufgaben: ["6.5"]
+    deckt: [c13.bar]
+    frage: |-
+      Welches Diagramm entsteht?
+      ```python
+      import matplotlib.pyplot as plt
+      abteilungen = ["Fertigung", "Logistik", "Qualität"]
+      mitarbeiter = [45, 22, 18]
+      plt.bar(abteilungen, mitarbeiter)
+      plt.title("Mitarbeiter pro Abteilung")
+      plt.show()
+      ```
+    antwort: |-
+      Ein **Balkendiagramm** mit drei Balken der Höhe 45, 22 und 18; die Kategorien stehen an der x-Achse.
+      {{bild:plot_balken|Balkendiagramm Mitarbeiter pro Abteilung}}
+    tests: [{p: 1}]
+
+  - typ: code_luecke
+    folien: [207]
+    aufgaben: ["6.1"]
+    deckt: [c13.bar]
+    frage: |-
+      Die Anzahl jedes Vokals soll als **Balkendiagramm** erscheinen. Ergänze die Funktion.
+      ```python
+      import matplotlib.pyplot as plt
+      vokale = ["a", "e", "i", "o", "u"]
+      anzahl = [42, 95, 51, 12, 20]
+      plt.___(vokale, anzahl)
+      plt.show()
+      ```
+    antwort: |-
+      `bar`
+      ```python
+      import matplotlib.pyplot as plt
+      vokale = ["a", "e", "i", "o", "u"]
+      anzahl = [42, 95, 51, 12, 20]
+      plt.bar(vokale, anzahl)
+      plt.show()
+      ```
+    tests: [{p: 2}]
+
+  - typ: code_schreiben
+    folien: [207]
+    aufgaben: ["6.5"]
+    deckt: [c13.bar]
+    frage: |-
+      `df` hat eine Spalte `Marke`. Zeichne ein Balkendiagramm mit der **Anzahl der Fahrzeuge je Marke**.
+    antwort: |-
+      ```python
+      import pandas as pd
+      import matplotlib.pyplot as plt
+      df = pd.DataFrame({"Marke": ["VW", "BMW", "VW"]})
+      anzahl = df["Marke"].value_counts()
+      plt.bar(anzahl.index, anzahl.values)
+      plt.show()
+      ```
+      `value_counts()` zählt je Marke; `index` = Marken, `values` = Anzahlen.
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- Histogramm
+  - typ: begriff
+    folien: [207]
+    aufgaben: ["6.5"]
+    deckt: [c13.hist]
+    frage: |-
+      Was zeigt ein **Histogramm**, und was legt `bins` fest?
+    antwort: |-
+      Die **Häufigkeitsverteilung** von Messwerten: Der Wertebereich wird in Klassen eingeteilt, die Balkenhöhe zeigt, wie viele Werte in jede Klasse fallen. `bins` ist die Anzahl dieser Klassen (Balken).
+
+  - typ: code_luecke
+    folien: [207]
+    aufgaben: ["6.5"]
+    deckt: [c13.hist]
+    frage: |-
+      Ergänze den Parameter, sodass das Histogramm **6 Klassen** hat.
+      ```python
+      import matplotlib.pyplot as plt
+      messwerte = [12, 15, 14, 13, 16, 15, 14, 17, 13, 12]
+      plt.hist(messwerte, ___=6)
+      plt.show()
+      ```
+    antwort: |-
+      `bins`
+      ```python
+      import matplotlib.pyplot as plt
+      messwerte = [12, 15, 14, 13, 16, 15, 14, 17, 13, 12]
+      plt.hist(messwerte, bins=6)
+      plt.show()
+      ```
+    tests: [{p: 2}]
+
+  # ---------------------------------------------------------------- Streudiagramm
+  - typ: unterschied
+    folien: [205, 209]
+    aufgaben: ["6.5"]
+    deckt: [c13.scatter]
+    frage: |-
+      Was ist der Unterschied zwischen `plt.plot(x, y)` und `plt.scatter(x, y)`?
+    antwort: |-
+      - `plot`: verbindet die Punkte zu einer **Linie** (Verlauf, z. B. über die Zeit).
+      - `scatter`: zeichnet nur **einzelne Punkte** – geeignet, um den Zusammenhang zweier Messgrößen zu zeigen.
+
+  - typ: code_schreiben
+    aufgaben: ["6.5"]
+    deckt: [c13.scatter]
+    frage: |-
+      Stelle `temperatur = [20, 25, 30]` (x) gegen `leistung = [80, 88, 85]` (y) als **Streudiagramm** mit Achsenbeschriftung dar.
+    antwort: |-
+      ```python
+      import matplotlib.pyplot as plt
+      temperatur = [20, 25, 30]
+      leistung = [80, 88, 85]
+      plt.scatter(temperatur, leistung)
+      plt.xlabel("Temperatur (°C)")
+      plt.ylabel("Leistung (%)")
+      plt.show()
+      ```
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- Subplots
+  - typ: code_schreiben
+    aufgaben: ["6.5"]
+    deckt: [c13.subplots]
+    frage: |-
+      Zeige ein Balkendiagramm und ein Histogramm **nebeneinander** in einer Abbildung, jeweils mit eigenem Titel.
+    antwort: |-
+      ```python
+      import matplotlib.pyplot as plt
+      fig, (ax1, ax2) = plt.subplots(1, 2)
+      ax1.bar(["A", "B"], [10, 20])
+      ax1.set_title("Stückzahl")
+      ax2.hist([1, 2, 2, 3], bins=3)
+      ax2.set_title("Verteilung")
+      plt.tight_layout()
+      plt.show()
+      ```
+      `subplots(1, 2)`: 1 Zeile, 2 Spalten; `tight_layout()` verhindert Überlappungen.
+    tests: [{p: 1}]
+
+  - typ: unterschied
+    aufgaben: ["6.5"]
+    deckt: [c13.subplots]
+    frage: |-
+      Was ist der Unterschied zwischen `plt.title("…")` und `ax1.set_title("…")`?
+    antwort: |-
+      - `plt.title`: beschriftet das **aktuelle** Diagramm.
+      - `ax1.set_title`: beschriftet gezielt das Teildiagramm `ax1` aus `plt.subplots()`. Entsprechend `ax1.set_xlabel`, `ax1.set_ylabel`.
+
+  # ---------------------------------------------------------------- savefig
+  - typ: code_fehler
+    folien: [208]
+    aufgaben: ["6.5"]
+    deckt: [c13.savefig]
+    frage: |-
+      Die gespeicherte Datei `diagramm.png` ist leer. Warum?
+      ```python
+      import matplotlib.pyplot as plt
+      plt.bar(["X", "Y"], [5, 8])
+      plt.show()
+      plt.savefig("diagramm.png")
+      ```
+    antwort: |-
+      Nach `plt.show()` ist die Grafik geschlossen; `savefig` speichert dann ein leeres Bild. Richtig: erst `plt.savefig(...)`, dann `plt.show()`.
+    tests: [{p: 1}]
+
+  - typ: code_luecke
+    folien: [208]
+    aufgaben: ["6.5"]
+    deckt: [c13.savefig]
+    frage: |-
+      Das Diagramm soll mit **300 dpi** als PNG gespeichert werden. Ergänze den Parameter.
+      ```python
+      import matplotlib.pyplot as plt
+      plt.hist([1, 2, 2, 3, 3, 3], bins=3)
+      plt.savefig("verteilung.png", ___=300)
+      plt.show()
+      ```
+    antwort: |-
+      `dpi`
+      ```python
+      import matplotlib.pyplot as plt
+      plt.hist([1, 2, 2, 3, 3, 3], bins=3)
+      plt.savefig("verteilung.png", dpi=300)
+      plt.show()
+      ```
+      Die Datei landet im Ordner des Programms.
+    tests: [{p: 2}]
+
+  # ---------------------------------------------------------------- gleiche Länge
+  - typ: code_fehler
+    folien: [205]
+    deckt: [c13.laenge]
+    frage: |-
+      Welche Fehlermeldung erscheint?
+      ```python
+      import matplotlib.pyplot as plt
+      x = [1, 2, 3]
+      y = [10, 20]
+      plt.plot(x, y)
+      ```
+    antwort: |-
+      ```text
+      ValueError: x and y must have same first dimension, but have shapes (3,) and (2,)
+      ```
+      Zu jedem x-Wert gehört genau ein y-Wert – beide Listen müssen gleich lang sein.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [205]
+    deckt: [c13.laenge]
+    frage: |-
+      Welche Bedingung müssen die Listen `x` und `y` bei `plt.plot(x, y)` erfüllen?
+    antwort: |-
+      Sie müssen **gleich viele** Werte haben: `len(x) == len(y)`.
+
+  # ---------------------------------------------------------------- plotly
+  - typ: code_luecke
+    aufgaben: ["6.4"]
+    deckt: [c13.plotly]
+    frage: |-
+      Ergänze die plotly-Funktion für ein **Liniendiagramm** aus dem DataFrame.
+      ```python
+      import pandas as pd
+      import plotly.express as px
+      df = pd.DataFrame({"Monat": ["Jan", "Feb"],
+                         "Umsatz": [120, 135]})
+      fig = px.___(df, x="Monat", y="Umsatz")
+      fig.show()
+      ```
+    antwort: |-
+      `line`
+      ```python
+      import pandas as pd
+      import plotly.express as px
+      df = pd.DataFrame({"Monat": ["Jan", "Feb"],
+                         "Umsatz": [120, 135]})
+      fig = px.line(df, x="Monat", y="Umsatz")
+      fig.show()
+      ```
+      Bei plotly gibt man den DataFrame und die **Spaltennamen** an.
+    tests: [{p: 2}]
+
+  - typ: code_schreiben
+    folien: [209]
+    aufgaben: ["6.4"]
+    deckt: [c13.plotly]
+    frage: |-
+      Lies `temperatures.csv` (Spalten `Anlage`, `Datum`, `Temperatur`, `Luftfeuchtigkeit`) ein und erstelle einen **3D-Streuplot** (x = Datum, y = Temperatur, z = Luftfeuchtigkeit), die Punkte **nach Anlage eingefärbt**.
+    antwort: |-
+      ```python
+      import pandas as pd
+      import plotly.express as px
+      df = pd.read_csv("temperatures.csv")
+      fig = px.scatter_3d(df, x="Datum",
+                          y="Temperatur",
+                          z="Luftfeuchtigkeit",
+                          color="Anlage")
+      fig.show()
+      ```
+    tests: [{p: 1, dateien: {"temperatures.csv": "Anlage,Datum,Temperatur,Luftfeuchtigkeit\nMachine 1,2023-01-13,18.6,79.8\nMachine 2,2023-10-24,16.5,79.5\n"}}]
+
+  - typ: unterschied
+    folien: [204, 209]
+    aufgaben: ["6.4", "6.5"]
+    deckt: [c13.plotly]
+    frage: |-
+      Was ist der Unterschied zwischen Diagrammen aus **matplotlib** und aus **plotly express**?
+    antwort: |-
+      - matplotlib: der Standard für **statische** Diagramme (Linie, Balken, Histogramm), Daten meist als Listen.
+      - plotly express: **interaktive** Diagramme (zoomen, drehen, Werte beim Überfahren), direkt aus einem DataFrame über Spaltennamen – auch 3D.
+
+  - typ: begriff
+    aufgaben: ["6.4"]
+    deckt: [c13.plotly]
+    frage: |-
+      Wie änderst du bei einem fertigen plotly-Diagramm `fig` nachträglich den Titel?
+    antwort: |-
+      Mit `fig.update_layout(title="Neuer Titel")` – danach `fig.show()`.

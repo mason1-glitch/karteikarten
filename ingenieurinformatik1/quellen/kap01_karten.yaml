@@ -1,0 +1,683 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 1: Ein- und Ausgabe
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF) und Aufgaben/Lösungen im Ordner
+# Informatik-1---Aufgaben-und-Beispiele (Aufg. = Dateinummer, z. B. 03_7 → Aufg. 3.7).
+# Bauen:   python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap01_karten.yaml
+# Code:    python3 werkzeuge/karten.py code  ingenieurinformatik1/quellen/kap01_karten.yaml --python python3.9 --python python3.13
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap01_ein-ausgabe.csv
+matrix: ingenieurinformatik1/quellen/kap01_abdeckung.md
+titel: "Kapitel 1: Ein- und Ausgabe, Strings ausgeben, Kommentare"
+id_praefix: "K01."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+inhalte:
+  - {id: c01.print, gewicht: 3, folie: "48", aufgaben: "1.1, 2.3", text: "print() mit mehreren Argumenten (Leerzeichen dazwischen), Leerzeile mit print()"}
+  - {id: c01.end, gewicht: 2, folie: "52", aufgaben: "1.3, 4.3", text: "print(..., end=\"\") unterdrückt den Zeilenumbruch"}
+  - {id: c01.escape_n, gewicht: 2, folie: "52–53", aufgaben: "1.3, 1.4", text: "Escape-Sequenz \\n (Zeilenumbruch)"}
+  - {id: c01.escape_t, gewicht: 2, folie: "53", aufgaben: "1.3, 1.4", text: "Escape-Sequenz \\t (Tabulator)"}
+  - {id: c01.escape_rb, gewicht: 1, folie: "53", aufgaben: "1.3", text: "Steuerzeichen \\r (Wagenrücklauf) und \\b (Backspace)"}
+  - {id: c01.escape_quote, gewicht: 1, folie: "69", aufgaben: "", text: "Anführungszeichen und Backslash im String: \\\", \\', \\\\"}
+  - {id: c01.input, gewicht: 3, folie: "49, 52", aufgaben: "1.1, 1.2, 3.5", text: "input() liefert immer einen String; Prompt ohne Zeilenumbruch"}
+  - {id: c01.verkettung, gewicht: 3, folie: "135", aufgaben: "1.1, 1.2", text: "String-Verkettung mit + (nur str + str, Leerzeichen selbst setzen)"}
+  - {id: c01.wiederholung, gewicht: 1, folie: "", aufgaben: "1.3", text: "String-Wiederholung mit * (\"#\" * 5)"}
+  - {id: c01.fstring, gewicht: 3, folie: "116, 178", aufgaben: "2.6–2.9, 3.2–3.8, 5.1–6.3", text: "f-Strings: Variablen und Ausdrücke in {}"}
+  - {id: c01.format, gewicht: 2, folie: "", aufgaben: "3.11, 5.3", text: "Formatangabe {wert:.2f} (Nachkommastellen, rundet)"}
+  - {id: c01.kommentar, gewicht: 2, folie: "59–60", aufgaben: "2.1", text: "Kommentare: # einzeilig, \"\"\" mehrzeilig, auskommentieren"}
+
+karten:
+  # ---------------------------------------------------------------- print()
+  - typ: code_ausgabe
+    folien: [48]
+    aufgaben: ["2.3"]
+    deckt: [c01.print]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      spannung = 230
+      print("Spannung:", spannung, "V")
+      ```
+    antwort: |-
+      ```text
+      Spannung: 230 V
+      ```
+      print() trennt mehrere Argumente automatisch durch ein Leerzeichen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [52]
+    aufgaben: ["1.3"]
+    deckt: [c01.print]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print("Messung 1")
+      print()
+      print("Messung 2")
+      ```
+    antwort: |-
+      ```text
+      Messung 1
+
+      Messung 2
+      ```
+      print() ohne Argument gibt nur einen Zeilenumbruch aus → Leerzeile.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [48]
+    deckt: [c01.print]
+    frage: |-
+      Was nennt das Skript die **Parameterliste** einer Funktion, z. B. bei `print("Druck:", 2.5)`?
+    antwort: |-
+      Alles zwischen der öffnenden und der schließenden runden Klammer hinter dem Funktionsnamen – hier `"Druck:", 2.5`. Die Klammer zeigt an, dass es eine Funktion ist.
+
+  - typ: code_schreiben
+    folien: [48]
+    aufgaben: ["2.3"]
+    deckt: [c01.print]
+    frage: |-
+      Gegeben ist `druck = 2.5`. Schreib **eine** print-Zeile ohne `+`, die Folgendes ausgibt:
+      ```text
+      Druck: 2.5 bar
+      ```
+    antwort: |-
+      ```python
+      druck = 2.5
+      print("Druck:", druck, "bar")
+      ```
+      Mit Kommas getrennt fügt print() die Leerzeichen selbst ein und wandelt die Zahl automatisch in Text um.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- end=
+  - typ: code_ausgabe
+    folien: [52]
+    aufgaben: ["1.3"]
+    deckt: [c01.end]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print("Lade", end="")
+      print("...", end="")
+      print("fertig")
+      ```
+    antwort: |-
+      ```text
+      Lade...fertig
+      ```
+      `end=""` ersetzt den Zeilenumbruch am Ende durch nichts – die nächste Ausgabe folgt in derselben Zeile.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [52]
+    aufgaben: ["1.3"]
+    deckt: [c01.end]
+    frage: |-
+      Ergänze die Lücke, sodass genau `Status: OK` in **einer** Zeile erscheint.
+      ```python
+      print("Status:", end=___)
+      print("OK")
+      ```
+    antwort: |-
+      `end=" "` (ein Leerzeichen als String)
+      ```python
+      print("Status:", end=" ")
+      print("OK")
+      ```
+      ```text
+      Status: OK
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: unterschied
+    folien: [52]
+    aufgaben: ["1.3"]
+    deckt: [c01.end]
+    frage: |-
+      Was ist der Unterschied zwischen `print("A")` und `print("A", end="")`?
+    antwort: |-
+      - `print("A")`: hängt am Ende automatisch einen Zeilenumbruch an (Standard `end="\n"`).
+      - `print("A", end="")`: kein Zeilenumbruch – die nächste Ausgabe schreibt direkt hinter „A“ weiter.
+
+  # ---------------------------------------------------------------- \n
+  - typ: code_ausgabe
+    folien: [53]
+    aufgaben: ["1.4"]
+    deckt: [c01.escape_n]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print("Sensor A: OK\nSensor B: FEHLER")
+      ```
+    antwort: |-
+      ```text
+      Sensor A: OK
+      Sensor B: FEHLER
+      ```
+      `\n` (newline) erzeugt innerhalb des Strings einen Zeilenumbruch.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [48, 53]
+    deckt: [c01.escape_n, c01.print]
+    frage: |-
+      Was gibt der Code aus? Achte auf jedes Leerzeichen.
+      ```python
+      print("Druck:\n", 3, "bar")
+      ```
+    antwort: |-
+      ```text
+      Druck:
+       3 bar
+      ```
+      Die zweite Zeile beginnt mit einem Leerzeichen: print() setzt zwischen das erste Argument (endet mit `\n`) und `3` ein Trennleerzeichen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [53]
+    deckt: [c01.escape_n]
+    frage: |-
+      Was ist eine **Escape-Sequenz** (Steuerzeichen) in einem String?
+    antwort: |-
+      Eine Zeichenfolge, die mit einem Backslash `\` beginnt und nicht als Text, sondern als Steuerzeichen ausgegeben wird – z. B. `\n` für einen Zeilenvorschub (newline).
+
+  # ---------------------------------------------------------------- \t
+  - typ: begriff
+    folien: [53]
+    aufgaben: ["1.3", "1.4"]
+    deckt: [c01.escape_t]
+    frage: |-
+      Was bewirkt `\t` in einem String?
+    antwort: |-
+      Horizontaler Tabulator (tab): Der Cursor springt zur nächsten Tabulatorposition. Damit lassen sich Spalten untereinander ausrichten.
+
+  - typ: code_luecke
+    folien: [53]
+    aufgaben: ["1.4"]
+    deckt: [c01.escape_t]
+    frage: |-
+      Ergänze das Steuerzeichen, sodass Bezeichnung und Wert durch einen **Tabulator** getrennt sind.
+      ```python
+      print("Temperatur:___85 °C")
+      ```
+    antwort: |-
+      `\t`
+      ```python
+      print("Temperatur:\t85 °C")
+      ```
+    tests: [{p: 2}]
+
+  - typ: code_fehler
+    folien: [53]
+    aufgaben: ["1.4"]
+    deckt: [c01.escape_t]
+    frage: |-
+      Gewünscht ist ein Tabulator zwischen `Strom:` und `OK`. Was gibt der Code stattdessen aus, und wo liegt der Fehler?
+      ```python
+      print("Strom:/tOK")
+      ```
+    antwort: |-
+      ```text
+      Strom:/tOK
+      ```
+      Schrägstrich statt Backslash: Escape-Sequenzen beginnen mit `\`. Richtig: `print("Strom:\tOK")`.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- \r \b
+  - typ: begriff
+    folien: [53]
+    aufgaben: ["1.3"]
+    deckt: [c01.escape_rb]
+    frage: |-
+      Was bewirkt das Steuerzeichen `\r` (carriage return)?
+    antwort: |-
+      Wagenrücklauf: Der Cursor springt an den **Anfang der aktuellen Zeile**. Was danach ausgegeben wird, überschreibt den Text von links.
+
+  - typ: begriff
+    folien: [53]
+    aufgaben: ["1.3"]
+    deckt: [c01.escape_rb]
+    frage: |-
+      Was bewirkt das Steuerzeichen `\b` (backspace)?
+    antwort: |-
+      Der Cursor geht **ein Zeichen zurück**; das nächste ausgegebene Zeichen überschreibt das vorherige.
+
+  - typ: code_luecke
+    folien: [52, 53]
+    aufgaben: ["1.3"]
+    deckt: [c01.escape_rb, c01.end]
+    frage: |-
+      Der Fortschritt soll sich auf **derselben Zeile** aktualisieren (`10 %`, dann `20 %` …). Ergänze beide Lücken.
+      ```python
+      for p in range(0, 101, 10):
+          print(___ + str(p) + " %", end=___)
+      ```
+    antwort: |-
+      `"\r"` am Anfang (Cursor zurück an den Zeilenanfang) und `end=""` (kein Zeilenumbruch):
+      ```python
+      for p in range(0, 101, 10):
+          print("\r" + str(p) + " %", end="")
+      ```
+    tests: [{p: 2}]
+
+  # ---------------------------------------------------------------- \" \\
+  - typ: code_ausgabe
+    folien: [69]
+    deckt: [c01.escape_quote]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print("Bauteil \"A7\" geprüft")
+      ```
+    antwort: |-
+      ```text
+      Bauteil "A7" geprüft
+      ```
+      `\"` stellt ein Anführungszeichen dar, ohne den String zu beenden.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [53, 69]
+    deckt: [c01.escape_quote, c01.escape_t]
+    frage: |-
+      Gewünscht ist die Ausgabe `Ordner: C:\temp`. Warum klappt das nicht, und wie lautet die Korrektur?
+      ```python
+      print("Ordner: C:\temp")
+      ```
+    antwort: |-
+      `\t` wird als Tabulator gelesen – ausgegeben wird `Ordner: C:`, ein Tabulatorsprung und `emp`. Einen Backslash selbst schreibt man doppelt:
+      ```python
+      print("Ordner: C:\\temp")
+      ```
+      ```text
+      Ordner: C:\temp
+      ```
+    tests: [{p: 1}, {p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- input()
+  - typ: begriff
+    folien: [49]
+    aufgaben: ["1.2"]
+    deckt: [c01.input]
+    frage: |-
+      Welchen Datentyp liefert `input()` zurück, wenn der Nutzer `230` eintippt?
+    antwort: |-
+      Immer `str` (Text), also `"230"`. Zum Rechnen muss man umwandeln, z. B. `int(input())` oder `float(input())`.
+
+  - typ: code_ausgabe
+    folien: [49]
+    aufgaben: ["1.2"]
+    deckt: [c01.input, c01.verkettung]
+    frage: |-
+      Der Nutzer tippt nacheinander `12` und `5` ein (jeweils Enter). Was gibt der Code aus?
+      ```python
+      a = input()
+      b = input()
+      print(a + b)
+      ```
+    antwort: |-
+      ```text
+      125
+      ```
+      `input()` liefert Strings; `+` hängt Strings aneinander, statt zu addieren.
+    tests: [{p: 1, t: 1, eingabe: "12\n5\n"}]
+
+  - typ: code_fehler
+    folien: [49, 75]
+    aufgaben: ["1.2"]
+    deckt: [c01.input]
+    frage: |-
+      Der Nutzer tippt `40` (Länge in mm). Erwartet wird `80`. Was gibt der Code aus, und wie korrigierst du ihn?
+      ```python
+      laenge = input()
+      print(laenge * 2)
+      ```
+    antwort: |-
+      ```text
+      4040
+      ```
+      `"40" * 2` wiederholt den Text. Korrektur: Eingabe in eine Zahl umwandeln.
+      ```python
+      laenge = int(input())
+      print(laenge * 2)
+      ```
+      ```text
+      80
+      ```
+    tests: [{p: 1, t: 1, eingabe: "40\n"}, {p: 2, t: 2, eingabe: "40\n"}]
+
+  - typ: code_schreiben
+    folien: [49, 75]
+    aufgaben: ["3.5"]
+    deckt: [c01.input]
+    frage: |-
+      Schreib Code, der einen Druck in bar als **Kommazahl** einliest (Eingabeaufforderung `Druck in bar: `) und den doppelten Wert ausgibt.
+    antwort: |-
+      ```python
+      druck = float(input("Druck in bar: "))
+      print(druck * 2)
+      ```
+      Bei der Eingabe `2.5` erscheint `5.0`. `int()` würde bei `2.5` mit einem ValueError abbrechen.
+    tests: [{p: 1, eingabe: "2.5\n"}]
+
+  - typ: begriff
+    folien: [52]
+    deckt: [c01.input]
+    frage: |-
+      Warum steht die Eingabe des Nutzers direkt hinter dem Text von `input("Bitte Namen eingeben:")` und nicht in einer neuen Zeile?
+    antwort: |-
+      `input()` erzeugt – anders als `print()` – **keinen** automatischen Zeilenvorschub. Abhilfe: `\n` an das Ende des Prompt-Textes setzen.
+
+  # ---------------------------------------------------------------- Verkettung +
+  - typ: code_ausgabe
+    folien: [135]
+    deckt: [c01.verkettung]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      bauteil = "Welle"
+      nummer = "07"
+      print(bauteil + "-" + nummer)
+      ```
+    antwort: |-
+      ```text
+      Welle-07
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [135]
+    aufgaben: ["1.2"]
+    deckt: [c01.verkettung]
+    frage: |-
+      Welche Fehlermeldung erscheint, und wie behebst du den Fehler?
+      ```python
+      drehzahl = 1500
+      print("Drehzahl: " + drehzahl + " U/min")
+      ```
+    antwort: |-
+      Letzte Zeile der Fehlermeldung:
+      ```text
+      TypeError: can only concatenate str (not "int") to str
+      ```
+      `+` verbindet nur Strings mit Strings. Korrektur: Zahl vorher umwandeln.
+      ```python
+      drehzahl = 1500
+      print("Drehzahl: " + str(drehzahl) + " U/min")
+      ```
+    tests: [{p: 1, t: 1}, {p: 2}]
+
+  - typ: code_ausgabe
+    folien: [135]
+    aufgaben: ["1.1"]
+    deckt: [c01.verkettung]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      name = "Presse"
+      print("Maschine" + name + "aktiv")
+      ```
+    antwort: |-
+      ```text
+      MaschinePresseaktiv
+      ```
+      Bei `+` fügt Python keine Leerzeichen ein – die muss man selbst in die Strings schreiben.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [48, 135]
+    deckt: [c01.verkettung, c01.print]
+    frage: |-
+      Was ist der Unterschied zwischen `print("Wert:", x)` und `print("Wert:" + str(x))`?
+    antwort: |-
+      - Komma: print() setzt ein **Leerzeichen** zwischen die Teile und akzeptiert jeden Datentyp → `Wert: 5`.
+      - `+`: verbindet nur **Strings**, ohne Leerzeichen → `Wert:5`; Zahlen vorher mit `str()` umwandeln.
+
+  # ---------------------------------------------------------------- Wiederholung *
+  - typ: code_ausgabe
+    aufgaben: ["1.3"]
+    deckt: [c01.wiederholung]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print("#" * 4 + "." * 2)
+      ```
+    antwort: |-
+      ```text
+      ####..
+      ```
+      `str * int` wiederholt den String; danach verbindet `+` beide Teile.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["1.3"]
+    deckt: [c01.wiederholung]
+    frage: |-
+      Schreib eine Zeile, die eine Trennlinie aus **20 Bindestrichen** ausgibt, ohne die Striche einzeln zu tippen.
+    antwort: |-
+      ```python
+      print("-" * 20)
+      ```
+      ```text
+      --------------------
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- f-Strings
+  - typ: code_ausgabe
+    aufgaben: ["2.6"]
+    deckt: [c01.fstring]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      kraft = 250
+      flaeche = 50
+      print(f"Spannung: {kraft / flaeche} N/mm²")
+      ```
+    antwort: |-
+      ```text
+      Spannung: 5.0 N/mm²
+      ```
+      Im f-String wird der Ausdruck in `{}` ausgewertet; `/` liefert immer einen float → `5.0`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["2.6"]
+    deckt: [c01.fstring]
+    frage: |-
+      Ergänze die Lücke, sodass `Sensor T3: 21.5 °C` ausgegeben wird.
+      ```python
+      sensor = "T3"
+      wert = 21.5
+      print(___"Sensor {sensor}: {wert} °C")
+      ```
+    antwort: |-
+      Ein `f` direkt vor dem Anführungszeichen:
+      ```python
+      sensor = "T3"
+      wert = 21.5
+      print(f"Sensor {sensor}: {wert} °C")
+      ```
+      ```text
+      Sensor T3: 21.5 °C
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_fehler
+    aufgaben: ["2.6"]
+    deckt: [c01.fstring]
+    frage: |-
+      Gewünscht ist `Temperatur: 85 °C`. Was erscheint stattdessen, und was fehlt?
+      ```python
+      temperatur = 85
+      print("Temperatur: {temperatur} °C")
+      ```
+    antwort: |-
+      ```text
+      Temperatur: {temperatur} °C
+      ```
+      Das `f` vor dem String fehlt – ohne `f` sind die geschweiften Klammern normaler Text: `print(f"Temperatur: {temperatur} °C")`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    aufgaben: ["2.9"]
+    deckt: [c01.fstring]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for i in range(2):
+          print(f"Messung {i + 1}")
+      ```
+    antwort: |-
+      ```text
+      Messung 1
+      Messung 2
+      ```
+      In `{}` darf ein ganzer Ausdruck stehen; `i` läuft von 0 bis 1.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    aufgaben: ["2.6"]
+    deckt: [c01.fstring]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      name = "Fräse"
+      text = f"""Maschine: {name}
+      Status: OK"""
+      print(text)
+      ```
+    antwort: |-
+      ```text
+      Maschine: Fräse
+      Status: OK
+      ```
+      Ein String in dreifachen Anführungszeichen darf über mehrere Zeilen gehen; der Zeilenumbruch bleibt erhalten.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    aufgaben: ["2.6"]
+    deckt: [c01.fstring]
+    frage: |-
+      Was ist ein **f-String**, und welchen Vorteil hat er gegenüber `+`?
+    antwort: |-
+      Ein String mit vorangestelltem `f`, z. B. `f"ID: {nr}"`. Ausdrücke in `{}` werden ausgewertet und eingesetzt; Zahlen werden dabei automatisch in Text umgewandelt – kein `str()` nötig.
+
+  # ---------------------------------------------------------------- Formatangabe :.2f
+  - typ: code_ausgabe
+    aufgaben: ["3.11"]
+    deckt: [c01.format]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      guthaben = 1234.5678
+      print(f"{guthaben:.2f} €")
+      ```
+    antwort: |-
+      ```text
+      1234.57 €
+      ```
+      `:.2f` zeigt genau zwei Nachkommastellen und **rundet** dabei.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["5.3"]
+    deckt: [c01.format]
+    frage: |-
+      Ergänze die Formatangabe, sodass `Volumen: 6.4 l` ausgegeben wird (eine Nachkommastelle).
+      ```python
+      volumen = 6.369
+      print(f"Volumen: {volumen___} l")
+      ```
+    antwort: |-
+      `:.1f`
+      ```python
+      volumen = 6.369
+      print(f"Volumen: {volumen:.1f} l")
+      ```
+      ```text
+      Volumen: 6.4 l
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_ausgabe
+    aufgaben: ["3.11"]
+    deckt: [c01.format]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      stueck = 7
+      print(f"{stueck:.2f}")
+      ```
+    antwort: |-
+      ```text
+      7.00
+      ```
+      Die Formatangabe `f` gibt auch eine Ganzzahl als Kommazahl mit der gewünschten Stellenzahl aus.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [75]
+    aufgaben: ["2.4", "3.11"]
+    deckt: [c01.format]
+    frage: |-
+      Was ist der Unterschied zwischen `int(9.99)` und `f"{9.99:.0f}"`?
+    antwort: |-
+      - `int(9.99)` **schneidet ab** → Zahl `9` (int).
+      - `f"{9.99:.0f}"` **rundet** für die Anzeige → Text `"10"` (str).
+      ```python
+      print(int(9.99))
+      print(f"{9.99:.0f}")
+      ```
+      ```text
+      9
+      10
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Kommentare
+  - typ: code_ausgabe
+    folien: [59, 60]
+    aufgaben: ["2.1"]
+    deckt: [c01.kommentar]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      # print("Start")
+      print("Messung läuft")  # Status
+      #print("Debug")
+      ```
+    antwort: |-
+      ```text
+      Messung läuft
+      ```
+      Alles hinter `#` bis zum Zeilenende wird ignoriert.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [59]
+    aufgaben: ["2.1"]
+    deckt: [c01.kommentar]
+    frage: |-
+      Was bedeutet es, eine Codezeile **auszukommentieren**, und wozu ist das nützlich?
+    antwort: |-
+      Man setzt ein `#` davor, sodass Python die Zeile nicht mehr ausführt, sie aber im Code stehen bleibt – praktisch bei der Fehlersuche (z. B. Debug-Ausgaben abschalten).
+
+  - typ: code_ausgabe
+    folien: [60]
+    deckt: [c01.kommentar]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      """
+      print("A")
+      """
+      print("B")
+      ```
+    antwort: |-
+      ```text
+      B
+      ```
+      Alles zwischen den dreifachen Anführungszeichen ist ein mehrzeiliger Kommentarblock und wird nicht ausgeführt.
+    tests: [{p: 1, t: 1}]

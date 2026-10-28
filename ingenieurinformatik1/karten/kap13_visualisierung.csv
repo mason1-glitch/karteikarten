@@ -1,0 +1,112 @@
+"Zeichne den Temperaturverlauf `stunden = [8, 9, 10]`, `temp = [72, 78, 81]` als **Liniendiagramm** und zeige es an.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7277f4f2c0.png)
+Erst die x-Werte, dann die y-Werte.
+
+*F. 205 · Aufg. 2.1*"
+"Ergänze die Funktion, die eine **Linie** durch die Punkte zeichnet.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c9373330a3.png)","`plot`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_73d01774ff.png)
+
+*F. 205 · Aufg. 2.9*"
+"Was ist **pyplot**, und wie wird es üblicherweise importiert?","Ein Modul der Bibliothek matplotlib zum einfachen Erstellen von Plots und Diagrammen: `import matplotlib.pyplot as plt`.
+
+*F. 205*"
+"Wie sieht die gezeichnete Linie aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_557fe38eff.png)","**Rot** (`r`), **gestrichelt** (`--`), mit **Kreis-Markern** (`o`) an den Messpunkten:
+![Rote gestrichelte Linie mit Kreismarkern](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/plot_formatstring.png)
+
+*F. 206 · Aufg. 2.1*"
+"Die Linie soll grün, **gestrichelt** und mit Kreis-Markern erscheinen. Ergänze den Linienstil.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_37a10b1edc.png)","`""--""`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_be67a2b9a9.png)
+
+*F. 206*"
+"Ergänze die Funktion, die die **x-Achse** beschriftet.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b86fa1b8cc.png)","`xlabel` (die y-Achse entsprechend mit `ylabel`)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6c93f10176.png)
+
+*F. 205 · Aufg. 2.1*"
+"Im angezeigten Diagramm fehlt der Titel. Warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_73f4a60091.png)","`plt.show()` zeigt das Diagramm an und schließt es; der Titel kommt danach zu spät. Alle Beschriftungen gehören **vor** `plt.show()`.
+
+*F. 205, 208*"
+"Zeichne die Punkte `[8, 9, 10]` / `[72, 78, 81]` als Linie mit Titel `Temperaturverlauf`, Achsenbeschriftungen `Uhrzeit (h)` und `Temperatur (°C)` sowie einem Gitternetz.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fdf5a5db6d.png)
+
+*F. 205 · Aufg. 2.1, 6.1*"
+"Zeichne zwei Linien in **ein** Diagramm – `[1, 2, 3]` als „Anstieg“ und `[3, 2, 1]` als „Abstieg“ über `x = [1, 2, 3]` – und zeige eine Legende an.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_129a9b8021.png)
+
+*F. 205 · Aufg. 2.1*"
+"Die Legende bleibt leer. Was fehlt?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9c9974da33.png)","Die Linie hat keinen Namen: Erst `label=""Temperatur""` in `plt.plot(...)` gibt der Legende einen Eintrag.
+
+*F. 205*"
+"Welches Diagramm entsteht?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_83ae0f56cb.png)","Ein **Balkendiagramm** mit drei Balken der Höhe 45, 22 und 18; die Kategorien stehen an der x-Achse.
+![Balkendiagramm Mitarbeiter pro Abteilung](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/plot_balken.png)
+
+*F. 207 · Aufg. 6.5*"
+"Die Anzahl jedes Vokals soll als **Balkendiagramm** erscheinen. Ergänze die Funktion.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ba6490666d.png)","`bar`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_94aec998c0.png)
+
+*F. 207 · Aufg. 6.1*"
+"`df` hat eine Spalte `Marke`. Zeichne ein Balkendiagramm mit der **Anzahl der Fahrzeuge je Marke**.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8281bdef5e.png)
+`value_counts()` zählt je Marke; `index` = Marken, `values` = Anzahlen.
+
+*F. 207 · Aufg. 6.5*"
+"Was zeigt ein **Histogramm**, und was legt `bins` fest?","Die **Häufigkeitsverteilung** von Messwerten: Der Wertebereich wird in Klassen eingeteilt, die Balkenhöhe zeigt, wie viele Werte in jede Klasse fallen. `bins` ist die Anzahl dieser Klassen (Balken).
+
+*F. 207 · Aufg. 6.5*"
+"Ergänze den Parameter, sodass das Histogramm **6 Klassen** hat.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c820059152.png)","`bins`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c633dee885.png)
+
+*F. 207 · Aufg. 6.5*"
+"Was ist der Unterschied zwischen `plt.plot(x, y)` und `plt.scatter(x, y)`?","- `plot`: verbindet die Punkte zu einer **Linie** (Verlauf, z. B. über die Zeit).
+- `scatter`: zeichnet nur **einzelne Punkte** – geeignet, um den Zusammenhang zweier Messgrößen zu zeigen.
+
+*F. 205, 209 · Aufg. 6.5*"
+"Stelle `temperatur = [20, 25, 30]` (x) gegen `leistung = [80, 88, 85]` (y) als **Streudiagramm** mit Achsenbeschriftung dar.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_160ebfa05d.png)
+
+*Aufg. 6.5*"
+"Zeige ein Balkendiagramm und ein Histogramm **nebeneinander** in einer Abbildung, jeweils mit eigenem Titel.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_06a3494f74.png)
+`subplots(1, 2)`: 1 Zeile, 2 Spalten; `tight_layout()` verhindert Überlappungen.
+
+*Aufg. 6.5*"
+"Was ist der Unterschied zwischen `plt.title(""…"")` und `ax1.set_title(""…"")`?","- `plt.title`: beschriftet das **aktuelle** Diagramm.
+- `ax1.set_title`: beschriftet gezielt das Teildiagramm `ax1` aus `plt.subplots()`. Entsprechend `ax1.set_xlabel`, `ax1.set_ylabel`.
+
+*Aufg. 6.5*"
+"Die gespeicherte Datei `diagramm.png` ist leer. Warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9d01577df0.png)","Nach `plt.show()` ist die Grafik geschlossen; `savefig` speichert dann ein leeres Bild. Richtig: erst `plt.savefig(...)`, dann `plt.show()`.
+
+*F. 208 · Aufg. 6.5*"
+"Das Diagramm soll mit **300 dpi** als PNG gespeichert werden. Ergänze den Parameter.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_92341218da.png)","`dpi`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d163e6df17.png)
+Die Datei landet im Ordner des Programms.
+
+*F. 208 · Aufg. 6.5*"
+"Welche Fehlermeldung erscheint?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_71c5ad3031.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0b15314f2e.png)
+Zu jedem x-Wert gehört genau ein y-Wert – beide Listen müssen gleich lang sein.
+
+*F. 205*"
+"Welche Bedingung müssen die Listen `x` und `y` bei `plt.plot(x, y)` erfüllen?","Sie müssen **gleich viele** Werte haben: `len(x) == len(y)`.
+
+*F. 205*"
+"Ergänze die plotly-Funktion für ein **Liniendiagramm** aus dem DataFrame.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_08f004a24c.png)","`line`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_13300d8e32.png)
+Bei plotly gibt man den DataFrame und die **Spaltennamen** an.
+
+*Aufg. 6.4*"
+"Lies `temperatures.csv` (Spalten `Anlage`, `Datum`, `Temperatur`, `Luftfeuchtigkeit`) ein und erstelle einen **3D-Streuplot** (x = Datum, y = Temperatur, z = Luftfeuchtigkeit), die Punkte **nach Anlage eingefärbt**.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_eef12d6fb0.png)
+
+*F. 209 · Aufg. 6.4*"
+"Was ist der Unterschied zwischen Diagrammen aus **matplotlib** und aus **plotly express**?","- matplotlib: der Standard für **statische** Diagramme (Linie, Balken, Histogramm), Daten meist als Listen.
+- plotly express: **interaktive** Diagramme (zoomen, drehen, Werte beim Überfahren), direkt aus einem DataFrame über Spaltennamen – auch 3D.
+
+*F. 204, 209 · Aufg. 6.4, 6.5*"
+"Wie änderst du bei einem fertigen plotly-Diagramm `fig` nachträglich den Titel?","Mit `fig.update_layout(title=""Neuer Titel"")` – danach `fig.show()`.
+
+*Aufg. 6.4*"

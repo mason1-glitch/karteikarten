@@ -1,0 +1,771 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 9: Funktionen
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF), Aufgaben 5.1–5.6.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap09_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap09_funktionen.csv
+matrix: ingenieurinformatik1/quellen/kap09_abdeckung.md
+titel: "Kapitel 9: Funktionen (def, return, Parameter, Gültigkeit)"
+id_praefix: "K09."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Aufg. 5.6 erklärt, eine Funktion erhalte „eine Kopie des Wertes“. Die Karten formulieren genauer: Der Parameter ist eine eigene lokale Variable, eine Neuzuweisung wirkt nicht nach außen. Eine als „Ergänzung“ markierte Karte zeigt, dass eine Liste, die in der Funktion verändert wird (append), auch außen verändert ist."
+
+inhalte:
+  - {id: c09.def, gewicht: 3, folie: "171, 180", aufgaben: "5.1–5.6", text: "Funktion definieren: def name(parameter): + eingerückter Rumpf"}
+  - {id: c09.aufruf, gewicht: 3, folie: "177–178", aufgaben: "5.2", text: "Aufruf und Programmablauf: Definition läuft erst beim Aufruf, Sprung hin und zurück"}
+  - {id: c09.return, gewicht: 3, folie: "173, 180", aufgaben: "5.3, 5.5", text: "return gibt einen Wert zurück und beendet die Funktion"}
+  - {id: c09.print_return, gewicht: 3, folie: "172", aufgaben: "5.3", text: "print() vs. return; Funktion ohne return liefert None"}
+  - {id: c09.parameter, gewicht: 2, folie: "176", aufgaben: "5.1", text: "Parameter: Anzahl und Reihenfolge beim Aufruf"}
+  - {id: c09.typeerror, gewicht: 2, folie: "176", aufgaben: "5.1", text: "TypeError bei fehlenden oder zu vielen Argumenten"}
+  - {id: c09.nameerror, gewicht: 2, folie: "175", aufgaben: "5.1", text: "Erst definieren, dann aufrufen (NameError)"}
+  - {id: c09.mehrere, gewicht: 2, folie: "", aufgaben: "5.2, 5.6", text: "Mehrere Rückgabewerte (return a, b) und Entpacken"}
+  - {id: c09.lokal, gewicht: 2, folie: "182", aufgaben: "5.6", text: "Lokale Variablen: nur innerhalb der Funktion gültig"}
+  - {id: c09.global, gewicht: 1, folie: "183", aufgaben: "5.6", text: "Schlüsselwort global"}
+  - {id: c09.kopie, gewicht: 2, folie: "182", aufgaben: "5.6", text: "Neuzuweisung eines Parameters ändert die Variable des Aufrufers nicht"}
+  - {id: c09.begriffe, gewicht: 1, folie: "172–174", aufgaben: "", text: "Prozedur, Funktion, Methode"}
+  - {id: c09.modular, gewicht: 1, folie: "170", aufgaben: "5.3", text: "Wozu Funktionen: Wiederverwendung, Modularisierung (Refactoring)"}
+  - {id: c09.trace, gewicht: 1, folie: "177–178", aufgaben: "5.2", text: "Ablauf mit Trace-Ausgaben/Debugger verfolgen"}
+
+karten:
+  # ---------------------------------------------------------------- def
+  - typ: code_ausgabe
+    folien: [171]
+    deckt: [c09.def]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def begruessung(name):
+          print("Hallo", name)
+
+      begruessung("Team")
+      begruessung("Labor")
+      ```
+    antwort: |-
+      ```text
+      Hallo Team
+      Hallo Labor
+      ```
+      Die Funktion wird einmal definiert und zweimal mit verschiedenen Werten aufgerufen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [171]
+    deckt: [c09.def]
+    frage: |-
+      Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was fehlt?
+      ```python
+      def leistung(spannung, strom)
+          return spannung * strom
+      ```
+    antwort: |-
+      Einen **SyntaxError**: Nach der schließenden Klammer fehlt der **Doppelpunkt**.
+      ```python
+      def leistung(spannung, strom):
+          return spannung * strom
+      ```
+    tests: [{p: 1, abbruch: SyntaxError}, {p: 2}]
+
+  - typ: code_schreiben
+    folien: [171, 180]
+    aufgaben: ["5.3"]
+    deckt: [c09.def, c09.return]
+    frage: |-
+      Schreib eine Funktion `kreisflaeche(d)`, die für den Durchmesser `d` die Fläche A = π · d² / 4 **zurückgibt** (`math.pi`). Gib das Ergebnis für `d = 2` mit zwei Nachkommastellen aus.
+    antwort: |-
+      ```python
+      import math
+
+      def kreisflaeche(d):
+          return math.pi * d ** 2 / 4
+
+      print(f"{kreisflaeche(2):.2f}")
+      ```
+      ```text
+      3.14
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [171]
+    deckt: [c09.def]
+    frage: |-
+      Aus welchen Teilen besteht die erste Zeile einer Funktionsdefinition, und was folgt darunter?
+    antwort: |-
+      Schlüsselwort `def`, Funktionsname, runde Klammern mit der Parameterliste (darf leer sein, die Klammern **nicht** weglassen) und ein Doppelpunkt. Darunter folgt eingerückt der Funktionsrumpf (Code-Suite).
+
+  # ---------------------------------------------------------------- Aufruf / Ablauf
+  - typ: code_ausgabe
+    folien: [178]
+    aufgaben: ["5.2"]
+    deckt: [c09.aufruf]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def melden():
+          print("B")
+
+      print("A")
+      melden()
+      print("C")
+      ```
+    antwort: |-
+      ```text
+      A
+      B
+      C
+      ```
+      Beim Aufruf springt das Programm in die Funktion und danach zurück hinter die Aufrufstelle.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [178]
+    aufgaben: ["5.2"]
+    deckt: [c09.aufruf]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def starten():
+          print("Motor startet")
+
+      print("Programm fertig")
+      ```
+    antwort: |-
+      ```text
+      Programm fertig
+      ```
+      Eine Funktion wird durch `def` nur **definiert**; ihr Rumpf läuft erst, wenn sie aufgerufen wird.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [178]
+    aufgaben: ["5.2"]
+    deckt: [c09.aufruf, c09.trace]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def quadrat(x):
+          print("in quadrat")
+          return x * x
+
+      print("vorher")
+      y = quadrat(3)
+      print("nachher", y)
+      ```
+    antwort: |-
+      ```text
+      vorher
+      in quadrat
+      nachher 9
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [178]
+    aufgaben: ["5.2"]
+    deckt: [c09.aufruf]
+    frage: |-
+      Was passiert im Programmablauf, wenn eine Funktion aufgerufen wird?
+    antwort: |-
+      Das Programm springt in die Funktion, führt ihren Rumpf aus und springt dann zurück zur Aufrufstelle, wo es mit dem Rückgabewert weitermacht.
+
+  # ---------------------------------------------------------------- return
+  - typ: code_ausgabe
+    folien: [180]
+    deckt: [c09.return]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def volumen(l, b, h):
+          return l * b * h
+
+      v = volumen(2, 3, 4)
+      print(v / 2)
+      ```
+    antwort: |-
+      ```text
+      12.0
+      ```
+      Der Rückgabewert 24 wird in `v` gespeichert und weiterverarbeitet.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [180]
+    deckt: [c09.return]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def pruefe(wert):
+          if wert < 0:
+              return "negativ"
+          return "ok"
+
+      print(pruefe(-2))
+      print(pruefe(5))
+      ```
+    antwort: |-
+      ```text
+      negativ
+      ok
+      ```
+      `return` beendet die Funktion sofort – bei -2 wird die letzte Zeile nicht mehr erreicht.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [180]
+    aufgaben: ["5.5"]
+    deckt: [c09.return]
+    frage: |-
+      Die Funktion soll den Durchsatz **zurückgeben**. Ergänze das Schlüsselwort.
+      ```python
+      def durchsatz(stueck, stunden):
+          ___ stueck / stunden
+
+      print(durchsatz(480, 8))
+      ```
+    antwort: |-
+      `return`
+      ```python
+      def durchsatz(stueck, stunden):
+          return stueck / stunden
+
+      print(durchsatz(480, 8))
+      ```
+      ```text
+      60.0
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: begriff
+    folien: [173, 180]
+    deckt: [c09.return]
+    frage: |-
+      Was bewirkt `return wert` in einer Funktion?
+    antwort: |-
+      Die Funktion endet und liefert `wert` an die Aufrufstelle zurück. Dort kann man ihn speichern (`x = f()`) oder direkt weiterverwenden.
+
+  # ---------------------------------------------------------------- print vs return
+  - typ: code_ausgabe
+    aufgaben: ["5.3"]
+    deckt: [c09.print_return]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def addiere(a, b):
+          print(a + b)
+
+      ergebnis = addiere(3, 4)
+      print("Rückgabe:", ergebnis)
+      ```
+    antwort: |-
+      ```text
+      7
+      Rückgabe: None
+      ```
+      Die Funktion **gibt aus**, gibt aber nichts **zurück** – ohne `return` ist der Rückgabewert `None`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    aufgaben: ["5.3"]
+    deckt: [c09.print_return]
+    frage: |-
+      Was erscheint auf dem Bildschirm, und wie korrigierst du die Funktion?
+      ```python
+      def flaeche(b, h):
+          print(b * h)
+
+      gesamt = flaeche(2, 3) + flaeche(4, 5)
+      ```
+    antwort: |-
+      Zuerst die beiden Ausgaben, dann die letzte Zeile der Fehlermeldung:
+      ```text
+      6
+      20
+      TypeError: unsupported operand type(s) for +: 'NoneType' and 'NoneType'
+      ```
+      Beide Aufrufe liefern `None`. Mit `return b * h` statt `print(b * h)` ergibt `gesamt` 26.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    aufgaben: ["5.3"]
+    deckt: [c09.print_return]
+    frage: |-
+      Was ist der Unterschied zwischen `print(ergebnis)` und `return ergebnis` in einer Funktion?
+    antwort: |-
+      - `print()`: zeigt den Wert auf dem Bildschirm; die Funktion liefert trotzdem `None`.
+      - `return`: gibt den Wert an den Aufrufer zurück, der damit weiterrechnen kann; auf dem Bildschirm erscheint nichts.
+
+  - typ: code_ausgabe
+    aufgaben: ["5.3"]
+    deckt: [c09.print_return]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def teile(a, b):
+          if b == 0:
+              return None
+          return a / b
+
+      print(teile(6, 0))
+      print(teile(6, 4))
+      ```
+    antwort: |-
+      ```text
+      None
+      1.5
+      ```
+      `None` steht für „kein Ergebnis“. Der Aufrufer prüft das mit `if ergebnis is not None:`.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Parameter
+  - typ: code_ausgabe
+    folien: [176]
+    aufgaben: ["5.1"]
+    deckt: [c09.parameter]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def bewegen(richtung, tempo):
+          print(richtung, "mit", tempo)
+
+      bewegen(50, "links")
+      ```
+    antwort: |-
+      ```text
+      50 mit links
+      ```
+      Die Werte werden nach der **Reihenfolge** zugeordnet: `richtung = 50`, `tempo = "links"`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [176]
+    deckt: [c09.parameter]
+    frage: |-
+      Was legt die Parameterliste in der def-Zeile fest, und was muss beim Aufruf übereinstimmen?
+    antwort: |-
+      Sie legt Namen und **Reihenfolge** der Werte fest, die die Funktion erwartet. Beim Aufruf müssen Anzahl und Reihenfolge der übergebenen Werte dazu passen.
+
+  - typ: code_schreiben
+    folien: [176]
+    deckt: [c09.parameter, c09.return]
+    frage: |-
+      Schreib eine Funktion `spannung(kraft, flaeche)`, die σ = F / A zurückgibt, und gib das Ergebnis für F = 500 N und A = 25 mm² aus.
+    antwort: |-
+      ```python
+      def spannung(kraft, flaeche):
+          return kraft / flaeche
+
+      print(spannung(500, 25), "N/mm²")
+      ```
+      ```text
+      20.0 N/mm²
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- TypeError Argumente
+  - typ: code_fehler
+    folien: [176]
+    aufgaben: ["5.1"]
+    deckt: [c09.typeerror]
+    frage: |-
+      Welche Fehlermeldung erscheint?
+      ```python
+      def ventil(nr, zustand):
+          print("Ventil", nr, zustand)
+
+      ventil(3)
+      ```
+    antwort: |-
+      ```text
+      TypeError: ventil() missing 1 required positional argument: 'zustand'
+      ```
+      Zwei Parameter, aber nur ein Wert beim Aufruf. Richtig z. B.: `ventil(3, "offen")`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [176]
+    aufgaben: ["5.1"]
+    deckt: [c09.typeerror]
+    frage: |-
+      Was bedeutet diese Fehlermeldung?
+      ```text
+      TypeError: ventil() takes 2 positional arguments but 3 were given
+      ```
+    antwort: |-
+      `ventil` ist mit **zwei** Parametern definiert, wurde aber mit **drei** Werten aufgerufen. Aufruf und Parameterliste passen nicht zusammen.
+
+  # ---------------------------------------------------------------- NameError
+  - typ: code_fehler
+    folien: [175]
+    aufgaben: ["5.1"]
+    deckt: [c09.nameerror]
+    frage: |-
+      Welche Fehlermeldung erscheint, und wie behebst du sie?
+      ```python
+      starten()
+
+      def starten():
+          print("Start")
+      ```
+    antwort: |-
+      ```text
+      NameError: name 'starten' is not defined
+      ```
+      Die Funktion wird aufgerufen, bevor sie definiert ist. Die Definition muss **vor** dem Aufruf stehen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [175]
+    deckt: [c09.nameerror]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def a():
+          b()
+
+      def b():
+          print("b läuft")
+
+      a()
+      ```
+    antwort: |-
+      ```text
+      b läuft
+      ```
+      Kein Fehler: Entscheidend ist, dass `b` **beim Aufruf** von `a()` schon definiert ist – und das ist sie, weil `a()` erst in der letzten Zeile aufgerufen wird.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [175]
+    deckt: [c09.nameerror]
+    frage: |-
+      Welche Reihenfolge von Definition und Aufruf schreibt Python bei Funktionen vor, und welcher Fehler entsteht sonst?
+    antwort: |-
+      Erst definieren, dann aufrufen. Ruft man eine Funktion auf, bevor `def` ausgeführt wurde, entsteht ein **NameError**.
+
+  # ---------------------------------------------------------------- mehrere Rückgabewerte
+  - typ: code_ausgabe
+    aufgaben: ["5.2", "5.6"]
+    deckt: [c09.mehrere]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def zerlege(minuten):
+          return minuten // 60, minuten % 60
+
+      h, m = zerlege(135)
+      print(h, "h", m, "min")
+      ```
+    antwort: |-
+      ```text
+      2 h 15 min
+      ```
+      `return a, b` gibt zwei Werte zurück; links vom `=` werden sie auf zwei Variablen verteilt.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["5.2"]
+    deckt: [c09.mehrere]
+    frage: |-
+      Die Funktion liefert Start- und Endzeit. Ergänze die linke Seite, sodass beide Werte in eigenen Variablen landen.
+      ```python
+      def zeiten():
+          return 6, 22
+
+      ___ = zeiten()
+      print(ende - start)
+      ```
+    antwort: |-
+      `start, ende`
+      ```python
+      def zeiten():
+          return 6, 22
+
+      start, ende = zeiten()
+      print(ende - start)
+      ```
+      ```text
+      16
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["5.6"]
+    deckt: [c09.mehrere, c09.kopie]
+    frage: |-
+      Schreib eine Funktion `tausche(x, y)`, die beide Werte vertauscht **zurückgibt**, und vertausche damit `links = 3` und `rechts = 8`.
+    antwort: |-
+      ```python
+      def tausche(x, y):
+          return y, x
+
+      links = 3
+      rechts = 8
+      links, rechts = tausche(links, rechts)
+      print(links, rechts)
+      ```
+      ```text
+      8 3
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- lokal
+  - typ: code_ausgabe
+    folien: [182]
+    aufgaben: ["5.6"]
+    deckt: [c09.lokal]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def kalibrieren():
+          offset = 5
+          print("innen:", offset)
+
+      offset = 0
+      kalibrieren()
+      print("außen:", offset)
+      ```
+    antwort: |-
+      ```text
+      innen: 5
+      außen: 0
+      ```
+      `offset = 5` erzeugt in der Funktion eine **eigene, lokale** Variable; die äußere bleibt 0.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [182]
+    deckt: [c09.lokal]
+    frage: |-
+      Welche Fehlermeldung erscheint?
+      ```python
+      def messen():
+          wert = 42
+
+      messen()
+      print(wert)
+      ```
+    antwort: |-
+      ```text
+      NameError: name 'wert' is not defined
+      ```
+      `wert` ist lokal und existiert nur während des Funktionsaufrufs. Lösung: `return wert` und `wert = messen()`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [182]
+    deckt: [c09.lokal]
+    frage: |-
+      Was ist eine **lokale** Variable?
+    antwort: |-
+      Eine Variable, die innerhalb einer Funktion entsteht (auch jeder Parameter). Sie gilt nur dort und nur während des Aufrufs; außerhalb ist sie unbekannt.
+
+  # ---------------------------------------------------------------- global
+  - typ: code_ausgabe
+    folien: [183]
+    aufgaben: ["5.6"]
+    deckt: [c09.global]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      zaehler = 0
+      def zaehlen():
+          global zaehler
+          zaehler += 1
+
+      zaehlen()
+      zaehlen()
+      print(zaehler)
+      ```
+    antwort: |-
+      ```text
+      2
+      ```
+      Durch `global` greift die Funktion auf die äußere Variable zu und verändert sie.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [183]
+    aufgaben: ["5.6"]
+    deckt: [c09.global]
+    frage: |-
+      Warum sollte man `global` sparsam einsetzen, und was ist die bessere Alternative?
+    antwort: |-
+      Mit `global` ist schwer nachzuvollziehen, wo eine Variable ihren Wert ändert. Besser: Werte als **Parameter** übergeben und das Ergebnis mit **return** zurückgeben.
+
+  # ---------------------------------------------------------------- Parameterübergabe
+  - typ: code_ausgabe
+    aufgaben: ["5.6"]
+    deckt: [c09.kopie]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def verdopple(wert):
+          wert = wert * 2
+          return wert
+
+      temp = 80
+      verdopple(temp)
+      print(temp)
+      ```
+    antwort: |-
+      ```text
+      80
+      ```
+      Die Funktion ändert nur ihren Parameter `wert`. Der Rückgabewert wird nicht gespeichert – richtig wäre `temp = verdopple(temp)`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    aufgaben: ["5.6"]
+    deckt: [c09.kopie]
+    frage: |-
+      Die Werte sollen getauscht werden. Was gibt der Code aus, und warum klappt es nicht?
+      ```python
+      def tausche(x, y):
+          x, y = y, x
+
+      a = 1
+      b = 2
+      tausche(a, b)
+      print(a, b)
+      ```
+    antwort: |-
+      ```text
+      1 2
+      ```
+      `x` und `y` sind lokale Variablen der Funktion; das Vertauschen wirkt nicht auf `a` und `b`. Lösung: `return y, x` und `a, b = tausche(a, b)`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [182]
+    aufgaben: ["5.6"]
+    deckt: [c09.kopie]
+    frage: |-
+      Warum ändert `wert = wert * 2` in einer Funktion nicht die Variable, die der Aufrufer übergeben hat?
+    antwort: |-
+      Der Parameter `wert` ist eine **eigene lokale Variable**, die beim Aufruf den übergebenen Wert bekommt. Eine neue Zuweisung ändert nur diese lokale Variable.
+
+  - typ: code_ausgabe
+    aufgaben: ["5.6"]
+    deckt: [c09.kopie]
+    frage: |-
+      **Ergänzung** (nicht im Skript): Was gibt der Code aus?
+      ```python
+      def anfuegen(liste):
+          liste.append(99)
+
+      werte = [1, 2]
+      anfuegen(werte)
+      print(werte)
+      ```
+    antwort: |-
+      ```text
+      [1, 2, 99]
+      ```
+      Ergänzung: Hier wird der Parameter nicht neu zugewiesen, sondern die **übergebene Liste selbst** verändert – das ist auch außen sichtbar.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Prozedur / Funktion / Methode
+  - typ: unterschied
+    folien: [172, 173, 174]
+    deckt: [c09.begriffe]
+    frage: |-
+      Was ist laut Skript der Unterschied zwischen einer **Prozedur** und einer **Funktion**, und was ist eine **Methode**?
+    antwort: |-
+      - Prozedur: Unterprogramm **ohne** Rückgabewert.
+      - Funktion: Unterprogramm **mit** Rückgabewert (heute nennt man meist beides „Funktion“).
+      - Methode: wird über ein Objekt mit Punkt aufgerufen, z. B. `cars.index("VW")` oder `text.replace(…)`.
+
+  - typ: begriff
+    folien: [174]
+    deckt: [c09.begriffe]
+    frage: |-
+      Ordne nach Skript zu: Ist `melden`, `doppelt` bzw. `append` eine Prozedur, eine Funktion oder eine Methode?
+      ```python
+      def melden(text):
+          print(text)
+
+      def doppelt(x):
+          return 2 * x
+
+      teile = ["A"]
+      teile.append("B")
+      ```
+    antwort: |-
+      - `melden`: Prozedur (kein Rückgabewert)
+      - `doppelt`: Funktion (liefert einen Wert zurück)
+      - `append`: Methode (wird über die Liste `teile.` aufgerufen)
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- Modularisierung
+  - typ: begriff
+    folien: [170]
+    deckt: [c09.modular]
+    frage: |-
+      Welche Vorteile nennt das Skript für Funktionen?
+    antwort: |-
+      - Programmteile, die mehrmals gebraucht werden, schreibt man nur **einmal**.
+      - Sie lassen sich in anderen Programmen **wiederverwenden**.
+      - Komplexe Programme werden durch den **modularen** Aufbau übersichtlicher.
+
+  - typ: code_schreiben
+    folien: [170]
+    aufgaben: ["5.3"]
+    deckt: [c09.modular]
+    frage: |-
+      Fasse die doppelte Berechnung in eine Funktion `volumen(masse, dichte)` zusammen, sodass dieselbe Ausgabe entsteht.
+      ```python
+      v1 = 50 / 7.85
+      print(f"{v1:.2f} l")
+      v2 = 120 / 7.85
+      print(f"{v2:.2f} l")
+      ```
+    antwort: |-
+      ```python
+      def volumen(masse, dichte):
+          return masse / dichte
+
+      for m in [50, 120]:
+          print(f"{volumen(m, 7.85):.2f} l")
+      ```
+      ```text
+      6.37 l
+      15.29 l
+      ```
+    tests: [{p: 1, t: 1}, {p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- Ablauf verfolgen
+  - typ: begriff
+    folien: [177, 178]
+    aufgaben: ["5.2"]
+    deckt: [c09.trace]
+    frage: |-
+      Wie machst du sichtbar, in welcher Reihenfolge ein Programm mit Funktionen tatsächlich abläuft?
+    antwort: |-
+      Mit **Trace-Ausgaben**: `print()` am Anfang und Ende jeder Funktion (z. B. `">>> berechne gestartet"`). Alternativ im **Debugger** Zeile für Zeile durchgehen.
+
+  - typ: code_ausgabe
+    aufgaben: ["5.2"]
+    deckt: [c09.trace]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def b():
+          print("  b")
+      def a():
+          print("a Start")
+          b()
+          print("a Ende")
+
+      a()
+      ```
+    antwort: |-
+      ```text
+      a Start
+        b
+      a Ende
+      ```
+      `a` ruft mitten im Ablauf `b` auf; danach geht es in `a` hinter dem Aufruf weiter.
+    tests: [{p: 1, t: 1}]

@@ -1,0 +1,196 @@
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2c3120036c.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d933cf1e2d.png)
+print() trennt mehrere Argumente automatisch durch ein Leerzeichen.
+
+*F. 48 · Aufg. 2.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a012602d82.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e4c80f2fb6.png)
+print() ohne Argument gibt nur einen Zeilenumbruch aus → Leerzeile.
+
+*F. 52 · Aufg. 1.3*"
+"Was nennt das Skript die **Parameterliste** einer Funktion, z. B. bei `print(""Druck:"", 2.5)`?","Alles zwischen der öffnenden und der schließenden runden Klammer hinter dem Funktionsnamen – hier `""Druck:"", 2.5`. Die Klammer zeigt an, dass es eine Funktion ist.
+
+*F. 48*"
+"Gegeben ist `druck = 2.5`. Schreib **eine** print-Zeile ohne `+`, die Folgendes ausgibt:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b2f41ae14d.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f7f0bb5532.png)
+Mit Kommas getrennt fügt print() die Leerzeichen selbst ein und wandelt die Zahl automatisch in Text um.
+
+*F. 48 · Aufg. 2.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1588f2dbdf.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_75c4bb4a7a.png)
+`end=""""` ersetzt den Zeilenumbruch am Ende durch nichts – die nächste Ausgabe folgt in derselben Zeile.
+
+*F. 52 · Aufg. 1.3*"
+"Ergänze die Lücke, sodass genau `Status: OK` in **einer** Zeile erscheint.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_63bef1cc64.png)","`end="" ""` (ein Leerzeichen als String)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ab0d1c5594.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0e47e69795.png)
+
+*F. 52 · Aufg. 1.3*"
+"Was ist der Unterschied zwischen `print(""A"")` und `print(""A"", end="""")`?","- `print(""A"")`: hängt am Ende automatisch einen Zeilenumbruch an (Standard `end=""\n""`).
+- `print(""A"", end="""")`: kein Zeilenumbruch – die nächste Ausgabe schreibt direkt hinter „A“ weiter.
+
+*F. 52 · Aufg. 1.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7846017622.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4a2b6f5584.png)
+`\n` (newline) erzeugt innerhalb des Strings einen Zeilenumbruch.
+
+*F. 53 · Aufg. 1.4*"
+"Was gibt der Code aus? Achte auf jedes Leerzeichen.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_df1fa030da.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_520e9c5c0c.png)
+Die zweite Zeile beginnt mit einem Leerzeichen: print() setzt zwischen das erste Argument (endet mit `\n`) und `3` ein Trennleerzeichen.
+
+*F. 48, 53*"
+"Was ist eine **Escape-Sequenz** (Steuerzeichen) in einem String?","Eine Zeichenfolge, die mit einem Backslash `\` beginnt und nicht als Text, sondern als Steuerzeichen ausgegeben wird – z. B. `\n` für einen Zeilenvorschub (newline).
+
+*F. 53*"
+"Was bewirkt `\t` in einem String?","Horizontaler Tabulator (tab): Der Cursor springt zur nächsten Tabulatorposition. Damit lassen sich Spalten untereinander ausrichten.
+
+*F. 53 · Aufg. 1.3, 1.4*"
+"Ergänze das Steuerzeichen, sodass Bezeichnung und Wert durch einen **Tabulator** getrennt sind.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_31ef5b1fa5.png)","`\t`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0d710adf8e.png)
+
+*F. 53 · Aufg. 1.4*"
+"Gewünscht ist ein Tabulator zwischen `Strom:` und `OK`. Was gibt der Code stattdessen aus, und wo liegt der Fehler?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2c4ca419af.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e4ed809ad5.png)
+Schrägstrich statt Backslash: Escape-Sequenzen beginnen mit `\`. Richtig: `print(""Strom:\tOK"")`.
+
+*F. 53 · Aufg. 1.4*"
+"Was bewirkt das Steuerzeichen `\r` (carriage return)?","Wagenrücklauf: Der Cursor springt an den **Anfang der aktuellen Zeile**. Was danach ausgegeben wird, überschreibt den Text von links.
+
+*F. 53 · Aufg. 1.3*"
+"Was bewirkt das Steuerzeichen `\b` (backspace)?","Der Cursor geht **ein Zeichen zurück**; das nächste ausgegebene Zeichen überschreibt das vorherige.
+
+*F. 53 · Aufg. 1.3*"
+"Der Fortschritt soll sich auf **derselben Zeile** aktualisieren (`10 %`, dann `20 %` …). Ergänze beide Lücken.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_58d6387cd2.png)","`""\r""` am Anfang (Cursor zurück an den Zeilenanfang) und `end=""""` (kein Zeilenumbruch):
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8bf6fa5137.png)
+
+*F. 52, 53 · Aufg. 1.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_01a74d1802.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f24f339d74.png)
+`\""` stellt ein Anführungszeichen dar, ohne den String zu beenden.
+
+*F. 69*"
+"Gewünscht ist die Ausgabe `Ordner: C:\temp`. Warum klappt das nicht, und wie lautet die Korrektur?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a8b26fb823.png)","`\t` wird als Tabulator gelesen – ausgegeben wird `Ordner: C:`, ein Tabulatorsprung und `emp`. Einen Backslash selbst schreibt man doppelt:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_67dba329db.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d054806017.png)
+
+*F. 53, 69*"
+"Welchen Datentyp liefert `input()` zurück, wenn der Nutzer `230` eintippt?","Immer `str` (Text), also `""230""`. Zum Rechnen muss man umwandeln, z. B. `int(input())` oder `float(input())`.
+
+*F. 49 · Aufg. 1.2*"
+"Der Nutzer tippt nacheinander `12` und `5` ein (jeweils Enter). Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cb45977902.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c8fe6ad4ad.png)
+`input()` liefert Strings; `+` hängt Strings aneinander, statt zu addieren.
+
+*F. 49 · Aufg. 1.2*"
+"Der Nutzer tippt `40` (Länge in mm). Erwartet wird `80`. Was gibt der Code aus, und wie korrigierst du ihn?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_68977256c9.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_186e505849.png)
+`""40"" * 2` wiederholt den Text. Korrektur: Eingabe in eine Zahl umwandeln.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a6fac34469.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bbeb2d2472.png)
+
+*F. 49, 75 · Aufg. 1.2*"
+"Schreib Code, der einen Druck in bar als **Kommazahl** einliest (Eingabeaufforderung `Druck in bar: `) und den doppelten Wert ausgibt.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b19fe79c5a.png)
+Bei der Eingabe `2.5` erscheint `5.0`. `int()` würde bei `2.5` mit einem ValueError abbrechen.
+
+*F. 49, 75 · Aufg. 3.5*"
+"Warum steht die Eingabe des Nutzers direkt hinter dem Text von `input(""Bitte Namen eingeben:"")` und nicht in einer neuen Zeile?","`input()` erzeugt – anders als `print()` – **keinen** automatischen Zeilenvorschub. Abhilfe: `\n` an das Ende des Prompt-Textes setzen.
+
+*F. 52*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c320df8c7f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ba1adcd604.png)
+
+*F. 135*"
+"Welche Fehlermeldung erscheint, und wie behebst du den Fehler?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e2b4239326.png)","Letzte Zeile der Fehlermeldung:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_772b909544.png)
+`+` verbindet nur Strings mit Strings. Korrektur: Zahl vorher umwandeln.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5c79580608.png)
+
+*F. 135 · Aufg. 1.2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ee92015a7b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0417b0ccf9.png)
+Bei `+` fügt Python keine Leerzeichen ein – die muss man selbst in die Strings schreiben.
+
+*F. 135 · Aufg. 1.1*"
+"Was ist der Unterschied zwischen `print(""Wert:"", x)` und `print(""Wert:"" + str(x))`?","- Komma: print() setzt ein **Leerzeichen** zwischen die Teile und akzeptiert jeden Datentyp → `Wert: 5`.
+- `+`: verbindet nur **Strings**, ohne Leerzeichen → `Wert:5`; Zahlen vorher mit `str()` umwandeln.
+
+*F. 48, 135*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9f264cb04b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5d15a18d1e.png)
+`str * int` wiederholt den String; danach verbindet `+` beide Teile.
+
+*Aufg. 1.3*"
+"Schreib eine Zeile, die eine Trennlinie aus **20 Bindestrichen** ausgibt, ohne die Striche einzeln zu tippen.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_33aa76b730.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0c79791d0e.png)
+
+*Aufg. 1.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cffe4220c7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_19573ea63b.png)
+Im f-String wird der Ausdruck in `{}` ausgewertet; `/` liefert immer einen float → `5.0`.
+
+*Aufg. 2.6*"
+"Ergänze die Lücke, sodass `Sensor T3: 21.5 °C` ausgegeben wird.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_34fee7d23f.png)","Ein `f` direkt vor dem Anführungszeichen:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_76e99ecca2.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e7e0762a7e.png)
+
+*Aufg. 2.6*"
+"Gewünscht ist `Temperatur: 85 °C`. Was erscheint stattdessen, und was fehlt?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2831d96299.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5bcebc799a.png)
+Das `f` vor dem String fehlt – ohne `f` sind die geschweiften Klammern normaler Text: `print(f""Temperatur: {temperatur} °C"")`.
+
+*Aufg. 2.6*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cb726ce90b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bdc52436a8.png)
+In `{}` darf ein ganzer Ausdruck stehen; `i` läuft von 0 bis 1.
+
+*Aufg. 2.9*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d83ac9ae15.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e061b45ecc.png)
+Ein String in dreifachen Anführungszeichen darf über mehrere Zeilen gehen; der Zeilenumbruch bleibt erhalten.
+
+*Aufg. 2.6*"
+"Was ist ein **f-String**, und welchen Vorteil hat er gegenüber `+`?","Ein String mit vorangestelltem `f`, z. B. `f""ID: {nr}""`. Ausdrücke in `{}` werden ausgewertet und eingesetzt; Zahlen werden dabei automatisch in Text umgewandelt – kein `str()` nötig.
+
+*Aufg. 2.6*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1cf07d03c5.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d69c43ccf2.png)
+`:.2f` zeigt genau zwei Nachkommastellen und **rundet** dabei.
+
+*Aufg. 3.11*"
+"Ergänze die Formatangabe, sodass `Volumen: 6.4 l` ausgegeben wird (eine Nachkommastelle).
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_96e7be89a1.png)","`:.1f`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3f2cae73eb.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f0a1affba4.png)
+
+*Aufg. 5.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_41948591a1.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_23fe1b7a8e.png)
+Die Formatangabe `f` gibt auch eine Ganzzahl als Kommazahl mit der gewünschten Stellenzahl aus.
+
+*Aufg. 3.11*"
+"Was ist der Unterschied zwischen `int(9.99)` und `f""{9.99:.0f}""`?","- `int(9.99)` **schneidet ab** → Zahl `9` (int).
+- `f""{9.99:.0f}""` **rundet** für die Anzeige → Text `""10""` (str).
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e10f16eead.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e030665294.png)
+
+*F. 75 · Aufg. 2.4, 3.11*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8c7d37d0c0.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d7e9ce36fb.png)
+Alles hinter `#` bis zum Zeilenende wird ignoriert.
+
+*F. 59, 60 · Aufg. 2.1*"
+"Was bedeutet es, eine Codezeile **auszukommentieren**, und wozu ist das nützlich?","Man setzt ein `#` davor, sodass Python die Zeile nicht mehr ausführt, sie aber im Code stehen bleibt – praktisch bei der Fehlersuche (z. B. Debug-Ausgaben abschalten).
+
+*F. 59 · Aufg. 2.1*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c3c0f1874a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_116a350738.png)
+Alles zwischen den dreifachen Anführungszeichen ist ein mehrzeiliger Kommentarblock und wird nicht ausgeführt.
+
+*F. 60*"

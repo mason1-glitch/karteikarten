@@ -1,0 +1,570 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 6: Zeichenketten (Strings)
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF), Aufgaben 4.1, 6.1, 6.2.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap06_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap06_strings.csv
+matrix: ingenieurinformatik1/quellen/kap06_abdeckung.md
+titel: "Kapitel 6: Zeichenketten – Index, Slicing, find, replace, count"
+id_praefix: "K06."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+inhalte:
+  - {id: c06.len, gewicht: 3, folie: "136", aufgaben: "4.1, 4.4", text: "len() – Anzahl der Zeichen (Leerzeichen zählen mit)"}
+  - {id: c06.index, gewicht: 3, folie: "136", aufgaben: "4.1", text: "Zugriff s[i]: Index ab 0, s[-1] letztes Zeichen"}
+  - {id: c06.indexerror, gewicht: 1, folie: "136", aufgaben: "", text: "IndexError: string index out of range"}
+  - {id: c06.slicing, gewicht: 2, folie: "137", aufgaben: "4.1", text: "Slicing s[von:bis] (bis ausgeschlossen, Grenzen weglassbar)"}
+  - {id: c06.slicing_schritt, gewicht: 1, folie: "137", aufgaben: "", text: "Slicing mit Schrittweite s[von:bis:schritt]"}
+  - {id: c06.find, gewicht: 2, folie: "138", aufgaben: "4.1", text: "find(): Startposition, -1 wenn nicht gefunden, Suche ab Position"}
+  - {id: c06.replace, gewicht: 2, folie: "138", aufgaben: "4.1, 6.2", text: "replace(): ersetzt alle Vorkommen, liefert neuen String, verkettbar"}
+  - {id: c06.count, gewicht: 2, folie: "146", aufgaben: "6.1", text: "count(): Vorkommen zählen (Groß-/Kleinschreibung beachten)"}
+  - {id: c06.unveraenderlich, gewicht: 1, folie: "138", aufgaben: "4.1", text: "Strings sind unveränderlich (Ergebnis neu zuweisen)"}
+  - {id: c06.zerlegen, gewicht: 2, folie: "137–138", aufgaben: "4.1", text: "Strings mit find() und Slicing zerlegen und neu zusammensetzen"}
+
+karten:
+  # ---------------------------------------------------------------- len
+  - typ: code_ausgabe
+    folien: [136]
+    aufgaben: ["4.1"]
+    deckt: [c06.len]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      kennung = "PRESS-042"
+      print(len(kennung))
+      ```
+    antwort: |-
+      ```text
+      9
+      ```
+      Auch der Bindestrich ist ein Zeichen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [136]
+    deckt: [c06.len]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      ort = "Halle 7 "
+      print(len(ort))
+      ```
+    antwort: |-
+      ```text
+      8
+      ```
+      Leerzeichen zählen mit – auch das am Ende.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [136]
+    deckt: [c06.len, c06.index]
+    frage: |-
+      Ergänze den Index so, dass das **letzte** Zeichen ausgegeben wird – nur mit `len()`, ohne negative Zahl.
+      ```python
+      code = "QX-718"
+      print(code[___])
+      ```
+    antwort: |-
+      `len(code) - 1` – der letzte Index ist eins kleiner als die Länge.
+      ```python
+      code = "QX-718"
+      print(code[len(code) - 1])
+      ```
+      ```text
+      8
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_schreiben
+    folien: [136]
+    deckt: [c06.len]
+    frage: |-
+      Lies eine Seriennummer ein und gib `gültig` aus, wenn sie **genau 8 Zeichen** hat, sonst `ungültig`.
+    antwort: |-
+      ```python
+      nummer = input("Seriennummer: ")
+      if len(nummer) == 8:
+          print("gültig")
+      else:
+          print("ungültig")
+      ```
+    tests: [{p: 1, eingabe: "AB123456\n"}]
+
+  # ---------------------------------------------------------------- Index
+  - typ: code_ausgabe
+    folien: [136]
+    aufgaben: ["4.1"]
+    deckt: [c06.index]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      kennung = "PRESS-042-A"
+      print(kennung[0])
+      print(kennung[-1])
+      print(kennung[6])
+      ```
+    antwort: |-
+      ```text
+      P
+      A
+      0
+      ```
+      Index 6 ist das 7. Zeichen (die Zählung beginnt bei 0).
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [136]
+    deckt: [c06.index]
+    frage: |-
+      Welchen Index hat das **erste** Zeichen eines Strings, und welches Zeichen liefert `s[-1]`?
+    antwort: |-
+      Das erste Zeichen hat den Index **0**. `s[-1]` liefert das **letzte** Zeichen (negative Indizes zählen von hinten).
+
+  - typ: code_luecke
+    folien: [136]
+    deckt: [c06.index]
+    frage: |-
+      Ergänze, sodass das **dritte** Zeichen (`7`) ausgegeben wird.
+      ```python
+      typ = "M27-B"
+      print(typ[___])
+      ```
+    antwort: |-
+      `2`
+      ```python
+      typ = "M27-B"
+      print(typ[2])
+      ```
+      ```text
+      7
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [136]
+    deckt: [c06.index, c06.len]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      s = "ABC"
+      for i in range(len(s)):
+          print(i, s[i])
+      ```
+    antwort: |-
+      ```text
+      0 A
+      1 B
+      2 C
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- IndexError
+  - typ: code_fehler
+    folien: [136]
+    deckt: [c06.indexerror]
+    frage: |-
+      Welche Fehlermeldung erscheint?
+      ```python
+      code = "X7"
+      print(code[2])
+      ```
+    antwort: |-
+      ```text
+      IndexError: string index out of range
+      ```
+      Ein String mit 2 Zeichen hat nur die Indizes 0 und 1.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [136]
+    deckt: [c06.indexerror]
+    frage: |-
+      Welches ist der größte gültige Index eines Strings mit **5** Zeichen?
+    antwort: |-
+      **4** – allgemein `len(s) - 1`.
+
+  # ---------------------------------------------------------------- Slicing
+  - typ: code_ausgabe
+    folien: [137]
+    aufgaben: ["4.1"]
+    deckt: [c06.slicing]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      schraube = "M8x40-VZ"
+      print(schraube[0:2])
+      print(schraube[3:5])
+      print(schraube[6:])
+      ```
+    antwort: |-
+      ```text
+      M8
+      40
+      VZ
+      ```
+      Start-Index eingeschlossen, End-Index ausgeschlossen; ohne End-Index geht es bis zum Ende.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [137]
+    deckt: [c06.slicing]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      s = "Messung"
+      print(s[:3])
+      print(s[3:])
+      ```
+    antwort: |-
+      ```text
+      Mes
+      sung
+      ```
+      Ohne Startwert beginnt der Ausschnitt bei 0. Beide Teile zusammen ergeben wieder den ganzen String.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [137]
+    deckt: [c06.slicing]
+    frage: |-
+      Ergänze den Ausschnitt, sodass nur die Jahreszahl `2026` ausgegeben wird.
+      ```python
+      datum = "2026-10-28"
+      print(datum[___])
+      ```
+    antwort: |-
+      `0:4`
+      ```python
+      datum = "2026-10-28"
+      print(datum[0:4])
+      ```
+      ```text
+      2026
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: begriff
+    folien: [137]
+    deckt: [c06.slicing]
+    frage: |-
+      Welche Zeichen enthält der Ausschnitt `s[von:bis]`?
+    antwort: |-
+      Alle Zeichen ab Index `von` (**eingeschlossen**) bis vor Index `bis` (**ausgeschlossen**) – also `bis - von` Zeichen.
+
+  - typ: code_schreiben
+    folien: [137]
+    deckt: [c06.slicing]
+    frage: |-
+      Gib aus `datei = "messung_07.csv"` die Dateiendung (`csv`) aus – über die **letzten drei** Zeichen.
+    antwort: |-
+      ```python
+      datei = "messung_07.csv"
+      print(datei[-3:])
+      ```
+      ```text
+      csv
+      ```
+      Negative Indizes zählen von hinten; `-3:` heißt „ab dem drittletzten Zeichen bis zum Ende“.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Slicing mit Schritt
+  - typ: code_ausgabe
+    folien: [137]
+    deckt: [c06.slicing_schritt]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      code = "A1B2C3"
+      print(code[0:6:2])
+      ```
+    antwort: |-
+      ```text
+      ABC
+      ```
+      Schrittweite 2: Indizes 0, 2, 4.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [137]
+    deckt: [c06.slicing_schritt]
+    frage: |-
+      Ergänze die Schrittweite, sodass nur die Ziffern `123` ausgegeben werden.
+      ```python
+      code = "A1B2C3"
+      print(code[1:6:___])
+      ```
+    antwort: |-
+      `2`
+      ```python
+      code = "A1B2C3"
+      print(code[1:6:2])
+      ```
+      ```text
+      123
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- find
+  - typ: code_ausgabe
+    folien: [138]
+    aufgaben: ["4.1"]
+    deckt: [c06.find]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      text = "Wartung Presse Halle-3"
+      print(text.find("Halle"))
+      print(text.find("Fräse"))
+      ```
+    antwort: |-
+      ```text
+      15
+      -1
+      ```
+      find() liefert die Position, an der der Suchtext **beginnt**, und `-1`, wenn er nicht vorkommt.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [138]
+    deckt: [c06.find]
+    frage: |-
+      Was liefert `text.find("x")`, wenn `"x"` im Text **nicht** vorkommt?
+    antwort: |-
+      Den Wert `-1` – es gibt keinen Fehler. Deshalb vor dem Weiterrechnen prüfen: `if pos != -1:`.
+
+  - typ: code_ausgabe
+    folien: [138]
+    aufgaben: ["4.1"]
+    deckt: [c06.find]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      eintrag = "A;B;C"
+      erstes = eintrag.find(";")
+      zweites = eintrag.find(";", erstes + 1)
+      print(erstes, zweites)
+      ```
+    antwort: |-
+      ```text
+      1 3
+      ```
+      Der zweite Parameter gibt an, **ab welcher Position** gesucht wird – so findet man das nächste Vorkommen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [137, 138]
+    deckt: [c06.find, c06.zerlegen]
+    frage: |-
+      Gib aus `zeile = "Temperatur=21.5"` nur den Teil **nach** dem `=` aus – mit find() und Slicing.
+    antwort: |-
+      ```python
+      zeile = "Temperatur=21.5"
+      pos = zeile.find("=")
+      print(zeile[pos + 1:])
+      ```
+      ```text
+      21.5
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- replace
+  - typ: code_ausgabe
+    folien: [138]
+    aufgaben: ["6.2"]
+    deckt: [c06.replace]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      werte = "1,25;1,30"
+      print(werte.replace(",", "."))
+      ```
+    antwort: |-
+      ```text
+      1.25;1.30
+      ```
+      replace() ersetzt **alle** Vorkommen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [138]
+    aufgaben: ["4.1"]
+    deckt: [c06.replace, c06.unveraenderlich]
+    frage: |-
+      Welche Fehlermeldung erscheint, und was wurde vergessen?
+      ```python
+      messwert = "12,5"
+      messwert.replace(",", ".")
+      print(float(messwert))
+      ```
+    antwort: |-
+      ```text
+      ValueError: could not convert string to float: '12,5'
+      ```
+      replace() ändert `messwert` nicht, sondern liefert einen **neuen** String. Er muss zugewiesen werden: `messwert = messwert.replace(",", ".")`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [138]
+    aufgaben: ["6.2"]
+    deckt: [c06.replace]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print("HALLE".replace("A", "4").replace("L", "1"))
+      ```
+    antwort: |-
+      ```text
+      H411E
+      ```
+      Verkettete Aufrufe arbeiten von links nach rechts, jeweils auf dem Ergebnis des vorherigen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [138]
+    aufgaben: ["4.1"]
+    deckt: [c06.replace]
+    frage: |-
+      Aus `"Oelstand"` soll `"Ölstand"` werden. Ergänze den Aufruf.
+      ```python
+      text = "Oelstand"
+      text = text.___
+      print(text)
+      ```
+    antwort: |-
+      `replace("Oe", "Ö")`
+      ```python
+      text = "Oelstand"
+      text = text.replace("Oe", "Ö")
+      print(text)
+      ```
+      ```text
+      Ölstand
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- count
+  - typ: code_ausgabe
+    aufgaben: ["6.1"]
+    deckt: [c06.count]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print("Messwert".count("e"))
+      ```
+    antwort: |-
+      ```text
+      2
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    aufgaben: ["6.1"]
+    deckt: [c06.count]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      text = "Abgas Analyse"
+      print(text.count("a"), text.count("A"))
+      ```
+    antwort: |-
+      ```text
+      2 2
+      ```
+      count() unterscheidet Groß- und Kleinschreibung.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["6.1"]
+    deckt: [c06.count]
+    frage: |-
+      Zähle, wie oft der Buchstabe e in `text = "Eine Welle"` vorkommt – **groß und klein zusammen** – und gib die Zahl aus.
+    antwort: |-
+      ```python
+      text = "Eine Welle"
+      print(text.count("e") + text.count("E"))
+      ```
+      ```text
+      4
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- unveränderlich
+  - typ: code_fehler
+    folien: [138]
+    deckt: [c06.unveraenderlich]
+    frage: |-
+      Welche Fehlermeldung erscheint, und wie erreichst du `B-17`?
+      ```python
+      kennung = "A-17"
+      kennung[0] = "B"
+      ```
+    antwort: |-
+      ```text
+      TypeError: 'str' object does not support item assignment
+      ```
+      Einzelne Zeichen eines Strings lassen sich nicht ändern. Neuen String bauen:
+      ```python
+      kennung = "A-17"
+      kennung = "B" + kennung[1:]
+      print(kennung)
+      ```
+      ```text
+      B-17
+      ```
+    tests: [{p: 1, t: 1}, {p: 2, t: 2}]
+
+  - typ: begriff
+    folien: [138]
+    deckt: [c06.unveraenderlich]
+    frage: |-
+      Warum muss man das Ergebnis von `replace()` einer Variablen zuweisen?
+    antwort: |-
+      Strings sind **unveränderlich**: replace() ändert den vorhandenen String nicht, sondern gibt einen neuen zurück. Ohne Zuweisung geht das Ergebnis verloren.
+
+  # ---------------------------------------------------------------- zerlegen
+  - typ: code_ausgabe
+    folien: [137, 138]
+    aufgaben: ["4.1"]
+    deckt: [c06.zerlegen]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      eintrag = "Lager, Welle"
+      pos = eintrag.find(",")
+      print(eintrag[:pos])
+      print(eintrag[pos + 2:])
+      ```
+    antwort: |-
+      ```text
+      Lager
+      Welle
+      ```
+      `pos + 2` überspringt das Komma **und** das folgende Leerzeichen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [137, 138]
+    aufgaben: ["4.1"]
+    deckt: [c06.zerlegen]
+    frage: |-
+      Aus `name = "Holz, Sandra"` soll `Sandra Holz` werden. Schreib den Code mit find() und Slicing.
+    antwort: |-
+      ```python
+      name = "Holz, Sandra"
+      k = name.find(",")
+      print(name[k + 2:] + " " + name[:k])
+      ```
+      ```text
+      Sandra Holz
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    aufgaben: ["4.1"]
+    deckt: [c06.zerlegen]
+    frage: |-
+      Beim Zerlegen von `"GmbH, Motor"` beginnt das zweite Wort bei `komma + 2`, nicht bei `komma + 1`. Warum?
+    antwort: |-
+      Nach dem Komma steht noch ein **Leerzeichen**. `komma + 1` würde den Ausschnitt mit diesem Leerzeichen beginnen lassen.

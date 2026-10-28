@@ -1,0 +1,153 @@
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_92e88fbc43.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c011030483.png)
+Auch der Bindestrich ist ein Zeichen.
+
+*F. 136 · Aufg. 4.1*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b1732e3fc9.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_018ec4356f.png)
+Leerzeichen zählen mit – auch das am Ende.
+
+*F. 136*"
+"Ergänze den Index so, dass das **letzte** Zeichen ausgegeben wird – nur mit `len()`, ohne negative Zahl.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a0789f5c8a.png)","`len(code) - 1` – der letzte Index ist eins kleiner als die Länge.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4537c2855b.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_018ec4356f.png)
+
+*F. 136*"
+"Lies eine Seriennummer ein und gib `gültig` aus, wenn sie **genau 8 Zeichen** hat, sonst `ungültig`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b6b8fe41b2.png)
+
+*F. 136*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_75b95430fc.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d1fd7a0bef.png)
+Index 6 ist das 7. Zeichen (die Zählung beginnt bei 0).
+
+*F. 136 · Aufg. 4.1*"
+"Welchen Index hat das **erste** Zeichen eines Strings, und welches Zeichen liefert `s[-1]`?","Das erste Zeichen hat den Index **0**. `s[-1]` liefert das **letzte** Zeichen (negative Indizes zählen von hinten).
+
+*F. 136*"
+"Ergänze, sodass das **dritte** Zeichen (`7`) ausgegeben wird.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6b93b9b79d.png)","`2`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3f63f7d43c.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8918a8012b.png)
+
+*F. 136*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6a7ce5bfa1.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cce74e7c51.png)
+
+*F. 136*"
+"Welche Fehlermeldung erscheint?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6a26d7639a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_01998a1a0c.png)
+Ein String mit 2 Zeichen hat nur die Indizes 0 und 1.
+
+*F. 136*"
+"Welches ist der größte gültige Index eines Strings mit **5** Zeichen?","**4** – allgemein `len(s) - 1`.
+
+*F. 136*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a63e4e3c3.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_28b6cdbd93.png)
+Start-Index eingeschlossen, End-Index ausgeschlossen; ohne End-Index geht es bis zum Ende.
+
+*F. 137 · Aufg. 4.1*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ae0499e792.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_416813cf1d.png)
+Ohne Startwert beginnt der Ausschnitt bei 0. Beide Teile zusammen ergeben wieder den ganzen String.
+
+*F. 137*"
+"Ergänze den Ausschnitt, sodass nur die Jahreszahl `2026` ausgegeben wird.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2b0475ebd2.png)","`0:4`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e37123da4d.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_77f327dbc5.png)
+
+*F. 137*"
+"Welche Zeichen enthält der Ausschnitt `s[von:bis]`?","Alle Zeichen ab Index `von` (**eingeschlossen**) bis vor Index `bis` (**ausgeschlossen**) – also `bis - von` Zeichen.
+
+*F. 137*"
+"Gib aus `datei = ""messung_07.csv""` die Dateiendung (`csv`) aus – über die **letzten drei** Zeichen.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_26fe266d12.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3498fda475.png)
+Negative Indizes zählen von hinten; `-3:` heißt „ab dem drittletzten Zeichen bis zum Ende“.
+
+*F. 137*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bff7d01650.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_053ee7450b.png)
+Schrittweite 2: Indizes 0, 2, 4.
+
+*F. 137*"
+"Ergänze die Schrittweite, sodass nur die Ziffern `123` ausgegeben werden.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0fb9e13461.png)","`2`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9ec0d4d4ab.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5806044c80.png)
+
+*F. 137*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8c73f7276d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ab5a7dd1d3.png)
+find() liefert die Position, an der der Suchtext **beginnt**, und `-1`, wenn er nicht vorkommt.
+
+*F. 138 · Aufg. 4.1*"
+"Was liefert `text.find(""x"")`, wenn `""x""` im Text **nicht** vorkommt?","Den Wert `-1` – es gibt keinen Fehler. Deshalb vor dem Weiterrechnen prüfen: `if pos != -1:`.
+
+*F. 138*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0e3a0f6197.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4db1b6d03c.png)
+Der zweite Parameter gibt an, **ab welcher Position** gesucht wird – so findet man das nächste Vorkommen.
+
+*F. 138 · Aufg. 4.1*"
+"Gib aus `zeile = ""Temperatur=21.5""` nur den Teil **nach** dem `=` aus – mit find() und Slicing.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_da6a9f71fe.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3b35be817f.png)
+
+*F. 137, 138*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5878b9d246.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3f0a579c40.png)
+replace() ersetzt **alle** Vorkommen.
+
+*F. 138 · Aufg. 6.2*"
+"Welche Fehlermeldung erscheint, und was wurde vergessen?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_855fb9280e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ebc1d14e69.png)
+replace() ändert `messwert` nicht, sondern liefert einen **neuen** String. Er muss zugewiesen werden: `messwert = messwert.replace("","", ""."")`.
+
+*F. 138 · Aufg. 4.1*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5e400f7eff.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_439073e4df.png)
+Verkettete Aufrufe arbeiten von links nach rechts, jeweils auf dem Ergebnis des vorherigen.
+
+*F. 138 · Aufg. 6.2*"
+"Aus `""Oelstand""` soll `""Ölstand""` werden. Ergänze den Aufruf.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_48b4e05b89.png)","`replace(""Oe"", ""Ö"")`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a6b03753f4.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0660902869.png)
+
+*F. 138 · Aufg. 4.1*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ba7058986e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+
+*Aufg. 6.1*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8ee3f5131d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6f505c8db5.png)
+count() unterscheidet Groß- und Kleinschreibung.
+
+*Aufg. 6.1*"
+"Zähle, wie oft der Buchstabe e in `text = ""Eine Welle""` vorkommt – **groß und klein zusammen** – und gib die Zahl aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cbbd24fbf4.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_799668c351.png)
+
+*Aufg. 6.1*"
+"Welche Fehlermeldung erscheint, und wie erreichst du `B-17`?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a16041f586.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8cee8cafea.png)
+Einzelne Zeichen eines Strings lassen sich nicht ändern. Neuen String bauen:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1304046612.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1769ba5b25.png)
+
+*F. 138*"
+"Warum muss man das Ergebnis von `replace()` einer Variablen zuweisen?","Strings sind **unveränderlich**: replace() ändert den vorhandenen String nicht, sondern gibt einen neuen zurück. Ohne Zuweisung geht das Ergebnis verloren.
+
+*F. 138*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ab31c826ae.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d58c7e9773.png)
+`pos + 2` überspringt das Komma **und** das folgende Leerzeichen.
+
+*F. 137, 138 · Aufg. 4.1*"
+"Aus `name = ""Holz, Sandra""` soll `Sandra Holz` werden. Schreib den Code mit find() und Slicing.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c652993954.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5fc4766452.png)
+
+*F. 137, 138 · Aufg. 4.1*"
+"Beim Zerlegen von `""GmbH, Motor""` beginnt das zweite Wort bei `komma + 2`, nicht bei `komma + 1`. Warum?","Nach dem Komma steht noch ein **Leerzeichen**. `komma + 1` würde den Ausschnitt mit diesem Leerzeichen beginnen lassen.
+
+*Aufg. 4.1*"

@@ -1,0 +1,417 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 10: Bibliotheken (Module)
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF), Aufgaben 1.3, 2.1, 2.5–2.9, 3.4, 3.6, 4.3, 5.5, 6.2.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap10_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap10_bibliotheken.csv
+matrix: ingenieurinformatik1/quellen/kap10_abdeckung.md
+titel: "Kapitel 10: Bibliotheken – import, math, random, time, datetime, qrcode"
+id_praefix: "K10."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Damit Ausgaben prüfbar sind, erzeugen zwei Karten einen festen Zeitpunkt mit datetime.datetime(2026, …) statt now(); das ist auf den Karten als Ergänzung vermerkt."
+  - "Fehlt ein import, meldet Python 3.12+ zusätzlich „Did you forget to import …?“. Die Karte nennt deshalb nur die Fehlerart NameError."
+
+inhalte:
+  - {id: c10.import, gewicht: 3, folie: "77–79", aufgaben: "2.5–2.9, 3.4, 6.1–6.5", text: "import modul, Aufruf modul.funktion(), fehlender Import → NameError"}
+  - {id: c10.import_as, gewicht: 2, folie: "205", aufgaben: "2.1, 4.3, 4.6, 6.3", text: "import … as … (np, pd, plt) und from … import …"}
+  - {id: c10.math, gewicht: 2, folie: "", aufgaben: "2.5, 2.6", text: "math.sqrt, math.pi, math.ceil (aufrunden)"}
+  - {id: c10.random, gewicht: 2, folie: "", aufgaben: "2.5, 2.9, 3.4, 3.6", text: "random.randint(a, b) – beide Grenzen eingeschlossen"}
+  - {id: c10.sleep, gewicht: 2, folie: "", aufgaben: "1.3, 2.7, 2.9", text: "time.sleep(sekunden) – Programm anhalten"}
+  - {id: c10.strftime, gewicht: 2, folie: "", aufgaben: "2.5, 2.8, 2.9, 5.5", text: "Zeit formatieren mit strftime: %d %m %Y %H %M %S"}
+  - {id: c10.datetime, gewicht: 2, folie: "194", aufgaben: "5.5, 6.2", text: "datetime.datetime.now() und .strftime()"}
+  - {id: c10.pip, gewicht: 1, folie: "", aufgaben: "2.5", text: "Bibliotheken installieren (pip install) vs. importieren"}
+  - {id: c10.qrcode, gewicht: 1, folie: "", aufgaben: "2.6–2.8", text: "qrcode.make(text) und display() im Notebook"}
+
+karten:
+  # ---------------------------------------------------------------- import
+  - typ: code_ausgabe
+    folien: [79]
+    aufgaben: ["2.5"]
+    deckt: [c10.import, c10.math]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      import math
+      print(math.sqrt(16))
+      ```
+    antwort: |-
+      ```text
+      4.0
+      ```
+      Funktionen eines Moduls ruft man mit `modul.funktion()` auf; `sqrt` liefert einen float.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    aufgaben: ["2.5"]
+    deckt: [c10.import]
+    frage: |-
+      Welche **Fehlerart** meldet Python, und was fehlt?
+      ```python
+      toleranz = math.sqrt(16.0)
+      print(toleranz)
+      ```
+    antwort: |-
+      Einen **NameError** (`name 'math' is not defined`; neuere Python-Versionen hängen einen Import-Hinweis an). Es fehlt `import math` vor der ersten Verwendung.
+    tests: [{p: 1, abbruch: NameError}]
+
+  - typ: begriff
+    folien: [77, 78]
+    aufgaben: ["2.5"]
+    deckt: [c10.import]
+    frage: |-
+      Was ist eine **Bibliothek** (ein Modul) in Python, und wie macht man ihre Funktionen im Programm verfügbar?
+    antwort: |-
+      Eine fertige Sammlung von Funktionen für bestimmte Aufgaben (z. B. Mathematik, Zufall, Zeit, Diagramme). Mit `import name` wird sie aktiviert; danach `name.funktion()`.
+
+  - typ: code_luecke
+    aufgaben: ["2.5"]
+    deckt: [c10.import]
+    frage: |-
+      Ergänze die erste Zeile, damit `random.randint` verfügbar ist.
+      ```python
+      ___ random
+      wurf = random.randint(1, 6)
+      print(wurf >= 1 and wurf <= 6)
+      ```
+    antwort: |-
+      `import`
+      ```python
+      import random
+      wurf = random.randint(1, 6)
+      print(wurf >= 1 and wurf <= 6)
+      ```
+      ```text
+      True
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- import as / from
+  - typ: code_luecke
+    folien: [205]
+    aufgaben: ["2.1"]
+    deckt: [c10.import_as]
+    frage: |-
+      Ergänze, sodass das Modul unter dem Kurznamen `plt` angesprochen werden kann.
+      ```python
+      import matplotlib.pyplot ___ plt
+      ```
+    antwort: |-
+      `as`
+      ```python
+      import matplotlib.pyplot as plt
+      ```
+      Üblich sind auch `import numpy as np` und `import pandas as pd`.
+    tests: [{p: 2}]
+
+  - typ: unterschied
+    aufgaben: ["4.3"]
+    deckt: [c10.import_as]
+    frage: |-
+      Was ist der Unterschied zwischen `import math` und `from math import ceil`?
+    antwort: |-
+      - `import math`: Aufruf mit Modulnamen – `math.ceil(7.2)`.
+      - `from math import ceil`: nur `ceil` wird geholt und direkt aufgerufen – `ceil(7.2)` (so z. B. `from IPython.display import clear_output`).
+
+  - typ: code_ausgabe
+    aufgaben: ["4.3"]
+    deckt: [c10.import_as, c10.math]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      from math import ceil
+      print(ceil(7.2))
+      ```
+    antwort: |-
+      ```text
+      8
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- math
+  - typ: code_ausgabe
+    aufgaben: ["2.5", "2.6"]
+    deckt: [c10.math]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      import math
+      print(math.ceil(7.2))
+      print(math.ceil(7.0))
+      ```
+    antwort: |-
+      ```text
+      8
+      7
+      ```
+      `math.ceil` rundet auf die nächste **ganze Zahl auf**; ist der Wert schon ganz, bleibt er.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["2.5"]
+    deckt: [c10.math]
+    frage: |-
+      Berechne den Umfang einer Welle mit `r = 5` cm (U = 2 · π · r) mit `math.pi` und gib ihn mit zwei Nachkommastellen aus.
+    antwort: |-
+      ```python
+      import math
+      r = 5
+      umfang = 2 * math.pi * r
+      print(f"{umfang:.2f} cm")
+      ```
+      ```text
+      31.42 cm
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [75]
+    aufgaben: ["2.6"]
+    deckt: [c10.math]
+    frage: |-
+      Was ist der Unterschied zwischen `math.ceil(3520.4)` und `int(3520.4)`?
+    antwort: |-
+      - `math.ceil(3520.4)` → `3521`: rundet **auf** (z. B. Bestellmenge, die reichen muss).
+      - `int(3520.4)` → `3520`: **schneidet** die Nachkommastellen ab.
+
+  # ---------------------------------------------------------------- random
+  - typ: begriff
+    aufgaben: ["3.4"]
+    deckt: [c10.random]
+    frage: |-
+      Welche Werte kann `random.randint(1, 6)` liefern?
+    antwort: |-
+      Die ganzen Zahlen **1 bis 6** – bei randint sind **beide** Grenzen eingeschlossen.
+
+  - typ: unterschied
+    aufgaben: ["3.4", "3.9"]
+    deckt: [c10.random]
+    frage: |-
+      Was ist der Unterschied zwischen den Grenzen bei `random.randint(1, 6)` und `range(1, 6)`?
+    antwort: |-
+      - `randint(1, 6)`: 6 ist **möglich** (obere Grenze eingeschlossen).
+      - `range(1, 6)`: endet bei 5 (obere Grenze **ausgeschlossen**).
+
+  - typ: code_luecke
+    aufgaben: ["3.4"]
+    deckt: [c10.random]
+    frage: |-
+      Erzeuge eine zufällige Diagnosenummer von **0 bis 7** (beide möglich). Ergänze die Argumente.
+      ```python
+      import random
+      code = random.randint(___)
+      print(code)
+      ```
+    antwort: |-
+      `0, 7`
+      ```python
+      import random
+      code = random.randint(0, 7)
+      print(code)
+      ```
+    tests: [{p: 2}]
+
+  - typ: code_schreiben
+    aufgaben: ["2.9"]
+    deckt: [c10.random]
+    frage: |-
+      Simuliere **fünf** ganzzahlige Temperaturwerte zwischen 50 und 90 °C und sammle sie in einer Liste.
+    antwort: |-
+      ```python
+      import random
+      werte = []
+      for i in range(5):
+          werte.append(random.randint(50, 90))
+      print(werte)
+      ```
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- time.sleep
+  - typ: begriff
+    aufgaben: ["2.7"]
+    deckt: [c10.sleep]
+    frage: |-
+      Was bewirkt `time.sleep(3)`?
+    antwort: |-
+      Das Programm hält an dieser Stelle **3 Sekunden** an und macht danach weiter (z. B. Prüfpause oder Takt zwischen Messungen).
+
+  - typ: code_luecke
+    aufgaben: ["2.9"]
+    deckt: [c10.sleep]
+    frage: |-
+      Zwischen den Messungen soll eine halbe Sekunde Pause sein. Ergänze den Funktionsnamen.
+      ```python
+      import time
+      for i in range(2):
+          print("Messung", i + 1)
+          time.___(0.5)
+      ```
+    antwort: |-
+      `sleep`
+      ```python
+      import time
+      for i in range(2):
+          print("Messung", i + 1)
+          time.sleep(0.5)
+      ```
+      ```text
+      Messung 1
+      Messung 2
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- strftime
+  - typ: code_ausgabe
+    aufgaben: ["2.8", "5.5"]
+    deckt: [c10.strftime]
+    frage: |-
+      Was gibt der Code aus? (Ergänzung: `datetime.datetime(…)` erzeugt hier einen festen Zeitpunkt statt der aktuellen Zeit.)
+      ```python
+      import datetime
+      zeit = datetime.datetime(2026, 3, 3, 14, 30, 5)
+      print(zeit.strftime("%d.%m.%Y %H:%M"))
+      ```
+    antwort: |-
+      ```text
+      03.03.2026 14:30
+      ```
+      Tag und Monat werden zweistellig ausgegeben; die Sekunden fehlen, weil `%S` nicht im Format steht.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    aufgaben: ["2.8", "5.5"]
+    deckt: [c10.strftime]
+    frage: |-
+      Wofür stehen in einem strftime-Format `%d`, `%m`, `%Y`, `%H`, `%M` und `%S`?
+    antwort: |-
+      | Platzhalter | Bedeutung |
+      |---|---|
+      | `%d` | Tag (01–31) |
+      | `%m` | Monat (01–12) |
+      | `%Y` | Jahr, vierstellig |
+      | `%H` | Stunde (00–23) |
+      | `%M` | Minute |
+      | `%S` | Sekunde |
+
+  - typ: code_luecke
+    aufgaben: ["2.9"]
+    deckt: [c10.strftime]
+    frage: |-
+      Ergänze das Format, sodass die aktuelle Uhrzeit als `Stunde:Minute:Sekunde` erscheint (z. B. `14:30:05`).
+      ```python
+      import time
+      zeit = time.strftime(___, time.localtime())
+      print(zeit)
+      ```
+    antwort: |-
+      `"%H:%M:%S"`
+      ```python
+      import time
+      zeit = time.strftime("%H:%M:%S", time.localtime())
+      print(zeit)
+      ```
+    tests: [{p: 2}]
+
+  - typ: code_fehler
+    aufgaben: ["2.8"]
+    deckt: [c10.strftime]
+    frage: |-
+      Gewünscht ist das Datum mit **vierstelligem** Jahr. Was gibt der Code aus, und was ist falsch? (Fester Zeitpunkt als Ergänzung, siehe oben.)
+      ```python
+      import datetime
+      zeit = datetime.datetime(2026, 10, 7, 10, 0)
+      print(zeit.strftime("%d.%m.%y"))
+      ```
+    antwort: |-
+      ```text
+      07.10.26
+      ```
+      Kleines `%y` steht für das zweistellige Jahr. Richtig: `%Y` → `07.10.2026`.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- datetime
+  - typ: code_schreiben
+    aufgaben: ["5.5"]
+    deckt: [c10.datetime]
+    frage: |-
+      Gib einen Protokolleintrag im Format `[2026-10-28 14:30:00] Maschine 3 gestartet` mit der **aktuellen** Zeit aus. Nutze `datetime`.
+    antwort: |-
+      ```python
+      import datetime
+      jetzt = datetime.datetime.now()
+      zeit = jetzt.strftime("%Y-%m-%d %H:%M:%S")
+      print(f"[{zeit}] Maschine 3 gestartet")
+      ```
+    tests: [{p: 1}]
+
+  - typ: unterschied
+    aufgaben: ["2.8", "5.5"]
+    deckt: [c10.datetime, c10.strftime]
+    frage: |-
+      Was ist der Unterschied zwischen `time.strftime(format, time.localtime())` und `datetime.datetime.now().strftime(format)`?
+    antwort: |-
+      Beide liefern die aktuelle Zeit als formatierten Text.
+      - `time`: strftime ist eine **Funktion** des Moduls, die Zeit wird als zweites Argument übergeben.
+      - `datetime`: `now()` liefert ein Zeit**objekt**; strftime ist eine **Methode** dieses Objekts.
+
+  - typ: code_luecke
+    aufgaben: ["6.2"]
+    deckt: [c10.datetime]
+    frage: |-
+      Ergänze den Aufruf, der den **aktuellen** Zeitpunkt liefert.
+      ```python
+      import datetime
+      jetzt = datetime.datetime.___
+      print(jetzt.strftime("%Y-%m-%d"))
+      ```
+    antwort: |-
+      `now()`
+      ```python
+      import datetime
+      jetzt = datetime.datetime.now()
+      print(jetzt.strftime("%Y-%m-%d"))
+      ```
+    tests: [{p: 2}]
+
+  # ---------------------------------------------------------------- pip
+  - typ: begriff
+    aufgaben: ["2.5"]
+    deckt: [c10.pip]
+    frage: |-
+      Wie installierst du direkt in einem Jupyter-Notebook eine Bibliothek, die nicht vorinstalliert ist (z. B. qrcode)?
+    antwort: |-
+      Mit `!pip install qrcode` in einer Code-Zelle (mit Anaconda alternativ `!conda install qrcode`). `math`, `random` und `time` sind schon vorinstalliert und brauchen nur `import`.
+
+  - typ: unterschied
+    aufgaben: ["2.5"]
+    deckt: [c10.pip]
+    frage: |-
+      Was ist der Unterschied zwischen `pip install qrcode` und `import qrcode`?
+    antwort: |-
+      - `pip install`: lädt die Bibliothek herunter und installiert sie **einmalig** in der Python-Umgebung.
+      - `import`: macht die installierte Bibliothek **im Programm** verfügbar – bei jedem Programmstart nötig.
+
+  # ---------------------------------------------------------------- qrcode
+  - typ: code_schreiben
+    aufgaben: ["2.6"]
+    deckt: [c10.qrcode]
+    frage: |-
+      Erzeuge im Notebook aus dem Text `"ID: 1042"` einen QR-Code und zeige ihn an.
+    antwort: |-
+      ```python
+      import qrcode
+      bild = qrcode.make("ID: 1042")
+      display(bild)
+      ```
+      `display()` steht in Jupyter-Notebooks automatisch zur Verfügung.
+    tests: [{p: 1, jupyter: true}]
+
+  - typ: begriff
+    aufgaben: ["2.6", "2.7"]
+    deckt: [c10.qrcode]
+    frage: |-
+      Was liefert `qrcode.make(text)`, und wie bringst du mehrere Zeilen Maschinendaten in einen QR-Code?
+    antwort: |-
+      Ein **Bild** des QR-Codes (anzeigen mit `display(bild)`). Mehrere Zeilen: den Text vorher als (f-)String mit `\n` oder in dreifachen Anführungszeichen zusammensetzen und diesen String übergeben.

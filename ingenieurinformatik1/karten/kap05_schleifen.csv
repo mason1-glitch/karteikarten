@@ -1,0 +1,206 @@
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f2f7afd6e3.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_30ca1a6c8a.png)
+Bei `i = 3` ist die Bedingung falsch; die Schleife endet, `i` behält den Wert 3.
+
+*F. 123, 125*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d536c57a24.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4dd3a1d249.png)
+40 → 20 → 10 → 5; 5 ist ungerade, die Schleife endet nach 3 Halbierungen.
+
+*Aufg. 3.10*"
+"Ein Tank mit 1000 l verliert pro Stunde 10 % seines Inhalts. Schreib eine while-Schleife, die ausgibt, nach wie vielen Stunden **weniger als 500 l** im Tank sind.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_509db68743.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8918a8012b.png)
+
+*F. 125*"
+"Wann eignet sich eine **while**-Schleife besser als eine for-Schleife?","Wenn vorher nicht feststeht, wie oft wiederholt wird: Der Rumpf läuft, **solange** eine Bedingung erfüllt ist (z. B. bis ein Grenzwert erreicht oder eine Eingabe gültig ist).
+
+*F. 125*"
+"Die Schleife soll laufen, **solange** die Temperatur kleiner als 25 ist. Ergänze den Operator. Was wird danach ausgegeben?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c4eedf09c2.png)","`<`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cbda4667bc.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_445aa97501.png)
+20 → 22 → 24 → 26; erst bei 26 ist die Bedingung falsch.
+
+*F. 125*"
+"Was passiert beim Ausführen, und welche Zeile fehlt?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6bb58ec55e.png)","Eine **Endlosschleife**: Es wird immer wieder `0` ausgegeben, weil `zaehler` sich nie ändert und die Bedingung immer wahr bleibt. Im Rumpf fehlt das Hochzählen:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6f9e9939eb.png)
+
+*F. 126*"
+"Was ist eine **Endlosschleife**, und wodurch entsteht sie bei while typischerweise?","Eine Schleife, die nie endet, weil ihre Bedingung immer wahr bleibt – meist, weil die Variable aus der Bedingung im Rumpf nicht verändert wird. (`while True:` ohne `break` ist absichtlich endlos.)
+
+*F. 126*"
+"Ergänze die fehlende Zeile, damit die Schleife nach drei Messungen endet.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cfc5abc719.png)","`i += 1`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2e43c85edc.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2fc626cbde.png)
+
+*F. 126*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2f457a6627.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1ba8e617ad.png)
+Nach dem 2. Durchlauf ist `not gefunden` falsch – die ganze and-Bedingung ist falsch, die Schleife endet.
+
+*Aufg. 3.7*"
+"Die Schleife soll weiterlaufen, solange die PIN **nicht** `4711` ist **und** weniger als 3 Versuche gemacht wurden. Ergänze die Bedingung.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_68179eb8ac.png)","`pin != ""4711"" and versuche < 3`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a3a08677ef.png)
+Tippt der Nutzer `1111` und dann `4711`, erscheint:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+
+*Aufg. 3.7*"
+"Eine while-Schleife endet entweder bei richtigem Passwort **oder** nach 5 Fehlversuchen. Warum braucht man nach der Schleife noch ein `if`?","Die Schleife verrät nicht, **welche** Bedingung sie beendet hat. Erst `if eingabe == passwort:` entscheidet danach, ob „Zugang gewährt“ oder „gesperrt“ ausgegeben wird.
+
+*Aufg. 3.7*"
+"Der Nutzer tippt nacheinander `rot`, `gelb`, `grün`. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0a4294416d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_85523af6b8.png)
+Die Bedingung wird erst am Anfang des nächsten Durchlaufs geprüft – deshalb erscheint auch `Eingabe: grün`.
+
+*F. 125 · Aufg. 3.7*"
+"Schreib Code, der so lange eine Drehzahl (Ganzzahl) einliest, bis sie **größer als 0** ist, und sie dann ausgibt.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a7bd7e05e0.png)
+Der Startwert `0` sorgt dafür, dass die Schleife mindestens einmal läuft.
+
+*F. 125*"
+"Warum steht vor `while eingabe != passwort:` die Zeile `eingabe = """"`?","Die Variable muss beim ersten Prüfen der Bedingung schon existieren (sonst NameError). Der leere String ist garantiert falsch, also läuft die Schleife mindestens einmal und fragt ab.
+
+*F. 125 · Aufg. 3.7*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_241fd829fd.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fb97429e74.png)
+`w` nimmt nacheinander jeden Wert der Liste an.
+
+*F. 143*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8a2ee60c71.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6e60ea739c.png)
+Auch ein String lässt sich Zeichen für Zeichen durchlaufen.
+
+*Aufg. 6.1*"
+"Gegeben ist `durchmesser = [3.1, 2.9, 3.4]`. Gib jeden Wert mit der Einheit `mm` in einer eigenen Zeile aus (`3.1 mm` …).","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2a75f0e448.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c25b1c1976.png)
+
+*F. 143 · Aufg. 4.2*"
+"Was ist der Unterschied zwischen einer **for**- und einer **while**-Schleife?","- for: iterative (zählergesteuerte) Schleife – läuft über die Elemente einer Liste/eines range; die Anzahl der Durchläufe steht vorher fest.
+- while: bedingte Schleife – läuft, solange eine Bedingung wahr ist; die Anzahl ergibt sich erst beim Ablauf.
+
+*F. 123, 125, 128*"
+"Aus welchen zwei Teilen besteht eine Schleife laut Skript, und was leistet jeder Teil?","- **Schleifensteuerung** (Kopfzeile, z. B. `for i in range(5):`): legt fest, wie oft und wann der Rumpf ausgeführt wird.
+- **Schleifenrumpf** (eingerückter Block): die Anweisungen, die wiederholt werden.
+
+*F. 123*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_77ee1eed5e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a7a4b46f71.png)
+Ohne Startwert beginnt range bei 0; der Endwert 3 ist **nicht** dabei.
+
+*F. 128*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d361e57e1f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b82e401a3b.png)
+Start 2, Schrittweite 4; 14 wäre schon über dem Endwert 11.
+
+*F. 128*"
+"Ergänze die range-Argumente, sodass die Zahlen **1 bis 5** ausgegeben werden.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_92c0b1a87d.png)","`1, 6` – der Endwert muss eins **größer** sein als die letzte gewünschte Zahl.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5ffae32bc9.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d391f2b4c6.png)
+
+*F. 128 · Aufg. 3.9*"
+"Ausgegeben werden sollen die Tage 1 bis 7. Was gibt der Code aus, und wie korrigierst du ihn?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e8b91aa754.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d3de1bbbab.png)
+Der Endwert ist ausgeschlossen. Korrektur: `range(1, 8)`.
+
+*F. 128 · Aufg. 3.11*"
+"Was bedeuten die drei Werte in `range(start, stop, schritt)`, und welche Standardwerte gelten?","- `start`: erster Wert (eingeschlossen), Standard 0
+- `stop`: Endwert (**ausgeschlossen**), muss angegeben werden
+- `schritt`: Schrittweite, Standard 1
+
+*F. 128*"
+"Welche Fehlermeldung erscheint, und wie behebst du sie?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_46f504aeea.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4d59b0d6a0.png)
+`anzahl / 2` ist `5.0` (float); range braucht ganze Zahlen. Korrektur: `range(anzahl // 2)`.
+
+*F. 128*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9c18698007.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e0296edf1b.png)
+Mit negativer Schrittweite zählt range rückwärts; der Endwert 0 wird nicht erreicht.
+
+*F. 129*"
+"Ergänze die Lücken für einen Countdown `5 4 3 2 1` (je eine Zeile).
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b2e83bd406.png)","`0` und `-1`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0e95a7ae39.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1a999a7e98.png)
+
+*F. 129*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cb70ca7209.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_dcf4492121.png)
+1 + 2 + 3 + 4 = 10 (die 5 ist nicht dabei).
+
+*Aufg. 3.11*"
+"Berechne mit einer for-Schleife den **Mittelwert** der Temperaturen `[20.5, 21.0, 19.5, 21.0]` und gib ihn aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_19ebd3807f.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d9ac52ef34.png)
+
+*Aufg. 6.1*"
+"Die Summe der Werte soll `15` sein. Was gibt der Code aus, und was ist falsch?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6f9e7dea43.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a647012ffb.png)
+`summe = 0` steht im Rumpf und setzt die Summe bei jedem Durchlauf zurück. Der Startwert gehört **vor** die Schleife.
+
+*Aufg. 6.1*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_543f9cb093.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_be25d4fe05.png)
+Zinseszins: 1000 · 1.05 · 1.05 = 1102.5.
+
+*Aufg. 3.11*"
+"Zähle mit einer Schleife, wie viele Werte in `[0.2, 0.7, 0.4, 0.9]` größer als 0.5 sind, und gib die Anzahl aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_89d15aaa35.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+
+*Aufg. 6.1*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_eb30fdd80a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fd7edcc181.png)
+`break` beendet die Schleife sofort – `T4` wird nicht mehr erreicht.
+
+*Aufg. 3.8*"
+"Was bewirkt `break` in einer Schleife?","Die Schleife wird **sofort komplett beendet**; das Programm macht mit der ersten Anweisung nach der Schleife weiter.
+
+*Aufg. 3.8*"
+"Gib aus `werte = [80, 95, 120, 130]` den **ersten** Wert über 100 aus und brich die Suche danach ab.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1b83b5383e.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_756373384a.png)
+
+*Aufg. 3.8*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1b5b89c4ec.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2b15ac6129.png)
+Bei geraden Nummern springt `continue` direkt zum nächsten Durchlauf.
+
+*Aufg. 3.8*"
+"Was ist der Unterschied zwischen `break` und `continue`?","- `break`: beendet die **ganze** Schleife.
+- `continue`: überspringt nur den **Rest des aktuellen** Durchlaufs; die Schleife läuft mit dem nächsten Element weiter.
+
+*Aufg. 3.8*"
+"Negative Messwerte sollen übersprungen werden, die Schleife soll aber weiterlaufen. Ergänze die Lücke.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8739916c82.png)","`continue`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_52eedd991b.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5222f3978d.png)
+
+*Aufg. 3.8*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3eea99bb4b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6d4db190ec.png)
+Die Merker-Variable startet mit `False` und wird bei einem Treffer auf `True` gesetzt – danach nie wieder zurück.
+
+*Aufg. 4.4*"
+"`Ventil` ist in der Liste, trotzdem erscheint `False`. Warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_11116e2f89.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a9a4674e80.png)
+Der else-Zweig überschreibt den Treffer beim nächsten Element (`Lager`) wieder mit `False`. Der else-Zweig muss weg – der Startwert `False` vor der Schleife genügt.
+
+*Aufg. 4.4*"
+"Prüfe mit einer Merker-Variablen, ob in `messwerte = [2.1, 2.3, -0.4, 2.2]` ein negativer Wert vorkommt, und gib **nach** der Schleife `Fehler im Sensor` aus, falls ja.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8499c7e15e.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e87135f97e.png)
+
+*Aufg. 4.5*"
+"Was gibt der Code aus? Notiere `n` nach jedem Durchlauf.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2363bb94c4.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_388d873532.png)
+100 → 33 → 11 → 3 → 1: vier Durchläufe.
+
+*Aufg. 3.10*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6eb9da36d7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_07085641f3.png)
+Variablen aus einer Schleife bestehen danach weiter und behalten ihren letzten Wert. (Das Skript, F. 182, nennt Schleifen zusammen mit Funktionen als „lokal“ – das gilt in Python nur für Funktionen.)
+
+*F. 182*"
+"Wie findest du heraus, was eine Schleife Schritt für Schritt tut, **ohne** sie auszuführen?","Mit einer Tabelle (Schreibtischtest): Für jeden Durchlauf die Bedingung und die Werte aller Variablen notieren, bis die Bedingung falsch ist bzw. die Liste zu Ende ist. Am Rechner hilft eine `print()`-Ausgabe im Rumpf.
+
+*Aufg. 3.8, 5.2*"

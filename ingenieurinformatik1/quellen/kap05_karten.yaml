@@ -1,0 +1,821 @@
+# Karteikarten Ingenieurinformatik I (Python) – Kapitel 5: Schleifen
+# Quelle: Skript Info1_Skript_WS26.pdf (F. = Seite im PDF), Aufgaben 1.3, 2.9, 3.7–3.11, 4.4, 4.5.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/kap05_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/kap05_schleifen.csv
+matrix: ingenieurinformatik1/quellen/kap05_abdeckung.md
+titel: "Kapitel 5: Schleifen (while, for, range, break, continue)"
+id_praefix: "K05."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Aufgabennummern folgen den Dateinamen: Aufg. 3.7 = 03_7_Fabrikzugangssystem (in der Lösung als „Aufgabe 3.8“ betitelt), Aufg. 3.8 = 03_8_Fliessband_Steuerung (dort „Aufgabe 3.7“)."
+  - "Skript F. 182 sagt, eine Zuweisung „innerhalb einer Funktion oder einer Schleife“ habe außerhalb keine Wirkung. Für Funktionen stimmt das, für Schleifen nicht: Variablen aus Schleifen behalten ihren Wert (Karte zur Laufvariablen nach der Schleife)."
+
+inhalte:
+  - {id: c05.while, gewicht: 3, folie: "123, 125", aufgaben: "2.9, 3.7, 3.10", text: "while-Schleife: läuft, solange die Bedingung wahr ist; Zähler"}
+  - {id: c05.endlos, gewicht: 2, folie: "126", aufgaben: "", text: "Endlosschleife (Bedingung bleibt wahr, Zähler vergessen)"}
+  - {id: c05.while_and, gewicht: 2, folie: "", aufgaben: "3.7", text: "while mit zwei Bedingungen (and) und Auswertung nach der Schleife"}
+  - {id: c05.while_eingabe, gewicht: 2, folie: "125", aufgaben: "3.7", text: "Eingabe wiederholen, bis sie passt (Startwert vor der Schleife)"}
+  - {id: c05.for, gewicht: 3, folie: "123, 143", aufgaben: "3.8, 4.2, 6.1", text: "for-Schleife über Liste/String; Schleifensteuerung und -rumpf"}
+  - {id: c05.range, gewicht: 3, folie: "128", aufgaben: "3.9, 3.11, 4.3", text: "range(stop), range(start, stop, schritt): Endwert ausgeschlossen"}
+  - {id: c05.range_neg, gewicht: 1, folie: "129", aufgaben: "", text: "range mit negativer Schrittweite (rückwärts zählen)"}
+  - {id: c05.akku, gewicht: 3, folie: "", aufgaben: "3.11, 6.1", text: "Summe/Zähler/Zinseszins in der Schleife (Startwert vor der Schleife)"}
+  - {id: c05.break, gewicht: 2, folie: "", aufgaben: "3.8", text: "break beendet die Schleife sofort"}
+  - {id: c05.continue, gewicht: 2, folie: "", aufgaben: "3.8", text: "continue überspringt den Rest des Durchlaufs"}
+  - {id: c05.flag, gewicht: 2, folie: "", aufgaben: "4.4, 4.5", text: "Merker-Variable (gefunden = False) über die Schleife hinweg"}
+  - {id: c05.trace, gewicht: 2, folie: "", aufgaben: "3.8, 3.10, 5.2", text: "Ablauf verfolgen: Durchläufe zählen, Werte nach der Schleife"}
+
+karten:
+  # ---------------------------------------------------------------- while
+  - typ: code_ausgabe
+    folien: [123, 125]
+    deckt: [c05.while]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      i = 0
+      while i < 3:
+          print(i)
+          i += 1
+      print("Ende", i)
+      ```
+    antwort: |-
+      ```text
+      0
+      1
+      2
+      Ende 3
+      ```
+      Bei `i = 3` ist die Bedingung falsch; die Schleife endet, `i` behält den Wert 3.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    aufgaben: ["3.10"]
+    deckt: [c05.while, c05.trace]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      gewicht = 40
+      schritte = 0
+      while gewicht % 2 == 0:
+          gewicht = gewicht // 2
+          schritte += 1
+      print(gewicht, schritte)
+      ```
+    antwort: |-
+      ```text
+      5 3
+      ```
+      40 → 20 → 10 → 5; 5 ist ungerade, die Schleife endet nach 3 Halbierungen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [125]
+    deckt: [c05.while]
+    frage: |-
+      Ein Tank mit 1000 l verliert pro Stunde 10 % seines Inhalts. Schreib eine while-Schleife, die ausgibt, nach wie vielen Stunden **weniger als 500 l** im Tank sind.
+    antwort: |-
+      ```python
+      inhalt = 1000
+      stunden = 0
+      while inhalt >= 500:
+          inhalt = inhalt * 0.9
+          stunden += 1
+      print(stunden)
+      ```
+      ```text
+      7
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [125]
+    deckt: [c05.while]
+    frage: |-
+      Wann eignet sich eine **while**-Schleife besser als eine for-Schleife?
+    antwort: |-
+      Wenn vorher nicht feststeht, wie oft wiederholt wird: Der Rumpf läuft, **solange** eine Bedingung erfüllt ist (z. B. bis ein Grenzwert erreicht oder eine Eingabe gültig ist).
+
+  - typ: code_luecke
+    folien: [125]
+    deckt: [c05.while]
+    frage: |-
+      Die Schleife soll laufen, **solange** die Temperatur kleiner als 25 ist. Ergänze den Operator. Was wird danach ausgegeben?
+      ```python
+      temperatur = 20
+      while temperatur ___ 25:
+          temperatur += 2
+      print(temperatur)
+      ```
+    antwort: |-
+      `<`
+      ```python
+      temperatur = 20
+      while temperatur < 25:
+          temperatur += 2
+      print(temperatur)
+      ```
+      ```text
+      26
+      ```
+      20 → 22 → 24 → 26; erst bei 26 ist die Bedingung falsch.
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- Endlosschleife
+  - typ: code_fehler
+    folien: [126]
+    deckt: [c05.endlos]
+    frage: |-
+      Was passiert beim Ausführen, und welche Zeile fehlt?
+      ```python
+      zaehler = 0
+      while zaehler < 5:
+          print(zaehler)
+      ```
+    antwort: |-
+      Eine **Endlosschleife**: Es wird immer wieder `0` ausgegeben, weil `zaehler` sich nie ändert und die Bedingung immer wahr bleibt. Im Rumpf fehlt das Hochzählen:
+      ```python
+      zaehler = 0
+      while zaehler < 5:
+          print(zaehler)
+          zaehler += 1
+      ```
+    tests: [{p: 1, nicht_ausfuehren: "Endlosschleife (Absicht der Karte)"}, {p: 2}]
+
+  - typ: begriff
+    folien: [126]
+    deckt: [c05.endlos]
+    frage: |-
+      Was ist eine **Endlosschleife**, und wodurch entsteht sie bei while typischerweise?
+    antwort: |-
+      Eine Schleife, die nie endet, weil ihre Bedingung immer wahr bleibt – meist, weil die Variable aus der Bedingung im Rumpf nicht verändert wird. (`while True:` ohne `break` ist absichtlich endlos.)
+
+  - typ: code_luecke
+    folien: [126]
+    deckt: [c05.endlos]
+    frage: |-
+      Ergänze die fehlende Zeile, damit die Schleife nach drei Messungen endet.
+      ```python
+      i = 1
+      while i <= 3:
+          print("Messung", i)
+          ___
+      ```
+    antwort: |-
+      `i += 1`
+      ```python
+      i = 1
+      while i <= 3:
+          print("Messung", i)
+          i += 1
+      ```
+      ```text
+      Messung 1
+      Messung 2
+      Messung 3
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- while mit zwei Bedingungen
+  - typ: code_ausgabe
+    aufgaben: ["3.7"]
+    deckt: [c05.while_and]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      versuche = 0
+      gefunden = False
+      while not gefunden and versuche < 3:
+          versuche += 1
+          if versuche == 2:
+              gefunden = True
+      print(versuche, gefunden)
+      ```
+    antwort: |-
+      ```text
+      2 True
+      ```
+      Nach dem 2. Durchlauf ist `not gefunden` falsch – die ganze and-Bedingung ist falsch, die Schleife endet.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    aufgaben: ["3.7"]
+    deckt: [c05.while_and]
+    frage: |-
+      Die Schleife soll weiterlaufen, solange die PIN **nicht** `4711` ist **und** weniger als 3 Versuche gemacht wurden. Ergänze die Bedingung.
+      ```python
+      pin = ""
+      versuche = 0
+      while ___:
+          pin = input()
+          versuche += 1
+      print(versuche)
+      ```
+    antwort: |-
+      `pin != "4711" and versuche < 3`
+      ```python
+      pin = ""
+      versuche = 0
+      while pin != "4711" and versuche < 3:
+          pin = input()
+          versuche += 1
+      print(versuche)
+      ```
+      Tippt der Nutzer `1111` und dann `4711`, erscheint:
+      ```text
+      2
+      ```
+    tests: [{p: 2, t: 1, eingabe: "1111\n4711\n"}]
+
+  - typ: begriff
+    aufgaben: ["3.7"]
+    deckt: [c05.while_and]
+    frage: |-
+      Eine while-Schleife endet entweder bei richtigem Passwort **oder** nach 5 Fehlversuchen. Warum braucht man nach der Schleife noch ein `if`?
+    antwort: |-
+      Die Schleife verrät nicht, **welche** Bedingung sie beendet hat. Erst `if eingabe == passwort:` entscheidet danach, ob „Zugang gewährt“ oder „gesperrt“ ausgegeben wird.
+
+  # ---------------------------------------------------------------- Eingabe wiederholen
+  - typ: code_ausgabe
+    folien: [125]
+    aufgaben: ["3.7"]
+    deckt: [c05.while_eingabe]
+    frage: |-
+      Der Nutzer tippt nacheinander `rot`, `gelb`, `grün`. Was gibt der Code aus?
+      ```python
+      farbe = ""
+      while farbe != "grün":
+          farbe = input()
+          print("Eingabe:", farbe)
+      print("Freigabe")
+      ```
+    antwort: |-
+      ```text
+      Eingabe: rot
+      Eingabe: gelb
+      Eingabe: grün
+      Freigabe
+      ```
+      Die Bedingung wird erst am Anfang des nächsten Durchlaufs geprüft – deshalb erscheint auch `Eingabe: grün`.
+    tests: [{p: 1, t: 1, eingabe: "rot\ngelb\ngrün\n"}]
+
+  - typ: code_schreiben
+    folien: [125]
+    deckt: [c05.while_eingabe]
+    frage: |-
+      Schreib Code, der so lange eine Drehzahl (Ganzzahl) einliest, bis sie **größer als 0** ist, und sie dann ausgibt.
+    antwort: |-
+      ```python
+      drehzahl = 0
+      while drehzahl <= 0:
+          drehzahl = int(input("Drehzahl > 0: "))
+      print("OK:", drehzahl)
+      ```
+      Der Startwert `0` sorgt dafür, dass die Schleife mindestens einmal läuft.
+    tests: [{p: 1, eingabe: "-5\n0\n1200\n"}]
+
+  - typ: begriff
+    folien: [125]
+    aufgaben: ["3.7"]
+    deckt: [c05.while_eingabe]
+    frage: |-
+      Warum steht vor `while eingabe != passwort:` die Zeile `eingabe = ""`?
+    antwort: |-
+      Die Variable muss beim ersten Prüfen der Bedingung schon existieren (sonst NameError). Der leere String ist garantiert falsch, also läuft die Schleife mindestens einmal und fragt ab.
+
+  # ---------------------------------------------------------------- for
+  - typ: code_ausgabe
+    folien: [143]
+    deckt: [c05.for]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      werte = [12.5, 13.0, 12.8]
+      for w in werte:
+          print(w * 2)
+      ```
+    antwort: |-
+      ```text
+      25.0
+      26.0
+      25.6
+      ```
+      `w` nimmt nacheinander jeden Wert der Liste an.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    deckt: [c05.for]
+    aufgaben: ["6.1"]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for zeichen in "AB3":
+          print(zeichen)
+      ```
+    antwort: |-
+      ```text
+      A
+      B
+      3
+      ```
+      Auch ein String lässt sich Zeichen für Zeichen durchlaufen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [143]
+    aufgaben: ["4.2"]
+    deckt: [c05.for]
+    frage: |-
+      Gegeben ist `durchmesser = [3.1, 2.9, 3.4]`. Gib jeden Wert mit der Einheit `mm` in einer eigenen Zeile aus (`3.1 mm` …).
+    antwort: |-
+      ```python
+      durchmesser = [3.1, 2.9, 3.4]
+      for d in durchmesser:
+          print(d, "mm")
+      ```
+      ```text
+      3.1 mm
+      2.9 mm
+      3.4 mm
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [123, 125, 128]
+    deckt: [c05.for, c05.while]
+    frage: |-
+      Was ist der Unterschied zwischen einer **for**- und einer **while**-Schleife?
+    antwort: |-
+      - for: iterative (zählergesteuerte) Schleife – läuft über die Elemente einer Liste/eines range; die Anzahl der Durchläufe steht vorher fest.
+      - while: bedingte Schleife – läuft, solange eine Bedingung wahr ist; die Anzahl ergibt sich erst beim Ablauf.
+
+  - typ: begriff
+    folien: [123]
+    deckt: [c05.for]
+    frage: |-
+      Aus welchen zwei Teilen besteht eine Schleife laut Skript, und was leistet jeder Teil?
+    antwort: |-
+      - **Schleifensteuerung** (Kopfzeile, z. B. `for i in range(5):`): legt fest, wie oft und wann der Rumpf ausgeführt wird.
+      - **Schleifenrumpf** (eingerückter Block): die Anweisungen, die wiederholt werden.
+
+  # ---------------------------------------------------------------- range
+  - typ: code_ausgabe
+    folien: [128]
+    deckt: [c05.range]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for i in range(3):
+          print(i)
+      ```
+    antwort: |-
+      ```text
+      0
+      1
+      2
+      ```
+      Ohne Startwert beginnt range bei 0; der Endwert 3 ist **nicht** dabei.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [128]
+    deckt: [c05.range]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for i in range(2, 11, 4):
+          print(i)
+      ```
+    antwort: |-
+      ```text
+      2
+      6
+      10
+      ```
+      Start 2, Schrittweite 4; 14 wäre schon über dem Endwert 11.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [128]
+    aufgaben: ["3.9"]
+    deckt: [c05.range]
+    frage: |-
+      Ergänze die range-Argumente, sodass die Zahlen **1 bis 5** ausgegeben werden.
+      ```python
+      for i in range(___):
+          print(i)
+      ```
+    antwort: |-
+      `1, 6` – der Endwert muss eins **größer** sein als die letzte gewünschte Zahl.
+      ```python
+      for i in range(1, 6):
+          print(i)
+      ```
+      ```text
+      1
+      2
+      3
+      4
+      5
+      ```
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_fehler
+    folien: [128]
+    aufgaben: ["3.11"]
+    deckt: [c05.range]
+    frage: |-
+      Ausgegeben werden sollen die Tage 1 bis 7. Was gibt der Code aus, und wie korrigierst du ihn?
+      ```python
+      for tag in range(1, 7):
+          print("Tag", tag)
+      ```
+    antwort: |-
+      ```text
+      Tag 1
+      Tag 2
+      Tag 3
+      Tag 4
+      Tag 5
+      Tag 6
+      ```
+      Der Endwert ist ausgeschlossen. Korrektur: `range(1, 8)`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [128]
+    deckt: [c05.range]
+    frage: |-
+      Was bedeuten die drei Werte in `range(start, stop, schritt)`, und welche Standardwerte gelten?
+    antwort: |-
+      - `start`: erster Wert (eingeschlossen), Standard 0
+      - `stop`: Endwert (**ausgeschlossen**), muss angegeben werden
+      - `schritt`: Schrittweite, Standard 1
+
+  - typ: code_fehler
+    folien: [128]
+    deckt: [c05.range]
+    frage: |-
+      Welche Fehlermeldung erscheint, und wie behebst du sie?
+      ```python
+      anzahl = 10
+      for i in range(anzahl / 2):
+          print(i)
+      ```
+    antwort: |-
+      ```text
+      TypeError: 'float' object cannot be interpreted as an integer
+      ```
+      `anzahl / 2` ist `5.0` (float); range braucht ganze Zahlen. Korrektur: `range(anzahl // 2)`.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- range rückwärts
+  - typ: code_ausgabe
+    folien: [129]
+    deckt: [c05.range_neg]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for i in range(10, 0, -3):
+          print(i)
+      ```
+    antwort: |-
+      ```text
+      10
+      7
+      4
+      1
+      ```
+      Mit negativer Schrittweite zählt range rückwärts; der Endwert 0 wird nicht erreicht.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [129]
+    deckt: [c05.range_neg]
+    frage: |-
+      Ergänze die Lücken für einen Countdown `5 4 3 2 1` (je eine Zeile).
+      ```python
+      for i in range(5, ___, ___):
+          print(i)
+      ```
+    antwort: |-
+      `0` und `-1`
+      ```python
+      for i in range(5, 0, -1):
+          print(i)
+      ```
+      ```text
+      5
+      4
+      3
+      2
+      1
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- Akkumulator
+  - typ: code_ausgabe
+    aufgaben: ["3.11"]
+    deckt: [c05.akku, c05.range]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      summe = 0
+      for i in range(1, 5):
+          summe += i
+      print(summe)
+      ```
+    antwort: |-
+      ```text
+      10
+      ```
+      1 + 2 + 3 + 4 = 10 (die 5 ist nicht dabei).
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["6.1"]
+    deckt: [c05.akku]
+    frage: |-
+      Berechne mit einer for-Schleife den **Mittelwert** der Temperaturen `[20.5, 21.0, 19.5, 21.0]` und gib ihn aus.
+    antwort: |-
+      ```python
+      werte = [20.5, 21.0, 19.5, 21.0]
+      summe = 0
+      for w in werte:
+          summe += w
+      print(summe / len(werte))
+      ```
+      ```text
+      20.5
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    aufgaben: ["6.1"]
+    deckt: [c05.akku]
+    frage: |-
+      Die Summe der Werte soll `15` sein. Was gibt der Code aus, und was ist falsch?
+      ```python
+      werte = [4, 6, 5]
+      for w in werte:
+          summe = 0
+          summe += w
+      print(summe)
+      ```
+    antwort: |-
+      ```text
+      5
+      ```
+      `summe = 0` steht im Rumpf und setzt die Summe bei jedem Durchlauf zurück. Der Startwert gehört **vor** die Schleife.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    aufgaben: ["3.11"]
+    deckt: [c05.akku]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      kapital = 1000
+      for jahr in range(2):
+          kapital = kapital * 1.05
+      print(f"{kapital:.2f}")
+      ```
+    antwort: |-
+      ```text
+      1102.50
+      ```
+      Zinseszins: 1000 · 1.05 · 1.05 = 1102.5.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["6.1"]
+    deckt: [c05.akku]
+    frage: |-
+      Zähle mit einer Schleife, wie viele Werte in `[0.2, 0.7, 0.4, 0.9]` größer als 0.5 sind, und gib die Anzahl aus.
+    antwort: |-
+      ```python
+      werte = [0.2, 0.7, 0.4, 0.9]
+      anzahl = 0
+      for w in werte:
+          if w > 0.5:
+              anzahl += 1
+      print(anzahl)
+      ```
+      ```text
+      2
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- break
+  - typ: code_ausgabe
+    aufgaben: ["3.8"]
+    deckt: [c05.break]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for teil in ["T1", "T2", "X", "T4"]:
+          if teil == "X":
+              print("Stopp bei", teil)
+              break
+          print(teil, "ok")
+      ```
+    antwort: |-
+      ```text
+      T1 ok
+      T2 ok
+      Stopp bei X
+      ```
+      `break` beendet die Schleife sofort – `T4` wird nicht mehr erreicht.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    aufgaben: ["3.8"]
+    deckt: [c05.break]
+    frage: |-
+      Was bewirkt `break` in einer Schleife?
+    antwort: |-
+      Die Schleife wird **sofort komplett beendet**; das Programm macht mit der ersten Anweisung nach der Schleife weiter.
+
+  - typ: code_schreiben
+    aufgaben: ["3.8"]
+    deckt: [c05.break]
+    frage: |-
+      Gib aus `werte = [80, 95, 120, 130]` den **ersten** Wert über 100 aus und brich die Suche danach ab.
+    antwort: |-
+      ```python
+      werte = [80, 95, 120, 130]
+      for w in werte:
+          if w > 100:
+              print(w)
+              break
+      ```
+      ```text
+      120
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- continue
+  - typ: code_ausgabe
+    aufgaben: ["3.8"]
+    deckt: [c05.continue]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for nr in [1, 2, 3, 4]:
+          if nr % 2 == 0:
+              continue
+          print(nr)
+      ```
+    antwort: |-
+      ```text
+      1
+      3
+      ```
+      Bei geraden Nummern springt `continue` direkt zum nächsten Durchlauf.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    aufgaben: ["3.8"]
+    deckt: [c05.continue, c05.break]
+    frage: |-
+      Was ist der Unterschied zwischen `break` und `continue`?
+    antwort: |-
+      - `break`: beendet die **ganze** Schleife.
+      - `continue`: überspringt nur den **Rest des aktuellen** Durchlaufs; die Schleife läuft mit dem nächsten Element weiter.
+
+  - typ: code_luecke
+    aufgaben: ["3.8"]
+    deckt: [c05.continue]
+    frage: |-
+      Negative Messwerte sollen übersprungen werden, die Schleife soll aber weiterlaufen. Ergänze die Lücke.
+      ```python
+      for w in [3, -1, 4]:
+          if w < 0:
+              ___
+          print(w)
+      ```
+    antwort: |-
+      `continue`
+      ```python
+      for w in [3, -1, 4]:
+          if w < 0:
+              continue
+          print(w)
+      ```
+      ```text
+      3
+      4
+      ```
+    tests: [{p: 2, t: 1}]
+
+  # ---------------------------------------------------------------- Merker-Variable
+  - typ: code_ausgabe
+    aufgaben: ["4.4"]
+    deckt: [c05.flag]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      teile = ["Kolben", "Ventil", "Lager"]
+      gefunden = False
+      for t in teile:
+          if t == "Ventil":
+              gefunden = True
+      print(gefunden)
+      ```
+    antwort: |-
+      ```text
+      True
+      ```
+      Die Merker-Variable startet mit `False` und wird bei einem Treffer auf `True` gesetzt – danach nie wieder zurück.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    aufgaben: ["4.4"]
+    deckt: [c05.flag]
+    frage: |-
+      `Ventil` ist in der Liste, trotzdem erscheint `False`. Warum?
+      ```python
+      teile = ["Ventil", "Lager"]
+      gefunden = False
+      for t in teile:
+          if t == "Ventil":
+              gefunden = True
+          else:
+              gefunden = False
+      print(gefunden)
+      ```
+    antwort: |-
+      ```text
+      False
+      ```
+      Der else-Zweig überschreibt den Treffer beim nächsten Element (`Lager`) wieder mit `False`. Der else-Zweig muss weg – der Startwert `False` vor der Schleife genügt.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["4.5"]
+    deckt: [c05.flag]
+    frage: |-
+      Prüfe mit einer Merker-Variablen, ob in `messwerte = [2.1, 2.3, -0.4, 2.2]` ein negativer Wert vorkommt, und gib **nach** der Schleife `Fehler im Sensor` aus, falls ja.
+    antwort: |-
+      ```python
+      messwerte = [2.1, 2.3, -0.4, 2.2]
+      negativ = False
+      for w in messwerte:
+          if w < 0:
+              negativ = True
+      if negativ:
+          print("Fehler im Sensor")
+      ```
+      ```text
+      Fehler im Sensor
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Ablauf verfolgen
+  - typ: code_ausgabe
+    aufgaben: ["3.10"]
+    deckt: [c05.trace]
+    frage: |-
+      Was gibt der Code aus? Notiere `n` nach jedem Durchlauf.
+      ```python
+      n = 100
+      schritte = 0
+      while n > 1:
+          n = n // 3
+          schritte += 1
+      print(n, schritte)
+      ```
+    antwort: |-
+      ```text
+      1 4
+      ```
+      100 → 33 → 11 → 3 → 1: vier Durchläufe.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [182]
+    deckt: [c05.trace]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for i in range(0, 10, 3):
+          letzter = i
+      print(i, letzter)
+      ```
+    antwort: |-
+      ```text
+      9 9
+      ```
+      Variablen aus einer Schleife bestehen danach weiter und behalten ihren letzten Wert. (Das Skript, F. 182, nennt Schleifen zusammen mit Funktionen als „lokal“ – das gilt in Python nur für Funktionen.)
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    aufgaben: ["3.8", "5.2"]
+    deckt: [c05.trace]
+    frage: |-
+      Wie findest du heraus, was eine Schleife Schritt für Schritt tut, **ohne** sie auszuführen?
+    antwort: |-
+      Mit einer Tabelle (Schreibtischtest): Für jeden Durchlauf die Bedingung und die Werte aller Variablen notieren, bis die Bedingung falsch ist bzw. die Liste zu Ende ist. Am Rechner hilft eine `print()`-Ausgabe im Rumpf.

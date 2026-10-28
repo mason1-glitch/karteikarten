@@ -1,0 +1,190 @@
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e27db287f7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a4de4d03eb.png)
+Die Funktion wird einmal definiert und zweimal mit verschiedenen Werten aufgerufen.
+
+*F. 171*"
+"Der Code bricht beim Start ab. Welche Fehlerart meldet Python, und was fehlt?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4824baf86f.png)","Einen **SyntaxError**: Nach der schließenden Klammer fehlt der **Doppelpunkt**.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b190c2f16c.png)
+
+*F. 171*"
+"Schreib eine Funktion `kreisflaeche(d)`, die für den Durchmesser `d` die Fläche A = π · d² / 4 **zurückgibt** (`math.pi`). Gib das Ergebnis für `d = 2` mit zwei Nachkommastellen aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_549d17aa3d.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8df2bd7a86.png)
+
+*F. 171, 180 · Aufg. 5.3*"
+"Aus welchen Teilen besteht die erste Zeile einer Funktionsdefinition, und was folgt darunter?","Schlüsselwort `def`, Funktionsname, runde Klammern mit der Parameterliste (darf leer sein, die Klammern **nicht** weglassen) und ein Doppelpunkt. Darunter folgt eingerückt der Funktionsrumpf (Code-Suite).
+
+*F. 171*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4f6139dc10.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3fce186e0d.png)
+Beim Aufruf springt das Programm in die Funktion und danach zurück hinter die Aufrufstelle.
+
+*F. 178 · Aufg. 5.2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_10d886e7c0.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b84ab95a4c.png)
+Eine Funktion wird durch `def` nur **definiert**; ihr Rumpf läuft erst, wenn sie aufgerufen wird.
+
+*F. 178 · Aufg. 5.2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0a906df202.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_efeb0793bb.png)
+
+*F. 178 · Aufg. 5.2*"
+"Was passiert im Programmablauf, wenn eine Funktion aufgerufen wird?","Das Programm springt in die Funktion, führt ihren Rumpf aus und springt dann zurück zur Aufrufstelle, wo es mit dem Rückgabewert weitermacht.
+
+*F. 178 · Aufg. 5.2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_eb804f31c6.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bba3d06b52.png)
+Der Rückgabewert 24 wird in `v` gespeichert und weiterverarbeitet.
+
+*F. 180*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8f922799dc.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bf73958801.png)
+`return` beendet die Funktion sofort – bei -2 wird die letzte Zeile nicht mehr erreicht.
+
+*F. 180*"
+"Die Funktion soll den Durchsatz **zurückgeben**. Ergänze das Schlüsselwort.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d5e5703720.png)","`return`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cce4856b7f.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_594fd52986.png)
+
+*F. 180 · Aufg. 5.5*"
+"Was bewirkt `return wert` in einer Funktion?","Die Funktion endet und liefert `wert` an die Aufrufstelle zurück. Dort kann man ihn speichern (`x = f()`) oder direkt weiterverwenden.
+
+*F. 173, 180*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1dfbda53e5.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a9ea607763.png)
+Die Funktion **gibt aus**, gibt aber nichts **zurück** – ohne `return` ist der Rückgabewert `None`.
+
+*Aufg. 5.3*"
+"Was erscheint auf dem Bildschirm, und wie korrigierst du die Funktion?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_70ce3086a5.png)","Zuerst die beiden Ausgaben, dann die letzte Zeile der Fehlermeldung:
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_de0c888e65.png)
+Beide Aufrufe liefern `None`. Mit `return b * h` statt `print(b * h)` ergibt `gesamt` 26.
+
+*Aufg. 5.3*"
+"Was ist der Unterschied zwischen `print(ergebnis)` und `return ergebnis` in einer Funktion?","- `print()`: zeigt den Wert auf dem Bildschirm; die Funktion liefert trotzdem `None`.
+- `return`: gibt den Wert an den Aufrufer zurück, der damit weiterrechnen kann; auf dem Bildschirm erscheint nichts.
+
+*Aufg. 5.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b02496607d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cc8fc55966.png)
+`None` steht für „kein Ergebnis“. Der Aufrufer prüft das mit `if ergebnis is not None:`.
+
+*Aufg. 5.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_28b06a6a5e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d565843d66.png)
+Die Werte werden nach der **Reihenfolge** zugeordnet: `richtung = 50`, `tempo = ""links""`.
+
+*F. 176 · Aufg. 5.1*"
+"Was legt die Parameterliste in der def-Zeile fest, und was muss beim Aufruf übereinstimmen?","Sie legt Namen und **Reihenfolge** der Werte fest, die die Funktion erwartet. Beim Aufruf müssen Anzahl und Reihenfolge der übergebenen Werte dazu passen.
+
+*F. 176*"
+"Schreib eine Funktion `spannung(kraft, flaeche)`, die σ = F / A zurückgibt, und gib das Ergebnis für F = 500 N und A = 25 mm² aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_262558e0f8.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8a8dbf692d.png)
+
+*F. 176*"
+"Welche Fehlermeldung erscheint?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7cb16340ca.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7e80bf3d01.png)
+Zwei Parameter, aber nur ein Wert beim Aufruf. Richtig z. B.: `ventil(3, ""offen"")`.
+
+*F. 176 · Aufg. 5.1*"
+"Was bedeutet diese Fehlermeldung?
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_adf54369fc.png)","`ventil` ist mit **zwei** Parametern definiert, wurde aber mit **drei** Werten aufgerufen. Aufruf und Parameterliste passen nicht zusammen.
+
+*F. 176 · Aufg. 5.1*"
+"Welche Fehlermeldung erscheint, und wie behebst du sie?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_95ce354029.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d70f41e6c6.png)
+Die Funktion wird aufgerufen, bevor sie definiert ist. Die Definition muss **vor** dem Aufruf stehen.
+
+*F. 175 · Aufg. 5.1*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b7bf7ce7dc.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_aa14eb2307.png)
+Kein Fehler: Entscheidend ist, dass `b` **beim Aufruf** von `a()` schon definiert ist – und das ist sie, weil `a()` erst in der letzten Zeile aufgerufen wird.
+
+*F. 175*"
+"Welche Reihenfolge von Definition und Aufruf schreibt Python bei Funktionen vor, und welcher Fehler entsteht sonst?","Erst definieren, dann aufrufen. Ruft man eine Funktion auf, bevor `def` ausgeführt wurde, entsteht ein **NameError**.
+
+*F. 175*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_14cdee93d0.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7cb7fbf908.png)
+`return a, b` gibt zwei Werte zurück; links vom `=` werden sie auf zwei Variablen verteilt.
+
+*Aufg. 5.2, 5.6*"
+"Die Funktion liefert Start- und Endzeit. Ergänze die linke Seite, sodass beide Werte in eigenen Variablen landen.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_479cfbdb7d.png)","`start, ende`
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1b699ad23e.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_24c8ca8bd5.png)
+
+*Aufg. 5.2*"
+"Schreib eine Funktion `tausche(x, y)`, die beide Werte vertauscht **zurückgibt**, und vertausche damit `links = 3` und `rechts = 8`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_541b63262c.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0cea2c812a.png)
+
+*Aufg. 5.6*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f6659f727c.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cfe2a5d056.png)
+`offset = 5` erzeugt in der Funktion eine **eigene, lokale** Variable; die äußere bleibt 0.
+
+*F. 182 · Aufg. 5.6*"
+"Welche Fehlermeldung erscheint?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_33b278af8a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_420478e571.png)
+`wert` ist lokal und existiert nur während des Funktionsaufrufs. Lösung: `return wert` und `wert = messen()`.
+
+*F. 182*"
+"Was ist eine **lokale** Variable?","Eine Variable, die innerhalb einer Funktion entsteht (auch jeder Parameter). Sie gilt nur dort und nur während des Aufrufs; außerhalb ist sie unbekannt.
+
+*F. 182*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_06b6c11054.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+Durch `global` greift die Funktion auf die äußere Variable zu und verändert sie.
+
+*F. 183 · Aufg. 5.6*"
+"Warum sollte man `global` sparsam einsetzen, und was ist die bessere Alternative?","Mit `global` ist schwer nachzuvollziehen, wo eine Variable ihren Wert ändert. Besser: Werte als **Parameter** übergeben und das Ergebnis mit **return** zurückgeben.
+
+*F. 183 · Aufg. 5.6*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fcbeca63e8.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bbeb2d2472.png)
+Die Funktion ändert nur ihren Parameter `wert`. Der Rückgabewert wird nicht gespeichert – richtig wäre `temp = verdopple(temp)`.
+
+*Aufg. 5.6*"
+"Die Werte sollen getauscht werden. Was gibt der Code aus, und warum klappt es nicht?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_79a8b003a3.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ce062a15dd.png)
+`x` und `y` sind lokale Variablen der Funktion; das Vertauschen wirkt nicht auf `a` und `b`. Lösung: `return y, x` und `a, b = tausche(a, b)`.
+
+*Aufg. 5.6*"
+"Warum ändert `wert = wert * 2` in einer Funktion nicht die Variable, die der Aufrufer übergeben hat?","Der Parameter `wert` ist eine **eigene lokale Variable**, die beim Aufruf den übergebenen Wert bekommt. Eine neue Zuweisung ändert nur diese lokale Variable.
+
+*F. 182 · Aufg. 5.6*"
+"**Ergänzung** (nicht im Skript): Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ae7eacbac6.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_71a24d4dcb.png)
+Ergänzung: Hier wird der Parameter nicht neu zugewiesen, sondern die **übergebene Liste selbst** verändert – das ist auch außen sichtbar.
+
+*Aufg. 5.6*"
+"Was ist laut Skript der Unterschied zwischen einer **Prozedur** und einer **Funktion**, und was ist eine **Methode**?","- Prozedur: Unterprogramm **ohne** Rückgabewert.
+- Funktion: Unterprogramm **mit** Rückgabewert (heute nennt man meist beides „Funktion“).
+- Methode: wird über ein Objekt mit Punkt aufgerufen, z. B. `cars.index(""VW"")` oder `text.replace(…)`.
+
+*F. 172–174*"
+"Ordne nach Skript zu: Ist `melden`, `doppelt` bzw. `append` eine Prozedur, eine Funktion oder eine Methode?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f177e94cd6.png)","- `melden`: Prozedur (kein Rückgabewert)
+- `doppelt`: Funktion (liefert einen Wert zurück)
+- `append`: Methode (wird über die Liste `teile.` aufgerufen)
+
+*F. 174*"
+"Welche Vorteile nennt das Skript für Funktionen?","- Programmteile, die mehrmals gebraucht werden, schreibt man nur **einmal**.
+- Sie lassen sich in anderen Programmen **wiederverwenden**.
+- Komplexe Programme werden durch den **modularen** Aufbau übersichtlicher.
+
+*F. 170*"
+"Fasse die doppelte Berechnung in eine Funktion `volumen(masse, dichte)` zusammen, sodass dieselbe Ausgabe entsteht.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6e68b99202.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b59dec8d16.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ece81c6e55.png)
+
+*F. 170 · Aufg. 5.3*"
+"Wie machst du sichtbar, in welcher Reihenfolge ein Programm mit Funktionen tatsächlich abläuft?","Mit **Trace-Ausgaben**: `print()` am Anfang und Ende jeder Funktion (z. B. `"">>> berechne gestartet""`). Alternativ im **Debugger** Zeile für Zeile durchgehen.
+
+*F. 177, 178 · Aufg. 5.2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_46e6a6c63a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9a520851dc.png)
+`a` ruft mitten im Ablauf `b` auf; danach geht es in `a` hinter dem Aufruf weiter.
+
+*Aufg. 5.2*"
