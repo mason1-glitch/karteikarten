@@ -1,0 +1,156 @@
+"Was gibt der Code aus? (`bestenliste.txt` gibt es noch nicht.)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_476bb5a368.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2e3abddf6c.png)
+`""a""` legt die fehlende Datei an und hängt **hinten an**. `write()` setzt keinen Zeilenumbruch – das `\n` steht selbst im Text.
+
+*F. 190, 194*"
+"Der Code bricht ab. Warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3fbf9a4abc.png)","`TypeError`: `write()` nimmt **nur Strings**. Richtig z. B. `datei.write(str(zeit) + ""\n"")` oder `datei.write(f""{zeit:.3f}\n"")`.
+
+*F. 194*"
+"Schreib `bestenliste_speichern(name, zeit_s)`: hängt eine Zeile `Name;Zeit` mit drei Nachkommastellen an `bestenliste.txt` an.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fe4c483270.png)
+Ein Eintrag pro Zeile, Trennzeichen `;` – so lässt er sich beim Laden wieder zerlegen.
+
+*F. 194 · Level-Konzept*"
+"Vergleiche die Dateimodi `""r""`, `""w""` und `""a""`.","| Modus | wofür | vorhandener Inhalt | Datei fehlt |
+|---|---|---|---|
+| `""r""` | lesen (Standard ohne Modus) | bleibt | `FileNotFoundError` |
+| `""w""` | schreiben | wird **gelöscht/überschrieben** | wird angelegt |
+| `""a""` | anhängen | bleibt, Neues ans Ende | wird angelegt |
+
+*F. 189, 193*"
+"Was gibt der Code aus – und warum wäre das für die Bestenliste fatal?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d7e384217e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5c0923afc0.png)
+`""w""` **überschreibt** bei jedem Öffnen den ganzen Inhalt (F. 193). Jede neue Runde würde die alte Bestenliste löschen – deshalb `""a""`.
+
+*F. 193*"
+"`bestenliste.txt` enthält zwei Zeilen. Was gibt der Code aus, und warum sieht es so aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_395bbfdffb.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_935fada83c.png)
+Jede gelesene Zeile **endet mit `\n`**, und `print()` setzt noch einen Umbruch dazu → Leerzeile dazwischen. Abhilfe: `print(zeile, end="""")`.
+
+*F. 191*"
+"Was liefern `datei.read()`, `datei.readlines()` und `for zeile in datei:`?","| Aufruf | Ergebnis |
+|---|---|
+| `read()` | ganzer Inhalt als **ein** String |
+| `readlines()` | **Liste** aller Zeilen, jede mit `\n` |
+| `for zeile in datei:` | je Durchlauf **eine** Zeile (mit `\n`) |
+
+Für die Bestenliste passt die `for`-Schleife: Zeile für Zeile zerlegen.
+
+*F. 190, 191*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c86ac843ac.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c821de9e91.png)
+`find` liefert die Position des Trennzeichens. Name = alles **davor** (Ende ausschließlich), Zeit = alles **dahinter**. `float()` stört das `\n` am Ende nicht.
+
+*F. 137, 138*"
+"Ergänze die Indizes so, dass `name = ""Ina""` und `zeit = 0.301` herauskommen.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_69ab66d74e.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e20c14a42c.png)
+Start einschließlich, Ende **aus**schließlich (F. 137); `+ 1` überspringt das `;` selbst.
+
+*F. 137, 138*"
+"Warum zerlegst du die Zeile mit `find` und Slicing und nicht mit `split("";"")`?","Beides funktioniert. `zeile.split("";"")` liefert `['Lea', '0.298\n']`, steht im Stoff aber nur einmal (F. 153) – **Ergänzung**. `find` und Slicing sind im Skript ausführlich behandelt (F. 137–138) und Schritt für Schritt erklärbar. Im Kolloquium zählt, dass du jede Zeile erklären kannst.
+
+*F. 138, 153*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7d8c028047.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0b9236ebb9.png)
+Eine von Hand verdorbene Zeile soll nicht das ganze Spiel abstürzen lassen: Der `ValueError` von `float(""schnell"")` wird abgefangen, die Zeile ausgelassen.
+
+*F. 138 · Level-Konzept; Labor KW46 (Vorgriff)*"
+"Warum steht beim Laden das `try` um die **einzelne Zeile** und nicht um die ganze `for`-Schleife?","Steht `try` um die ganze Schleife, **bricht** ein Fehler in Zeile 3 die Schleife ab – alle späteren Einträge gingen verloren. Um die einzelne Zeile gelegt, wird nur die kaputte Zeile übersprungen, die Schleife läuft weiter.
+
+*Level-Konzept*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d8c9f9d791.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_de17e5b11a.png)
+Erst der **Listenindex** (welcher Eintrag), dann der **Schlüssel** (welches Feld).
+
+*F. 151 · Level-Konzept*"
+"Warum speicherst du die Bestenliste als Liste von Dictionaries und nicht als zwei Listen `namen` und `zeiten`?","Jeder Eintrag hält **Name und Zeit zusammen**. Beim Sortieren tauschst du ganze Einträge – bei zwei getrennten Listen müsstest du in beiden parallel tauschen; vergisst du eine, gehören Namen und Zeiten nicht mehr zusammen. Dazu sprechende Schlüssel statt Index 0/1.
+
+*Level-Konzept*"
+"Wie funktioniert **Bubble Sort**?","1. Von vorn nach hinten jeweils **zwei Nachbarn** vergleichen.
+2. Stehen sie falsch herum (`links > rechts`), **tauschen**.
+3. Nach einem Durchlauf steht das **größte** Element ganz hinten („steigt auf wie eine Blase“).
+4. Durchläufe wiederholen, bis keiner mehr tauscht – höchstens n − 1 Durchläufe.
+
+*Labor KW45 (Vorgriff)*"
+"Führe den **ersten Durchlauf** von Bubble Sort an `[0.41, 0.30, 0.66, 0.29]` aus. Wie sieht die Liste nach jedem Vergleich aus?","![Ein Durchlauf Bubble Sort](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/level_bubblesort.png)
+`j = 0`: 0,41 > 0,30 → tauschen · `j = 1`: 0,41 < 0,66 → bleibt · `j = 2`: 0,66 > 0,29 → tauschen.
+Ergebnis `[0.30, 0.41, 0.29, 0.66]` – die größte Zeit steht hinten.
+
+*Labor KW45 (Vorgriff)*"
+"Tausche die beiden Zeiten, wenn sie falsch herum stehen.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1d38c015cf.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c520635fcc.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c9edc7739e.png)
+Der **Merker** hebt den ersten Wert auf, bevor er überschrieben wird – wie beim Umfüllen zweier Gläser mit einem dritten.
+
+*Labor KW45 (Vorgriff)*"
+"Das soll tauschen. Was kommt heraus, und warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fff964cd38.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_baf4d7865e.png)
+Nach der ersten Zeile ist 0,41 **überschrieben** und verloren; die zweite kopiert nur 0,3 zurück. Es fehlt die Merker-Variable. Ergänzung: `zeiten[0], zeiten[1] = zeiten[1], zeiten[0]` tauscht in einer Zeile.
+
+*Labor KW45 (Vorgriff)*"
+"Sortiere `zeiten = [0.41, 0.30, 0.66, 0.29]` aufsteigend mit Bubble Sort und gib die Liste aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b57f4ce549.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f1ccd0c73f.png)
+
+*Labor KW45 (Vorgriff)*"
+"Warum läuft die innere Schleife nur bis `len(zeiten) - 1 - durchlauf`?","- **`- 1`**: verglichen wird `zeiten[j]` mit `zeiten[j + 1]`; beim letzten Index gäbe es keinen Nachbarn → `IndexError`.
+- **`- durchlauf`**: Nach jedem Durchlauf steht ein weiteres großes Element schon an seinem endgültigen Platz hinten; dort muss nicht mehr verglichen werden.
+
+*Labor KW45 (Vorgriff)*"
+"Der Code bricht ab. Warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4196e92fd1.png)","Bei `j = 2` (letzter Index) greift `zeiten[j + 1]` auf Index 3 zu – den gibt es nicht: `IndexError: list index out of range`. Richtig: `range(len(zeiten) - 1)`.
+
+*Labor KW45 (Vorgriff)*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b2efe36d69.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_565f1f85d6.png)
+Verglichen wird die **Zeit**, getauscht wird der **ganze Eintrag** – so bleibt der Name bei seiner Zeit.
+
+*Level-Konzept; Labor KW45 (Vorgriff)*"
+"Wozu dient in deiner Bestenliste-Sortierung der Merker `getauscht`?","Wird in einem ganzen Durchlauf **nichts** getauscht, ist die Liste sortiert – weitere Durchläufe wären verschwendet. Die äußere `while getauscht:`-Schleife hört dann auf. Ist die Bestenliste schon fast sortiert (neuer Eintrag hinten angehängt), reichen so oft ein bis zwei Durchläufe.
+
+*Labor KW45 (Vorgriff)*"
+"Wie viele Vergleiche braucht Bubble Sort ohne frühen Abbruch für n Einträge, und wie viele bei 10?","(n − 1) + (n − 2) + … + 1 = **n · (n − 1) / 2**. Bei 10 Einträgen: 10 · 9 / 2 = **45** Vergleiche. Der Aufwand wächst quadratisch – für eine Bestenliste mit wenigen Einträgen ohne Bedeutung, für Millionen Daten zu langsam.
+
+*Labor KW45 (Vorgriff)*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f5ff4056f9.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5c0923afc0.png)
+`sort()` ruft für jedes Element die **key-Funktion** auf und sortiert nach ihrem Rückgabewert, aufsteigend (`reverse=False`) – wie `critFunc` in F. 147.
+
+*F. 146, 147*"
+"Python hat `liste.sort()`. Warum sortierst du die Bestenliste trotzdem selbst?","Die Laboraufgabe zählt **Sortieralgorithmen** als Wahlelement – `sort()` ist ein fertiger Aufruf, der Algorithmus dahinter bleibt unsichtbar. Mit eigenem Bubble Sort zeigst du Vergleichen, Tauschen und Schleifengrenzen und kannst jeden Schritt erklären. (In echter Software nähme man `sort()`.)
+
+*F. 146, 147 · Laboraufgabe F. 2*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ee43d9e056.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a59f5c5239.png)
+Index 0–4 sind die ersten fünf; die Platzierung für den Spieler ist `i + 1`. Hat die Liste weniger als 5 Einträge, läuft die Schleife eben kürzer – kein `IndexError`. Ergänzung: `namen[0:5]` (Slicing von Listen) ist nicht im Stoff.
+
+*F. 152 · Level-Konzept*"
+"Kolloquium: „Ändere deine Sortierung so, dass die **langsamste** Zeit vorne steht.“ Was änderst du?","Nur den Vergleich: `>` wird zu `<`.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1ce5e2e84f.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_07c330de1b.png)
+
+*Level-Konzept*"
+"Was ist **Rekursion**, und welche zwei Teile braucht jede rekursive Funktion?","Eine Funktion, die **sich selbst aufruft**.
+1. **Abbruchbedingung** (Basisfall): hier ruft sie sich nicht mehr auf, z. B. `if n == 0:`.
+2. **Schritt zum Abbruch hin**: der Selbstaufruf mit kleinerem Problem, z. B. `countdown(n - 1)`.
+
+Jeder Aufruf hat seine **eigenen lokalen Variablen** (Thonny zeigt sie als eigene Fenster).
+
+*Labor KW45 (Vorgriff); Laborfolie IDE F. 3 (Thonny-Beispiel fact)*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_164cfb3e46.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d803e69c1f.png)
+Aufrufkette: `countdown(3)` → `countdown(2)` → `countdown(1)` → `countdown(0)` – dort greift die Abbruchbedingung.
+
+*Labor KW45 (Vorgriff)*"
+"Was passiert hier, und warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_47e9d5df6f.png)","Es fehlt die **Abbruchbedingung**: Die Funktion ruft sich endlos auf (3, 2, 1, 0, -1, …), bis Python nach rund 1000 Aufrufen mit **`RecursionError`** abbricht.
+
+*Labor KW45 (Vorgriff)*"
+"Countdown als Schleife oder rekursiv – was spricht wofür?","| Schleife | Rekursion |
+|---|---|
+| `for n in range(3, 0, -1): print(n)` | `countdown(n - 1)` ruft sich selbst |
+| einfacher, kein Aufrufstapel | zeigt das Wahlelement **Rekursion** |
+| keine Tiefenbegrenzung | bricht bei sehr großer Tiefe mit `RecursionError` ab |
+
+Im Level ist der rekursive Countdown optional – nimm ihn nur, wenn du die Aufrufkette erklären kannst.
+
+*F. 128 · Labor KW45 (Vorgriff)*"

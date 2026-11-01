@@ -1,0 +1,122 @@
+"Was ist eine **Ausnahme** (Exception), und was passiert, wenn niemand sie behandelt?","Ein Fehler, der erst **beim Ausführen** auftritt, z. B. `int(""x"")`. Python bricht dann ab und zeigt einen **Traceback**; die letzte Zeile nennt Art und Meldung (`ValueError: …`).
+Eine **Ausnahmebehandlung** (`try`/`except`) fängt den Fehler ab, damit das Spiel sinnvoll weiterläuft – Pflichtelement der Laboraufgabe.
+
+*Laboraufgabe F. 2; Labor KW46 (Vorgriff)*"
+"Welche Ausnahme löst jede Zeile aus?
+`int(""x"")` · `liste[9]` bei 5 Elementen · `tiere[""q""]` · `open(""fehlt.txt"", ""r"")` · `10 / 0` · `rufe_auf()` ohne Definition","| Zeile | Ausnahme |
+|---|---|
+| `int(""x"")` | `ValueError` |
+| `liste[9]` | `IndexError` |
+| `tiere[""q""]` | `KeyError` |
+| `open(""fehlt.txt"", ""r"")` | `FileNotFoundError` |
+| `10 / 0` | `ZeroDivisionError` |
+| `rufe_auf()` | `NameError` (F. 175) |
+
+*F. 175 · Code-Leitfaden 1.10*"
+"Der Spieler tippt `x`. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ef9887f6ab.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ce0f9e878c.png)
+`int(""x"")` löst den `ValueError` aus → der **Rest des try-Blocks** (`print(""Reihe"", …)`) wird übersprungen, der passende `except`-Zweig läuft, danach geht es **hinter** dem ganzen Block weiter.
+
+*Labor KW46 (Vorgriff, Code-Leitfaden 2.7)*"
+"Welche Zeilen laufen bei der Eingabe `3`, welche bei `x`?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8d01022b18.png)","| Eingabe | ausgeführte Zeilen | Ausgabe |
+|---|---|---|
+| `3` | 1, 2, 3, 6 | `Reihe 3`, `weiter` |
+| `x` | 1, 2 (Ausnahme), 4, 5, 6 | `Keine Zahl!`, `weiter` |
+
+Ohne Ausnahme wird der `except`-Zweig **übersprungen**.
+
+*Labor KW46 (Vorgriff, Code-Leitfaden 2.7)*"
+"Ergänze die Ausnahmebehandlung.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e75ab13c1c.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_57cb743d94.png)
+Beide Zeilen enden mit Doppelpunkt, beide Blöcke sind eingerückt – wie bei `if`/`else`.
+
+*Labor KW46 (Vorgriff, Code-Leitfaden 2.7)*"
+"Der Spieler tippt korrekt `3`. Was gibt der Code aus – und was lernst du daraus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_acbce6f703.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ac21ef5f2b.png)
+Der Tippfehler `inptu` löst einen `NameError` aus – das **leere `except`** fängt **jeden** Fehler und meldet ihn als falsche Eingabe. Der Programmierfehler bleibt unsichtbar; auch Strg+C (`KeyboardInterrupt`) würde verschluckt. Darum immer die **konkrete Ausnahme** nennen.
+
+*Code-Leitfaden 2.7*"
+"Der Spieler tippt `x`. Was passiert?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_dd745e2713.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8d6340c84d.png)
+Es entsteht ein `ValueError`, abgefangen wird aber nur `IndexError` → **kein passender Zweig**, das Programm bricht trotzdem ab.
+
+*Code-Leitfaden 2.7*"
+"Bei Eingabe `3` läuft alles, bei `x` stürzt das Programm mit einer seltsamen Meldung ab. Warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_de8ebc1811.png)","`NameError: name 'valueerror' is not defined`. Ausnahmen sind Namen mit **Groß-/Kleinschreibung**: `ValueError`. Python wertet den `except`-Ausdruck erst aus, wenn wirklich eine Ausnahme auftritt – darum fällt der Tippfehler nur bei falscher Eingabe auf.
+
+*Code-Leitfaden 2.7*"
+"Was löst **Strg+C** in der Konsole aus, und wie könntest du es im Level nutzen?","Eine Ausnahme **`KeyboardInterrupt`** – normalerweise bricht das Programm ab. Mit `except KeyboardInterrupt:` ließe sich „Spieler gibt auf“ abfangen (optional). Ein leeres `except:` würde Strg+C dagegen verschlucken – das Spiel ließe sich nicht mehr beenden.
+
+*Labor KW46 (Vorgriff)*"
+"Der Spieler tippt nacheinander `x`, `2,5`, `4`. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_317db70494.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4c7d3dfcd9.png)
+Erst die gültige Eingabe setzt den Merker auf `True` und beendet die Schleife.
+
+*Aufg. 4.4 · Code-Leitfaden 2.7*"
+"Warum steht `eingabe_ok = True` **im** try-Block direkt **nach** `int(input())`?","Die Zeile wird nur erreicht, wenn `int()` **keinen** Fehler auslöst. Bei einem `ValueError` springt Python sofort in den `except`-Zweig, der Merker bleibt `False` – die Schleife fragt erneut. Stünde die Zeile vor `int(…)`, wäre die Schleife auch bei falscher Eingabe beendet.
+
+*Code-Leitfaden 2.7*"
+"Schreib `zahl_einlesen(kleinste, groesste)`: liest so lange ein, bis eine ganze Zahl im Bereich kommt, und gibt sie zurück – ohne `while True`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_06f146418f.png)
+Der **Startwert** liegt absichtlich außerhalb, damit die Bedingung beim ersten Prüfen wahr ist (Muster F. 125). Die Schleife deckt beides ab: keine Zahl (`except`) und Zahl außerhalb des Bereichs (Bedingung).
+
+*F. 125 · Code-Leitfaden 2.7, 3.4*"
+"Der Spieler tippt `0`. Was passiert?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2c2cb4b50a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e5402d612c.png)
+Kein Fehler, keine Meldung: `0 - 1` = Index **-1** = letztes Feld. Ausnahmen helfen nur, wo Python wirklich einen Fehler auslöst – den Bereich 1–5 musst du **zusätzlich mit `if`** prüfen.
+
+*F. 141 · Code-Leitfaden 2.7*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_70fe55482a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ef9a51a934.png)
+Ein Index jenseits des Endes löst `IndexError` aus – den kann `except IndexError:` abfangen. (Negative Indizes bis -3 wären hier gültig!)
+
+*Labor KW46 (Vorgriff)*"
+"Wann prüfst du **vorher mit `if`**, wann fängst du **mit `try`/`except`** ab? Je ein Beispiel aus dem Level.","| vorher mit `if` | abfangen mit `try`/`except` |
+|---|---|
+| Bedingung ist mit Stoff-Mitteln prüfbar | Fehler lässt sich vorher kaum prüfen |
+| Bereich 1–5: `if zahl >= 1 and zahl <= 5` | „Ist das überhaupt eine Zahl?“ → `int()` + `ValueError` |
+| Schlüssel vorhanden: `if name in stationen` | Datei vorhanden? → `open(…, ""r"")` + `FileNotFoundError` |
+
+`try` nur um die Zeilen, an denen der Fehler wirklich entstehen kann (Leitfaden 2.7).
+
+*Code-Leitfaden 2.5, 2.7*"
+"Beim ersten Spielstart gibt es noch keine Bestenliste. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9ce1930e6c.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8ffa774503.png)
+Modus `""r""` verlangt, dass die Datei existiert; sonst `FileNotFoundError`. Im Level gibt `bestenliste_laden()` dann eine **leere Liste** zurück.
+
+*F. 189 · Labor KW46 (Vorgriff)*"
+"Warum fängst du `FileNotFoundError` beim **Laden** der Bestenliste ab, beim **Speichern** aber nicht?","Gespeichert wird mit Modus **`""a""`** (anhängen): Fehlt die Datei, **legt Python sie an**. Geladen wird mit **`""r""`**: Fehlt sie, gibt es einen `FileNotFoundError` – und beim allerersten Spiel fehlt sie immer. Das ist kein Fehler des Spielers, sondern ein normaler Fall: leere Bestenliste.
+
+*F. 189, 193 · Level-Konzept*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1d630db3ed.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_acce2284ef.png)
+Gleiche Wirkung wie `if ""x"" in tiere:` (Laborskript F. 7). Bei Dictionaries ist die `in`-Prüfung der Weg aus dem Labor.
+
+*Laborskript Dictionaries F. 7*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_200f077063.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_89993ca765.png)
+Die Ausnahme entsteht **in** der Funktion, die selbst kein `try` hat. Sie wandert zum **Aufrufer** zurück, bis ein passendes `except` sie fängt.
+
+*Labor KW46 (Vorgriff)*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_594a720bc3.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e779faaf94.png)
+Ein `try` darf **mehrere** `except`-Zweige haben; es läuft der erste, der zur Ausnahme passt.
+
+*Labor KW46 (Vorgriff)*"
+"Eine Ausnahme tritt auf. In welcher Reihenfolge sucht Python einen passenden `except`-Zweig – und was passiert, wenn keiner passt?","1. Die `except`-Zweige des umgebenden `try` werden **von oben nach unten** geprüft; der **erste passende** läuft.
+2. Passt keiner (oder gibt es kein `try`), verlässt die Ausnahme die Funktion und geht an den **Aufrufer** – dort wird weitergesucht.
+3. Fängt sie bis ganz oben niemand, bricht das Programm mit **Traceback** ab.
+
+*Labor KW46 (Vorgriff)*"
+"Wo stehen in deinem Level Ausnahmebehandlungen, und welche Ausnahme fängt jede ab?","| Stelle | Ausnahme | Reaktion |
+|---|---|---|
+| Koordinate im Treibsand-Raster | `ValueError` | erneut fragen |
+| Bestenliste laden | `FileNotFoundError` | leere Liste |
+| kaputte Zeile in der Bestenliste | `ValueError` | Zeile überspringen |
+| Ton abspielen | `ImportError` | still weiterspielen |
+| (optional) Strg+C | `KeyboardInterrupt` | „aufgegeben“ |
+
+*Level-Konzept*"
+"Kolloquiumsfrage: „Warum steht dein `try` genau um `int(input())` – und welcher Fehler käme ohne?“","`input()` liefert, was der Spieler tippt – auch `x` oder `2,5`. `int()` kann das nicht umwandeln und löst einen **`ValueError`** aus; ohne `try` **stürzt das ganze Spiel ab**, auch die Levels der anderen. Der `try`-Block umfasst nur diese Zeile (und das Setzen des Merkers), damit kein anderer Fehler versehentlich als „falsche Eingabe“ gemeldet wird.
+
+*Level-Konzept; Code-Leitfaden 2.7*"

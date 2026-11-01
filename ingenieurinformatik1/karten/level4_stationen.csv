@@ -1,0 +1,137 @@
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_aec1d28b28.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_387a8f211e.png)
+`folge += tasten[i]` hängt jedes Mal ein Zeichen **hinten an** (String-Verkettung). Im Level kommen die Indizes von `random.randint(0, 2)`.
+
+*F. 135, 141*"
+"Erzeuge eine zufällige Affen-Folge aus den Tasten `a`, `t`, `f` mit der Länge `laenge = 4`.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_06290b1cb4.png)
+Ohne `folge = """"` vor der Schleife gäbe `+=` einen `NameError`.
+
+*F. 128, 135 · Aufg. 2.5*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2b4992ebdb.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0f0a7aa28e.png)
+`for … in` durchläuft einen **String Zeichen für Zeichen**. `end="" ""` verhindert den Zeilenumbruch; das leere `print()` beendet die Zeile.
+
+*F. 143, 151 · Laborskript Dictionaries F. 6*"
+"Welche Werte nimmt `laenge` an, wie oft läuft die innere Schleife jeweils, und was wird ausgegeben?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d718b7a124.png)","| `laenge` | innere Durchläufe |
+|---|---|
+| 3 | 3 |
+| 4 | 4 |
+| 5 | 5 |
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_804157e596.png)
+`range(3, 6)` endet **vor** 6 – so wachsen die Affen-Folgen von 3 auf 5 Zeichen.
+
+*F. 128, 151*"
+"Wie verdeckst du die Affen-Folge, bevor der Spieler sie nachtippt, und warum so?","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3f5bf802ae.png)
+String-**Wiederholung** (`*`) erzeugt 40 Zeilenumbrüche und schiebt die Folge aus dem Sichtfeld – nur mit Stoff, auf jedem System gleich. Grenze: Wer hochscrollt, sieht sie. Ergänzung: `os.system(""cls"")`/`(""clear"")` hängt vom Betriebssystem ab und wirkt im PyCharm-Ausgabefenster nicht.
+
+*F. 53, 135 · Level-Konzept*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e78f8f04a6.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fcd35ae115.png)
+`\n` ist **ein** Zeichen (Escape-Sequenz), daher Länge 40.
+
+*F. 53, 135, 136*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_01a752103f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b458918ffd.png)
+`==` vergleicht Strings **Zeichen für Zeichen**: Großbuchstaben, Leerzeichen – auch eines am Ende – machen den Unterschied.
+
+*F. 105*"
+"Der Spieler soll die Folge auch mit Leerzeichen eintippen dürfen (`a t f`). Schreib den Vergleich nur mit Mitteln aus dem Stoff.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9365f0cfdd.png)
+`replace("" "", """")` ersetzt jedes Leerzeichen durch nichts; das Ergebnis wird neu zugewiesen (Strings sind unveränderlich, F. 138). Ergänzung: `strip()` entfernt nur Leerzeichen am Rand und ist nicht im Stoff.
+
+*F. 138*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e6a9c0b570.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3f7098add0.png)
+`range(len(spruch))` liefert die Indizes 0 bis 4; an jeder Stelle werden die Zeichen verglichen – nur Index 1 (`o` statt `i`) weicht ab.
+
+*F. 136, 152*"
+"Der Spieler tippt nur `Zis`. Warum stürzt der Code ab?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6c5064f7ab.png)","Die Schleife läuft bis Index 4 (Länge des **Spruchs**), `eingabe` hat aber nur die Indizes 0–2. Bei `eingabe[3]` kommt `IndexError: string index out of range`.
+
+*F. 136*"
+"Was gibt der Code aus – und warum stürzt er jetzt nicht ab? (Ergänzung)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7051ac18f3.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+Ergänzung (Kurzschluss): Ist die **linke** Seite von `or` schon wahr, wertet Python die rechte **nicht mehr aus**. Bei `i = 3` und `4` ist `i >= len(eingabe)` wahr → `eingabe[i]` wird nie gelesen, fehlende Zeichen zählen als Fehler.
+
+*F. 106, 136*"
+"Gleiche Idee, Bedingungen vertauscht. Was passiert bei `eingabe = ""Zis""`? (Ergänzung)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e92f1257c7.png)","Absturz mit `IndexError`: Jetzt wird `eingabe[i]` **zuerst** ausgewertet – bei `i = 3` existiert das Zeichen nicht. Ergänzung: Die schützende Prüfung muss bei `or`/`and` **links** stehen.
+
+*F. 106*"
+"Der Spieler vergisst bei `Zisch` nur das `i` und tippt `Zsch`. Dein Code meldet 4 Fehler. Wie erklärst du das im Kolloquium?","Der Code vergleicht **Position für Position**. Fehlt ein Zeichen, rutschen alle folgenden eine Stelle nach vorn und stimmen nicht mehr: `Z=Z`, `s≠i`, `c≠s`, `h≠c`, dazu fehlt Index 4 → 4 Fehler. Gezählt werden also **abweichende Stellen**, nicht vergessene Buchstaben – für eine Station „exakt abtippen“ ist das bewusst streng. Ergänzung: Echtes Fehlerzählen (Levenshtein-Distanz) wäre aufwendiger und nicht im Stoff.
+
+*Level-Konzept*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_74a420b1ad.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3a333356a6.png)
+Die Schleife über `range(len(spruch))` sieht zu viel getippte Zeichen nie – sie werden darum getrennt gezählt.
+
+*F. 136*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b9bcfba1dd.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_41d5b13900.png)
+Die Taste stimmt, aber `and` verlangt, dass **beide** Bedingungen wahr sind – 1,7 s liegt über dem Limit.
+
+*F. 106*"
+"Warum gibt es bei der Hängebrücke das Kommando „RUHIG“, bei dem nur Enter richtig ist?","Es macht aus einer Einfach- eine **Wahlreaktion**: Der Spieler muss das Kommando erst **lesen und entscheiden**, statt blind eine Taste zu hämmern. Technisch ist „nur Enter“ der leere String `""""` in `gegenrichtung[""RUHIG""]`.
+
+*Level-Konzept*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c00381849d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1de503b4ab.png)
+Die äußere Comprehension erzeugt die **Reihen**, die innere die **Felder** einer Reihe. `len(raster)` = Anzahl Reihen, `len(raster[0])` = Felder pro Reihe.
+
+*F. 150, 153*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b46d7f67e7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1aefaaaf45.png)
+`raster[1][2]` = Reihe 1, Feld 2 (beides ab 0 gezählt). Innere Schleife: Felder nebeneinander (`end="" ""`), danach `print()` für die neue Zeile.
+
+*F. 151 · Aufg. 4.3*"
+"Warum legst du das Raster mit einer List-Comprehension an und nicht so? (Ergänzung)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_4cbaa6440c.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_da6e57f077.png)
+Ergänzung: `[…] * 2` legt **dieselbe** Reihe zweimal hinein – ändert man eine, ändern sich beide. Die List-Comprehension (F. 153) erzeugt für jede Reihe eine **neue** Liste.
+
+*F. 153*"
+"Der Spieler gibt **Reihe 3, Spalte 4** ein. Welches Feld liest dein Code, und was passiert bei Reihe 0?
+![Spieler-Koordinaten und Python-Indizes im 5×5-Raster](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/level_raster_index.png)","`raster[3 - 1][4 - 1]` = **`raster[2][3]`** – der Spieler zählt ab 1, Python ab 0.
+Eingabe 0 → Index **-1** = letztes Element. Das ist **kein** Fehler, der Spieler landet unbemerkt in Reihe 5. Deshalb den Bereich 1–5 mit `if` prüfen.
+
+*Aufg. 4.3, 4.5*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2c38eb376e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7197eb3697.png)
+Index -1 ist erlaubt (letztes Feld), Index 5 gibt es bei 5 Feldern nicht. Nur der **zweite** Fall löst einen Fehler aus – der erste muss mit `if` abgefangen werden.
+
+*F. 141*"
+"Schreib die Bedingung: `zahl` ist nur gültig, wenn sie zwischen 1 und 5 liegt (beide eingeschlossen).","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_248576bbb3.png)
+Beide Grenzen einzeln vergleichen, mit `and` verbinden. Ergänzung: `1 <= zahl <= 5` (verkettete Vergleiche) geht in Python auch, ist aber nicht im Stoff.
+
+*F. 105, 106*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_90beab8b62.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_28d6ecee06.png)
+Mit `range(len(…))` hast du die **Indizes** `i`, `j` – für die Ausgabe an den Spieler wieder `+ 1`.
+
+*F. 152 · Aufg. 4.4*"
+"Setz in jede der 5 Reihen von `raster` genau ein Treibsandfeld `""~""` an eine zufällige Spalte.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0c407ee1ab.png)
+Je Reihe ein Zufallsindex 0–4 (beide Grenzen möglich). So gibt es in jeder Reihe genau eine Falle.
+
+*Aufg. 2.5, 4.3*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2baca057d8.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_eb1242c7b7.png)
+`break` beendet die Schleife **sofort** – Runde 4 läuft nicht mehr (wie beim Affen-Echo nach einer falschen Folge).
+
+*Aufg. 3.8*"
+"Verfolge `runde` und `leben` Durchlauf für Durchlauf. Was wird ausgegeben?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e1767190e7.png)","| `runde` vorher | Ergebnis | `leben` danach |
+|---|---|---|
+| 0 | False | 2 |
+| 1 | True | 2 |
+| 2 | False | 1 |
+| 3 | False | 0 → Schleife endet |
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e07bc4c169.png)
+Die Schleife endet, sobald **eine** der beiden Bedingungen falsch ist; warum, prüfst du danach mit `if` (Aufg. 3.7).
+
+*F. 125 · Aufg. 3.7*"
+"Wann nimmst du in deinem Level `for`, wann `while`?","| `for` | `while` |
+|---|---|
+| Anzahl der Durchläufe steht fest | Ende hängt von einer Bedingung ab |
+| Hängebrücke: `for runde in range(1, 6)` | Eingabe wiederholen, bis sie gültig ist |
+| jedes Feld des Rasters, jedes Zeichen des Spruchs | solange Leben übrig **und** Runden offen |
+
+*F. 125, 128*"

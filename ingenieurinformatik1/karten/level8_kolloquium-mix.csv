@@ -1,0 +1,122 @@
+"Mit welchen **fünf Punkten** erklärst du im Kolloquium jede deiner Funktionen?","1. **Zweck** – was sie im Spiel leistet
+2. **Parameter** – was sie bekommt
+3. **Ablauf** – die Schritte in Reihenfolge (Schleifen, Verzweigungen)
+4. **Rückgabe** – was sie zurückgibt (oder nur ausgibt)
+5. **Sonderfälle** – falsche Eingaben, Ausnahmen, Grenzwerte
+
+*Level-Konzept*"
+"Erkläre `reaktion_messen(zeitlimit_s)` in den fünf Punkten.","1. **Zweck:** misst die Reaktionszeit beim Lianen-Sprung.
+2. **Parameter:** `zeitlimit_s` – erlaubte Zeit in s (aus dem Stationen-Dictionary).
+3. **Ablauf:** zufällig 2–5 s warten → Startzeit → „SPRING!“ + `input()` → Differenz bilden → bewerten.
+4. **Rückgabe:** Zeit in s als `float`, bei Fehlstart `None`.
+5. **Sonderfälle:** Enter im Puffer (< 0,1 s) = Fehlstart; zu langsam wird erst nach dem Enter erkannt.
+
+*Baustein b03; Level-Konzept*"
+"Erkläre `bestenliste_laden()` in den fünf Punkten.","1. **Zweck:** holt die gespeicherten Bestzeiten aus der Datei.
+2. **Parameter:** keine (Dateiname steht als Variable oben im Code).
+3. **Ablauf:** Datei mit `""r""` öffnen → jede Zeile mit `find("";"")` und Slicing zerlegen → Dictionary `{""name"", ""zeit""}` an die Liste hängen → Datei schließen.
+4. **Rückgabe:** Liste von Dictionaries (evtl. leer).
+5. **Sonderfälle:** Datei fehlt (`FileNotFoundError` → leere Liste), kaputte Zeile (`ValueError` → überspringen).
+
+*Baustein b08; Level-Konzept*"
+"Beschreib den Gesamtablauf deines Levels von Anfang bis Ende (so wie dein PAP).","1. Intro-Text, Leben anzeigen
+2. Lianen-Sprung (Einfachreaktion)
+3. Hängebrücke (Wahlreaktion)
+4. Affen-Echo (Folge merken)
+5. Schlangen-Zauberformel (genau tippen)
+6. Treibsand-Raster (Koordinaten merken)
+7. Outro: Ziffer fürs Tempeltor, beste Zeit in die Bestenliste, Top 5 anzeigen
+8. Rückgabe `True`/`False` an `main.py`
+
+Jeder Fehler kostet ein Leben; bei 0 Leben endet das Level (Gruppenabsprache).
+
+*Level-Konzept*"
+"Kolloquium: „Der Spieler soll 5 statt 3 Leben haben.“ Wo änderst du das – und warum nicht in deinem Level?","Im **`spieler`-Dictionary, das `main.py` anlegt**: `""leben"": 5`. Dein Level liest nur `spieler[""leben""]` und zieht ab – es enthält keine feste 3. Genau dafür ist die Schnittstelle da: Daten des Spielers gehören `main.py`.
+
+*Level-Konzept*"
+"Kolloquium: „Füge eine sechste Station Glühwürmchen hinzu.“ Welche drei Stellen fasst du an?","1. **Einstellungen:** neuer Eintrag `stationen[""gluehwuermchen""] = {""runden"": 2, ""anzeige_s"": 1}`
+2. **Neue Funktion** `gluehwuermchen(spieler)` mit Docstring und Autor-Kennzeichnung
+3. **Aufruf** in `level_dschungel_reflexe(spieler)` an der passenden Stelle
+
+Alles andere (Leben, Bestenliste, Rückgabe) bleibt unverändert.
+
+*Level-Konzept*"
+"Kolloquium: „Mach das Treibsand-Raster 4×4.“ Wie hast du den Code gebaut, damit das **eine** Änderung ist?","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bca2992eea.png)
+Die Größe steht **einmal** als Variable; Raster, Zufallsindex und die Bereichsprüfung `zahl_einlesen(1, groesse)` lesen sie.
+
+*F. 153 · Level-Konzept*"
+"Warum schreibst du `groesse = 5` oben in den Code, statt überall direkt `5` einzusetzen?","Eine nackte `5` an mehreren Stellen ist schwer zu ändern: Vergisst du eine, passt der Bereich nicht mehr zum Raster (z. B. `IndexError` oder unerreichbare Felder). Mit einem sprechenden Namen steht die Bedeutung im Code, und eine Änderung wirkt überall (Leitfaden 2.6: Konstanten als Variable oben).
+
+*Code-Leitfaden 2.6*"
+"Warum gibt es Hilfsfunktionen wie `zahl_einlesen()` und `eingabepuffer_leeren()`, statt den Code in jede Station zu kopieren?","Programmteile, die mehrfach gebraucht werden, **schreibt man nur einmal** (F. 170). Ein Fehler wird an **einer** Stelle behoben, die Stationen bleiben kurz und lesbar, und die Hilfsfunktion lässt sich einzeln testen.
+
+*F. 170*"
+"Was ist der Unterschied zwischen Kommentar, Docstring und auskommentiertem Code?","| | Beispiel | wofür |
+|---|---|---|
+| Kommentar | `# Startwert außerhalb des Bereichs` | erklärt das **Warum** einer Zeile |
+| Docstring | `""""""Gibt die Reaktionszeit zurück.""""""` | erste Zeile der Funktion: **was** sie tut |
+| auskommentiert | `#print(""DEBUG:"", dauer)` | Code vorübergehend abschalten, z. B. zur Fehlersuche |
+
+*F. 59, 60 · Aufg. 5.5*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6d5ac6245a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9e69589162.png)
+
+*F. 66*"
+"Welche Datentypen kommen in deinem Level vor – je ein Beispiel?","| Typ | Beispiel |
+|---|---|
+| `int` | `spieler[""leben""]`, Koordinaten |
+| `float` | Reaktionszeit, Zeitlimit |
+| `str` | Affen-Folge, Spruch, Eingabe |
+| `bool` | Rückgabe des Levels, Merker `eingabe_ok` |
+| `None` | Fehlstart |
+| `list` | Raster, Bestenliste |
+| `dict` | `stationen`, `tiere`, `spieler` |
+
+*F. 64–68*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bf1a0b2f6d.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_175aa72aab.png)
+`return a, b` gibt **ein Tupel** zurück; `fehler, zeit = …` **entpackt** es in zwei Variablen (Aufg. 5.2). Ohne Entpacken sieht man das Tupel mit runden Klammern.
+
+*F. 155 · Aufg. 5.2*"
+"Was unterscheidet ein **Tupel** von einer **Liste** – und wo bietet sich in deinem Level ein Tupel an?","| Liste `[…]` | Tupel `(…)` |
+|---|---|
+| veränderbar (`append`, Zuweisung an `liste[i]`) | **unveränderbar** |
+| dynamisch | performanter |
+
+Im Level: feste Daten, die sich nie ändern, z. B. Testeinträge `(""Max"", 0.412)` oder zwei Rückgabewerte `return fehler, zeit`. Das Raster muss eine **Liste** sein, weil Felder geändert werden.
+
+*F. 155*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9cbfadc1a5.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_aff8e7f1f4.png)
+Jede Funktion hat ihre **eigene lokale** Variable `fehler`; gleiche Namen in verschiedenen Funktionen stören sich nicht, und das `fehler` außerhalb bleibt 0.
+
+*F. 182*"
+"Das Skript (F. 182) sagt, Variablen in **Schleifen** seien lokal. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6148dd92ca.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1820c2e48a.png)
+Die Aussage stimmt nur für **Funktionen**. Schleifen haben in Python keinen eigenen Gültigkeitsbereich – Schleifenvariable und alles darin Zugewiesene gelten nach der Schleife weiter (Code-Leitfaden, Abschnitt 4).
+
+*F. 182 · Code-Leitfaden 4*"
+"Dein Spiel stürzt mit einem Traceback ab. Wie liest du ihn?","**Von unten nach oben:**
+1. Letzte Zeile: **Art und Meldung** (`IndexError: list index out of range`).
+2. Darüber: **Datei und Zeilennummer**, in der es passiert ist, mit der Codezeile.
+3. Weiter oben: über welche Funktionsaufrufe das Programm dorthin kam.
+
+*F. 175 · Aufg. 5.1*"
+"Die Hängebrücke verhält sich seltsam. Wie machst du den Ablauf sichtbar, ohne einen Debugger?","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6adfe758b2.png)
+**Trace-Ausgaben** am Anfang und Ende jeder Funktion zeigen die Aufrufreihenfolge (F. 177–178, Aufg. 5.2); **Debug-Zeilen** mit Zwischenwerten kommentiert man nach der Fehlersuche aus (F. 59, Aufg. 2.1).
+
+*F. 177, 178 · Aufg. 5.2, 2.1*"
+"Während das Treibsand-Raster 3 s sichtbar ist, tippt der Spieler schon `3` und Enter. Was passiert beim folgenden `input()` – und was tust du dagegen?","Die Eingabe liegt im **Eingabepuffer**; das nächste `input()` nimmt sie sofort – der Spieler hat „vorgetippt“, während er das Raster sah. Abhilfe: vor der Abfrage `eingabepuffer_leeren()` aufrufen (verwirft alles, was schneller als 0,3 s kommt) oder es als erlaubten Trick bewusst zulassen und im Kolloquium so begründen.
+
+*Level-Konzept*"
+"Welche Grenzfälle testest du vor der Abgabe gezielt? Nenne fünf.","- Enter **vor** „SPRING!“ (Fehlstart) und mehrfach Enter (Puffer)
+- Koordinaten `0`, `6`, `x`, `2,5`, leere Eingabe
+- Folge mit Leerzeichen oder Großbuchstaben
+- Spruch zu kurz / zu lang
+- **erster** Spielstart ohne `bestenliste.txt` und eine kaputte Zeile darin
+
+*Level-Konzept*"
+"Welche Eigenschaften muss ein **Algorithmus** laut Skript haben – und wie passt der Zufall in deinem Level dazu?","Er muss bei jeder Eingabe nach **endlich vielen Schritten** enden, einen **eindeutigen Ablauf** und ein **reproduzierbares Ergebnis** haben (F. 42).
+Der Zufall ist eine weitere **Eingabe**: Mit gleichem `random.seed` und gleichen Tastendrücken läuft das Level genau gleich ab. Jede Schleife hat entweder eine feste Rundenzahl oder endet, sobald eine gültige Eingabe kommt.
+
+*F. 42*"

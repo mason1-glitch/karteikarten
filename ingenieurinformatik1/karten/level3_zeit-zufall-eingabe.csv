@@ -1,0 +1,100 @@
+"Ergänze so, dass das Programm 2 bis 5 s zufällig wartet.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_06358b805d.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c09331df76.png)
+Ein Modul pro `import`-Zeile, am Anfang der Datei; aufgerufen wird mit **Modulname.Funktion**.
+
+*F. 173 · Aufg. 1.3, 2.5*"
+"Der Code bricht ab. Welche Meldung, und warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1e322fbf86.png)","`NameError: name 'sleep' is not defined`. Nach `import time` gibt es nur den Namen `time`; die Funktion heißt **`time.sleep(1)`**.
+
+*Aufg. 1.3*"
+"Was liefert `random.randint(2, 5)` – und welche Werte sind möglich?","Eine zufällige **ganze** Zahl von 2 bis 5, **beide Grenzen eingeschlossen**: 2, 3, 4 oder 5. (Anders als `range(2, 5)`, das bei 4 aufhört.)
+
+*Aufg. 2.5*"
+"Das Programm stürzt bei 100 Runden fast sicher ab. Warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3785962c61.png)","`len(richtungen)` ist 3, und `randint(0, 3)` liefert **auch 3** – den Index 3 gibt es nicht (nur 0–2): `IndexError: list index out of range`. Richtig: `random.randint(0, len(richtungen) - 1)`.
+
+*F. 141 · Aufg. 2.5*"
+"Wähle zufällig ein Kommando aus `richtungen` und gib es aus – nur mit Mitteln aus dem Stoff.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_018e0e744b.png)
+Ergänzung: `random.choice(richtungen)` macht dasselbe, ist aber nicht im Stoff.
+
+*F. 141 · Aufg. 2.5*"
+"Was gibt der Code aus – und wofür ist das beim Testen deiner Stationen nützlich?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8daa714c73.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6d4db190ec.png)
+Gleicher Startwert (`seed`) → gleiche Zufallsfolge. Beim Testen kommen so immer dieselben Kommandos und Folgen, und ein Fehler lässt sich wiederholen.
+
+*Aufg. 2.9*"
+"Warum wartet der Lianen-Sprung `time.sleep(random.randint(2, 5))` und nicht immer genau 3 s?","Bei fester Wartezeit lernt der Spieler den Takt und drückt **vorausschauend** – gemessen würde dann keine Reaktion. Erst die zufällige Wartezeit macht den Moment von „SPRING!“ unvorhersehbar.
+
+*Aufg. 1.3, 2.5 · Level-Konzept*"
+"Was liefert `time.time()`, und warum kannst du damit eine Reaktionszeit messen?","Ergänzung (nicht im Stoff): die aktuelle Zeit als **Sekunden seit dem 1.1.1970** als `float` mit Nachkommastellen, z. B. `1795000000.4127`. Der Wert allein sagt nichts; die **Differenz** zweier Aufrufe ist die verstrichene Zeit in Sekunden: `dauer = time.time() - start`.
+
+*Ergänzung (Dozent: erlaubt, wenn erklärbar)*"
+"Miss, wie lange der Spieler bis zum Enter braucht, und gib die Zeit mit drei Nachkommastellen aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f23de13d81.png)
+Startzeit **direkt vor** `input()` merken, Endzeit **direkt danach** – dazwischen liegt nur das Warten auf Enter.
+
+*Ergänzung (Dozent: erlaubt, wenn erklärbar)*"
+"Was misst dieser Code wirklich – und was ist falsch?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ca2f06ae9e.png)","Die Startzeit steht **vor** der Pause; `reaktion` enthält die 2 s Wartezeit plus die Reaktion. `start = time.time()` gehört **nach** `time.sleep(…)`, unmittelbar vor das Signal.
+
+*Ergänzung (Dozent: erlaubt, wenn erklärbar)*"
+"Der Spieler drückt bei „RUHIG“ nur Enter. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_65499d8f26.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3565378baf.png)
+Nur Enter → `input()` liefert den **leeren String** `""""`. Deshalb steht in `gegenrichtung` für „RUHIG“ der Eintrag `""""`.
+
+*F. 49*"
+"Der Spieler tippt `1.0`. Warum bricht der Code ab, und wie behebst du es?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_da5fd30f53.png)","`input()` liefert **immer einen String**: `""1.0""`. `0.5 > ""1.0""` vergleicht `float` mit `str` → `TypeError`. Sofort umwandeln: `zeitlimit = float(input())`.
+
+*F. 49, 75*"
+"Der Spieler tippt `2.5`. Was passiert bei `int(input())`, was bei `float(input())`?","| | `int(input())` | `float(input())` |
+|---|---|---|
+| Eingabe `2.5` | `ValueError` – `""2.5""` ist keine ganze Zahl | `2.5` |
+| Eingabe `2,5` | `ValueError` | `ValueError` (Komma statt Punkt, F. 67) |
+
+Für Koordinaten im Raster passt `int`, für Zeiten `float`. Gegen den `ValueError` hilft `try`/`except` (Stapel 5).
+
+*F. 75*"
+"Warum wertest du eine Reaktion **unter 0,1 s** als Fehlstart?","Drückt der Spieler Enter **schon während der Wartezeit**, landet der Tastendruck im **Eingabepuffer**. Das `input()` nach „SPRING!“ findet ihn sofort und kehrt fast ohne Verzögerung zurück. So schnell reagiert kein Mensch (Ergänzung: typisch sind etwa 0,2–0,3 s).
+
+*Level-Konzept*"
+"Warum kann dein Programm eine Eingabe nicht nach 1,5 s abbrechen, und wie prüfst du das Zeitlimit stattdessen?","`input()` **wartet immer**, bis Enter kommt; währenddessen läuft kein anderer Code. Darum misst du die Zeit bis zum Enter und vergleichst **danach**: `if dauer > zeitlimit_s:` → „zu langsam“. Echte Abbrüche bräuchten Threads oder Pakete wie `keyboard` – nicht im Stoff, im Kolloquium schwer zu erklären.
+
+*Level-Konzept*"
+"Im Puffer liegen 2 alte Enter, dann drückt der Spieler nach 1,2 s. Wie oft läuft die Schleife, welchen Wert hat `dauer` jeweils danach?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_080349b282.png)","| Durchlauf | `dauer` danach | Bedingung `dauer < 0.3` |
+|---|---|---|
+| 1 | ≈ 0,0 s (alter Tastendruck) | wahr → weiter |
+| 2 | ≈ 0,0 s (alter Tastendruck) | wahr → weiter |
+| 3 | ≈ 1,2 s (frisch gedrückt) | falsch → Ende |
+
+Alte Tastendrücke werden verworfen, erst ein echtes Enter beendet die Schleife.
+
+*F. 125 · Level-Konzept*"
+"Warum muss vor der Schleife `dauer = 0` stehen? Ergänze die Lücken.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c6cb6effa3.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_080349b282.png)
+Der **Startwert** sorgt dafür, dass die Bedingung beim ersten Prüfen wahr ist und `dauer` überhaupt existiert – sonst `NameError` (Muster aus F. 125: `pin_eingabe = 0`).
+
+*F. 125*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_30fb517cd1.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_382d7433f9.png)
+Genau **auf** dem Limit (0,8 > 0,8 ist falsch) zählt als geschafft. Willst du das anders, schreib `>=`.
+
+*F. 115*"
+"Was gibt der Code für `reaktion = 0.05` aus – und was ist falsch daran?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6da5676715.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_66c5ed04eb.png)
+Nur der **erste** wahre Zweig läuft (F. 115). 0,05 ≤ 0,8 ist schon wahr, der Fehlstart-Zweig wird nie erreicht. Der Sonderfall (Fehlstart) muss **zuerst** geprüft werden.
+
+*F. 115*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_048d4d6c5b.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8fe3d058c1.png)
+`:.3f` **rundet** nur in der Anzeige; `int()` **schneidet** die Nachkommastellen ab (412,7 → 412).
+
+*F. 116 · Aufg. 3.11*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_69510be119.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d528ac8ca7.png)
+`None` steht für „kein Ergebnis“. Der Aufrufer prüft mit `if zeit is not None:`, bevor er mit der Zeit rechnet oder sie in die Bestenliste schreibt (Muster Aufg. 5.3).
+
+*Aufg. 5.3*"
+"Warum gibt `reaktion_messen()` bei einem Fehlstart `None` zurück und nicht `0`?","`0` sähe aus wie eine **unschlagbar schnelle** Reaktion und landete auf Platz 1 der Bestenliste. `None` heißt eindeutig „kein gültiges Ergebnis“; der Aufrufer muss es mit `is not None` abfangen und zieht ein Leben ab.
+
+*Aufg. 5.3*"

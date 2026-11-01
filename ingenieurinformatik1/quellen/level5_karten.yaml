@@ -1,0 +1,421 @@
+# Kolloquium Laboraufgabe (Escape-Room) – Stapel 5: Ausnahmebehandlung (try/except)
+# Vorgriff auf das Labor in KW46: Die Laborfolien dazu liegen noch nicht im Projekt. Grundlage sind
+# Laboraufgabe F. 2 (Pflichtelement), Code-Leitfaden 2.7 und das Level-Konzept. Nach dem Labor mit den
+# Folien abgleichen (Fachbegriffe, ob else/finally behandelt werden).
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/level5_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/level5_ausnahmen.csv
+matrix: ingenieurinformatik1/quellen/level5_abdeckung.md
+titel: "Level-Kolloquium 5: Ausnahmebehandlung"
+id_praefix: "L5."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "try/except kommt im Labor erst in KW46. Bis dahin gilt der Rahmen aus Code-Leitfaden 2.7; die Karten nennen als Quelle „Labor KW46 (Vorgriff)“. `else` und `finally` sind bewusst weggelassen, weil offen ist, ob das Labor sie behandelt."
+  - "Die Fehlermeldungen (`ValueError: invalid literal …`) sind unter Python 3.9 und 3.13 geprüft."
+
+inhalte:
+  - {id: l5.begriff, gewicht: 3, quelle: "Laboraufgabe F. 2; Code-Leitfaden 1.10", text: "Ausnahme = Laufzeitfehler; ohne Behandlung Abbruch mit Traceback; typische Ausnahmen und ihre Auslöser"}
+  - {id: l5.ablauf, gewicht: 3, quelle: "Labor KW46 (Vorgriff, Code-Leitfaden 2.7)", text: "try/except: Aufbau, Ablauf (Rest des try übersprungen, danach weiter hinter dem Block)", konstrukte: [kw:try, kw:except]}
+  - {id: l5.konkret, gewicht: 3, quelle: "Code-Leitfaden 2.7", text: "Konkrete Ausnahme nennen, kein leeres except; falscher Typ wird nicht abgefangen; Strg+C = KeyboardInterrupt"}
+  - {id: l5.valueerror, gewicht: 3, quelle: "Code-Leitfaden 2.7", text: "ValueError bei int()/float() einer ungültigen Eingabe abfangen", konstrukte: [except:ValueError]}
+  - {id: l5.schleife, gewicht: 3, quelle: "Code-Leitfaden 2.7", text: "Eingabe wiederholen: Merker eingabe_ok, while not, try/except", konstrukte: [kw:not, kw:True, kw:False]}
+  - {id: l5.bereich, gewicht: 3, quelle: "Code-Leitfaden 2.7", text: "Wertebereich zusätzlich mit if prüfen (0 → Index -1 ohne Fehler); if vorher prüfen vs. try abfangen", konstrukte: [except:IndexError]}
+  - {id: l5.datei, gewicht: 2, folie: "189", quelle: "Level-Konzept", text: "FileNotFoundError beim ersten Laden der Bestenliste; \"a\" legt die Datei an", konstrukte: [except:FileNotFoundError]}
+  - {id: l5.keyerror, gewicht: 1, quelle: "Laborskript Dictionaries F. 7", text: "KeyError abfangen oder vorher mit in prüfen"}
+  - {id: l5.weiter, gewicht: 2, quelle: "Labor KW46 (Vorgriff)", text: "Mehrere except-Zweige; Ausnahme aus einer Funktion wird beim Aufrufer abgefangen"}
+  - {id: l5.einsatz, gewicht: 3, quelle: "Level-Konzept", text: "Wo und warum im Level: Koordinaten, Bestenliste, Ton, Tippfehler"}
+
+karten:
+  # ---------------------------------------------------------------- Begriff und Ablauf
+  - typ: begriff
+    quelle: "Laboraufgabe F. 2; Labor KW46 (Vorgriff)"
+    deckt: [l5.begriff]
+    frage: |-
+      Was ist eine **Ausnahme** (Exception), und was passiert, wenn niemand sie behandelt?
+    antwort: |-
+      Ein Fehler, der erst **beim Ausführen** auftritt, z. B. `int("x")`. Python bricht dann ab und zeigt einen **Traceback**; die letzte Zeile nennt Art und Meldung (`ValueError: …`).
+      Eine **Ausnahmebehandlung** (`try`/`except`) fängt den Fehler ab, damit das Spiel sinnvoll weiterläuft – Pflichtelement der Laboraufgabe.
+
+  - typ: verwechslung
+    quelle: "Code-Leitfaden 1.10"
+    folien: [175]
+    deckt: [l5.begriff]
+    frage: |-
+      Welche Ausnahme löst jede Zeile aus?
+      `int("x")` · `liste[9]` bei 5 Elementen · `tiere["q"]` · `open("fehlt.txt", "r")` · `10 / 0` · `rufe_auf()` ohne Definition
+    antwort: |-
+      | Zeile | Ausnahme |
+      |---|---|
+      | `int("x")` | `ValueError` |
+      | `liste[9]` | `IndexError` |
+      | `tiere["q"]` | `KeyError` |
+      | `open("fehlt.txt", "r")` | `FileNotFoundError` |
+      | `10 / 0` | `ZeroDivisionError` |
+      | `rufe_auf()` | `NameError` (F. 175) |
+
+  - typ: code_ausgabe
+    quelle: "Labor KW46 (Vorgriff, Code-Leitfaden 2.7)"
+    deckt: [l5.ablauf, l5.valueerror]
+    frage: |-
+      Der Spieler tippt `x`. Was gibt der Code aus?
+      ```python
+      try:
+          reihe = int(input())
+          print("Reihe", reihe)
+      except ValueError:
+          print("Keine Zahl!")
+      print("weiter")
+      ```
+    antwort: |-
+      ```text
+      Keine Zahl!
+      weiter
+      ```
+      `int("x")` löst den `ValueError` aus → der **Rest des try-Blocks** (`print("Reihe", …)`) wird übersprungen, der passende `except`-Zweig läuft, danach geht es **hinter** dem ganzen Block weiter.
+    tests: [{p: 1, t: 1, eingabe: "x\n"}]
+
+  - typ: trace
+    quelle: "Labor KW46 (Vorgriff, Code-Leitfaden 2.7)"
+    deckt: [l5.ablauf]
+    frage: |-
+      Welche Zeilen laufen bei der Eingabe `3`, welche bei `x`?
+      ```python
+      try:                             # 1
+          reihe = int(input())         # 2
+          print("Reihe", reihe)        # 3
+      except ValueError:               # 4
+          print("Keine Zahl!")         # 5
+      print("weiter")                  # 6
+      ```
+    antwort: |-
+      | Eingabe | ausgeführte Zeilen | Ausgabe |
+      |---|---|---|
+      | `3` | 1, 2, 3, 6 | `Reihe 3`, `weiter` |
+      | `x` | 1, 2 (Ausnahme), 4, 5, 6 | `Keine Zahl!`, `weiter` |
+
+      Ohne Ausnahme wird der `except`-Zweig **übersprungen**.
+    tests: [{p: 1, eingabe: "3\n"}]
+
+  - typ: code_luecke
+    quelle: "Labor KW46 (Vorgriff, Code-Leitfaden 2.7)"
+    deckt: [l5.ablauf]
+    frage: |-
+      Ergänze die Ausnahmebehandlung.
+      ```python
+      ___:
+          spalte = int(input())
+      ___ ValueError:
+          print("Bitte eine ganze Zahl eingeben!")
+      ```
+    antwort: |-
+      ```python
+      try:
+          spalte = int(input())
+      except ValueError:
+          print("Bitte eine ganze Zahl eingeben!")
+      ```
+      Beide Zeilen enden mit Doppelpunkt, beide Blöcke sind eingerückt – wie bei `if`/`else`.
+    tests: [{p: 2, eingabe: "x\n"}]
+
+  # ---------------------------------------------------------------- Konkrete Ausnahme
+  - typ: falle
+    quelle: "Code-Leitfaden 2.7"
+    deckt: [l5.konkret]
+    frage: |-
+      Der Spieler tippt korrekt `3`. Was gibt der Code aus – und was lernst du daraus?
+      ```python
+      try:
+          reihe = int(inptu())
+      except:
+          print("Bitte eine Zahl eingeben!")
+      ```
+    antwort: |-
+      ```text
+      Bitte eine Zahl eingeben!
+      ```
+      Der Tippfehler `inptu` löst einen `NameError` aus – das **leere `except`** fängt **jeden** Fehler und meldet ihn als falsche Eingabe. Der Programmierfehler bleibt unsichtbar; auch Strg+C (`KeyboardInterrupt`) würde verschluckt. Darum immer die **konkrete Ausnahme** nennen.
+    tests: [{p: 1, t: 1, eingabe: "3\n"}]
+
+  - typ: code_ausgabe
+    quelle: "Code-Leitfaden 2.7"
+    deckt: [l5.konkret]
+    frage: |-
+      Der Spieler tippt `x`. Was passiert?
+      ```python
+      try:
+          reihe = int(input())
+      except IndexError:
+          print("Feld gibt es nicht!")
+      ```
+    antwort: |-
+      ```text
+      ValueError: invalid literal for int() with base 10: 'x'
+      ```
+      Es entsteht ein `ValueError`, abgefangen wird aber nur `IndexError` → **kein passender Zweig**, das Programm bricht trotzdem ab.
+    tests: [{p: 1, t: 1, eingabe: "x\n"}]
+
+  - typ: code_fehler
+    quelle: "Code-Leitfaden 2.7"
+    deckt: [l5.konkret, l5.valueerror]
+    frage: |-
+      Bei Eingabe `3` läuft alles, bei `x` stürzt das Programm mit einer seltsamen Meldung ab. Warum?
+      ```python
+      try:
+          reihe = int(input())
+      except valueerror:
+          print("Keine Zahl!")
+      ```
+    antwort: |-
+      `NameError: name 'valueerror' is not defined`. Ausnahmen sind Namen mit **Groß-/Kleinschreibung**: `ValueError`. Python wertet den `except`-Ausdruck erst aus, wenn wirklich eine Ausnahme auftritt – darum fällt der Tippfehler nur bei falscher Eingabe auf.
+    tests: [{p: 1, eingabe: "x\n", abbruch: NameError}, {p: 1, eingabe: "3\n"}]
+
+  - typ: begriff
+    quelle: "Labor KW46 (Vorgriff)"
+    deckt: [l5.konkret]
+    frage: |-
+      Was löst **Strg+C** in der Konsole aus, und wie könntest du es im Level nutzen?
+    antwort: |-
+      Eine Ausnahme **`KeyboardInterrupt`** – normalerweise bricht das Programm ab. Mit `except KeyboardInterrupt:` ließe sich „Spieler gibt auf“ abfangen (optional). Ein leeres `except:` würde Strg+C dagegen verschlucken – das Spiel ließe sich nicht mehr beenden.
+
+  # ---------------------------------------------------------------- Eingabeschleife mit Merker
+  - typ: code_ausgabe
+    quelle: "Code-Leitfaden 2.7"
+    aufgaben: ["4.4"]
+    deckt: [l5.schleife, l5.valueerror]
+    frage: |-
+      Der Spieler tippt nacheinander `x`, `2,5`, `4`. Was gibt der Code aus?
+      ```python
+      eingabe_ok = False
+      while not eingabe_ok:
+          try:
+              reihe = int(input())
+              eingabe_ok = True
+          except ValueError:
+              print("Bitte eine ganze Zahl!")
+      print("Reihe:", reihe)
+      ```
+    antwort: |-
+      ```text
+      Bitte eine ganze Zahl!
+      Bitte eine ganze Zahl!
+      Reihe: 4
+      ```
+      Erst die gültige Eingabe setzt den Merker auf `True` und beendet die Schleife.
+    tests: [{p: 1, t: 1, eingabe: "x\n2,5\n4\n"}]
+
+  - typ: begruenden
+    quelle: "Code-Leitfaden 2.7"
+    deckt: [l5.schleife]
+    frage: |-
+      Warum steht `eingabe_ok = True` **im** try-Block direkt **nach** `int(input())`?
+    antwort: |-
+      Die Zeile wird nur erreicht, wenn `int()` **keinen** Fehler auslöst. Bei einem `ValueError` springt Python sofort in den `except`-Zweig, der Merker bleibt `False` – die Schleife fragt erneut. Stünde die Zeile vor `int(…)`, wäre die Schleife auch bei falscher Eingabe beendet.
+
+  - typ: code_schreiben
+    quelle: "Code-Leitfaden 2.7, 3.4"
+    folien: [125]
+    deckt: [l5.schleife, l5.bereich]
+    frage: |-
+      Schreib `zahl_einlesen(kleinste, groesste)`: liest so lange ein, bis eine ganze Zahl im Bereich kommt, und gibt sie zurück – ohne `while True`.
+    antwort: |-
+      ```python
+      def zahl_einlesen(kleinste, groesste):
+          zahl = kleinste - 1   # außerhalb des Bereichs
+          while zahl < kleinste or zahl > groesste:
+              try:
+                  zahl = int(input())
+              except ValueError:
+                  print("Bitte eine ganze Zahl!")
+          return zahl
+      ```
+      Der **Startwert** liegt absichtlich außerhalb, damit die Bedingung beim ersten Prüfen wahr ist (Muster F. 125). Die Schleife deckt beides ab: keine Zahl (`except`) und Zahl außerhalb des Bereichs (Bedingung).
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- Bereich: if und try
+  - typ: falle
+    quelle: "Code-Leitfaden 2.7"
+    folien: [141]
+    deckt: [l5.bereich]
+    frage: |-
+      Der Spieler tippt `0`. Was passiert?
+      ```python
+      reihe = ["o", "~", "o", "o", "o"]
+      try:
+          nr = int(input())
+          print(reihe[nr - 1])
+      except ValueError:
+          print("Keine Zahl!")
+      ```
+    antwort: |-
+      ```text
+      o
+      ```
+      Kein Fehler, keine Meldung: `0 - 1` = Index **-1** = letztes Feld. Ausnahmen helfen nur, wo Python wirklich einen Fehler auslöst – den Bereich 1–5 musst du **zusätzlich mit `if`** prüfen.
+    tests: [{p: 1, t: 1, eingabe: "0\n"}]
+
+  - typ: code_ausgabe
+    quelle: "Labor KW46 (Vorgriff)"
+    deckt: [l5.bereich]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      reihe = ["o", "~", "o"]
+      try:
+          print(reihe[7])
+      except IndexError:
+          print("Das Feld gibt es nicht!")
+      ```
+    antwort: |-
+      ```text
+      Das Feld gibt es nicht!
+      ```
+      Ein Index jenseits des Endes löst `IndexError` aus – den kann `except IndexError:` abfangen. (Negative Indizes bis -3 wären hier gültig!)
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    quelle: "Code-Leitfaden 2.5, 2.7"
+    deckt: [l5.bereich, l5.keyerror]
+    frage: |-
+      Wann prüfst du **vorher mit `if`**, wann fängst du **mit `try`/`except`** ab? Je ein Beispiel aus dem Level.
+    antwort: |-
+      | vorher mit `if` | abfangen mit `try`/`except` |
+      |---|---|
+      | Bedingung ist mit Stoff-Mitteln prüfbar | Fehler lässt sich vorher kaum prüfen |
+      | Bereich 1–5: `if zahl >= 1 and zahl <= 5` | „Ist das überhaupt eine Zahl?“ → `int()` + `ValueError` |
+      | Schlüssel vorhanden: `if name in stationen` | Datei vorhanden? → `open(…, "r")` + `FileNotFoundError` |
+
+      `try` nur um die Zeilen, an denen der Fehler wirklich entstehen kann (Leitfaden 2.7).
+
+  # ---------------------------------------------------------------- Datei und KeyError
+  - typ: code_ausgabe
+    folien: [189]
+    quelle: "Labor KW46 (Vorgriff)"
+    deckt: [l5.datei]
+    frage: |-
+      Beim ersten Spielstart gibt es noch keine Bestenliste. Was gibt der Code aus?
+      ```python
+      try:
+          datei = open("bestenliste.txt", "r")
+          print("Datei geöffnet")
+          datei.close()
+      except FileNotFoundError:
+          print("Noch keine Bestenliste.")
+      ```
+    antwort: |-
+      ```text
+      Noch keine Bestenliste.
+      ```
+      Modus `"r"` verlangt, dass die Datei existiert; sonst `FileNotFoundError`. Im Level gibt `bestenliste_laden()` dann eine **leere Liste** zurück.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    folien: [189, 193]
+    quelle: "Level-Konzept"
+    deckt: [l5.datei]
+    frage: |-
+      Warum fängst du `FileNotFoundError` beim **Laden** der Bestenliste ab, beim **Speichern** aber nicht?
+    antwort: |-
+      Gespeichert wird mit Modus **`"a"`** (anhängen): Fehlt die Datei, **legt Python sie an**. Geladen wird mit **`"r"`**: Fehlt sie, gibt es einen `FileNotFoundError` – und beim allerersten Spiel fehlt sie immer. Das ist kein Fehler des Spielers, sondern ein normaler Fall: leere Bestenliste.
+
+  - typ: code_ausgabe
+    quelle: "Laborskript Dictionaries F. 7"
+    deckt: [l5.keyerror]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      tiere = {"a": "Affe", "t": "Tukan"}
+      try:
+          print(tiere["x"])
+      except KeyError:
+          print("Diese Taste gibt es nicht!")
+      ```
+    antwort: |-
+      ```text
+      Diese Taste gibt es nicht!
+      ```
+      Gleiche Wirkung wie `if "x" in tiere:` (Laborskript F. 7). Bei Dictionaries ist die `in`-Prüfung der Weg aus dem Labor.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Weiterführend
+  - typ: code_ausgabe
+    quelle: "Labor KW46 (Vorgriff)"
+    deckt: [l5.weiter]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def koordinate(text):
+          return int(text) - 1
+
+      try:
+          print(koordinate("3"))
+          print(koordinate("drei"))
+      except ValueError:
+          print("Ungültig!")
+      ```
+    antwort: |-
+      ```text
+      2
+      Ungültig!
+      ```
+      Die Ausnahme entsteht **in** der Funktion, die selbst kein `try` hat. Sie wandert zum **Aufrufer** zurück, bis ein passendes `except` sie fängt.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    quelle: "Labor KW46 (Vorgriff)"
+    deckt: [l5.weiter, l5.bereich]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      raster = [["o", "~"], ["~", "o"]]
+      for text in ["2", "x", "5"]:
+          try:
+              print(raster[0][int(text) - 1])
+          except ValueError:
+              print("keine Zahl")
+          except IndexError:
+              print("außerhalb")
+      ```
+    antwort: |-
+      ```text
+      ~
+      keine Zahl
+      außerhalb
+      ```
+      Ein `try` darf **mehrere** `except`-Zweige haben; es läuft der erste, der zur Ausnahme passt.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    quelle: "Labor KW46 (Vorgriff)"
+    deckt: [l5.weiter, l5.ablauf]
+    frage: |-
+      Eine Ausnahme tritt auf. In welcher Reihenfolge sucht Python einen passenden `except`-Zweig – und was passiert, wenn keiner passt?
+    antwort: |-
+      1. Die `except`-Zweige des umgebenden `try` werden **von oben nach unten** geprüft; der **erste passende** läuft.
+      2. Passt keiner (oder gibt es kein `try`), verlässt die Ausnahme die Funktion und geht an den **Aufrufer** – dort wird weitergesucht.
+      3. Fängt sie bis ganz oben niemand, bricht das Programm mit **Traceback** ab.
+
+  # ---------------------------------------------------------------- Einsatz im Level
+  - typ: anwendung
+    quelle: "Level-Konzept"
+    deckt: [l5.einsatz]
+    frage: |-
+      Wo stehen in deinem Level Ausnahmebehandlungen, und welche Ausnahme fängt jede ab?
+    antwort: |-
+      | Stelle | Ausnahme | Reaktion |
+      |---|---|---|
+      | Koordinate im Treibsand-Raster | `ValueError` | erneut fragen |
+      | Bestenliste laden | `FileNotFoundError` | leere Liste |
+      | kaputte Zeile in der Bestenliste | `ValueError` | Zeile überspringen |
+      | Ton abspielen | `ImportError` | still weiterspielen |
+      | (optional) Strg+C | `KeyboardInterrupt` | „aufgegeben“ |
+
+  - typ: begruenden
+    quelle: "Level-Konzept; Code-Leitfaden 2.7"
+    deckt: [l5.einsatz, l5.valueerror]
+    frage: |-
+      Kolloquiumsfrage: „Warum steht dein `try` genau um `int(input())` – und welcher Fehler käme ohne?“
+    antwort: |-
+      `input()` liefert, was der Spieler tippt – auch `x` oder `2,5`. `int()` kann das nicht umwandeln und löst einen **`ValueError`** aus; ohne `try` **stürzt das ganze Spiel ab**, auch die Levels der anderen. Der `try`-Block umfasst nur diese Zeile (und das Setzen des Merkers), damit kein anderer Fehler versehentlich als „falsche Eingabe“ gemeldet wird.

@@ -1,0 +1,276 @@
+# Kolloquium Laboraufgabe (Escape-Room) – Stapel 7: Effekte für Extrapunkte, Konsole und Umgebung
+# Quellen: Skript Info1 WS26 (folien = PDF-Seite: Escape-Sequenzen F. 52–54, 69), Laborfolien IDE/venv
+# (F. 13, 28–29), Level-Konzept (Extrapunkte, Machbarkeit). Farben, flush und Ton sind Ergänzungen.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/level7_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/level7_effekte.csv
+matrix: ingenieurinformatik1/quellen/level7_abdeckung.md
+titel: "Level-Kolloquium 7: Effekte, Konsole und Umgebung"
+id_praefix: "L7."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Welche Effekte genau Bonuspunkte bringen, steht in einer Stud.IP-Nachricht, die nicht im Projekt liegt. Laut Dozent: Sound und Bilder."
+  - "Wie \\r, Farben und Signalton aussehen, hängt von der Konsole ab (PyCharm-Ausgabefenster, Terminal, Windows-Eingabeaufforderung); die Karten beschreiben das übliche Verhalten."
+
+inhalte:
+  - {id: l7.escape, gewicht: 3, folie: "52–54", text: "Escape-Sequenzen \\n, \\t, \\r, \\b; \\r zurück an den Zeilenanfang (Countdown in einer Zeile)", konstrukte: [esc:\r, esc:\t, esc:\b]}
+  - {id: l7.ascii, gewicht: 3, folie: "60, 69", text: "ASCII-Bilder: Backslash verdoppeln (\\\\), Anführungszeichen \\\", mehrzeilige Strings mit \"\"\"", konstrukte: ["esc:\\\\", "esc:\\\""]}
+  - {id: l7.flush, gewicht: 2, folie: "151", quelle: "Ergänzung", text: "print(…, end=\"\") und flush=True für Schreibmaschinen-Text", konstrukte: [print:flush, print:end]}
+  - {id: l7.farben, gewicht: 2, quelle: "Ergänzung", text: "ANSI-Farbcodes \\033[32m … \\033[0m", konstrukte: [esc:\033]}
+  - {id: l7.ton, gewicht: 3, quelle: "Ergänzung; Level-Konzept", text: "Ton: \\a, winsound (nur Windows), Pakete; mit try/except ImportError still weiterspielen", konstrukte: [esc:\a, modul:winsound, call:winsound.Beep, except:ImportError]}
+  - {id: l7.umgebung, gewicht: 2, quelle: "Laborfolie IDE/venv F. 13, 28–29", text: "Virtuelle Umgebung, requirements.txt erstellen und installieren"}
+  - {id: l7.konsole, gewicht: 2, quelle: "Level-Konzept", text: "Konsolen verhalten sich unterschiedlich; Effekte so bauen, dass das Spiel auch ohne läuft; Bilder anzeigen"}
+
+karten:
+  # ---------------------------------------------------------------- Escape-Sequenzen
+  - typ: begriff
+    folien: [53, 69]
+    deckt: [l7.escape, l7.ascii]
+    frage: |-
+      Was bewirken die Escape-Sequenzen `\n`, `\t`, `\r`, `\b`, `\"` und `\\` in einem String?
+    antwort: |-
+      | Sequenz | Wirkung |
+      |---|---|
+      | `\n` | neue Zeile |
+      | `\t` | Tabulator |
+      | `\r` | Cursor zurück an den **Anfang der Zeile** |
+      | `\b` | Cursor ein Zeichen zurück (Backspace) |
+      | `\"` | Anführungszeichen im String |
+      | `\\` | **ein** Backslash |
+
+  - typ: code_ausgabe
+    folien: [53, 151]
+    deckt: [l7.escape]
+    frage: |-
+      Was sieht der Spieler am Ende in der Zeile? (Der Code zählt in **einer** Zeile herunter.)
+      ```python
+      import time
+
+      for n in range(3, 0, -1):
+          print(n, "...", end="\r")
+          time.sleep(0.2)
+      print("LOS!   ")
+      ```
+    antwort: |-
+      Nur **`LOS!`**. `end="\r"` setzt den Cursor nach jeder Zahl an den Zeilenanfang; die nächste Ausgabe **überschreibt** die alte. So entsteht ein Countdown an derselben Stelle. Im PyCharm-Ausgabefenster vorher testen – nicht jede Konsole beherrscht `\r` gleich.
+    tests: [{p: 1}]
+
+  - typ: falle
+    folien: [53]
+    deckt: [l7.escape]
+    frage: |-
+      Warum endet `print("LOS!   ")` im Countdown mit Leerzeichen? Was stünde ohne sie nach `Noch 10 s` + `\r` + `LOS!` auf dem Bildschirm?
+    antwort: |-
+      `\r` löscht nichts, es springt nur zurück. `LOS!` überschreibt die ersten 4 Zeichen, der Rest bleibt stehen: **`LOS!10 s`**. Die Leerzeichen überschreiben die Reste der längeren alten Ausgabe.
+
+  - typ: code_ausgabe
+    folien: [54]
+    deckt: [l7.escape]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print("Leben:\t3")
+      print("Punkte:\t120")
+      print("Fehlx\b!")
+      ```
+    antwort: |-
+      ```text
+      Leben:  3
+      Punkte: 120
+      Fehl!
+      ```
+      `\t` springt zur nächsten Tabulatorposition – Werte stehen untereinander. `\b` setzt ein Zeichen zurück, das `!` überschreibt das `x` (wie in F. 54).
+    tests: [{p: 1, nicht_ausfuehren: "\\b steht als Steuerzeichen in der Ausgabe; die Konsole zeigt erst nach dem Überschreiben „Fehl!“"}]
+
+  # ---------------------------------------------------------------- ASCII-Bilder
+  - typ: code_ausgabe
+    folien: [53, 69]
+    deckt: [l7.ascii]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print("\\o/ Juhu")
+      print("/\\_/\\")
+      print("Ast\neben")
+      ```
+    antwort: |-
+      ```text
+      \o/ Juhu
+      /\_/\
+      Ast
+      eben
+      ```
+      `\\` wird zu **einem** Backslash. Im letzten String bildet `\n` eine Escape-Sequenz – aus dem gezeichneten Ast wird ein Zeilenumbruch. In ASCII-Bildern deshalb **jeden** Backslash verdoppeln.
+    tests: [{p: 1, t: 1}]
+
+  - typ: falle
+    folien: [53, 69]
+    deckt: [l7.ascii]
+    frage: |-
+      Dein Affenbild enthält `print(" /|_|\ ")`. Es sieht richtig aus. Warum solltest du es trotzdem ändern? (Ergänzung)
+    antwort: |-
+      `\ ` (Backslash + Leerzeichen) ist **keine** gültige Escape-Sequenz; Python lässt den Backslash zwar stehen, ab Version 3.12 kommt aber eine **SyntaxWarning** (Ergänzung). Steht der Backslash vor `n`, `t`, `b` oder `r`, ändert sich das Bild. Sicher ist nur `\\`.
+
+  - typ: code_ausgabe
+    folien: [60]
+    aufgaben: ["2.6"]
+    deckt: [l7.ascii]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      affe_bild = """ (o.o)
+       /|_|\\
+        / \\"""
+      print(affe_bild)
+      ```
+    antwort: |-
+      ```text
+       (o.o)
+       /|_|\
+        / \
+      ```
+      Drei Anführungszeichen erlauben einen **mehrzeiligen String** – das Bild steht im Code so, wie es aussieht. Backslashes trotzdem verdoppeln.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- flush und Farben
+  - typ: begriff
+    folien: [151]
+    quelle: "Ergänzung"
+    deckt: [l7.flush]
+    frage: |-
+      Wozu dienen `end=""` und `flush=True` beim Schreibmaschinen-Text?
+    antwort: |-
+      - `end=""` (Stoff): kein Zeilenumbruch nach jedem Zeichen.
+      - `flush=True` (Ergänzung): Python sammelt Ausgaben sonst in einem **Puffer** und zeigt sie oft erst am Zeilenende – alle Buchstaben kämen auf einmal. `flush=True` gibt jedes Zeichen **sofort** aus.
+
+  - typ: code_schreiben
+    aufgaben: ["1.3"]
+    quelle: "Ergänzung"
+    deckt: [l7.flush]
+    frage: |-
+      Schreib `langsam_schreiben(text)`: gibt den Text Zeichen für Zeichen mit kurzer Pause aus, am Ende ein Zeilenumbruch.
+    antwort: |-
+      ```python
+      import time
+
+      def langsam_schreiben(text):
+          """Schreibmaschinen-Effekt."""
+          for zeichen in text:
+              print(zeichen, end="", flush=True)   # Ergänzung
+              time.sleep(0.03)
+          print()
+      ```
+    tests: [{p: 1}]
+
+  - typ: begriff
+    quelle: "Ergänzung"
+    deckt: [l7.farben]
+    frage: |-
+      Wie färbst du Text in der Konsole grün, und was bedeutet `\033`? (Ergänzung)
+    antwort: |-
+      Ergänzung (ANSI-Farbcodes):
+      ```python
+      gruen = "\033[32m"
+      normal = "\033[0m"
+      print(gruen + "Geschafft!" + normal)
+      ```
+      `\033` ist das **Escape-Steuerzeichen** (oktal 33 = 27). Die Konsole liest `ESC[32m` als Befehl „ab jetzt grün“; `[0m` setzt zurück. `31` wäre rot. Alte Windows-Konsolen zeigen statt Farbe Zeichensalat.
+    tests: [{p: 1}]
+
+  - typ: falle
+    quelle: "Ergänzung"
+    deckt: [l7.farben]
+    frage: |-
+      Warum gehört hinter jeden farbigen Text `\033[0m`? (Ergänzung)
+    antwort: |-
+      Der Farbcode gilt, **bis er zurückgesetzt wird** – ohne `\033[0m` wäre auch alles danach grün, sogar die Ausgaben der anderen Levels.
+
+  # ---------------------------------------------------------------- Ton
+  - typ: aufzaehlung
+    quelle: "Ergänzung; Level-Konzept"
+    deckt: [l7.ton]
+    frage: |-
+      Welche Möglichkeiten für Ton gibt es, und welchen Haken hat jede? (Ergänzung)
+    antwort: |-
+      | Weg | Haken |
+      |---|---|
+      | `print("\a")` | piept nur, wenn die Konsole es erlaubt (PyCharm meist nicht) |
+      | `winsound.Beep(…)` | Modul gibt es **nur unter Windows** |
+      | `afplay` per `os.system` | nur macOS |
+      | Paket wie `pygame` | muss installiert sein → `requirements.txt` |
+
+      Nichts davon ist im Stoff – alles Ergänzung.
+
+  - typ: code_schreiben
+    quelle: "Ergänzung; Level-Konzept"
+    deckt: [l7.ton]
+    frage: |-
+      Schreib `ton_abspielen()`: piept unter Windows, auf anderen Systemen läuft das Spiel ohne Absturz weiter. (Ergänzung)
+    antwort: |-
+      ```python
+      def ton_abspielen():
+          """Piept unter Windows, sonst Signalton oder still."""
+          try:
+              import winsound           # Ergänzung: nur Windows
+              winsound.Beep(880, 200)   # 880 Hz, 200 ms
+          except ImportError:
+              print("\a", end="")       # Ergänzung: Signalton
+      ton_abspielen()
+      ```
+      Auf macOS/Linux gibt es `winsound` nicht → `import` löst `ImportError` aus, der abgefangen wird.
+    tests: [{p: 1}]
+
+  - typ: begruenden
+    quelle: "Level-Konzept"
+    deckt: [l7.ton, l7.konsole]
+    frage: |-
+      Warum soll dein Spiel bei Problemen mit dem Ton **still weiterlaufen**, statt eine Fehlermeldung zu zeigen?
+    antwort: |-
+      Ton ist ein **Effekt** für Extrapunkte, kein Kern des Spiels. Vorgeführt wird auf Rechnern mit unterschiedlichem Betriebssystem – ein Absturz wegen fehlendem Lautsprecher-Modul würde das ganze Gruppenspiel beenden. Die Ausnahmebehandlung macht den Effekt **optional** und ist zugleich ein weiteres Pflichtelement.
+
+  # ---------------------------------------------------------------- Umgebung
+  - typ: begriff
+    quelle: "Laborfolie IDE/venv F. 13"
+    deckt: [l7.umgebung]
+    frage: |-
+      Was ist eine **virtuelle Umgebung**, und warum nutzt man sie?
+    antwort: |-
+      Ein **isolierter Arbeitsbereich für ein einzelnes Projekt**, in dem dessen Pakete in eigenen Versionen installiert sind.
+      - Konfliktvermeidung zwischen Projekten
+      - Reproduzierbarkeit
+      - einfaches Weitergeben (Deployment)
+      - Sicherheit: Änderungen betreffen nicht das ganze System
+
+  - typ: fakt
+    quelle: "Laborfolie IDE/venv F. 28–29"
+    deckt: [l7.umgebung]
+    frage: |-
+      Euer Spiel braucht `pygame`. Wie erstellt ihr eine `requirements.txt`, und wie installiert sie ein anderer?
+    antwort: |-
+      - Erstellen (Umgebung aktiv): `pip freeze > requirements.txt`
+      - Installieren: Umgebung **erst aktivieren**, dann `pip install -r requirements.txt` im Ordner der Datei
+      - Hinweis (Ergänzung aus der Laborfolien-Fassung): In Conda-Umgebungen schreibt `pip freeze` oft lokale Pfade; `pip list --format=freeze` liefert `paket==version`.
+
+  - typ: begruenden
+    quelle: "Level-Konzept"
+    deckt: [l7.konsole]
+    frage: |-
+      Warum testest du die Effekte früh auf dem Rechner, auf dem vorgeführt wird?
+    antwort: |-
+      PyCharm-Ausgabefenster, Terminal und Windows-Eingabeaufforderung behandeln `\r`, Farben, Bildschirm-Leeren und `\a` **unterschiedlich**. Was zu Hause schön aussieht, kann dort Zeichensalat sein. Darum: früh testen und jeden Effekt so bauen, dass das Spiel **auch ohne ihn** läuft.
+
+  - typ: anwendung
+    quelle: "Level-Konzept; Ergänzung"
+    folien: [205]
+    deckt: [l7.konsole]
+    frage: |-
+      Bilder bringen Extrapunkte. Welche zwei Wege gibt es, und was spricht für welchen?
+    antwort: |-
+      | ASCII-Bilder | echte Bilddatei mit matplotlib |
+      |---|---|
+      | `print` mit mehrzeiligem String | `plt.imread` + `plt.imshow` öffnet ein Fenster (Ergänzung; matplotlib selbst ist im Stoff, F. 205) |
+      | läuft in jeder Konsole | braucht matplotlib und die Bilddatei im richtigen Ordner |
+      | nur Stoff, leicht erklärbar | sieht besser aus, Fenster unterbricht das Spiel |

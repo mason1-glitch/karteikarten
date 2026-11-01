@@ -1,0 +1,123 @@
+"Was ist ein **Dictionary**, und wie legst du ein leeres an?","Ein Datentyp, der Paare aus **Schlüssel (key)** und **Wert (value)** speichert – wie ein Wörterbuch: Stichwort → Erklärung. Zugriff über den Schlüssel, nicht über eine Position.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_095748cb02.png)
+
+*Laborskript Dictionaries F. 3–4, 6*"
+"Affen-Echo: Warum speicherst du die Tierlaute als Dictionary und nicht als Liste?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_72e4048fd2.png)","Der Spieler tippt eine **Taste**; mit `tiere[""t""]` steht der Tiername sofort fest. In einer Liste `[""Affe"", ""Tukan"", ""Frosch""]` gäbe es nur Positionen 0, 1, 2 – die Zuordnung Taste → Tier müsste man sich extra merken (Motivation Laborskript F. 3: eine Liste weiß nicht, welche Zahl zu welchem Tier gehört).
+
+*Laborskript Dictionaries F. 3; Level-Konzept*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a4d9a8dcb7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_dc1e6ade83.png)
+Ein **neuer** Schlüssel wird angelegt, ein **vorhandener** überschrieben – jeder Schlüssel kommt nur einmal vor.
+
+*Laborskript Dictionaries F. 6*"
+"Der Code bricht ab. Welche Fehlermeldung, und warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fb1cc802a5.png)","`KeyError: 'Lianen_sprung'` – den Schlüssel gibt es so nicht. Schlüssel sind **Groß-/Kleinschreibung-genau**: gespeichert ist `""lianen_sprung""`.
+
+*Laborskript Dictionaries F. 7*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6b1335a4d3.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bf95f1a812.png)
+Auch **Zahlen** können Schlüssel sein (wie `digits` im Laborskript). `zustand[3]` heißt „Schlüssel 3“, **nicht** „Position 3“ – `zustand[0]` gäbe einen `KeyError`.
+
+*Laborskript Dictionaries F. 12*"
+"Der Spieler tippt einen Stationsnamen. Gib das Zeitlimit aus – oder eine Meldung, wenn es die Station nicht gibt, **ohne** dass das Programm abstürzt.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b6a7682d70.png)
+`in` prüft vorher, ob der Schlüssel existiert – so entsteht kein `KeyError`.
+
+*Laborskript Dictionaries F. 7*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ac61ae54cd.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6fc008796d.png)
+`in` prüft bei einem Dictionary **nur die Schlüssel**, nicht die Werte.
+
+*Laborskript Dictionaries F. 7*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8a130d7c3e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6fc008796d.png)
+Der Wert zum Schlüssel `""LINKS""` ist eine **Liste**; `in` prüft dann, ob die Antwort in dieser Liste steht. So zählt `d` und `D` – ohne Methoden außerhalb des Stoffs.
+
+*Laborskript Dictionaries F. 7; Level-Konzept*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8e77bd8bce.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_53aab5a9a6.png)
+`del` entfernt den Eintrag mit diesem Schlüssel samt Wert.
+
+*Laborskript Dictionaries F. 8*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7ab930faeb.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c21a441aa6.png)
+`pop(key)` löscht und **gibt den Wert zurück**; mit zweitem Argument kommt bei fehlendem Schlüssel dieser Standardwert statt eines Fehlers.
+
+*Laborskript Dictionaries F. 8*"
+"Was ist der Unterschied zwischen `del tiere[""x""]` und `tiere.pop(""x"", None)`, wenn es `""x""` nicht gibt?","| | `del tiere[""x""]` | `tiere.pop(""x"", None)` |
+|---|---|---|
+| Schlüssel fehlt | `KeyError` | kein Fehler, liefert `None` |
+| Rückgabe | nichts | den gelöschten Wert |
+
+*Laborskript Dictionaries F. 8*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1e0050d3f3.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2a05ad0442.png)
+Erst der **äußere** Schlüssel (Station), dann der **innere** (Einstellung). Ein äußerer Schlüssel allein liefert das ganze innere Dictionary.
+
+*Laborskript Dictionaries F. 12–13*"
+"Beim Testen ist der Lianen-Sprung zu leicht. Setz das Zeitlimit auf 0,7 s und gib es aus.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7572ddaed0.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_487f84da29.png)
+Mit zwei Schlüsseln erreichst du den inneren Wert – lesen wie schreiben.
+
+*Laborskript Dictionaries F. 13*"
+"Füge `stationen` eine neue Station `""gluehwuermchen""` mit 2 Runden und 1 s Anzeigezeit hinzu.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_99c21546f1.png)
+Der neue äußere Schlüssel bekommt als Wert ein ganzes inneres Dictionary (wie ein neuer Tag im Kantinenmenü).
+
+*Laborskript Dictionaries F. 13*"
+"Der Code bricht ab. Warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_65db6ebe2b.png)","`KeyError: 'zeitlimit_s'` – der **äußere** Schlüssel stimmt, aber das innere Dictionary von `""affen_echo""` hat nur `""runden""` und `""anzeige_s""`. Innere Dictionaries müssen nicht alle dieselben Schlüssel haben – beim Zugriff musst du wissen, welche es gibt.
+
+*Laborskript Dictionaries F. 7, 12*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7150fe1c5e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cbdfe64791.png)
+Ausgewertet wird **von innen nach außen**: `tasten[2]` → `""f""`, dann `tiere[""f""]` → `""Frosch""` (wie `de_fr[en_de[""red""]]` im Laborskript).
+
+*Laborskript Dictionaries F. 11*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_33d8457da0.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_67b40ab558.png)
+`items()` liefert je Durchlauf ein Paar (Schlüssel, Wert); `for name, werte in …` **entpackt** es in zwei Variablen.
+
+*Aufg. 6.5*"
+"Welche Werte haben `name` und `werte` in **jedem** Durchlauf?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b182100b7d.png)","| Durchlauf | `name` | `werte` |
+|---|---|---|
+| 1 | `""affen_echo""` | `{""runden"": 3}` |
+| 2 | `""zauberformel""` | `{""runden"": 2}` |
+
+`werte` ist selbst ein Dictionary → `werte[""runden""]` liefert die Zahl.
+
+*Aufg. 6.5*"
+"Was gibt der Code aus? (Ergänzung: direktes Durchlaufen eines Dictionarys)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_290c6abc64.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1cedd0c4a1.png)
+`for … in tiere` liefert die **Schlüssel**; den Wert holt `tiere[taste]`. Ergänzung: Im Stoff steht für das Durchlaufen nur `items()` (Aufg. 6.5) – beides ist gleichwertig.
+
+*Laborskript Dictionaries F. 13*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_88d38e2bdc.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_061eef37d7.png)
+Ergänzung: Ein Dictionary behält die **Reihenfolge, in der eingefügt wurde**. Nach dem Löschen und Neu-Einfügen steht `""a""` hinten.
+
+*Laborskript Dictionaries F. 8 (ergänzender Hinweis)*"
+"Warum stehen die Einstellungen aller Stationen in **einem** verschachtelten Dictionary statt in Variablen wie `lianen_zeitlimit = 0.8`?","- **Alles an einer Stelle**: Beim Testen änderst du nur dort die Werte.
+- Der äußere Schlüssel sagt, **welche Station**, der innere, **welche Einstellung** – lesbar wie das Kantinenmenü.
+- Eine Schleife über `items()` erreicht alle Stationen; eine Station bekommt ihren Eintrag als Ganzes übergeben.
+- Es erfüllt das Wahlelement **Dictionary** der Laboraufgabe.
+
+*Level-Konzept; Laborskript Dictionaries F. 13*"
+"Zähle wie die Strichliste im Laborskript, wie oft jede Taste in `folge = ""atafa""` vorkommt, und gib das Dictionary aus.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7fdbb79613.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_16a15a3703.png)
+Gibt es den Schlüssel schon, wird erhöht, sonst mit 1 angelegt – ohne `in`-Prüfung gäbe `anzahl[taste] += 1` beim ersten Mal einen `KeyError`.
+
+*Laborskript Dictionaries F. 3*"
+"Was gibt der Code aus? (Ergänzung)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0fcd61e5d7.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_68c9dee3e2.png)
+Ergänzung: Ein Schlüssel kann nur **einmal** vorkommen; steht er doppelt, gewinnt der **letzte** Wert – ohne Fehlermeldung. Tippfehler bei Schlüsseln fallen so leicht nicht auf.
+
+*Laborskript Dictionaries F. 4*"
+"Nenne vier Dictionaries in deinem Level: Schlüssel → Wert.","| Dictionary | Schlüssel | Wert |
+|---|---|---|
+| `stationen` | Stationsname | inneres Dictionary mit Runden/Zeitlimit |
+| `tiere` | Taste (`""a""`) | Tiername (`""Affe""`) |
+| `gegenrichtung` | Kippkommando (`""LINKS""`) | Liste erlaubter Tasten |
+| `spieler` | `""name""`, `""leben""`, `""inventar""`, `""punkte""` | Daten des Spielers (von `main.py`) |
+
+*Level-Konzept*"
