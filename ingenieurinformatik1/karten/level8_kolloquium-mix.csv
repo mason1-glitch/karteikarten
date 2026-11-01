@@ -93,7 +93,7 @@ Jede Funktion hat ihre **eigene lokale** Variable `fehler`; gleiche Namen in ver
 *F. 182*"
 "Das Skript (F. 182) sagt, Variablen in **Schleifen** seien lokal. Was gibt der Code aus?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6148dd92ca.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1820c2e48a.png)
-Die Aussage stimmt nur für **Funktionen**. Schleifen haben in Python keinen eigenen Gültigkeitsbereich – Schleifenvariable und alles darin Zugewiesene gelten nach der Schleife weiter (Code-Leitfaden, Abschnitt 4).
+Die Aussage stimmt nur für **Funktionen**. Schleifen haben in Python keinen eigenen Gültigkeitsbereich – Schleifenvariable und alles darin Zugewiesene gelten nach der Schleife weiter (Code-Leitfaden, Abschnitt 4) – sofern die Schleife mindestens einmal lief; sonst gibt es sie gar nicht (`NameError`).
 
 *F. 182 · Code-Leitfaden 4*"
 "Dein Spiel stürzt mit einem Traceback ab. Wie liest du ihn?","**Von unten nach oben:**
@@ -106,7 +106,7 @@ Die Aussage stimmt nur für **Funktionen**. Schleifen haben in Python keinen eig
 **Trace-Ausgaben** am Anfang und Ende jeder Funktion zeigen die Aufrufreihenfolge (F. 177–178, Aufg. 5.2); **Debug-Zeilen** mit Zwischenwerten kommentiert man nach der Fehlersuche aus (F. 59, Aufg. 2.1).
 
 *F. 177, 178 · Aufg. 5.2, 2.1*"
-"Während das Treibsand-Raster 3 s sichtbar ist, tippt der Spieler schon `3` und Enter. Was passiert beim folgenden `input()` – und was tust du dagegen?","Die Eingabe liegt im **Eingabepuffer**; das nächste `input()` nimmt sie sofort – der Spieler hat „vorgetippt“, während er das Raster sah. Abhilfe: vor der Abfrage `eingabepuffer_leeren()` aufrufen (verwirft alles, was schneller als 0,3 s kommt) oder es als erlaubten Trick bewusst zulassen und im Kolloquium so begründen.
+"Während das Treibsand-Raster (oder die Affen-Folge) noch sichtbar ist, tippt der Spieler schon seine Antwort und Enter. Was passiert beim folgenden `input()` – und was tust du dagegen?","Die Eingabe liegt im **Eingabepuffer**; das nächste `input()` nimmt sie sofort – der Spieler hat **abgeschrieben**, während er Raster oder Folge sah – Merken entfällt. Abhilfe: vor der Abfrage `eingabepuffer_leeren()` aufrufen (verwirft alles, was schneller als 0,3 s kommt) oder es als erlaubten Trick bewusst zulassen und im Kolloquium so begründen.
 
 *Level-Konzept*"
 "Welche Grenzfälle testest du vor der Abgabe gezielt? Nenne fünf.","- Enter **vor** „SPRING!“ (Fehlstart) und mehrfach Enter (Puffer)
@@ -117,6 +117,6 @@ Die Aussage stimmt nur für **Funktionen**. Schleifen haben in Python keinen eig
 
 *Level-Konzept*"
 "Welche Eigenschaften muss ein **Algorithmus** laut Skript haben – und wie passt der Zufall in deinem Level dazu?","Er muss bei jeder Eingabe nach **endlich vielen Schritten** enden, einen **eindeutigen Ablauf** und ein **reproduzierbares Ergebnis** haben (F. 42).
-Der Zufall ist eine weitere **Eingabe**: Mit gleichem `random.seed` und gleichen Tastendrücken läuft das Level genau gleich ab. Jede Schleife hat entweder eine feste Rundenzahl oder endet, sobald eine gültige Eingabe kommt.
+Der Zufall ist eine weitere **Eingabe**: Mit gleichem `random.seed` und gleichen Tastendrücken nimmt das Level denselben Ablauf (nur die gemessenen Zeiten hängen von der echten Uhr ab). Jede Schleife hat eine feste Rundenzahl oder endet, sobald eine gültige Eingabe kommt – solange der Spieler falsch tippt, fragt das Programm weiter.
 
 *F. 42*"

@@ -21,7 +21,7 @@ inhalte:
   - {id: l6.modi, gewicht: 3, folie: "189, 193", text: "Dateimodi r, w, a: was passiert mit vorhandenem Inhalt, was bei fehlender Datei", konstrukte: []}
   - {id: l6.lesen, gewicht: 3, folie: "190–191", text: "Zeilenweise lesen mit for zeile in datei; jede Zeile endet mit \\n; read()", konstrukte: [methode:read, methode:readlines, methode:readline]}
   - {id: l6.zerlegen, gewicht: 3, folie: "137–138", text: "Zeile zerlegen mit find(\";\") und Slicing; float() verträgt das \\n", konstrukte: [methode:find, slicing, call:float]}
-  - {id: l6.kaputt, gewicht: 2, quelle: "Level-Konzept", text: "Kaputte Zeile mit try/except ValueError überspringen"}
+  - {id: l6.kaputt, gewicht: 2, quelle: "Level-Konzept", text: "Kaputte Zeile mit try/except ValueError oder continue überspringen", konstrukte: [kw:continue, op:-x]}
   - {id: l6.eintraege, gewicht: 2, quelle: "Level-Konzept", text: "Einträge als Liste von Dictionaries {\"name\", \"zeit\"}; Zugriff eintraege[i][\"zeit\"]", konstrukte: [methode:append]}
   - {id: l6.bubble, gewicht: 3, quelle: "Labor KW45 (Vorgriff)", text: "Bubble Sort: Nachbarn vergleichen und tauschen, größtes Element wandert nach hinten; Schleifengrenzen", konstrukte: [cmp:>]}
   - {id: l6.tausch, gewicht: 3, quelle: "Labor KW45 (Vorgriff)", text: "Zwei Elemente tauschen mit Merker-Variable; ganze Dictionaries tauschen"}
@@ -275,7 +275,7 @@ karten:
       1. Von vorn nach hinten jeweils **zwei Nachbarn** vergleichen.
       2. Stehen sie falsch herum (`links > rechts`), **tauschen**.
       3. Nach einem Durchlauf steht das **größte** Element ganz hinten („steigt auf wie eine Blase“).
-      4. Durchläufe wiederholen, bis keiner mehr tauscht – höchstens n − 1 Durchläufe.
+      4. Durchläufe wiederholen, bis keiner mehr tauscht. Nach spätestens n − 1 Durchläufen ist die Liste sortiert (mit Merker `getauscht` kommt noch ein Kontrolldurchlauf ohne Tausch dazu).
 
   - typ: trace
     quelle: "Labor KW45 (Vorgriff)"
@@ -407,7 +407,7 @@ karten:
     frage: |-
       Wozu dient in deiner Bestenliste-Sortierung der Merker `getauscht`?
     antwort: |-
-      Wird in einem ganzen Durchlauf **nichts** getauscht, ist die Liste sortiert – weitere Durchläufe wären verschwendet. Die äußere `while getauscht:`-Schleife hört dann auf. Ist die Bestenliste schon fast sortiert (neuer Eintrag hinten angehängt), reichen so oft ein bis zwei Durchläufe.
+      Wird in einem ganzen Durchlauf **nichts** getauscht, ist die Liste sortiert – weitere Durchläufe wären verschwendet. Die äußere `while getauscht:`-Schleife hört dann auf. Ist die Liste **schon sortiert**, reicht ein einziger Durchlauf. Aber: Ein kleiner Wert ganz hinten (neue Bestzeit, mit `"a"` angehängt) wandert pro Durchlauf nur **eine** Stelle nach vorn – dann braucht es fast alle Durchläufe.
 
   - typ: fakt
     quelle: "Labor KW45 (Vorgriff)"
@@ -561,3 +561,102 @@ karten:
       | keine Tiefenbegrenzung | bricht bei sehr großer Tiefe mit `RecursionError` ab |
 
       Im Level ist der rekursive Countdown optional – nimm ihn nur, wenn du die Aufrufkette erklären kannst.
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: falle
+    folien: [137, 138]
+    quelle: "Probe-Kolloquium"
+    deckt: [l6.zerlegen, l6.kaputt]
+    frage: |-
+      In der Bestenliste steht eine Zeile **ohne** Semikolon: `5`. Was gibt der Code aus?
+      ```python
+      zeile = "5\n"
+      trenner = zeile.find(";")
+      print(trenner)
+      print(zeile[0:trenner])
+      print(float(zeile[trenner + 1:]))
+      ```
+    antwort: |-
+      ```text
+      -1
+      5
+      5.0
+      ```
+      `find` liefert **-1**, wenn das Zeichen fehlt. Dann schneidet `[0:-1]` das `\n` ab (Name „5“), und `[0:]` ist die ganze Zeile (Zeit 5,0) – kein Fehler, aber ein **stilles Falschergebnis**. Abhilfe: `if trenner == -1: continue` vor dem Zerlegen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: falle
+    folien: [146, 173]
+    quelle: "Probe-Kolloquium"
+    deckt: [l6.bubble]
+    frage: |-
+      Deine Sortierfunktion ändert die übergebene Liste direkt und hat kein `return`. Was gibt der Code aus?
+      ```python
+      def sortieren(liste):
+          liste.reverse()   # steht für deinen Algorithmus
+      liste = [3, 1, 2]
+      liste = sortieren(liste)
+      print(liste)
+      ```
+    antwort: |-
+      ```text
+      None
+      ```
+      Die Funktion sortiert **die Liste selbst** und gibt nichts zurück → `None`. Mit `liste = sortieren(liste)` überschreibst du die sortierte Liste mit `None`. Richtig: nur `sortieren(liste)` aufrufen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    quelle: "Probe-Kolloquium"
+    deckt: [l6.bubble]
+    frage: |-
+      Du sortierst die Bestenliste testweise nach **Namen**. Was gibt der Code aus? (Ergänzung)
+      ```python
+      print("Zoe" < "adam")
+      print("Ben" < "Bea")
+      ```
+    antwort: |-
+      ```text
+      True
+      False
+      ```
+      Ergänzung: Strings werden **Zeichen für Zeichen nach dem Zeichencode** verglichen; alle Großbuchstaben kommen vor allen Kleinbuchstaben. Bei „Ben“/„Bea“ entscheidet das dritte Zeichen (`n` nach `a`).
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    quelle: "Probe-Kolloquium; Labor KW45 (Vorgriff)"
+    deckt: [l6.rekursion]
+    frage: |-
+      `countdown(3)` läuft. Was passiert bei `countdown(-1)`, und wie machst du die Funktion sicher?
+      ```python
+      def countdown(n):
+          if n == 0:
+              print("LOS!")
+              return
+          countdown(n - 1)
+
+      countdown(-1)
+      ```
+    antwort: |-
+      Von -1 aus wird 0 **nie erreicht** (-2, -3, …) → `RecursionError`. Sicher ist `if n <= 0:` – dann greift die Abbruchbedingung auch für negative Werte (und für 2,5 über 0,5 → -0,5).
+    tests: [{p: 1, abbruch: RecursionError}]
+
+  - typ: code_ausgabe
+    aufgaben: ["3.8"]
+    folien: [138]
+    deckt: [l6.kaputt]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for zeile in ["Max;0.412\n", "5\n", "Lea;0.298\n"]:
+          trenner = zeile.find(";")
+          if trenner == -1:
+              continue
+          print(zeile[0:trenner])
+      ```
+    antwort: |-
+      ```text
+      Max
+      Lea
+      ```
+      `continue` springt sofort zum **nächsten Durchlauf** – die Zeile ohne `;` wird übersprungen, die Schleife läuft weiter (anders als `break`, das sie beendet; Aufg. 3.8).
+    tests: [{p: 1, t: 1}]

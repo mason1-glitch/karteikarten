@@ -1,6 +1,6 @@
 # Abdeckungsmatrix – Level-Kolloquium 2: Dictionaries
 
-Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level2_karten.yaml`. 24 Karten, 8 prüfbare Inhalte, 0 Wiederholungsfragen.
+Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level2_karten.yaml`. 25 Karten, 8 prüfbare Inhalte, 0 Wiederholungsfragen.
 
 ## Karten je Typ
 
@@ -12,11 +12,11 @@ Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level2_karte
 | Lückentext im Code | 1 |
 | Was gibt der Code aus? | 10 |
 | Finde den Fehler | 2 |
-| Schreib Code, der … | 3 |
+| Schreib Code, der … | 4 |
 | Was ist der Unterschied …? | 2 |
 | Warum so? (Entscheidung begründen) | 1 |
 | Trace-Tabelle (Werte Schritt für Schritt) | 1 |
-| **Summe** | **24** |
+| **Summe** | **25** |
 
 Karten mit Bild: 0.
 
@@ -31,10 +31,10 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | Lesen mit d[key], Hinzufügen/Ändern mit d[key] = wert, KeyError bei fehlendem Schlüssel | 3 | Laborskript F. 6–7 | L2.003, L2.004, L2.005, L2.013, L2.015, L2.023 | 4 |
 | Sicherer Zugriff: if key in d (prüft nur Schlüssel) | 3 | Laborskript F. 7 | L2.006, L2.007, L2.008, L2.022 | 3 |
 | Löschen mit del d[key] und d.pop(key[, standard]) | 2 | Laborskript F. 8 | L2.009, L2.010, L2.011, L2.020 | 2 |
-| Verschachtelte Dictionaries: d[aussen][innen]; verschachtelter Zugriff von innen nach außen | 3 | Laborskript F. 11–13 | L2.012, L2.013, L2.014, L2.015, L2.016, L2.021 | 5 |
+| Verschachtelte Dictionaries: d[aussen][innen]; verschachtelter Zugriff von innen nach außen | 3 | Laborskript F. 11–13 | L2.012, L2.013, L2.014, L2.015, L2.016, L2.021, L2.025 | 5 |
 | Alle Einträge durchlaufen: for schluessel, wert in d.items() | 2 | Aufg. 6.5 | L2.017, L2.018, L2.019 | 2 |
 | Werte dürfen Zahlen, Listen oder Dictionaries sein; Zahlen als Schlüssel | 2 | Level-Konzept | L2.005, L2.008, L2.016, L2.024 | 2 |
-| Warum Dictionaries im Level: Stationen-Einstellungen, Tierlaute, Gegenrichtung, spieler; Zählen mit Dictionary | 3 | Level-Konzept | L2.002, L2.021, L2.022, L2.024 | 4 |
+| Warum Dictionaries im Level: Stationen-Einstellungen, Tierlaute, Gegenrichtung, spieler; Zählen mit Dictionary | 3 | Level-Konzept | L2.002, L2.021, L2.022, L2.024, L2.025 | 4 |
 
 ## Annahmen
 
@@ -69,3 +69,4 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | L2.022 | code_schreiben | Laborskript Dictionaries F. 3 | Zähle wie die Strichliste im Laborskript, wie oft jede Taste in `folge = "atafa"` vorkommt, und gib das Dictio |
 | L2.023 | falle | Laborskript Dictionaries F. 4 | Was gibt der Code aus? (Ergänzung) ```python tiere = {"a": "Affe", "t": "Tukan", "a": "Ameise"} print(tiere) p |
 | L2.024 | anwendung | Level-Konzept | Nenne vier Dictionaries in deinem Level: Schlüssel → Wert. |
+| L2.025 | code_schreiben | F. 128 · Probe-Kolloquium; Laborskript Dictionaries F. 12 | Prüfer: „Ihr Dictionary sagt 5 Runden, die Hängebrücke läuft aber fest 3.“ Zeig, wie die Station Runden und Ze |

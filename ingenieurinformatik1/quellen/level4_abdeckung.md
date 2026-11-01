@@ -1,20 +1,20 @@
 # Abdeckungsmatrix – Level-Kolloquium 4: Mechaniken der Stationen
 
-Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level4_karten.yaml`. 27 Karten, 10 prüfbare Inhalte, 0 Wiederholungsfragen.
+Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level4_karten.yaml`. 31 Karten, 10 prüfbare Inhalte, 0 Wiederholungsfragen.
 
 ## Karten je Typ
 
 | Typ | Anzahl |
 |---|---:|
-| Klausurfalle | 3 |
+| Klausurfalle | 4 |
 | Anwendung (Fall → Einordnung) | 1 |
 | Was gibt der Code aus? | 12 |
 | Finde den Fehler | 1 |
-| Schreib Code, der … | 4 |
+| Schreib Code, der … | 5 |
 | Was ist der Unterschied …? | 1 |
-| Warum so? (Entscheidung begründen) | 3 |
+| Warum so? (Entscheidung begründen) | 5 |
 | Trace-Tabelle (Werte Schritt für Schritt) | 2 |
-| **Summe** | **27** |
+| **Summe** | **31** |
 
 Karten mit Bild: 1.
 
@@ -25,14 +25,14 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 
 | Konzept | Gewicht | Quelle | Karten | Typen |
 |---|---:|---|---|---|
-| Folge als String aufbauen: folge += taste in einer for-Schleife; Zufallsindex | 3 | F. 135 · Level-Konzept | L4.001, L4.002, L4.003, L4.004 | 3 |
+| Folge als String aufbauen: folge += taste in einer for-Schleife; Zufallsindex | 3 | F. 135 · Level-Konzept | L4.001, L4.002, L4.003, L4.004, L4.030 | 3 |
 | String/Liste durchlaufen: for zeichen in text, for i in range(len(text)), text[i] | 3 | F. 136, 143 | L4.003, L4.009, L4.010 | 2 |
-| Strings mit == vergleichen: exakt (Groß/Klein, Leerzeichen); replace(" ", "") | 3 | F. 105, 138 | L4.007, L4.008 | 2 |
+| Strings mit == vergleichen: exakt (Groß/Klein, Leerzeichen); replace(" ", "") | 3 | F. 105, 138 | L4.007, L4.008, L4.028 | 2 |
 | Verdecken mit print("\n" * 40): String-Wiederholung, \n ist ein Zeichen | 2 | F. 53, 135 | L4.005, L4.006 | 2 |
 | Tippfehler zählen: IndexError bei zu kurzer Eingabe, Reihenfolge der Bedingungen bei or, Grenzen des Positionsvergleichs | 3 | Level-Konzept | L4.009, L4.010, L4.011, L4.012, L4.013, L4.014 | 4 |
-| Zusammengesetzte Bedingung mit and (richtige Taste und schnell genug) | 2 | F. 106 · Level-Konzept | L4.015, L4.016 | 2 |
+| Zusammengesetzte Bedingung mit and (richtige Taste und schnell genug) | 2 | F. 106 · Level-Konzept | L4.015, L4.016, L4.028, L4.029 | 3 |
 | 2D-Liste per List-Comprehension anlegen, raster[reihe][spalte], mit verschachtelten Schleifen und end ausgeben | 3 | F. 150–153 · Aufg. 4.3 | L4.017, L4.018, L4.019, L4.024 | 3 |
-| Spieler zählt ab 1, Python ab 0; Eingabe 0 → Index -1 ohne Fehler; Bereichsprüfung mit and | 3 | Aufg. 4.3–4.5 | L4.020, L4.021, L4.022 | 3 |
+| Spieler zählt ab 1, Python ab 0; Eingabe 0 → Index -1 ohne Fehler; Bereichsprüfung mit and | 3 | Aufg. 4.3–4.5 | L4.020, L4.021, L4.022, L4.031 | 4 |
 | Raster mit range(len()) durchsuchen und Position ausgeben | 2 | F. 152 · Aufg. 4.4 | L4.023, L4.024 | 2 |
 | Runden und Leben: for bei fester Rundenzahl, while mit zwei Bedingungen, break | 3 | F. 125, 128 · Aufg. 3.7, 3.8 | L4.004, L4.025, L4.026, L4.027 | 3 |
 
@@ -72,3 +72,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | L4.025 | code_ausgabe | Aufg. 3.8 | Was gibt der Code aus? ```python ergebnisse = [True, True, False, True] for runde in range(len(ergebnisse)):   |
 | L4.026 | trace | F. 125 · Aufg. 3.7 | Verfolge `runde` und `leben` Durchlauf für Durchlauf. Was wird ausgegeben? ```python ergebnisse = [False, True |
 | L4.027 | unterschied | F. 125, 128 | Wann nimmst du in deinem Level `for`, wann `while`? |
+| L4.028 | falle | F. 119 · Probe-Kolloquium | Warum stehen die erlaubten Tasten als Liste `["d", "D"]` und nicht als String `"dD"`? Was gibt der Code aus? ` |
+| L4.029 | begruenden | Probe-Kolloquium; Level-Konzept | Prüfer: „Wie gewinnt man bei der Hängebrücke jedes ‚RUHIG‘, ohne hinzusehen?“ Was antwortest du, und was baust |
+| L4.030 | code_schreiben | F. 141 · Probe-Kolloquium | Prüfer: „Fügen Sie beim Affen-Echo einen Papagei auf Taste `p` hinzu.“ Welche Stellen änderst du? |
+| L4.031 | begruenden | Probe-Kolloquium; Level-Konzept | Prüfer: „Wie groß ist die Chance, das Treibsand-Raster ohne Hinsehen zu schaffen?“ |

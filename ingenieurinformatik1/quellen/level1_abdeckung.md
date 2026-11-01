@@ -1,6 +1,6 @@
 # Abdeckungsmatrix – Level-Kolloquium 1: Auftrag, Aufbau und Schnittstelle
 
-Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level1_karten.yaml`. 27 Karten, 12 prüfbare Inhalte, 0 Wiederholungsfragen.
+Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level1_karten.yaml`. 28 Karten, 12 prüfbare Inhalte, 0 Wiederholungsfragen.
 
 ## Karten je Typ
 
@@ -8,7 +8,7 @@ Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level1_karte
 |---|---:|
 | Aufzählung vollständig | 2 |
 | Einzelfakt | 2 |
-| Klausurfalle | 2 |
+| Klausurfalle | 3 |
 | Anwendung (Fall → Einordnung) | 3 |
 | Begriff ↔ Erklärung | 4 |
 | Lückentext im Code | 2 |
@@ -17,7 +17,7 @@ Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level1_karte
 | Schreib Code, der … | 2 |
 | Was ist der Unterschied …? | 1 |
 | Warum so? (Entscheidung begründen) | 1 |
-| **Summe** | **27** |
+| **Summe** | **28** |
 
 Karten mit Bild: 1.
 
@@ -32,7 +32,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | Bewertung (Zulassung + Einzelnote im Kolloquium), Fragen zum eigenen Code, Kennzeichnung, Termine | 3 | Laboraufgabe F. 3; Labor-Einführung | L1.003, L1.004, L1.006, L1.024 | 3 |
 | Geklärt: Ergänzungen erlaubt, wenn erklärbar; Kommentare nicht bewertet; 600 Zeilen Richtwert; Extrapunkte für Sound und Bilder | 2 | Absprache mit dem Dozenten | L1.005, L1.006 | 2 |
 | Level als Funktion level_dschungel_reflexe(spieler), eine Funktion je Station, Rückgabe True/False an main.py | 3 | Level-Konzept | L1.002, L1.007, L1.008, L1.016, L1.027 | 4 |
-| spieler-Dictionary als Parameter: Änderungen am Inhalt wirken beim Aufrufer, Neuzuweisung einer Zahl nicht | 3 | F. 182 | L1.009, L1.010, L1.011 | 3 |
+| spieler-Dictionary als Parameter: Änderungen am Inhalt wirken beim Aufrufer, Neuzuweisung einer Zahl nicht | 3 | F. 182 | L1.009, L1.010, L1.011, L1.028 | 4 |
 | return liefert True/False (Vergleich ist ein bool); ohne erreichtes return kommt None zurück | 3 | F. 173, 180 | L1.008, L1.014, L1.015, L1.016 | 4 |
 | Funktion erst definieren, dann aufrufen (NameError); der Rumpf läuft erst beim Aufruf | 2 | F. 171, 175 | L1.017, L1.018 | 2 |
 | Prozedur, Funktion, Methode im eigenen Code; Docstring | 2 | F. 172–174 | L1.019, L1.020 | 2 |
@@ -70,7 +70,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | L1.017 | code_fehler | F. 175 | Welche Fehlermeldung kommt, und warum? ```python level_dschungel_reflexe({"leben": 3})  def level_dschungel_re |
 | L1.018 | code_ausgabe | F. 178 | Was gibt der Code aus? ```python def lianen_sprung():     print("Sprung!")  def haengebruecke():     lianen_sp |
 | L1.019 | begriff | F. 172–174 | Ordne aus deinem Level je ein Beispiel zu: **Prozedur, Funktion, Methode**. |
-| L1.020 | code_luecke | Aufg. 5.5 | Ergänze den einzeiligen Docstring an der richtigen Stelle. ```python def reaktion_messen(zeitlimit_s):     ___ |
+| L1.020 | code_luecke | Aufg. 5.5 | Ergänze den einzeiligen Docstring an der richtigen Stelle. ```python def signal_zeigen():     ___     print("S |
 | L1.021 | begriff | Laborfolie IDE/venv F. 15 | Was ist ein **Modul**, und wie ruft `main.py` dein Level auf, wenn es in `level_dschungel.py` steht? |
 | L1.022 | code_ausgabe | Laborfolie IDE/venv F. 15 | `level_dschungel.py`: ```python def level_dschungel_reflexe(spieler):     return True  print("Test: Level gela |
 | L1.023 | code_fehler | F. 58 · Code-Leitfaden 2.1, 2.6 | Der Code läuft. Welche **Code-Conventions** verletzt er? ```python def ZeitMessen(Zeitlimit):     if(Zeitlimit |
@@ -78,3 +78,4 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | L1.025 | anwendung | F. 109 | Nenne die vier **Grundstrukturen** eines Programms mit je einem Beispiel aus deinem Level. |
 | L1.026 | begriff | Ergänzung: DIN 66001 (PAP-Folien KW43 nicht im Projekt) | Welche Symbole hat ein **Programmablaufplan (PAP)**, und wofür steht jedes? |
 | L1.027 | anwendung | Level-Konzept; Ergänzung: DIN 66001 | Erkläre den Ablauf der Reaktionsmessung anhand des PAP. [Bild] |
+| L1.028 | falle | F. 119, 144 · Probe-Kolloquium | Der Spieler darf das Level nach einem Misserfolg wiederholen. Was steht danach im Inventar – und wie verhinder |

@@ -1,6 +1,6 @@
 # Abdeckungsmatrix – Level-Kolloquium 5: Ausnahmebehandlung
 
-Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level5_karten.yaml`. 23 Karten, 10 prüfbare Inhalte, 0 Wiederholungsfragen.
+Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level5_karten.yaml`. 24 Karten, 10 prüfbare Inhalte, 0 Wiederholungsfragen.
 
 ## Karten je Typ
 
@@ -11,13 +11,13 @@ Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level5_karte
 | Anwendung (Fall → Einordnung) | 1 |
 | Begriff ↔ Erklärung | 3 |
 | Lückentext im Code | 1 |
-| Was gibt der Code aus? | 8 |
+| Was gibt der Code aus? | 9 |
 | Finde den Fehler | 1 |
 | Schreib Code, der … | 1 |
 | Was ist der Unterschied …? | 1 |
 | Warum so? (Entscheidung begründen) | 3 |
 | Trace-Tabelle (Werte Schritt für Schritt) | 1 |
-| **Summe** | **23** |
+| **Summe** | **24** |
 
 Karten mit Bild: 0.
 
@@ -31,7 +31,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | Ausnahme = Laufzeitfehler; ohne Behandlung Abbruch mit Traceback; typische Ausnahmen und ihre Auslöser | 3 | Laboraufgabe F. 2; Code-Leitfaden 1.10 | L5.001, L5.002 | 2 |
 | try/except: Aufbau, Ablauf (Rest des try übersprungen, danach weiter hinter dem Block) | 3 | Labor KW46 (Vorgriff, Code-Leitfaden 2.7) | L5.003, L5.004, L5.005, L5.021 | 4 |
 | Konkrete Ausnahme nennen, kein leeres except; falscher Typ wird nicht abgefangen; Strg+C = KeyboardInterrupt | 3 | Code-Leitfaden 2.7 | L5.006, L5.007, L5.008, L5.009 | 4 |
-| ValueError bei int()/float() einer ungültigen Eingabe abfangen | 3 | Code-Leitfaden 2.7 | L5.003, L5.008, L5.010, L5.023 | 3 |
+| ValueError bei int()/float() einer ungültigen Eingabe abfangen | 3 | Code-Leitfaden 2.7 | L5.003, L5.008, L5.010, L5.023, L5.024 | 3 |
 | Eingabe wiederholen: Merker eingabe_ok, while not, try/except | 3 | Code-Leitfaden 2.7 | L5.010, L5.011, L5.012 | 3 |
 | Wertebereich zusätzlich mit if prüfen (0 → Index -1 ohne Fehler); if vorher prüfen vs. try abfangen | 3 | Code-Leitfaden 2.7 | L5.012, L5.013, L5.014, L5.015, L5.020 | 4 |
 | FileNotFoundError beim ersten Laden der Bestenliste; "a" legt die Datei an | 2 | F. 189 · Level-Konzept | L5.016, L5.017 | 2 |
@@ -71,3 +71,4 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | L5.021 | begriff | Labor KW46 (Vorgriff) | Eine Ausnahme tritt auf. In welcher Reihenfolge sucht Python einen passenden `except`-Zweig – und was passiert |
 | L5.022 | anwendung | Level-Konzept | Wo stehen in deinem Level Ausnahmebehandlungen, und welche Ausnahme fängt jede ab? |
 | L5.023 | begruenden | Level-Konzept; Code-Leitfaden 2.7 | Kolloquiumsfrage: „Warum steht dein `try` genau um `int(input())` – und welcher Fehler käme ohne?“ |
+| L5.024 | code_ausgabe | F. 75 · Probe-Kolloquium | Was gibt der Code aus? ```python print(int(" 4 ")) for text in ["", "3.5", "x"]:     try:         print(int(te |

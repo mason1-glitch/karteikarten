@@ -136,7 +136,7 @@ karten:
       ```text
       Bitte eine Zahl eingeben!
       ```
-      Der Tippfehler `inptu` löst einen `NameError` aus – das **leere `except`** fängt **jeden** Fehler und meldet ihn als falsche Eingabe. Der Programmierfehler bleibt unsichtbar; auch Strg+C (`KeyboardInterrupt`) würde verschluckt. Darum immer die **konkrete Ausnahme** nennen.
+      Der Tippfehler `inptu` löst einen `NameError` aus – das **leere `except`** fängt **jeden** Fehler und meldet ihn als falsche Eingabe. Der Programmierfehler bleibt unsichtbar; auch Strg+C (`KeyboardInterrupt`) würde verschluckt – in einer Eingabeschleife ließe sich das Spiel dann nicht mehr abbrechen. Darum immer die **konkrete Ausnahme** nennen.
     tests: [{p: 1, t: 1, eingabe: "3\n"}]
 
   - typ: code_ausgabe
@@ -169,7 +169,7 @@ karten:
           print("Keine Zahl!")
       ```
     antwort: |-
-      `NameError: name 'valueerror' is not defined`. Ausnahmen sind Namen mit **Groß-/Kleinschreibung**: `ValueError`. Python wertet den `except`-Ausdruck erst aus, wenn wirklich eine Ausnahme auftritt – darum fällt der Tippfehler nur bei falscher Eingabe auf.
+      `NameError: name 'valueerror' is not defined`. Ausnahmen sind Namen mit **Groß-/Kleinschreibung**: `ValueError`. Python wertet den `except`-Ausdruck erst aus, wenn wirklich eine Ausnahme auftritt – darum fällt der Tippfehler nur bei falscher Eingabe auf. (Ab Python 3.10 hängt die Meldung noch „Did you mean: 'ValueError'?“ an; darüber steht im Traceback der ursprüngliche `ValueError`.)
     tests: [{p: 1, eingabe: "x\n", abbruch: NameError}, {p: 1, eingabe: "3\n"}]
 
   - typ: begriff
@@ -409,7 +409,7 @@ karten:
       | Koordinate im Treibsand-Raster | `ValueError` | erneut fragen |
       | Bestenliste laden | `FileNotFoundError` | leere Liste |
       | kaputte Zeile in der Bestenliste | `ValueError` | Zeile überspringen |
-      | Ton abspielen | `ImportError` | still weiterspielen |
+      | Ton abspielen | `ImportError`, `RuntimeError` | ohne Ton weiterspielen |
       | (optional) Strg+C | `KeyboardInterrupt` | „aufgegeben“ |
 
   - typ: begruenden
@@ -419,3 +419,28 @@ karten:
       Kolloquiumsfrage: „Warum steht dein `try` genau um `int(input())` – und welcher Fehler käme ohne?“
     antwort: |-
       `input()` liefert, was der Spieler tippt – auch `x` oder `2,5`. `int()` kann das nicht umwandeln und löst einen **`ValueError`** aus; ohne `try` **stürzt das ganze Spiel ab**, auch die Levels der anderen. Der `try`-Block umfasst nur diese Zeile (und das Setzen des Merkers), damit kein anderer Fehler versehentlich als „falsche Eingabe“ gemeldet wird.
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: code_ausgabe
+    folien: [75]
+    quelle: "Probe-Kolloquium"
+    deckt: [l5.valueerror]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print(int(" 4 "))
+      for text in ["", "3.5", "x"]:
+          try:
+              print(int(text))
+          except ValueError:
+              print("ValueError bei »" + text + "«")
+      ```
+    antwort: |-
+      ```text
+      4
+      ValueError bei »«
+      ValueError bei »3.5«
+      ValueError bei »x«
+      ```
+      `int()` überliest Leerzeichen **am Rand**; leere Eingabe (nur Enter) und Kommazahlen sind dagegen ungültig. Ergänzung: Strg+D (Windows: Strg+Z, Enter) löst `EOFError` aus – das fängt `except ValueError` nicht ab.
+    tests: [{p: 1, t: 1}]

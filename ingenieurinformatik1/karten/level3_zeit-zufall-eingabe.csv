@@ -57,7 +57,7 @@ Für Koordinaten im Raster passt `int`, für Zeiten `float`. Gegen den `ValueErr
 "Warum wertest du eine Reaktion **unter 0,1 s** als Fehlstart?","Drückt der Spieler Enter **schon während der Wartezeit**, landet der Tastendruck im **Eingabepuffer**. Das `input()` nach „SPRING!“ findet ihn sofort und kehrt fast ohne Verzögerung zurück. So schnell reagiert kein Mensch (Ergänzung: typisch sind etwa 0,2–0,3 s).
 
 *Level-Konzept*"
-"Warum kann dein Programm eine Eingabe nicht nach 1,5 s abbrechen, und wie prüfst du das Zeitlimit stattdessen?","`input()` **wartet immer**, bis Enter kommt; währenddessen läuft kein anderer Code. Darum misst du die Zeit bis zum Enter und vergleichst **danach**: `if dauer > zeitlimit_s:` → „zu langsam“. Echte Abbrüche bräuchten Threads oder Pakete wie `keyboard` – nicht im Stoff, im Kolloquium schwer zu erklären.
+"Warum kann dein Programm eine Eingabe nicht nach 1,5 s abbrechen, und wie prüfst du das Zeitlimit stattdessen?","`input()` **wartet immer**, bis Enter kommt; währenddessen läuft kein anderer Code. Darum misst du die Zeit bis zum Enter und vergleichst **danach**: `if dauer > zeitlimit_s:` → „zu langsam“. Echte Abbrüche bräuchten Threads, Signale (`signal.alarm`, nur macOS/Linux) oder Pakete wie `keyboard` – nichts davon im Stoff, im Kolloquium schwer zu erklären.
 
 *Level-Konzept*"
 "Im Puffer liegen 2 alte Enter, dann drückt der Spieler nach 1,2 s. Wie oft läuft die Schleife, welchen Wert hat `dauer` jeweils danach?
@@ -71,7 +71,7 @@ Alte Tastendrücke werden verworfen, erst ein echtes Enter beendet die Schleife.
 
 *F. 125 · Level-Konzept*"
 "Warum muss vor der Schleife `dauer = 0` stehen? Ergänze die Lücken.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_c6cb6effa3.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_080349b282.png)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3f056a3295.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_080349b282.png)
 Der **Startwert** sorgt dafür, dass die Bedingung beim ersten Prüfen wahr ist und `dauer` überhaupt existiert – sonst `NameError` (Muster aus F. 125: `pin_eingabe = 0`).
 
 *F. 125*"
@@ -98,3 +98,11 @@ Nur der **erste** wahre Zweig läuft (F. 115). 0,05 ≤ 0,8 ist schon wahr, der 
 "Warum gibt `reaktion_messen()` bei einem Fehlstart `None` zurück und nicht `0`?","`0` sähe aus wie eine **unschlagbar schnelle** Reaktion und landete auf Platz 1 der Bestenliste. `None` heißt eindeutig „kein gültiges Ergebnis“; der Aufrufer muss es mit `is not None` abfangen und zieht ein Leben ab.
 
 *Aufg. 5.3*"
+"Prüfer: „Mit `randint(2, 5)` gibt es nur 2, 3, 4 oder 5 s – das zählt man mit.“ Ändere die Wartezeit auf 2,0 bis 5,0 s in Zehntelsekunden-Schritten.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_73cb3aa3fb.png)
+Ganze Zahl von 20 bis 50, geteilt durch 10: `/` liefert einen `float` (`//` wäre wieder ganzzahlig), und `time.sleep` nimmt auch Kommazahlen. Ergänzung: `random.uniform(2, 5)` ginge stufenlos, ist aber nicht im Stoff.
+
+*F. 104 · Aufg. 2.5 · Probe-Kolloquium*"
+"Nach einem Fehlstart ist `zeit` gleich `None`. Warum stürzt der Code ab?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_7c4c16722a.png)","`TypeError`: `None` lässt sich nicht mit einer Zahl vergleichen (ebenso wenig mit `f""{zeit:.3f}""` formatieren). Darum steht **vor** jedem Rechnen oder Speichern `if zeit is not None:` – ein Fehlstart darf nie in die Bestenliste.
+
+*Aufg. 5.3 · Probe-Kolloquium*"

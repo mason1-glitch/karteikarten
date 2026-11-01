@@ -94,7 +94,7 @@ Der Rückgabewert `True`/`False` ist selbst die Bedingung – `== True` ist übe
 *F. 178*"
 "Ordne aus deinem Level je ein Beispiel zu: **Prozedur, Funktion, Methode**.","| Begriff | Merkmal | Beispiel |
 |---|---|---|
-| Prozedur | kein Rückgabewert | `raster_zeigen(raster)` |
+| Prozedur | kein Rückgabewert (Python liefert dann `None`) | `raster_zeigen(raster)` |
 | Funktion | liefert mit `return` einen Wert | `reaktion_messen(0.8)` → Zeit |
 | Methode | gehört zu einem Objekt, Aufruf mit Punkt | `eintraege.append(…)`, `datei.write(…)` |
 
@@ -102,8 +102,8 @@ Heute sagt man meist zu allem „Funktion“ (F. 172).
 
 *F. 172–174*"
 "Ergänze den einzeiligen Docstring an der richtigen Stelle.
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6a80deeb95.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_255f486eaf.png)
-Der Docstring ist die **erste Zeile im Funktionsrumpf** und beschreibt, was die Funktion tut und zurückgibt.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5211ad55ca.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cb9837e46b.png)
+Der Docstring ist die **erste Zeile im Funktionsrumpf** und beschreibt, was die Funktion tut – und, falls sie etwas zurückgibt, was.
 
 *Aufg. 5.5*"
 "Was ist ein **Modul**, und wie ruft `main.py` dein Level auf, wenn es in `level_dschungel.py` steht?","Ein Modul ist eine **Python-Datei, die in Skripte oder andere Module importiert werden kann**.
@@ -155,3 +155,8 @@ Kennzeichnung per Kommentar verlangt die Laboraufgabe (F. 3); der Kopf folgt Auf
 6. Rückgabe der Zeit, Ende.
 
 *Level-Konzept; Ergänzung: DIN 66001*"
+"Der Spieler darf das Level nach einem Misserfolg wiederholen. Was steht danach im Inventar – und wie verhinderst du das?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e192429b0e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_74d95be2ff.png)
+Jeder Durchlauf hängt die Ziffer erneut an. Abhilfe: `if ""Ziffer 7"" not in spieler[""inventar""]:` vor dem `append` (`not in`, F. 119). Ebenso: Leben nicht unter 0 fallen lassen und mit der Gruppe festlegen, ob Leben pro Level neu gelten.
+
+*F. 119, 144 · Probe-Kolloquium*"

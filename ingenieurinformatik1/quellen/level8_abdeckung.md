@@ -66,6 +66,6 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | L8.016 | unstimmigkeit | F. 182 · Code-Leitfaden 4 | Das Skript (F. 182) sagt, Variablen in **Schleifen** seien lokal. Was gibt der Code aus? ```python for runde i |
 | L8.017 | begriff | F. 175 · Aufg. 5.1 | Dein Spiel stürzt mit einem Traceback ab. Wie liest du ihn? |
 | L8.018 | code_schreiben | F. 177, 178 · Aufg. 5.2, 2.1 | Die Hängebrücke verhält sich seltsam. Wie machst du den Ablauf sichtbar, ohne einen Debugger? |
-| L8.019 | falle | Level-Konzept | Während das Treibsand-Raster 3 s sichtbar ist, tippt der Spieler schon `3` und Enter. Was passiert beim folgen |
+| L8.019 | falle | Level-Konzept | Während das Treibsand-Raster (oder die Affen-Folge) noch sichtbar ist, tippt der Spieler schon seine Antwort u |
 | L8.020 | anwendung | Level-Konzept | Welche Grenzfälle testest du vor der Abgabe gezielt? Nenne fünf. |
 | L8.021 | begriff | F. 42 | Welche Eigenschaften muss ein **Algorithmus** laut Skript haben – und wie passt der Zufall in deinem Level daz |

@@ -438,3 +438,27 @@ karten:
       | `tiere` | Taste (`"a"`) | Tiername (`"Affe"`) |
       | `gegenrichtung` | Kippkommando (`"LINKS"`) | Liste erlaubter Tasten |
       | `spieler` | `"name"`, `"leben"`, `"inventar"`, `"punkte"` | Daten des Spielers (von `main.py`) |
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: code_schreiben
+    quelle: "Probe-Kolloquium; Laborskript Dictionaries F. 12"
+    folien: [128]
+    deckt: [l2.einsatz, l2.verschachtelt]
+    frage: |-
+      Prüfer: „Ihr Dictionary sagt 5 Runden, die Hängebrücke läuft aber fest 3.“ Zeig, wie die Station Runden und Zeitlimit **aus dem Dictionary** liest.
+    antwort: |-
+      ```python
+      stationen = {"haengebruecke": {"runden": 5, "zeitlimit_s": 1.5}}
+      einstellung = stationen["haengebruecke"]
+      for runde in range(1, einstellung["runden"] + 1):
+          print("Runde", runde, "- Limit", einstellung["zeitlimit_s"], "s")
+      ```
+      ```text
+      Runde 1 - Limit 1.5 s
+      Runde 2 - Limit 1.5 s
+      Runde 3 - Limit 1.5 s
+      Runde 4 - Limit 1.5 s
+      Runde 5 - Limit 1.5 s
+      ```
+      `+ 1`, weil `range` vor dem Endwert aufhört. Steht im Code eine feste `3` oder `1.5`, widerspricht er dem Dictionary – dann ist das Dictionary nutzlos.
+    tests: [{p: 1, t: 1}]

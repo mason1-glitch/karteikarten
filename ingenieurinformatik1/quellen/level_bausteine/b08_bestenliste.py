@@ -18,6 +18,8 @@ def bestenliste_laden():
         return eintraege                 # erster Start: noch keine Datei
     for zeile in datei:
         trenner = zeile.find(";")
+        if trenner == -1:                # kein ";" -> find liefert -1
+            continue
         try:
             zeit = float(zeile[trenner + 1:])   # \n am Ende stört float() nicht
             eintraege.append({"name": zeile[0:trenner], "zeit": zeit})

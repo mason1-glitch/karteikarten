@@ -34,7 +34,7 @@ Beide Zeilen enden mit Doppelpunkt, beide Blöcke sind eingerückt – wie bei `
 *Labor KW46 (Vorgriff, Code-Leitfaden 2.7)*"
 "Der Spieler tippt korrekt `3`. Was gibt der Code aus – und was lernst du daraus?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_acbce6f703.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ac21ef5f2b.png)
-Der Tippfehler `inptu` löst einen `NameError` aus – das **leere `except`** fängt **jeden** Fehler und meldet ihn als falsche Eingabe. Der Programmierfehler bleibt unsichtbar; auch Strg+C (`KeyboardInterrupt`) würde verschluckt. Darum immer die **konkrete Ausnahme** nennen.
+Der Tippfehler `inptu` löst einen `NameError` aus – das **leere `except`** fängt **jeden** Fehler und meldet ihn als falsche Eingabe. Der Programmierfehler bleibt unsichtbar; auch Strg+C (`KeyboardInterrupt`) würde verschluckt – in einer Eingabeschleife ließe sich das Spiel dann nicht mehr abbrechen. Darum immer die **konkrete Ausnahme** nennen.
 
 *Code-Leitfaden 2.7*"
 "Der Spieler tippt `x`. Was passiert?
@@ -43,7 +43,7 @@ Es entsteht ein `ValueError`, abgefangen wird aber nur `IndexError` → **kein p
 
 *Code-Leitfaden 2.7*"
 "Bei Eingabe `3` läuft alles, bei `x` stürzt das Programm mit einer seltsamen Meldung ab. Warum?
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_de8ebc1811.png)","`NameError: name 'valueerror' is not defined`. Ausnahmen sind Namen mit **Groß-/Kleinschreibung**: `ValueError`. Python wertet den `except`-Ausdruck erst aus, wenn wirklich eine Ausnahme auftritt – darum fällt der Tippfehler nur bei falscher Eingabe auf.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_de8ebc1811.png)","`NameError: name 'valueerror' is not defined`. Ausnahmen sind Namen mit **Groß-/Kleinschreibung**: `ValueError`. Python wertet den `except`-Ausdruck erst aus, wenn wirklich eine Ausnahme auftritt – darum fällt der Tippfehler nur bei falscher Eingabe auf. (Ab Python 3.10 hängt die Meldung noch „Did you mean: 'ValueError'?“ an; darüber steht im Traceback der ursprüngliche `ValueError`.)
 
 *Code-Leitfaden 2.7*"
 "Was löst **Strg+C** in der Konsole aus, und wie könntest du es im Level nutzen?","Eine Ausnahme **`KeyboardInterrupt`** – normalerweise bricht das Programm ab. Mit `except KeyboardInterrupt:` ließe sich „Spieler gibt auf“ abfangen (optional). Ein leeres `except:` würde Strg+C dagegen verschlucken – das Spiel ließe sich nicht mehr beenden.
@@ -113,10 +113,15 @@ Ein `try` darf **mehrere** `except`-Zweige haben; es läuft der erste, der zur A
 | Koordinate im Treibsand-Raster | `ValueError` | erneut fragen |
 | Bestenliste laden | `FileNotFoundError` | leere Liste |
 | kaputte Zeile in der Bestenliste | `ValueError` | Zeile überspringen |
-| Ton abspielen | `ImportError` | still weiterspielen |
+| Ton abspielen | `ImportError`, `RuntimeError` | ohne Ton weiterspielen |
 | (optional) Strg+C | `KeyboardInterrupt` | „aufgegeben“ |
 
 *Level-Konzept*"
 "Kolloquiumsfrage: „Warum steht dein `try` genau um `int(input())` – und welcher Fehler käme ohne?“","`input()` liefert, was der Spieler tippt – auch `x` oder `2,5`. `int()` kann das nicht umwandeln und löst einen **`ValueError`** aus; ohne `try` **stürzt das ganze Spiel ab**, auch die Levels der anderen. Der `try`-Block umfasst nur diese Zeile (und das Setzen des Merkers), damit kein anderer Fehler versehentlich als „falsche Eingabe“ gemeldet wird.
 
 *Level-Konzept; Code-Leitfaden 2.7*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_53d2222373.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9140df8316.png)
+`int()` überliest Leerzeichen **am Rand**; leere Eingabe (nur Enter) und Kommazahlen sind dagegen ungültig. Ergänzung: Strg+D (Windows: Strg+Z, Enter) löst `EOFError` aus – das fängt `except ValueError` nicht ab.
+
+*F. 75 · Probe-Kolloquium*"

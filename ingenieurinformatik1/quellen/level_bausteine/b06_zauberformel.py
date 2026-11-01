@@ -18,6 +18,7 @@ if len(eingabe) > len(spruch):
 print(f"{fehler} Fehler in {dauer:.1f} s")
 
 
+# Variante 2 zum Vergleich: dieselbe Zählung mit try/except statt Längenprüfung
 def tippfehler_zaehlen(soll, ist):
     """Zählt Abweichungen; fängt den IndexError bei zu kurzer Eingabe ab."""
     fehler = 0
@@ -27,6 +28,8 @@ def tippfehler_zaehlen(soll, ist):
                 fehler += 1
         except IndexError:
             fehler += 1
+    if len(ist) > len(soll):
+        fehler += len(ist) - len(soll)   # zu viel getippte Zeichen
     return fehler
 
 

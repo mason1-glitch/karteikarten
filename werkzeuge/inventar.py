@@ -103,7 +103,8 @@ ZUORDNUNG = {
     "except:KeyError": (LABOR, "Labor KW46"), "except:FileNotFoundError": (LABOR, "Labor KW46"),
     "except:ZeroDivisionError": (LABOR, "Labor KW46"), "except:KeyboardInterrupt": (LABOR, "Labor KW46"),
     "except:ImportError": (LABOR, "Labor KW46"), "except:ModuleNotFoundError": (LABOR, "Labor KW46"),
-    "except:RecursionError": (LABOR, "Labor KW46"), "except:<leer>": (LABOR, "leeres except – vermeiden!"),
+    "except:RecursionError": (LABOR, "Labor KW46"), "except:RuntimeError": (LABOR, "Labor KW46"),
+    "except:EOFError": (LABOR, "Labor KW46"), "except:<leer>": (LABOR, "leeres except – vermeiden!"),
 }
 
 ESCAPES = {"\n": "esc:\\n", "\t": "esc:\\t", "\r": "esc:\\r", "\b": "esc:\\b", "\a": "esc:\\a", "\x1b": "esc:\\033"}

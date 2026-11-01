@@ -37,7 +37,7 @@ String-**Wiederholung** (`*`) erzeugt 40 Zeilenumbrüche und schiebt die Folge a
 
 *F. 105*"
 "Der Spieler soll die Folge auch mit Leerzeichen eintippen dürfen (`a t f`). Schreib den Vergleich nur mit Mitteln aus dem Stoff.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9365f0cfdd.png)
-`replace("" "", """")` ersetzt jedes Leerzeichen durch nichts; das Ergebnis wird neu zugewiesen (Strings sind unveränderlich, F. 138). Ergänzung: `strip()` entfernt nur Leerzeichen am Rand und ist nicht im Stoff.
+`replace("" "", """")` ersetzt jedes Leerzeichen durch nichts; das Ergebnis wird neu zugewiesen (Strings sind unveränderlich, F. 138). Ergänzung: `strip()` entfernt Leerraum (Leerzeichen, Tabs, Zeilenumbrüche) nur **am Rand** und ist nicht im Stoff.
 
 *F. 138*"
 "Was gibt der Code aus?
@@ -135,3 +135,18 @@ Die Schleife endet, sobald **eine** der beiden Bedingungen falsch ist; warum, pr
 | jedes Feld des Rasters, jedes Zeichen des Spruchs | solange Leben übrig **und** Runden offen |
 
 *F. 125, 128*"
+"Warum stehen die erlaubten Tasten als Liste `[""d"", ""D""]` und nicht als String `""dD""`? Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b88524dbcc.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_29c3441313.png)
+Bei einem **String** prüft `in`, ob ein **Teilstring** vorkommt – der leere String steckt in jedem String. Dann zählte bei „LINKS“ auch bloßes Enter. Bei einer **Liste** muss die Antwort **genau einem Element** gleichen.
+
+*F. 119 · Probe-Kolloquium*"
+"Prüfer: „Wie gewinnt man bei der Hängebrücke jedes ‚RUHIG‘, ohne hinzusehen?“ Was antwortest du, und was baust du ein?","Wer dauernd Enter drückt, hat schon einen Tastendruck im Puffer: `input()` liefert sofort `""""` – bei „RUHIG“ die richtige Antwort, und die Dauer liegt unter dem Limit. Abhilfe wie beim Lianen-Sprung: **Fehlstart-Prüfung** `if dauer < 0.1:` und/oder `eingabepuffer_leeren()` vor jeder Runde.
+
+*Probe-Kolloquium; Level-Konzept*"
+"Prüfer: „Fügen Sie beim Affen-Echo einen Papagei auf Taste `p` hinzu.“ Welche Stellen änderst du?","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d9cf2795ea.png)
+Dictionary, Tastenliste und Hinweis für den Spieler. Steht im Code noch `randint(0, 2)`, käme der Papagei **nie** vor – darum den Index aus `len(tasten) - 1` berechnen.
+
+*F. 141 · Probe-Kolloquium*"
+"Prüfer: „Wie groß ist die Chance, das Treibsand-Raster ohne Hinsehen zu schaffen?“","Je Reihe ist **ein** von fünf Feldern Treibsand. Fragst du nur **ein** Feld ab, ist die Ratechance 4/5 = **80 %** – Merken lohnt kaum. Fragst du für **jede der 5 Reihen** ein Feld ab, sinkt sie auf 0,8⁵ ≈ **33 %**. Deshalb: einen ganzen Weg (eine Koordinate je Reihe) abfragen und bei Treibsand ein Leben abziehen.
+
+*Probe-Kolloquium; Level-Konzept*"

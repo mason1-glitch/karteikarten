@@ -247,7 +247,7 @@ karten:
     frage: |-
       Warum kann dein Programm eine Eingabe nicht nach 1,5 s abbrechen, und wie prüfst du das Zeitlimit stattdessen?
     antwort: |-
-      `input()` **wartet immer**, bis Enter kommt; währenddessen läuft kein anderer Code. Darum misst du die Zeit bis zum Enter und vergleichst **danach**: `if dauer > zeitlimit_s:` → „zu langsam“. Echte Abbrüche bräuchten Threads oder Pakete wie `keyboard` – nicht im Stoff, im Kolloquium schwer zu erklären.
+      `input()` **wartet immer**, bis Enter kommt; währenddessen läuft kein anderer Code. Darum misst du die Zeit bis zum Enter und vergleichst **danach**: `if dauer > zeitlimit_s:` → „zu langsam“. Echte Abbrüche bräuchten Threads, Signale (`signal.alarm`, nur macOS/Linux) oder Pakete wie `keyboard` – nichts davon im Stoff, im Kolloquium schwer zu erklären.
 
   - typ: trace
     folien: [125]
@@ -280,6 +280,8 @@ karten:
     frage: |-
       Warum muss vor der Schleife `dauer = 0` stehen? Ergänze die Lücken.
       ```python
+      import time
+
       ___
       while ___:
           start = time.time()   # Ergänzung (nicht im Stoff)
@@ -393,3 +395,38 @@ karten:
       Warum gibt `reaktion_messen()` bei einem Fehlstart `None` zurück und nicht `0`?
     antwort: |-
       `0` sähe aus wie eine **unschlagbar schnelle** Reaktion und landete auf Platz 1 der Bestenliste. `None` heißt eindeutig „kein gültiges Ergebnis“; der Aufrufer muss es mit `is not None` abfangen und zieht ein Leben ab.
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: code_schreiben
+    aufgaben: ["2.5"]
+    folien: [104]
+    quelle: "Probe-Kolloquium"
+    deckt: [l3.randint, l3.sleep]
+    frage: |-
+      Prüfer: „Mit `randint(2, 5)` gibt es nur 2, 3, 4 oder 5 s – das zählt man mit.“ Ändere die Wartezeit auf 2,0 bis 5,0 s in Zehntelsekunden-Schritten.
+    antwort: |-
+      ```python
+      import random
+      import time
+
+      wartezeit = random.randint(20, 50) / 10   # 2.0, 2.1, … 5.0
+      time.sleep(wartezeit)
+      print("SPRING!")
+      ```
+      Ganze Zahl von 20 bis 50, geteilt durch 10: `/` liefert einen `float` (`//` wäre wieder ganzzahlig), und `time.sleep` nimmt auch Kommazahlen. Ergänzung: `random.uniform(2, 5)` ginge stufenlos, ist aber nicht im Stoff.
+    tests: [{p: 1}]
+
+  - typ: code_fehler
+    aufgaben: ["5.3"]
+    quelle: "Probe-Kolloquium"
+    deckt: [l3.none]
+    frage: |-
+      Nach einem Fehlstart ist `zeit` gleich `None`. Warum stürzt der Code ab?
+      ```python
+      zeit = None
+      if zeit > 0.5:
+          print("zu langsam")
+      ```
+    antwort: |-
+      `TypeError`: `None` lässt sich nicht mit einer Zahl vergleichen (ebenso wenig mit `f"{zeit:.3f}"` formatieren). Darum steht **vor** jedem Rechnen oder Speichern `if zeit is not None:` – ein Fehlstart darf nie in die Bestenliste.
+    tests: [{p: 1, abbruch: TypeError}]

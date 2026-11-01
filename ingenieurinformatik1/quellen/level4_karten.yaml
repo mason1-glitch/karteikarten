@@ -182,7 +182,7 @@ karten:
       eingabe = input().replace(" ", "")
       print(eingabe == folge)
       ```
-      `replace(" ", "")` ersetzt jedes Leerzeichen durch nichts; das Ergebnis wird neu zugewiesen (Strings sind unveränderlich, F. 138). Ergänzung: `strip()` entfernt nur Leerzeichen am Rand und ist nicht im Stoff.
+      `replace(" ", "")` ersetzt jedes Leerzeichen durch nichts; das Ergebnis wird neu zugewiesen (Strings sind unveränderlich, F. 138). Ergänzung: `strip()` entfernt Leerraum (Leerzeichen, Tabs, Zeilenumbrüche) nur **am Rand** und ist nicht im Stoff.
     tests: [{p: 1, eingabe: "a t f\n"}]
 
   # ---------------------------------------------------------------- Zauberformel: Tippfehler
@@ -525,3 +525,60 @@ karten:
       | Anzahl der Durchläufe steht fest | Ende hängt von einer Bedingung ab |
       | Hängebrücke: `for runde in range(1, 6)` | Eingabe wiederholen, bis sie gültig ist |
       | jedes Feld des Rasters, jedes Zeichen des Spruchs | solange Leben übrig **und** Runden offen |
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: falle
+    folien: [119]
+    quelle: "Probe-Kolloquium"
+    deckt: [l4.bedingung, l4.vergleich]
+    frage: |-
+      Warum stehen die erlaubten Tasten als Liste `["d", "D"]` und nicht als String `"dD"`? Was gibt der Code aus?
+      ```python
+      print("" in "dD")
+      print("dD" in "dD")
+      print("" in ["d", "D"])
+      print("dD" in ["d", "D"])
+      ```
+    antwort: |-
+      ```text
+      True
+      True
+      False
+      False
+      ```
+      Bei einem **String** prüft `in`, ob ein **Teilstring** vorkommt – der leere String steckt in jedem String. Dann zählte bei „LINKS“ auch bloßes Enter. Bei einer **Liste** muss die Antwort **genau einem Element** gleichen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    quelle: "Probe-Kolloquium; Level-Konzept"
+    deckt: [l4.bedingung]
+    frage: |-
+      Prüfer: „Wie gewinnt man bei der Hängebrücke jedes ‚RUHIG‘, ohne hinzusehen?“ Was antwortest du, und was baust du ein?
+    antwort: |-
+      Wer dauernd Enter drückt, hat schon einen Tastendruck im Puffer: `input()` liefert sofort `""` – bei „RUHIG“ die richtige Antwort, und die Dauer liegt unter dem Limit. Abhilfe wie beim Lianen-Sprung: **Fehlstart-Prüfung** `if dauer < 0.1:` und/oder `eingabepuffer_leeren()` vor jeder Runde.
+
+  - typ: code_schreiben
+    quelle: "Probe-Kolloquium"
+    folien: [141]
+    deckt: [l4.bauen]
+    frage: |-
+      Prüfer: „Fügen Sie beim Affen-Echo einen Papagei auf Taste `p` hinzu.“ Welche Stellen änderst du?
+    antwort: |-
+      ```python
+      import random
+
+      tiere = {"a": "Affe", "t": "Tukan", "f": "Frosch", "p": "Papagei"}
+      tasten = ["a", "t", "f", "p"]
+      print("Tasten: a = Affe, t = Tukan, f = Frosch, p = Papagei")
+      folge = tasten[random.randint(0, len(tasten) - 1)]
+      ```
+      Dictionary, Tastenliste und Hinweis für den Spieler. Steht im Code noch `randint(0, 2)`, käme der Papagei **nie** vor – darum den Index aus `len(tasten) - 1` berechnen.
+    tests: [{p: 1}]
+
+  - typ: begruenden
+    quelle: "Probe-Kolloquium; Level-Konzept"
+    deckt: [l4.koordinaten]
+    frage: |-
+      Prüfer: „Wie groß ist die Chance, das Treibsand-Raster ohne Hinsehen zu schaffen?“
+    antwort: |-
+      Je Reihe ist **ein** von fünf Feldern Treibsand. Fragst du nur **ein** Feld ab, ist die Ratechance 4/5 = **80 %** – Merken lohnt kaum. Fragst du für **jede der 5 Reihen** ein Feld ab, sinkt sie auf 0,8⁵ ≈ **33 %**. Deshalb: einen ganzen Weg (eine Koordinate je Reihe) abfragen und bei Treibsand ein Leben abziehen.

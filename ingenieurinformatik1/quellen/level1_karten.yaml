@@ -329,7 +329,7 @@ karten:
     antwort: |-
       | Begriff | Merkmal | Beispiel |
       |---|---|---|
-      | Prozedur | kein Rückgabewert | `raster_zeigen(raster)` |
+      | Prozedur | kein Rückgabewert (Python liefert dann `None`) | `raster_zeigen(raster)` |
       | Funktion | liefert mit `return` einen Wert | `reaktion_messen(0.8)` → Zeit |
       | Methode | gehört zu einem Objekt, Aufruf mit Punkt | `eintraege.append(…)`, `datei.write(…)` |
 
@@ -341,17 +341,17 @@ karten:
     frage: |-
       Ergänze den einzeiligen Docstring an der richtigen Stelle.
       ```python
-      def reaktion_messen(zeitlimit_s):
+      def signal_zeigen():
           ___
           print("SPRING!")
       ```
     antwort: |-
       ```python
-      def reaktion_messen(zeitlimit_s):
-          """Gibt die Reaktionszeit in s zurück."""
+      def signal_zeigen():
+          """Gibt das Sprungsignal aus."""
           print("SPRING!")
       ```
-      Der Docstring ist die **erste Zeile im Funktionsrumpf** und beschreibt, was die Funktion tut und zurückgibt.
+      Der Docstring ist die **erste Zeile im Funktionsrumpf** und beschreibt, was die Funktion tut – und, falls sie etwas zurückgibt, was.
     tests: [{p: 2}]
 
   # ---------------------------------------------------------------- Modul und Import
@@ -474,3 +474,23 @@ karten:
       4. Raute 1: unter 0,1 s → **Fehlstart**, Rückgabe `None`.
       5. Raute 2: über dem Zeitlimit → „zu langsam“, sonst „geschafft“.
       6. Rückgabe der Zeit, Ende.
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: falle
+    folien: [119, 144]
+    quelle: "Probe-Kolloquium"
+    deckt: [l1.spieler]
+    frage: |-
+      Der Spieler darf das Level nach einem Misserfolg wiederholen. Was steht danach im Inventar – und wie verhinderst du das?
+      ```python
+      spieler = {"leben": 3, "inventar": []}
+      for versuch in range(2):
+          spieler["inventar"].append("Ziffer 7")
+      print(spieler["inventar"])
+      ```
+    antwort: |-
+      ```text
+      ['Ziffer 7', 'Ziffer 7']
+      ```
+      Jeder Durchlauf hängt die Ziffer erneut an. Abhilfe: `if "Ziffer 7" not in spieler["inventar"]:` vor dem `append` (`not in`, F. 119). Ebenso: Leben nicht unter 0 fallen lassen und mit der Gruppe festlegen, ob Leben pro Level neu gelten.
+    tests: [{p: 1, t: 1}]

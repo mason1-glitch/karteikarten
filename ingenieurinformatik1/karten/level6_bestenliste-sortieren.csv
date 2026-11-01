@@ -69,7 +69,7 @@ Erst der **Listenindex** (welcher Eintrag), dann der **Schlüssel** (welches Fel
 "Wie funktioniert **Bubble Sort**?","1. Von vorn nach hinten jeweils **zwei Nachbarn** vergleichen.
 2. Stehen sie falsch herum (`links > rechts`), **tauschen**.
 3. Nach einem Durchlauf steht das **größte** Element ganz hinten („steigt auf wie eine Blase“).
-4. Durchläufe wiederholen, bis keiner mehr tauscht – höchstens n − 1 Durchläufe.
+4. Durchläufe wiederholen, bis keiner mehr tauscht. Nach spätestens n − 1 Durchläufen ist die Liste sortiert (mit Merker `getauscht` kommt noch ein Kontrolldurchlauf ohne Tausch dazu).
 
 *Labor KW45 (Vorgriff)*"
 "Führe den **ersten Durchlauf** von Bubble Sort an `[0.41, 0.30, 0.66, 0.29]` aus. Wie sieht die Liste nach jedem Vergleich aus?","![Ein Durchlauf Bubble Sort](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/level_bubblesort.png)
@@ -105,7 +105,7 @@ Nach der ersten Zeile ist 0,41 **überschrieben** und verloren; die zweite kopie
 Verglichen wird die **Zeit**, getauscht wird der **ganze Eintrag** – so bleibt der Name bei seiner Zeit.
 
 *Level-Konzept; Labor KW45 (Vorgriff)*"
-"Wozu dient in deiner Bestenliste-Sortierung der Merker `getauscht`?","Wird in einem ganzen Durchlauf **nichts** getauscht, ist die Liste sortiert – weitere Durchläufe wären verschwendet. Die äußere `while getauscht:`-Schleife hört dann auf. Ist die Bestenliste schon fast sortiert (neuer Eintrag hinten angehängt), reichen so oft ein bis zwei Durchläufe.
+"Wozu dient in deiner Bestenliste-Sortierung der Merker `getauscht`?","Wird in einem ganzen Durchlauf **nichts** getauscht, ist die Liste sortiert – weitere Durchläufe wären verschwendet. Die äußere `while getauscht:`-Schleife hört dann auf. Ist die Liste **schon sortiert**, reicht ein einziger Durchlauf. Aber: Ein kleiner Wert ganz hinten (neue Bestzeit, mit `""a""` angehängt) wandert pro Durchlauf nur **eine** Stelle nach vorn – dann braucht es fast alle Durchläufe.
 
 *Labor KW45 (Vorgriff)*"
 "Wie viele Vergleiche braucht Bubble Sort ohne frühen Abbruch für n Einträge, und wie viele bei 10?","(n − 1) + (n − 2) + … + 1 = **n · (n − 1) / 2**. Bei 10 Einträgen: 10 · 9 / 2 = **45** Vergleiche. Der Aufwand wächst quadratisch – für eine Bestenliste mit wenigen Einträgen ohne Bedeutung, für Millionen Daten zu langsam.
@@ -154,3 +154,27 @@ Aufrufkette: `countdown(3)` → `countdown(2)` → `countdown(1)` → `countdown
 Im Level ist der rekursive Countdown optional – nimm ihn nur, wenn du die Aufrufkette erklären kannst.
 
 *F. 128 · Labor KW45 (Vorgriff)*"
+"In der Bestenliste steht eine Zeile **ohne** Semikolon: `5`. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5dd12aff8f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6caa0e6ee2.png)
+`find` liefert **-1**, wenn das Zeichen fehlt. Dann schneidet `[0:-1]` das `\n` ab (Name „5“), und `[0:]` ist die ganze Zeile (Zeit 5,0) – kein Fehler, aber ein **stilles Falschergebnis**. Abhilfe: `if trenner == -1: continue` vor dem Zerlegen.
+
+*F. 137, 138 · Probe-Kolloquium*"
+"Deine Sortierfunktion ändert die übergebene Liste direkt und hat kein `return`. Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b792e961a4.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a48b85dda7.png)
+Die Funktion sortiert **die Liste selbst** und gibt nichts zurück → `None`. Mit `liste = sortieren(liste)` überschreibst du die sortierte Liste mit `None`. Richtig: nur `sortieren(liste)` aufrufen.
+
+*F. 146, 173 · Probe-Kolloquium*"
+"Du sortierst die Bestenliste testweise nach **Namen**. Was gibt der Code aus? (Ergänzung)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6ed3775323.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6fc008796d.png)
+Ergänzung: Strings werden **Zeichen für Zeichen nach dem Zeichencode** verglichen; alle Großbuchstaben kommen vor allen Kleinbuchstaben. Bei „Ben“/„Bea“ entscheidet das dritte Zeichen (`n` nach `a`).
+
+*Probe-Kolloquium*"
+"`countdown(3)` läuft. Was passiert bei `countdown(-1)`, und wie machst du die Funktion sicher?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0289f4987c.png)","Von -1 aus wird 0 **nie erreicht** (-2, -3, …) → `RecursionError`. Sicher ist `if n <= 0:` – dann greift die Abbruchbedingung auch für negative Werte (und für 2,5 über 0,5 → -0,5).
+
+*Probe-Kolloquium; Labor KW45 (Vorgriff)*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_be3cb16a88.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2cfbbef11f.png)
+`continue` springt sofort zum **nächsten Durchlauf** – die Zeile ohne `;` wird übersprungen, die Schleife läuft weiter (anders als `break`, das sie beendet; Aufg. 3.8).
+
+*F. 138 · Aufg. 3.8*"

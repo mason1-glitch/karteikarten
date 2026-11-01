@@ -20,7 +20,7 @@ inhalte:
   - {id: l7.ascii, gewicht: 3, folie: "60, 69", text: "ASCII-Bilder: Backslash verdoppeln (\\\\), Anführungszeichen \\\", mehrzeilige Strings mit \"\"\"", konstrukte: ["esc:\\\\", "esc:\\\""]}
   - {id: l7.flush, gewicht: 2, folie: "151", quelle: "Ergänzung", text: "print(…, end=\"\") und flush=True für Schreibmaschinen-Text", konstrukte: [print:flush, print:end]}
   - {id: l7.farben, gewicht: 2, quelle: "Ergänzung", text: "ANSI-Farbcodes \\033[32m … \\033[0m", konstrukte: [esc:\033]}
-  - {id: l7.ton, gewicht: 3, quelle: "Ergänzung; Level-Konzept", text: "Ton: \\a, winsound (nur Windows), Pakete; mit try/except ImportError still weiterspielen", konstrukte: [esc:\a, modul:winsound, call:winsound.Beep, except:ImportError]}
+  - {id: l7.ton, gewicht: 3, quelle: "Ergänzung; Level-Konzept", text: "Ton: \\a, winsound (nur Windows), Pakete; mit try/except ImportError/RuntimeError ohne Ton weiterspielen", konstrukte: [esc:\a, modul:winsound, call:winsound.Beep, except:ImportError, except:RuntimeError, kw:pass]}
   - {id: l7.umgebung, gewicht: 2, quelle: "Laborfolie IDE/venv F. 13, 28–29", text: "Virtuelle Umgebung, requirements.txt erstellen und installieren"}
   - {id: l7.konsole, gewicht: 2, quelle: "Level-Konzept", text: "Konsolen verhalten sich unterschiedlich; Effekte so bauen, dass das Spiel auch ohne läuft; Bilder anzeigen"}
 
@@ -50,12 +50,12 @@ karten:
       import time
 
       for n in range(3, 0, -1):
-          print(n, "...", end="\r")
+          print(n, "...", end="\r", flush=True)   # Ergänzung
           time.sleep(0.2)
       print("LOS!   ")
       ```
     antwort: |-
-      Nur **`LOS!`**. `end="\r"` setzt den Cursor nach jeder Zahl an den Zeilenanfang; die nächste Ausgabe **überschreibt** die alte. So entsteht ein Countdown an derselben Stelle. Im PyCharm-Ausgabefenster vorher testen – nicht jede Konsole beherrscht `\r` gleich.
+      Nur **`LOS!`**. `end="\r"` setzt den Cursor nach jeder Zahl an den Zeilenanfang; die nächste Ausgabe **überschreibt** die alte. So entsteht ein Countdown an derselben Stelle. Ergänzung: Ohne `flush=True` bliebe die Zahl im Ausgabepuffer, weil kein Zeilenumbruch folgt – der Countdown wäre unsichtbar. Im PyCharm-Ausgabefenster vorher testen – nicht jede Konsole beherrscht `\r` gleich.
     tests: [{p: 1}]
 
   - typ: falle
@@ -64,7 +64,7 @@ karten:
     frage: |-
       Warum endet `print("LOS!   ")` im Countdown mit Leerzeichen? Was stünde ohne sie nach `Noch 10 s` + `\r` + `LOS!` auf dem Bildschirm?
     antwort: |-
-      `\r` löscht nichts, es springt nur zurück. `LOS!` überschreibt die ersten 4 Zeichen, der Rest bleibt stehen: **`LOS!10 s`**. Die Leerzeichen überschreiben die Reste der längeren alten Ausgabe.
+      `\r` löscht nichts, es springt nur zurück. `LOS!` überschreibt die ersten 4 Zeichen, der Rest bleibt stehen: **`LOS! 10 s`**. Die Leerzeichen überschreiben die Reste der längeren alten Ausgabe.
 
   - typ: code_ausgabe
     folien: [54]
@@ -82,7 +82,7 @@ karten:
       Punkte: 120
       Fehl!
       ```
-      `\t` springt zur nächsten Tabulatorposition – Werte stehen untereinander. `\b` setzt ein Zeichen zurück, das `!` überschreibt das `x` (wie in F. 54).
+      `\t` springt zur nächsten Tabulatorposition – Werte stehen untereinander. `\b` setzt ein Zeichen zurück, das `!` überschreibt das `x` (wie in F. 54) – in Konsolen, die `\b` auswerten; im PyCharm-Ausgabefenster vorher ausprobieren.
     tests: [{p: 1, nicht_ausfuehren: "\\b steht als Steuerzeichen in der Ausgabe; die Konsole zeigt erst nach dem Überschreiben „Fehl!“"}]
 
   # ---------------------------------------------------------------- ASCII-Bilder
@@ -144,7 +144,7 @@ karten:
       Wozu dienen `end=""` und `flush=True` beim Schreibmaschinen-Text?
     antwort: |-
       - `end=""` (Stoff): kein Zeilenumbruch nach jedem Zeichen.
-      - `flush=True` (Ergänzung): Python sammelt Ausgaben sonst in einem **Puffer** und zeigt sie oft erst am Zeilenende – alle Buchstaben kämen auf einmal. `flush=True` gibt jedes Zeichen **sofort** aus.
+      - `flush=True` (Ergänzung): Python sammelt Ausgaben sonst in einem **Puffer** und zeigt sie im Terminal erst am Zeilenende (bei Umleitung in eine Datei noch später) – alle Buchstaben kämen auf einmal. `flush=True` gibt jedes Zeichen **sofort** aus.
 
   - typ: code_schreiben
     aufgaben: ["1.3"]
@@ -208,26 +208,26 @@ karten:
     quelle: "Ergänzung; Level-Konzept"
     deckt: [l7.ton]
     frage: |-
-      Schreib `ton_abspielen()`: piept unter Windows, auf anderen Systemen läuft das Spiel ohne Absturz weiter. (Ergänzung)
+      Schreib `ton_abspielen()`: piept unter Windows; wo das nicht geht, läuft das Spiel ohne Absturz weiter. (Ergänzung)
     antwort: |-
       ```python
       def ton_abspielen():
-          """Piept unter Windows, sonst Signalton oder still."""
           try:
               import winsound           # Ergänzung: nur Windows
               winsound.Beep(880, 200)   # 880 Hz, 200 ms
           except ImportError:
               print("\a", end="")       # Ergänzung: Signalton
-      ton_abspielen()
+          except RuntimeError:
+              pass                      # Windows ohne Tonausgabe
       ```
-      Auf macOS/Linux gibt es `winsound` nicht → `import` löst `ImportError` aus, der abgefangen wird.
+      Auf macOS/Linux gibt es `winsound` nicht → `import` löst `ImportError` aus; dann bleibt der Signalton `\a` (piept nur, wenn die Konsole es erlaubt). `Beep` selbst kann unter Windows ohne Tonausgabe einen `RuntimeError` auslösen (laut Python-Doku) – auch der wird abgefangen. `pass` ist ein **leerer Block** (F. 113): Unter `except` muss eine Anweisung stehen, hier soll aber bewusst nichts passieren.
     tests: [{p: 1}]
 
   - typ: begruenden
     quelle: "Level-Konzept"
     deckt: [l7.ton, l7.konsole]
     frage: |-
-      Warum soll dein Spiel bei Problemen mit dem Ton **still weiterlaufen**, statt eine Fehlermeldung zu zeigen?
+      Warum soll dein Spiel bei Problemen mit dem Ton **ohne Ton weiterlaufen**, statt abzustürzen oder eine Fehlermeldung zu zeigen?
     antwort: |-
       Ton ist ein **Effekt** für Extrapunkte, kein Kern des Spiels. Vorgeführt wird auf Rechnern mit unterschiedlichem Betriebssystem – ein Absturz wegen fehlendem Lautsprecher-Modul würde das ganze Gruppenspiel beenden. Die Ausnahmebehandlung macht den Effekt **optional** und ist zugleich ein weiteres Pflichtelement.
 
@@ -271,6 +271,6 @@ karten:
     antwort: |-
       | ASCII-Bilder | echte Bilddatei mit matplotlib |
       |---|---|
-      | `print` mit mehrzeiligem String | `plt.imread` + `plt.imshow` öffnet ein Fenster (Ergänzung; matplotlib selbst ist im Stoff, F. 205) |
+      | `print` mit mehrzeiligem String | `plt.imread` + `plt.imshow` + `plt.show()` zeigt es in einem Fenster (Ergänzung; matplotlib selbst ist im Stoff, F. 205) |
       | läuft in jeder Konsole | braucht matplotlib und die Bilddatei im richtigen Ordner |
       | nur Stoff, leicht erklärbar | sieht besser aus, Fenster unterbricht das Spiel |

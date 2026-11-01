@@ -12,7 +12,9 @@ for runde in range(1, 4):
     start = time.time()   # Ergänzung (nicht im Stoff)
     antwort = input(f"Runde {runde}: Brücke kippt {kommando}! ")
     dauer = time.time() - start
-    if antwort in gegenrichtung[kommando] and dauer <= 1.5:
+    if dauer < 0.1:   # Enter lag schon im Puffer – sonst gewinnt Dauer-Enter jedes RUHIG
+        print("Zu früh gedrückt!")
+    elif antwort in gegenrichtung[kommando] and dauer <= 1.5:
         print("Gehalten!")
     elif antwort in gegenrichtung[kommando]:
         print(f"Richtig, aber zu langsam ({dauer:.2f} s)!")

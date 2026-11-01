@@ -1,22 +1,22 @@
 # Abdeckungsmatrix – Level-Kolloquium 6: Bestenliste, Sortieralgorithmus, Rekursion
 
-Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level6_karten.yaml`. 32 Karten, 12 prüfbare Inhalte, 0 Wiederholungsfragen.
+Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level6_karten.yaml`. 37 Karten, 12 prüfbare Inhalte, 0 Wiederholungsfragen.
 
 ## Karten je Typ
 
 | Typ | Anzahl |
 |---|---:|
 | Einzelfakt | 1 |
-| Klausurfalle | 1 |
+| Klausurfalle | 3 |
 | Begriff ↔ Erklärung | 2 |
 | Lückentext im Code | 2 |
-| Was gibt der Code aus? | 9 |
-| Finde den Fehler | 4 |
+| Was gibt der Code aus? | 11 |
+| Finde den Fehler | 5 |
 | Schreib Code, der … | 3 |
 | Was ist der Unterschied …? | 4 |
 | Warum so? (Entscheidung begründen) | 5 |
 | Trace-Tabelle (Werte Schritt für Schritt) | 1 |
-| **Summe** | **32** |
+| **Summe** | **37** |
 
 Karten mit Bild: 1.
 
@@ -30,15 +30,15 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | Eintrag anhängen: open(…, "a"), write() nur mit str, \n selbst setzen, close() | 3 | F. 193–194 | L6.001, L6.002, L6.003, L6.005 | 4 |
 | Dateimodi r, w, a: was passiert mit vorhandenem Inhalt, was bei fehlender Datei | 3 | F. 189, 193 | L6.004, L6.005 | 2 |
 | Zeilenweise lesen mit for zeile in datei; jede Zeile endet mit \n; read() | 3 | F. 190–191 | L6.001, L6.006, L6.007, L6.012 | 3 |
-| Zeile zerlegen mit find(";") und Slicing; float() verträgt das \n | 3 | F. 137–138 | L6.008, L6.009, L6.010 | 3 |
-| Kaputte Zeile mit try/except ValueError überspringen | 2 | Level-Konzept | L6.011, L6.012 | 2 |
+| Zeile zerlegen mit find(";") und Slicing; float() verträgt das \n | 3 | F. 137–138 | L6.008, L6.009, L6.010, L6.033 | 4 |
+| Kaputte Zeile mit try/except ValueError oder continue überspringen | 2 | Level-Konzept | L6.011, L6.012, L6.033, L6.037 | 3 |
 | Einträge als Liste von Dictionaries {"name", "zeit"}; Zugriff eintraege[i]["zeit"] | 2 | Level-Konzept | L6.013, L6.014, L6.022 | 2 |
-| Bubble Sort: Nachbarn vergleichen und tauschen, größtes Element wandert nach hinten; Schleifengrenzen | 3 | Labor KW45 (Vorgriff) | L6.015, L6.016, L6.019, L6.020, L6.021, L6.026, L6.028 | 5 |
+| Bubble Sort: Nachbarn vergleichen und tauschen, größtes Element wandert nach hinten; Schleifengrenzen | 3 | Labor KW45 (Vorgriff) | L6.015, L6.016, L6.019, L6.020, L6.021, L6.026, L6.028, L6.034, L6.035 | 7 |
 | Zwei Elemente tauschen mit Merker-Variable; ganze Dictionaries tauschen | 3 | Labor KW45 (Vorgriff) | L6.014, L6.017, L6.018, L6.019, L6.022 | 5 |
 | Merker getauscht für frühen Abbruch; Anzahl Vergleiche n·(n−1)/2 | 2 | Labor KW45 (Vorgriff) | L6.023, L6.024 | 2 |
 | Eingebautes liste.sort(reverse=…, key=funktion) vs. eigener Algorithmus | 2 | F. 146–147 | L6.025, L6.026 | 2 |
 | Höchstens die ersten fünf Einträge anzeigen; Platzierung i + 1 | 2 | Level-Konzept | L6.027, L6.028 | 2 |
-| Rekursion: Funktion ruft sich selbst auf, Abbruchbedingung, RecursionError; Vergleich mit Schleife | 2 | Labor KW45 (Vorgriff) | L6.029, L6.030, L6.031, L6.032 | 4 |
+| Rekursion: Funktion ruft sich selbst auf, Abbruchbedingung, RecursionError; Vergleich mit Schleife | 2 | Labor KW45 (Vorgriff) | L6.029, L6.030, L6.031, L6.032, L6.036 | 4 |
 
 ## Annahmen
 
@@ -82,3 +82,8 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | L6.030 | code_ausgabe | Labor KW45 (Vorgriff) | Was gibt der Code aus? ```python def countdown(n):     if n == 0:         print("LOS!")         return     pri |
 | L6.031 | code_fehler | Labor KW45 (Vorgriff) | Was passiert hier, und warum? ```python def countdown(n):     print(n)     countdown(n - 1)  countdown(3) ``` |
 | L6.032 | unterschied | F. 128 · Labor KW45 (Vorgriff) | Countdown als Schleife oder rekursiv – was spricht wofür? |
+| L6.033 | falle | F. 137, 138 · Probe-Kolloquium | In der Bestenliste steht eine Zeile **ohne** Semikolon: `5`. Was gibt der Code aus? ```python zeile = "5\n" tr |
+| L6.034 | falle | F. 146, 173 · Probe-Kolloquium | Deine Sortierfunktion ändert die übergebene Liste direkt und hat kein `return`. Was gibt der Code aus? ```pyth |
+| L6.035 | code_ausgabe | Probe-Kolloquium | Du sortierst die Bestenliste testweise nach **Namen**. Was gibt der Code aus? (Ergänzung) ```python print("Zoe |
+| L6.036 | code_fehler | Probe-Kolloquium; Labor KW45 (Vorgriff) | `countdown(3)` läuft. Was passiert bei `countdown(-1)`, und wie machst du die Funktion sicher? ```python def c |
+| L6.037 | code_ausgabe | F. 138 · Aufg. 3.8 | Was gibt der Code aus? ```python for zeile in ["Max;0.412\n", "5\n", "Lea;0.298\n"]:     trenner = zeile.find( |

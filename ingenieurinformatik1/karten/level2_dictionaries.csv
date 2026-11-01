@@ -121,3 +121,8 @@ Ergänzung: Ein Schlüssel kann nur **einmal** vorkommen; steht er doppelt, gewi
 | `spieler` | `""name""`, `""leben""`, `""inventar""`, `""punkte""` | Daten des Spielers (von `main.py`) |
 
 *Level-Konzept*"
+"Prüfer: „Ihr Dictionary sagt 5 Runden, die Hängebrücke läuft aber fest 3.“ Zeig, wie die Station Runden und Zeitlimit **aus dem Dictionary** liest.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8f571f273c.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d2360decdd.png)
+`+ 1`, weil `range` vor dem Endwert aufhört. Steht im Code eine feste `3` oder `1.5`, widerspricht er dem Dictionary – dann ist das Dictionary nutzlos.
+
+*F. 128 · Probe-Kolloquium; Laborskript Dictionaries F. 12*"

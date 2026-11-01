@@ -14,10 +14,10 @@ normal = "\033[0m"   # Ergänzung: Farbe zurücksetzen
 
 def countdown(n):
     """Zählt rekursiv von n bis 1 herunter und ruft dann LOS."""
-    if n == 0:                      # Abbruchbedingung
+    if n <= 0:                      # Abbruchbedingung (<= fängt auch negative n ab)
         print("LOS!   ")
         return
-    print(n, "...", end="\r")       # \r: zurück an den Zeilenanfang
+    print(n, "...", end="\r", flush=True)   # \r: Zeilenanfang; Ergänzung: flush
     time.sleep(0.2)
     countdown(n - 1)                # Selbstaufruf mit kleinerem n
 
@@ -37,6 +37,8 @@ def ton_abspielen():
         winsound.Beep(880, 200)
     except ImportError:
         print("\a", end="")        # Ergänzung: Signalton, falls die Konsole ihn erlaubt
+    except RuntimeError:
+        pass                       # Windows ohne Tonausgabe: still weiterspielen
 
 
 print(affe_bild)

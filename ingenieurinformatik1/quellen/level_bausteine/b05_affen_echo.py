@@ -4,11 +4,12 @@ import time
 
 tiere = {"a": "Affe", "t": "Tukan", "f": "Frosch"}
 tasten = ["a", "t", "f"]
+print("Tasten: a = Affe, t = Tukan, f = Frosch")
 
 for laenge in range(3, 6):             # 3, 4, 5 Zeichen
     folge = ""
     for i in range(laenge):
-        folge += tasten[random.randint(0, 2)]
+        folge += tasten[random.randint(0, len(tasten) - 1)]
     for taste in folge:
         print(tiere[taste], end=" ")
     print()
