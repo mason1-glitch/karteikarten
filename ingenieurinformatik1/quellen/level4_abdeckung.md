@@ -1,6 +1,6 @@
 # Abdeckungsmatrix – Level-Kolloquium 4: Mechaniken der Stationen
 
-Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level4_karten.yaml`. 31 Karten, 10 prüfbare Inhalte, 0 Wiederholungsfragen.
+Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level4_karten.yaml`. 32 Karten, 10 prüfbare Inhalte, 0 Wiederholungsfragen.
 
 ## Karten je Typ
 
@@ -10,11 +10,11 @@ Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level4_karte
 | Anwendung (Fall → Einordnung) | 1 |
 | Was gibt der Code aus? | 12 |
 | Finde den Fehler | 1 |
-| Schreib Code, der … | 5 |
+| Schreib Code, der … | 6 |
 | Was ist der Unterschied …? | 1 |
 | Warum so? (Entscheidung begründen) | 5 |
 | Trace-Tabelle (Werte Schritt für Schritt) | 2 |
-| **Summe** | **31** |
+| **Summe** | **32** |
 
 Karten mit Bild: 1.
 
@@ -31,7 +31,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | Verdecken mit print("\n" * 40): String-Wiederholung, \n ist ein Zeichen | 2 | F. 53, 135 | L4.005, L4.006 | 2 |
 | Tippfehler zählen: IndexError bei zu kurzer Eingabe, Reihenfolge der Bedingungen bei or, Grenzen des Positionsvergleichs | 3 | Level-Konzept | L4.009, L4.010, L4.011, L4.012, L4.013, L4.014 | 4 |
 | Zusammengesetzte Bedingung mit and (richtige Taste und schnell genug) | 2 | F. 106 · Level-Konzept | L4.015, L4.016, L4.028, L4.029 | 3 |
-| 2D-Liste per List-Comprehension anlegen, raster[reihe][spalte], mit verschachtelten Schleifen und end ausgeben | 3 | F. 150–153 · Aufg. 4.3 | L4.017, L4.018, L4.019, L4.024 | 3 |
+| 2D-Liste per List-Comprehension anlegen, raster[reihe][spalte], mit verschachtelten Schleifen und end ausgeben | 3 | F. 150–153 · Aufg. 4.3 | L4.017, L4.018, L4.019, L4.024, L4.032 | 3 |
 | Spieler zählt ab 1, Python ab 0; Eingabe 0 → Index -1 ohne Fehler; Bereichsprüfung mit and | 3 | Aufg. 4.3–4.5 | L4.020, L4.021, L4.022, L4.031 | 4 |
 | Raster mit range(len()) durchsuchen und Position ausgeben | 2 | F. 152 · Aufg. 4.4 | L4.023, L4.024 | 2 |
 | Runden und Leben: for bei fester Rundenzahl, while mit zwei Bedingungen, break | 3 | F. 125, 128 · Aufg. 3.7, 3.8 | L4.004, L4.025, L4.026, L4.027 | 3 |
@@ -76,3 +76,4 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | L4.029 | begruenden | Probe-Kolloquium; Level-Konzept | Prüfer: „Wie gewinnt man bei der Hängebrücke jedes ‚RUHIG‘, ohne hinzusehen?“ Was antwortest du, und was baust |
 | L4.030 | code_schreiben | F. 141 · Probe-Kolloquium | Prüfer: „Fügen Sie beim Affen-Echo einen Papagei auf Taste `p` hinzu.“ Welche Stellen änderst du? |
 | L4.031 | begruenden | Probe-Kolloquium; Level-Konzept | Prüfer: „Wie groß ist die Chance, das Treibsand-Raster ohne Hinsehen zu schaffen?“ |
+| L4.032 | code_schreiben | F. 144, 153 · Aufg. 4.3 · Probe-Kolloquium | Prüfer: „Schreiben Sie das 5×5-Raster ohne List-Comprehension, mit gewöhnlichen Schleifen.“ |

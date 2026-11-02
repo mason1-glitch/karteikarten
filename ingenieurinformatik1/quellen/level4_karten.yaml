@@ -572,7 +572,7 @@ karten:
       print("Tasten: a = Affe, t = Tukan, f = Frosch, p = Papagei")
       folge = tasten[random.randint(0, len(tasten) - 1)]
       ```
-      Dictionary, Tastenliste und Hinweis für den Spieler. Steht im Code noch `randint(0, 2)`, käme der Papagei **nie** vor – darum den Index aus `len(tasten) - 1` berechnen.
+      Dictionary, Tastenliste und Hinweis für den Spieler. Steht im Code noch `randint(0, 2)`, käme der Papagei **nie** vor – darum den Index aus `len(tasten) - 1` berechnen. `tiere` und `tasten` enthalten dieselben Tasten doppelt – vergisst du eine Stelle, passen sie nicht mehr zusammen; auch das kann der Prüfer ansprechen.
     tests: [{p: 1}]
 
   - typ: begruenden
@@ -582,3 +582,26 @@ karten:
       Prüfer: „Wie groß ist die Chance, das Treibsand-Raster ohne Hinsehen zu schaffen?“
     antwort: |-
       Je Reihe ist **ein** von fünf Feldern Treibsand. Fragst du nur **ein** Feld ab, ist die Ratechance 4/5 = **80 %** – Merken lohnt kaum. Fragst du für **jede der 5 Reihen** ein Feld ab, sinkt sie auf 0,8⁵ ≈ **33 %**. Deshalb: einen ganzen Weg (eine Koordinate je Reihe) abfragen und bei Treibsand ein Leben abziehen.
+
+  - typ: code_schreiben
+    folien: [144, 153]
+    aufgaben: ["4.3"]
+    quelle: "Probe-Kolloquium"
+    deckt: [l4.raster]
+    frage: |-
+      Prüfer: „Schreiben Sie das 5×5-Raster ohne List-Comprehension, mit gewöhnlichen Schleifen.“
+    antwort: |-
+      ```python
+      raster = []
+      for reihe in range(5):
+          zeile = []                # je Reihe eine NEUE Liste
+          for spalte in range(5):
+              zeile.append("o")
+          raster.append(zeile)
+      print(len(raster), raster[4])
+      ```
+      ```text
+      5 ['o', 'o', 'o', 'o', 'o']
+      ```
+      Die Comprehension `[["o" for s in range(5)] for r in range(5)]` ist die **Kurzform** davon. Sie ist Stoff (F. 153, Aufg. 4.3) – falls der Prüfer das anders sieht, zeigst du diese Langform.
+    tests: [{p: 1, t: 1}]

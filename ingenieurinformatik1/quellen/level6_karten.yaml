@@ -556,7 +556,7 @@ karten:
     antwort: |-
       | Schleife | Rekursion |
       |---|---|
-      | `for n in range(3, 0, -1): print(n)` | `countdown(n - 1)` ruft sich selbst |
+      | `for n in range(3, 0, -1):` oder `while n > 0:` mit `n -= 1` | `countdown(n - 1)` ruft sich selbst |
       | einfacher, kein Aufrufstapel | zeigt das Wahlelement **Rekursion** |
       | keine Tiefenbegrenzung | bricht bei sehr großer Tiefe mit `RecursionError` ab |
 
@@ -582,7 +582,7 @@ karten:
       5
       5.0
       ```
-      `find` liefert **-1**, wenn das Zeichen fehlt. Dann schneidet `[0:-1]` das `\n` ab (Name „5“), und `[0:]` ist die ganze Zeile (Zeit 5,0) – kein Fehler, aber ein **stilles Falschergebnis**. Abhilfe: `if trenner == -1: continue` vor dem Zerlegen.
+      `find` liefert **-1**, wenn das Zeichen fehlt. Dann schneidet `[0:-1]` das `\n` ab (Name „5“), und `[0:]` ist die ganze Zeile (Zeit 5,0) – kein Fehler, aber ein **stilles Falschergebnis**. Abhilfe: `if trenner == -1: continue` vor dem Zerlegen. Umgekehrt bei einem Namen **mit** `;` (`A;B;0.300`): `find` liefert das **erste** Semikolon, `float("B;0.300")` löst `ValueError` aus – die Zeile wird verworfen. Darum beim Speichern kein `;` im Namen zulassen.
     tests: [{p: 1, t: 1}]
 
   - typ: falle
@@ -659,4 +659,33 @@ karten:
       Lea
       ```
       `continue` springt sofort zum **nächsten Durchlauf** – die Zeile ohne `;` wird übersprungen, die Schleife läuft weiter (anders als `break`, das sie beendet; Aufg. 3.8).
+    tests: [{p: 1, t: 1}]
+
+  - typ: falle
+    folien: [189, 208]
+    quelle: "Code-Leitfaden 4; Probe-Kolloquium"
+    deckt: [l6.lesen, l6.modi]
+    frage: |-
+      Wo landet `bestenliste.txt` bei `open("bestenliste.txt", "a")` – und warum ist die Bestenliste plötzlich leer, wenn das Spiel aus einem anderen Ordner gestartet wird?
+    antwort: |-
+      Ein relativer Dateiname gilt ab dem **aktuellen Arbeitsordner** (dem Ordner, aus dem das Programm gestartet wird), **nicht** automatisch ab dem Ordner der `.py`-Datei (Code-Leitfaden, Abschnitt 4 zu F. 208). Aus einem anderen Ordner gestartet, legt `"a"` dort eine **neue** Datei an, und `"r"` findet die alte nicht (`FileNotFoundError` → leere Liste). Abhilfe: immer aus demselben Ordner starten, in PyCharm das Arbeitsverzeichnis der Run-Konfiguration prüfen.
+
+  - typ: code_ausgabe
+    folien: [128]
+    quelle: "Probe-Kolloquium"
+    deckt: [l6.bubble]
+    frage: |-
+      Die Bestenliste ist leer (`n = 0`) oder hat einen Eintrag (`n = 1`). Was gibt der Code aus – und was heißt das für `bestenliste_sortieren`?
+      ```python
+      for j in range(0 - 1):
+          print("Vergleich bei n = 0")
+      for j in range(1 - 1):
+          print("Vergleich bei n = 1")
+      print("fertig")
+      ```
+    antwort: |-
+      ```text
+      fertig
+      ```
+      `range(-1)` und `range(0)` liefern **keine** Zahlen – die innere Schleife läuft nie. `getauscht` bleibt `False`, die `while`-Schleife endet nach einem Durchlauf, **ohne Fehler**. Leere und einelementige Listen sind damit automatisch abgedeckt.
     tests: [{p: 1, t: 1}]

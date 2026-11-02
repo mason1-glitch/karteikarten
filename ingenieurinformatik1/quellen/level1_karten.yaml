@@ -58,6 +58,7 @@ karten:
       | Funktionen | eine je Station + Hilfsfunktionen |
       | Dictionary | Stationen-Einstellungen, Tierlaute, `spieler` |
       | Sortieralgorithmus | Bestenliste nach Reaktionszeit |
+      | Rekursion (optional) | Countdown `countdown(n)` mit Abbruchbedingung `n <= 0` |
 
   - typ: fakt
     quelle: "Laboraufgabe F. 3"
@@ -481,7 +482,7 @@ karten:
     quelle: "Probe-Kolloquium"
     deckt: [l1.spieler]
     frage: |-
-      Der Spieler darf das Level nach einem Misserfolg wiederholen. Was steht danach im Inventar – und wie verhinderst du das?
+      Der Spieler schafft das Level und spielt es noch einmal (ohne Neustart von `main.py`). Was steht danach im Inventar – und wie verhinderst du das?
       ```python
       spieler = {"leben": 3, "inventar": []}
       for versuch in range(2):
@@ -492,5 +493,14 @@ karten:
       ```text
       ['Ziffer 7', 'Ziffer 7']
       ```
-      Jeder Durchlauf hängt die Ziffer erneut an. Abhilfe: `if "Ziffer 7" not in spieler["inventar"]:` vor dem `append` (`not in`, F. 119). Ebenso: Leben nicht unter 0 fallen lassen und mit der Gruppe festlegen, ob Leben pro Level neu gelten.
+      Jeder **erfolgreiche** Durchlauf hängt die Ziffer erneut an. Abhilfe: `if "Ziffer 7" not in spieler["inventar"]:` vor dem `append` (`not in`, F. 119). Nach einem **Misserfolg** bleibt das Inventar leer, aber `leben` steht bei 0 – ohne Zurücksetzen scheitert das Level beim nächsten Versuch sofort. Darum Leben nicht unter 0 fallen lassen und mit der Gruppe festlegen, ob Leben pro Level neu gelten.
     tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    folien: [58]
+    quelle: "Code-Leitfaden 2.6; Probe-Kolloquium"
+    deckt: [l1.konventionen]
+    frage: |-
+      Prüfer: „Warum steht Ihre Konstante `dateiname = "bestenliste.txt"` klein geschrieben?“
+    antwort: |-
+      Verbindlich sind die **Code-Conventions des Kurses**: Der Code-Leitfaden (2.6, nach den Musterlösungen) schreibt konstante Werte als Variable **mit Kleinbuchstaben oben im Code**, z. B. `max_versuche = 5`. Das Skript verweist für Conventions auf **PEP 8** (F. 58), und PEP 8 empfiehlt für Konstanten GROSSBUCHSTABEN (`DATEINAME`). Ich folge bewusst der Kursvorgabe – und kann die Abweichung benennen.

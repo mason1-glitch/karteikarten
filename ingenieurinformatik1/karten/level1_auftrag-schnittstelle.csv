@@ -13,6 +13,7 @@
 | Funktionen | eine je Station + Hilfsfunktionen |
 | Dictionary | Stationen-Einstellungen, Tierlaute, `spieler` |
 | Sortieralgorithmus | Bestenliste nach Reaktionszeit |
+| Rekursion (optional) | Countdown `countdown(n)` mit Abbruchbedingung `n <= 0` |
 
 *Level-Konzept*"
 "Wie setzt sich die Bewertung der Laboraufgabe zusammen, und **wozu** wirst du im Kolloquium befragt?","- **Projektumsetzung** = Zulassung zum Kolloquium (**Ja/Nein**)
@@ -155,8 +156,11 @@ Kennzeichnung per Kommentar verlangt die Laboraufgabe (F. 3); der Kopf folgt Auf
 6. Rückgabe der Zeit, Ende.
 
 *Level-Konzept; Ergänzung: DIN 66001*"
-"Der Spieler darf das Level nach einem Misserfolg wiederholen. Was steht danach im Inventar – und wie verhinderst du das?
+"Der Spieler schafft das Level und spielt es noch einmal (ohne Neustart von `main.py`). Was steht danach im Inventar – und wie verhinderst du das?
 ![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e192429b0e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_74d95be2ff.png)
-Jeder Durchlauf hängt die Ziffer erneut an. Abhilfe: `if ""Ziffer 7"" not in spieler[""inventar""]:` vor dem `append` (`not in`, F. 119). Ebenso: Leben nicht unter 0 fallen lassen und mit der Gruppe festlegen, ob Leben pro Level neu gelten.
+Jeder **erfolgreiche** Durchlauf hängt die Ziffer erneut an. Abhilfe: `if ""Ziffer 7"" not in spieler[""inventar""]:` vor dem `append` (`not in`, F. 119). Nach einem **Misserfolg** bleibt das Inventar leer, aber `leben` steht bei 0 – ohne Zurücksetzen scheitert das Level beim nächsten Versuch sofort. Darum Leben nicht unter 0 fallen lassen und mit der Gruppe festlegen, ob Leben pro Level neu gelten.
 
 *F. 119, 144 · Probe-Kolloquium*"
+"Prüfer: „Warum steht Ihre Konstante `dateiname = ""bestenliste.txt""` klein geschrieben?“","Verbindlich sind die **Code-Conventions des Kurses**: Der Code-Leitfaden (2.6, nach den Musterlösungen) schreibt konstante Werte als Variable **mit Kleinbuchstaben oben im Code**, z. B. `max_versuche = 5`. Das Skript verweist für Conventions auf **PEP 8** (F. 58), und PEP 8 empfiehlt für Konstanten GROSSBUCHSTABEN (`DATEINAME`). Ich folge bewusst der Kursvorgabe – und kann die Abweichung benennen.
+
+*F. 58 · Code-Leitfaden 2.6; Probe-Kolloquium*"

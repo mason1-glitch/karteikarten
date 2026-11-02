@@ -125,3 +125,8 @@ Ein `try` darf **mehrere** `except`-Zweige haben; es läuft der erste, der zur A
 `int()` überliest Leerzeichen **am Rand**; leere Eingabe (nur Enter) und Kommazahlen sind dagegen ungültig. Ergänzung: Strg+D (Windows: Strg+Z, Enter) löst `EOFError` aus – das fängt `except ValueError` nicht ab.
 
 *F. 75 · Probe-Kolloquium*"
+"Prüfer: „`bestenliste_speichern` hat kein `try`/`except`. Was kann trotzdem schiefgehen?“","`""a""` legt eine fehlende Datei zwar an. Ist die Datei aber **schreibgeschützt** oder von einem anderen Programm gesperrt, löst `open` einen `PermissionError` aus (Ergänzung: Name nicht im Stoff) – das Spiel bricht ab. Wer sicher sein will:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f9e1235d83.png)
+Die Bestenliste ist ein Extra – das Level soll trotzdem weiterlaufen.
+
+*F. 193 · Probe-Kolloquium; Labor KW46 (Vorgriff)*"

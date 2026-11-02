@@ -144,9 +144,14 @@ Bei einem **String** prüft `in`, ob ein **Teilstring** vorkommt – der leere S
 
 *Probe-Kolloquium; Level-Konzept*"
 "Prüfer: „Fügen Sie beim Affen-Echo einen Papagei auf Taste `p` hinzu.“ Welche Stellen änderst du?","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d9cf2795ea.png)
-Dictionary, Tastenliste und Hinweis für den Spieler. Steht im Code noch `randint(0, 2)`, käme der Papagei **nie** vor – darum den Index aus `len(tasten) - 1` berechnen.
+Dictionary, Tastenliste und Hinweis für den Spieler. Steht im Code noch `randint(0, 2)`, käme der Papagei **nie** vor – darum den Index aus `len(tasten) - 1` berechnen. `tiere` und `tasten` enthalten dieselben Tasten doppelt – vergisst du eine Stelle, passen sie nicht mehr zusammen; auch das kann der Prüfer ansprechen.
 
 *F. 141 · Probe-Kolloquium*"
 "Prüfer: „Wie groß ist die Chance, das Treibsand-Raster ohne Hinsehen zu schaffen?“","Je Reihe ist **ein** von fünf Feldern Treibsand. Fragst du nur **ein** Feld ab, ist die Ratechance 4/5 = **80 %** – Merken lohnt kaum. Fragst du für **jede der 5 Reihen** ein Feld ab, sinkt sie auf 0,8⁵ ≈ **33 %**. Deshalb: einen ganzen Weg (eine Koordinate je Reihe) abfragen und bei Treibsand ein Leben abziehen.
 
 *Probe-Kolloquium; Level-Konzept*"
+"Prüfer: „Schreiben Sie das 5×5-Raster ohne List-Comprehension, mit gewöhnlichen Schleifen.“","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_20088727ee.png)
+![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_1fbef2e42a.png)
+Die Comprehension `[[""o"" for s in range(5)] for r in range(5)]` ist die **Kurzform** davon. Sie ist Stoff (F. 153, Aufg. 4.3) – falls der Prüfer das anders sieht, zeigst du diese Langform.
+
+*F. 144, 153 · Aufg. 4.3 · Probe-Kolloquium*"

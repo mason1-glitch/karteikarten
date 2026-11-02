@@ -1,6 +1,6 @@
 # Abdeckungsmatrix – Level-Kolloquium 1: Auftrag, Aufbau und Schnittstelle
 
-Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level1_karten.yaml`. 28 Karten, 12 prüfbare Inhalte, 0 Wiederholungsfragen.
+Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level1_karten.yaml`. 29 Karten, 12 prüfbare Inhalte, 0 Wiederholungsfragen.
 
 ## Karten je Typ
 
@@ -16,8 +16,8 @@ Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level1_karte
 | Finde den Fehler | 3 |
 | Schreib Code, der … | 2 |
 | Was ist der Unterschied …? | 1 |
-| Warum so? (Entscheidung begründen) | 1 |
-| **Summe** | **28** |
+| Warum so? (Entscheidung begründen) | 2 |
+| **Summe** | **29** |
 
 Karten mit Bild: 1.
 
@@ -38,7 +38,7 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | Prozedur, Funktion, Methode im eigenen Code; Docstring | 2 | F. 172–174 | L1.019, L1.020 | 2 |
 | lokale und globale Variablen, Schlüsselwort global | 2 | F. 182–183 | L1.010, L1.011, L1.012, L1.013 | 4 |
 | Modul = importierbare Python-Datei; import führt den Code auf oberster Ebene aus | 2 | Laborfolie IDE/venv F. 15 | L1.021, L1.022 | 2 |
-| Code-Conventions (snake_case, deutsch, keine Umlaute, 4 Leerzeichen) und Kennzeichnung per Kommentar | 2 | F. 58–60 | L1.023, L1.024 | 2 |
+| Code-Conventions (snake_case, deutsch, keine Umlaute, 4 Leerzeichen) und Kennzeichnung per Kommentar | 2 | F. 58–60 | L1.023, L1.024, L1.029 | 3 |
 | Grundstrukturen sequentiell, auswählend, iterativ, springend am eigenen Level; PAP | 2 | F. 109–111 | L1.025, L1.026, L1.027 | 2 |
 
 ## Annahmen
@@ -78,4 +78,5 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | L1.025 | anwendung | F. 109 | Nenne die vier **Grundstrukturen** eines Programms mit je einem Beispiel aus deinem Level. |
 | L1.026 | begriff | Ergänzung: DIN 66001 (PAP-Folien KW43 nicht im Projekt) | Welche Symbole hat ein **Programmablaufplan (PAP)**, und wofür steht jedes? |
 | L1.027 | anwendung | Level-Konzept; Ergänzung: DIN 66001 | Erkläre den Ablauf der Reaktionsmessung anhand des PAP. [Bild] |
-| L1.028 | falle | F. 119, 144 · Probe-Kolloquium | Der Spieler darf das Level nach einem Misserfolg wiederholen. Was steht danach im Inventar – und wie verhinder |
+| L1.028 | falle | F. 119, 144 · Probe-Kolloquium | Der Spieler schafft das Level und spielt es noch einmal (ohne Neustart von `main.py`). Was steht danach im Inv |
+| L1.029 | begruenden | F. 58 · Code-Leitfaden 2.6; Probe-Kolloquium | Prüfer: „Warum steht Ihre Konstante `dateiname = "bestenliste.txt"` klein geschrieben?“ |

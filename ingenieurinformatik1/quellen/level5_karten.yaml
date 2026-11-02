@@ -444,3 +444,22 @@ karten:
       ```
       `int()` überliest Leerzeichen **am Rand**; leere Eingabe (nur Enter) und Kommazahlen sind dagegen ungültig. Ergänzung: Strg+D (Windows: Strg+Z, Enter) löst `EOFError` aus – das fängt `except ValueError` nicht ab.
     tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    folien: [193]
+    quelle: "Probe-Kolloquium; Labor KW46 (Vorgriff)"
+    deckt: [l5.datei]
+    frage: |-
+      Prüfer: „`bestenliste_speichern` hat kein `try`/`except`. Was kann trotzdem schiefgehen?“
+    antwort: |-
+      `"a"` legt eine fehlende Datei zwar an. Ist die Datei aber **schreibgeschützt** oder von einem anderen Programm gesperrt, löst `open` einen `PermissionError` aus (Ergänzung: Name nicht im Stoff) – das Spiel bricht ab. Wer sicher sein will:
+      ```python
+      try:
+          datei = open("bestenliste.txt", "a")
+          datei.write("Max;0.412\n")
+          datei.close()
+      except PermissionError:
+          print("Bestenliste konnte nicht gespeichert werden.")
+      ```
+      Die Bestenliste ist ein Extra – das Level soll trotzdem weiterlaufen.
+    tests: [{p: 1}]

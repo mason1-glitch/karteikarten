@@ -9,7 +9,7 @@
 
 *F. 53, 69*"
 "Was sieht der Spieler am Ende in der Zeile? (Der Code zählt in **einer** Zeile herunter.)
-![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d1901ede47.png)","Nur **`LOS!`**. `end=""\r""` setzt den Cursor nach jeder Zahl an den Zeilenanfang; die nächste Ausgabe **überschreibt** die alte. So entsteht ein Countdown an derselben Stelle. Ergänzung: Ohne `flush=True` bliebe die Zahl im Ausgabepuffer, weil kein Zeilenumbruch folgt – der Countdown wäre unsichtbar. Im PyCharm-Ausgabefenster vorher testen – nicht jede Konsole beherrscht `\r` gleich.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d1901ede47.png)","Nur **`LOS!`**. `end=""\r""` setzt den Cursor nach jeder Zahl an den Zeilenanfang; die nächste Ausgabe **überschreibt** die alte. So entsteht ein Countdown an derselben Stelle. Ergänzung: `flush=True` gibt jede Zahl sofort aus. Im Terminal erscheint `\r`-Ausgabe meist auch ohne, in manchen Ausgabefenstern und bei Umleitung in eine Datei bliebe sie aber im Puffer – der Countdown wäre dann unsichtbar und käme am Ende auf einmal. Im PyCharm-Ausgabefenster vorher testen – nicht jede Konsole beherrscht `\r` gleich.
 
 *F. 53, 151*"
 "Warum endet `print(""LOS!   "")` im Countdown mit Leerzeichen? Was stünde ohne sie nach `Noch 10 s` + `\r` + `LOS!` auf dem Bildschirm?","`\r` löscht nichts, es springt nur zurück. `LOS!` überschreibt die ersten 4 Zeichen, der Rest bleibt stehen: **`LOS! 10 s`**. Die Leerzeichen überschreiben die Reste der längeren alten Ausgabe.

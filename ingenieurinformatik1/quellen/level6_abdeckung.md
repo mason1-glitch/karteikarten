@@ -1,22 +1,22 @@
 # Abdeckungsmatrix – Level-Kolloquium 6: Bestenliste, Sortieralgorithmus, Rekursion
 
-Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level6_karten.yaml`. 37 Karten, 12 prüfbare Inhalte, 0 Wiederholungsfragen.
+Erzeugt mit `werkzeuge/karten.py` aus `ingenieurinformatik1/quellen/level6_karten.yaml`. 39 Karten, 12 prüfbare Inhalte, 0 Wiederholungsfragen.
 
 ## Karten je Typ
 
 | Typ | Anzahl |
 |---|---:|
 | Einzelfakt | 1 |
-| Klausurfalle | 3 |
+| Klausurfalle | 4 |
 | Begriff ↔ Erklärung | 2 |
 | Lückentext im Code | 2 |
-| Was gibt der Code aus? | 11 |
+| Was gibt der Code aus? | 12 |
 | Finde den Fehler | 5 |
 | Schreib Code, der … | 3 |
 | Was ist der Unterschied …? | 4 |
 | Warum so? (Entscheidung begründen) | 5 |
 | Trace-Tabelle (Werte Schritt für Schritt) | 1 |
-| **Summe** | **37** |
+| **Summe** | **39** |
 
 Karten mit Bild: 1.
 
@@ -28,12 +28,12 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | Konzept | Gewicht | Quelle | Karten | Typen |
 |---|---:|---|---|---|
 | Eintrag anhängen: open(…, "a"), write() nur mit str, \n selbst setzen, close() | 3 | F. 193–194 | L6.001, L6.002, L6.003, L6.005 | 4 |
-| Dateimodi r, w, a: was passiert mit vorhandenem Inhalt, was bei fehlender Datei | 3 | F. 189, 193 | L6.004, L6.005 | 2 |
-| Zeilenweise lesen mit for zeile in datei; jede Zeile endet mit \n; read() | 3 | F. 190–191 | L6.001, L6.006, L6.007, L6.012 | 3 |
+| Dateimodi r, w, a: was passiert mit vorhandenem Inhalt, was bei fehlender Datei | 3 | F. 189, 193 | L6.004, L6.005, L6.038 | 2 |
+| Zeilenweise lesen mit for zeile in datei; jede Zeile endet mit \n; read() | 3 | F. 190–191 | L6.001, L6.006, L6.007, L6.012, L6.038 | 4 |
 | Zeile zerlegen mit find(";") und Slicing; float() verträgt das \n | 3 | F. 137–138 | L6.008, L6.009, L6.010, L6.033 | 4 |
 | Kaputte Zeile mit try/except ValueError oder continue überspringen | 2 | Level-Konzept | L6.011, L6.012, L6.033, L6.037 | 3 |
 | Einträge als Liste von Dictionaries {"name", "zeit"}; Zugriff eintraege[i]["zeit"] | 2 | Level-Konzept | L6.013, L6.014, L6.022 | 2 |
-| Bubble Sort: Nachbarn vergleichen und tauschen, größtes Element wandert nach hinten; Schleifengrenzen | 3 | Labor KW45 (Vorgriff) | L6.015, L6.016, L6.019, L6.020, L6.021, L6.026, L6.028, L6.034, L6.035 | 7 |
+| Bubble Sort: Nachbarn vergleichen und tauschen, größtes Element wandert nach hinten; Schleifengrenzen | 3 | Labor KW45 (Vorgriff) | L6.015, L6.016, L6.019, L6.020, L6.021, L6.026, L6.028, L6.034, L6.035, L6.039 | 7 |
 | Zwei Elemente tauschen mit Merker-Variable; ganze Dictionaries tauschen | 3 | Labor KW45 (Vorgriff) | L6.014, L6.017, L6.018, L6.019, L6.022 | 5 |
 | Merker getauscht für frühen Abbruch; Anzahl Vergleiche n·(n−1)/2 | 2 | Labor KW45 (Vorgriff) | L6.023, L6.024 | 2 |
 | Eingebautes liste.sort(reverse=…, key=funktion) vs. eigener Algorithmus | 2 | F. 146–147 | L6.025, L6.026 | 2 |
@@ -87,3 +87,5 @@ Gewicht: 3 = in vielen Aufgaben gebraucht, 2 = mehrfach, 1 = selten. F. = Seite 
 | L6.035 | code_ausgabe | Probe-Kolloquium | Du sortierst die Bestenliste testweise nach **Namen**. Was gibt der Code aus? (Ergänzung) ```python print("Zoe |
 | L6.036 | code_fehler | Probe-Kolloquium; Labor KW45 (Vorgriff) | `countdown(3)` läuft. Was passiert bei `countdown(-1)`, und wie machst du die Funktion sicher? ```python def c |
 | L6.037 | code_ausgabe | F. 138 · Aufg. 3.8 | Was gibt der Code aus? ```python for zeile in ["Max;0.412\n", "5\n", "Lea;0.298\n"]:     trenner = zeile.find( |
+| L6.038 | falle | F. 189, 208 · Code-Leitfaden 4; Probe-Kolloquium | Wo landet `bestenliste.txt` bei `open("bestenliste.txt", "a")` – und warum ist die Bestenliste plötzlich leer, |
+| L6.039 | code_ausgabe | F. 128 · Probe-Kolloquium | Die Bestenliste ist leer (`n = 0`) oder hat einen Eintrag (`n = 1`). Was gibt der Code aus – und was heißt das |

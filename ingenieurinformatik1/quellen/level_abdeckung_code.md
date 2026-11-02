@@ -38,7 +38,7 @@ Karten: ingenieurinformatik1/quellen/level1_karten.yaml, ingenieurinformatik1/qu
 | `esc:\n` | Stoff | F. 53 | 5 | b05_affen_echo.py:17, b07_treibsand.py:38, b08_bestenliste.py:58 | L4.005, L4.006 |
 | `esc:\r` | Stoff | F. 53 | 1 | b09_effekte.py:20 | L7.001, L7.002, L7.003, L7.004 |
 | `esc:\t` | Stoff | F. 53 | 1 | b08_bestenliste.py:52 | L7.001, L7.002, L7.003, L7.004 |
-| `except:FileNotFoundError` | Labor | Labor KW46 | 1 | b08_bestenliste.py:17 | L5.016, L5.017 |
+| `except:FileNotFoundError` | Labor | Labor KW46 | 1 | b08_bestenliste.py:17 | L5.016, L5.017, L5.025 |
 | `except:ImportError` | Labor | Labor KW46 | 1 | b09_effekte.py:38 | L7.012, L7.013, L7.014 |
 | `except:IndexError` | Labor | Labor KW46 | 1 | b06_zauberformel.py:29 | L5.012, L5.013, L5.014, L5.015, L5.020 |
 | `except:RuntimeError` | Labor | Labor KW46 | 1 | b09_effekte.py:40 | L7.012, L7.013, L7.014 |
@@ -68,7 +68,7 @@ Karten: ingenieurinformatik1/quellen/level1_karten.yaml, ingenieurinformatik1/qu
 | `kw:return` | Stoff | F. 173 | 9 | b01_schnittstelle.py:17, b01_schnittstelle.py:18, b03_reaktionszeit.py:24 | L1.008, L1.014, L1.015, L1.016 |
 | `kw:try` | Labor | Labor KW46 | 5 | b06_zauberformel.py:26, b07_treibsand.py:25, b08_bestenliste.py:15 | L5.003, L5.004, L5.005, L5.021 |
 | `kw:while` | Stoff | F. 125 | 3 | b03_reaktionszeit.py:9, b07_treibsand.py:24, b08_bestenliste.py:37 | L3.016, L3.017, L4.004, L4.025, L4.026, L4.027 |
-| `listcomp` | Stoff | F. 153 | 2 | b07_treibsand.py:6, b07_treibsand.py:6 | L4.017, L4.018, L4.019, L4.024 |
+| `listcomp` | Stoff | F. 153 | 2 | b07_treibsand.py:6, b07_treibsand.py:6 | L4.017, L4.018, L4.019, L4.024, L4.032 |
 | `liste` | Stoff | F. 141 | 8 | b01_schnittstelle.py:22, b04_haengebruecke.py:5, b04_haengebruecke.py:7 | L2.005, L2.008, L2.016, L2.024, L4.017, L4.018 … |
 | `methode:append` | Stoff | F. 144 | 2 | b01_schnittstelle.py:16, b08_bestenliste.py:25 | L6.013, L6.014, L6.022 |
 | `methode:close` | Stoff | F. 190 | 3 | b08_bestenliste.py:59, b08_bestenliste.py:9, b08_bestenliste.py:28 | L6.001, L6.002, L6.003, L6.005 |
@@ -83,9 +83,9 @@ Karten: ingenieurinformatik1/quellen/level1_karten.yaml, ingenieurinformatik1/qu
 | `op:+` | Stoff | F. 103 | 8 | b07_treibsand.py:15, b08_bestenliste.py:42, b08_bestenliste.py:43 | L4.001, L4.002, L4.003, L4.004, L4.030 |
 | `op:-` | Stoff | F. 103 | 13 | b03_reaktionszeit.py:21, b03_reaktionszeit.py:12, b04_haengebruecke.py:14 | L3.008, L3.009, L3.010, L4.020, L4.021, L4.022 … |
 | `op:-x` | Stoff | Vorzeichen | 1 | b08_bestenliste.py:21 | L6.011, L6.012, L6.033, L6.037 |
-| `print:end` | Stoff | F. 151 | 6 | b05_affen_echo.py:14, b07_treibsand.py:15, b07_treibsand.py:17 | L4.017, L4.018, L4.019, L4.024, L7.008, L7.009 |
+| `print:end` | Stoff | F. 151 | 6 | b05_affen_echo.py:14, b07_treibsand.py:15, b07_treibsand.py:17 | L4.017, L4.018, L4.019, L4.024, L4.032, L7.008 … |
 | `print:flush` | Ergänzung | nicht im Stoff | 2 | b09_effekte.py:20, b09_effekte.py:28 | L7.008, L7.009 |
 | `rekursion` | Labor | Labor KW45 | 1 | b09_effekte.py:22 | L6.029, L6.030, L6.031, L6.032, L6.036 |
 | `slicing` | Stoff | F. 137 (Strings) | 3 | b08_bestenliste.py:24, b08_bestenliste.py:25, b08_bestenliste.py:27 | L6.008, L6.009, L6.010, L6.033 |
 | `tupel` | Stoff | F. 155 | 6 | b08_bestenliste.py:55, b08_bestenliste.py:55, b08_bestenliste.py:55 | L8.013, L8.014 |
-| `zuweisung` | Stoff | F. 49 | 55 | b01_schnittstelle.py:22, b01_schnittstelle.py:23, b02_stationen_dict.py:4 | L1.023, L1.024, L2.003, L2.004, L2.005, L2.013 … |
+| `zuweisung` | Stoff | F. 49 | 55 | b01_schnittstelle.py:22, b01_schnittstelle.py:23, b02_stationen_dict.py:4 | L1.023, L1.024, L1.029, L2.003, L2.004, L2.005 … |

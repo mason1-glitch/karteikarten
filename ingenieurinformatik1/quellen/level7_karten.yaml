@@ -55,7 +55,7 @@ karten:
       print("LOS!   ")
       ```
     antwort: |-
-      Nur **`LOS!`**. `end="\r"` setzt den Cursor nach jeder Zahl an den Zeilenanfang; die nächste Ausgabe **überschreibt** die alte. So entsteht ein Countdown an derselben Stelle. Ergänzung: Ohne `flush=True` bliebe die Zahl im Ausgabepuffer, weil kein Zeilenumbruch folgt – der Countdown wäre unsichtbar. Im PyCharm-Ausgabefenster vorher testen – nicht jede Konsole beherrscht `\r` gleich.
+      Nur **`LOS!`**. `end="\r"` setzt den Cursor nach jeder Zahl an den Zeilenanfang; die nächste Ausgabe **überschreibt** die alte. So entsteht ein Countdown an derselben Stelle. Ergänzung: `flush=True` gibt jede Zahl sofort aus. Im Terminal erscheint `\r`-Ausgabe meist auch ohne, in manchen Ausgabefenstern und bei Umleitung in eine Datei bliebe sie aber im Puffer – der Countdown wäre dann unsichtbar und käme am Ende auf einmal. Im PyCharm-Ausgabefenster vorher testen – nicht jede Konsole beherrscht `\r` gleich.
     tests: [{p: 1}]
 
   - typ: falle
