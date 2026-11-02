@@ -1,0 +1,432 @@
+# Kolloquium Laboraufgabe (Escape-Room) – Stapel 3: Zeit, Zufall und Eingabe (Reaktionsmessung)
+# Quellen: Skript Info1 WS26 (folien = PDF-Seite), Aufgaben 1.3/2.5/2.9/5.3, Code-Leitfaden,
+# Level-Konzept (Machbarkeit, Kernmechanik). time.time() ist eine mit dem Dozenten abgesprochene Ergänzung.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/level3_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/level3_zeit-zufall-eingabe.csv
+matrix: ingenieurinformatik1/quellen/level3_abdeckung.md
+titel: "Level-Kolloquium 3: Zeit, Zufall und Eingabe"
+id_praefix: "L3."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Typische einfache Reaktionszeiten (rund 0,2–0,3 s) sind Allgemeinwissen, nicht aus dem Stoff; auf der Karte als Ergänzung markiert."
+  - "Die Fehlstart-Schwelle 0,1 s ist die im Level-Konzept getestete Wahl, keine Vorgabe."
+
+inhalte:
+  - {id: l3.import, gewicht: 3, folie: "173, 178", text: "import random / import time, Aufruf als modul.funktion()", konstrukte: [kw:import, modul:random, modul:time]}
+  - {id: l3.randint, gewicht: 3, aufgaben: "2.5, 2.9", text: "random.randint(a, b): beide Grenzen möglich; Zufallselement per Index 0 … len - 1; random.seed", konstrukte: [call:random.randint, call:random.seed]}
+  - {id: l3.sleep, gewicht: 2, aufgaben: "1.3", text: "time.sleep(s) pausiert; zufällige Wartezeit gegen Raten", konstrukte: [call:time.sleep]}
+  - {id: l3.time, gewicht: 3, quelle: "Ergänzung (Dozent: erlaubt, wenn erklärbar)", text: "time.time(): Sekunden seit 1.1.1970 als float; Dauer = Ende − Start", konstrukte: [call:time.time, op:-]}
+  - {id: l3.input, gewicht: 3, folie: "49, 52", text: "input() wartet auf Enter, liefert immer str; nur Enter → leerer String", konstrukte: [call:input, call:float, call:int, call:len]}
+  - {id: l3.fehlstart, gewicht: 3, quelle: "Level-Konzept", text: "Fehlstart: Enter im Eingabepuffer → input() kehrt sofort zurück (< 0,1 s); Grenze: kein Abbruch nach X s", konstrukte: [cmp:<, cmp:>]}
+  - {id: l3.puffer, gewicht: 2, folie: "125", quelle: "Level-Konzept", text: "Eingabepuffer leeren: while-Schleife mit Startwert verwirft Enter unter 0,3 s", konstrukte: [kw:while]}
+  - {id: l3.format, gewicht: 2, folie: "116", aufgaben: "3.11", text: "Zeit ausgeben: f\"{zeit:.3f}\" rundet, int() schneidet ab, Umrechnung in ms", konstrukte: [f-string, f-format, op:*]}
+  - {id: l3.none, gewicht: 2, aufgaben: "5.3", text: "None als „kein Ergebnis“ (Fehlstart) und Prüfung mit is not None", konstrukte: [kw:None, cmp:is not, kw:is]}
+  - {id: l3.bewerten, gewicht: 2, folie: "115", text: "Auswertung mit if/elif/else: Fehlstart, zu langsam, geschafft; Grenzfall genau auf dem Limit", konstrukte: [kw:if, kw:elif, kw:else]}
+
+karten:
+  # ---------------------------------------------------------------- Module
+  - typ: code_luecke
+    folien: [173]
+    aufgaben: ["1.3", "2.5"]
+    deckt: [l3.import, l3.sleep]
+    frage: |-
+      Ergänze so, dass das Programm 2 bis 5 s zufällig wartet.
+      ```python
+      ___
+      ___
+
+      time.sleep(random.randint(2, 5))
+      print("SPRING!")
+      ```
+    antwort: |-
+      ```python
+      import random
+      import time
+
+      time.sleep(random.randint(2, 5))
+      print("SPRING!")
+      ```
+      Ein Modul pro `import`-Zeile, am Anfang der Datei; aufgerufen wird mit **Modulname.Funktion**.
+    tests: [{p: 2}]
+
+  - typ: code_fehler
+    aufgaben: ["1.3"]
+    deckt: [l3.import]
+    frage: |-
+      Der Code bricht ab. Welche Meldung, und warum?
+      ```python
+      import time
+
+      sleep(1)
+      print("weiter")
+      ```
+    antwort: |-
+      `NameError: name 'sleep' is not defined`. Nach `import time` gibt es nur den Namen `time`; die Funktion heißt **`time.sleep(1)`**.
+    tests: [{p: 1, abbruch: NameError}]
+
+  # ---------------------------------------------------------------- random
+  - typ: begriff
+    aufgaben: ["2.5"]
+    deckt: [l3.randint]
+    frage: |-
+      Was liefert `random.randint(2, 5)` – und welche Werte sind möglich?
+    antwort: |-
+      Eine zufällige **ganze** Zahl von 2 bis 5, **beide Grenzen eingeschlossen**: 2, 3, 4 oder 5. (Anders als `range(2, 5)`, das bei 4 aufhört.)
+
+  - typ: code_fehler
+    aufgaben: ["2.5"]
+    folien: [141]
+    deckt: [l3.randint]
+    frage: |-
+      Das Programm stürzt bei 100 Runden fast sicher ab. Warum?
+      ```python
+      import random
+
+      richtungen = ["LINKS", "RECHTS", "RUHIG"]
+      for runde in range(100):
+          i = random.randint(0, len(richtungen))
+          kommando = richtungen[i]
+      ```
+    antwort: |-
+      `len(richtungen)` ist 3, und `randint(0, 3)` liefert **auch 3** – den Index 3 gibt es nicht (nur 0–2): `IndexError: list index out of range`. Richtig: `random.randint(0, len(richtungen) - 1)`.
+    tests: [{p: 1, abbruch: IndexError}]
+
+  - typ: code_schreiben
+    aufgaben: ["2.5"]
+    folien: [141]
+    deckt: [l3.randint]
+    frage: |-
+      Wähle zufällig ein Kommando aus `richtungen` und gib es aus – nur mit Mitteln aus dem Stoff.
+    antwort: |-
+      ```python
+      import random
+
+      richtungen = ["LINKS", "RECHTS", "RUHIG"]
+      i = random.randint(0, len(richtungen) - 1)
+      print(richtungen[i])
+      ```
+      Ergänzung: `random.choice(richtungen)` macht dasselbe, ist aber nicht im Stoff.
+    tests: [{p: 1}]
+
+  - typ: code_ausgabe
+    aufgaben: ["2.9"]
+    deckt: [l3.randint]
+    frage: |-
+      Was gibt der Code aus – und wofür ist das beim Testen deiner Stationen nützlich?
+      ```python
+      import random
+
+      random.seed(7)
+      a = random.randint(1, 6)
+      random.seed(7)
+      b = random.randint(1, 6)
+      print(a == b)
+      ```
+    antwort: |-
+      ```text
+      True
+      ```
+      Gleicher Startwert (`seed`) → gleiche Zufallsfolge. Beim Testen kommen so immer dieselben Kommandos und Folgen, und ein Fehler lässt sich wiederholen.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- sleep und time
+  - typ: begruenden
+    aufgaben: ["1.3", "2.5"]
+    quelle: "Level-Konzept"
+    deckt: [l3.sleep, l3.fehlstart]
+    frage: |-
+      Warum wartet der Lianen-Sprung `time.sleep(random.randint(2, 5))` und nicht immer genau 3 s?
+    antwort: |-
+      Bei fester Wartezeit lernt der Spieler den Takt und drückt **vorausschauend** – gemessen würde dann keine Reaktion. Erst die zufällige Wartezeit macht den Moment von „SPRING!“ unvorhersehbar.
+
+  - typ: begriff
+    quelle: "Ergänzung (Dozent: erlaubt, wenn erklärbar)"
+    deckt: [l3.time]
+    frage: |-
+      Was liefert `time.time()`, und warum kannst du damit eine Reaktionszeit messen?
+    antwort: |-
+      Ergänzung (nicht im Stoff): die aktuelle Zeit als **Sekunden seit dem 1.1.1970** als `float` mit Nachkommastellen, z. B. `1795000000.4127`. Der Wert allein sagt nichts; die **Differenz** zweier Aufrufe ist die verstrichene Zeit in Sekunden: `dauer = time.time() - start`.
+
+  - typ: code_schreiben
+    quelle: "Ergänzung (Dozent: erlaubt, wenn erklärbar)"
+    deckt: [l3.time, l3.format]
+    frage: |-
+      Miss, wie lange der Spieler bis zum Enter braucht, und gib die Zeit mit drei Nachkommastellen aus.
+    antwort: |-
+      ```python
+      import time
+
+      start = time.time()   # Ergänzung (nicht im Stoff)
+      input("Enter drücken! ")
+      dauer = time.time() - start
+      print(f"{dauer:.3f} s")
+      ```
+      Startzeit **direkt vor** `input()` merken, Endzeit **direkt danach** – dazwischen liegt nur das Warten auf Enter.
+    tests: [{p: 1, eingabe: "\n"}]
+
+  - typ: falle
+    quelle: "Ergänzung (Dozent: erlaubt, wenn erklärbar)"
+    deckt: [l3.time]
+    frage: |-
+      Was misst dieser Code wirklich – und was ist falsch?
+      ```python
+      import time
+
+      start = time.time()   # Ergänzung (nicht im Stoff)
+      time.sleep(2)
+      input("SPRING! ")
+      reaktion = time.time() - start
+      ```
+    antwort: |-
+      Die Startzeit steht **vor** der Pause; `reaktion` enthält die 2 s Wartezeit plus die Reaktion. `start = time.time()` gehört **nach** `time.sleep(…)`, unmittelbar vor das Signal.
+    tests: [{p: 1, eingabe: "\n"}]
+
+  # ---------------------------------------------------------------- input
+  - typ: code_ausgabe
+    folien: [49]
+    deckt: [l3.input]
+    frage: |-
+      Der Spieler drückt bei „RUHIG“ nur Enter. Was gibt der Code aus?
+      ```python
+      antwort = input()
+      print(antwort == "")
+      print(len(antwort))
+      ```
+    antwort: |-
+      ```text
+      True
+      0
+      ```
+      Nur Enter → `input()` liefert den **leeren String** `""`. Deshalb steht in `gegenrichtung` für „RUHIG“ der Eintrag `""`.
+    tests: [{p: 1, t: 1, eingabe: "\n"}]
+
+  - typ: code_fehler
+    folien: [49, 75]
+    deckt: [l3.input]
+    frage: |-
+      Der Spieler tippt `1.0`. Warum bricht der Code ab, und wie behebst du es?
+      ```python
+      zeitlimit = input()
+      dauer = 0.5
+      if dauer > zeitlimit:
+          print("zu langsam")
+      ```
+    antwort: |-
+      `input()` liefert **immer einen String**: `"1.0"`. `0.5 > "1.0"` vergleicht `float` mit `str` → `TypeError`. Sofort umwandeln: `zeitlimit = float(input())`.
+    tests: [{p: 1, eingabe: "1.0\n", abbruch: TypeError}]
+
+  - typ: unterschied
+    folien: [75]
+    deckt: [l3.input]
+    frage: |-
+      Der Spieler tippt `2.5`. Was passiert bei `int(input())`, was bei `float(input())`?
+    antwort: |-
+      | | `int(input())` | `float(input())` |
+      |---|---|---|
+      | Eingabe `2.5` | `ValueError` – `"2.5"` ist keine ganze Zahl | `2.5` |
+      | Eingabe `2,5` | `ValueError` | `ValueError` (Komma statt Punkt, F. 67) |
+
+      Für Koordinaten im Raster passt `int`, für Zeiten `float`. Gegen den `ValueError` hilft `try`/`except` (Stapel 5).
+
+  # ---------------------------------------------------------------- Fehlstart und Grenzen der Konsole
+  - typ: begruenden
+    quelle: "Level-Konzept"
+    deckt: [l3.fehlstart]
+    frage: |-
+      Warum wertest du eine Reaktion **unter 0,1 s** als Fehlstart?
+    antwort: |-
+      Drückt der Spieler Enter **schon während der Wartezeit**, landet der Tastendruck im **Eingabepuffer**. Das `input()` nach „SPRING!“ findet ihn sofort und kehrt fast ohne Verzögerung zurück. So schnell reagiert kein Mensch (Ergänzung: typisch sind etwa 0,2–0,3 s).
+
+  - typ: falle
+    quelle: "Level-Konzept"
+    deckt: [l3.fehlstart, l3.input]
+    frage: |-
+      Warum kann dein Programm eine Eingabe nicht nach 1,5 s abbrechen, und wie prüfst du das Zeitlimit stattdessen?
+    antwort: |-
+      `input()` **wartet immer**, bis Enter kommt; währenddessen läuft kein anderer Code. Darum misst du die Zeit bis zum Enter und vergleichst **danach**: `if dauer > zeitlimit_s:` → „zu langsam“. Echte Abbrüche bräuchten Threads, Signale (`signal.alarm`, nur macOS/Linux) oder Pakete wie `keyboard` – nichts davon im Stoff, im Kolloquium schwer zu erklären.
+
+  - typ: trace
+    folien: [125]
+    quelle: "Level-Konzept"
+    deckt: [l3.puffer]
+    frage: |-
+      Im Puffer liegen 2 alte Enter, dann drückt der Spieler nach 1,2 s. Wie oft läuft die Schleife, welchen Wert hat `dauer` jeweils danach?
+      ```python
+      import time
+
+      dauer = 0
+      while dauer < 0.3:
+          start = time.time()   # Ergänzung (nicht im Stoff)
+          input("Bereit? Enter ")
+          dauer = time.time() - start
+      ```
+    antwort: |-
+      | Durchlauf | `dauer` danach | Bedingung `dauer < 0.3` |
+      |---|---|---|
+      | 1 | ≈ 0,0 s (alter Tastendruck) | wahr → weiter |
+      | 2 | ≈ 0,0 s (alter Tastendruck) | wahr → weiter |
+      | 3 | ≈ 1,2 s (frisch gedrückt) | falsch → Ende |
+
+      Alte Tastendrücke werden verworfen, erst ein echtes Enter beendet die Schleife.
+    tests: [{p: 1, eingabe: "\n\n", nicht_ausfuehren: "braucht echte Wartezeiten – im Baustein b03 mit verzögerter Eingabe getestet"}]
+
+  - typ: code_luecke
+    folien: [125]
+    deckt: [l3.puffer]
+    frage: |-
+      Warum muss vor der Schleife `dauer = 0` stehen? Ergänze die Lücken.
+      ```python
+      import time
+
+      ___
+      while ___:
+          start = time.time()   # Ergänzung (nicht im Stoff)
+          input("Bereit? Enter ")
+          dauer = time.time() - start
+      ```
+    antwort: |-
+      ```python
+      import time
+
+      dauer = 0
+      while dauer < 0.3:
+          start = time.time()   # Ergänzung (nicht im Stoff)
+          input("Bereit? Enter ")
+          dauer = time.time() - start
+      ```
+      Der **Startwert** sorgt dafür, dass die Bedingung beim ersten Prüfen wahr ist und `dauer` überhaupt existiert – sonst `NameError` (Muster aus F. 125: `pin_eingabe = 0`).
+    tests: [{p: 2, eingabe: "\n", nicht_ausfuehren: "braucht echte Wartezeit – im Baustein b03 getestet"}]
+
+  # ---------------------------------------------------------------- Auswerten und Ausgeben
+  - typ: code_ausgabe
+    folien: [115]
+    deckt: [l3.bewerten]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def bewerten(reaktion, zeitlimit_s):
+          if reaktion < 0.1:
+              return "Fehlstart"
+          elif reaktion > zeitlimit_s:
+              return "zu langsam"
+          return "geschafft"
+      for zeit in [0.05, 0.9, 0.8]:
+          print(bewerten(zeit, 0.8))
+      ```
+    antwort: |-
+      ```text
+      Fehlstart
+      zu langsam
+      geschafft
+      ```
+      Genau **auf** dem Limit (0,8 > 0,8 ist falsch) zählt als geschafft. Willst du das anders, schreib `>=`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: falle
+    folien: [115]
+    deckt: [l3.bewerten, l3.fehlstart]
+    frage: |-
+      Was gibt der Code für `reaktion = 0.05` aus – und was ist falsch daran?
+      ```python
+      reaktion = 0.05
+      if reaktion <= 0.8:
+          print("geschafft")
+      elif reaktion < 0.1:
+          print("Fehlstart")
+      ```
+    antwort: |-
+      ```text
+      geschafft
+      ```
+      Nur der **erste** wahre Zweig läuft (F. 115). 0,05 ≤ 0,8 ist schon wahr, der Fehlstart-Zweig wird nie erreicht. Der Sonderfall (Fehlstart) muss **zuerst** geprüft werden.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [116]
+    aufgaben: ["3.11"]
+    deckt: [l3.format]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      reaktion = 0.4127
+      print(f"{reaktion:.3f} s")
+      print(f"{reaktion * 1000:.0f} ms")
+      print(int(reaktion * 1000), "ms")
+      ```
+    antwort: |-
+      ```text
+      0.413 s
+      413 ms
+      412 ms
+      ```
+      `:.3f` **rundet** nur in der Anzeige; `int()` **schneidet** die Nachkommastellen ab (412,7 → 412).
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    aufgaben: ["5.3"]
+    deckt: [l3.none]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def auswerten(reaktion):
+          if reaktion < 0.1:
+              return None
+          return reaktion
+      zeit = auswerten(0.05)
+      print(zeit)
+      print(zeit is not None)
+      ```
+    antwort: |-
+      ```text
+      None
+      False
+      ```
+      `None` steht für „kein Ergebnis“. Der Aufrufer prüft mit `if zeit is not None:`, bevor er mit der Zeit rechnet oder sie in die Bestenliste schreibt (Muster Aufg. 5.3).
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    aufgaben: ["5.3"]
+    deckt: [l3.none]
+    frage: |-
+      Warum gibt `reaktion_messen()` bei einem Fehlstart `None` zurück und nicht `0`?
+    antwort: |-
+      `0` sähe aus wie eine **unschlagbar schnelle** Reaktion und landete auf Platz 1 der Bestenliste. `None` heißt eindeutig „kein gültiges Ergebnis“; der Aufrufer muss es mit `is not None` abfangen und zieht ein Leben ab.
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: code_schreiben
+    aufgaben: ["2.5"]
+    folien: [104]
+    quelle: "Probe-Kolloquium"
+    deckt: [l3.randint, l3.sleep]
+    frage: |-
+      Prüfer: „Mit `randint(2, 5)` gibt es nur 2, 3, 4 oder 5 s – das zählt man mit.“ Ändere die Wartezeit auf 2,0 bis 5,0 s in Zehntelsekunden-Schritten.
+    antwort: |-
+      ```python
+      import random
+      import time
+
+      wartezeit = random.randint(20, 50) / 10   # 2.0, 2.1, … 5.0
+      time.sleep(wartezeit)
+      print("SPRING!")
+      ```
+      Ganze Zahl von 20 bis 50, geteilt durch 10: `/` liefert einen `float` (`//` wäre wieder ganzzahlig), und `time.sleep` nimmt auch Kommazahlen. Ergänzung: `random.uniform(2, 5)` ginge stufenlos, ist aber nicht im Stoff.
+    tests: [{p: 1}]
+
+  - typ: code_fehler
+    aufgaben: ["5.3"]
+    quelle: "Probe-Kolloquium"
+    deckt: [l3.none]
+    frage: |-
+      Nach einem Fehlstart ist `zeit` gleich `None`. Warum stürzt der Code ab?
+      ```python
+      zeit = None
+      if zeit > 0.5:
+          print("zu langsam")
+      ```
+    antwort: |-
+      `TypeError`: `None` lässt sich nicht mit einer Zahl vergleichen (ebenso wenig mit `f"{zeit:.3f}"` formatieren). Darum steht **vor** jedem Rechnen oder Speichern `if zeit is not None:` – ein Fehlstart darf nie in die Bestenliste.
+    tests: [{p: 1, abbruch: TypeError}]

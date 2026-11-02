@@ -1,0 +1,166 @@
+"Welche **drei Elemente** muss das Escape-Room-Programm laut Laboraufgabe enthalten, und welche **Wahl** kommt dazu?","**Pflicht:**
+1. Ausnahmebehandlungen
+2. Kontrollstrukturen
+3. Funktionen
+
+**Dazu mindestens eines von:** Dictionaries, Rekursionen oder Sortieralgorithmen.
+
+*Laboraufgabe F. 2*"
+"Zeig an **deinem Level**, wo jedes Pflicht- und Wahlelement steckt.","| Element | Stelle im Level |
+|---|---|
+| Ausnahmebehandlung | Koordinaten im Treibsand-Raster (`ValueError`), Bestenliste laden (`FileNotFoundError`), Ton abspielen |
+| Kontrollstrukturen | Runden-Schleifen, Vergleich mit dem Zeitlimit, Abfrage der Leben |
+| Funktionen | eine je Station + Hilfsfunktionen |
+| Dictionary | Stationen-Einstellungen, Tierlaute, `spieler` |
+| Sortieralgorithmus | Bestenliste nach Reaktionszeit |
+| Rekursion (optional) | Countdown `countdown(n)` mit Abbruchbedingung `n <= 0` |
+
+*Level-Konzept*"
+"Wie setzt sich die Bewertung der Laboraufgabe zusammen, und **wozu** wirst du im Kolloquium befragt?","- **Projektumsetzung** = Zulassung zum Kolloquium (**Ja/Nein**)
+- **Endnote** aus dem Abschlusskolloquium – als **Einzelnote**
+- Gefragt wird zu **deinem Quellcode**; deshalb muss im Code per **Kommentar** gekennzeichnet sein, welcher Anteil zu wem gehört.
+
+*Laboraufgabe F. 3*"
+"Bis wann und wohin wird das Programm abgegeben, und wann ist das Kolloquium?","- Abgabe: **29.11.2026, 23:59**, Upload in den **Stud.IP-Gruppenordner**
+- Kolloquium: **KW49/KW50**, Pflichttermin (genauer Termin steht noch aus)
+- Eigene Planung: Code-Freeze Do 26.11., Upload Sa 28.11.
+
+*Laboraufgabe F. 2–3; Labor-Einführung*"
+"Welche **vier Punkte** hat der Dozent zur Laboraufgabe schon geklärt?","1. Kleine **Ergänzungen** außerhalb des Stoffs sind erlaubt, **wenn du sie erklären kannst**.
+2. **Kommentarzeilen** werden im Kolloquium **nicht bewertet**.
+3. Die **600 Zeilen** sind nur ein **Richtwert**.
+4. **Sound und Bilder** bringen **Extrapunkte**.
+
+*Absprache mit dem Dozenten*"
+"Dein Code steckt voller guter Kommentare. Was bringen sie dir im Kolloquium – und was nicht?","Kommentare machen den Code lesbar und kennzeichnen deinen Anteil (Pflicht). **Bewertet werden sie nicht:** Punkte gibt es nur, wenn du den **Code selbst** erklären kannst – jede Zeile, jede Ergänzung, ohne vorzulesen.
+
+*Absprache mit dem Dozenten*"
+"Wie ist dein Level aufgebaut, und was bekommt `main.py` zurück?","- Eine Funktion `level_dschungel_reflexe(spieler)` steuert den Ablauf.
+- Jede Station ist eine eigene Funktion (Lianen-Sprung, Hängebrücke, Affen-Echo, Schlangen-Zauberformel, Treibsand-Raster), dazu Hilfsfunktionen.
+- Rückgabe: **`True`** (geschafft) oder **`False`**; `main.py` entscheidet damit, ob es weitergeht.
+
+*Level-Konzept*"
+"Schreib das Gerüst der Level-Funktion: Sie bekommt `spieler`, ruft `lianen_sprung(spieler)` und `haengebruecke(spieler)` auf und gibt zurück, ob noch Leben übrig sind.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_93ab9c7c34.png)
+Der Vergleich `> 0` ist schon ein `bool` – ein `if` mit `return True`/`return False` ist nicht nötig.
+
+*F. 171, 180 · Level-Konzept*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ffa8c27d24.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3f7098add0.png)
+Die Funktion bekommt **dasselbe** Dictionary wie der Aufrufer; was sie darin ändert, sieht auch `main.py`. Ergänzung: Das Skript zeigt nur die Neuzuweisung (F. 182), nicht das Ändern eines Dictionarys.
+
+*F. 182*"
+"Warum bleibt hier `leben` bei 3, obwohl die Funktion 1 abzieht?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b3d5525f5f.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f71ae265c5.png)
+Der Parameter `leben` ist eine **lokale** Variable der Funktion; `leben -= 1` weist ihr einen neuen Wert zu, die Variable außen bleibt unberührt (F. 182). Beim `spieler`-Dictionary wird dagegen der **Inhalt** des gemeinsamen Dictionarys geändert.
+
+*F. 182*"
+"Warum übergibst du `spieler` als Parameter, statt in jeder Station `global spieler` zu schreiben?","- Die **Schnittstelle** ist sichtbar: `level_dschungel_reflexe(spieler)` zeigt, womit das Level arbeitet.
+- Das Level lässt sich mit einem eigenen Test-Dictionary aufrufen.
+- `global` braucht man nur, um einer äußeren Variablen einen **neuen Wert zuzuweisen** (F. 183). Den Inhalt eines übergebenen Dictionarys darf die Funktion auch so ändern.
+
+*F. 183 · Level-Konzept*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_047c6f237a.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_dcf4492121.png)
+`global punkte` sagt: Gemeint ist die Variable außerhalb der Funktion – die Zuweisung wirkt auch dort.
+
+*F. 183*"
+"Der Code bricht ab. Warum, und wie behebst du es?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_00788ac5c9.png)","`punkte += 10` ist eine Zuweisung → `punkte` gilt in der Funktion als **lokal**, hat dort aber noch keinen Wert. Python meldet einen `UnboundLocalError` (Ergänzung: Name der Meldung nicht im Stoff).
+Lösung: `global punkte` als erste Zeile in die Funktion – oder `punkte` als Parameter übergeben und mit `return` zurückgeben.
+
+*F. 182, 183*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e2991154d3.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6fc008796d.png)
+Ein Vergleich liefert einen Wahrheitswert (`bool`); `return` gibt ihn direkt zurück.
+
+*F. 173*"
+"Was gibt der Code aus – und warum ist das für `main.py` gefährlich?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a3c447e130.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0ca34f1428.png)
+Wird kein `return` erreicht, liefert eine Funktion **`None`**. `if None:` verhält sich wie `False`, aber wer `== False` prüft, liegt daneben. Darum jeden Weg mit einem `return` beenden.
+
+*F. 173, 180*"
+"Ergänze `main.py`: Nur wenn das Level geschafft ist, soll die Ziffer erscheinen.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ceaa7ab9e1.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_9427922618.png)
+Der Rückgabewert `True`/`False` ist selbst die Bedingung – `== True` ist überflüssig.
+
+*F. 112 · Level-Konzept*"
+"Welche Fehlermeldung kommt, und warum?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6e4173fba8.png)","`NameError: name 'level_dschungel_reflexe' is not defined` – eine Funktion muss **erst definiert, dann aufgerufen** werden (F. 175). Python liest die Datei von oben nach unten.
+
+*F. 175*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_6dd3dd0077.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_b3172c14a1.png)
+`def` definiert nur. Erst der Aufruf `haengebruecke()` springt in die Funktion, die wiederum `lianen_sprung()` aufruft; danach geht es hinter der Aufrufstelle weiter (F. 178). Innerhalb einer Funktion darf eine **später** definierte Funktion aufgerufen werden, solange sie beim Aufruf existiert.
+
+*F. 178*"
+"Ordne aus deinem Level je ein Beispiel zu: **Prozedur, Funktion, Methode**.","| Begriff | Merkmal | Beispiel |
+|---|---|---|
+| Prozedur | kein Rückgabewert (Python liefert dann `None`) | `raster_zeigen(raster)` |
+| Funktion | liefert mit `return` einen Wert | `reaktion_messen(0.8)` → Zeit |
+| Methode | gehört zu einem Objekt, Aufruf mit Punkt | `eintraege.append(…)`, `datei.write(…)` |
+
+Heute sagt man meist zu allem „Funktion“ (F. 172).
+
+*F. 172–174*"
+"Ergänze den einzeiligen Docstring an der richtigen Stelle.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5211ad55ca.png)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_cb9837e46b.png)
+Der Docstring ist die **erste Zeile im Funktionsrumpf** und beschreibt, was die Funktion tut – und, falls sie etwas zurückgibt, was.
+
+*Aufg. 5.5*"
+"Was ist ein **Modul**, und wie ruft `main.py` dein Level auf, wenn es in `level_dschungel.py` steht?","Ein Modul ist eine **Python-Datei, die in Skripte oder andere Module importiert werden kann**.
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_66bca117fc.png)
+
+*Laborfolie IDE/venv F. 15*"
+"`level_dschungel.py`:
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_49dd012998.png)
+Was gibt `main.py` aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_fbbc5ad7ac.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_f406b324dd.png)
+`import` führt den Code auf oberster Ebene der Datei **sofort aus**. Testaufrufe gehören deshalb nicht dauerhaft in die Level-Datei. Ergänzung: `if __name__ == ""__main__"":` würde das lösen, ist aber nicht im Stoff.
+
+*Laborfolie IDE/venv F. 15*"
+"Der Code läuft. Welche **Code-Conventions** verletzt er?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_2ad07a42ac.png)","- Namen: **snake_case** und klein (`zeit_messen`, `zeitlimit`), **keine Umlaute/ß** (`groesste_zeit`, F. 58)
+- Leerzeichen um Operatoren und `=`: `zeitlimit < 1`, `zeitlimit * 2`
+- Rumpf von `if` in eine **eigene, eingerückte Zeile**; Klammern um die Bedingung weglassen
+
+*F. 58 · Code-Leitfaden 2.1, 2.6*"
+"Schreib den Kopf deiner Level-Datei und die Kennzeichnung über einer Station so, dass klar ist, dass der Code von dir stammt.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_3f19b02b13.png)
+Kennzeichnung per Kommentar verlangt die Laboraufgabe (F. 3); der Kopf folgt Aufg. 2.1.
+
+*Aufg. 2.1 · Laboraufgabe F. 3*"
+"Nenne die vier **Grundstrukturen** eines Programms mit je einem Beispiel aus deinem Level.","| Grundstruktur | Beispiel |
+|---|---|
+| sequentiell | `start = time.time()` – Anweisungen nacheinander |
+| auswählend | `if reaktion < 0.1:` Fehlstart |
+| iterativ | `for runde in range(1, 4):` |
+| springend | Funktionsaufruf `reaktion_messen(0.8)`, `return`, `break` |
+
+*F. 109*"
+"Welche Symbole hat ein **Programmablaufplan (PAP)**, und wofür steht jedes?","Ergänzung (DIN 66001; mit den Laborfolien aus KW43 abgleichen):
+| Symbol | Bedeutung |
+|---|---|
+| Oval (abgerundet) | Start / Ende |
+| Rechteck | Anweisung, Berechnung |
+| Raute | Verzweigung (Ja/Nein) |
+| Parallelogramm | Ein-/Ausgabe |
+| Rechteck mit doppelten Seitenlinien | Unterprogramm (Funktionsaufruf) |
+| Pfeil | Ablaufrichtung |
+
+*Ergänzung: DIN 66001 (PAP-Folien KW43 nicht im Projekt)*"
+"Erkläre den Ablauf der Reaktionsmessung anhand des PAP.
+![PAP der Funktion reaktion_messen](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/level_pap_reaktion.png)","1. Zufällige Wartezeit (`time.sleep`), dann Startzeit merken.
+2. Ein-/Ausgabe: „SPRING!“ zeigen, auf Enter warten.
+3. Reaktionszeit = jetzt − Start.
+4. Raute 1: unter 0,1 s → **Fehlstart**, Rückgabe `None`.
+5. Raute 2: über dem Zeitlimit → „zu langsam“, sonst „geschafft“.
+6. Rückgabe der Zeit, Ende.
+
+*Level-Konzept; Ergänzung: DIN 66001*"
+"Der Spieler schafft das Level und spielt es noch einmal (ohne Neustart von `main.py`). Was steht danach im Inventar – und wie verhinderst du das?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_e192429b0e.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_74d95be2ff.png)
+Jeder **erfolgreiche** Durchlauf hängt die Ziffer erneut an. Abhilfe: `if ""Ziffer 7"" not in spieler[""inventar""]:` vor dem `append` (`not in`, F. 119). Nach einem **Misserfolg** bleibt das Inventar leer, aber `leben` steht bei 0 – ohne Zurücksetzen scheitert das Level beim nächsten Versuch sofort. Darum Leben nicht unter 0 fallen lassen und mit der Gruppe festlegen, ob Leben pro Level neu gelten.
+
+*F. 119, 144 · Probe-Kolloquium*"
+"Prüfer: „Warum steht Ihre Konstante `dateiname = ""bestenliste.txt""` klein geschrieben?“","Verbindlich sind die **Code-Conventions des Kurses**: Der Code-Leitfaden (2.6, nach den Musterlösungen) schreibt konstante Werte als Variable **mit Kleinbuchstaben oben im Code**, z. B. `max_versuche = 5`. Das Skript verweist für Conventions auf **PEP 8** (F. 58), und PEP 8 empfiehlt für Konstanten GROSSBUCHSTABEN (`DATEINAME`). Ich folge bewusst der Kursvorgabe – und kann die Abweichung benennen.
+
+*F. 58 · Code-Leitfaden 2.6; Probe-Kolloquium*"

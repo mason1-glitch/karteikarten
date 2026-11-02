@@ -1,0 +1,464 @@
+# Kolloquium Laboraufgabe (Escape-Room) – Stapel 2: Dictionaries im Dschungel-Level
+# Quellen: Laborskript 2 „Dictionaries“ (F. = Folie des Laborskripts, steht in „quelle“),
+# Aufgabe 6.5 (items), Code-Leitfaden, Level-Konzept.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/level2_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/level2_dictionaries.csv
+matrix: ingenieurinformatik1/quellen/level2_abdeckung.md
+titel: "Level-Kolloquium 2: Dictionaries"
+id_praefix: "L2."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Der Code-Leitfaden nennt für Dictionaries nur `.items()` (Aufg. 6.5) als Methode; `pop()` und `del` stehen im Laborskript F. 8. Das direkte Durchlaufen `for taste in tiere:` steht in keiner Quelle wörtlich und ist als Ergänzung markiert."
+  - "Dass ein Dictionary die Einfügereihenfolge behält, steht nur als ergänzender Hinweis in der Markdown-Fassung des Laborskripts (F. 8); auf den Karten als Ergänzung markiert."
+
+inhalte:
+  - {id: l2.begriff, gewicht: 3, quelle: "Laborskript F. 3–4, 6", text: "Dictionary: Schlüssel (key) → Wert (value), geschweifte Klammern, leeres Dictionary {}", konstrukte: [dictionary]}
+  - {id: l2.zugriff, gewicht: 3, quelle: "Laborskript F. 6–7", text: "Lesen mit d[key], Hinzufügen/Ändern mit d[key] = wert, KeyError bei fehlendem Schlüssel", konstrukte: [index, zuweisung]}
+  - {id: l2.in, gewicht: 3, quelle: "Laborskript F. 7", text: "Sicherer Zugriff: if key in d (prüft nur Schlüssel)", konstrukte: [cmp:in]}
+  - {id: l2.loeschen, gewicht: 2, quelle: "Laborskript F. 8", text: "Löschen mit del d[key] und d.pop(key[, standard])", konstrukte: [kw:del, methode:pop]}
+  - {id: l2.verschachtelt, gewicht: 3, quelle: "Laborskript F. 11–13", text: "Verschachtelte Dictionaries: d[aussen][innen]; verschachtelter Zugriff von innen nach außen"}
+  - {id: l2.items, gewicht: 2, aufgaben: "6.5", text: "Alle Einträge durchlaufen: for schluessel, wert in d.items()", konstrukte: [methode:items, entpacken]}
+  - {id: l2.werte, gewicht: 2, quelle: "Level-Konzept", text: "Werte dürfen Zahlen, Listen oder Dictionaries sein; Zahlen als Schlüssel", konstrukte: [liste]}
+  - {id: l2.einsatz, gewicht: 3, quelle: "Level-Konzept", text: "Warum Dictionaries im Level: Stationen-Einstellungen, Tierlaute, Gegenrichtung, spieler; Zählen mit Dictionary"}
+
+karten:
+  # ---------------------------------------------------------------- Grundbegriff
+  - typ: begriff
+    quelle: "Laborskript Dictionaries F. 3–4, 6"
+    deckt: [l2.begriff]
+    frage: |-
+      Was ist ein **Dictionary**, und wie legst du ein leeres an?
+    antwort: |-
+      Ein Datentyp, der Paare aus **Schlüssel (key)** und **Wert (value)** speichert – wie ein Wörterbuch: Stichwort → Erklärung. Zugriff über den Schlüssel, nicht über eine Position.
+      ```python
+      tiere = {}                       # leeres Dictionary
+      tiere = {"a": "Affe", "t": "Tukan"}
+      ```
+    tests: [{p: 1}]
+
+  - typ: unterschied
+    quelle: "Laborskript Dictionaries F. 3; Level-Konzept"
+    deckt: [l2.begriff, l2.einsatz]
+    frage: |-
+      Affen-Echo: Warum speicherst du die Tierlaute als Dictionary und nicht als Liste?
+      ```python
+      tiere = {"a": "Affe", "t": "Tukan", "f": "Frosch"}
+      ```
+    antwort: |-
+      Der Spieler tippt eine **Taste**; mit `tiere["t"]` steht der Tiername sofort fest. In einer Liste `["Affe", "Tukan", "Frosch"]` gäbe es nur Positionen 0, 1, 2 – die Zuordnung Taste → Tier müsste man sich extra merken (Motivation Laborskript F. 3: eine Liste weiß nicht, welche Zahl zu welchem Tier gehört).
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- Zugriff
+  - typ: code_ausgabe
+    quelle: "Laborskript Dictionaries F. 6"
+    deckt: [l2.zugriff]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      spieler = {}
+      spieler["name"] = "Max"
+      spieler["leben"] = 3
+      spieler["leben"] = 2
+      print(spieler)
+      ```
+    antwort: |-
+      ```text
+      {'name': 'Max', 'leben': 2}
+      ```
+      Ein **neuer** Schlüssel wird angelegt, ein **vorhandener** überschrieben – jeder Schlüssel kommt nur einmal vor.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    quelle: "Laborskript Dictionaries F. 7"
+    deckt: [l2.zugriff]
+    frage: |-
+      Der Code bricht ab. Welche Fehlermeldung, und warum?
+      ```python
+      zeitlimit = {"lianen_sprung": 0.8, "haengebruecke": 1.5}
+      print(zeitlimit["Lianen_sprung"])
+      ```
+    antwort: |-
+      `KeyError: 'Lianen_sprung'` – den Schlüssel gibt es so nicht. Schlüssel sind **Groß-/Kleinschreibung-genau**: gespeichert ist `"lianen_sprung"`.
+    tests: [{p: 1, abbruch: KeyError}]
+
+  - typ: code_ausgabe
+    quelle: "Laborskript Dictionaries F. 12"
+    deckt: [l2.zugriff, l2.werte]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      zustand = {3: "voll", 2: "angeschlagen", 1: "kritisch"}
+      leben = 2
+      print(zustand[leben])
+      print(zustand[3])
+      ```
+    antwort: |-
+      ```text
+      angeschlagen
+      voll
+      ```
+      Auch **Zahlen** können Schlüssel sein (wie `digits` im Laborskript). `zustand[3]` heißt „Schlüssel 3“, **nicht** „Position 3“ – `zustand[0]` gäbe einen `KeyError`.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- in
+  - typ: code_schreiben
+    quelle: "Laborskript Dictionaries F. 7"
+    deckt: [l2.in]
+    frage: |-
+      Der Spieler tippt einen Stationsnamen. Gib das Zeitlimit aus – oder eine Meldung, wenn es die Station nicht gibt, **ohne** dass das Programm abstürzt.
+    antwort: |-
+      ```python
+      zeitlimit = {"lianen_sprung": 0.8, "haengebruecke": 1.5}
+      name = input()
+      if name in zeitlimit:
+          print(zeitlimit[name], "s")
+      else:
+          print(name, "gibt es nicht!")
+      ```
+      `in` prüft vorher, ob der Schlüssel existiert – so entsteht kein `KeyError`.
+    tests: [{p: 1, eingabe: "jaguar\n"}, {p: 1, eingabe: "haengebruecke\n"}]
+
+  - typ: falle
+    quelle: "Laborskript Dictionaries F. 7"
+    deckt: [l2.in]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      tiere = {"a": "Affe", "t": "Tukan"}
+      print("a" in tiere)
+      print("Affe" in tiere)
+      ```
+    antwort: |-
+      ```text
+      True
+      False
+      ```
+      `in` prüft bei einem Dictionary **nur die Schlüssel**, nicht die Werte.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    quelle: "Laborskript Dictionaries F. 7; Level-Konzept"
+    deckt: [l2.in, l2.werte]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      gegenrichtung = {"LINKS": ["d", "D"], "RECHTS": ["a", "A"]}
+      antwort = "D"
+      print(antwort in gegenrichtung["LINKS"])
+      print(antwort in gegenrichtung["RECHTS"])
+      ```
+    antwort: |-
+      ```text
+      True
+      False
+      ```
+      Der Wert zum Schlüssel `"LINKS"` ist eine **Liste**; `in` prüft dann, ob die Antwort in dieser Liste steht. So zählt `d` und `D` – ohne Methoden außerhalb des Stoffs.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Löschen
+  - typ: code_ausgabe
+    quelle: "Laborskript Dictionaries F. 8"
+    deckt: [l2.loeschen]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      tiere = {"a": "Affe", "t": "Tukan", "f": "Frosch"}
+      del tiere["t"]
+      print(tiere)
+      ```
+    antwort: |-
+      ```text
+      {'a': 'Affe', 'f': 'Frosch'}
+      ```
+      `del` entfernt den Eintrag mit diesem Schlüssel samt Wert.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    quelle: "Laborskript Dictionaries F. 8"
+    deckt: [l2.loeschen]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      tiere = {"a": "Affe", "t": "Tukan"}
+      weg = tiere.pop("a")
+      print(weg)
+      print(tiere.pop("x", "nicht da"))
+      print(tiere)
+      ```
+    antwort: |-
+      ```text
+      Affe
+      nicht da
+      {'t': 'Tukan'}
+      ```
+      `pop(key)` löscht und **gibt den Wert zurück**; mit zweitem Argument kommt bei fehlendem Schlüssel dieser Standardwert statt eines Fehlers.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    quelle: "Laborskript Dictionaries F. 8"
+    deckt: [l2.loeschen]
+    frage: |-
+      Was ist der Unterschied zwischen `del tiere["x"]` und `tiere.pop("x", None)`, wenn es `"x"` nicht gibt?
+    antwort: |-
+      | | `del tiere["x"]` | `tiere.pop("x", None)` |
+      |---|---|---|
+      | Schlüssel fehlt | `KeyError` | kein Fehler, liefert `None` |
+      | Rückgabe | nichts | den gelöschten Wert |
+
+  # ---------------------------------------------------------------- verschachtelt
+  - typ: code_ausgabe
+    quelle: "Laborskript Dictionaries F. 12–13"
+    deckt: [l2.verschachtelt]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      stationen = {
+          "haengebruecke": {"runden": 5, "zeitlimit_s": 1.5},
+          "affen_echo": {"runden": 3, "anzeige_s": 2}
+      }
+      print(stationen["affen_echo"]["runden"])
+      print(stationen["haengebruecke"])
+      ```
+    antwort: |-
+      ```text
+      3
+      {'runden': 5, 'zeitlimit_s': 1.5}
+      ```
+      Erst der **äußere** Schlüssel (Station), dann der **innere** (Einstellung). Ein äußerer Schlüssel allein liefert das ganze innere Dictionary.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    quelle: "Laborskript Dictionaries F. 13"
+    deckt: [l2.verschachtelt, l2.zugriff]
+    frage: |-
+      Beim Testen ist der Lianen-Sprung zu leicht. Setz das Zeitlimit auf 0,7 s und gib es aus.
+      ```python
+      stationen = {"lianen_sprung": {"zeitlimit_s": 0.8}}
+      ___ = 0.7
+      print(___)
+      ```
+    antwort: |-
+      ```python
+      stationen = {"lianen_sprung": {"zeitlimit_s": 0.8}}
+      stationen["lianen_sprung"]["zeitlimit_s"] = 0.7
+      print(stationen["lianen_sprung"]["zeitlimit_s"])
+      ```
+      Mit zwei Schlüsseln erreichst du den inneren Wert – lesen wie schreiben.
+    tests: [{p: 2}]
+
+  - typ: code_schreiben
+    quelle: "Laborskript Dictionaries F. 13"
+    deckt: [l2.verschachtelt]
+    frage: |-
+      Füge `stationen` eine neue Station `"gluehwuermchen"` mit 2 Runden und 1 s Anzeigezeit hinzu.
+    antwort: |-
+      ```python
+      stationen = {"treibsand": {"anzeige_s": 3}}
+      neu = {"runden": 2, "anzeige_s": 1}
+      stationen["gluehwuermchen"] = neu
+      print(stationen["gluehwuermchen"])
+      ```
+      Der neue äußere Schlüssel bekommt als Wert ein ganzes inneres Dictionary (wie ein neuer Tag im Kantinenmenü).
+    tests: [{p: 1}]
+
+  - typ: code_fehler
+    quelle: "Laborskript Dictionaries F. 7, 12"
+    deckt: [l2.verschachtelt, l2.zugriff]
+    frage: |-
+      Der Code bricht ab. Warum?
+      ```python
+      stationen = {
+          "haengebruecke": {"runden": 5, "zeitlimit_s": 1.5},
+          "affen_echo": {"runden": 3, "anzeige_s": 2}
+      }
+      print(stationen["affen_echo"]["zeitlimit_s"])
+      ```
+    antwort: |-
+      `KeyError: 'zeitlimit_s'` – der **äußere** Schlüssel stimmt, aber das innere Dictionary von `"affen_echo"` hat nur `"runden"` und `"anzeige_s"`. Innere Dictionaries müssen nicht alle dieselben Schlüssel haben – beim Zugriff musst du wissen, welche es gibt.
+    tests: [{p: 1, abbruch: KeyError}]
+
+  - typ: code_ausgabe
+    quelle: "Laborskript Dictionaries F. 11"
+    deckt: [l2.verschachtelt, l2.werte]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      tiere = {"a": "Affe", "t": "Tukan", "f": "Frosch"}
+      tasten = ["a", "t", "f"]
+      print(tiere[tasten[2]])
+      ```
+    antwort: |-
+      ```text
+      Frosch
+      ```
+      Ausgewertet wird **von innen nach außen**: `tasten[2]` → `"f"`, dann `tiere["f"]` → `"Frosch"` (wie `de_fr[en_de["red"]]` im Laborskript).
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- items und Durchlaufen
+  - typ: code_ausgabe
+    aufgaben: ["6.5"]
+    deckt: [l2.items]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      stationen = {"lianen_sprung": {"runden": 3},
+                   "treibsand": {"runden": 1}}
+      for name, werte in stationen.items():
+          print(name, "->", werte["runden"])
+      ```
+    antwort: |-
+      ```text
+      lianen_sprung -> 3
+      treibsand -> 1
+      ```
+      `items()` liefert je Durchlauf ein Paar (Schlüssel, Wert); `for name, werte in …` **entpackt** es in zwei Variablen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: trace
+    aufgaben: ["6.5"]
+    deckt: [l2.items]
+    frage: |-
+      Welche Werte haben `name` und `werte` in **jedem** Durchlauf?
+      ```python
+      stationen = {"affen_echo": {"runden": 3},
+                   "zauberformel": {"runden": 2}}
+      for name, werte in stationen.items():
+          pass
+      ```
+    antwort: |-
+      | Durchlauf | `name` | `werte` |
+      |---|---|---|
+      | 1 | `"affen_echo"` | `{"runden": 3}` |
+      | 2 | `"zauberformel"` | `{"runden": 2}` |
+
+      `werte` ist selbst ein Dictionary → `werte["runden"]` liefert die Zahl.
+    tests: [{p: 1}]
+
+  - typ: code_ausgabe
+    quelle: "Laborskript Dictionaries F. 13"
+    deckt: [l2.items]
+    frage: |-
+      Was gibt der Code aus? (Ergänzung: direktes Durchlaufen eines Dictionarys)
+      ```python
+      tiere = {"a": "Affe", "t": "Tukan"}
+      for taste in tiere:
+          print(taste, tiere[taste])
+      ```
+    antwort: |-
+      ```text
+      a Affe
+      t Tukan
+      ```
+      `for … in tiere` liefert die **Schlüssel**; den Wert holt `tiere[taste]`. Ergänzung: Im Stoff steht für das Durchlaufen nur `items()` (Aufg. 6.5) – beides ist gleichwertig.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    quelle: "Laborskript Dictionaries F. 8 (ergänzender Hinweis)"
+    deckt: [l2.loeschen, l2.begriff]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      tiere = {"a": "Affe", "t": "Tukan"}
+      del tiere["a"]
+      tiere["a"] = "Affe"
+      print(tiere)
+      ```
+    antwort: |-
+      ```text
+      {'t': 'Tukan', 'a': 'Affe'}
+      ```
+      Ergänzung: Ein Dictionary behält die **Reihenfolge, in der eingefügt wurde**. Nach dem Löschen und Neu-Einfügen steht `"a"` hinten.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Einsatz im Level
+  - typ: begruenden
+    quelle: "Level-Konzept; Laborskript Dictionaries F. 13"
+    deckt: [l2.einsatz, l2.verschachtelt]
+    frage: |-
+      Warum stehen die Einstellungen aller Stationen in **einem** verschachtelten Dictionary statt in Variablen wie `lianen_zeitlimit = 0.8`?
+    antwort: |-
+      - **Alles an einer Stelle**: Beim Testen änderst du nur dort die Werte.
+      - Der äußere Schlüssel sagt, **welche Station**, der innere, **welche Einstellung** – lesbar wie das Kantinenmenü.
+      - Eine Schleife über `items()` erreicht alle Stationen; eine Station bekommt ihren Eintrag als Ganzes übergeben.
+      - Es erfüllt das Wahlelement **Dictionary** der Laboraufgabe.
+
+  - typ: code_schreiben
+    quelle: "Laborskript Dictionaries F. 3"
+    deckt: [l2.einsatz, l2.in]
+    frage: |-
+      Zähle wie die Strichliste im Laborskript, wie oft jede Taste in `folge = "atafa"` vorkommt, und gib das Dictionary aus.
+    antwort: |-
+      ```python
+      folge = "atafa"
+      anzahl = {}
+      for taste in folge:
+          if taste in anzahl:
+              anzahl[taste] += 1
+          else:
+              anzahl[taste] = 1
+      print(anzahl)
+      ```
+      ```text
+      {'a': 3, 't': 1, 'f': 1}
+      ```
+      Gibt es den Schlüssel schon, wird erhöht, sonst mit 1 angelegt – ohne `in`-Prüfung gäbe `anzahl[taste] += 1` beim ersten Mal einen `KeyError`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: falle
+    quelle: "Laborskript Dictionaries F. 4"
+    deckt: [l2.begriff, l2.zugriff]
+    frage: |-
+      Was gibt der Code aus? (Ergänzung)
+      ```python
+      tiere = {"a": "Affe", "t": "Tukan", "a": "Ameise"}
+      print(tiere)
+      print(len(tiere))
+      ```
+    antwort: |-
+      ```text
+      {'a': 'Ameise', 't': 'Tukan'}
+      2
+      ```
+      Ergänzung: Ein Schlüssel kann nur **einmal** vorkommen; steht er doppelt, gewinnt der **letzte** Wert – ohne Fehlermeldung. Tippfehler bei Schlüsseln fallen so leicht nicht auf.
+    tests: [{p: 1, t: 1}]
+
+  - typ: anwendung
+    quelle: "Level-Konzept"
+    deckt: [l2.einsatz, l2.werte]
+    frage: |-
+      Nenne vier Dictionaries in deinem Level: Schlüssel → Wert.
+    antwort: |-
+      | Dictionary | Schlüssel | Wert |
+      |---|---|---|
+      | `stationen` | Stationsname | inneres Dictionary mit Runden/Zeitlimit |
+      | `tiere` | Taste (`"a"`) | Tiername (`"Affe"`) |
+      | `gegenrichtung` | Kippkommando (`"LINKS"`) | Liste erlaubter Tasten |
+      | `spieler` | `"name"`, `"leben"`, `"inventar"`, `"punkte"` | Daten des Spielers (von `main.py`) |
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: code_schreiben
+    quelle: "Probe-Kolloquium; Laborskript Dictionaries F. 12"
+    folien: [128]
+    deckt: [l2.einsatz, l2.verschachtelt]
+    frage: |-
+      Prüfer: „Ihr Dictionary sagt 5 Runden, die Hängebrücke läuft aber fest 3.“ Zeig, wie die Station Runden und Zeitlimit **aus dem Dictionary** liest.
+    antwort: |-
+      ```python
+      stationen = {"haengebruecke": {"runden": 5, "zeitlimit_s": 1.5}}
+      einstellung = stationen["haengebruecke"]
+      for runde in range(1, einstellung["runden"] + 1):
+          print("Runde", runde, "- Limit", einstellung["zeitlimit_s"], "s")
+      ```
+      ```text
+      Runde 1 - Limit 1.5 s
+      Runde 2 - Limit 1.5 s
+      Runde 3 - Limit 1.5 s
+      Runde 4 - Limit 1.5 s
+      Runde 5 - Limit 1.5 s
+      ```
+      `+ 1`, weil `range` vor dem Endwert aufhört. Steht im Code eine feste `3` oder `1.5`, widerspricht er dem Dictionary – dann ist das Dictionary nutzlos.
+    tests: [{p: 1, t: 1}]

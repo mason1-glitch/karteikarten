@@ -1,0 +1,607 @@
+# Kolloquium Laboraufgabe (Escape-Room) – Stapel 4: Mechaniken der Stationen
+# Affen-Echo (Strings bauen, vergleichen), Schlangen-Zauberformel (Zeichen vergleichen),
+# Hängebrücke (zusammengesetzte Bedingung), Treibsand-Raster (2D-Liste), Runden und Leben.
+# Quellen: Skript Info1 WS26 (folien = PDF-Seite), Aufgaben 3.7/3.8/4.3–4.5, Code-Leitfaden, Level-Konzept.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/level4_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/level4_stationen.csv
+matrix: ingenieurinformatik1/quellen/level4_abdeckung.md
+titel: "Level-Kolloquium 4: Mechaniken der Stationen"
+id_praefix: "L4."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Dass `or` die rechte Seite nicht mehr auswertet, wenn die linke schon wahr ist (Kurzschluss), steht nicht im Skript (F. 106 zeigt nur Wahrheitstafeln); auf den Karten als Ergänzung markiert."
+  - "`[[…] * 3] * 2` (Liste mal Zahl) ist nicht im Stoff; die Karte warnt davor und ist als Ergänzung markiert."
+
+inhalte:
+  - {id: l4.bauen, gewicht: 3, folie: "135", quelle: "Level-Konzept", text: "Folge als String aufbauen: folge += taste in einer for-Schleife; Zufallsindex", konstrukte: [aug:+=, kw:for, call:range, op:+]}
+  - {id: l4.durchlaufen, gewicht: 3, folie: "136, 143", text: "String/Liste durchlaufen: for zeichen in text, for i in range(len(text)), text[i]", konstrukte: [index, call:len, kw:in]}
+  - {id: l4.vergleich, gewicht: 3, folie: "105, 138", text: "Strings mit == vergleichen: exakt (Groß/Klein, Leerzeichen); replace(\" \", \"\")", konstrukte: [cmp:==, cmp:!=, methode:replace]}
+  - {id: l4.verdecken, gewicht: 2, folie: "53, 135", text: "Verdecken mit print(\"\\n\" * 40): String-Wiederholung, \\n ist ein Zeichen", konstrukte: [op:*, esc:\n, call:print]}
+  - {id: l4.tippfehler, gewicht: 3, quelle: "Level-Konzept", text: "Tippfehler zählen: IndexError bei zu kurzer Eingabe, Reihenfolge der Bedingungen bei or, Grenzen des Positionsvergleichs", konstrukte: [kw:or, cmp:>=]}
+  - {id: l4.bedingung, gewicht: 2, folie: "106", quelle: "Level-Konzept", text: "Zusammengesetzte Bedingung mit and (richtige Taste und schnell genug)", konstrukte: [kw:and, cmp:<=]}
+  - {id: l4.raster, gewicht: 3, folie: "150–153", aufgaben: "4.3", text: "2D-Liste per List-Comprehension anlegen, raster[reihe][spalte], mit verschachtelten Schleifen und end ausgeben", konstrukte: [listcomp, liste, print:end]}
+  - {id: l4.koordinaten, gewicht: 3, aufgaben: "4.3–4.5", text: "Spieler zählt ab 1, Python ab 0; Eingabe 0 → Index -1 ohne Fehler; Bereichsprüfung mit and", konstrukte: [op:-, cmp:<=]}
+  - {id: l4.suchen, gewicht: 2, folie: "152", aufgaben: "4.4", text: "Raster mit range(len()) durchsuchen und Position ausgeben", konstrukte: [kw:if]}
+  - {id: l4.runden, gewicht: 3, folie: "125, 128", aufgaben: "3.7, 3.8", text: "Runden und Leben: for bei fester Rundenzahl, while mit zwei Bedingungen, break", konstrukte: [kw:while, kw:break, kw:not, aug:-=]}
+
+karten:
+  # ---------------------------------------------------------------- Affen-Echo: Folge bauen und zeigen
+  - typ: code_ausgabe
+    folien: [135, 141]
+    deckt: [l4.bauen]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      tasten = ["a", "t", "f"]
+      folge = ""
+      for i in [2, 0, 0, 1]:
+          folge += tasten[i]
+      print(folge)
+      print(len(folge))
+      ```
+    antwort: |-
+      ```text
+      faat
+      4
+      ```
+      `folge += tasten[i]` hängt jedes Mal ein Zeichen **hinten an** (String-Verkettung). Im Level kommen die Indizes von `random.randint(0, 2)`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["2.5"]
+    folien: [128, 135]
+    deckt: [l4.bauen]
+    frage: |-
+      Erzeuge eine zufällige Affen-Folge aus den Tasten `a`, `t`, `f` mit der Länge `laenge = 4`.
+    antwort: |-
+      ```python
+      import random
+
+      tasten = ["a", "t", "f"]
+      laenge = 4
+      folge = ""                     # leer anfangen
+      for i in range(laenge):
+          folge += tasten[random.randint(0, 2)]
+      print(folge)
+      ```
+      Ohne `folge = ""` vor der Schleife gäbe `+=` einen `NameError`.
+    tests: [{p: 1}]
+
+  - typ: code_ausgabe
+    folien: [143, 151]
+    quelle: "Laborskript Dictionaries F. 6"
+    deckt: [l4.durchlaufen, l4.bauen]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      tiere = {"a": "Affe", "t": "Tukan", "f": "Frosch"}
+      for taste in "taf":
+          print(tiere[taste], end=" ")
+      print()
+      print("Ende")
+      ```
+    antwort: |-
+      ```text
+      Tukan Affe Frosch
+      Ende
+      ```
+      `for … in` durchläuft einen **String Zeichen für Zeichen**. `end=" "` verhindert den Zeilenumbruch; das leere `print()` beendet die Zeile.
+    tests: [{p: 1, t: 1}]
+
+  - typ: trace
+    folien: [128, 151]
+    deckt: [l4.bauen, l4.runden]
+    frage: |-
+      Welche Werte nimmt `laenge` an, wie oft läuft die innere Schleife jeweils, und was wird ausgegeben?
+      ```python
+      zaehler = 0
+      for laenge in range(3, 6):
+          for i in range(laenge):
+              zaehler += 1
+      print(zaehler)
+      ```
+    antwort: |-
+      | `laenge` | innere Durchläufe |
+      |---|---|
+      | 3 | 3 |
+      | 4 | 4 |
+      | 5 | 5 |
+      ```text
+      12
+      ```
+      `range(3, 6)` endet **vor** 6 – so wachsen die Affen-Folgen von 3 auf 5 Zeichen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    folien: [53, 135]
+    quelle: "Level-Konzept"
+    deckt: [l4.verdecken]
+    frage: |-
+      Wie verdeckst du die Affen-Folge, bevor der Spieler sie nachtippt, und warum so?
+    antwort: |-
+      ```python
+      print("\n" * 40)
+      ```
+      String-**Wiederholung** (`*`) erzeugt 40 Zeilenumbrüche und schiebt die Folge aus dem Sichtfeld – nur mit Stoff, auf jedem System gleich. Grenze: Wer hochscrollt, sieht sie. Ergänzung: `os.system("cls")`/`("clear")` hängt vom Betriebssystem ab und wirkt im PyCharm-Ausgabefenster nicht.
+    tests: [{p: 1}]
+
+  - typ: code_ausgabe
+    folien: [53, 135, 136]
+    deckt: [l4.verdecken]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      print("ab" * 3)
+      print(len("\n" * 40))
+      print("-" * 5 + "|")
+      ```
+    antwort: |-
+      ```text
+      ababab
+      40
+      -----|
+      ```
+      `\n` ist **ein** Zeichen (Escape-Sequenz), daher Länge 40.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Vergleichen
+  - typ: falle
+    folien: [105]
+    deckt: [l4.vergleich]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      folge = "atf"
+      print("atf" == folge)
+      print("ATF" == folge)
+      print("a t f" == folge)
+      print("atf " == folge)
+      ```
+    antwort: |-
+      ```text
+      True
+      False
+      False
+      False
+      ```
+      `==` vergleicht Strings **Zeichen für Zeichen**: Großbuchstaben, Leerzeichen – auch eines am Ende – machen den Unterschied.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [138]
+    deckt: [l4.vergleich]
+    frage: |-
+      Der Spieler soll die Folge auch mit Leerzeichen eintippen dürfen (`a t f`). Schreib den Vergleich nur mit Mitteln aus dem Stoff.
+    antwort: |-
+      ```python
+      folge = "atf"
+      eingabe = input().replace(" ", "")
+      print(eingabe == folge)
+      ```
+      `replace(" ", "")` ersetzt jedes Leerzeichen durch nichts; das Ergebnis wird neu zugewiesen (Strings sind unveränderlich, F. 138). Ergänzung: `strip()` entfernt Leerraum (Leerzeichen, Tabs, Zeilenumbrüche) nur **am Rand** und ist nicht im Stoff.
+    tests: [{p: 1, eingabe: "a t f\n"}]
+
+  # ---------------------------------------------------------------- Zauberformel: Tippfehler
+  - typ: code_ausgabe
+    folien: [136, 152]
+    deckt: [l4.durchlaufen, l4.tippfehler]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      spruch = "Zisch"
+      eingabe = "Zosch"
+      fehler = 0
+      for i in range(len(spruch)):
+          if eingabe[i] != spruch[i]:
+              fehler += 1
+      print(fehler)
+      ```
+    antwort: |-
+      ```text
+      1
+      ```
+      `range(len(spruch))` liefert die Indizes 0 bis 4; an jeder Stelle werden die Zeichen verglichen – nur Index 1 (`o` statt `i`) weicht ab.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [136]
+    deckt: [l4.tippfehler, l4.durchlaufen]
+    frage: |-
+      Der Spieler tippt nur `Zis`. Warum stürzt der Code ab?
+      ```python
+      spruch = "Zisch"
+      eingabe = "Zis"
+      fehler = 0
+      for i in range(len(spruch)):
+          if eingabe[i] != spruch[i]:
+              fehler += 1
+      ```
+    antwort: |-
+      Die Schleife läuft bis Index 4 (Länge des **Spruchs**), `eingabe` hat aber nur die Indizes 0–2. Bei `eingabe[3]` kommt `IndexError: string index out of range`.
+    tests: [{p: 1, abbruch: IndexError}]
+
+  - typ: code_ausgabe
+    folien: [106, 136]
+    deckt: [l4.tippfehler]
+    frage: |-
+      Was gibt der Code aus – und warum stürzt er jetzt nicht ab? (Ergänzung)
+      ```python
+      spruch = "Zisch"
+      eingabe = "Zis"
+      fehler = 0
+      for i in range(len(spruch)):
+          if i >= len(eingabe) or eingabe[i] != spruch[i]:
+              fehler += 1
+      print(fehler)
+      ```
+    antwort: |-
+      ```text
+      2
+      ```
+      Ergänzung (Kurzschluss): Ist die **linke** Seite von `or` schon wahr, wertet Python die rechte **nicht mehr aus**. Bei `i = 3` und `4` ist `i >= len(eingabe)` wahr → `eingabe[i]` wird nie gelesen, fehlende Zeichen zählen als Fehler.
+    tests: [{p: 1, t: 1}]
+
+  - typ: falle
+    folien: [106]
+    deckt: [l4.tippfehler]
+    frage: |-
+      Gleiche Idee, Bedingungen vertauscht. Was passiert bei `eingabe = "Zis"`? (Ergänzung)
+      ```python
+      spruch = "Zisch"
+      eingabe = "Zis"
+      fehler = 0
+      for i in range(len(spruch)):
+          if eingabe[i] != spruch[i] or i >= len(eingabe):
+              fehler += 1
+      ```
+    antwort: |-
+      Absturz mit `IndexError`: Jetzt wird `eingabe[i]` **zuerst** ausgewertet – bei `i = 3` existiert das Zeichen nicht. Ergänzung: Die schützende Prüfung muss bei `or`/`and` **links** stehen.
+    tests: [{p: 1, abbruch: IndexError}]
+
+  - typ: begruenden
+    quelle: "Level-Konzept"
+    deckt: [l4.tippfehler]
+    frage: |-
+      Der Spieler vergisst bei `Zisch` nur das `i` und tippt `Zsch`. Dein Code meldet 4 Fehler. Wie erklärst du das im Kolloquium?
+    antwort: |-
+      Der Code vergleicht **Position für Position**. Fehlt ein Zeichen, rutschen alle folgenden eine Stelle nach vorn und stimmen nicht mehr: `Z=Z`, `s≠i`, `c≠s`, `h≠c`, dazu fehlt Index 4 → 4 Fehler. Gezählt werden also **abweichende Stellen**, nicht vergessene Buchstaben – für eine Station „exakt abtippen“ ist das bewusst streng. Ergänzung: Echtes Fehlerzählen (Levenshtein-Distanz) wäre aufwendiger und nicht im Stoff.
+
+  - typ: code_ausgabe
+    folien: [136]
+    deckt: [l4.tippfehler]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      spruch = "Zisch"
+      eingabe = "Zischhh"
+      fehler = 0
+      if len(eingabe) > len(spruch):
+          fehler += len(eingabe) - len(spruch)
+      print(fehler)
+      ```
+    antwort: |-
+      ```text
+      2
+      ```
+      Die Schleife über `range(len(spruch))` sieht zu viel getippte Zeichen nie – sie werden darum getrennt gezählt.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Hängebrücke: zusammengesetzte Bedingung
+  - typ: code_ausgabe
+    folien: [106]
+    deckt: [l4.bedingung]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      gegenrichtung = {"LINKS": ["d", "D"], "RUHIG": [""]}
+      kommando = "LINKS"
+      antwort = "d"
+      dauer = 1.7
+      if antwort in gegenrichtung[kommando] and dauer <= 1.5:
+          print("Gehalten!")
+      else:
+          print("Abgerutscht!")
+      ```
+    antwort: |-
+      ```text
+      Abgerutscht!
+      ```
+      Die Taste stimmt, aber `and` verlangt, dass **beide** Bedingungen wahr sind – 1,7 s liegt über dem Limit.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    quelle: "Level-Konzept"
+    deckt: [l4.bedingung]
+    frage: |-
+      Warum gibt es bei der Hängebrücke das Kommando „RUHIG“, bei dem nur Enter richtig ist?
+    antwort: |-
+      Es macht aus einer Einfach- eine **Wahlreaktion**: Der Spieler muss das Kommando erst **lesen und entscheiden**, statt blind eine Taste zu hämmern. Technisch ist „nur Enter“ der leere String `""` in `gegenrichtung["RUHIG"]`.
+
+  # ---------------------------------------------------------------- Treibsand: 2D-Liste
+  - typ: code_ausgabe
+    folien: [150, 153]
+    deckt: [l4.raster]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      raster = [["o" for s in range(3)] for r in range(2)]
+      print(raster)
+      print(len(raster), len(raster[0]))
+      ```
+    antwort: |-
+      ```text
+      [['o', 'o', 'o'], ['o', 'o', 'o']]
+      2 3
+      ```
+      Die äußere Comprehension erzeugt die **Reihen**, die innere die **Felder** einer Reihe. `len(raster)` = Anzahl Reihen, `len(raster[0])` = Felder pro Reihe.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    folien: [151]
+    aufgaben: ["4.3"]
+    deckt: [l4.raster]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      raster = [["o" for s in range(3)] for r in range(2)]
+      raster[1][2] = "~"
+      for reihe in raster:
+          for feld in reihe:
+              print(feld, end=" ")
+          print()
+      ```
+    antwort: |-
+      ```text
+      o o o
+      o o ~
+      ```
+      `raster[1][2]` = Reihe 1, Feld 2 (beides ab 0 gezählt). Innere Schleife: Felder nebeneinander (`end=" "`), danach `print()` für die neue Zeile.
+    tests: [{p: 1, t: 1}]
+
+  - typ: falle
+    folien: [153]
+    deckt: [l4.raster]
+    frage: |-
+      Warum legst du das Raster mit einer List-Comprehension an und nicht so? (Ergänzung)
+      ```python
+      raster = [["o"] * 3] * 2   # Ergänzung: Liste mal Zahl
+      raster[1][2] = "~"
+      print(raster)
+      ```
+    antwort: |-
+      ```text
+      [['o', 'o', '~'], ['o', 'o', '~']]
+      ```
+      Ergänzung: `[…] * 2` legt **dieselbe** Reihe zweimal hinein – ändert man eine, ändern sich beide. Die List-Comprehension (F. 153) erzeugt für jede Reihe eine **neue** Liste.
+    tests: [{p: 1, t: 1}]
+
+  - typ: anwendung
+    aufgaben: ["4.3", "4.5"]
+    deckt: [l4.koordinaten]
+    frage: |-
+      Der Spieler gibt **Reihe 3, Spalte 4** ein. Welches Feld liest dein Code, und was passiert bei Reihe 0?
+      {{bild:level_raster_index|Spieler-Koordinaten und Python-Indizes im 5×5-Raster}}
+    antwort: |-
+      `raster[3 - 1][4 - 1]` = **`raster[2][3]`** – der Spieler zählt ab 1, Python ab 0.
+      Eingabe 0 → Index **-1** = letztes Element. Das ist **kein** Fehler, der Spieler landet unbemerkt in Reihe 5. Deshalb den Bereich 1–5 mit `if` prüfen.
+
+  - typ: code_ausgabe
+    folien: [141]
+    deckt: [l4.koordinaten]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      reihe = ["o", "o", "~", "o", "~"]
+      eingabe = 0
+      print(reihe[eingabe - 1])
+      eingabe = 6
+      print(reihe[eingabe - 1])
+      ```
+    antwort: |-
+      ```text
+      ~
+      IndexError: list index out of range
+      ```
+      Index -1 ist erlaubt (letztes Feld), Index 5 gibt es bei 5 Feldern nicht. Nur der **zweite** Fall löst einen Fehler aus – der erste muss mit `if` abgefangen werden.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    folien: [105, 106]
+    deckt: [l4.koordinaten]
+    frage: |-
+      Schreib die Bedingung: `zahl` ist nur gültig, wenn sie zwischen 1 und 5 liegt (beide eingeschlossen).
+    antwort: |-
+      ```python
+      zahl = 0
+      if zahl >= 1 and zahl <= 5:
+          print("gültig")
+      else:
+          print("Nur 1 bis 5!")
+      ```
+      Beide Grenzen einzeln vergleichen, mit `and` verbinden. Ergänzung: `1 <= zahl <= 5` (verkettete Vergleiche) geht in Python auch, ist aber nicht im Stoff.
+    tests: [{p: 1}]
+
+  - typ: code_ausgabe
+    folien: [152]
+    aufgaben: ["4.4"]
+    deckt: [l4.suchen]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      raster = [["o", "~", "o"], ["~", "o", "o"]]
+      for i in range(len(raster)):
+          for j in range(len(raster[i])):
+              if raster[i][j] == "~":
+                  print(f"Sand: Reihe {i + 1}, Spalte {j + 1}")
+      ```
+    antwort: |-
+      ```text
+      Sand: Reihe 1, Spalte 2
+      Sand: Reihe 2, Spalte 1
+      ```
+      Mit `range(len(…))` hast du die **Indizes** `i`, `j` – für die Ausgabe an den Spieler wieder `+ 1`.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["2.5", "4.3"]
+    deckt: [l4.suchen, l4.raster]
+    frage: |-
+      Setz in jede der 5 Reihen von `raster` genau ein Treibsandfeld `"~"` an eine zufällige Spalte.
+    antwort: |-
+      ```python
+      import random
+
+      raster = [["o" for s in range(5)] for r in range(5)]
+      for reihe in range(5):
+          raster[reihe][random.randint(0, 4)] = "~"
+      ```
+      Je Reihe ein Zufallsindex 0–4 (beide Grenzen möglich). So gibt es in jeder Reihe genau eine Falle.
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- Runden und Leben
+  - typ: code_ausgabe
+    aufgaben: ["3.8"]
+    deckt: [l4.runden]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      ergebnisse = [True, True, False, True]
+      for runde in range(len(ergebnisse)):
+          if not ergebnisse[runde]:
+              print("Runde", runde + 1, "verloren")
+              break
+          print("Runde", runde + 1, "geschafft")
+      ```
+    antwort: |-
+      ```text
+      Runde 1 geschafft
+      Runde 2 geschafft
+      Runde 3 verloren
+      ```
+      `break` beendet die Schleife **sofort** – Runde 4 läuft nicht mehr (wie beim Affen-Echo nach einer falschen Folge).
+    tests: [{p: 1, t: 1}]
+
+  - typ: trace
+    folien: [125]
+    aufgaben: ["3.7"]
+    deckt: [l4.runden]
+    frage: |-
+      Verfolge `runde` und `leben` Durchlauf für Durchlauf. Was wird ausgegeben?
+      ```python
+      ergebnisse = [False, True, False, False, True]
+      leben = 3
+      runde = 0
+      while leben > 0 and runde < len(ergebnisse):
+          if not ergebnisse[runde]:
+              leben -= 1
+          runde += 1
+      print("Leben:", leben, "| Runden:", runde)
+      ```
+    antwort: |-
+      | `runde` vorher | Ergebnis | `leben` danach |
+      |---|---|---|
+      | 0 | False | 2 |
+      | 1 | True | 2 |
+      | 2 | False | 1 |
+      | 3 | False | 0 → Schleife endet |
+      ```text
+      Leben: 0 | Runden: 4
+      ```
+      Die Schleife endet, sobald **eine** der beiden Bedingungen falsch ist; warum, prüfst du danach mit `if` (Aufg. 3.7).
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [125, 128]
+    deckt: [l4.runden]
+    frage: |-
+      Wann nimmst du in deinem Level `for`, wann `while`?
+    antwort: |-
+      | `for` | `while` |
+      |---|---|
+      | Anzahl der Durchläufe steht fest | Ende hängt von einer Bedingung ab |
+      | Hängebrücke: `for runde in range(1, 6)` | Eingabe wiederholen, bis sie gültig ist |
+      | jedes Feld des Rasters, jedes Zeichen des Spruchs | solange Leben übrig **und** Runden offen |
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: falle
+    folien: [119]
+    quelle: "Probe-Kolloquium"
+    deckt: [l4.bedingung, l4.vergleich]
+    frage: |-
+      Warum stehen die erlaubten Tasten als Liste `["d", "D"]` und nicht als String `"dD"`? Was gibt der Code aus?
+      ```python
+      print("" in "dD")
+      print("dD" in "dD")
+      print("" in ["d", "D"])
+      print("dD" in ["d", "D"])
+      ```
+    antwort: |-
+      ```text
+      True
+      True
+      False
+      False
+      ```
+      Bei einem **String** prüft `in`, ob ein **Teilstring** vorkommt – der leere String steckt in jedem String. Dann zählte bei „LINKS“ auch bloßes Enter. Bei einer **Liste** muss die Antwort **genau einem Element** gleichen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    quelle: "Probe-Kolloquium; Level-Konzept"
+    deckt: [l4.bedingung]
+    frage: |-
+      Prüfer: „Wie gewinnt man bei der Hängebrücke jedes ‚RUHIG‘, ohne hinzusehen?“ Was antwortest du, und was baust du ein?
+    antwort: |-
+      Wer dauernd Enter drückt, hat schon einen Tastendruck im Puffer: `input()` liefert sofort `""` – bei „RUHIG“ die richtige Antwort, und die Dauer liegt unter dem Limit. Abhilfe wie beim Lianen-Sprung: **Fehlstart-Prüfung** `if dauer < 0.1:` und/oder `eingabepuffer_leeren()` vor jeder Runde.
+
+  - typ: code_schreiben
+    quelle: "Probe-Kolloquium"
+    folien: [141]
+    deckt: [l4.bauen]
+    frage: |-
+      Prüfer: „Fügen Sie beim Affen-Echo einen Papagei auf Taste `p` hinzu.“ Welche Stellen änderst du?
+    antwort: |-
+      ```python
+      import random
+
+      tiere = {"a": "Affe", "t": "Tukan", "f": "Frosch", "p": "Papagei"}
+      tasten = ["a", "t", "f", "p"]
+      print("Tasten: a = Affe, t = Tukan, f = Frosch, p = Papagei")
+      folge = tasten[random.randint(0, len(tasten) - 1)]
+      ```
+      Dictionary, Tastenliste und Hinweis für den Spieler. Steht im Code noch `randint(0, 2)`, käme der Papagei **nie** vor – darum den Index aus `len(tasten) - 1` berechnen. `tiere` und `tasten` enthalten dieselben Tasten doppelt – vergisst du eine Stelle, passen sie nicht mehr zusammen; auch das kann der Prüfer ansprechen.
+    tests: [{p: 1}]
+
+  - typ: begruenden
+    quelle: "Probe-Kolloquium; Level-Konzept"
+    deckt: [l4.koordinaten]
+    frage: |-
+      Prüfer: „Wie groß ist die Chance, das Treibsand-Raster ohne Hinsehen zu schaffen?“
+    antwort: |-
+      Je Reihe ist **ein** von fünf Feldern Treibsand. Fragst du nur **ein** Feld ab, ist die Ratechance 4/5 = **80 %** – Merken lohnt kaum. Fragst du für **jede der 5 Reihen** ein Feld ab, sinkt sie auf 0,8⁵ ≈ **33 %**. Deshalb: einen ganzen Weg (eine Koordinate je Reihe) abfragen und bei Treibsand ein Leben abziehen.
+
+  - typ: code_schreiben
+    folien: [144, 153]
+    aufgaben: ["4.3"]
+    quelle: "Probe-Kolloquium"
+    deckt: [l4.raster]
+    frage: |-
+      Prüfer: „Schreiben Sie das 5×5-Raster ohne List-Comprehension, mit gewöhnlichen Schleifen.“
+    antwort: |-
+      ```python
+      raster = []
+      for reihe in range(5):
+          zeile = []                # je Reihe eine NEUE Liste
+          for spalte in range(5):
+              zeile.append("o")
+          raster.append(zeile)
+      print(len(raster), raster[4])
+      ```
+      ```text
+      5 ['o', 'o', 'o', 'o', 'o']
+      ```
+      Die Comprehension `[["o" for s in range(5)] for r in range(5)]` ist die **Kurzform** davon. Sie ist Stoff (F. 153, Aufg. 4.3) – falls der Prüfer das anders sieht, zeigst du diese Langform.
+    tests: [{p: 1, t: 1}]

@@ -41,6 +41,9 @@ Programmier-Karten (z. B. ingenieurinformatik1/quellen/): zusätzliche Schlüsse
     inhalte: [{id: …, text: …, gewicht: 1–3, folie: "74–75", aufgaben: "1.2, 2.4"}]
   je Karte:
     folien: [74]  und/oder  aufgaben: ["1.2"]   (Fußzeile: *F. 74 · Aufg. 1.2*; F. = PDF-Seite)
+    quelle: "Laborskript Dictionaries F. 6"   freie Quellenangabe für Material außerhalb des Skripts
+                                (Laborfolien, Laboraufgabe, Level-Konzept); ersetzt oder ergänzt folien
+    inhalte: … konstrukte: [kw:try, call:time.time]   Sprachelemente für werkzeuge/inventar.py
     tests:                      jeder ```python-Block wird ausgeführt (Blöcke über Frage+Antwort
       - {p: 1, t: 1}            durchgezählt): Python-Block 1 → Bildschirm == Text-Block 1
       - {p: 2}                  (Bildschirm = stdout, bei Absturz + letzte Zeile der Fehlermeldung;
@@ -96,6 +99,8 @@ TYPEN = {
     "code_fehler": "Finde den Fehler",
     "code_schreiben": "Schreib Code, der …",
     "unterschied": "Was ist der Unterschied …?",
+    "begruenden": "Warum so? (Entscheidung begründen)",
+    "trace": "Trace-Tabelle (Werte Schritt für Schritt)",
 }
 
 JANEIN = re.compile(r"^\W*(Ist|Sind|Gibt es|Kann|Können|Darf|Dürfen|Muss|Müssen|Hat|Haben|Wird|Werden|Stimmt|"
@@ -123,6 +128,8 @@ def fusszeile(k):
         teile.append(folien_text(k["folien"]))
     if k.get("aufgaben"):
         teile.append("Aufg. " + ", ".join(str(a) for a in k["aufgaben"]))
+    if k.get("quelle"):
+        teile.append(k["quelle"])
     return " · ".join(teile)
 
 
@@ -330,8 +337,8 @@ def pruefe_aufbau(q):
         for feld in ("typ", "deckt", "frage", "antwort"):
             if not k.get(feld):
                 fehler.append(f"{k['id']}: Feld „{feld}“ fehlt")
-        if not k.get("folien") and not k.get("aufgaben"):
-            fehler.append(f"{k['id']}: Feld „folien“ (oder „aufgaben“) fehlt")
+        if not k.get("folien") and not k.get("aufgaben") and not k.get("quelle"):
+            fehler.append(f"{k['id']}: Feld „folien“ (oder „aufgaben“/„quelle“) fehlt")
         pb, tb = code_bloecke(k)
         if q.get("max_codezeilen"):
             for n, code in enumerate(pb, 1):
@@ -473,7 +480,8 @@ def matrix_text(q, gedeckt):
               "| Konzept | Gewicht | Quelle | Karten | Typen |", "|---|---:|---|---|---|"]
         for i in inhalte:
             quelle = " · ".join(x for x in (f"F. {i['folie']}" if i.get("folie") else "",
-                                            f"Aufg. {i['aufgaben']}" if i.get("aufgaben") else "") if x)
+                                            f"Aufg. {i['aufgaben']}" if i.get("aufgaben") else "",
+                                            i.get("quelle", "")) if x)
             typen = sorted({karten[kid]["typ"] for kid in gedeckt[i["id"]]})
             z.append(f"| {i['text']} | {i['gewicht']} | {quelle} | {', '.join(gedeckt[i['id']]) or '**fehlt**'} | "
                      f"{len(typen)} |")

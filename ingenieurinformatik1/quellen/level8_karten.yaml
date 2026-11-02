@@ -1,0 +1,326 @@
+# Kolloquium Laboraufgabe (Escape-Room) – Stapel 8: gemischter Kolloquiums-Stapel
+# Erklären, begründen, live ändern, Fehler suchen – quer über alle Stationen. Diesen Stapel in der
+# Woche vor dem Kolloquium gemischt mit den anderen wiederholen.
+# Quellen: Skript Info1 WS26 (folien = PDF-Seite), Code-Leitfaden, Laboraufgabe, Level-Konzept.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/level8_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/level8_kolloquium-mix.csv
+matrix: ingenieurinformatik1/quellen/level8_abdeckung.md
+titel: "Level-Kolloquium 8: Erklären, Begründen, Ändern"
+id_praefix: "L8."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Wie das Kolloquium abläuft (Dauer, ob live am Rechner geändert wird), steht nicht auf den Folien. Die Karten bereiten auf beides vor: mündlich erklären und Code auf Zuruf ändern. Dafür gibt es zusätzlich die Übungen in level_kolloquium-training.md."
+
+inhalte:
+  - {id: l8.erklaeren, gewicht: 3, quelle: "Laboraufgabe F. 3; Level-Konzept", text: "Eine Funktion in fünf Punkten erklären: Zweck, Parameter, Ablauf, Rückgabe, Sonderfälle"}
+  - {id: l8.aendern, gewicht: 3, quelle: "Level-Konzept", text: "Auf Zuruf ändern: Leben, neue Station, Rastergröße – wo genau?"}
+  - {id: l8.struktur, gewicht: 2, folie: "170", text: "Hilfsfunktionen statt Kopien; feste Zahlen als Variable; Kommentar, Docstring, auskommentierter Code"}
+  - {id: l8.datentypen, gewicht: 2, folie: "64–68", text: "Datentypen im Level: int, float, str, bool, None, list, dict; type()", konstrukte: [call:type]}
+  - {id: l8.tupel, gewicht: 2, folie: "155", aufgaben: "5.2, 5.6", text: "Tupel: unveränderlich, runde Klammern; return a, b liefert ein Tupel, Entpacken", konstrukte: [tupel, entpacken]}
+  - {id: l8.gueltigkeit, gewicht: 2, folie: "182", text: "Lokale Variablen gleichen Namens in verschiedenen Funktionen; Schleifenvariable gilt nach der Schleife weiter"}
+  - {id: l8.fehlersuche, gewicht: 2, folie: "59, 177–178", aufgaben: "5.1, 5.2", text: "Traceback lesen, Trace-Ausgaben, auskommentieren"}
+  - {id: l8.grenzfaelle, gewicht: 2, quelle: "Level-Konzept", text: "Grenzfälle durchdenken: vorgetippte Eingaben, doppelte Tasten, leere Bestenliste"}
+  - {id: l8.algorithmus, gewicht: 1, folie: "42", text: "Algorithmus: endlich, eindeutig, reproduzierbar – und der Zufall im Level"}
+
+karten:
+  # ---------------------------------------------------------------- Erklären
+  - typ: aufzaehlung
+    quelle: "Level-Konzept"
+    deckt: [l8.erklaeren]
+    frage: |-
+      Mit welchen **fünf Punkten** erklärst du im Kolloquium jede deiner Funktionen?
+    antwort: |-
+      1. **Zweck** – was sie im Spiel leistet
+      2. **Parameter** – was sie bekommt
+      3. **Ablauf** – die Schritte in Reihenfolge (Schleifen, Verzweigungen)
+      4. **Rückgabe** – was sie zurückgibt (oder nur ausgibt)
+      5. **Sonderfälle** – falsche Eingaben, Ausnahmen, Grenzwerte
+
+  - typ: anwendung
+    quelle: "Baustein b03; Level-Konzept"
+    deckt: [l8.erklaeren]
+    frage: |-
+      Erkläre `reaktion_messen(zeitlimit_s)` in den fünf Punkten.
+    antwort: |-
+      1. **Zweck:** misst die Reaktionszeit beim Lianen-Sprung.
+      2. **Parameter:** `zeitlimit_s` – erlaubte Zeit in s (aus dem Stationen-Dictionary).
+      3. **Ablauf:** zufällig 2–5 s warten → Startzeit → „SPRING!“ + `input()` → Differenz bilden → bewerten.
+      4. **Rückgabe:** Zeit in s als `float`, bei Fehlstart `None`.
+      5. **Sonderfälle:** Enter im Puffer (< 0,1 s) = Fehlstart; zu langsam wird erst nach dem Enter erkannt.
+
+  - typ: anwendung
+    quelle: "Baustein b08; Level-Konzept"
+    deckt: [l8.erklaeren]
+    frage: |-
+      Erkläre `bestenliste_laden()` in den fünf Punkten.
+    antwort: |-
+      1. **Zweck:** holt die gespeicherten Bestzeiten aus der Datei.
+      2. **Parameter:** keine (Dateiname steht als Variable oben im Code).
+      3. **Ablauf:** Datei mit `"r"` öffnen → jede Zeile mit `find(";")` und Slicing zerlegen → Dictionary `{"name", "zeit"}` an die Liste hängen → Datei schließen.
+      4. **Rückgabe:** Liste von Dictionaries (evtl. leer).
+      5. **Sonderfälle:** Datei fehlt (`FileNotFoundError` → leere Liste), kaputte Zeile (`ValueError` → überspringen).
+
+  - typ: anwendung
+    quelle: "Level-Konzept"
+    deckt: [l8.erklaeren, l8.algorithmus]
+    frage: |-
+      Beschreib den Gesamtablauf deines Levels von Anfang bis Ende (so wie dein PAP).
+    antwort: |-
+      1. Intro-Text, Leben anzeigen
+      2. Lianen-Sprung (Einfachreaktion)
+      3. Hängebrücke (Wahlreaktion)
+      4. Affen-Echo (Folge merken)
+      5. Schlangen-Zauberformel (genau tippen)
+      6. Treibsand-Raster (Koordinaten merken)
+      7. Outro: Ziffer fürs Tempeltor, beste Zeit in die Bestenliste, Top 5 anzeigen
+      8. Rückgabe `True`/`False` an `main.py`
+
+      Jeder Fehler kostet ein Leben; bei 0 Leben endet das Level (Gruppenabsprache).
+
+  # ---------------------------------------------------------------- Ändern auf Zuruf
+  - typ: anwendung
+    quelle: "Level-Konzept"
+    deckt: [l8.aendern]
+    frage: |-
+      Kolloquium: „Der Spieler soll 5 statt 3 Leben haben.“ Wo änderst du das – und warum nicht in deinem Level?
+    antwort: |-
+      Im **`spieler`-Dictionary, das `main.py` anlegt**: `"leben": 5`. Dein Level liest nur `spieler["leben"]` und zieht ab – es enthält keine feste 3. Genau dafür ist die Schnittstelle da: Daten des Spielers gehören `main.py`.
+
+  - typ: anwendung
+    quelle: "Level-Konzept"
+    deckt: [l8.aendern]
+    frage: |-
+      Kolloquium: „Füge eine sechste Station Glühwürmchen hinzu.“ Welche drei Stellen fasst du an?
+    antwort: |-
+      1. **Einstellungen:** neuer Eintrag `stationen["gluehwuermchen"] = {"runden": 2, "anzeige_s": 1}`
+      2. **Neue Funktion** `gluehwuermchen(spieler)` mit Docstring und Autor-Kennzeichnung
+      3. **Aufruf** in `level_dschungel_reflexe(spieler)` an der passenden Stelle
+
+      Alles andere (Leben, Bestenliste, Rückgabe) bleibt unverändert.
+
+  - typ: code_schreiben
+    folien: [153]
+    quelle: "Level-Konzept"
+    deckt: [l8.aendern, l8.struktur]
+    frage: |-
+      Kolloquium: „Mach das Treibsand-Raster 4×4.“ Wie hast du den Code gebaut, damit das **eine** Änderung ist?
+    antwort: |-
+      ```python
+      import random
+
+      groesse = 4   # einzige Stelle für die Rastergröße
+      raster = [["o" for s in range(groesse)]
+                for r in range(groesse)]
+      for reihe in range(groesse):
+          raster[reihe][random.randint(0, groesse - 1)] = "~"
+      print(len(raster), len(raster[0]))
+      ```
+      Die Größe steht **einmal** als Variable; Raster, Zufallsindex und die Bereichsprüfung `zahl_einlesen(1, groesse)` lesen sie.
+    tests: [{p: 1}]
+
+  - typ: begruenden
+    quelle: "Code-Leitfaden 2.6"
+    deckt: [l8.struktur]
+    frage: |-
+      Warum schreibst du `groesse = 5` oben in den Code, statt überall direkt `5` einzusetzen?
+    antwort: |-
+      Eine nackte `5` an mehreren Stellen ist schwer zu ändern: Vergisst du eine, passt der Bereich nicht mehr zum Raster (z. B. `IndexError` oder unerreichbare Felder). Mit einem sprechenden Namen steht die Bedeutung im Code, und eine Änderung wirkt überall (Leitfaden 2.6: Konstanten als Variable oben).
+
+  - typ: begruenden
+    folien: [170]
+    deckt: [l8.struktur]
+    frage: |-
+      Warum gibt es Hilfsfunktionen wie `zahl_einlesen()` und `eingabepuffer_leeren()`, statt den Code in jede Station zu kopieren?
+    antwort: |-
+      Programmteile, die mehrfach gebraucht werden, **schreibt man nur einmal** (F. 170). Ein Fehler wird an **einer** Stelle behoben, die Stationen bleiben kurz und lesbar, und die Hilfsfunktion lässt sich einzeln testen.
+
+  - typ: unterschied
+    folien: [59, 60]
+    aufgaben: ["5.5"]
+    deckt: [l8.struktur, l8.fehlersuche]
+    frage: |-
+      Was ist der Unterschied zwischen Kommentar, Docstring und auskommentiertem Code?
+    antwort: |-
+      | | Beispiel | wofür |
+      |---|---|---|
+      | Kommentar | `# Startwert außerhalb des Bereichs` | erklärt das **Warum** einer Zeile |
+      | Docstring | `"""Gibt die Reaktionszeit zurück."""` | erste Zeile der Funktion: **was** sie tut |
+      | auskommentiert | `#print("DEBUG:", dauer)` | Code vorübergehend abschalten, z. B. zur Fehlersuche |
+
+  # ---------------------------------------------------------------- Datentypen und Gültigkeit
+  - typ: code_ausgabe
+    folien: [66]
+    deckt: [l8.datentypen]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      werte = [3, 0.412, "atf", True, None, [1], {"a": 1}]
+      for wert in werte:
+          print(type(wert))
+      ```
+    antwort: |-
+      ```text
+      <class 'int'>
+      <class 'float'>
+      <class 'str'>
+      <class 'bool'>
+      <class 'NoneType'>
+      <class 'list'>
+      <class 'dict'>
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: anwendung
+    folien: [64, 65, 66, 67, 68]
+    deckt: [l8.datentypen]
+    frage: |-
+      Welche Datentypen kommen in deinem Level vor – je ein Beispiel?
+    antwort: |-
+      | Typ | Beispiel |
+      |---|---|
+      | `int` | `spieler["leben"]`, Koordinaten |
+      | `float` | Reaktionszeit, Zeitlimit |
+      | `str` | Affen-Folge, Spruch, Eingabe |
+      | `bool` | Rückgabe des Levels, Merker `eingabe_ok` |
+      | `None` | Fehlstart |
+      | `list` | Raster, Bestenliste |
+      | `dict` | `stationen`, `tiere`, `spieler` |
+
+  - typ: code_ausgabe
+    folien: [155]
+    aufgaben: ["5.2"]
+    deckt: [l8.tupel]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def ergebnis_station():
+          return 2, 0.412
+
+      fehler, zeit = ergebnis_station()
+      print(fehler, zeit)
+      print(ergebnis_station())
+      ```
+    antwort: |-
+      ```text
+      2 0.412
+      (2, 0.412)
+      ```
+      `return a, b` gibt **ein Tupel** zurück; `fehler, zeit = …` **entpackt** es in zwei Variablen (Aufg. 5.2). Ohne Entpacken sieht man das Tupel mit runden Klammern.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [155]
+    deckt: [l8.tupel]
+    frage: |-
+      Was unterscheidet ein **Tupel** von einer **Liste** – und wo bietet sich in deinem Level ein Tupel an?
+    antwort: |-
+      | Liste `[…]` | Tupel `(…)` |
+      |---|---|
+      | veränderbar (`append`, Zuweisung an `liste[i]`) | **unveränderbar** |
+      | dynamisch | performanter |
+
+      Im Level: feste Daten, die sich nie ändern, z. B. Testeinträge `("Max", 0.412)` oder zwei Rückgabewerte `return fehler, zeit`. Das Raster muss eine **Liste** sein, weil Felder geändert werden.
+
+  - typ: code_ausgabe
+    folien: [182]
+    deckt: [l8.gueltigkeit]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def station_a():
+          fehler = 2
+          return fehler
+      def station_b():
+          fehler = 5
+          return fehler
+      fehler = 0
+      print(station_a() + station_b(), fehler)
+      ```
+    antwort: |-
+      ```text
+      7 0
+      ```
+      Jede Funktion hat ihre **eigene lokale** Variable `fehler`; gleiche Namen in verschiedenen Funktionen stören sich nicht, und das `fehler` außerhalb bleibt 0.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unstimmigkeit
+    folien: [182]
+    quelle: "Code-Leitfaden 4"
+    deckt: [l8.gueltigkeit]
+    frage: |-
+      Das Skript (F. 182) sagt, Variablen in **Schleifen** seien lokal. Was gibt der Code aus?
+      ```python
+      for runde in range(1, 4):
+          letzte = runde * 10
+      print(runde, letzte)
+      ```
+    antwort: |-
+      ```text
+      3 30
+      ```
+      Die Aussage stimmt nur für **Funktionen**. Schleifen haben in Python keinen eigenen Gültigkeitsbereich – Schleifenvariable und alles darin Zugewiesene gelten nach der Schleife weiter (Code-Leitfaden, Abschnitt 4) – sofern die Schleife mindestens einmal lief; sonst gibt es sie gar nicht (`NameError`).
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Fehlersuche
+  - typ: begriff
+    folien: [175]
+    aufgaben: ["5.1"]
+    deckt: [l8.fehlersuche]
+    frage: |-
+      Dein Spiel stürzt mit einem Traceback ab. Wie liest du ihn?
+    antwort: |-
+      **Von unten nach oben:**
+      1. Letzte Zeile: **Art und Meldung** (`IndexError: list index out of range`).
+      2. Darüber: **Datei und Zeilennummer**, in der es passiert ist, mit der Codezeile.
+      3. Weiter oben: über welche Funktionsaufrufe das Programm dorthin kam.
+
+  - typ: code_schreiben
+    folien: [177, 178]
+    aufgaben: ["5.2", "2.1"]
+    deckt: [l8.fehlersuche]
+    frage: |-
+      Die Hängebrücke verhält sich seltsam. Wie machst du den Ablauf sichtbar, ohne einen Debugger?
+    antwort: |-
+      ```python
+      def haengebruecke(spieler):
+          print(">>> haengebruecke gestartet")  # Trace
+          dauer = 1.7
+          #print("DEBUG: dauer =", dauer)  # bei Bedarf
+          print("<<< haengebruecke beendet")
+      ```
+      **Trace-Ausgaben** am Anfang und Ende jeder Funktion zeigen die Aufrufreihenfolge (F. 177–178, Aufg. 5.2); **Debug-Zeilen** mit Zwischenwerten kommentiert man nach der Fehlersuche aus (F. 59, Aufg. 2.1).
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- Grenzfälle
+  - typ: falle
+    quelle: "Level-Konzept"
+    deckt: [l8.grenzfaelle]
+    frage: |-
+      Während das Treibsand-Raster (oder die Affen-Folge) noch sichtbar ist, tippt der Spieler schon seine Antwort und Enter. Was passiert beim folgenden `input()` – und was tust du dagegen?
+    antwort: |-
+      Die Eingabe liegt im **Eingabepuffer**; das nächste `input()` nimmt sie sofort – der Spieler hat **abgeschrieben**, während er Raster oder Folge sah – Merken entfällt. Abhilfe: vor der Abfrage `eingabepuffer_leeren()` aufrufen (verwirft alles, was schneller als 0,3 s kommt) oder es als erlaubten Trick bewusst zulassen und im Kolloquium so begründen.
+
+  - typ: anwendung
+    quelle: "Level-Konzept"
+    deckt: [l8.grenzfaelle]
+    frage: |-
+      Welche Grenzfälle testest du vor der Abgabe gezielt? Nenne fünf.
+    antwort: |-
+      - Enter **vor** „SPRING!“ (Fehlstart) und mehrfach Enter (Puffer)
+      - Koordinaten `0`, `6`, `x`, `2,5`, leere Eingabe
+      - Folge mit Leerzeichen oder Großbuchstaben
+      - Spruch zu kurz / zu lang
+      - **erster** Spielstart ohne `bestenliste.txt` und eine kaputte Zeile darin
+
+  - typ: begriff
+    folien: [42]
+    deckt: [l8.algorithmus]
+    frage: |-
+      Welche Eigenschaften muss ein **Algorithmus** laut Skript haben – und wie passt der Zufall in deinem Level dazu?
+    antwort: |-
+      Er muss bei jeder Eingabe nach **endlich vielen Schritten** enden, einen **eindeutigen Ablauf** und ein **reproduzierbares Ergebnis** haben (F. 42).
+      Der Zufall ist eine weitere **Eingabe**: Mit gleichem `random.seed` und gleichen Tastendrücken nimmt das Level denselben Ablauf (nur die gemessenen Zeiten hängen von der echten Uhr ab). Jede Schleife hat eine feste Rundenzahl oder endet, sobald eine gültige Eingabe kommt – solange der Spieler falsch tippt, fragt das Programm weiter.

@@ -1,0 +1,691 @@
+# Kolloquium Laboraufgabe (Escape-Room) – Stapel 6: Bestenliste (Dateien), Sortieralgorithmus, Rekursion
+# Quellen: Skript Info1 WS26 Kap. 6.1 (folien = PDF-Seite), Kap. 4 (Listen, sort), Code-Leitfaden 1.8,
+# Level-Konzept. Sortieralgorithmen und Rekursion kommen im Labor erst in KW45 (Vorgriff).
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/level6_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/level6_bestenliste-sortieren.csv
+matrix: ingenieurinformatik1/quellen/level6_abdeckung.md
+titel: "Level-Kolloquium 6: Bestenliste, Sortieralgorithmus, Rekursion"
+id_praefix: "L6."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Welcher Sortieralgorithmus im Labor (KW45) gezeigt wird, ist noch offen. Die Karten nehmen Bubble Sort, den gängigsten Einstiegsalgorithmus; nach dem Labor mit den Folien abgleichen und ggf. Karten zum dort gezeigten Verfahren ergänzen."
+  - "Rekursion ist im Level optional (Countdown); auch hier Vorgriff auf KW45."
+  - "Dateiformat der Bestenliste: eine Zeile „Name;Zeit“ je Eintrag – eigene Festlegung im Level-Konzept."
+
+inhalte:
+  - {id: l6.schreiben, gewicht: 3, folie: "193–194", text: "Eintrag anhängen: open(…, \"a\"), write() nur mit str, \\n selbst setzen, close()", konstrukte: [call:open, methode:write, methode:close, call:str]}
+  - {id: l6.modi, gewicht: 3, folie: "189, 193", text: "Dateimodi r, w, a: was passiert mit vorhandenem Inhalt, was bei fehlender Datei", konstrukte: []}
+  - {id: l6.lesen, gewicht: 3, folie: "190–191", text: "Zeilenweise lesen mit for zeile in datei; jede Zeile endet mit \\n; read()", konstrukte: [methode:read, methode:readlines, methode:readline]}
+  - {id: l6.zerlegen, gewicht: 3, folie: "137–138", text: "Zeile zerlegen mit find(\";\") und Slicing; float() verträgt das \\n", konstrukte: [methode:find, slicing, call:float]}
+  - {id: l6.kaputt, gewicht: 2, quelle: "Level-Konzept", text: "Kaputte Zeile mit try/except ValueError oder continue überspringen", konstrukte: [kw:continue, op:-x]}
+  - {id: l6.eintraege, gewicht: 2, quelle: "Level-Konzept", text: "Einträge als Liste von Dictionaries {\"name\", \"zeit\"}; Zugriff eintraege[i][\"zeit\"]", konstrukte: [methode:append]}
+  - {id: l6.bubble, gewicht: 3, quelle: "Labor KW45 (Vorgriff)", text: "Bubble Sort: Nachbarn vergleichen und tauschen, größtes Element wandert nach hinten; Schleifengrenzen", konstrukte: [cmp:>]}
+  - {id: l6.tausch, gewicht: 3, quelle: "Labor KW45 (Vorgriff)", text: "Zwei Elemente tauschen mit Merker-Variable; ganze Dictionaries tauschen"}
+  - {id: l6.aufwand, gewicht: 2, quelle: "Labor KW45 (Vorgriff)", text: "Merker getauscht für frühen Abbruch; Anzahl Vergleiche n·(n−1)/2", konstrukte: [kw:True, kw:False]}
+  - {id: l6.sort, gewicht: 2, folie: "146–147", text: "Eingebautes liste.sort(reverse=…, key=funktion) vs. eigener Algorithmus", konstrukte: [methode:sort]}
+  - {id: l6.top5, gewicht: 2, quelle: "Level-Konzept", text: "Höchstens die ersten fünf Einträge anzeigen; Platzierung i + 1"}
+  - {id: l6.rekursion, gewicht: 2, quelle: "Labor KW45 (Vorgriff)", text: "Rekursion: Funktion ruft sich selbst auf, Abbruchbedingung, RecursionError; Vergleich mit Schleife", konstrukte: [rekursion]}
+
+karten:
+  # ---------------------------------------------------------------- Schreiben
+  - typ: code_ausgabe
+    folien: [190, 194]
+    deckt: [l6.schreiben, l6.lesen]
+    frage: |-
+      Was gibt der Code aus? (`bestenliste.txt` gibt es noch nicht.)
+      ```python
+      datei = open("bestenliste.txt", "a")
+      datei.write("Max;0.412\n")
+      datei.write("Lea;0.298\n")
+      datei.close()
+      datei = open("bestenliste.txt", "r")
+      print(datei.read())
+      datei.close()
+      ```
+    antwort: |-
+      ```text
+      Max;0.412
+      Lea;0.298
+      ```
+      `"a"` legt die fehlende Datei an und hängt **hinten an**. `write()` setzt keinen Zeilenumbruch – das `\n` steht selbst im Text.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [194]
+    deckt: [l6.schreiben]
+    frage: |-
+      Der Code bricht ab. Warum?
+      ```python
+      zeit = 0.412
+      datei = open("bestenliste.txt", "a")
+      datei.write(zeit)
+      datei.close()
+      ```
+    antwort: |-
+      `TypeError`: `write()` nimmt **nur Strings**. Richtig z. B. `datei.write(str(zeit) + "\n")` oder `datei.write(f"{zeit:.3f}\n")`.
+    tests: [{p: 1, abbruch: TypeError}]
+
+  - typ: code_schreiben
+    folien: [194]
+    quelle: "Level-Konzept"
+    deckt: [l6.schreiben]
+    frage: |-
+      Schreib `bestenliste_speichern(name, zeit_s)`: hängt eine Zeile `Name;Zeit` mit drei Nachkommastellen an `bestenliste.txt` an.
+    antwort: |-
+      ```python
+      def bestenliste_speichern(name, zeit_s):
+          """Hängt einen Eintrag an die Bestenliste an."""
+          datei = open("bestenliste.txt", "a")
+          datei.write(f"{name};{zeit_s:.3f}\n")
+          datei.close()
+
+      bestenliste_speichern("Max", 0.4127)
+      ```
+      Ein Eintrag pro Zeile, Trennzeichen `;` – so lässt er sich beim Laden wieder zerlegen.
+    tests: [{p: 1}]
+
+  - typ: unterschied
+    folien: [189, 193]
+    deckt: [l6.modi]
+    frage: |-
+      Vergleiche die Dateimodi `"r"`, `"w"` und `"a"`.
+    antwort: |-
+      | Modus | wofür | vorhandener Inhalt | Datei fehlt |
+      |---|---|---|---|
+      | `"r"` | lesen (Standard ohne Modus) | bleibt | `FileNotFoundError` |
+      | `"w"` | schreiben | wird **gelöscht/überschrieben** | wird angelegt |
+      | `"a"` | anhängen | bleibt, Neues ans Ende | wird angelegt |
+
+  - typ: falle
+    folien: [193]
+    deckt: [l6.modi, l6.schreiben]
+    frage: |-
+      Was gibt der Code aus – und warum wäre das für die Bestenliste fatal?
+      ```python
+      for name in ["Max", "Lea"]:
+          datei = open("liste.txt", "w")
+          datei.write(name + "\n")
+          datei.close()
+      datei = open("liste.txt", "r")
+      print(datei.read())
+      datei.close()
+      ```
+    antwort: |-
+      ```text
+      Lea
+      ```
+      `"w"` **überschreibt** bei jedem Öffnen den ganzen Inhalt (F. 193). Jede neue Runde würde die alte Bestenliste löschen – deshalb `"a"`.
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Lesen und Zerlegen
+  - typ: code_ausgabe
+    folien: [191]
+    deckt: [l6.lesen]
+    frage: |-
+      `bestenliste.txt` enthält zwei Zeilen. Was gibt der Code aus, und warum sieht es so aus?
+      ```python
+      datei = open("bestenliste.txt", "r")
+      for zeile in datei:
+          print(zeile)
+      datei.close()
+      ```
+    antwort: |-
+      ```text
+      Max;0.412
+
+      Lea;0.298
+      ```
+      Jede gelesene Zeile **endet mit `\n`**, und `print()` setzt noch einen Umbruch dazu → Leerzeile dazwischen. Abhilfe: `print(zeile, end="")`.
+    tests: [{p: 1, t: 1, dateien: {"bestenliste.txt": "Max;0.412\nLea;0.298\n"}}]
+
+  - typ: unterschied
+    folien: [190, 191]
+    deckt: [l6.lesen]
+    frage: |-
+      Was liefern `datei.read()`, `datei.readlines()` und `for zeile in datei:`?
+    antwort: |-
+      | Aufruf | Ergebnis |
+      |---|---|
+      | `read()` | ganzer Inhalt als **ein** String |
+      | `readlines()` | **Liste** aller Zeilen, jede mit `\n` |
+      | `for zeile in datei:` | je Durchlauf **eine** Zeile (mit `\n`) |
+
+      Für die Bestenliste passt die `for`-Schleife: Zeile für Zeile zerlegen.
+
+  - typ: code_ausgabe
+    folien: [137, 138]
+    deckt: [l6.zerlegen]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      zeile = "Lea;0.298\n"
+      trenner = zeile.find(";")
+      name = zeile[0:trenner]
+      zeit = float(zeile[trenner + 1:])
+      print(trenner, name, zeit)
+      ```
+    antwort: |-
+      ```text
+      3 Lea 0.298
+      ```
+      `find` liefert die Position des Trennzeichens. Name = alles **davor** (Ende ausschließlich), Zeit = alles **dahinter**. `float()` stört das `\n` am Ende nicht.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    folien: [137, 138]
+    deckt: [l6.zerlegen]
+    frage: |-
+      Ergänze die Indizes so, dass `name = "Ina"` und `zeit = 0.301` herauskommen.
+      ```python
+      zeile = "Ina;0.301\n"
+      trenner = zeile.find(";")
+      name = zeile[___:___]
+      zeit = float(zeile[___:])
+      ```
+    antwort: |-
+      ```python
+      zeile = "Ina;0.301\n"
+      trenner = zeile.find(";")
+      name = zeile[0:trenner]
+      zeit = float(zeile[trenner + 1:])
+      print(name, zeit)
+      ```
+      Start einschließlich, Ende **aus**schließlich (F. 137); `+ 1` überspringt das `;` selbst.
+    tests: [{p: 2}]
+
+  - typ: unterschied
+    folien: [138, 153]
+    deckt: [l6.zerlegen]
+    frage: |-
+      Warum zerlegst du die Zeile mit `find` und Slicing und nicht mit `split(";")`?
+    antwort: |-
+      Beides funktioniert. `zeile.split(";")` liefert `['Lea', '0.298\n']`, steht im Stoff aber nur einmal (F. 153) – **Ergänzung**. `find` und Slicing sind im Skript ausführlich behandelt (F. 137–138) und Schritt für Schritt erklärbar. Im Kolloquium zählt, dass du jede Zeile erklären kannst.
+
+  - typ: code_ausgabe
+    quelle: "Level-Konzept; Labor KW46 (Vorgriff)"
+    folien: [138]
+    deckt: [l6.kaputt]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for zeile in ["Max;0.412\n", "Ole;schnell\n"]:
+          trenner = zeile.find(";")
+          try:
+              print(float(zeile[trenner + 1:]))
+          except ValueError:
+              print("übersprungen:", zeile[0:trenner])
+      ```
+    antwort: |-
+      ```text
+      0.412
+      übersprungen: Ole
+      ```
+      Eine von Hand verdorbene Zeile soll nicht das ganze Spiel abstürzen lassen: Der `ValueError` von `float("schnell")` wird abgefangen, die Zeile ausgelassen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    quelle: "Level-Konzept"
+    deckt: [l6.kaputt, l6.lesen]
+    frage: |-
+      Warum steht beim Laden das `try` um die **einzelne Zeile** und nicht um die ganze `for`-Schleife?
+    antwort: |-
+      Steht `try` um die ganze Schleife, **bricht** ein Fehler in Zeile 3 die Schleife ab – alle späteren Einträge gingen verloren. Um die einzelne Zeile gelegt, wird nur die kaputte Zeile übersprungen, die Schleife läuft weiter.
+
+  # ---------------------------------------------------------------- Einträge
+  - typ: code_ausgabe
+    quelle: "Level-Konzept"
+    folien: [151]
+    deckt: [l6.eintraege]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      eintraege = []
+      eintraege.append({"name": "Max", "zeit": 0.412})
+      eintraege.append({"name": "Lea", "zeit": 0.298})
+      print(eintraege[1]["name"])
+      print(eintraege[0]["zeit"] > eintraege[1]["zeit"])
+      ```
+    antwort: |-
+      ```text
+      Lea
+      True
+      ```
+      Erst der **Listenindex** (welcher Eintrag), dann der **Schlüssel** (welches Feld).
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    quelle: "Level-Konzept"
+    deckt: [l6.eintraege, l6.tausch]
+    frage: |-
+      Warum speicherst du die Bestenliste als Liste von Dictionaries und nicht als zwei Listen `namen` und `zeiten`?
+    antwort: |-
+      Jeder Eintrag hält **Name und Zeit zusammen**. Beim Sortieren tauschst du ganze Einträge – bei zwei getrennten Listen müsstest du in beiden parallel tauschen; vergisst du eine, gehören Namen und Zeiten nicht mehr zusammen. Dazu sprechende Schlüssel statt Index 0/1.
+
+  # ---------------------------------------------------------------- Bubble Sort
+  - typ: begriff
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.bubble]
+    frage: |-
+      Wie funktioniert **Bubble Sort**?
+    antwort: |-
+      1. Von vorn nach hinten jeweils **zwei Nachbarn** vergleichen.
+      2. Stehen sie falsch herum (`links > rechts`), **tauschen**.
+      3. Nach einem Durchlauf steht das **größte** Element ganz hinten („steigt auf wie eine Blase“).
+      4. Durchläufe wiederholen, bis keiner mehr tauscht. Nach spätestens n − 1 Durchläufen ist die Liste sortiert (mit Merker `getauscht` kommt noch ein Kontrolldurchlauf ohne Tausch dazu).
+
+  - typ: trace
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.bubble]
+    frage: |-
+      Führe den **ersten Durchlauf** von Bubble Sort an `[0.41, 0.30, 0.66, 0.29]` aus. Wie sieht die Liste nach jedem Vergleich aus?
+    antwort: |-
+      {{bild:level_bubblesort|Ein Durchlauf Bubble Sort}}
+      `j = 0`: 0,41 > 0,30 → tauschen · `j = 1`: 0,41 < 0,66 → bleibt · `j = 2`: 0,66 > 0,29 → tauschen.
+      Ergebnis `[0.30, 0.41, 0.29, 0.66]` – die größte Zeit steht hinten.
+
+  - typ: code_luecke
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.tausch]
+    frage: |-
+      Tausche die beiden Zeiten, wenn sie falsch herum stehen.
+      ```python
+      zeiten = [0.41, 0.30]
+      if zeiten[0] > zeiten[1]:
+          merker = ___
+          zeiten[0] = ___
+          zeiten[1] = ___
+      print(zeiten)
+      ```
+    antwort: |-
+      ```python
+      zeiten = [0.41, 0.30]
+      if zeiten[0] > zeiten[1]:
+          merker = zeiten[0]
+          zeiten[0] = zeiten[1]
+          zeiten[1] = merker
+      print(zeiten)
+      ```
+      ```text
+      [0.3, 0.41]
+      ```
+      Der **Merker** hebt den ersten Wert auf, bevor er überschrieben wird – wie beim Umfüllen zweier Gläser mit einem dritten.
+    tests: [{p: 2, t: 1}]
+
+  - typ: code_fehler
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.tausch]
+    frage: |-
+      Das soll tauschen. Was kommt heraus, und warum?
+      ```python
+      zeiten = [0.41, 0.30]
+      zeiten[0] = zeiten[1]
+      zeiten[1] = zeiten[0]
+      print(zeiten)
+      ```
+    antwort: |-
+      ```text
+      [0.3, 0.3]
+      ```
+      Nach der ersten Zeile ist 0,41 **überschrieben** und verloren; die zweite kopiert nur 0,3 zurück. Es fehlt die Merker-Variable. Ergänzung: `zeiten[0], zeiten[1] = zeiten[1], zeiten[0]` tauscht in einer Zeile.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.bubble, l6.tausch]
+    frage: |-
+      Sortiere `zeiten = [0.41, 0.30, 0.66, 0.29]` aufsteigend mit Bubble Sort und gib die Liste aus.
+    antwort: |-
+      ```python
+      zeiten = [0.41, 0.30, 0.66, 0.29]
+      for durchlauf in range(len(zeiten) - 1):
+          for j in range(len(zeiten) - 1 - durchlauf):
+              if zeiten[j] > zeiten[j + 1]:
+                  merker = zeiten[j]
+                  zeiten[j] = zeiten[j + 1]
+                  zeiten[j + 1] = merker
+      print(zeiten)
+      ```
+      ```text
+      [0.29, 0.3, 0.41, 0.66]
+      ```
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.bubble]
+    frage: |-
+      Warum läuft die innere Schleife nur bis `len(zeiten) - 1 - durchlauf`?
+    antwort: |-
+      - **`- 1`**: verglichen wird `zeiten[j]` mit `zeiten[j + 1]`; beim letzten Index gäbe es keinen Nachbarn → `IndexError`.
+      - **`- durchlauf`**: Nach jedem Durchlauf steht ein weiteres großes Element schon an seinem endgültigen Platz hinten; dort muss nicht mehr verglichen werden.
+
+  - typ: code_fehler
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.bubble]
+    frage: |-
+      Der Code bricht ab. Warum?
+      ```python
+      zeiten = [0.41, 0.30, 0.66]
+      for j in range(len(zeiten)):
+          if zeiten[j] > zeiten[j + 1]:
+              merker = zeiten[j]
+              zeiten[j] = zeiten[j + 1]
+              zeiten[j + 1] = merker
+      ```
+    antwort: |-
+      Bei `j = 2` (letzter Index) greift `zeiten[j + 1]` auf Index 3 zu – den gibt es nicht: `IndexError: list index out of range`. Richtig: `range(len(zeiten) - 1)`.
+    tests: [{p: 1, abbruch: IndexError}]
+
+  - typ: code_ausgabe
+    quelle: "Level-Konzept; Labor KW45 (Vorgriff)"
+    deckt: [l6.tausch, l6.eintraege]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      eintraege = [{"name": "Max", "zeit": 0.41},
+                   {"name": "Lea", "zeit": 0.30}]
+      if eintraege[0]["zeit"] > eintraege[1]["zeit"]:
+          merker = eintraege[0]
+          eintraege[0] = eintraege[1]
+          eintraege[1] = merker
+      print(eintraege[0]["name"], eintraege[0]["zeit"])
+      ```
+    antwort: |-
+      ```text
+      Lea 0.3
+      ```
+      Verglichen wird die **Zeit**, getauscht wird der **ganze Eintrag** – so bleibt der Name bei seiner Zeit.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.aufwand]
+    frage: |-
+      Wozu dient in deiner Bestenliste-Sortierung der Merker `getauscht`?
+    antwort: |-
+      Wird in einem ganzen Durchlauf **nichts** getauscht, ist die Liste sortiert – weitere Durchläufe wären verschwendet. Die äußere `while getauscht:`-Schleife hört dann auf. Ist die Liste **schon sortiert**, reicht ein einziger Durchlauf. Aber: Ein kleiner Wert ganz hinten (neue Bestzeit, mit `"a"` angehängt) wandert pro Durchlauf nur **eine** Stelle nach vorn – dann braucht es fast alle Durchläufe.
+
+  - typ: fakt
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.aufwand]
+    frage: |-
+      Wie viele Vergleiche braucht Bubble Sort ohne frühen Abbruch für n Einträge, und wie viele bei 10?
+    antwort: |-
+      (n − 1) + (n − 2) + … + 1 = **n · (n − 1) / 2**. Bei 10 Einträgen: 10 · 9 / 2 = **45** Vergleiche. Der Aufwand wächst quadratisch – für eine Bestenliste mit wenigen Einträgen ohne Bedeutung, für Millionen Daten zu langsam.
+
+  # ---------------------------------------------------------------- sort() und Top 5
+  - typ: code_ausgabe
+    folien: [146, 147]
+    deckt: [l6.sort]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def nach_zeit(eintrag):
+          return eintrag["zeit"]
+
+      liste = [{"name": "Max", "zeit": 0.41},
+               {"name": "Lea", "zeit": 0.30}]
+      liste.sort(key=nach_zeit)
+      print(liste[0]["name"])
+      ```
+    antwort: |-
+      ```text
+      Lea
+      ```
+      `sort()` ruft für jedes Element die **key-Funktion** auf und sortiert nach ihrem Rückgabewert, aufsteigend (`reverse=False`) – wie `critFunc` in F. 147.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    folien: [146, 147]
+    quelle: "Laboraufgabe F. 2"
+    deckt: [l6.sort, l6.bubble]
+    frage: |-
+      Python hat `liste.sort()`. Warum sortierst du die Bestenliste trotzdem selbst?
+    antwort: |-
+      Die Laboraufgabe zählt **Sortieralgorithmen** als Wahlelement – `sort()` ist ein fertiger Aufruf, der Algorithmus dahinter bleibt unsichtbar. Mit eigenem Bubble Sort zeigst du Vergleichen, Tauschen und Schleifengrenzen und kannst jeden Schritt erklären. (In echter Software nähme man `sort()`.)
+
+  - typ: code_ausgabe
+    quelle: "Level-Konzept"
+    folien: [152]
+    deckt: [l6.top5]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      namen = ["Lea", "Ina", "Max", "Ben", "Tom", "Kim"]
+      for i in range(len(namen)):
+          if i < 5:
+              print(f"{i + 1}. {namen[i]}")
+      ```
+    antwort: |-
+      ```text
+      1. Lea
+      2. Ina
+      3. Max
+      4. Ben
+      5. Tom
+      ```
+      Index 0–4 sind die ersten fünf; die Platzierung für den Spieler ist `i + 1`. Hat die Liste weniger als 5 Einträge, läuft die Schleife eben kürzer – kein `IndexError`. Ergänzung: `namen[0:5]` (Slicing von Listen) ist nicht im Stoff.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_schreiben
+    quelle: "Level-Konzept"
+    deckt: [l6.top5, l6.bubble]
+    frage: |-
+      Kolloquium: „Ändere deine Sortierung so, dass die **langsamste** Zeit vorne steht.“ Was änderst du?
+    antwort: |-
+      Nur den Vergleich: `>` wird zu `<`.
+      ```python
+      zeiten = [0.41, 0.30, 0.66]
+      for durchlauf in range(len(zeiten) - 1):
+          for j in range(len(zeiten) - 1 - durchlauf):
+              if zeiten[j] < zeiten[j + 1]:
+                  merker = zeiten[j]
+                  zeiten[j] = zeiten[j + 1]
+                  zeiten[j + 1] = merker
+      print(zeiten)
+      ```
+      ```text
+      [0.66, 0.41, 0.3]
+      ```
+    tests: [{p: 1, t: 1}]
+
+  # ---------------------------------------------------------------- Rekursion
+  - typ: begriff
+    quelle: "Labor KW45 (Vorgriff); Laborfolie IDE F. 3 (Thonny-Beispiel fact)"
+    deckt: [l6.rekursion]
+    frage: |-
+      Was ist **Rekursion**, und welche zwei Teile braucht jede rekursive Funktion?
+    antwort: |-
+      Eine Funktion, die **sich selbst aufruft**.
+      1. **Abbruchbedingung** (Basisfall): hier ruft sie sich nicht mehr auf, z. B. `if n == 0:`.
+      2. **Schritt zum Abbruch hin**: der Selbstaufruf mit kleinerem Problem, z. B. `countdown(n - 1)`.
+
+      Jeder Aufruf hat seine **eigenen lokalen Variablen** (Thonny zeigt sie als eigene Fenster).
+
+  - typ: code_ausgabe
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.rekursion]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def countdown(n):
+          if n == 0:
+              print("LOS!")
+              return
+          print(n)
+          countdown(n - 1)
+
+      countdown(3)
+      ```
+    antwort: |-
+      ```text
+      3
+      2
+      1
+      LOS!
+      ```
+      Aufrufkette: `countdown(3)` → `countdown(2)` → `countdown(1)` → `countdown(0)` – dort greift die Abbruchbedingung.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    quelle: "Labor KW45 (Vorgriff)"
+    deckt: [l6.rekursion]
+    frage: |-
+      Was passiert hier, und warum?
+      ```python
+      def countdown(n):
+          print(n)
+          countdown(n - 1)
+
+      countdown(3)
+      ```
+    antwort: |-
+      Es fehlt die **Abbruchbedingung**: Die Funktion ruft sich endlos auf (3, 2, 1, 0, -1, …), bis Python nach rund 1000 Aufrufen mit **`RecursionError`** abbricht.
+    tests: [{p: 1, abbruch: RecursionError}]
+
+  - typ: unterschied
+    quelle: "Labor KW45 (Vorgriff)"
+    folien: [128]
+    deckt: [l6.rekursion]
+    frage: |-
+      Countdown als Schleife oder rekursiv – was spricht wofür?
+    antwort: |-
+      | Schleife | Rekursion |
+      |---|---|
+      | `for n in range(3, 0, -1):` oder `while n > 0:` mit `n -= 1` | `countdown(n - 1)` ruft sich selbst |
+      | einfacher, kein Aufrufstapel | zeigt das Wahlelement **Rekursion** |
+      | keine Tiefenbegrenzung | bricht bei sehr großer Tiefe mit `RecursionError` ab |
+
+      Im Level ist der rekursive Countdown optional – nimm ihn nur, wenn du die Aufrufkette erklären kannst.
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: falle
+    folien: [137, 138]
+    quelle: "Probe-Kolloquium"
+    deckt: [l6.zerlegen, l6.kaputt]
+    frage: |-
+      In der Bestenliste steht eine Zeile **ohne** Semikolon: `5`. Was gibt der Code aus?
+      ```python
+      zeile = "5\n"
+      trenner = zeile.find(";")
+      print(trenner)
+      print(zeile[0:trenner])
+      print(float(zeile[trenner + 1:]))
+      ```
+    antwort: |-
+      ```text
+      -1
+      5
+      5.0
+      ```
+      `find` liefert **-1**, wenn das Zeichen fehlt. Dann schneidet `[0:-1]` das `\n` ab (Name „5“), und `[0:]` ist die ganze Zeile (Zeit 5,0) – kein Fehler, aber ein **stilles Falschergebnis**. Abhilfe: `if trenner == -1: continue` vor dem Zerlegen. Umgekehrt bei einem Namen **mit** `;` (`A;B;0.300`): `find` liefert das **erste** Semikolon, `float("B;0.300")` löst `ValueError` aus – die Zeile wird verworfen. Darum beim Speichern kein `;` im Namen zulassen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: falle
+    folien: [146, 173]
+    quelle: "Probe-Kolloquium"
+    deckt: [l6.bubble]
+    frage: |-
+      Deine Sortierfunktion ändert die übergebene Liste direkt und hat kein `return`. Was gibt der Code aus?
+      ```python
+      def sortieren(liste):
+          liste.reverse()   # steht für deinen Algorithmus
+      liste = [3, 1, 2]
+      liste = sortieren(liste)
+      print(liste)
+      ```
+    antwort: |-
+      ```text
+      None
+      ```
+      Die Funktion sortiert **die Liste selbst** und gibt nichts zurück → `None`. Mit `liste = sortieren(liste)` überschreibst du die sortierte Liste mit `None`. Richtig: nur `sortieren(liste)` aufrufen.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_ausgabe
+    quelle: "Probe-Kolloquium"
+    deckt: [l6.bubble]
+    frage: |-
+      Du sortierst die Bestenliste testweise nach **Namen**. Was gibt der Code aus? (Ergänzung)
+      ```python
+      print("Zoe" < "adam")
+      print("Ben" < "Bea")
+      ```
+    antwort: |-
+      ```text
+      True
+      False
+      ```
+      Ergänzung: Strings werden **Zeichen für Zeichen nach dem Zeichencode** verglichen; alle Großbuchstaben kommen vor allen Kleinbuchstaben. Bei „Ben“/„Bea“ entscheidet das dritte Zeichen (`n` nach `a`).
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    quelle: "Probe-Kolloquium; Labor KW45 (Vorgriff)"
+    deckt: [l6.rekursion]
+    frage: |-
+      `countdown(3)` läuft. Was passiert bei `countdown(-1)`, und wie machst du die Funktion sicher?
+      ```python
+      def countdown(n):
+          if n == 0:
+              print("LOS!")
+              return
+          countdown(n - 1)
+
+      countdown(-1)
+      ```
+    antwort: |-
+      Von -1 aus wird 0 **nie erreicht** (-2, -3, …) → `RecursionError`. Sicher ist `if n <= 0:` – dann greift die Abbruchbedingung auch für negative Werte (und für 2,5 über 0,5 → -0,5).
+    tests: [{p: 1, abbruch: RecursionError}]
+
+  - typ: code_ausgabe
+    aufgaben: ["3.8"]
+    folien: [138]
+    deckt: [l6.kaputt]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      for zeile in ["Max;0.412\n", "5\n", "Lea;0.298\n"]:
+          trenner = zeile.find(";")
+          if trenner == -1:
+              continue
+          print(zeile[0:trenner])
+      ```
+    antwort: |-
+      ```text
+      Max
+      Lea
+      ```
+      `continue` springt sofort zum **nächsten Durchlauf** – die Zeile ohne `;` wird übersprungen, die Schleife läuft weiter (anders als `break`, das sie beendet; Aufg. 3.8).
+    tests: [{p: 1, t: 1}]
+
+  - typ: falle
+    folien: [189, 208]
+    quelle: "Code-Leitfaden 4; Probe-Kolloquium"
+    deckt: [l6.lesen, l6.modi]
+    frage: |-
+      Wo landet `bestenliste.txt` bei `open("bestenliste.txt", "a")` – und warum ist die Bestenliste plötzlich leer, wenn das Spiel aus einem anderen Ordner gestartet wird?
+    antwort: |-
+      Ein relativer Dateiname gilt ab dem **aktuellen Arbeitsordner** (dem Ordner, aus dem das Programm gestartet wird), **nicht** automatisch ab dem Ordner der `.py`-Datei (Code-Leitfaden, Abschnitt 4 zu F. 208). Aus einem anderen Ordner gestartet, legt `"a"` dort eine **neue** Datei an, und `"r"` findet die alte nicht (`FileNotFoundError` → leere Liste). Abhilfe: immer aus demselben Ordner starten, in PyCharm das Arbeitsverzeichnis der Run-Konfiguration prüfen.
+
+  - typ: code_ausgabe
+    folien: [128]
+    quelle: "Probe-Kolloquium"
+    deckt: [l6.bubble]
+    frage: |-
+      Die Bestenliste ist leer (`n = 0`) oder hat einen Eintrag (`n = 1`). Was gibt der Code aus – und was heißt das für `bestenliste_sortieren`?
+      ```python
+      for j in range(0 - 1):
+          print("Vergleich bei n = 0")
+      for j in range(1 - 1):
+          print("Vergleich bei n = 1")
+      print("fertig")
+      ```
+    antwort: |-
+      ```text
+      fertig
+      ```
+      `range(-1)` und `range(0)` liefern **keine** Zahlen – die innere Schleife läuft nie. `getauscht` bleibt `False`, die `while`-Schleife endet nach einem Durchlauf, **ohne Fehler**. Leere und einelementige Listen sind damit automatisch abgedeckt.
+    tests: [{p: 1, t: 1}]

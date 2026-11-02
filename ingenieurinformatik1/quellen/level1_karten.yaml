@@ -1,0 +1,506 @@
+# Kolloquium Laboraufgabe (Escape-Room) – Stapel 1: Auftrag, Aufbau und Schnittstelle des Levels
+# Quellen: Laboraufgabe WS26 (F. = Folie der Laboraufgabe), Labor-Einführung, Skript Info1 WS26
+# (folien = PDF-Seite), Code-Leitfaden, Level-Konzept „Escape-Room – mein Dschungel-Reaktionslevel“.
+# Bauen: python3 werkzeuge/karten.py bauen ingenieurinformatik1/quellen/level1_karten.yaml
+fach: ingenieurinformatik1
+csv: ingenieurinformatik1/karten/level1_auftrag-schnittstelle.csv
+matrix: ingenieurinformatik1/quellen/level1_abdeckung.md
+titel: "Level-Kolloquium 1: Auftrag, Aufbau und Schnittstelle"
+id_praefix: "L1."
+min_typen: 2
+max_codezeilen: 8
+keine_janein: true
+
+annahmen:
+  - "Ob jeder Teil alle Pflichtelemente selbst enthalten muss, steht nicht auf den Folien (offene Frage an den Dozenten). Die Karten gehen vom sicheren Fall aus: Das eigene Level enthält alle Pflichtelemente."
+  - "Der genaue Kolloquiumstermin steht noch nicht fest (Laboraufgabe F. 3: hinter „Koloq:“ kein Termin); laut Labor-Einführung KW49/KW50."
+  - "Die PAP-Folien aus KW43 liegen nicht im Projekt. Die Karte zu den PAP-Symbolen folgt DIN 66001 und ist als Ergänzung markiert."
+
+inhalte:
+  - {id: l1.pflicht, gewicht: 3, quelle: "Laboraufgabe F. 2", text: "Pflichtelemente: Ausnahmebehandlungen, Kontrollstrukturen, Funktionen + mind. eines von Dictionaries, Rekursion, Sortieralgorithmen", konstrukte: []}
+  - {id: l1.bewertung, gewicht: 3, quelle: "Laboraufgabe F. 3; Labor-Einführung", text: "Bewertung (Zulassung + Einzelnote im Kolloquium), Fragen zum eigenen Code, Kennzeichnung, Termine"}
+  - {id: l1.dozent, gewicht: 2, quelle: "Absprache mit dem Dozenten", text: "Geklärt: Ergänzungen erlaubt, wenn erklärbar; Kommentare nicht bewertet; 600 Zeilen Richtwert; Extrapunkte für Sound und Bilder"}
+  - {id: l1.aufbau, gewicht: 3, quelle: "Level-Konzept", text: "Level als Funktion level_dschungel_reflexe(spieler), eine Funktion je Station, Rückgabe True/False an main.py", konstrukte: [kw:def, call:eigene]}
+  - {id: l1.spieler, gewicht: 3, folie: "182", text: "spieler-Dictionary als Parameter: Änderungen am Inhalt wirken beim Aufrufer, Neuzuweisung einer Zahl nicht", konstrukte: [aug:-=]}
+  - {id: l1.return, gewicht: 3, folie: "173, 180", text: "return liefert True/False (Vergleich ist ein bool); ohne erreichtes return kommt None zurück", konstrukte: [kw:return, kw:True, kw:False, kw:None]}
+  - {id: l1.definieren, gewicht: 2, folie: "171, 175", text: "Funktion erst definieren, dann aufrufen (NameError); der Rumpf läuft erst beim Aufruf", konstrukte: [kw:def]}
+  - {id: l1.begriffe, gewicht: 2, folie: "172–174", text: "Prozedur, Funktion, Methode im eigenen Code; Docstring", konstrukte: [docstring]}
+  - {id: l1.global, gewicht: 2, folie: "182–183", text: "lokale und globale Variablen, Schlüsselwort global", konstrukte: [kw:global]}
+  - {id: l1.modul, gewicht: 2, quelle: "Laborfolie IDE/venv F. 15", text: "Modul = importierbare Python-Datei; import führt den Code auf oberster Ebene aus", konstrukte: [kw:import, kw:as, kw:from]}
+  - {id: l1.konventionen, gewicht: 2, folie: "58–60", text: "Code-Conventions (snake_case, deutsch, keine Umlaute, 4 Leerzeichen) und Kennzeichnung per Kommentar", konstrukte: [zuweisung]}
+  - {id: l1.grundstrukturen, gewicht: 2, folie: "109–111", text: "Grundstrukturen sequentiell, auswählend, iterativ, springend am eigenen Level; PAP", konstrukte: []}
+
+karten:
+  # ---------------------------------------------------------------- Auftrag und Bewertung
+  - typ: aufzaehlung
+    quelle: "Laboraufgabe F. 2"
+    deckt: [l1.pflicht]
+    frage: |-
+      Welche **drei Elemente** muss das Escape-Room-Programm laut Laboraufgabe enthalten, und welche **Wahl** kommt dazu?
+    antwort: |-
+      **Pflicht:**
+      1. Ausnahmebehandlungen
+      2. Kontrollstrukturen
+      3. Funktionen
+
+      **Dazu mindestens eines von:** Dictionaries, Rekursionen oder Sortieralgorithmen.
+
+  - typ: anwendung
+    quelle: "Level-Konzept"
+    deckt: [l1.pflicht, l1.aufbau]
+    frage: |-
+      Zeig an **deinem Level**, wo jedes Pflicht- und Wahlelement steckt.
+    antwort: |-
+      | Element | Stelle im Level |
+      |---|---|
+      | Ausnahmebehandlung | Koordinaten im Treibsand-Raster (`ValueError`), Bestenliste laden (`FileNotFoundError`), Ton abspielen |
+      | Kontrollstrukturen | Runden-Schleifen, Vergleich mit dem Zeitlimit, Abfrage der Leben |
+      | Funktionen | eine je Station + Hilfsfunktionen |
+      | Dictionary | Stationen-Einstellungen, Tierlaute, `spieler` |
+      | Sortieralgorithmus | Bestenliste nach Reaktionszeit |
+      | Rekursion (optional) | Countdown `countdown(n)` mit Abbruchbedingung `n <= 0` |
+
+  - typ: fakt
+    quelle: "Laboraufgabe F. 3"
+    deckt: [l1.bewertung]
+    frage: |-
+      Wie setzt sich die Bewertung der Laboraufgabe zusammen, und **wozu** wirst du im Kolloquium befragt?
+    antwort: |-
+      - **Projektumsetzung** = Zulassung zum Kolloquium (**Ja/Nein**)
+      - **Endnote** aus dem Abschlusskolloquium – als **Einzelnote**
+      - Gefragt wird zu **deinem Quellcode**; deshalb muss im Code per **Kommentar** gekennzeichnet sein, welcher Anteil zu wem gehört.
+
+  - typ: fakt
+    quelle: "Laboraufgabe F. 2–3; Labor-Einführung"
+    deckt: [l1.bewertung]
+    frage: |-
+      Bis wann und wohin wird das Programm abgegeben, und wann ist das Kolloquium?
+    antwort: |-
+      - Abgabe: **29.11.2026, 23:59**, Upload in den **Stud.IP-Gruppenordner**
+      - Kolloquium: **KW49/KW50**, Pflichttermin (genauer Termin steht noch aus)
+      - Eigene Planung: Code-Freeze Do 26.11., Upload Sa 28.11.
+
+  - typ: aufzaehlung
+    quelle: "Absprache mit dem Dozenten"
+    deckt: [l1.dozent]
+    frage: |-
+      Welche **vier Punkte** hat der Dozent zur Laboraufgabe schon geklärt?
+    antwort: |-
+      1. Kleine **Ergänzungen** außerhalb des Stoffs sind erlaubt, **wenn du sie erklären kannst**.
+      2. **Kommentarzeilen** werden im Kolloquium **nicht bewertet**.
+      3. Die **600 Zeilen** sind nur ein **Richtwert**.
+      4. **Sound und Bilder** bringen **Extrapunkte**.
+
+  - typ: falle
+    quelle: "Absprache mit dem Dozenten"
+    deckt: [l1.dozent, l1.bewertung]
+    frage: |-
+      Dein Code steckt voller guter Kommentare. Was bringen sie dir im Kolloquium – und was nicht?
+    antwort: |-
+      Kommentare machen den Code lesbar und kennzeichnen deinen Anteil (Pflicht). **Bewertet werden sie nicht:** Punkte gibt es nur, wenn du den **Code selbst** erklären kannst – jede Zeile, jede Ergänzung, ohne vorzulesen.
+
+  # ---------------------------------------------------------------- Aufbau und Schnittstelle
+  - typ: begriff
+    quelle: "Level-Konzept"
+    deckt: [l1.aufbau]
+    frage: |-
+      Wie ist dein Level aufgebaut, und was bekommt `main.py` zurück?
+    antwort: |-
+      - Eine Funktion `level_dschungel_reflexe(spieler)` steuert den Ablauf.
+      - Jede Station ist eine eigene Funktion (Lianen-Sprung, Hängebrücke, Affen-Echo, Schlangen-Zauberformel, Treibsand-Raster), dazu Hilfsfunktionen.
+      - Rückgabe: **`True`** (geschafft) oder **`False`**; `main.py` entscheidet damit, ob es weitergeht.
+
+  - typ: code_schreiben
+    quelle: "Level-Konzept"
+    folien: [171, 180]
+    deckt: [l1.aufbau, l1.return]
+    frage: |-
+      Schreib das Gerüst der Level-Funktion: Sie bekommt `spieler`, ruft `lianen_sprung(spieler)` und `haengebruecke(spieler)` auf und gibt zurück, ob noch Leben übrig sind.
+    antwort: |-
+      ```python
+      def level_dschungel_reflexe(spieler):
+          """Spielt das Level; True = geschafft."""
+          lianen_sprung(spieler)
+          haengebruecke(spieler)
+          return spieler["leben"] > 0
+      ```
+      Der Vergleich `> 0` ist schon ein `bool` – ein `if` mit `return True`/`return False` ist nicht nötig.
+    tests: [{p: 1}]
+
+  - typ: code_ausgabe
+    folien: [182]
+    deckt: [l1.spieler]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def leben_abziehen(spieler):
+          spieler["leben"] -= 1
+
+      spieler = {"name": "Max", "leben": 3}
+      leben_abziehen(spieler)
+      leben_abziehen(spieler)
+      print(spieler["leben"])
+      ```
+    antwort: |-
+      ```text
+      1
+      ```
+      Die Funktion bekommt **dasselbe** Dictionary wie der Aufrufer; was sie darin ändert, sieht auch `main.py`. Ergänzung: Das Skript zeigt nur die Neuzuweisung (F. 182), nicht das Ändern eines Dictionarys.
+    tests: [{p: 1, t: 1}]
+
+  - typ: unterschied
+    folien: [182]
+    deckt: [l1.spieler, l1.global]
+    frage: |-
+      Warum bleibt hier `leben` bei 3, obwohl die Funktion 1 abzieht?
+      ```python
+      def leben_abziehen(leben):
+          leben -= 1
+
+      leben = 3
+      leben_abziehen(leben)
+      print(leben)
+      ```
+    antwort: |-
+      ```text
+      3
+      ```
+      Der Parameter `leben` ist eine **lokale** Variable der Funktion; `leben -= 1` weist ihr einen neuen Wert zu, die Variable außen bleibt unberührt (F. 182). Beim `spieler`-Dictionary wird dagegen der **Inhalt** des gemeinsamen Dictionarys geändert.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    folien: [183]
+    quelle: "Level-Konzept"
+    deckt: [l1.spieler, l1.global]
+    frage: |-
+      Warum übergibst du `spieler` als Parameter, statt in jeder Station `global spieler` zu schreiben?
+    antwort: |-
+      - Die **Schnittstelle** ist sichtbar: `level_dschungel_reflexe(spieler)` zeigt, womit das Level arbeitet.
+      - Das Level lässt sich mit einem eigenen Test-Dictionary aufrufen.
+      - `global` braucht man nur, um einer äußeren Variablen einen **neuen Wert zuzuweisen** (F. 183). Den Inhalt eines übergebenen Dictionarys darf die Funktion auch so ändern.
+
+  - typ: code_ausgabe
+    folien: [183]
+    deckt: [l1.global]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      punkte = 0
+
+      def punkte_geben():
+          global punkte
+          punkte += 10
+
+      punkte_geben()
+      print(punkte)
+      ```
+    antwort: |-
+      ```text
+      10
+      ```
+      `global punkte` sagt: Gemeint ist die Variable außerhalb der Funktion – die Zuweisung wirkt auch dort.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_fehler
+    folien: [182, 183]
+    deckt: [l1.global]
+    frage: |-
+      Der Code bricht ab. Warum, und wie behebst du es?
+      ```python
+      punkte = 0
+
+      def punkte_geben():
+          punkte += 10
+
+      punkte_geben()
+      ```
+    antwort: |-
+      `punkte += 10` ist eine Zuweisung → `punkte` gilt in der Funktion als **lokal**, hat dort aber noch keinen Wert. Python meldet einen `UnboundLocalError` (Ergänzung: Name der Meldung nicht im Stoff).
+      Lösung: `global punkte` als erste Zeile in die Funktion – oder `punkte` als Parameter übergeben und mit `return` zurückgeben.
+    tests: [{p: 1, abbruch: UnboundLocalError}]
+
+  # ---------------------------------------------------------------- Rückgabewerte
+  - typ: code_ausgabe
+    folien: [173]
+    deckt: [l1.return]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def geschafft(leben):
+          return leben > 0
+
+      print(geschafft(2))
+      print(geschafft(0))
+      ```
+    antwort: |-
+      ```text
+      True
+      False
+      ```
+      Ein Vergleich liefert einen Wahrheitswert (`bool`); `return` gibt ihn direkt zurück.
+    tests: [{p: 1, t: 1}]
+
+  - typ: falle
+    folien: [173, 180]
+    deckt: [l1.return]
+    frage: |-
+      Was gibt der Code aus – und warum ist das für `main.py` gefährlich?
+      ```python
+      def station(leben):
+          if leben > 0:
+              return True
+
+      print(station(1))
+      print(station(0))
+      ```
+    antwort: |-
+      ```text
+      True
+      None
+      ```
+      Wird kein `return` erreicht, liefert eine Funktion **`None`**. `if None:` verhält sich wie `False`, aber wer `== False` prüft, liegt daneben. Darum jeden Weg mit einem `return` beenden.
+    tests: [{p: 1, t: 1}]
+
+  - typ: code_luecke
+    quelle: "Level-Konzept"
+    folien: [112]
+    deckt: [l1.return, l1.aufbau]
+    frage: |-
+      Ergänze `main.py`: Nur wenn das Level geschafft ist, soll die Ziffer erscheinen.
+      ```python
+      ___ level_dschungel_reflexe(spieler):
+          print("Zweite Ziffer: 7")
+      ___:
+          print("Game over.")
+      ```
+    antwort: |-
+      ```python
+      if level_dschungel_reflexe(spieler):
+          print("Zweite Ziffer: 7")
+      else:
+          print("Game over.")
+      ```
+      Der Rückgabewert `True`/`False` ist selbst die Bedingung – `== True` ist überflüssig.
+    tests: [{p: 2, abbruch: NameError}]
+
+  # ---------------------------------------------------------------- Definieren und aufrufen
+  - typ: code_fehler
+    folien: [175]
+    deckt: [l1.definieren]
+    frage: |-
+      Welche Fehlermeldung kommt, und warum?
+      ```python
+      level_dschungel_reflexe({"leben": 3})
+
+      def level_dschungel_reflexe(spieler):
+          print("Los geht's!")
+      ```
+    antwort: |-
+      `NameError: name 'level_dschungel_reflexe' is not defined` – eine Funktion muss **erst definiert, dann aufgerufen** werden (F. 175). Python liest die Datei von oben nach unten.
+    tests: [{p: 1, abbruch: NameError}]
+
+  - typ: code_ausgabe
+    folien: [178]
+    deckt: [l1.definieren]
+    frage: |-
+      Was gibt der Code aus?
+      ```python
+      def lianen_sprung():
+          print("Sprung!")
+
+      def haengebruecke():
+          lianen_sprung()
+          print("Brücke!")
+
+      haengebruecke()
+      ```
+    antwort: |-
+      ```text
+      Sprung!
+      Brücke!
+      ```
+      `def` definiert nur. Erst der Aufruf `haengebruecke()` springt in die Funktion, die wiederum `lianen_sprung()` aufruft; danach geht es hinter der Aufrufstelle weiter (F. 178). Innerhalb einer Funktion darf eine **später** definierte Funktion aufgerufen werden, solange sie beim Aufruf existiert.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begriff
+    folien: [172, 173, 174]
+    deckt: [l1.begriffe]
+    frage: |-
+      Ordne aus deinem Level je ein Beispiel zu: **Prozedur, Funktion, Methode**.
+    antwort: |-
+      | Begriff | Merkmal | Beispiel |
+      |---|---|---|
+      | Prozedur | kein Rückgabewert (Python liefert dann `None`) | `raster_zeigen(raster)` |
+      | Funktion | liefert mit `return` einen Wert | `reaktion_messen(0.8)` → Zeit |
+      | Methode | gehört zu einem Objekt, Aufruf mit Punkt | `eintraege.append(…)`, `datei.write(…)` |
+
+      Heute sagt man meist zu allem „Funktion“ (F. 172).
+
+  - typ: code_luecke
+    aufgaben: ["5.5"]
+    deckt: [l1.begriffe]
+    frage: |-
+      Ergänze den einzeiligen Docstring an der richtigen Stelle.
+      ```python
+      def signal_zeigen():
+          ___
+          print("SPRING!")
+      ```
+    antwort: |-
+      ```python
+      def signal_zeigen():
+          """Gibt das Sprungsignal aus."""
+          print("SPRING!")
+      ```
+      Der Docstring ist die **erste Zeile im Funktionsrumpf** und beschreibt, was die Funktion tut – und, falls sie etwas zurückgibt, was.
+    tests: [{p: 2}]
+
+  # ---------------------------------------------------------------- Modul und Import
+  - typ: begriff
+    quelle: "Laborfolie IDE/venv F. 15"
+    deckt: [l1.modul]
+    frage: |-
+      Was ist ein **Modul**, und wie ruft `main.py` dein Level auf, wenn es in `level_dschungel.py` steht?
+    antwort: |-
+      Ein Modul ist eine **Python-Datei, die in Skripte oder andere Module importiert werden kann**.
+      ```python
+      import level_dschungel
+
+      spieler = {"name": "Max", "leben": 3}
+      level_dschungel.level_dschungel_reflexe(spieler)
+      ```
+    tests: [{p: 1, dateien: {"level_dschungel.py": "def level_dschungel_reflexe(spieler):\n    return True\n"}}]
+
+  - typ: code_ausgabe
+    quelle: "Laborfolie IDE/venv F. 15"
+    deckt: [l1.modul]
+    frage: |-
+      `level_dschungel.py`:
+      ```python
+      def level_dschungel_reflexe(spieler):
+          return True
+
+      print("Test: Level geladen")
+      ```
+      Was gibt `main.py` aus?
+      ```python
+      import level_dschungel
+
+      print("Spiel startet")
+      ```
+    antwort: |-
+      ```text
+      Test: Level geladen
+      Spiel startet
+      ```
+      `import` führt den Code auf oberster Ebene der Datei **sofort aus**. Testaufrufe gehören deshalb nicht dauerhaft in die Level-Datei. Ergänzung: `if __name__ == "__main__":` würde das lösen, ist aber nicht im Stoff.
+    tests: [{p: 1}, {p: 2, t: 1, dateien: {"level_dschungel.py": "def level_dschungel_reflexe(spieler):\n    return True\n\nprint(\"Test: Level geladen\")\n"}}]
+
+  # ---------------------------------------------------------------- Konventionen und Kennzeichnung
+  - typ: code_fehler
+    folien: [58]
+    quelle: "Code-Leitfaden 2.1, 2.6"
+    deckt: [l1.konventionen]
+    frage: |-
+      Der Code läuft. Welche **Code-Conventions** verletzt er?
+      ```python
+      def ZeitMessen(Zeitlimit):
+          if(Zeitlimit<1): print("kurz")
+          größte_Zeit=Zeitlimit*2
+          return größte_Zeit
+      ```
+    antwort: |-
+      - Namen: **snake_case** und klein (`zeit_messen`, `zeitlimit`), **keine Umlaute/ß** (`groesste_zeit`, F. 58)
+      - Leerzeichen um Operatoren und `=`: `zeitlimit < 1`, `zeitlimit * 2`
+      - Rumpf von `if` in eine **eigene, eingerückte Zeile**; Klammern um die Bedingung weglassen
+    tests: [{p: 1}]
+
+  - typ: code_schreiben
+    aufgaben: ["2.1"]
+    quelle: "Laboraufgabe F. 3"
+    deckt: [l1.konventionen, l1.bewertung]
+    frage: |-
+      Schreib den Kopf deiner Level-Datei und die Kennzeichnung über einer Station so, dass klar ist, dass der Code von dir stammt.
+    antwort: |-
+      ```python
+      # Programm: Escape-Room - Level 2 "Dschungel-Reflexe"
+      # Autor: [Vorname Nachname]
+      # Datum: 26.11.2026
+
+      # === Station 2: Hängebrücke (Autor: [Name]) ===
+      ```
+      Kennzeichnung per Kommentar verlangt die Laboraufgabe (F. 3); der Kopf folgt Aufg. 2.1.
+    tests: [{p: 1}]
+
+  # ---------------------------------------------------------------- Grundstrukturen und PAP
+  - typ: anwendung
+    folien: [109]
+    deckt: [l1.grundstrukturen]
+    frage: |-
+      Nenne die vier **Grundstrukturen** eines Programms mit je einem Beispiel aus deinem Level.
+    antwort: |-
+      | Grundstruktur | Beispiel |
+      |---|---|
+      | sequentiell | `start = time.time()` – Anweisungen nacheinander |
+      | auswählend | `if reaktion < 0.1:` Fehlstart |
+      | iterativ | `for runde in range(1, 4):` |
+      | springend | Funktionsaufruf `reaktion_messen(0.8)`, `return`, `break` |
+
+  - typ: begriff
+    quelle: "Ergänzung: DIN 66001 (PAP-Folien KW43 nicht im Projekt)"
+    deckt: [l1.grundstrukturen]
+    frage: |-
+      Welche Symbole hat ein **Programmablaufplan (PAP)**, und wofür steht jedes?
+    antwort: |-
+      Ergänzung (DIN 66001; mit den Laborfolien aus KW43 abgleichen):
+      | Symbol | Bedeutung |
+      |---|---|
+      | Oval (abgerundet) | Start / Ende |
+      | Rechteck | Anweisung, Berechnung |
+      | Raute | Verzweigung (Ja/Nein) |
+      | Parallelogramm | Ein-/Ausgabe |
+      | Rechteck mit doppelten Seitenlinien | Unterprogramm (Funktionsaufruf) |
+      | Pfeil | Ablaufrichtung |
+
+  - typ: anwendung
+    quelle: "Level-Konzept; Ergänzung: DIN 66001"
+    deckt: [l1.grundstrukturen, l1.aufbau]
+    frage: |-
+      Erkläre den Ablauf der Reaktionsmessung anhand des PAP.
+      {{bild:level_pap_reaktion|PAP der Funktion reaktion_messen}}
+    antwort: |-
+      1. Zufällige Wartezeit (`time.sleep`), dann Startzeit merken.
+      2. Ein-/Ausgabe: „SPRING!“ zeigen, auf Enter warten.
+      3. Reaktionszeit = jetzt − Start.
+      4. Raute 1: unter 0,1 s → **Fehlstart**, Rückgabe `None`.
+      5. Raute 2: über dem Zeitlimit → „zu langsam“, sonst „geschafft“.
+      6. Rückgabe der Zeit, Ende.
+
+  # ---------------------------------------------------------------- Nachträge aus dem Probe-Kolloquium
+  - typ: falle
+    folien: [119, 144]
+    quelle: "Probe-Kolloquium"
+    deckt: [l1.spieler]
+    frage: |-
+      Der Spieler schafft das Level und spielt es noch einmal (ohne Neustart von `main.py`). Was steht danach im Inventar – und wie verhinderst du das?
+      ```python
+      spieler = {"leben": 3, "inventar": []}
+      for versuch in range(2):
+          spieler["inventar"].append("Ziffer 7")
+      print(spieler["inventar"])
+      ```
+    antwort: |-
+      ```text
+      ['Ziffer 7', 'Ziffer 7']
+      ```
+      Jeder **erfolgreiche** Durchlauf hängt die Ziffer erneut an. Abhilfe: `if "Ziffer 7" not in spieler["inventar"]:` vor dem `append` (`not in`, F. 119). Nach einem **Misserfolg** bleibt das Inventar leer, aber `leben` steht bei 0 – ohne Zurücksetzen scheitert das Level beim nächsten Versuch sofort. Darum Leben nicht unter 0 fallen lassen und mit der Gruppe festlegen, ob Leben pro Level neu gelten.
+    tests: [{p: 1, t: 1}]
+
+  - typ: begruenden
+    folien: [58]
+    quelle: "Code-Leitfaden 2.6; Probe-Kolloquium"
+    deckt: [l1.konventionen]
+    frage: |-
+      Prüfer: „Warum steht Ihre Konstante `dateiname = "bestenliste.txt"` klein geschrieben?“
+    antwort: |-
+      Verbindlich sind die **Code-Conventions des Kurses**: Der Code-Leitfaden (2.6, nach den Musterlösungen) schreibt konstante Werte als Variable **mit Kleinbuchstaben oben im Code**, z. B. `max_versuche = 5`. Das Skript verweist für Conventions auf **PEP 8** (F. 58), und PEP 8 empfiehlt für Konstanten GROSSBUCHSTABEN (`DATEINAME`). Ich folge bewusst der Kursvorgabe – und kann die Abweichung benennen.

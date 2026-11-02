@@ -1,0 +1,89 @@
+"Was bewirken die Escape-Sequenzen `\n`, `\t`, `\r`, `\b`, `\""` und `\\` in einem String?","| Sequenz | Wirkung |
+|---|---|
+| `\n` | neue Zeile |
+| `\t` | Tabulator |
+| `\r` | Cursor zurück an den **Anfang der Zeile** |
+| `\b` | Cursor ein Zeichen zurück (Backspace) |
+| `\""` | Anführungszeichen im String |
+| `\\` | **ein** Backslash |
+
+*F. 53, 69*"
+"Was sieht der Spieler am Ende in der Zeile? (Der Code zählt in **einer** Zeile herunter.)
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_d1901ede47.png)","Nur **`LOS!`**. `end=""\r""` setzt den Cursor nach jeder Zahl an den Zeilenanfang; die nächste Ausgabe **überschreibt** die alte. So entsteht ein Countdown an derselben Stelle. Ergänzung: `flush=True` gibt jede Zahl sofort aus. Im Terminal erscheint `\r`-Ausgabe meist auch ohne, in manchen Ausgabefenstern und bei Umleitung in eine Datei bliebe sie aber im Puffer – der Countdown wäre dann unsichtbar und käme am Ende auf einmal. Im PyCharm-Ausgabefenster vorher testen – nicht jede Konsole beherrscht `\r` gleich.
+
+*F. 53, 151*"
+"Warum endet `print(""LOS!   "")` im Countdown mit Leerzeichen? Was stünde ohne sie nach `Noch 10 s` + `\r` + `LOS!` auf dem Bildschirm?","`\r` löscht nichts, es springt nur zurück. `LOS!` überschreibt die ersten 4 Zeichen, der Rest bleibt stehen: **`LOS! 10 s`**. Die Leerzeichen überschreiben die Reste der längeren alten Ausgabe.
+
+*F. 53*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_0488e7ba52.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_a891aa7ccc.png)
+`\t` springt zur nächsten Tabulatorposition – Werte stehen untereinander. `\b` setzt ein Zeichen zurück, das `!` überschreibt das `x` (wie in F. 54) – in Konsolen, die `\b` auswerten; im PyCharm-Ausgabefenster vorher ausprobieren.
+
+*F. 54*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8dc8ea0625.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_bbb5bdfd44.png)
+`\\` wird zu **einem** Backslash. Im letzten String bildet `\n` eine Escape-Sequenz – aus dem gezeichneten Ast wird ein Zeilenumbruch. In ASCII-Bildern deshalb **jeden** Backslash verdoppeln.
+
+*F. 53, 69*"
+"Dein Affenbild enthält `print("" /|_|\ "")`. Es sieht richtig aus. Warum solltest du es trotzdem ändern? (Ergänzung)","`\ ` (Backslash + Leerzeichen) ist **keine** gültige Escape-Sequenz; Python lässt den Backslash zwar stehen, ab Version 3.12 kommt aber eine **SyntaxWarning** (Ergänzung). Steht der Backslash vor `n`, `t`, `b` oder `r`, ändert sich das Bild. Sicher ist nur `\\`.
+
+*F. 53, 69*"
+"Was gibt der Code aus?
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_5be00cf0bb.png)","![Code (text)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_ea0f152034.png)
+Drei Anführungszeichen erlauben einen **mehrzeiligen String** – das Bild steht im Code so, wie es aussieht. Backslashes trotzdem verdoppeln.
+
+*F. 60 · Aufg. 2.6*"
+"Wozu dienen `end=""""` und `flush=True` beim Schreibmaschinen-Text?","- `end=""""` (Stoff): kein Zeilenumbruch nach jedem Zeichen.
+- `flush=True` (Ergänzung): Python sammelt Ausgaben sonst in einem **Puffer** und zeigt sie im Terminal erst am Zeilenende (bei Umleitung in eine Datei noch später) – alle Buchstaben kämen auf einmal. `flush=True` gibt jedes Zeichen **sofort** aus.
+
+*F. 151 · Ergänzung*"
+"Schreib `langsam_schreiben(text)`: gibt den Text Zeichen für Zeichen mit kurzer Pause aus, am Ende ein Zeilenumbruch.","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_8bc3008b5c.png)
+
+*Aufg. 1.3 · Ergänzung*"
+"Wie färbst du Text in der Konsole grün, und was bedeutet `\033`? (Ergänzung)","Ergänzung (ANSI-Farbcodes):
+![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_da245da020.png)
+`\033` ist das **Escape-Steuerzeichen** (oktal 33 = 27). Die Konsole liest `ESC[32m` als Befehl „ab jetzt grün“; `[0m` setzt zurück. `31` wäre rot. Alte Windows-Konsolen zeigen statt Farbe Zeichensalat.
+
+*Ergänzung*"
+"Warum gehört hinter jeden farbigen Text `\033[0m`? (Ergänzung)","Der Farbcode gilt, **bis er zurückgesetzt wird** – ohne `\033[0m` wäre auch alles danach grün, sogar die Ausgaben der anderen Levels.
+
+*Ergänzung*"
+"Welche Möglichkeiten für Ton gibt es, und welchen Haken hat jede? (Ergänzung)","| Weg | Haken |
+|---|---|
+| `print(""\a"")` | piept nur, wenn die Konsole es erlaubt (PyCharm meist nicht) |
+| `winsound.Beep(…)` | Modul gibt es **nur unter Windows** |
+| `afplay` per `os.system` | nur macOS |
+| Paket wie `pygame` | muss installiert sein → `requirements.txt` |
+
+Nichts davon ist im Stoff – alles Ergänzung.
+
+*Ergänzung; Level-Konzept*"
+"Schreib `ton_abspielen()`: piept unter Windows; wo das nicht geht, läuft das Spiel ohne Absturz weiter. (Ergänzung)","![Code (python)](https://raw.githubusercontent.com/mason1-glitch/karteikarten/main/ingenieurinformatik1/bilder/code_12927cf6af.png)
+Auf macOS/Linux gibt es `winsound` nicht → `import` löst `ImportError` aus; dann bleibt der Signalton `\a` (piept nur, wenn die Konsole es erlaubt). `Beep` selbst kann unter Windows ohne Tonausgabe einen `RuntimeError` auslösen (laut Python-Doku) – auch der wird abgefangen. `pass` ist ein **leerer Block** (F. 113): Unter `except` muss eine Anweisung stehen, hier soll aber bewusst nichts passieren.
+
+*Ergänzung; Level-Konzept*"
+"Warum soll dein Spiel bei Problemen mit dem Ton **ohne Ton weiterlaufen**, statt abzustürzen oder eine Fehlermeldung zu zeigen?","Ton ist ein **Effekt** für Extrapunkte, kein Kern des Spiels. Vorgeführt wird auf Rechnern mit unterschiedlichem Betriebssystem – ein Absturz wegen fehlendem Lautsprecher-Modul würde das ganze Gruppenspiel beenden. Die Ausnahmebehandlung macht den Effekt **optional** und ist zugleich ein weiteres Pflichtelement.
+
+*Level-Konzept*"
+"Was ist eine **virtuelle Umgebung**, und warum nutzt man sie?","Ein **isolierter Arbeitsbereich für ein einzelnes Projekt**, in dem dessen Pakete in eigenen Versionen installiert sind.
+- Konfliktvermeidung zwischen Projekten
+- Reproduzierbarkeit
+- einfaches Weitergeben (Deployment)
+- Sicherheit: Änderungen betreffen nicht das ganze System
+
+*Laborfolie IDE/venv F. 13*"
+"Euer Spiel braucht `pygame`. Wie erstellt ihr eine `requirements.txt`, und wie installiert sie ein anderer?","- Erstellen (Umgebung aktiv): `pip freeze > requirements.txt`
+- Installieren: Umgebung **erst aktivieren**, dann `pip install -r requirements.txt` im Ordner der Datei
+- Hinweis (Ergänzung aus der Laborfolien-Fassung): In Conda-Umgebungen schreibt `pip freeze` oft lokale Pfade; `pip list --format=freeze` liefert `paket==version`.
+
+*Laborfolie IDE/venv F. 28–29*"
+"Warum testest du die Effekte früh auf dem Rechner, auf dem vorgeführt wird?","PyCharm-Ausgabefenster, Terminal und Windows-Eingabeaufforderung behandeln `\r`, Farben, Bildschirm-Leeren und `\a` **unterschiedlich**. Was zu Hause schön aussieht, kann dort Zeichensalat sein. Darum: früh testen und jeden Effekt so bauen, dass das Spiel **auch ohne ihn** läuft.
+
+*Level-Konzept*"
+"Bilder bringen Extrapunkte. Welche zwei Wege gibt es, und was spricht für welchen?","| ASCII-Bilder | echte Bilddatei mit matplotlib |
+|---|---|
+| `print` mit mehrzeiligem String | `plt.imread` + `plt.imshow` + `plt.show()` zeigt es in einem Fenster (Ergänzung; matplotlib selbst ist im Stoff, F. 205) |
+| läuft in jeder Konsole | braucht matplotlib und die Bilddatei im richtigen Ordner |
+| nur Stoff, leicht erklärbar | sieht besser aus, Fenster unterbricht das Spiel |
+
+*F. 205 · Level-Konzept; Ergänzung*"

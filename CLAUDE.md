@@ -10,6 +10,8 @@ werkzeuge/       stil.py – einheitlicher Diagrammstil
                  codebilder.py – Code-Blöcke als farbige Bilder (Syntax-Highlighting)
                  karten.py – CSV aus YAML bauen und prüfen (Abdeckung, LaTeX, Rechnungen, Wortlaut, Links; `code` führt Code-Karten aus)
                  folienbilder.py – Schaubilder aus dem Skript-PDF ausschneiden und Felder verdecken
+                 inventar.py – Sprachelemente in Python-Code auflisten (Stoff/Labor/Ergänzung) und prüfen,
+                               ob es zu jedem eine Karte gibt; prüft auch, ob Ergänzungen auf Karten markiert sind
 ```
 Für größere Kartensätze die Karten in `<fach>/quellen/<kapitel>_karten.yaml` pflegen und die CSV mit `werkzeuge/karten.py` erzeugen (Aufruf und Format stehen oben in den Werkzeugen); Vorlage: `bwl/quellen/`. Das Skript-PDF wird nur als Pfad übergeben, nie eingecheckt.
 Fächer: bwl, mathe1, ingenieurinformatik1, konstruktionsgrundlagen, cad, werkstoffkunde-labor. Für ein neues Fach denselben Aufbau anlegen.
